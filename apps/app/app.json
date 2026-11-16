@@ -9,17 +9,48 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.shawared.app",
-      "infoPlist": { "UIBackgroundModes": ["audio"], "ITSAppUsesNonExemptEncryption": false }
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"],
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.shawared.app",
-      "blockedPermissions": ["android.permission.RECORD_AUDIO"]
+      "blockedPermissions": ["android.permission.RECORD_AUDIO"],
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
     },
     "web": {
       "bundler": "metro",
-      "output": "single",
+      "output": "static",
       "name": "شوارد · Shawared"
     },
-    "plugins": ["expo-router", "expo-audio", "expo-font", "expo-status-bar", "expo-splash-screen"]
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "sitemap": false
+        }
+      ],
+      "expo-audio",
+      "expo-font",
+      "expo-status-bar",
+      "expo-splash-screen"
+    ],
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "46acd2ca-c388-4ceb-a0b7-e9efea752a03"
+      }
+    },
+    "owner": "aliosm"
   }
 }

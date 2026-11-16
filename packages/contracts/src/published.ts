@@ -23,12 +23,17 @@ export const CatalogPoem = z.object({
   rawiy: z.string().optional(),
   abyat: z.number(),
   abyat_in_full: z.number(),
+  /** ISO date the poem joined the library. The catalog lists newest first. */
+  added: z.string(),
   opening: PublishedBayt,
   /** Languages that have explanations, translations or word meanings. */
   langs: z.array(z.string()).default([]),
   recitations: z.array(z.object({ id: z.string(), reciter: z.string(), duration: z.number() })).default([]),
   /** Changes whenever any of the poem's files change. */
   hash: z.string(),
+  /** The poem's measure and the opening bayt's kashida, as in its bundle. */
+  measure: z.number().optional(),
+  kashida: z.record(z.string(), z.array(z.tuple([z.number(), z.number()]))).default({}),
 });
 export type CatalogPoem = z.infer<typeof CatalogPoem>;
 
@@ -37,6 +42,8 @@ export const CatalogPerson = z.object({
   name: z.string(),
   names: z.record(z.string(), z.string()).default({}),
   died: Died.optional(),
+  /** How many poems they have: a poet's poems, or the poems a reciter recites. */
+  poems: z.number().default(0),
 });
 export type CatalogPerson = z.infer<typeof CatalogPerson>;
 
@@ -46,6 +53,8 @@ export const Catalog = z.object({
   poems: z.array(CatalogPoem),
   poets: z.record(z.string(), CatalogPerson),
   reciters: z.record(z.string(), CatalogPerson),
+  /** How many poems each meter has. */
+  meters: z.record(z.string(), z.number()).default({}),
 });
 export type Catalog = z.infer<typeof Catalog>;
 
@@ -98,6 +107,13 @@ export const PoemBundle = z.object({
     rawiy: z.string().optional(),
     abyat_in_full: z.number(),
     abyat: z.array(PublishedBayt),
+    /**
+     * Every half is set to this width, in em of the verse font: the longest half's. Absent,
+     * halves keep their own widths.
+     */
+    measure: z.number().optional(),
+    /** Kashida by line address ("7.1"): [offset in the half, tatweels]. Shown, never part of the text. */
+    kashida: z.record(z.string(), z.array(z.tuple([z.number(), z.number()]))).default({}),
   }),
   /** In the bundle's language; empty when the language has nothing for this poem. */
   sources: z.array(PublishedSource).default([]),
@@ -109,5 +125,38 @@ export const PoemBundle = z.object({
 });
 export type PoemBundle = z.infer<typeof PoemBundle>;
 
+/** v1/poets/<id>/<lang>.json and v1/reciters/<id>/<lang>.json: a person's page. */
+export const PersonBundle = z.object({
+  schema: z.number(),
+  lang: z.string(),
+  person: z.object({
+    id: z.string(),
+    /** The Arabic name, and the name in other languages. */
+    name: z.string(),
+    names: z.record(z.string(), z.string()).default({}),
+    full_name: z.string().optional(),
+    died: Died.optional(),
+    bio: z.string().optional(),
+    links: z.record(z.string(), z.string()).optional(),
+  }),
+  /** Their poems (for a reciter: the poems they recite), newest first. */
+  poems: z.array(z.string()),
+});
+export type PersonBundle = z.infer<typeof PersonBundle>;
+export type PersonKind = "poets" | "reciters";
+
+/** A half as shown: its text with the kashida of its plan inserted. */
+export function withKashida(text: string, plan: readonly (readonly [number, number])[] | undefined): string {
+  if (!plan?.length) return text;
+  let out = "";
+  let last = 0;
+  for (const [offset, count] of [...plan].sort((a, b) => a[0] - b[0])) {
+    out += text.slice(last, offset) + "ـ".repeat(count);
+    last = offset;
+  }
+  return out + text.slice(last);
+}
+
 export const catalogPath = () => `v${SCHEMA}/catalog.json`;
+export const personPath = (kind: PersonKind, id: string, lang: string) => `v${SCHEMA}/${kind}/${id}/${lang}.json`;
 export const bundlePath = (poemId: string, lang: string) => `v${SCHEMA}/poems/${poemId}/${lang}.json`;

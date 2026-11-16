@@ -5,11 +5,11 @@ Arabic poetry as it is recited: audio with the verses lighting up, translations,
 ## Where code lives
 
 - `content/` – the poems, poets and reciters, written by hand. Format: [docs/content-format.md](docs/content-format.md).
-- `apps/app` – the Expo Router app. `src/app` holds routes only; screens live in `src/features/<feature>`, shared pieces in `src/components/ui`, plumbing in `src/lib`.
+- `apps/app` – the Expo Router app. `src/app` holds routes only: Arabic at `/…`, the same routes for English under `src/app/en`. The four tabs (`(tabs)/`) are home, poets, reciters and meters; every page opened from them (a poem, a poet, a reciter, a meter) sits on the root stack above the tabs, so back retraces the reader's steps. Screens live in `src/features/<feature>`, shared pieces in `src/components/ui`, plumbing in `src/lib`. `src/server` runs only while web pages are rendered ahead of time: each page's data (`loader`), its title and description (`generateMetadata`) and its params.
 - `packages/contracts` – zod schemas: the strict authoring format (`source.ts`), the lenient published format the app downloads (`published.ts`) and addresses.
 - `packages/listening` – pure playback logic: timelines, the line being recited, previous/next/repeat, word-note lookup. No React, tested with vitest.
-- `packages/design` – colours, fonts, the mark, the follow-pause rule.
-- `scripts/` – `check.ts` (content checker), `build-content.ts` (publishes content into `apps/app/public`), `align.py` and `variants.py` (forced alignment, picking readings), `preview.ts` (a review page per poem).
+- `packages/design` – colours, fonts, the mark, the gap scale, the follow-pause rule, and ink-trimmed text boxes (`type.ts`, see [docs/typography.md](docs/typography.md)).
+- `scripts/` – `check.ts` (content checker), `build-content.ts` (publishes content into `apps/app/public`), `align.py` and `variants.py` (forced alignment, picking readings), `preview.ts` (a review page per poem), `sitemap.ts` (sitemap.xml for the exported site), `kashida.ts` (sets every half of a poem to one width, run by the publish step).
 - `design/` – the HTML prototypes the app follows (0.3 identity, 0.4 listening).
 - `media/` – downloads, app audio and work files. Gitignored; audio will move to R2.
 
@@ -19,16 +19,27 @@ Run through mise so bun, node and caddy match `mise.toml`: `mise exec -- bun run
 
 - `bun run dev` – publishes content, then starts Expo for web on port 8081.
 - `bun run check` – content check, typecheck, unit tests.
-- `bun run test:e2e` – Playwright against the dev server; `BASE_URL=http://localhost:8090` tests the production build instead.
-- `bun run web:build`, then `bun run web:serve` – the exported site through Caddy on port 8090.
+- `bun run test:e2e` – Playwright against the dev server; `BASE_URL=http://localhost:8090` tests the production build instead. Includes the overlap audit (`tests/typography.spec.ts`).
+- `bun run web:build`, then `bun run web:serve` – every page rendered ahead of time, in both languages, plus the sitemap, served through Caddy on port 8090.
 
 ## Rules
 
+- Every bayt the app shows is set to its poem's measure with kashida (`Half`/`Measure` in `components/ui/Measure.tsx`) ([docs/typography.md](docs/typography.md#verses-at-one-width)). Kashida is shown, never written into content; find verse words in tests with a pattern that allows tatweel.
 - The verse text follows the recording. Where editions differ, `scripts/variants.py` decides what the reciter says; word cards show the dictionary form in `head`.
 - Arabic verses are always on screen and always right-to-left. The UI flips with the language: English is left-to-right, including the progress bar and controls.
 - Saffron (`accent`) is for the nuqta and active marks, never body text.
+- Every `Text` takes a role from `useType()` (`apps/app/src/lib/type.ts`). Never set font size, line height or vertical margins/padding on a `Text`; space texts with container gaps from `space`. Bordered labels wrap their `Text` in a `View` (`Chip`, `Tag`). See [docs/typography.md](docs/typography.md).
+- Text alignment uses `start` from `useSettings()` or `ARABIC` from `lib/align`; native platforms read left/right as start/end inside right-to-left layouts. A `TextInput` doesn't: it takes `inputAlign` (physical sides on every platform).
+- Pages use `ListPage` or `PageFrame` (`features/library/Page.tsx`): on phones the fixed `TopBar` with back and the page's title; on wide windows the site header, with back and the title at the top of the page. Titles use `barTitle`/`pageTitle` (Readex: Reem Kufi has no ṭ, ḥ or ʿ); Reem Kufi is for the wordmark.
+- Directional icons (play, previous, next, back) are drawn left-to-right and mirrored by `Icon` in Arabic. Don't flip them by hand.
+- Hover-only highlights: on the web a tapped control keeps focus, so don't style `focused`.
 - Use `Dir` for a box with its own direction. React Native Web ignores the `direction` style.
 - Under `Link asChild`, pass a flattened style object, never an array or a function.
+- A link that is text uses `TextLink` (`components/ui/TextLink.tsx`): it spans its text, never the page. Rows and cards are links tapped anywhere. `tests/links.spec.ts` checks every text link.
 - Fast-changing values (the playback clock) go through `lib/store` with a selector, so only what reads them re-renders.
 - Published files are read leniently. A change older apps can't read goes in a new `v2/` folder.
+- Build in-app paths with `paths` (`lib/routes`) and `href()` from `useSettings()`, so English stays under `/en` on the web. On the web the address decides the language; the apps keep it in settings.
+- Web pages are rendered ahead of time for a phone in the day theme. Anything the server can't know (window size, saved settings, the address's query) waits until the page is live: use `useWide`, `useWindowWidth` and `useHydrated` (`lib/viewport`), never `useWindowDimensions`. A wide window or the night theme holds the first paint until then (`app/+html.tsx`).
+- Route files come in Arabic and English twins and stay identical apart from `LANG`. They reach `src/server` only through `await import()` inside `loader`, `generateMetadata` and `generateStaticParams`.
+- Long lists use `ListPage` (virtualized). There is one player for the whole app (`features/player`); screens talk to it through `usePoemPlayback`.
 - Report web checks and native device checks separately. Native audio (background, lock screen) is untested so far.

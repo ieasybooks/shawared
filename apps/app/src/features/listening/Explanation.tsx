@@ -1,38 +1,43 @@
-import { fonts } from "@shawared/design";
-import { notesOfBayt } from "@shawared/listening";
+import { space } from "@shawared/design";
+import { notesOfBayt, type WordHit } from "@shawared/listening";
 import { useEffect, useRef } from "react";
-import { Animated, Pressable, StyleSheet, Text, View } from "react-native";
-import { Chip, IconButton, Nuqta } from "../../components/ui/controls";
+import { Animated, Pressable, StyleSheet, Text, View, type HostInstance } from "react-native";
+import { Chip, IconButton, Nuqta, Tag } from "../../components/ui/controls";
 import { Dir } from "../../components/ui/Dir";
+import { Half } from "../../components/ui/Measure";
 import { t } from "../../lib/i18n";
 import { useSettings } from "../../lib/settings";
+import { useType } from "../../lib/type";
+import { useReveal } from "./PanelScroll";
 import { useCurrentLine } from "./playback";
 import { useCurrentBayt, useListening } from "./state";
 
-/** The bayt the explanation shows: the held one, else the one being recited. */
-export function usePanelBayt() {
+/** What the explanation shows: the held bayt or the introduction, else the bayt being recited. */
+export function usePanel(): number | "intro" {
   const { pinned } = useListening();
   const current = useCurrentBayt();
   return pinned ?? current;
 }
 
-/** One block for both the phone sheet and the web side panel. */
+/** One block for both the phone sheet and the web side panel: the poem's introduction, or one bayt explained. */
 export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
-  const { abyat, sources, source, setSourceId, words, pinned, unpin, followRef, playback } = useListening();
-  const { palette, lang, rtl } = useSettings();
+  const { abyat, sources, source, setSourceId, words, pinned, unpin, followRef, playback, bundle, intro, focus } = useListening();
+  const { palette, lang, start } = useSettings();
+  const type = useType();
   const current = useCurrentBayt();
   const line = useCurrentLine(playback);
-  const n = usePanelBayt();
+  const view = usePanel();
+  const n = view === "intro" ? current : view;
   const bayt = abyat.find((b) => b.n === n)!;
   const sharh = source?.abyat[n]?.sharh;
   const notes = notesOfBayt(words, n);
-  const live = n === current && line >= 0;
+  const live = view === n && n === current && line >= 0;
   const liveHalf = live ? (playback.track.lines[line]?.half ?? null) : null;
-  const align = rtl ? "right" : "left";
+  const focused = focus ? words.get(focus)?.address : undefined;
 
-  // A short fade when the bayt or the source changes.
+  // A short fade when what it shows changes.
   const fade = useRef(new Animated.Value(1)).current;
-  const key = `${n}|${source?.id ?? ""}|${lang}`;
+  const key = `${view}|${source?.id ?? ""}|${lang}`;
   const last = useRef(key);
   useEffect(() => {
     if (last.current === key) return;
@@ -42,18 +47,20 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
   }, [key, fade]);
 
   const verseColor = (h: 1 | 2) => (live ? (liveHalf === null || liveHalf === h ? palette.fg : palette.partner) : palette.rest);
+  // Back to following: from a held bayt, or from the introduction once the recitation is under way.
+  const showNowPlaying = view === "intro" ? line >= 0 : pinned !== null && pinned !== current;
 
   return (
     <View style={styles.ex}>
       <View style={styles.head}>
         <View style={styles.title}>
           <Nuqta />
-          <Text style={[styles.titleText, { color: palette.fg, fontFamily: fonts.uiMedium }]}>
-            {t(lang, "verse", { n })} · {t(lang, "expl")}
+          <Text style={[type.bodyStrong, { color: palette.fg }]}>
+            {view === "intro" ? t(lang, "about") : `${t(lang, "verse", { n })} · ${t(lang, "expl")}`}
           </Text>
         </View>
         <View style={styles.sp} />
-        {pinned !== null && pinned !== current && (
+        {showNowPlaying && (
           <Pressable
             accessibilityRole="button"
             onPress={() => {
@@ -63,93 +70,118 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
             style={[styles.np, { borderColor: palette.accent }]}
           >
             <Nuqta />
-            <Text style={[styles.npText, { color: palette.accent, fontFamily: fonts.ui }]}>{t(lang, "nowPlaying")}</Text>
+            <Text style={[type.label, { color: palette.accent }]}>{t(lang, "nowPlaying")}</Text>
           </Pressable>
         )}
         {onCollapse && <IconButton icon="down" label={t(lang, "collapse")} onPress={onCollapse} size={36} iconSize={20} />}
       </View>
 
       <Animated.View style={[styles.body, { opacity: fade }]}>
-        <Dir dir="rtl" lang="ar" style={[styles.verse, { backgroundColor: palette.fold }]}>
-          <Text style={[styles.verseText, styles.sadr, { color: verseColor(1) }]}>{bayt.sadr}</Text>
-          <Text style={[styles.verseText, styles.ajuz, { color: verseColor(2) }]}>{bayt.ajuz}</Text>
-        </Dir>
+        {view === "intro" ? (
+          <Text style={[type.prose, { color: palette.fg, textAlign: start }]}>{intro}</Text>
+        ) : (
+          <>
+            <Dir dir="rtl" lang="ar" style={[styles.verse, { backgroundColor: palette.fold }]}>
+              <Half
+                text={bayt.sadr}
+                kashida={bundle.poem.kashida[`${bayt.n}.1`]}
+                measure={bundle.poem.measure}
+                style={[type.verseSmall, { color: verseColor(1) }]}
+                side="start"
+                indent="10%"
+              />
+              <Half
+                text={bayt.ajuz}
+                kashida={bundle.poem.kashida[`${bayt.n}.2`]}
+                measure={bundle.poem.measure}
+                style={[type.verseSmall, { color: verseColor(2) }]}
+                side="end"
+                indent="10%"
+              />
+            </Dir>
 
-        {sources.length > 1 && (
-          <View accessibilityRole="radiogroup" accessibilityLabel={t(lang, "sources")} style={styles.sources}>
-            {sources.map((s) => (
-              <Chip key={s.id} active={s.id === source?.id} onPress={() => setSourceId(s.id)}>
-                {s.name}
-              </Chip>
-            ))}
-          </View>
-        )}
-
-        {sharh && (
-          <Text
-            style={[
-              styles.sharh,
-              { color: palette.fg, textAlign: align, fontFamily: lang === "en" ? fonts.translation : fonts.ui },
-              lang === "en" && styles.sharhEn,
-            ]}
-          >
-            {sharh}
-          </Text>
-        )}
-
-        {notes.length > 0 && (
-          <View style={styles.words}>
-            <Text style={[styles.wordsTitle, { color: palette.muted, textAlign: align, fontFamily: fonts.uiMedium }]}>
-              {t(lang, "words")}
-            </Text>
-            {notes.map((hit) => (
-              <View key={hit.address} style={[styles.word, { borderTopColor: palette.line }]}>
-                <View style={styles.wordHead}>
-                  <Text style={[styles.wordAr, { color: palette.fg }]}>{hit.note.head ?? hit.note.word}</Text>
-                  {hit.note.root && (
-                    <Text style={[styles.root, { color: palette.muted, borderColor: palette.line, fontFamily: fonts.ui }]}>
-                      {t(lang, "root", { r: hit.note.root })}
-                    </Text>
-                  )}
-                </View>
-                <Text
-                  style={[
-                    styles.meaning,
-                    { color: palette.muted, textAlign: align, fontFamily: lang === "en" ? fonts.translation : fonts.ui },
-                  ]}
-                >
-                  {hit.note.meaning}
-                </Text>
+            {sources.length > 1 && (
+              <View accessibilityRole="radiogroup" accessibilityLabel={t(lang, "sources")} style={styles.sources}>
+                {sources.map((s) => (
+                  <Chip key={s.id} active={s.id === source?.id} onPress={() => setSourceId(s.id)}>
+                    {s.name}
+                  </Chip>
+                ))}
               </View>
-            ))}
-          </View>
+            )}
+
+            {sharh && <Text style={[type.prose, { color: palette.fg, textAlign: start }]}>{sharh}</Text>}
+
+            {notes.length > 0 && (
+              <View>
+                <View style={styles.wordsTitle}>
+                  <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "words")}</Text>
+                </View>
+                {notes.map((hit) => (
+                  <WordNote key={hit.address} hit={hit} focused={hit.address === focused} />
+                ))}
+              </View>
+            )}
+          </>
         )}
       </Animated.View>
     </View>
   );
 }
 
+/** One word's meaning; the word just tapped in the verse is brought forward and into view. */
+function WordNote({ hit, focused }: { hit: WordHit; focused: boolean }) {
+  const { layout } = useListening();
+  const { palette, lang, start } = useSettings();
+  const type = useType();
+  const reveal = useReveal();
+  const ref = useRef<HostInstance>(null);
+  useEffect(() => {
+    if (!focused) return;
+    // On phones the sheet slides up first.
+    const id = setTimeout(() => reveal(ref.current), layout === "compact" ? 380 : 60);
+    return () => clearTimeout(id);
+  }, [focused, reveal, layout]);
+  return (
+    <View
+      ref={ref}
+      aria-current={focused ? "true" : undefined}
+      style={[
+        styles.word,
+        { borderTopColor: palette.line },
+        focused && [styles.focused, { backgroundColor: `${palette.accent}14`, borderTopColor: "transparent" }],
+      ]}
+    >
+      <View style={styles.wordHead}>
+        {focused && <Nuqta />}
+        <Text style={[type.noteHead, { color: palette.fg }]}>{hit.note.head ?? hit.note.word}</Text>
+        {hit.note.root && <Tag>{t(lang, "root", { r: hit.note.root })}</Tag>}
+      </View>
+      <Text style={[type.proseSmall, { color: focused ? palette.fg : palette.muted, textAlign: start }]}>{hit.note.meaning}</Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
-  ex: { gap: 12 },
-  head: { flexDirection: "row", alignItems: "center", gap: 8, minHeight: 36 },
-  title: { flexDirection: "row", alignItems: "center", gap: 8 },
-  titleText: { fontSize: 13 },
+  ex: { gap: space.l },
+  head: { flexDirection: "row", alignItems: "center", gap: space.m, minHeight: 36 },
+  title: { flexDirection: "row", alignItems: "center", gap: space.m },
   sp: { flex: 1 },
-  np: { flexDirection: "row", alignItems: "center", gap: 6, borderWidth: 1, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 3 },
-  npText: { fontSize: 12 },
-  body: { gap: 12 },
-  verse: { borderRadius: 12, paddingVertical: 8, paddingHorizontal: 14 },
-  verseText: { fontFamily: fonts.verse, fontSize: 17, lineHeight: 33, writingDirection: "rtl" },
-  sadr: { textAlign: "right", paddingLeft: "10%" },
-  ajuz: { textAlign: "left", paddingRight: "10%" },
-  sources: { flexDirection: "row", gap: 6, flexWrap: "wrap" },
-  sharh: { fontSize: 14, lineHeight: 27 },
-  sharhEn: { fontSize: 15.5, lineHeight: 25 },
-  words: { marginTop: 4 },
-  wordsTitle: { fontSize: 12, marginBottom: 4 },
-  word: { borderTopWidth: 1, paddingVertical: 9, gap: 1 },
-  wordHead: { flexDirection: "row", alignItems: "baseline", gap: 10, flexWrap: "wrap" },
-  wordAr: { fontFamily: fonts.verseBold, fontSize: 20, lineHeight: 30, writingDirection: "rtl" },
-  root: { fontSize: 11, borderWidth: 1, borderRadius: 999, paddingHorizontal: 9, lineHeight: 18 },
-  meaning: { fontSize: 13, lineHeight: 23 },
+  np: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.s,
+    minHeight: 28,
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: space.l,
+  },
+  body: { gap: space.l },
+  verse: { borderRadius: 12, paddingVertical: space.m, paddingHorizontal: 14 },
+  sources: { flexDirection: "row", gap: space.s, flexWrap: "wrap" },
+  wordsTitle: { paddingBottom: space.m },
+  word: { borderTopWidth: 1, paddingVertical: space.l, gap: space.s },
+  wordHead: { flexDirection: "row", alignItems: "center", gap: space.m, flexWrap: "wrap" },
+  // The tint reaches past the text, which stays in line with the rest.
+  focused: { marginHorizontal: -space.m, paddingHorizontal: space.m, borderRadius: 10 },
 });

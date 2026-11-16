@@ -1,7 +1,7 @@
-import { FOLLOW_RESUME_MS } from "@shawared/design";
+import { FOLLOW_RESUME_MS, space } from "@shawared/design";
 import { segmentAt } from "@shawared/listening";
 import { LinearGradient } from "expo-linear-gradient";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -17,9 +17,15 @@ import { BaytRow } from "./BaytRow";
 import { useCurrentLine, usePlaying } from "./playback";
 import { useCurrentBayt, useListening } from "./state";
 
+/** The fades over the list's top and bottom edges. */
+const FADE_TOP = 36;
+const FADE_BOTTOM = 48;
+/** When the list has to move, the bayt lands this far down it: room for what comes next. */
+const READ_AT = 0.2;
+
 /**
- * The verse list. Keeps the playing bayt centred, and stops doing so for
- * FOLLOW_RESUME_MS after the reader scrolls (the Faqieh rule).
+ * The verse list. Keeps the playing bayt in view, moving only when it nears an edge, and
+ * stops doing so for FOLLOW_RESUME_MS after the reader scrolls (the Faqieh rule).
  */
 export function Verses() {
   const { abyat, playback, layout, pinned, trOn, followRef } = useListening();
@@ -34,7 +40,16 @@ export function Verses() {
   const scroll = useRef<ScrollViewInstance>(null);
   const rows = useRef(new Map<number, { y: number; h: number }>());
   const viewport = useRef(0);
+  const contentH = useRef(0);
+  const scrollY = useRef(0);
   const listY = useRef(0);
+  // Each fade shows only while there is more to scroll that way, so the list needs no padding for it.
+  const [edges, setEdges] = useState({ top: false, bottom: false });
+  const updateEdges = useCallback(() => {
+    const max = contentH.current - viewport.current;
+    const next = { top: scrollY.current > 2, bottom: scrollY.current < max - 2 };
+    setEdges((e) => (e.top === next.top && e.bottom === next.bottom ? e : next));
+  }, []);
   const userUntil = useRef(0);
   const programmatic = useRef<{ until: number; y: number } | null>(null);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -45,10 +60,21 @@ export function Verses() {
     playingRef.current = playing;
   });
 
-  const scrollToBayt = useCallback((n: number, animated: boolean) => {
+  // Brings bayt n into view if it isn't comfortably there already, and moves no further than that.
+  const revealBayt = useCallback((n: number, animated: boolean) => {
     const r = rows.current.get(n);
-    if (!r || !viewport.current) return;
-    const y = Math.max(0, listY.current + r.y - (viewport.current - r.h) / 2);
+    const vh = viewport.current;
+    if (!r || !vh) return;
+    // Where the list is, or is about to be while a scroll of ours is under way.
+    const p = programmatic.current;
+    const at = p && Date.now() < p.until ? p.y : scrollY.current;
+    const top = listY.current + r.y - at;
+    const edgeTop = Math.max(FADE_TOP + space.m, vh * 0.1);
+    const edgeBottom = vh - Math.max(FADE_BOTTOM + space.m, vh * 0.1);
+    if (top >= edgeTop && top + r.h <= edgeBottom) return;
+    const max = contentH.current > vh ? contentH.current - vh : Infinity;
+    const y = Math.min(max, Math.max(0, listY.current + r.y - Math.max(edgeTop, vh * READ_AT)));
+    if (Math.abs(y - at) < 1) return;
     programmatic.current = { until: Date.now() + (animated ? 1200 : 150), y };
     scroll.current?.scrollTo({ y, animated });
   }, []);
@@ -58,8 +84,8 @@ export function Verses() {
     clearTimeout(resumeTimer.current);
     userUntil.current = 0;
     const { track, clock } = playback;
-    scrollToBayt(track.segments[segmentAt(track, clock.get().time)]?.n ?? currentRef.current, true);
-  }, [scrollToBayt, playback]);
+    revealBayt(track.segments[segmentAt(track, clock.get().time)]?.n ?? currentRef.current, true);
+  }, [revealBayt, playback]);
   useEffect(() => {
     followRef.current = follow;
   }, [follow, followRef]);
@@ -70,28 +96,30 @@ export function Verses() {
     clearTimeout(resumeTimer.current);
     resumeTimer.current = setTimeout(() => {
       userUntil.current = 0;
-      if (playingRef.current) scrollToBayt(currentRef.current, true);
+      if (playingRef.current) revealBayt(currentRef.current, true);
     }, FOLLOW_RESUME_MS);
-  }, [scrollToBayt]);
+  }, [revealBayt]);
 
   useEffect(() => () => clearTimeout(resumeTimer.current), []);
 
   // Follow the recitation from bayt to bayt.
   useEffect(() => {
-    if (Date.now() >= userUntil.current) scrollToBayt(current, true);
-  }, [current, scrollToBayt]);
+    if (Date.now() >= userUntil.current) revealBayt(current, true);
+  }, [current, revealBayt]);
 
   // The translation switch and the language change every row's height: keep the playing bayt in view.
   useEffect(() => {
     const id = setTimeout(() => {
-      if (Date.now() >= userUntil.current) scrollToBayt(currentRef.current, false);
+      if (Date.now() >= userUntil.current) revealBayt(currentRef.current, false);
     }, 120);
     return () => clearTimeout(id);
-  }, [trOn, lang, layout, scrollToBayt]);
+  }, [trOn, lang, layout, revealBayt]);
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const p = programmatic.current;
     const y = e.nativeEvent.contentOffset.y;
+    scrollY.current = y;
+    updateEdges();
     if (p && Date.now() < p.until) {
       if (Math.abs(y - p.y) < 2) programmatic.current = null;
       return;
@@ -104,9 +132,9 @@ export function Verses() {
       const { y, height } = e.nativeEvent.layout;
       const first = rows.current.size === 0;
       rows.current.set(n, { y, h: height });
-      if (first) requestAnimationFrame(() => scrollToBayt(currentRef.current, false));
+      if (first) requestAnimationFrame(() => revealBayt(currentRef.current, false));
     },
-    [scrollToBayt],
+    [revealBayt],
   );
 
   const wide = layout === "wide";
@@ -116,7 +144,14 @@ export function Verses() {
         ref={scroll}
         style={styles.scroll}
         contentContainerStyle={wide ? styles.contentWide : styles.content}
-        onLayout={(e) => (viewport.current = e.nativeEvent.layout.height)}
+        onLayout={(e) => {
+          viewport.current = e.nativeEvent.layout.height;
+          updateEdges();
+        }}
+        onContentSizeChange={(_, h) => {
+          contentH.current = h;
+          updateEdges();
+        }}
         onScroll={onScroll}
         onScrollBeginDrag={userScrolled}
         scrollEventThrottle={32}
@@ -136,8 +171,10 @@ export function Verses() {
           ))}
         </Dir>
       </ScrollView>
-      <LinearGradient pointerEvents="none" colors={[palette.bg, `${palette.bg}00`]} style={[styles.fade, styles.fadeTop]} />
-      <LinearGradient pointerEvents="none" colors={[`${palette.bg}00`, palette.bg]} style={[styles.fade, styles.fadeBottom]} />
+      {edges.top && <LinearGradient pointerEvents="none" colors={[palette.bg, `${palette.bg}00`]} style={[styles.fade, styles.fadeTop]} />}
+      {edges.bottom && (
+        <LinearGradient pointerEvents="none" colors={[`${palette.bg}00`, palette.bg]} style={[styles.fade, styles.fadeBottom]} />
+      )}
     </View>
   );
 }
@@ -145,9 +182,9 @@ export function Verses() {
 const styles = StyleSheet.create({
   wrap: { flex: 1, minHeight: 0 },
   scroll: { flex: 1 },
-  content: { paddingTop: 34, paddingBottom: 60, paddingHorizontal: 12 },
-  contentWide: { paddingTop: 34, paddingBottom: 90, paddingHorizontal: 30 },
-  fade: { position: "absolute", left: 0, right: 0, height: 36 },
-  fadeTop: { top: 0 },
-  fadeBottom: { bottom: 0, height: 48 },
+  content: { paddingTop: space.l, paddingBottom: space.xl, paddingHorizontal: 12 },
+  contentWide: { paddingTop: space.xl, paddingBottom: space.xxl, paddingHorizontal: 30 },
+  fade: { position: "absolute", left: 0, right: 0 },
+  fadeTop: { top: 0, height: FADE_TOP },
+  fadeBottom: { bottom: 0, height: FADE_BOTTOM },
 });

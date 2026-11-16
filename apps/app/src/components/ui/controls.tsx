@@ -1,7 +1,8 @@
-import { fonts } from "@shawared/design";
+import { space } from "@shawared/design";
 import type { ReactNode } from "react";
 import { Pressable, StyleSheet, Text, View, type PressableStateCallbackType, type StyleProp, type ViewStyle } from "react-native";
 import { useSettings } from "../../lib/settings";
+import { useType } from "../../lib/type";
 import { Icon, type IconName } from "./Icon";
 
 // React Native Web adds `hovered` and `focused` to the pressable state.
@@ -14,7 +15,6 @@ export function IconButton({
   size = 42,
   iconSize = 22,
   color,
-  flip,
   pressed: on,
   style,
 }: {
@@ -24,7 +24,6 @@ export function IconButton({
   size?: number;
   iconSize?: number;
   color?: string;
-  flip?: boolean;
   pressed?: boolean;
   style?: StyleProp<ViewStyle>;
 }) {
@@ -42,7 +41,7 @@ export function IconButton({
         style,
       ]}
     >
-      <Icon name={icon} size={iconSize} color={color ?? palette.muted} {...(flip ? { flip } : {})} />
+      <Icon name={icon} size={iconSize} color={color ?? palette.muted} />
       {on && <View style={[styles.onDot, { backgroundColor: palette.accent }]} />}
     </Pressable>
   );
@@ -61,107 +60,78 @@ export function Chip({
   onPress,
   active,
   ghost,
-  lang,
+  icon,
 }: {
   children: ReactNode;
   onPress?: () => void;
   active?: boolean;
   ghost?: boolean;
-  lang?: "ar" | "en";
+  /** An icon after the label, such as "link" for a chip that leaves the app. */
+  icon?: IconName;
 }) {
   const { palette } = useSettings();
-  const body = (
-    <Text style={[styles.chipText, { color: active ? palette.fg : palette.muted, fontFamily: lang === "ar" ? fonts.ui : fonts.ui }]}>
-      {children}
-    </Text>
+  const type = useType();
+  const color = active ? palette.fg : palette.muted;
+  const text = <Text style={[type.label, { color }]}>{children}</Text>;
+  const body = icon ? (
+    <View style={styles.chipRow}>
+      {text}
+      <Icon name={icon} size={12} color={color} />
+    </View>
+  ) : (
+    text
   );
   const frame = [
     styles.chip,
     { borderColor: ghost ? "transparent" : active ? palette.accent : palette.line },
-    ghost && { paddingHorizontal: 4 },
+    ghost && { paddingHorizontal: space.xs },
     active && { borderWidth: 1.5 },
   ];
   if (!onPress) return <View style={frame}>{body}</View>;
   return (
-    <Pressable
-      accessibilityRole="button"
-      {...(active === undefined ? {} : { accessibilityState: { selected: active } })}
-      onPress={onPress}
-      style={frame}
-    >
+    <Pressable accessibilityRole="button" aria-selected={active} onPress={onPress} style={frame}>
       {body}
     </Pressable>
+  );
+}
+
+/** A small bordered label, such as the root of a word. Always laid out for Arabic. */
+export function Tag({ children }: { children: ReactNode }) {
+  const { palette } = useSettings();
+  const type = useType();
+  return (
+    <View style={[styles.tag, { borderColor: palette.line }]}>
+      <Text style={[type.captionAr, { color: palette.muted }]}>{children}</Text>
+    </View>
   );
 }
 
 /** The translation switch: a pill with a rhombus that fills when on. */
 export function TogglePill({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) {
   const { palette } = useSettings();
+  const type = useType();
   return (
     <Pressable
       accessibilityRole="switch"
       accessibilityState={{ checked: on }}
       onPress={onPress}
-      style={[styles.pill, { borderColor: on ? palette.accent : palette.line }]}
+      style={[styles.chip, styles.pill, { borderColor: on ? palette.accent : palette.line }]}
     >
       <View
         style={[styles.pillDot, { borderColor: on ? palette.accent : palette.muted, backgroundColor: on ? palette.accent : "transparent" }]}
       />
-      <Text style={[styles.chipText, { color: on ? palette.fg : palette.muted, fontFamily: fonts.ui }]}>{label}</Text>
+      <Text style={[type.label, { color: on ? palette.fg : palette.muted }]}>{label}</Text>
     </Pressable>
-  );
-}
-
-/** Two-option switch for language and appearance. */
-export function Segmented<V extends string>({
-  value,
-  options,
-  onChange,
-  label,
-}: {
-  value: V;
-  options: { value: V; label: string }[];
-  onChange: (v: V) => void;
-  label: string;
-}) {
-  const { palette } = useSettings();
-  return (
-    <View accessibilityRole="radiogroup" accessibilityLabel={label} style={[styles.seg, { borderColor: palette.line }]}>
-      {options.map((o) => {
-        const on = o.value === value;
-        return (
-          <Pressable
-            key={o.value}
-            accessibilityRole="radio"
-            accessibilityState={{ checked: on }}
-            onPress={() => onChange(o.value)}
-            style={[styles.segItem, on && { backgroundColor: palette.fg }]}
-          >
-            <Text style={[styles.segText, { color: on ? palette.bg : palette.muted, fontFamily: fonts.ui }]}>{o.label}</Text>
-          </Pressable>
-        );
-      })}
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
   icon: { alignItems: "center", justifyContent: "center" },
   onDot: { position: "absolute", bottom: 4, width: 4, height: 4, transform: [{ rotate: "45deg" }] },
-  chip: { borderWidth: 1, borderRadius: 999, paddingHorizontal: 11, paddingVertical: 2 },
-  chipText: { fontSize: 12, lineHeight: 20 },
-  pill: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 7,
-    borderWidth: 1,
-    borderRadius: 999,
-    paddingStart: 10,
-    paddingEnd: 12,
-    paddingVertical: 3,
-  },
+  // Pills keep one height in both languages; the text box inside is its ink, centred.
+  chip: { minHeight: 28, justifyContent: "center", borderWidth: 1, borderRadius: 999, paddingHorizontal: 11, paddingVertical: space.xxs },
+  chipRow: { flexDirection: "row", alignItems: "center", gap: space.s },
+  pill: { flexDirection: "row", alignItems: "center", gap: 7, paddingStart: 10, paddingEnd: 12 },
   pillDot: { width: 7, height: 7, borderWidth: 1.5, transform: [{ rotate: "45deg" }] },
-  seg: { flexDirection: "row", borderWidth: 1, borderRadius: 999, padding: 2 },
-  segItem: { borderRadius: 999, paddingHorizontal: 12, paddingVertical: 3 },
-  segText: { fontSize: 12, lineHeight: 20 },
+  tag: { minHeight: 22, justifyContent: "center", borderWidth: 1, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 1 },
 });

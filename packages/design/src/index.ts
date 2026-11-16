@@ -38,17 +38,7 @@ export const palettes = {
 
 export type Palette = { [K in keyof (typeof palettes)["day"]]: string };
 
-/** Font family names as registered by the app's font loader. */
-export const fonts = {
-  verse: "Amiri_400Regular",
-  verseBold: "Amiri_700Bold",
-  translation: "Newsreader_400Regular",
-  translationItalic: "Newsreader_400Regular_Italic",
-  ui: "ReadexPro_400Regular",
-  uiLight: "ReadexPro_300Light",
-  uiMedium: "ReadexPro_500Medium",
-  display: "ReemKufi_600SemiBold",
-} as const;
+export { fonts } from "./fonts.ts";
 
 /** Mark A: a square-Kufic shin with three roaming dots. Drawn in viewBox "7 -3 104 104". */
 export const mark = {
@@ -60,3 +50,8 @@ export const mark = {
 
 /** Following pauses this long after the reader scrolls (the Faqieh rule). */
 export const FOLLOW_RESUME_MS = 5000;
+
+/** Gaps between elements, in px. Text boxes are trimmed to their ink, so these are true visible gaps. */
+export const space = { xxs: 2, xs: 4, s: 6, m: 8, l: 12, xl: 16, xxl: 24 } as const;
+
+export * from "./type.ts";

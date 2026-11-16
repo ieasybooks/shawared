@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "bun run content:build && bun run --cwd apps/app dev",
-    "web:build": "bun run content:build && bun run --cwd apps/app export:web",
+    "web:build": "bun run content:build && bun run --cwd apps/app export:web && bun scripts/sitemap.ts",
     "web:serve": "caddy run --config Caddyfile --adapter caddyfile",
     "content:check": "bun scripts/check.ts",
     "content:build": "bun scripts/build-content.ts",
@@ -28,6 +28,8 @@
     "@shawared/listening": "workspace:*",
     "@types/bun": "^1.4.4",
     "@types/node": "24",
+    "ar-justify": "^0.2.3",
+    "harfbuzzjs": "^1.6.4",
     "prettier": "^3.10.1",
     "typescript": "^7.0.2",
     "vitest": "^5.1.0",

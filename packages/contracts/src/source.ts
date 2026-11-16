@@ -45,6 +45,8 @@ export const Poem = z.strictObject({
     .regex(/^[ء-ي]$/, "one Arabic letter")
     .optional(),
   abyat_in_full: z.int().positive(),
+  /** The day the poem joined the library; the home page lists newest first. */
+  added: z.iso.date(),
   abyat: z.array(Bayt).min(1),
 });
 
@@ -102,6 +104,7 @@ export const Poet = z.strictObject({
 export const Reciter = z.strictObject({
   id: Slug,
   name: Text,
+  full_name: Text.optional(),
   links: z.record(z.string(), z.url()).optional(),
 });
 

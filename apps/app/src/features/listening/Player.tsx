@@ -1,11 +1,14 @@
-import { fonts } from "@shawared/design";
+import { space } from "@shawared/design";
 import { nextTarget, previousTarget } from "@shawared/listening";
 import { useRef, useState } from "react";
 import { Pressable, StyleSheet, Text, View, type GestureResponderEvent } from "react-native";
 import { IconButton } from "../../components/ui/controls";
+import { TextLink } from "../../components/ui/TextLink";
 import { Icon, Logo } from "../../components/ui/Icon";
 import { clock, t } from "../../lib/i18n";
+import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
+import { useType } from "../../lib/type";
 import { usePlaying, useTime } from "./playback";
 import { useCurrentBayt, useListening } from "./state";
 
@@ -24,7 +27,6 @@ export function Progress() {
     const f = width.current ? x / width.current : 0;
     return (rtl ? 1 - f : f) * total;
   };
-  const side = rtl ? "right" : "left";
   return (
     <View
       role="slider"
@@ -46,31 +48,45 @@ export function Progress() {
       style={styles.bar}
     >
       <View pointerEvents="none" style={[styles.track, { backgroundColor: palette.line }]} />
-      <View pointerEvents="none" style={[styles.fill, { backgroundColor: palette.accent, width: `${pct * 100}%`, [side]: 0 }]} />
-      <View
-        pointerEvents="none"
-        style={[styles.head, { backgroundColor: palette.accent, [side]: `${pct * 100}%`, [rtl ? "marginRight" : "marginLeft"]: -6 }]}
-      />
+      <View pointerEvents="none" style={[styles.fill, { backgroundColor: palette.accent, width: `${pct * 100}%`, start: 0 }]} />
+      <View pointerEvents="none" style={[styles.head, { backgroundColor: palette.accent, start: `${pct * 100}%`, marginStart: -6 }]} />
     </View>
   );
 }
 
-function Times() {
-  const { playback, recitation } = useListening();
+/**
+ * The seek bar between the time so far (at the start) and the whole length (at the end). Both
+ * boxes are as wide as the whole length, so the bar never shifts as the time grows.
+ */
+function ProgressRow() {
+  const { recitation } = useListening();
   const { palette, lang } = useSettings();
-  const time = useTime(playback);
-  const style = [styles.time, { color: palette.muted, fontFamily: fonts.ui }];
+  const type = useType();
+  const total = clock(recitation.duration, lang);
+  const style = [type.caption, styles.tabular, { color: palette.muted }];
   return (
-    <>
-      <Text style={style}>{clock(time, lang)}</Text>
-      <Text style={style}>{clock(recitation.duration, lang)}</Text>
-    </>
+    <View style={styles.progressRow}>
+      <View style={styles.timeBox}>
+        <Text aria-hidden style={[style, styles.ghost]}>
+          {total}
+        </Text>
+        <View style={styles.timeOver}>
+          <TimeNow />
+        </View>
+      </View>
+      <View style={styles.flex}>
+        <Progress />
+      </View>
+      <View style={styles.timeBox}>
+        <Text style={style}>{total}</Text>
+      </View>
+    </View>
   );
 }
 
 function Controls({ wide }: { wide?: boolean }) {
   const { playback, repeat, setRepeat, jump } = useListening();
-  const { palette, lang, rtl } = useSettings();
+  const { palette, lang } = useSettings();
   const playing = usePlaying(playback);
   const size = wide ? 38 : 42;
   const iconSize = wide ? 20 : 22;
@@ -93,7 +109,6 @@ function Controls({ wide }: { wide?: boolean }) {
         size={size}
         iconSize={iconSize}
         color={palette.fg}
-        flip={!rtl}
       />
       <Pressable
         accessibilityRole="button"
@@ -113,7 +128,6 @@ function Controls({ wide }: { wide?: boolean }) {
         size={size}
         iconSize={iconSize}
         color={palette.fg}
-        flip={!rtl}
       />
       <View style={{ width: size, height: size }} />
     </View>
@@ -127,66 +141,63 @@ function NowLabel() {
   return <>{t(lang, "now", { n, N: abyat.length })}</>;
 }
 
-export function PhonePlayer() {
+/** "Recited by …", opening the reciter's page. */
+function ReciterLink({ center = false }: { center?: boolean }) {
   const { bundle, recitation } = useListening();
-  const { palette, lang } = useSettings();
+  const { palette, lang, href } = useSettings();
+  const type = useType();
   const reciter = bundle.reciters[recitation.reciter]?.name ?? recitation.reciter;
+  return (
+    <TextLink href={href(paths.reciter(recitation.reciter))}>
+      <Text numberOfLines={center ? 2 : 1} style={[type.caption, { color: palette.muted }, center && styles.center]}>
+        {t(lang, "recitedBy", { name: reciter })}
+      </Text>
+    </TextLink>
+  );
+}
+
+export function PhonePlayer() {
+  const { palette } = useSettings();
+  const type = useType();
   return (
     <View style={[styles.phone, { borderTopColor: palette.line, backgroundColor: palette.bg }]}>
       <View style={styles.now}>
-        <Text style={[styles.small, { color: palette.muted, fontFamily: fonts.ui }]}>
+        <Text style={[type.caption, { color: palette.muted }]}>
           <NowLabel />
         </Text>
-        <Text numberOfLines={1} style={[styles.small, styles.shrink, { color: palette.muted, fontFamily: fonts.ui }]}>
-          {t(lang, "recitedBy", { name: reciter })}
-        </Text>
+        <ReciterLink />
       </View>
-      <Progress />
-      <View style={styles.times}>
-        <Times />
-      </View>
+      <ProgressRow />
       <Controls />
     </View>
   );
 }
 
 export function WidePlayer() {
-  const { bundle, recitation } = useListening();
-  const { palette, lang } = useSettings();
-  const reciter = bundle.reciters[recitation.reciter]?.name ?? recitation.reciter;
+  const { bundle } = useListening();
+  const { palette } = useSettings();
+  const type = useType();
   return (
     <View style={[styles.wide, { borderTopColor: palette.line }]}>
       <View style={styles.wideNow}>
         <View style={[styles.art, { backgroundColor: palette.fold }]}>
           <Logo size={30} color={palette.fg} dot={palette.accent} />
         </View>
-        <View style={styles.shrink}>
-          <Text numberOfLines={1} style={[styles.artTitle, { color: palette.fg }]}>
+        <View style={styles.nowText}>
+          <Text numberOfLines={1} style={[type.smallTitle, styles.rtl, { color: palette.fg }]}>
             {bundle.poem.title}
           </Text>
-          <Text numberOfLines={1} style={[styles.small, { color: palette.muted, fontFamily: fonts.ui }]}>
+          <Text numberOfLines={1} style={[type.caption, { color: palette.muted }]}>
             {bundle.poet.name} · <NowLabel />
           </Text>
         </View>
       </View>
       <View style={styles.wideMid}>
         <Controls wide />
-        <View style={styles.wideBar}>
-          <View style={styles.timeBox}>
-            <TimeNow />
-          </View>
-          <View style={styles.flex}>
-            <Progress />
-          </View>
-          <View style={styles.timeBox}>
-            <Text style={[styles.time, { color: palette.muted, fontFamily: fonts.ui }]}>{clock(recitation.duration, lang)}</Text>
-          </View>
-        </View>
+        <ProgressRow />
       </View>
       <View style={styles.wideEnd}>
-        <Text numberOfLines={2} style={[styles.small, { color: palette.muted, fontFamily: fonts.ui, textAlign: "center" }]}>
-          {t(lang, "recitedBy", { name: reciter })}
-        </Text>
+        <ReciterLink center />
       </View>
     </View>
   );
@@ -195,8 +206,9 @@ export function WidePlayer() {
 function TimeNow() {
   const { playback } = useListening();
   const { palette, lang } = useSettings();
+  const type = useType();
   const time = useTime(playback);
-  return <Text style={[styles.time, { color: palette.muted, fontFamily: fonts.ui }]}>{clock(time, lang)}</Text>;
+  return <Text style={[type.caption, styles.tabular, { color: palette.muted }]}>{clock(time, lang)}</Text>;
 }
 
 const styles = StyleSheet.create({
@@ -204,22 +216,24 @@ const styles = StyleSheet.create({
   track: { position: "absolute", left: 0, right: 0, height: 3, borderRadius: 2 },
   fill: { position: "absolute", height: 3, borderRadius: 2 },
   head: { position: "absolute", width: 12, height: 12, borderRadius: 1, transform: [{ rotate: "45deg" }] },
-  times: { flexDirection: "row", justifyContent: "space-between", marginTop: -6 },
-  time: { fontSize: 11, fontVariant: ["tabular-nums"] },
+  tabular: { fontVariant: ["tabular-nums"] },
   ctrls: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingHorizontal: 2 },
   ctrlsWide: { justifyContent: "center", gap: 14 },
   play: { alignItems: "center", justifyContent: "center" },
-  phone: { paddingTop: 8, paddingBottom: 14, paddingHorizontal: 18, gap: 5, borderTopWidth: 1, zIndex: 5 },
+  phone: { paddingTop: space.m, paddingBottom: 14, paddingHorizontal: 18, gap: space.s, borderTopWidth: 1, zIndex: 5 },
   now: { flexDirection: "row", justifyContent: "space-between", gap: 8 },
-  small: { fontSize: 11 },
-  shrink: { flexShrink: 1, minWidth: 0 },
   flex: { flex: 1 },
   wide: { flexDirection: "row", alignItems: "center", gap: 24, paddingVertical: 8, paddingHorizontal: 22, borderTopWidth: 1 },
-  wideNow: { flex: 1, flexDirection: "row", alignItems: "center", gap: 12, minWidth: 0 },
+  wideNow: { flex: 1, flexDirection: "row", alignItems: "center", gap: space.l, minWidth: 0 },
+  nowText: { flexShrink: 1, minWidth: 0, gap: space.xs },
   art: { width: 46, height: 46, borderRadius: 9, alignItems: "center", justifyContent: "center" },
-  artTitle: { fontFamily: fonts.verseBold, fontSize: 17, lineHeight: 26, writingDirection: "rtl" },
+  rtl: { writingDirection: "rtl" },
   wideMid: { flex: 1.5, minWidth: 0 },
-  wideBar: { flexDirection: "row", alignItems: "center", gap: 10 },
-  timeBox: { minWidth: 32, alignItems: "center" },
+  progressRow: { flexDirection: "row", alignItems: "center", gap: 10 },
+  timeBox: { alignItems: "center", justifyContent: "center" },
+  // Holds the box at the whole length's width; the time so far sits over it.
+  ghost: { opacity: 0 },
+  timeOver: { position: "absolute", top: 0, bottom: 0, start: 0, end: 0, alignItems: "center", justifyContent: "center" },
   wideEnd: { flex: 1, alignItems: "flex-end" },
+  center: { textAlign: "center" },
 });

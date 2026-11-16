@@ -1,40 +1,49 @@
-import { fonts } from "@shawared/design";
-import { Link } from "expo-router";
-import { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Chip, TogglePill } from "../../components/ui/controls";
+import { space } from "@shawared/design";
+import { StyleSheet, Text, View } from "react-native";
+import { Chip, IconButton, TogglePill } from "../../components/ui/controls";
+import { TextLink } from "../../components/ui/TextLink";
 import { abyatCount, meterName, rhymeName, t } from "../../lib/i18n";
+import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
+import { useType } from "../../lib/type";
+import { useGoBack } from "../navigation/TopBar";
 import { useListening } from "./state";
 
 /** Title, translated title, meter, rhyme, count and the translation switch. */
 export function Meta({ wide = false }: { wide?: boolean }) {
-  const { bundle, hasTranslation, trOn, setTrOn, sources } = useListening();
-  const { palette, lang } = useSettings();
+  const { bundle, hasTranslation, trOn, setTrOn, sources, intro, showIntro, pinned } = useListening();
+  const { palette, lang, href } = useSettings();
+  const type = useType();
+  const goBack = useGoBack();
   const { poem } = bundle;
   const enTitle = lang === "en" ? sources.find((s) => s.title)?.title : undefined;
   const pill = hasTranslation ? <TogglePill label={t(lang, "translation")} on={trOn} onPress={() => setTrOn(!trOn)} /> : null;
   return (
     <View style={[styles.meta, wide && styles.metaWide]}>
       {wide && (
-        <Link href={`/poets/${bundle.poet.id}`} asChild>
-          <Pressable accessibilityRole="link">
-            <Text style={[styles.from, { color: palette.muted, fontFamily: fonts.ui }]}>
-              {t(lang, "by")} {bundle.poet.name}
-            </Text>
-          </Pressable>
-        </Link>
+        <TextLink href={href(paths.poet(bundle.poet.id))}>
+          <Text style={[type.label, { color: palette.muted }]}>
+            {t(lang, "by")} {bundle.poet.name}
+          </Text>
+        </TextLink>
       )}
-      <View style={styles.titleRow}>
-        <Text style={[styles.title, wide && styles.titleWide, { color: palette.fg }]}>{poem.title}</Text>
+      <View style={[styles.titleRow, wide && styles.pullStart]}>
+        {/* Phones have back in the top bar; wide windows put it beside the title, as on every page. */}
+        {wide && <IconButton icon="back" label={t(lang, "back")} onPress={goBack} />}
+        <Text style={[wide ? type.titleWide : type.title, styles.title, { color: palette.fg }]}>{poem.title}</Text>
         {!wide && <View style={styles.sp} />}
         {!wide && pill}
       </View>
-      {enTitle && <Text style={[styles.sub, { color: palette.muted }]}>{enTitle}</Text>}
+      {enTitle && <Text style={[type.subtitle, { color: palette.muted }]}>{enTitle}</Text>}
       <View style={styles.chips}>
         <Chip>{meterName(poem.meter, lang)}</Chip>
         {poem.rawiy && <Chip>{rhymeName(poem.rawiy, lang)}</Chip>}
         <Chip ghost>{abyatCount(poem.abyat.length, lang)}</Chip>
+        {intro && (
+          <Chip onPress={showIntro} active={pinned === "intro"}>
+            {t(lang, "about")}
+          </Chip>
+        )}
         {wide && <View style={styles.sp} />}
         {wide && pill}
       </View>
@@ -42,55 +51,13 @@ export function Meta({ wide = false }: { wide?: boolean }) {
   );
 }
 
-/** The poem's introduction and the poet, folded to a few lines. */
-export function About({ folded = true }: { folded?: boolean }) {
-  const { sources, bundle } = useListening();
-  const { palette, lang, rtl } = useSettings();
-  const [open, setOpen] = useState(!folded);
-  const intro = sources.find((s) => s.intro)?.intro;
-  if (!intro && !bundle.poet.bio) return null;
-  const align = rtl ? "right" : "left";
-  const body = { color: palette.muted, textAlign: align, fontFamily: lang === "en" ? fonts.translation : fonts.ui } as const;
-  return (
-    <View style={[styles.about, { borderColor: palette.line }]}>
-      <Text style={[styles.aboutTitle, { color: palette.fg, textAlign: align, fontFamily: fonts.uiMedium }]}>{t(lang, "about")}</Text>
-      {intro && (
-        <Text style={[styles.aboutText, lang === "en" && styles.aboutEn, body]} {...(open ? {} : { numberOfLines: 3 })}>
-          {intro}
-        </Text>
-      )}
-      {open && bundle.poet.bio && (
-        <>
-          <Text style={[styles.aboutTitle, styles.aboutPoet, { color: palette.fg, textAlign: align, fontFamily: fonts.uiMedium }]}>
-            {t(lang, "aboutPoet")} · {bundle.poet.name}
-          </Text>
-          <Text style={[styles.aboutText, lang === "en" && styles.aboutEn, body]}>{bundle.poet.bio}</Text>
-        </>
-      )}
-      <Pressable accessibilityRole="button" onPress={() => setOpen(!open)} style={styles.more}>
-        <Text style={[styles.moreText, { color: palette.accent, textAlign: align, fontFamily: fonts.ui }]}>
-          {t(lang, open ? "readLess" : "readMore")}
-        </Text>
-      </Pressable>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  meta: { paddingTop: 4, paddingHorizontal: 20, paddingBottom: 2, gap: 5 },
-  metaWide: { paddingTop: 16, paddingHorizontal: 36, gap: 4 },
-  from: { fontSize: 12, lineHeight: 18 },
+  meta: { paddingTop: space.xs, paddingHorizontal: 20, gap: space.m },
+  metaWide: { paddingTop: space.xl, paddingHorizontal: 36 },
   titleRow: { flexDirection: "row", alignItems: "center", gap: 10 },
-  title: { fontFamily: fonts.verseBold, fontSize: 26, lineHeight: 40, writingDirection: "rtl", flexShrink: 1 },
-  titleWide: { fontSize: 28, lineHeight: 42 },
-  sub: { fontFamily: fonts.translationItalic, fontSize: 14, lineHeight: 20 },
-  chips: { flexDirection: "row", gap: 6, flexWrap: "wrap", alignItems: "center" },
+  // The back arrow's glyph, not its round button, lines up with the text below.
+  pullStart: { marginStart: -space.m },
+  title: { writingDirection: "rtl", flexShrink: 1 },
+  chips: { flexDirection: "row", gap: space.s, flexWrap: "wrap", alignItems: "center" },
   sp: { flex: 1 },
-  about: { borderWidth: 1, borderRadius: 14, paddingVertical: 12, paddingHorizontal: 14, gap: 6 },
-  aboutTitle: { fontSize: 12 },
-  aboutPoet: { marginTop: 8 },
-  aboutText: { fontSize: 13, lineHeight: 23 },
-  aboutEn: { fontSize: 14.5, lineHeight: 22 },
-  more: { alignSelf: "stretch" },
-  moreText: { fontSize: 12 },
 });

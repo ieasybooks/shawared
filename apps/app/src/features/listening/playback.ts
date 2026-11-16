@@ -1,73 +1,54 @@
-import type { PublishedRecitation } from "@shawared/contracts";
 import { buildTrack, lineAt, segmentAt, type Track } from "@shawared/listening";
-import { setAudioModeAsync, useAudioPlayer } from "expo-audio";
-import { useEffect, useMemo } from "react";
-import { audioUrl } from "../../lib/content";
+import { useMemo } from "react";
 import { createStore, useStore, type Store } from "../../lib/store";
+import { idleClock, player, type Clock, type NowItem } from "../player/player";
 
-export type Clock = { time: number; playing: boolean; ready: boolean; buffering: boolean; /** Bumped by every seek. */ seq: number };
-
+/** A poem screen's view of playback: live when its recitation is the one playing, else ready to start. */
 export type Playback = {
   track: Track;
   clock: Store<Clock>;
+  /** Whether this screen's recitation is the app's current one. */
+  active: boolean;
   play: () => void;
   pause: () => void;
   toggle: () => void;
   seek: (seconds: number) => void;
 };
 
-let audioModeSet = false;
+const selectItem = (s: { item: NowItem | null }) => s.item;
 
-/** One recording: an audio player, its clock, and the timeline the clock is read against. */
-export function usePlayback(recitation: PublishedRecitation): Playback {
-  const player = useAudioPlayer({ uri: audioUrl(recitation.audio) }, { updateInterval: 250 });
-  const track = useMemo(() => buildTrack(recitation.timeline, recitation.duration), [recitation]);
-  const clock = useMemo(() => createStore<Clock>({ time: 0, playing: false, ready: false, buffering: false, seq: 0 }), []);
-
-  useEffect(() => {
-    if (audioModeSet) return;
-    audioModeSet = true;
-    setAudioModeAsync({ playsInSilentMode: true, shouldPlayInBackground: true }).catch(() => {});
-  }, []);
-
-  // The player's own status: playing, loaded, buffering.
-  useEffect(() => {
-    const sub = player.addListener("playbackStatusUpdate", (s) => {
-      clock.set({ playing: s.playing, ready: s.isLoaded, buffering: s.isBuffering, ...(s.playing ? {} : { time: s.currentTime }) });
-    });
-    return () => sub.remove();
-  }, [player, clock]);
-
-  // While playing, read the position every frame so highlighting and the progress bar move smoothly.
-  const playing = useStore(clock, (s) => s.playing);
-  useEffect(() => {
-    if (!playing) return;
-    let id = 0;
-    const tick = () => {
-      clock.set({ time: player.currentTime });
-      id = requestAnimationFrame(tick);
-    };
-    id = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(id);
-  }, [playing, player, clock]);
+export function usePoemPlayback(item: NowItem): Playback {
+  const current = useStore(player.now, selectItem);
+  const active = !!current && current.poemId === item.poemId && current.recitation.id === item.recitation.id;
+  // Keyed by ids: switching language reloads the bundle but not the recording.
+  const key = `${item.poemId}/${item.recitation.id}`;
+  const track = useMemo(() => buildTrack(item.recitation.timeline, item.recitation.duration), [key]);
+  // Until it plays, the screen keeps its own position: the progress bar, previous and next move it.
+  const idle = useMemo(() => createStore<Clock>(idleClock()), [key]);
 
   return useMemo<Playback>(() => {
-    const seek = (seconds: number) => {
-      const s = Math.max(0, Math.min(recitation.duration - 0.05, seconds));
-      clock.set({ time: s, seq: clock.get().seq + 1 });
-      player.seekTo(s).catch(() => {});
+    if (active) {
+      return {
+        track,
+        clock: player.clock,
+        active,
+        play: () => player.play(),
+        pause: () => player.pause(),
+        toggle: () => player.toggle(),
+        seek: (t) => player.seek(t),
+      };
+    }
+    const start = () => player.play(item, idle.get().time);
+    return {
+      track,
+      clock: idle,
+      active,
+      play: start,
+      pause: () => {},
+      toggle: start,
+      seek: (t) => idle.set({ time: Math.max(0, Math.min(item.recitation.duration - 0.05, t)), seq: idle.get().seq + 1 }),
     };
-    const play = () => {
-      if (player.currentTime >= recitation.duration - 0.3) seek(0);
-      player.play();
-      clock.set({ playing: true });
-    };
-    const pause = () => {
-      player.pause();
-      clock.set({ playing: false, time: player.currentTime });
-    };
-    return { track, clock, play, pause, seek, toggle: () => (clock.get().playing ? pause() : play()) };
-  }, [player, track, clock, recitation.duration]);
+  }, [active, track, idle, item]);
 }
 
 const lineOf = (track: Track) => (s: Clock) => lineAt(track, s.time);

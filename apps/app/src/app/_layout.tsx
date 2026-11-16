@@ -1,13 +1,22 @@
-import { Amiri_400Regular, Amiri_700Bold } from "@expo-google-fonts/amiri";
-import { Newsreader_400Regular, Newsreader_400Regular_Italic } from "@expo-google-fonts/newsreader";
-import { ReadexPro_300Light, ReadexPro_400Regular, ReadexPro_500Medium } from "@expo-google-fonts/readex-pro";
-import { ReemKufi_600SemiBold } from "@expo-google-fonts/reem-kufi";
+import { Amiri_400Regular } from "@expo-google-fonts/amiri/400Regular";
+import { Amiri_700Bold } from "@expo-google-fonts/amiri/700Bold";
+import { Newsreader_400Regular } from "@expo-google-fonts/newsreader/400Regular";
+import { Newsreader_400Regular_Italic } from "@expo-google-fonts/newsreader/400Regular_Italic";
+import { ReadexPro_300Light } from "@expo-google-fonts/readex-pro/300Light";
+import { ReadexPro_400Regular } from "@expo-google-fonts/readex-pro/400Regular";
+import { ReadexPro_500Medium } from "@expo-google-fonts/readex-pro/500Medium";
+import { ReemKufi_600SemiBold } from "@expo-google-fonts/reem-kufi/600SemiBold";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { LocaleProvider, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { Platform } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Dir } from "../components/ui/Dir";
 import { SettingsProvider, useSettings } from "../lib/settings";
+
+// An app opened on a poem or a poet (a shared link) keeps the tabs underneath, so back leads
+// home. The web has the browser's history, and renders each page on its own.
+export const unstable_settings = Platform.OS === "web" ? {} : { initialRouteName: "(tabs)" };
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -35,7 +44,11 @@ function Screens() {
   return (
     <Dir dir={rtl ? "rtl" : "ltr"} lang={lang} style={{ flex: 1, backgroundColor: palette.bg }}>
       <StatusBar style={theme === "night" ? "light" : "dark"} />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: palette.bg } }} />
+      {/* The stack follows the reading direction: on iOS, Arabic pages slide in from the left
+          and swipe back from the right edge. */}
+      <LocaleProvider direction={rtl ? "rtl" : "ltr"}>
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: palette.bg } }} />
+      </LocaleProvider>
     </Dir>
   );
 }

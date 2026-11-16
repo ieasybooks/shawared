@@ -4,6 +4,19 @@ const ar = {
   brand: "شوارد",
   tagline: "الشعر العربي كما يُلقى: تسمعه، وتقرأ أبياته، وتفهم معانيه.",
   poems: "القصائد",
+  tabHome: "الرئيسية",
+  poets: "الشعراء",
+  reciters: "المُلقون",
+  meters: "البحور",
+  search: "ابحث بعنوان أو مطلع قصيدة أو شاعر أو مُلقٍ",
+  searchPoets: "ابحث عن شاعر",
+  searchReciters: "ابحث عن مُلقٍ",
+  clearSearch: "امسح البحث",
+  closePlayer: "أغلق المشغّل",
+  noResults: "لا نتائج تطابق بحثك",
+  latest: "أحدث القصائد",
+  youtube: "يوتيوب",
+  pattern: "التفعيلات",
   by: "من شعر",
   recitedBy: "إلقاء {name}",
   now: "البيت {n} من {N}",
@@ -11,11 +24,7 @@ const ar = {
   expl: "الشرح",
   words: "معاني الكلمات",
   root: "الجذر: {r}",
-  ctx: "من البيت {n} · {half}",
-  sadr: "الصدر",
-  ajuz: "العَجُز",
   back: "رجوع",
-  more: "المزيد",
   repeat: "تكرار البيت",
   prev: "البيت السابق",
   next: "البيت التالي",
@@ -30,10 +39,9 @@ const ar = {
   collapse: "أغلق الشرح",
   sources: "الشروح",
   about: "عن القصيدة",
-  aboutPoet: "عن الشاعر",
-  readMore: "المزيد",
-  readLess: "أقل",
   language: "اللغة",
+  toNight: "المظهر الليلي",
+  toDay: "المظهر النهاري",
   theme: "المظهر",
   day: "نهار",
   night: "ليل",
@@ -46,6 +54,15 @@ const ar = {
   rhyme: "قافية {l}",
   listen: "استمع",
   minutes: "{m} د",
+  // Page descriptions, for search engines and link previews.
+  siteTitle: "شوارد · الشعر العربي كما يُلقى",
+  metaPoem: "{opening}. من شعر {poet} على بحر {meter}، {abyat}، بإلقاء {reciter}.",
+  metaNotes: "مع الشرح ومعاني الكلمات.",
+  metaPerson: "{name}: {count} في شوارد.",
+  metaPoets: "شعراء العربية في شوارد، وقصائدهم كما تُلقى.",
+  metaReciters: "المُلقون في شوارد، والقصائد التي يلقونها.",
+  metaMeters: "بحور الشعر العربي الستة عشر وتفعيلاتها، وقصائد كل بحر.",
+  metaMeter: "بحر {meter}: {feet}. {count} في شوارد.",
 } as const;
 
 export type StringKey = keyof typeof ar;
@@ -54,6 +71,19 @@ const en: Record<StringKey, string> = {
   brand: "Shawared",
   tagline: "Arabic poetry as it is recited: hear it, read it, understand it.",
   poems: "Poems",
+  tabHome: "Home",
+  poets: "Poets",
+  reciters: "Reciters",
+  meters: "Meters",
+  search: "Search by title, opening verse, poet or reciter",
+  searchPoets: "Search the poets",
+  searchReciters: "Search the reciters",
+  clearSearch: "Clear the search",
+  closePlayer: "Close the player",
+  noResults: "Nothing matches your search",
+  latest: "Latest poems",
+  youtube: "YouTube",
+  pattern: "Feet",
   by: "Poem by",
   recitedBy: "Recited by {name}",
   now: "Verse {n} of {N}",
@@ -61,11 +91,7 @@ const en: Record<StringKey, string> = {
   expl: "Explanation",
   words: "Word meanings",
   root: "Root {r}",
-  ctx: "Verse {n} · {half}",
-  sadr: "first half",
-  ajuz: "second half",
   back: "Back",
-  more: "More",
   repeat: "Repeat verse",
   prev: "Previous verse",
   next: "Next verse",
@@ -80,10 +106,9 @@ const en: Record<StringKey, string> = {
   collapse: "Close the explanation",
   sources: "Explanations",
   about: "About the poem",
-  aboutPoet: "About the poet",
-  readMore: "More",
-  readLess: "Less",
   language: "Language",
+  toNight: "Switch to night",
+  toDay: "Switch to day",
   theme: "Appearance",
   day: "Day",
   night: "Night",
@@ -96,6 +121,14 @@ const en: Record<StringKey, string> = {
   rhyme: "Rhymes on {l}",
   listen: "Listen",
   minutes: "{m} min",
+  siteTitle: "Shawared · Arabic poetry as it is recited",
+  metaPoem: "{opening}. A poem by {poet} in the {meter} meter, {abyat}, recited by {reciter}.",
+  metaNotes: "With a translation, explanations and word meanings.",
+  metaPerson: "{name}: {count} on Shawared.",
+  metaPoets: "The poets on Shawared, and their poems as they are recited.",
+  metaReciters: "The reciters on Shawared, and the poems they recite.",
+  metaMeters: "The sixteen meters of Arabic poetry, their feet, and the poems in each.",
+  metaMeter: "The {meter} meter: {feet}. {count} on Shawared.",
 };
 
 const STRINGS: Record<UiLang, Record<StringKey, string>> = { ar, en };
@@ -125,6 +158,16 @@ export function abyatCount(n: number, lang: UiLang) {
   return `${digits(n, lang)} بيتًا`;
 }
 
+/** "قصيدة واحدة", "قصيدتان", "٣ قصائد", "١١ قصيدةً", "3 poems" */
+export function poemsCount(n: number, lang: UiLang) {
+  if (n === 0) return lang === "en" ? "No poems yet" : "لا قصائد بعد";
+  if (lang === "en") return `${n} poem${n === 1 ? "" : "s"}`;
+  if (n === 1) return "قصيدة واحدة";
+  if (n === 2) return "قصيدتان";
+  if (n <= 10) return `${digits(n, lang)} قصائد`;
+  return `${digits(n, lang)} قصيدةً`;
+}
+
 const METERS: Record<string, [string, string]> = {
   tawil: ["الطويل", "al-Ṭawīl"],
   madid: ["المديد", "al-Madīd"],
@@ -144,6 +187,27 @@ const METERS: Record<string, [string, string]> = {
   mutadarik: ["المتدارك", "al-Mutadārik"],
 };
 export const meterName = (id: string, lang: UiLang) => METERS[id]?.[lang === "ar" ? 0 : 1] ?? id;
+export const METER_IDS = Object.keys(METERS);
+
+/** The feet of one half-verse of each meter, in its full form. */
+export const METER_FEET: Record<string, string> = {
+  tawil: "فَعولُنْ مَفاعيلُنْ فَعولُنْ مَفاعيلُنْ",
+  madid: "فاعِلاتُنْ فاعِلُنْ فاعِلاتُنْ",
+  basit: "مُسْتَفْعِلُنْ فاعِلُنْ مُسْتَفْعِلُنْ فاعِلُنْ",
+  wafir: "مُفاعَلَتُنْ مُفاعَلَتُنْ فَعولُنْ",
+  kamil: "مُتَفاعِلُنْ مُتَفاعِلُنْ مُتَفاعِلُنْ",
+  hazaj: "مَفاعيلُنْ مَفاعيلُنْ",
+  rajaz: "مُسْتَفْعِلُنْ مُسْتَفْعِلُنْ مُسْتَفْعِلُنْ",
+  ramal: "فاعِلاتُنْ فاعِلاتُنْ فاعِلُنْ",
+  sari: "مُسْتَفْعِلُنْ مُسْتَفْعِلُنْ مَفْعولاتُ",
+  munsarih: "مُسْتَفْعِلُنْ مَفْعولاتُ مُسْتَفْعِلُنْ",
+  khafif: "فاعِلاتُنْ مُسْتَفْعِلُنْ فاعِلاتُنْ",
+  mudari: "مَفاعيلُنْ فاعِلاتُنْ",
+  muqtadab: "مَفْعولاتُ مُسْتَفْعِلُنْ",
+  mujtath: "مُسْتَفْعِلُنْ فاعِلاتُنْ",
+  mutaqarib: "فَعولُنْ فَعولُنْ فَعولُنْ فَعولُنْ",
+  mutadarik: "فاعِلُنْ فاعِلُنْ فاعِلُنْ فاعِلُنْ",
+};
 
 const LETTERS: Record<string, [string, string]> = {
   ء: ["الهمزة", "hamza"],

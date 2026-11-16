@@ -1,19 +1,21 @@
-import { fonts } from "@shawared/design";
+import { space } from "@shawared/design";
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from "react-native";
 import { t } from "../../lib/i18n";
 import { useSettings } from "../../lib/settings";
+import { useType } from "../../lib/type";
 
 /** Loading and failure, for a whole screen. */
 export function StateView({ error, onRetry }: { error?: Error | undefined; onRetry?: () => void }) {
   const { lang, palette } = useSettings();
+  const type = useType();
   return (
     <View style={[styles.wrap, { backgroundColor: palette.bg }]}>
       {error ? (
         <>
-          <Text style={[styles.text, { color: palette.fg, fontFamily: fonts.uiMedium }]}>{t(lang, "loadError")}</Text>
+          <Text style={[type.heading, { color: palette.fg }]}>{t(lang, "loadError")}</Text>
           {onRetry && (
             <Pressable accessibilityRole="button" onPress={onRetry} style={[styles.btn, { borderColor: palette.accent }]}>
-              <Text style={[styles.btnText, { color: palette.accent, fontFamily: fonts.ui }]}>{t(lang, "retry")}</Text>
+              <Text style={[type.control, { color: palette.accent }]}>{t(lang, "retry")}</Text>
             </Pressable>
           )}
         </>
@@ -25,8 +27,6 @@ export function StateView({ error, onRetry }: { error?: Error | undefined; onRet
 }
 
 const styles = StyleSheet.create({
-  wrap: { flex: 1, alignItems: "center", justifyContent: "center", gap: 14, padding: 24 },
-  text: { fontSize: 16 },
-  btn: { borderWidth: 1, borderRadius: 999, paddingHorizontal: 16, paddingVertical: 6 },
-  btnText: { fontSize: 14 },
+  wrap: { flex: 1, alignItems: "center", justifyContent: "center", gap: space.xl, padding: space.xxl },
+  btn: { minHeight: 36, justifyContent: "center", borderWidth: 1, borderRadius: 999, paddingHorizontal: space.xl },
 });

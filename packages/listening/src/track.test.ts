@@ -30,6 +30,11 @@ describe("lineAt", () => {
   it("holds the previous line through a pause", () => expect(lineAt(track, 8.7)).toBe(1));
   it("finds the repeated sadr as its own line", () => expect(lineAt(track, 16)).toBe(4));
   it("stays on the last line after the end", () => expect(lineAt(track, 29)).toBe(6));
+  it("counts a line from its run-up, so a jump lands on it", () => {
+    expect(lineAt(track, startOfBayt(track, 2)!)).toBe(2);
+    expect(segmentAt(track, startOfBayt(track, 2)!)).toBe(1);
+    expect(lineAt(track, 9 - PRE_ROLL - 0.05)).toBe(1);
+  });
 });
 
 describe("navigation", () => {
@@ -45,6 +50,11 @@ describe("navigation", () => {
     expect(previousTarget(track, 13)).toBeCloseTo(9 - PRE_ROLL);
     expect(previousTarget(track, 9.5)).toBeCloseTo(2 - PRE_ROLL);
     expect(previousTarget(track, 0.5)).toBe(0);
+  });
+  it("after a jump, next and previous move on from the bayt jumped to", () => {
+    const at = startOfBayt(track, 2)!;
+    expect(nextTarget(track, at)).toBeCloseTo(15 - PRE_ROLL);
+    expect(previousTarget(track, at)).toBeCloseTo(2 - PRE_ROLL);
   });
   it("repeat jumps back after the bayt ends", () => {
     const seg = segmentAt(track, 13);

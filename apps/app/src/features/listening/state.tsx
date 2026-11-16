@@ -1,10 +1,13 @@
 import type { PoemBundle, PublishedBayt, PublishedRecitation, PublishedSource } from "@shawared/contracts";
-import { PRE_ROLL, REPEAT_GAP, segmentAt, startOfBayt, wordIndex, type WordHit } from "@shawared/listening";
+import { startOfBayt, wordIndex, type WordHit } from "@shawared/listening";
 import { createContext, use, useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
-import { useCurrentSegment, usePlayback, type Playback } from "./playback";
+import { useStore } from "../../lib/store";
+import { player, type NowItem } from "../player/player";
+import { useCurrentSegment, usePlaying, usePoemPlayback, type Playback } from "./playback";
 
 export type Layout = "compact" | "wide";
-export type Gloss = { key: string; n: number; half: 1 | 2 };
+/** What the explanation holds: a bayt, the poem's introduction, or null to follow the recitation. */
+export type Held = number | "intro" | null;
 
 type ListeningValue = {
   bundle: PoemBundle;
@@ -21,13 +24,16 @@ type ListeningValue = {
   hasTranslation: boolean;
   trOn: boolean;
   setTrOn: (on: boolean) => void;
-  /** The bayt the explanation is held on, or null when it follows the recitation. */
-  pinned: number | null;
+  /** What the explanation is held on; null when it follows the recitation. */
+  pinned: Held;
   pin: (n: number) => void;
   unpin: () => void;
-  gloss: Gloss | null;
-  openGloss: (g: Gloss) => void;
-  closeGloss: () => void;
+  /** The poem's introduction in the reader's language, if it has one. */
+  intro: string | undefined;
+  showIntro: () => void;
+  /** A word whose meaning the explanation brings forward ("n.h.w"); its bayt is held. */
+  focus: string | null;
+  openWord: (key: string, n: number) => void;
   repeat: boolean;
   setRepeat: (on: boolean) => void;
   /** Seek somewhere and go back to following: previous, next, the progress bar, a bayt number. */
@@ -45,14 +51,28 @@ export function ListeningProvider({
   bundle,
   recitation,
   layout,
+  initialBayt,
   children,
 }: {
   bundle: PoemBundle;
   recitation: PublishedRecitation;
   layout: Layout;
+  /** Opened from a link to one bayt: hold its explanation and start there. */
+  initialBayt?: number | undefined;
   children: ReactNode;
 }) {
-  const playback = usePlayback(recitation);
+  const item = useMemo<NowItem>(
+    () => ({
+      poemId: bundle.poem.id,
+      title: bundle.poem.title,
+      poet: bundle.poet.name,
+      reciter: bundle.reciters[recitation.reciter]?.name ?? recitation.reciter,
+      abyat: bundle.poem.abyat.length,
+      recitation,
+    }),
+    [bundle, recitation],
+  );
+  const playback = usePoemPlayback(item);
   const sources = bundle.sources;
   const [sourceId, setSourceId] = useState<string | undefined>(sources[0]?.id);
   const source = sources.find((s) => s.id === sourceId) ?? sources[0];
@@ -60,20 +80,52 @@ export function ListeningProvider({
   const words = useMemo(() => wordIndex(ordered), [ordered]);
   const hasTranslation = useMemo(() => sources.some((s) => Object.values(s.abyat).some((a) => a.translation)), [sources]);
   const [trOn, setTrOn] = useState(true);
-  const [pinned, setPinned] = useState<number | null>(null);
-  const [gloss, setGloss] = useState<Gloss | null>(null);
-  const [repeat, setRepeat] = useState(false);
+  const intro = source?.intro ?? sources.find((s) => s.intro)?.intro;
+  // A poem opens on its introduction, before the recitation; a link to one bayt, or a
+  // recitation already under way, opens on the verses.
+  const [held, setHeld] = useState<Held>(initialBayt ?? (intro && !playback.active ? "intro" : null));
+  const pinned: Held = held === "intro" && !intro ? null : held;
+  const [focus, setFocus] = useState<string | null>(null);
+  const repeat = useStore(player.repeat, (s) => s.on);
+  const setRepeat = useCallback((on: boolean) => player.repeat.set({ on }), []);
   const [sheetOpen, setSheetOpen] = useState(false);
   const followRef = useRef<(() => void) | null>(null);
 
+  // The introduction the poem opens on gives way to the verses once the recitation starts.
+  // One the reader asked for (the chip) stays until they choose otherwise, through pauses
+  // and buffering alike.
+  const opening = useRef(held === "intro");
+  const hold = useCallback((h: Held, word: string | null = null) => {
+    opening.current = false;
+    setHeld(h);
+    setFocus(word);
+  }, []);
+  const playing = usePlaying(playback);
+  useEffect(() => {
+    if (!playing || !opening.current) return;
+    opening.current = false;
+    setHeld((h) => (h === "intro" ? null : h));
+  }, [playing]);
+
   const jump = useCallback(
     (seconds: number) => {
-      setPinned(null);
+      hold(null);
       playback.seek(seconds);
       followRef.current?.();
     },
-    [playback],
+    [playback, hold],
   );
+  // A link to one bayt: hold it, and wait there ready to play, unless this recitation is
+  // already playing. On the web the link takes effect once the page is live.
+  useEffect(() => {
+    if (!initialBayt) return;
+    hold(initialBayt);
+    if (playback.active) return;
+    const at = startOfBayt(playback.track, initialBayt);
+    if (at !== null) playback.seek(at);
+    // Only when the link does: not as playback changes.
+  }, [initialBayt]);
+
   const playFrom = useCallback(
     (n: number) => {
       const at = startOfBayt(playback.track, n);
@@ -100,11 +152,18 @@ export function ListeningProvider({
       trOn: hasTranslation && trOn,
       setTrOn,
       pinned,
-      pin: setPinned,
-      unpin: () => setPinned(null),
-      gloss,
-      openGloss: setGloss,
-      closeGloss: () => setGloss(null),
+      pin: (n) => hold(n),
+      unpin: () => hold(null),
+      intro,
+      showIntro: () => {
+        hold("intro");
+        if (layout === "compact") setSheetOpen(true);
+      },
+      focus,
+      openWord: (key, n) => {
+        hold(n, key);
+        if (layout === "compact") setSheetOpen(true);
+      },
       repeat,
       setRepeat,
       jump,
@@ -125,19 +184,17 @@ export function ListeningProvider({
       hasTranslation,
       trOn,
       pinned,
-      gloss,
+      intro,
+      focus,
+      hold,
       repeat,
+      setRepeat,
       jump,
       playFrom,
       sheetOpen,
     ],
   );
-  return (
-    <Ctx value={value}>
-      {repeat && <RepeatWatcher playback={playback} />}
-      {children}
-    </Ctx>
-  );
+  return <Ctx value={value}>{children}</Ctx>;
 }
 
 export function useListening() {
@@ -151,30 +208,4 @@ export function useCurrentBayt() {
   const { playback, abyat } = useListening();
   const seg = useCurrentSegment(playback);
   return playback.track.segments[seg]?.n ?? abyat[0]!.n;
-}
-
-/** With repeat on, loops the bayt being recited. Any seek by the reader re-aims it. */
-function RepeatWatcher({ playback }: { playback: Playback }) {
-  useEffect(() => {
-    const { clock, track } = playback;
-    let locked = -1;
-    let seq = -1;
-    return clock.subscribe(() => {
-      const { time, playing, seq: now } = clock.get();
-      if (!playing) return;
-      if (now !== seq || !track.segments[locked]) {
-        locked = segmentAt(track, time);
-        seq = now;
-      }
-      const seg = track.segments[locked];
-      if (!seg) return;
-      const next = track.segments[locked + 1];
-      const gap = next ? Math.min(REPEAT_GAP, Math.max(0, next.start - seg.end - 0.05)) : REPEAT_GAP;
-      if (time >= seg.end + gap) {
-        playback.seek(Math.max(0, seg.start - PRE_ROLL));
-        seq = clock.get().seq;
-      }
-    });
-  }, [playback]);
-  return null;
 }

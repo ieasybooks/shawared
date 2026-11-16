@@ -45,7 +45,11 @@ export function buildTrack(timeline: readonly (readonly [string, number, number]
   return { lines, segments, duration };
 }
 
-/** The line being recited at time t: the last one that has started. Pauses keep the previous line. -1 before the first. */
+/**
+ * The line being recited at time t: the last one that has started. Pauses keep the previous
+ * line. -1 before the first. A line counts from its run-up (PRE_ROLL before it starts), so a
+ * jump to a line lands on that line, not on the one before it.
+ */
 export function lineAt(track: Track, t: number): number {
   const { lines } = track;
   let lo = 0;
@@ -53,7 +57,7 @@ export function lineAt(track: Track, t: number): number {
   let found = -1;
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
-    if (lines[mid]!.start <= t + 0.02) {
+    if (lines[mid]!.start - PRE_ROLL <= t + 0.005) {
       found = mid;
       lo = mid + 1;
     } else hi = mid - 1;

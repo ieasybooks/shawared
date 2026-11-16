@@ -1,57 +1,137 @@
-import { bundlePath, Catalog, catalogPath, PoemBundle } from "@shawared/contracts";
-import { useCallback, useEffect, useState } from "react";
+import { bundlePath, Catalog, catalogPath, PersonBundle, personPath, PoemBundle, type PersonKind } from "@shawared/contracts";
+import Constants from "expo-constants";
+import { useCallback, useEffect, useSyncExternalStore } from "react";
 import { Platform } from "react-native";
 import type { z } from "zod";
+import { readCached, writeCached } from "./diskCache";
 
-// Published content and audio. On the web they're served next to the app; native builds
-// point at the dev server for now, and at the content host once it exists.
-const devHost = "http://localhost:8081";
+// Published content and audio. On the web they're served next to the app. Native builds read
+// them from the dev server the app was loaded from (Expo Go), until the content host exists.
+const devHost = `http://${Constants.expoConfig?.hostUri ?? "localhost:8081"}`;
 const CONTENT_URL = process.env.EXPO_PUBLIC_CONTENT_URL ?? (Platform.OS === "web" ? "/content" : `${devHost}/content`);
 const AUDIO_URL = process.env.EXPO_PUBLIC_AUDIO_URL ?? (Platform.OS === "web" ? "/audio" : `${devHost}/audio`);
 
 export const audioUrl = (key: string) => `${AUDIO_URL}/${key}`;
 
-const cache = new Map<string, Promise<unknown>>();
+// Stale-while-revalidate: show what we have (memory, then the device), and ask the
+// server once per session whether it changed. An unchanged file costs one 304.
+type Entry = { data?: unknown; error?: Error; etag?: string; checked?: boolean };
+const entries = new Map<string, Entry>();
+const listeners = new Map<string, Set<() => void>>();
+const inflight = new Map<string, Promise<void>>();
 
-function load<S extends z.ZodType>(path: string, schema: S): Promise<z.infer<S>> {
-  let p = cache.get(path) as Promise<z.infer<S>> | undefined;
-  if (!p) {
-    p = fetch(`${CONTENT_URL}/${path}`)
-      .then((r) => {
-        if (!r.ok) throw new Error(`${r.status} ${path}`);
-        return r.json();
-      })
-      .then((json) => schema.parse(json));
-    p.catch(() => cache.delete(path));
-    cache.set(path, p);
+function entry(path: string): Entry {
+  let e = entries.get(path);
+  if (!e) entries.set(path, (e = {}));
+  return e;
+}
+
+function notify(path: string) {
+  listeners.get(path)?.forEach((fn) => fn());
+}
+
+function set(path: string, patch: Entry) {
+  entries.set(path, { ...entry(path), ...patch });
+  notify(path);
+}
+
+async function revalidate(path: string, schema: z.ZodType) {
+  const e = entry(path);
+  const headers: Record<string, string> = e.etag ? { "If-None-Match": e.etag } : {};
+  // The web lets the browser revalidate with its own HTTP cache.
+  const init: RequestInit = Platform.OS === "web" ? { cache: "no-cache" } : { headers };
+  try {
+    const res = await fetch(`${CONTENT_URL}/${path}`, init);
+    if (res.status === 304) return set(path, { checked: true });
+    if (!res.ok) throw new Error(`${res.status} ${path}`);
+    const text = await res.text();
+    const data = schema.parse(JSON.parse(text));
+    const etag = res.headers.get("etag");
+    set(path, { data, checked: true, ...(etag ? { etag } : {}) });
+    await writeCached(path, text, etag);
+  } catch (error) {
+    // With data already on screen, a failed check changes nothing.
+    if (entry(path).data === undefined) set(path, { error: error as Error });
   }
+}
+
+function load(path: string, schema: z.ZodType) {
+  let p = inflight.get(path);
+  if (p) return p;
+  p = (async () => {
+    if (entry(path).data === undefined) {
+      const hit = await readCached(path);
+      if (hit && entry(path).data === undefined) {
+        try {
+          set(path, { data: schema.parse(JSON.parse(hit.text)), ...(hit.etag ? { etag: hit.etag } : {}) });
+        } catch {
+          // An outdated or damaged copy: fetch a fresh one.
+        }
+      }
+    }
+    if (!entry(path).checked) await revalidate(path, schema);
+  })().finally(() => inflight.delete(path));
+  inflight.set(path, p);
   return p;
+}
+
+/**
+ * Puts a file a page was rendered with (a web loader) into the cache. It was built with the
+ * page, so it is as fresh as the page and needs no check.
+ */
+function seed(path: string, data: unknown) {
+  const e = entry(path);
+  if (e.data === undefined) entries.set(path, { ...e, data, checked: true });
 }
 
 export type Resource<T> = { data: T | undefined; error: Error | undefined; retry: () => void };
 
-function useResource<T>(key: string | null, fetcher: () => Promise<T>): Resource<T> {
-  const [state, setState] = useState<{ key: string | null; data?: T; error?: Error }>({ key: null });
-  const [attempt, setAttempt] = useState(0);
+/**
+ * A published file, kept fresh. `initial` is the whole file a page was rendered with;
+ * `preview` is part of one (a page renders only the slice of the catalog it shows), on
+ * screen until the whole file arrives.
+ */
+function useResource<S extends z.ZodType>(
+  path: string | null,
+  schema: S,
+  { initial, preview }: { initial?: z.infer<S> | undefined; preview?: z.infer<S> | undefined } = {},
+): Resource<z.infer<S>> {
+  // Rendering web pages ahead of time: many pages in one process, so it only reads what it's given.
+  const server = Platform.OS === "web" && typeof window === "undefined";
+  if (path && initial !== undefined && !server) seed(path, initial);
+  const subscribe = useCallback(
+    (fn: () => void) => {
+      if (!path) return () => {};
+      let subs = listeners.get(path);
+      if (!subs) listeners.set(path, (subs = new Set()));
+      subs.add(fn);
+      return () => subs.delete(fn);
+    },
+    [path],
+  );
+  const get = useCallback(() => (path ? entries.get(path) : undefined), [path]);
+  const e = useSyncExternalStore(subscribe, get, get);
+
+  // Loading and revalidating talk to the network and the disk, outside React.
   useEffect(() => {
-    if (!key) return;
-    let live = true;
-    fetcher().then(
-      (data) => live && setState({ key, data }),
-      (error: Error) => live && setState({ key, error }),
-    );
-    return () => {
-      live = false;
-    };
-  }, [key, attempt]);
-  const retry = useCallback(() => setAttempt((a) => a + 1), []);
-  const current = state.key === key;
-  return { data: current ? state.data : undefined, error: current ? state.error : undefined, retry };
+    if (path) load(path, schema);
+  }, [path, schema]);
+
+  const retry = useCallback(() => {
+    if (!path) return;
+    set(path, { error: undefined, checked: false });
+    load(path, schema);
+  }, [path, schema]);
+
+  const data = (server ? undefined : (e?.data as z.infer<S> | undefined)) ?? initial ?? preview;
+  return { data, error: data === undefined ? e?.error : undefined, retry };
 }
 
-export const useCatalog = () => useResource(catalogPath(), () => load(catalogPath(), Catalog));
+/** The catalog. A page's slice of it shows until the whole catalog is here. */
+export const useCatalog = (preview?: Catalog) => useResource(catalogPath(), Catalog, { preview });
 
-export const usePoemBundle = (id: string | undefined, lang: string) => {
-  const path = id ? bundlePath(id, lang) : null;
-  return useResource(path, () => load(path!, PoemBundle));
-};
+export const usePoemBundle = (id: string | undefined, lang: string, initial?: PoemBundle) =>
+  useResource(id ? bundlePath(id, lang) : null, PoemBundle, { initial });
+
+export const usePerson = (kind: PersonKind, id: string | undefined, lang: string, initial?: PersonBundle) =>
+  useResource(id ? personPath(kind, id, lang) : null, PersonBundle, { initial });

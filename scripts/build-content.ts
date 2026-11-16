@@ -1,5 +1,6 @@
-// Publishes content/ as the files the app downloads: a catalog plus one bundle
-// per poem per language (see packages/contracts/src/published.ts). Runs the
+// Publishes content/ as the files the app downloads: a catalog, one bundle per
+// poem per language, and one page per poet and reciter per language (see
+// packages/contracts/src/published.ts). Runs the
 // checker first and refuses to publish content that fails it.
 //
 //   bun scripts/build-content.ts [--out <dir>] [--audio-out <dir>]
@@ -14,6 +15,8 @@ import {
   bundlePath,
   Catalog,
   catalogPath,
+  PersonBundle,
+  personPath,
   PoemBundle,
   SCHEMA,
   source,
@@ -22,6 +25,7 @@ import {
   type CatalogPoem,
   type PublishedSource,
 } from "@shawared/contracts";
+import { planPoem } from "./kashida.ts";
 
 const ROOT = join(import.meta.dir, "..");
 const CONTENT = join(ROOT, "content");
@@ -54,7 +58,7 @@ const langFiles = (dir: string, main: string) =>
     .sort((a, b) => a.length - b.length || a.localeCompare(b));
 
 type Person = {
-  main: { id: string; name: string; died?: { hijri: number; ce: number }; links?: Record<string, string> };
+  main: { id: string; name: string; full_name?: string; died?: { hijri: number; ce: number }; links?: Record<string, string> };
   langs: Record<string, { name?: string; bio?: string }>;
 };
 function people(kind: "poets" | "reciters"): Map<string, Person> {
@@ -73,12 +77,13 @@ function people(kind: "poets" | "reciters"): Map<string, Person> {
   return out;
 }
 
-const catalogPerson = (p: Person): CatalogPerson => ({
+const personBasics = (p: Person) => ({
   id: p.main.id,
   name: p.main.name,
   names: Object.fromEntries(Object.entries(p.langs).flatMap(([l, v]) => (v.name ? [[l, v.name]] : []))),
   ...(p.main.died ? { died: p.main.died } : {}),
 });
+const catalogPerson = (p: Person, poems: number): CatalogPerson => ({ ...personBasics(p), poems });
 const nameIn = (p: Person, lang: string) => p.langs[lang]?.name ?? p.main.name;
 
 const poets = people("poets");
@@ -97,6 +102,7 @@ const write = (rel: string, data: unknown) => {
 const catalogPoems: CatalogPoem[] = [];
 let audioCopied = 0;
 const audioMissing: string[] = [];
+const wideSpaces: string[] = [];
 
 for (const id of dirs(join(CONTENT, "poems"))) {
   const dir = join(CONTENT, "poems", id);
@@ -141,6 +147,11 @@ for (const id of dirs(join(CONTENT, "poems"))) {
     audioCopied++;
   }
 
+  // Every half at the poem's measure (scripts/kashida.ts); halves that still lean on wide
+  // spaces are listed for a look.
+  const layout = planPoem(poem.abyat);
+  for (const w of layout.wide) wideSpaces.push(`${id} ${w.address} (spaces ×${w.spaceScale.toFixed(1)})`);
+
   const langs = [...new Set([...UI_LANGS, ...byLang.keys()])];
   const texts: string[] = [];
   for (const lang of langs) {
@@ -155,6 +166,8 @@ for (const id of dirs(join(CONTENT, "poems"))) {
         ...(poem.rawiy ? { rawiy: poem.rawiy } : {}),
         abyat_in_full: poem.abyat_in_full,
         abyat: poem.abyat,
+        measure: layout.measure,
+        kashida: layout.kashida,
       },
       sources: byLang.get(lang) ?? [],
       recitations,
@@ -183,20 +196,61 @@ for (const id of dirs(join(CONTENT, "poems"))) {
     ...(poem.rawiy ? { rawiy: poem.rawiy } : {}),
     abyat: poem.abyat.length,
     abyat_in_full: poem.abyat_in_full,
+    added: poem.added,
     opening: poem.abyat[0]!,
     langs: [...byLang.keys()],
     recitations: recitations.map((r) => ({ id: r.id, reciter: r.reciter, duration: r.duration })),
     hash: hash(texts.join("\n")),
+    measure: layout.measure,
+    kashida: Object.fromEntries(Object.entries(layout.kashida).filter(([address]) => address.startsWith(`${poem.abyat[0]!.n}.`))),
   });
 }
+
+// Newest first; a stable order within a day.
+catalogPoems.sort((a, b) => b.added.localeCompare(a.added) || a.id.localeCompare(b.id));
+
+// A poet's poems, or the poems a reciter recites, newest first.
+const poemsOf = (kind: "poets" | "reciters", id: string) =>
+  catalogPoems.filter((c) => (kind === "poets" ? c.poet === id : c.recitations.some((r) => r.reciter === id))).map((c) => c.id);
+const meters: Record<string, number> = {};
+for (const c of catalogPoems) meters[c.meter] = (meters[c.meter] ?? 0) + 1;
 
 const catalog = Catalog.parse({
   schema: SCHEMA,
   poems: catalogPoems,
-  poets: Object.fromEntries([...poets].map(([id, p]) => [id, catalogPerson(p)])),
-  reciters: Object.fromEntries([...reciters].map(([id, p]) => [id, catalogPerson(p)])),
+  poets: Object.fromEntries([...poets].map(([id, p]) => [id, catalogPerson(p, poemsOf("poets", id).length)])),
+  reciters: Object.fromEntries([...reciters].map(([id, p]) => [id, catalogPerson(p, poemsOf("reciters", id).length)])),
+  meters,
 });
 write(catalogPath(), catalog);
 
+// A page per poet and reciter, in every interface language.
+for (const [kind, map] of [
+  ["poets", poets],
+  ["reciters", reciters],
+] as const) {
+  for (const [id, p] of map) {
+    const poems = poemsOf(kind, id);
+    for (const lang of UI_LANGS) {
+      const bio = p.langs[lang]?.bio;
+      write(
+        personPath(kind, id, lang),
+        PersonBundle.parse({
+          schema: SCHEMA,
+          lang,
+          person: {
+            ...personBasics(p),
+            ...(p.main.full_name ? { full_name: p.main.full_name } : {}),
+            ...(bio ? { bio } : {}),
+            ...(p.main.links ? { links: p.main.links } : {}),
+          },
+          poems,
+        }),
+      );
+    }
+  }
+}
+
 console.log(`published ${catalogPoems.length} poem${catalogPoems.length === 1 ? "" : "s"} to ${OUT}; audio: ${audioCopied} copied`);
 if (audioMissing.length) console.warn(`audio not found in media/audio: ${audioMissing.join(", ")}`);
+if (wideSpaces.length) console.log(`halves whose spaces more than double at the measure (have a look): ${wideSpaces.join(", ")}`);

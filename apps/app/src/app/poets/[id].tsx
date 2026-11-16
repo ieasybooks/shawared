@@ -1,7 +1,26 @@
 import { useLocalSearchParams } from "expo-router";
-import { PoetScreen } from "../../features/poets/PoetScreen";
+import { PersonScreen } from "../../features/people/PeopleScreens";
+import { useInitial } from "../../lib/initial";
+import type { Params } from "../../server/pages";
 
-export default function PoetRoute() {
+const LANG = "ar";
+
+export async function generateStaticParams() {
+  const { staticParams } = await import("../../server/pages");
+  return staticParams.people("poets");
+}
+
+export async function loader(_: unknown, params: Params) {
+  const { pageData, idOf } = await import("../../server/pages");
+  return pageData.person("poets", idOf(params), LANG);
+}
+
+export async function generateMetadata(_: unknown, params: Params) {
+  const { pageMeta, idOf } = await import("../../server/pages");
+  return pageMeta.person("poets", idOf(params), LANG);
+}
+
+export default function Route() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  return <PoetScreen id={id} />;
+  return <PersonScreen key={id} kind="poets" id={id} initial={useInitial<typeof loader>()} />;
 }

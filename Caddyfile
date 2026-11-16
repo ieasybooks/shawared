@@ -9,6 +9,36 @@
 	encode zstd gzip
 	@hashed path /_expo/* /assets/*
 	header @hashed Cache-Control "public, max-age=31536000, immutable"
-	try_files {path} /index.html
-	file_server
+	# A button that opens the dev server in Expo Go, for phones on the tailnet.
+	handle /expo-go {
+		header Content-Type "text/html; charset=utf-8"
+		respond `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>شوارد في Expo Go</title></head>
+<body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#F3F0E8;color:#1A2036;font:17px/1.6 system-ui,sans-serif;text-align:center;padding:24px;box-sizing:border-box">
+<div><p style="font-size:28px;font-weight:600;margin:0 0 8px">شوارد</p>
+<p style="margin:0 0 24px;color:#5A6283">ثبّت Expo Go وشغّل Tailscale، ثم اضغط:</p>
+<a href="exp://{host}:8081" style="display:inline-block;background:#1A2036;color:#F3F0E8;text-decoration:none;padding:14px 28px;border-radius:999px;font-weight:600">Open in Expo Go</a>
+<p style="margin:24px 0 0;color:#5A6283;font-size:14px;direction:ltr">exp://{host}:8081</p></div></body></html>` 200
+	}
+
+	# Loader data: what each page was rendered with, fetched when navigating inside the app.
+	@loaders path /_expo/loaders/*
+	header @loaders Content-Type "application/json"
+
+	# Design drafts (design/), for review on the tailnet.
+	handle_path /design/* {
+		root * design
+		file_server
+	}
+
+	# Every page is a file rendered ahead of time: /poems/x is poems/x.html, /en is en/index.html.
+	handle {
+		try_files {path} {path}.html {path}/index.html
+		file_server
+	}
+
+	handle_errors 404 {
+		root * apps/app/dist
+		rewrite * /+not-found.html
+		file_server
+	}
 }
