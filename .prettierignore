@@ -1,0 +1,11 @@
+media
+design
+dist
+node_modules
+content
+apps/app/public/content
+apps/app/public/audio
+bun.lock
+test-results
+playwright-report
+*.md

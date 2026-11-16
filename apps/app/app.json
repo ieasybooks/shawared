@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "شوارد",
+    "slug": "shawared",
+    "scheme": "shawared",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shawared.app",
+      "infoPlist": { "UIBackgroundModes": ["audio"], "ITSAppUsesNonExemptEncryption": false }
+    },
+    "android": {
+      "package": "com.shawared.app",
+      "blockedPermissions": ["android.permission.RECORD_AUDIO"]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "name": "شوارد · Shawared"
+    },
+    "plugins": ["expo-router", "expo-audio", "expo-font", "expo-status-bar", "expo-splash-screen"]
+  }
+}

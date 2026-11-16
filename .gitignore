@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+dist/
+web-build/
+coverage/
+.env
+.env.*
+!.env.example
+.DS_Store
+media/
+playwright-report/
+test-results/
+apps/app/android/
+apps/app/ios/
+apps/app/public/content/
+apps/app/public/audio/
+artifacts/

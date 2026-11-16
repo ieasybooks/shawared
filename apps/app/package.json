@@ -1,0 +1,52 @@
+{
+  "name": "@shawared/app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start --web --port 8081",
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "export:web": "expo export --platform web"
+  },
+  "dependencies": {
+    "@expo-google-fonts/amiri": "^0.4.1",
+    "@expo-google-fonts/newsreader": "^0.4.1",
+    "@expo-google-fonts/readex-pro": "^0.4.1",
+    "@expo-google-fonts/reem-kufi": "^0.4.2",
+    "@expo/metro-runtime": "~58.0.17",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@shawared/contracts": "workspace:*",
+    "@shawared/design": "workspace:*",
+    "@shawared/listening": "workspace:*",
+    "expo": "58.0.25",
+    "expo-audio": "~58.0.12",
+    "expo-constants": "~58.0.16",
+    "expo-font": "~58.0.12",
+    "expo-linear-gradient": "~58.0.4",
+    "expo-linking": "~58.0.17",
+    "expo-router": "~58.0.31",
+    "expo-splash-screen": "~58.0.14",
+    "expo-status-bar": "~58.0.5",
+    "expo-system-ui": "~58.0.7",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-safe-area-context": "~5.11.1",
+    "react-native-screens": "~4.30.1",
+    "react-native-svg": "15.16.0",
+    "react-native-web": "^0.21.4"
+  },
+  "devDependencies": {
+    "@types/react": "~19.3.0",
+    "typescript": "^7.0.2"
+  },
+  "expo": {
+    "install": {
+      "exclude": [
+        "typescript"
+      ]
+    }
+  }
+}

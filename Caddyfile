@@ -1,0 +1,14 @@
+# Serves the exported web app (bun run web:build) on every interface, port 8090.
+{
+	admin off
+	auto_https off
+}
+
+:8090 {
+	root * apps/app/dist
+	encode zstd gzip
+	@hashed path /_expo/* /assets/*
+	header @hashed Cache-Control "public, max-age=31536000, immutable"
+	try_files {path} /index.html
+	file_server
+}

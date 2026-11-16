@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shawared Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Readex+Pro:wght@300;400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap">
+<style>
+/* Layout: a printed diwan. Paper ground, one column; each section opens with the diamond nuqta that roams in the mark. The working player appears twice, phone and web, driven by one clock. */
+:root{
+  /* page tokens: day first */
+  --bg:#EFEBE2; --surface:#F9F7F2; --line:#DDD6C8; --fg:#1A2036; --muted:#5B6078; --accent:#B8650C;
+  /* brand constants, identical in both page themes */
+  --paper:#F3F0E8; --fold:#EAE5D8; --ink:#1A2036; --lead:#666A7E; --saffron-day:#B8650C;
+  --night:#131A2E; --dusk:#1B2440; --moon:#ECE5D3; --ash:#7A83A2; --saffron:#E8A33C; --frame:#05070D;
+  /* type */
+  --f-verse:"Amiri","Scheherazade New","Noto Naskh Arabic","Times New Roman",serif;
+  --f-tr:"Newsreader","Iowan Old Style",Georgia,serif;
+  --f-ui:"Readex Pro","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --f-kufi:"Reem Kufi","Noto Kufi Arabic","Readex Pro",sans-serif;
+  --t-xs:.8125rem; --t-s:.9375rem; --t-m:1.125rem; --t-l:1.5rem;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#0E1424; --surface:#161E35; --line:#26304F; --fg:#ECE5D3; --muted:#8F97B2; --accent:#E8A33C; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --bg:#0E1424; --surface:#161E35; --line:#26304F; --fg:#ECE5D3; --muted:#8F97B2; --accent:#E8A33C; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--f-ui); font-size:var(--t-s); line-height:1.65; font-weight:400;
+  padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:40px 72px;
+}
+.wrap{max-width:1040px; margin:0 auto; display:flex; flex-direction:column; gap:88px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+p{margin:0}
+[hidden]{display:none !important}
+
+/* section heads */
+section{display:grid; gap:28px}
+.sec-head{display:grid; gap:10px; max-width:66ch}
+.sec-head h2{margin:0; font-size:var(--t-l); font-weight:500; line-height:1.3; display:flex; align-items:center; gap:14px; flex-wrap:wrap; text-wrap:balance}
+.sec-head h2::before{content:""; width:9px; height:9px; background:var(--accent); transform:rotate(45deg); flex:none}
+.sec-head h2 .ar{font-family:var(--f-kufi); font-weight:600; font-size:1.15em}
+.sec-head h2 .en{color:var(--muted); font-weight:400; font-size:.8em}
+.sec-head p{color:var(--muted)}
+.sub-h{margin:0; font-size:var(--t-s); font-weight:500; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap}
+.sub-h span{color:var(--muted); font-weight:400; font-size:var(--t-xs)}
+
+/* hero */
+.hero{display:grid; gap:32px}
+.eyebrow{font-size:var(--t-xs); letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.lockup{display:flex; align-items:center; gap:clamp(14px,3vw,26px); direction:rtl; width:fit-content; max-width:100%}
+.hero-mark{width:clamp(88px,15vw,136px); height:auto; color:var(--fg); --mk-dot:var(--accent); flex:none}
+.wm-ar{font-family:var(--f-kufi); font-weight:600; font-size:clamp(3.6rem,11vw,6.5rem); line-height:1.05}
+.wm-lat{direction:ltr; text-align:right; font-size:var(--t-xs); letter-spacing:.46em; color:var(--muted); margin-top:10px; padding-right:2px}
+.hero-mark .dot{transform-box:view-box}
+.hero-mark .d1{animation:roam1 1.9s cubic-bezier(.22,.8,.24,1) .3s both}
+.hero-mark .d2{animation:roam2 1.9s cubic-bezier(.22,.8,.24,1) .45s both}
+.hero-mark .d3{animation:roam3 1.9s cubic-bezier(.22,.8,.24,1) .6s both}
+@keyframes roam1{from{transform:translate(24px,2px)}}
+@keyframes roam2{from{transform:translate(24px,13px)}}
+@keyframes roam3{from{transform:translate(49px,12px)}}
+.hero-verse{
+  margin:0; direction:rtl; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center;
+  gap:clamp(16px,3vw,44px); font-family:var(--f-verse); font-size:clamp(1.55rem,3.3vw,2.45rem); line-height:1.95;
+  padding-block:26px; border-block:1px solid var(--line);
+}
+.hero-verse span{text-align:center}
+.cz-big{width:10px; height:10px; background:var(--accent); transform:rotate(45deg)}
+.hero-notes{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:32px; align-items:start}
+.hero-tr{color:var(--muted); font-family:var(--f-tr); font-size:1.2rem; line-height:1.55}
+.hero-tr cite{display:block; font-family:var(--f-ui); font-style:normal; font-size:var(--t-xs); letter-spacing:.1em; text-transform:uppercase; margin-top:10px}
+.lede{font-size:var(--t-m); line-height:1.6}
+.decided-wrap{display:grid; gap:12px}
+.decided{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px}
+.decided li{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 14px 13px 36px; position:relative; line-height:1.45}
+.decided li::before{content:""; position:absolute; left:15px; top:19px; width:8px; height:8px; background:var(--accent); transform:rotate(45deg)}
+.decided b{display:block; font-weight:500}
+.decided span{color:var(--muted); font-size:var(--t-xs)}
+@media (max-width:720px){
+  .hero-verse{grid-template-columns:1fr; gap:4px}
+  .hero-verse span:first-child{text-align:right}
+  .hero-verse span:last-child{text-align:left}
+  .cz-big{display:none}
+  .hero-notes{grid-template-columns:1fr; gap:20px}
+}
+
+/* the mark */
+.mk-intro{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,1.15fr); gap:16px; align-items:start}
+.mk-tile{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:18px; display:grid; place-items:center; padding:22px; aspect-ratio:1}
+.mk-tile svg{width:100%; height:100%; color:var(--fg); --mk-dot:var(--accent)}
+.build .grid{stroke:var(--line); stroke-width:.35; fill:none}
+.build .ghost{fill:none; stroke:var(--muted); stroke-width:.7; stroke-dasharray:1.6 1.4}
+.build .trail{fill:none; stroke:var(--muted); stroke-width:.6; stroke-dasharray:1.6 1.4; opacity:.85}
+.mk-caption{font-size:var(--t-xs); color:var(--muted); text-align:center; margin-top:8px}
+.mk-fig{display:grid}
+.ticks{margin:0; padding:0; list-style:none; display:grid; gap:14px}
+.ticks li{position:relative; padding-inline-start:22px}
+.ticks li::before{content:""; position:absolute; inset-inline-start:2px; top:.62em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg)}
+.ticks b{font-weight:500}
+.ticks span{color:var(--muted)}
+@media (max-width:860px){ .mk-intro{grid-template-columns:repeat(2,minmax(0,1fr))} .mk-intro .ticks{grid-column:1/-1} }
+
+.versions{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px}
+.versions figure{margin:0; display:grid; gap:10px; align-content:start}
+.vt{aspect-ratio:1; border-radius:16px; display:grid; place-items:center; box-shadow:inset 0 0 0 1px rgba(128,128,128,.2)}
+.vt svg{width:50%; height:50%}
+.versions figcaption{font-size:var(--t-xs); color:var(--muted); line-height:1.45}
+.versions figcaption b{display:block; color:var(--fg); font-weight:500; font-size:var(--t-s)}
+@media (max-width:640px){ .versions{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+.lockups{display:grid; gap:12px}
+.lk{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:28px; align-items:center; background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:26px 28px}
+.lk-sample{display:flex; align-items:center; gap:16px; justify-content:center; min-width:0}
+.lk-sample svg{width:60px; height:60px; color:var(--fg); --mk-dot:var(--accent); flex:none}
+.lk-ar{font-family:var(--f-kufi); font-weight:600; font-size:clamp(2.5rem,7vw,3.5rem); line-height:1.2}
+.lk-lat{font-family:var(--f-kufi); font-weight:600; font-size:clamp(2.1rem,6vw,2.9rem); line-height:1.15}
+.lk-stack .s{direction:ltr; text-align:right; font-size:var(--t-xs); letter-spacing:.42em; color:var(--muted); padding-right:2px}
+.lk-stack .s2{font-family:var(--f-kufi); font-weight:600; font-size:1.25rem; color:var(--muted); line-height:1.3; text-align:left; direction:rtl}
+.lk h3{margin:0 0 4px; font-size:var(--t-m); font-weight:500}
+.lk p{color:var(--muted)}
+@media (max-width:640px){ .lk{grid-template-columns:1fr; gap:14px; padding:22px 18px} }
+
+/* icons and artwork */
+.icons{display:flex; flex-wrap:wrap; gap:28px 30px; align-items:flex-end}
+.icons figure{margin:0; display:grid; gap:10px; justify-items:center}
+.icons figcaption{font-size:var(--t-xs); color:var(--muted); text-align:center; line-height:1.4}
+.appicon{width:var(--s); height:var(--s); display:grid; place-items:center; background:var(--paper); color:var(--ink); --mk-dot:var(--saffron-day); border-radius:22.5%; box-shadow:0 1px 3px rgba(10,14,30,.14), inset 0 0 0 1px rgba(26,32,54,.07)}
+.appicon.night{background:var(--night); color:var(--moon); --mk-dot:var(--saffron); box-shadow:0 1px 3px rgba(10,14,30,.2), inset 0 0 0 1px rgba(255,255,255,.06)}
+.appicon.round{border-radius:50%}
+.appicon.themed{background:#D9E1F2; color:#23304F; --mk-dot:#23304F}
+.appicon svg{width:72%; height:72%}
+.appicon.round svg{width:60%; height:60%}
+.arts{display:flex; flex-wrap:wrap; gap:20px 24px; align-items:center}
+.art{width:168px; height:168px; border-radius:14px; padding:16px 16px 14px; display:flex; flex-direction:column; justify-content:space-between; background:var(--paper); color:var(--ink); --mk-dot:var(--saffron-day); box-shadow:0 1px 3px rgba(10,14,30,.14), inset 0 0 0 1px rgba(26,32,54,.07)}
+.art.night{background:var(--night); color:var(--moon); --mk-dot:var(--saffron)}
+.art svg{width:28px; height:28px}
+.art b{font-family:var(--f-kufi); font-weight:600; font-size:27px; line-height:1.25; display:block}
+.art small{font-size:12px; opacity:.8}
+.arts p{max-width:44ch; color:var(--muted); flex:1 1 260px}
+
+/* palette */
+.pal{display:grid; gap:14px}
+.swatches{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px}
+.sw{border-radius:16px; overflow:hidden; border:1px solid var(--line); background:var(--surface); display:grid}
+.sw .c{height:96px; display:flex; align-items:flex-end; justify-content:flex-end; padding:10px 14px; font-family:var(--f-kufi); font-weight:600; font-size:1.3rem; direction:rtl}
+.sw .meta{padding:12px 14px 14px; display:grid; gap:2px}
+.sw .meta b{font-weight:500}
+.sw .hex{font-size:var(--t-xs); color:var(--muted); font-variant-numeric:tabular-nums; letter-spacing:.04em}
+.sw .role{font-size:var(--t-xs); color:var(--muted); margin-top:4px}
+.pal-note{color:var(--muted); max-width:70ch}
+
+/* type */
+.specimens{display:grid; border-top:1px solid var(--line)}
+.spec{display:grid; grid-template-columns:minmax(0,220px) minmax(0,1fr); gap:28px; padding-block:26px; border-bottom:1px solid var(--line); align-items:center}
+.spec h3{margin:0; font-size:var(--t-s); font-weight:500}
+.spec .lbl p{color:var(--muted); font-size:var(--t-xs); margin-top:4px}
+.bayt-wide{direction:rtl; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:clamp(14px,2.4vw,32px); align-items:center; font-family:var(--f-verse); font-size:clamp(1.2rem,2.3vw,1.7rem); line-height:2}
+.bayt-wide span{text-align:center}
+.bayt-wide .cz-big{width:7px; height:7px}
+.tr-sample{font-family:var(--f-tr); font-size:clamp(1.1rem,2vw,1.3rem); line-height:1.55}
+.tr-sample span{color:var(--muted)}
+.ui-sample{display:grid; gap:6px}
+.ui-sample .row{display:flex; flex-wrap:wrap; gap:6px 18px; font-size:1.05rem; align-items:baseline}
+.ui-sample .m{color:var(--muted); font-size:.85rem}
+.disp-sample{font-family:var(--f-kufi); font-weight:600; font-size:clamp(1.9rem,4.6vw,2.8rem); line-height:1.3; display:grid; gap:2px; direction:rtl}
+.disp-sample .l{font-size:.62em; color:var(--muted)}
+@media (max-width:640px){
+  .spec{grid-template-columns:1fr; gap:12px}
+  .bayt-wide{grid-template-columns:1fr; gap:0}
+  .bayt-wide span:first-child{text-align:right}
+  .bayt-wide span:last-child{text-align:left}
+  .bayt-wide .cz-big{display:none}
+}
+
+/* frame controls */
+.frame-ctrls{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+.seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; background:var(--surface)}
+.seg button{font:inherit; font-size:var(--t-xs); border:0; background:none; color:var(--muted); padding:6px 14px; border-radius:999px; cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--bg); color:var(--fg); box-shadow:inset 0 0 0 1px var(--line)}
+.seg[aria-disabled="true"]{opacity:.45; pointer-events:none}
+
+/* phone stage */
+.stage{display:grid; grid-template-columns:minmax(0,360px) minmax(0,1fr); gap:56px; align-items:start}
+.phone-col{display:grid; justify-items:center; gap:14px}
+.notes{margin:0; padding:0; list-style:none; display:grid; gap:18px; max-width:50ch; padding-top:52px}
+.notes li{position:relative; padding-inline-start:24px}
+.notes li::before{content:""; position:absolute; inset-inline-start:2px; top:.62em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg)}
+.notes b{font-weight:500}
+.notes span{color:var(--muted)}
+.notes .ar-i{font-family:var(--f-verse); font-size:1.15em; color:var(--fg)}
+@media (max-width:860px){ .stage{grid-template-columns:1fr; gap:36px} .notes{padding-top:0; max-width:none} }
+
+/* ---------- the app (shared by phone and web) ---------- */
+.app{
+  --a-bg:#F3F0E8; --a-raise:#FFFDF8; --a-fold:#EAE5D8; --a-fg:#1A2036; --a-partner:#434A69; --a-rest:#666A7E; --a-muted:#5A6283;
+  --a-accent:#B8650C; --a-line:#E0D9CB; --a-line2:#CDC5B4; --a-chrome:#E6E1D5; --a-shadow:rgba(26,32,54,.16);
+  background:var(--a-bg); color:var(--a-fg); font-family:var(--f-ui);
+  transition:background-color .4s, color .4s;
+}
+.app.is-night{
+  --a-bg:#131A2E; --a-raise:#1B2440; --a-fold:#1B2440; --a-fg:#ECE5D3; --a-partner:#A9AFC6; --a-rest:#7A83A2; --a-muted:#8F97B2;
+  --a-accent:#E8A33C; --a-line:#27304C; --a-line2:#3A4570; --a-chrome:#0D1322; --a-shadow:rgba(4,6,16,.45);
+}
+.app :focus-visible{outline:2px solid var(--a-accent); outline-offset:2px}
+.app[data-lang="ar"] .en-only, .app[data-lang="ar"] .tr, .app:not(.show-tr) .tr{display:none}
+.app[dir="ltr"] .flip svg, .app[dir="ltr"] [data-act="prev"] svg, .app[dir="ltr"] [data-act="next"] svg{transform:scaleX(-1)}
+.ic{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background:none; border:0; color:var(--a-muted); cursor:pointer; position:relative; padding:0; flex:none}
+.ic svg{width:22px; height:22px}
+.chips{display:flex; gap:6px; flex-wrap:wrap; align-items:center}
+.chip{font:inherit; font-size:12px; padding:2px 11px; border-radius:999px; border:1px solid var(--a-line); background:none; color:var(--a-muted); cursor:pointer}
+.chip.ghost{border-color:transparent; cursor:default; padding-inline:4px}
+.ttl-sub{font-family:var(--f-tr); font-style:italic; font-size:14px; color:var(--a-muted); line-height:1.4}
+
+.verses{
+  flex:1; min-height:0; overflow-y:auto; position:relative; scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 11%,#000 84%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 11%,#000 84%,transparent 100%);
+}
+.verses::-webkit-scrollbar{display:none}
+.bayt{position:relative; padding-block:7px; padding-inline-start:26px}
+.num{position:absolute; inset-inline-start:0; top:17px; width:20px; text-align:center; font-size:11px; color:var(--a-rest); font-variant-numeric:tabular-nums; transition:color .3s}
+.num::after{content:""; position:absolute; left:50%; top:50%; width:8px; height:8px; background:var(--a-accent); transform:translate(-50%,-50%) rotate(45deg) scale(0); transition:transform .3s}
+.bayt.on .num{color:transparent}
+.bayt.on .num::after{transform:translate(-50%,-50%) rotate(45deg) scale(1)}
+.h{margin:0; font-family:var(--f-verse); font-size:19.5px; line-height:2.05; color:var(--a-rest); transition:color .35s; cursor:pointer}
+.bayt.on .h{color:var(--a-partner)}
+.bayt.on .h.on{color:var(--a-fg)}
+.cz{display:none}
+.g{position:relative; border-radius:5px; cursor:pointer}
+.g::after{content:""; position:absolute; left:50%; bottom:-.02em; width:4px; height:4px; background:var(--a-accent); transform:translateX(-50%) rotate(45deg); opacity:.55}
+.h.on .g::after{opacity:1}
+.g:hover{background:color-mix(in srgb,var(--a-accent) 16%,transparent)}
+.tr{margin:0 0 6px; font-family:var(--f-tr); font-size:14px; line-height:1.5; text-align:start; color:var(--a-rest); text-wrap:balance}
+.trh{cursor:pointer; transition:color .35s}
+.bayt.on .trh{color:var(--a-partner)}
+.bayt.on .trh.on{color:var(--a-fg)}
+.sharh{margin:6px 0; padding:10px 13px 11px; border-radius:14px; background:var(--a-fold); color:var(--a-muted); font-size:13px; line-height:1.85}
+.sharh b{display:flex; align-items:center; gap:7px; color:var(--a-fg); font-weight:500; font-size:11px; margin-bottom:1px}
+.sharh b::before, .nq{content:""; display:inline-block; width:6px; height:6px; background:var(--a-accent); transform:rotate(45deg); flex:none}
+
+.bar{position:relative; height:20px; cursor:pointer; touch-action:none}
+.bar::before{content:""; position:absolute; left:0; right:0; top:50%; height:3px; margin-top:-1.5px; border-radius:2px; background:var(--a-line)}
+.fill{position:absolute; inset-inline-start:0; top:50%; height:3px; margin-top:-1.5px; border-radius:2px; background:var(--a-accent)}
+.head{position:absolute; top:50%; width:12px; height:12px; margin-top:-6px; margin-inline-start:-6px; background:var(--a-accent); transform:rotate(45deg); border-radius:1px}
+.ctrls{display:flex; justify-content:space-between; align-items:center; padding-inline:2px}
+.ctrls .ic{color:var(--a-fg)}
+.ctrls .ic.tog{color:var(--a-muted)}
+.ctrls .ic.tog[aria-pressed="true"]{color:var(--a-accent)}
+.ctrls .ic.tog[aria-pressed="true"]::after{content:""; position:absolute; left:50%; bottom:3px; width:4px; height:4px; background:var(--a-accent); transform:translateX(-50%) rotate(45deg)}
+.play{width:60px; height:60px; border-radius:50%; border:0; background:var(--a-fg); color:var(--a-bg); display:grid; place-items:center; cursor:pointer; padding:0; flex:none}
+.play svg{width:24px; height:24px}
+.sh-head{display:flex; align-items:center; gap:12px}
+.sh-w{font-family:var(--f-verse); font-size:31px; font-weight:700; line-height:1.55}
+.sh-root{font-size:12px; color:var(--a-muted); border:1px solid var(--a-line); border-radius:999px; padding:1px 10px; white-space:nowrap}
+.sh-head .ic{margin-inline-start:auto}
+.sh-m{font-size:14px; line-height:1.85}
+.sh-ctx{font-size:12px; color:var(--a-muted); margin-top:8px}
+.demo{color:var(--a-muted)}
+
+/* phone */
+.phone{
+  position:relative; width:100%; max-width:360px; height:740px; border-radius:46px; border:10px solid var(--frame);
+  overflow:hidden; display:flex; flex-direction:column; box-shadow:0 40px 80px -34px rgba(4,6,16,.5), 0 0 0 1px var(--line);
+}
+.ph-status{display:flex; justify-content:space-between; align-items:center; padding:10px 24px 0; height:36px; font-size:12px; font-weight:500; flex:none}
+.ph-island{width:96px; height:26px; border-radius:14px; background:var(--frame)}
+.ph-sig{display:flex; gap:3px; align-items:flex-end}
+.ph-sig i{display:block; width:3px; background:currentColor; border-radius:1px}
+.ph-top{display:flex; align-items:center; justify-content:space-between; padding:6px 8px 0; flex:none}
+.ph-from{text-align:center; font-size:11px; color:var(--a-muted); line-height:1.5}
+.ph-from b{display:block; color:var(--a-fg); font-weight:500; font-size:13px}
+.ph-meta{padding:6px 22px 4px; display:grid; gap:6px; flex:none}
+.ph-meta h3{margin:0; font-family:var(--f-verse); font-weight:700; font-size:27px; line-height:1.35}
+.phone .verses{padding:46px 16px 70px 18px}
+.phone .h.sadr{text-align:start; padding-inline-end:8%}
+.phone .h.ajuz{text-align:end; padding-inline-start:8%}
+.ph-player{flex:none; padding:10px 18px 16px; display:grid; gap:6px; border-top:1px solid var(--a-line)}
+.ph-now{display:flex; justify-content:space-between; gap:8px; font-size:11px; color:var(--a-muted)}
+.times{display:flex; justify-content:space-between; font-size:11px; color:var(--a-muted); font-variant-numeric:tabular-nums; margin-top:-6px}
+.sheet{
+  position:absolute; left:0; right:0; bottom:0; z-index:5; background:var(--a-raise); border-radius:24px 24px 0 0;
+  padding:10px 22px 26px; box-shadow:0 -16px 44px var(--a-shadow); transform:translateY(105%); visibility:hidden;
+  transition:transform .34s cubic-bezier(.2,.8,.2,1), visibility 0s linear .34s;
+}
+.sheet.open{transform:none; visibility:visible; transition:transform .34s cubic-bezier(.2,.8,.2,1), visibility 0s}
+.grip{width:38px; height:4px; border-radius:2px; background:var(--a-line2); margin:0 auto 10px}
+
+/* web */
+.web-col{display:grid; gap:14px; justify-items:center}
+.web{width:100%; height:720px; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; border:1px solid var(--line); box-shadow:0 30px 70px -38px rgba(4,6,16,.45)}
+.web-chrome{flex:none; height:38px; display:flex; align-items:center; gap:12px; padding:0 14px; background:var(--a-chrome); border-bottom:1px solid var(--a-line); direction:ltr}
+.lights{display:flex; gap:6px; flex:none; width:58px}
+.lights i{width:10px; height:10px; border-radius:50%; background:var(--a-line2)}
+.url{flex:0 1 460px; min-width:0; margin-inline:auto; height:24px; border-radius:7px; background:var(--a-bg); color:var(--a-muted); font-size:12px; display:flex; align-items:center; justify-content:center; gap:6px; white-space:nowrap; overflow:hidden; padding:0 10px}
+.url svg{width:11px; height:11px; flex:none}
+.url span, .web-search span{min-width:0; overflow:hidden; text-overflow:ellipsis}
+.web-head{flex:none; height:56px; display:flex; align-items:center; gap:28px; padding:0 22px; border-bottom:1px solid var(--a-line)}
+.web-logo{display:flex; align-items:center; gap:9px; flex:none}
+.web-logo svg{width:28px; height:28px; color:var(--a-fg); --mk-dot:var(--a-accent)}
+.web-logo span{font-family:var(--f-kufi); font-weight:600; font-size:21px; line-height:1}
+.web-nav{display:flex; gap:22px; font-size:14px; color:var(--a-muted)}
+.web-nav .on{color:var(--a-fg)}
+.web-search{margin-inline-start:auto; display:flex; align-items:center; gap:8px; height:34px; padding:0 14px; border-radius:999px; border:1px solid var(--a-line); color:var(--a-muted); font-size:13px; width:250px; min-width:0; white-space:nowrap; overflow:hidden}
+.web-search svg{width:15px; height:15px; flex:none}
+.web-main{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 300px}
+.web-poem{min-height:0; display:flex; flex-direction:column; border-inline-end:1px solid var(--a-line)}
+.web-meta{flex:none; padding:18px 40px 0; display:flex; align-items:flex-end; justify-content:space-between; gap:10px 24px; flex-wrap:wrap}
+.web-meta .t{display:grid; gap:1px}
+.web-from{font-size:12px; color:var(--a-muted)}
+.web-meta h3{margin:0; font-family:var(--f-verse); font-weight:700; font-size:28px; line-height:1.4}
+.web .verses{padding:40px 40px 90px}
+.web .bayt{padding-block:9px; padding-inline-start:40px}
+.web .hrow{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:26px; align-items:center}
+.web .h{text-align:center; font-size:22px}
+.web .cz{display:block; width:6px; height:6px; background:var(--a-line2); transform:rotate(45deg)}
+.web .bayt.on .cz{background:var(--a-partner)}
+.web .num{top:24px; width:24px}
+.web .tr{text-align:center; font-size:14.5px; margin-top:-2px; padding-inline:4%}
+.web-panel{min-height:0; overflow-y:auto; padding:18px 22px 22px; display:flex; flex-direction:column; gap:16px}
+.wp-card{background:var(--a-raise); border:1px solid var(--a-line); border-radius:16px; padding:8px 14px 14px; box-shadow:0 6px 20px -12px var(--a-shadow)}
+.wp-card .sh-w{font-size:27px}
+.wp-card .ic{width:34px; height:34px}
+.wp-card .ic svg{width:18px; height:18px}
+.wp-block{display:grid; gap:8px}
+.wp-block h4{margin:0; font-size:12px; font-weight:500; color:var(--a-muted); display:flex; align-items:center; gap:8px}
+.wp-block > p{font-size:13.5px; line-height:1.75}
+.wp-card .sh-m{font-size:13.5px; line-height:1.75}
+.wp-chips{display:flex; flex-wrap:wrap; gap:6px}
+.wp-chips button{font-family:var(--f-verse); font-size:17px; line-height:1.9; padding:0 12px; border-radius:999px; border:1px solid var(--a-line); background:none; color:var(--a-fg); cursor:pointer}
+.wp-chips button[aria-pressed="true"]{border-color:var(--a-accent); box-shadow:inset 0 0 0 1px var(--a-accent)}
+.web-player{flex:none; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr); align-items:center; gap:24px; padding:8px 22px 10px; border-top:1px solid var(--a-line)}
+.wpl-now{display:flex; align-items:center; gap:12px; min-width:0}
+.wpl-art{width:46px; height:46px; border-radius:9px; flex:none; display:grid; place-items:center; background:var(--a-fold); color:var(--a-fg); --mk-dot:var(--a-accent)}
+.wpl-art svg{width:30px; height:30px}
+.wpl-now .tx{min-width:0}
+.wpl-now b{display:block; font-family:var(--f-verse); font-weight:700; font-size:17px; line-height:1.5}
+.wpl-now .sub{display:block; font-size:12px; color:var(--a-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.wpl-mid{display:grid; gap:0; min-width:0}
+.web .ctrls{justify-content:center; gap:14px}
+.web .ctrls .ic{width:38px; height:38px}
+.web .ctrls .ic svg{width:20px; height:20px}
+.web .play{width:42px; height:42px}
+.web .play svg{width:18px; height:18px}
+.wpl-bar{display:flex; align-items:center; gap:10px; font-size:11px; color:var(--a-muted); font-variant-numeric:tabular-nums}
+.wpl-bar .bar{flex:1}
+.wpl-end{justify-self:end; font-size:12px; color:var(--a-muted); text-align:end}
+.web-notes{justify-self:stretch; margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px 28px}
+.web-notes li{position:relative; padding-inline-start:22px}
+.web-notes li::before{content:""; position:absolute; inset-inline-start:2px; top:.62em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg)}
+.web-notes b{font-weight:500; display:block}
+.web-notes span{color:var(--muted)}
+@media (max-width:900px){
+  .web-main{grid-template-columns:1fr}
+  .web-panel, .web-nav{display:none}
+  .web-poem{border:0}
+}
+@media (max-width:640px){
+  .web{height:640px}
+  .web-head{gap:14px; padding:0 14px}
+  .web-search{width:auto; flex:1}
+  .lights{width:auto}
+  .url{justify-content:flex-start}
+  .web-meta{padding:14px 16px 0}
+  .web .verses{padding:30px 14px 80px 16px}
+  .web .bayt{padding-inline-start:26px}
+  .web .hrow{display:block}
+  .web .h{font-size:19px}
+  .web .h.sadr{text-align:start; padding-inline-end:8%}
+  .web .h.ajuz{text-align:end; padding-inline-start:8%}
+  .web .cz{display:none}
+  .web .tr{text-align:start; font-size:14px}
+  .web .num{top:17px; width:20px}
+  .web-player{grid-template-columns:1fr; gap:4px; padding:6px 14px 10px}
+  .wpl-now, .wpl-end{display:none}
+}
+
+/* next */
+.decide{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px 32px}
+.decide li{position:relative; padding-inline-start:24px; padding-block:12px; border-top:1px solid var(--line)}
+.decide li::before{content:""; position:absolute; inset-inline-start:2px; top:calc(12px + .62em); width:7px; height:7px; border:1.5px solid var(--accent); transform:rotate(45deg)}
+.decide b{font-weight:500; display:block}
+.decide span{color:var(--muted)}
+footer{color:var(--muted); font-size:var(--t-xs); border-top:1px solid var(--line); padding-top:20px}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-mark .dot{animation:none}
+  .app, .app *{transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- The mark: square-Kufic shin whose three nuqta have roamed off -->
+    <symbol id="mk-a" viewBox="7 -3 104 104">
+      <path d="M93.5 50V80.5H26V66M73.5 58V80.5M53.5 58V80.5" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polygon points="58,30.5 65.5,38 58,45.5 50.5,38" style="fill:var(--mk-dot,#B8650C)"/>
+      <polygon points="40,20.5 46.5,27 40,33.5 33.5,27" style="fill:var(--mk-dot,#B8650C)"/>
+      <polygon points="24,11.5 29.5,17 24,22.5 18.5,17" style="fill:var(--mk-dot,#B8650C)"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2v13.6a1 1 0 0 0 1.53.85l10.5-6.8a1 1 0 0 0 0-1.7L9.53 4.35A1 1 0 0 0 8 5.2z"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/></g></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><g fill="currentColor"><rect x="17" y="5" width="2.4" height="14" rx="1.2"/><path d="M5 5.6v12.8a1 1 0 0 0 1.5.86l9.6-6.4a1 1 0 0 0 0-1.72L6.5 4.74A1 1 0 0 0 5 5.6z"/></g></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><g fill="currentColor"><rect x="4.6" y="5" width="2.4" height="14" rx="1.2"/><path d="M19 5.6v12.8a1 1 0 0 1-1.5.86l-9.6-6.4a1 1 0 0 1 0-1.72l9.6-6.4A1 1 0 0 1 19 5.6z"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v13"/><path d="M3 5h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6v13h-6a3 3 0 0 0-3 2 3 3 0 0 0-3-2H3z"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Shawared · identity and player · draft 0.3, November 2026</p>
+    <div class="lockup" lang="ar">
+      <svg class="hero-mark" viewBox="7 -3 104 104" role="img" aria-label="Shawared mark">
+        <path d="M93.5 50V80.5H26V66M73.5 58V80.5M53.5 58V80.5" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+        <g class="dot d1"><polygon points="58,30.5 65.5,38 58,45.5 50.5,38" style="fill:var(--mk-dot)"/></g>
+        <g class="dot d2"><polygon points="40,20.5 46.5,27 40,33.5 33.5,27" style="fill:var(--mk-dot)"/></g>
+        <g class="dot d3"><polygon points="24,11.5 29.5,17 24,22.5 18.5,17" style="fill:var(--mk-dot)"/></g>
+      </svg>
+      <div>
+        <div class="wm-ar">شوارد</div>
+        <div class="wm-lat">SHAWARED</div>
+      </div>
+    </div>
+    <blockquote class="hero-verse" lang="ar">
+      <span>أَنامُ مِلءَ جُفوني عَن شَوارِدِها</span>
+      <i class="cz-big" aria-hidden="true"></i>
+      <span>وَيَسهَرُ الخَلقُ جَرّاها وَيَختَصِمُ</span>
+    </blockquote>
+    <div class="hero-notes">
+      <p class="hero-tr">I sleep soundly, unconcerned with my roaming verses, while people stay up all night over them, arguing.<cite>Al-Mutanabbi · واحرّ قلباه · verse 17 of 38</cite></p>
+      <p class="lede">The name comes from this line, and the identity sets it the way a diwan is printed: ink on paper, the verse at the center, and one saffron dot that roams. That dot is the calligrapher's nuqta, and the product uses it for exactly one job: showing where you are.</p>
+    </div>
+    <div class="decided-wrap">
+      <p class="eyebrow">Decided in this round</p>
+      <ul class="decided">
+        <li><b>Mark A</b><span>The roaming dots</span></li>
+        <li><b>Day first</b><span>Night one tap away</span></li>
+        <li><b>Direction follows language</b><span>English mirrors all but the verses</span></li>
+        <li><b>iOS, Android and web</b><span>One design for all three</span></li>
+        <li><b>Arabic and English</b><span>Interface and commentary</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <section id="mark">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">الشعار</span><span class="en">The mark</span></h2>
+      <p>Direction A, carried forward. A square-Kufic <span lang="ar">ش</span> whose three dots have left their place and drift ahead in the direction of writing.</p>
+    </div>
+    <div class="mk-intro">
+      <div class="mk-fig">
+        <figure class="mk-tile"><svg role="img" aria-label="The Shawared mark"><use href="#mk-a"/></svg></figure>
+        <p class="mk-caption">The mark</p>
+      </div>
+      <div class="mk-fig">
+        <figure class="mk-tile">
+          <svg class="build" viewBox="7 -3 104 104" role="img" aria-label="Construction: the three dots of shin move from above its teeth to their roamed positions">
+            <path class="grid" d="M10 -3V101M20 -3V101M30 -3V101M40 -3V101M50 -3V101M60 -3V101M70 -3V101M80 -3V101M90 -3V101M100 -3V101M110 -3V101M7 0H111M7 10H111M7 20H111M7 30H111M7 40H111M7 50H111M7 60H111M7 70H111M7 80H111M7 90H111M7 100H111"/>
+            <path class="trail" d="M82 40L58 38M64 40L40 27M73 29L24 17"/>
+            <polygon class="ghost" points="82,32.5 89.5,40 82,47.5 74.5,40"/>
+            <polygon class="ghost" points="64,33.5 70.5,40 64,46.5 57.5,40"/>
+            <polygon class="ghost" points="73,23.5 78.5,29 73,34.5 67.5,29"/>
+            <path d="M93.5 50V80.5H26V66M73.5 58V80.5M53.5 58V80.5" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+            <polygon points="58,30.5 65.5,38 58,45.5 50.5,38" style="fill:var(--mk-dot)"/>
+            <polygon points="40,20.5 46.5,27 40,33.5 33.5,27" style="fill:var(--mk-dot)"/>
+            <polygon points="24,11.5 29.5,17 24,22.5 18.5,17" style="fill:var(--mk-dot)"/>
+          </svg>
+        </figure>
+        <p class="mk-caption">Construction</p>
+      </div>
+      <ul class="ticks">
+        <li><b>Home.</b> <span>The dashed diamonds are where the three dots of a written <span lang="ar">ش</span> sit, over its teeth.</span></li>
+        <li><b>Roamed.</b> <span>Each dot drifts up and ahead, the way Arabic is written, and shrinks as it goes: 15, 13, then 11 units across. The last dot is exactly one stroke wide.</span></li>
+        <li><b>One stroke, square ends.</b> <span>The first tooth stands taller and the baseline turns up at its end, so the shape reads as <span lang="ar">ش</span> and not as a comb.</span></li>
+        <li><b>Room and size.</b> <span>Keep one large dot of clear space on every side. The smallest use is 16 pixels, where the dots are still solid diamonds.</span></li>
+      </ul>
+    </div>
+
+    <div class="versions">
+      <figure><div class="vt" style="background:var(--paper);color:var(--ink);--mk-dot:var(--saffron-day)"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption><b>On paper</b>The primary version</figcaption></figure>
+      <figure><div class="vt" style="background:var(--night);color:var(--moon);--mk-dot:var(--saffron)"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption><b>On night</b>Night mode and dark icons</figcaption></figure>
+      <figure><div class="vt" style="background:var(--paper);color:var(--ink);--mk-dot:var(--ink)"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption><b>One color</b>Print, stamps, embossing</figcaption></figure>
+      <figure><div class="vt" style="background:var(--ink);color:var(--paper);--mk-dot:var(--paper)"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption><b>Reversed</b>Over photos and dark colors</figcaption></figure>
+    </div>
+
+    <div class="lockups">
+      <div class="lk">
+        <div class="lk-sample" dir="rtl" lang="ar"><svg aria-hidden="true"><use href="#mk-a"/></svg><span class="lk-ar">شوارد</span></div>
+        <div><h3>Arabic</h3><p>For the Arabic app and site. The mark sits at the start of the line, on the right, and its dots drift toward the name.</p></div>
+      </div>
+      <div class="lk">
+        <div class="lk-sample" dir="rtl" lang="ar"><svg aria-hidden="true"><use href="#mk-a"/></svg><div class="lk-stack"><div class="lk-ar">شوارد</div><div class="s" lang="en">SHAWARED</div></div></div>
+        <div><h3>Bilingual</h3><p>The main lockup, for app store pages, social profiles and anywhere both audiences meet.</p></div>
+      </div>
+      <div class="lk">
+        <div class="lk-sample" dir="ltr" lang="en"><svg aria-hidden="true"><use href="#mk-a"/></svg><div class="lk-stack"><div class="lk-lat">Shawared</div><div class="s2" lang="ar">شوارد</div></div></div>
+        <div><h3>English</h3><p>For the English interface. Reem Kufi also has Latin letters, so both names come from one family. The final wordmark is still a job for a letterer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="icons">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">الأيقونات</span><span class="en">Icons and artwork</span></h2>
+      <p>Paper is the default icon. Each platform also asks for its own variants, and lock screens and car displays need square artwork for every poem.</p>
+    </div>
+    <div class="icons">
+      <figure><div class="appicon" style="--s:120px"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption>iOS<br>light</figcaption></figure>
+      <figure><div class="appicon night" style="--s:120px"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption>iOS<br>dark</figcaption></figure>
+      <figure><div class="appicon round" style="--s:120px"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption>Android<br>adaptive</figcaption></figure>
+      <figure><div class="appicon round themed" style="--s:120px"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption>Android themed,<br>iOS tinted</figcaption></figure>
+      <figure><div class="appicon" style="--s:32px;border-radius:7px"><svg aria-hidden="true"><use href="#mk-a"/></svg></div><figcaption>Web<br>32</figcaption></figure>
+      <figure><div class="appicon" style="--s:16px;border-radius:4px"><svg aria-hidden="true" style="width:86%;height:86%"><use href="#mk-a"/></svg></div><figcaption>Favicon<br>16</figcaption></figure>
+    </div>
+    <div class="arts">
+      <div class="art" dir="rtl" lang="ar"><svg aria-hidden="true"><use href="#mk-a"/></svg><div><b>واحرّ قلباه</b><small>المتنبي</small></div></div>
+      <div class="art night" dir="rtl" lang="ar"><svg aria-hidden="true"><use href="#mk-a"/></svg><div><b>الخيل والليل</b><small>المتنبي</small></div></div>
+      <p>The app shows no cover art, but iOS and Android lock screens, CarPlay and Android Auto still expect a square image. Each poem gets one generated from its title, in day or night colors.</p>
+    </div>
+  </section>
+
+  <section id="color">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">الألوان</span><span class="en">Color</span></h2>
+      <p>Day is the default: ink on paper, like a printed diwan. Night keeps every role and changes only the ground. Saffron appears only where the nuqta does: the current verse, the playhead, and words that have a meaning.</p>
+    </div>
+    <div class="pal">
+      <h3 class="sub-h">Day <span>the default</span></h3>
+      <div class="swatches">
+        <div class="sw"><div class="c" style="background:var(--paper);color:var(--ink)" lang="ar">ورق</div><div class="meta"><b>Paper</b><span class="hex">#F3F0E8</span><span class="role">App background</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--fold);color:var(--ink)" lang="ar">طيّة</div><div class="meta"><b>Fold</b><span class="hex">#EAE5D8</span><span class="role">Commentary panels</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--ink);color:var(--paper)" lang="ar">حبر</div><div class="meta"><b>Ink</b><span class="hex">#1A2036</span><span class="role">The verse being recited</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--lead);color:var(--paper)" lang="ar">رصاص</div><div class="meta"><b>Lead</b><span class="hex">#666A7E</span><span class="role">Verses at rest</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--saffron-day);color:var(--paper)" lang="ar">زعفران</div><div class="meta"><b>Saffron</b><span class="hex">#B8650C</span><span class="role">The nuqta only</span></div></div>
+      </div>
+    </div>
+    <div class="pal">
+      <h3 class="sub-h">Night <span>one tap away</span></h3>
+      <div class="swatches">
+        <div class="sw"><div class="c" style="background:var(--night);color:var(--moon)" lang="ar">حبر الليل</div><div class="meta"><b>Night ink</b><span class="hex">#131A2E</span><span class="role">App background</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--dusk);color:var(--moon)" lang="ar">الغسق</div><div class="meta"><b>Dusk</b><span class="hex">#1B2440</span><span class="role">Commentary panels</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--moon);color:var(--night)" lang="ar">ضوء القمر</div><div class="meta"><b>Moonlight</b><span class="hex">#ECE5D3</span><span class="role">The verse being recited</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--ash);color:var(--night)" lang="ar">رماد</div><div class="meta"><b>Ash</b><span class="hex">#7A83A2</span><span class="role">Verses at rest</span></div></div>
+        <div class="sw"><div class="c" style="background:var(--saffron);color:var(--night)" lang="ar">زعفران</div><div class="meta"><b>Saffron</b><span class="hex">#E8A33C</span><span class="role">The nuqta only</span></div></div>
+      </div>
+    </div>
+    <p class="pal-note">Every text color reaches 4.5:1 against its ground in both modes, including verses at rest. Saffron never carries text, so in day mode it can stay bright instead of turning brown.</p>
+  </section>
+
+  <section id="type">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">الخط</span><span class="en">Type</span></h2>
+      <p>Four faces with separate jobs. Verses always carry full vowel marks, and English sits under them without competing.</p>
+    </div>
+    <div class="specimens">
+      <div class="spec">
+        <div class="lbl"><h3>Verse · Amiri</h3><p>A revival of the Bulaq Press naskh. On wide screens the two halves sit side by side around a caesura, as in a printed diwan.</p></div>
+        <div class="bayt-wide" lang="ar"><span>الخَيلُ وَاللَيلُ وَالبَيداءُ تَعرِفُني</span><i class="cz-big" aria-hidden="true"></i><span>وَالسَيفُ وَالرُمحُ وَالقِرطاسُ وَالقَلَمُ</span></div>
+      </div>
+      <div class="spec">
+        <div class="lbl"><h3>Translation · Newsreader</h3><p>Only needed if verse translations ship. A text face drawn for long reading on screens; each translation splits at the caesura so its halves line up with the Arabic.</p></div>
+        <p class="tr-sample">The horses, the night, and the desert know me, <span>and the sword, the spear, the page, and the pen.</span></p>
+      </div>
+      <div class="spec">
+        <div class="lbl"><h3>Interface · Readex Pro</h3><p>Arabic and Latin drawn together, so both interfaces share one rhythm.</p></div>
+        <div class="ui-sample">
+          <div class="row" dir="rtl" lang="ar"><span>الشرح</span><span>معاني الكلمات</span><span>البحر البسيط</span><span class="m">البيت ١٧ من ٣٨</span></div>
+          <div class="row"><span>Commentary</span><span>Word meanings</span><span>al-Basīṭ meter</span><span class="m">Verse 17 of 38</span></div>
+        </div>
+      </div>
+      <div class="spec">
+        <div class="lbl"><h3>Display · Reem Kufi</h3><p>Collection titles and the wordmark, in both scripts. Used large and sparingly.</p></div>
+        <div class="disp-sample"><span dir="rtl" lang="ar">لمن يسهرون الليلة</span><span class="l" dir="ltr">For the ones who stay up</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="phone-sec">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">على الهاتف</span><span class="en">On the phone · iOS and Android</span></h2>
+      <p>A working mockup with verses 15 to 23 of <span lang="ar">واحرّ قلباه</span>. Press play to watch the highlighting move half-verse by half-verse; there is no audio, the timing is simulated. iOS and Android share this layout and differ only in system details: the back gesture, lock-screen controls and the icon variants above.</p>
+    </div>
+    <div class="stage">
+      <div class="phone-col">
+        <div class="frame-ctrls">
+          <div class="seg" role="group" aria-label="Phone appearance" data-for="phone" data-k="theme"><button type="button" data-v="day" aria-pressed="true">Day · نهار</button><button type="button" data-v="night" aria-pressed="false">Night · ليل</button></div>
+          <div class="seg" role="group" aria-label="Phone language" data-for="phone" data-k="lang"><button type="button" data-v="ar" aria-pressed="true" lang="ar">العربية</button><button type="button" data-v="en" aria-pressed="false">English</button></div>
+          <div class="seg" role="group" aria-label="Phone verse translation" data-for="phone" data-k="tr"><button type="button" data-v="off" aria-pressed="true">No translation</button><button type="button" data-v="on" aria-pressed="false">Translation</button></div>
+        </div>
+        <div class="phone app" id="phone" dir="rtl" lang="ar" data-lang="ar">
+          <div class="ph-status" aria-hidden="true"><span data-o="clock">٩:٤١</span><span class="ph-island"></span><span class="ph-sig"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:10px"></i></span></div>
+          <div class="ph-top">
+            <button type="button" class="ic flip" data-sa="back" aria-label="رجوع"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+            <div class="ph-from"><span data-s="from">يُعرض من</span><b data-s="diwan">ديوان المتنبي</b></div>
+            <button type="button" class="ic" data-sa="more" aria-label="المزيد"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+          </div>
+          <div class="ph-meta">
+            <h3 lang="ar">واحرَّ قلباه</h3>
+            <p class="ttl-sub en-only" data-s="titleSub" lang="en"></p>
+            <div class="chips"><button type="button" class="chip" data-s="meter">البسيط</button><button type="button" class="chip" data-s="rhyme">قافية الميم</button><span class="chip ghost" data-s="count">٣٨ بيتًا</span></div>
+          </div>
+          <div class="verses" dir="rtl" lang="ar"></div>
+          <div class="ph-player">
+            <div class="ph-now"><span data-o="now" dir="auto"></span><span class="demo" data-s="demo" dir="auto"></span></div>
+            <div class="bar" role="slider" tabindex="0" data-sa="seek" aria-valuemin="0"><div class="fill"></div><div class="head"></div></div>
+            <div class="times"><span data-o="cur"></span><span data-o="tot"></span></div>
+            <div class="ctrls">
+              <button type="button" class="ic tog" data-act="repeat" data-sa="repeat" aria-pressed="false"><svg aria-hidden="true"><use href="#i-repeat"/></svg></button>
+              <button type="button" class="ic" data-act="prev" data-sa="prev"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+              <button type="button" class="play" data-act="play"></button>
+              <button type="button" class="ic" data-act="next" data-sa="next"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+              <button type="button" class="ic tog" data-act="sharh" data-sa="sharh" aria-pressed="true"><svg aria-hidden="true"><use href="#i-book"/></svg></button>
+            </div>
+          </div>
+          <div class="sheet" role="dialog" aria-hidden="true" data-sa="words">
+            <div class="grip"></div>
+            <div class="sh-head"><span class="sh-w" data-o="gw" lang="ar"></span><span class="sh-root" data-o="groot"></span><button type="button" class="ic" data-act="gclose" data-sa="close"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+            <p class="sh-m" data-o="gm"></p>
+            <p class="sh-ctx" data-o="gctx"></p>
+          </div>
+        </div>
+      </div>
+      <ul class="notes">
+        <li><b>Paper first.</b> <span>The day screen is set like a printed diwan: ink on paper, the nuqta in saffron. Night mode keeps every role and only changes the ground.</span></li>
+        <li><b>Staggered bayt.</b> <span>On a phone the sadr sits right and the 'ajuz sits left, the way printed diwans fit verses on a narrow page.</span></li>
+        <li><b>Half-verse highlighting.</b> <span>The half being recited is set in full ink, its partner stays half-lit, and a saffron nuqta replaces the verse number.</span></li>
+        <li><b>Words with a dot have a meaning.</b> <span>Tap <span class="ar-i" lang="ar">شَوارِدِها</span> to open its entry, with the root and the sense in this verse. Tapping anywhere else on a line jumps the recitation there.</span></li>
+        <li><b>The explanation lives under the verse.</b> <span>The book button shows the sharh of whichever verse is playing, so reading never stops the audio.</span></li>
+        <li><b>Controls move by verse.</b> <span>Previous and next jump a whole bayt instead of ten seconds. Repeat loops one bayt, for people memorizing a poem.</span></li>
+        <li><b>English without translating the verses.</b> <span>In English the verses stay in Arabic, while the commentary and word meanings switch to English. Verse translations are optional: turn them on to see each one under its verse, split at the caesura.</span></li>
+        <li><b>English mirrors everything but the poem.</b> <span>In English the whole interface runs left to right, progress bar and controls included. Arabic content keeps its own direction: the verses, the title and the glossed words.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="web-sec">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">على الويب</span><span class="en">On the web</span></h2>
+      <p>The same player at desktop size. It shares one clock with the phone above, so play on either drives both. This window starts in English; switch it with the toggle.</p>
+    </div>
+    <div class="web-col">
+      <div class="frame-ctrls">
+        <div class="seg" role="group" aria-label="Web appearance" data-for="web" data-k="theme"><button type="button" data-v="day" aria-pressed="true">Day · نهار</button><button type="button" data-v="night" aria-pressed="false">Night · ليل</button></div>
+        <div class="seg" role="group" aria-label="Web language" data-for="web" data-k="lang"><button type="button" data-v="ar" aria-pressed="false" lang="ar">العربية</button><button type="button" data-v="en" aria-pressed="true">English</button></div>
+        <div class="seg" role="group" aria-label="Web verse translation" data-for="web" data-k="tr"><button type="button" data-v="off" aria-pressed="true">No translation</button><button type="button" data-v="on" aria-pressed="false">Translation</button></div>
+      </div>
+      <div class="web app" id="web" dir="ltr" lang="en" data-lang="en">
+        <div class="web-chrome" aria-hidden="true">
+          <span class="lights"><i></i><i></i><i></i></span>
+          <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span data-o="url"></span></span>
+          <span class="lights" style="visibility:hidden"></span>
+        </div>
+        <div class="web-head">
+          <div class="web-logo"><svg aria-hidden="true"><use href="#mk-a"/></svg><span data-s="brand">Shawared</span></div>
+          <nav class="web-nav" aria-label="Sections"><span class="on" data-s="navDiscover"></span><span data-s="navPoets"></span><span data-s="navMeters"></span><span data-s="navLibrary"></span></nav>
+          <div class="web-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span data-s="search"></span></div>
+        </div>
+        <div class="web-main">
+          <div class="web-poem">
+            <div class="web-meta">
+              <div class="t">
+                <span class="web-from" data-s="diwan"></span>
+                <h3 lang="ar">واحرَّ قلباه</h3>
+                <p class="ttl-sub en-only" data-s="titleSub" lang="en"></p>
+              </div>
+              <div class="chips"><button type="button" class="chip" data-s="meter"></button><button type="button" class="chip" data-s="rhyme"></button><span class="chip ghost" data-s="count"></span></div>
+            </div>
+            <div class="verses" dir="rtl" lang="ar"></div>
+          </div>
+          <aside class="web-panel">
+            <div class="wp-card" hidden>
+              <div class="sh-head"><span class="sh-w" data-o="gw" lang="ar"></span><span class="sh-root" data-o="groot"></span><button type="button" class="ic" data-act="gclose" data-sa="close"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+              <p class="sh-m" data-o="gm"></p>
+              <p class="sh-ctx" data-o="gctx"></p>
+            </div>
+            <div class="wp-block" data-o="wpSharh"><h4><i class="nq"></i><span data-o="wpVerse"></span></h4><p data-o="wpSharhText"></p></div>
+            <div class="wp-block"><h4 data-s="words"></h4><div class="wp-chips" data-o="wpChips"></div></div>
+          </aside>
+        </div>
+        <div class="web-player">
+          <div class="wpl-now">
+            <div class="wpl-art"><svg aria-hidden="true"><use href="#mk-a"/></svg></div>
+            <div class="tx"><b lang="ar">واحرَّ قلباه</b><span class="sub"><span data-s="poet"></span> · <span data-o="now"></span></span></div>
+          </div>
+          <div class="wpl-mid">
+            <div class="ctrls">
+              <button type="button" class="ic tog" data-act="repeat" data-sa="repeat" aria-pressed="false"><svg aria-hidden="true"><use href="#i-repeat"/></svg></button>
+              <button type="button" class="ic" data-act="prev" data-sa="prev"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+              <button type="button" class="play" data-act="play"></button>
+              <button type="button" class="ic" data-act="next" data-sa="next"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+              <button type="button" class="ic tog" data-act="sharh" data-sa="sharh" aria-pressed="true"><svg aria-hidden="true"><use href="#i-book"/></svg></button>
+            </div>
+            <div class="wpl-bar"><span data-o="cur"></span><div class="bar" role="slider" tabindex="0" data-sa="seek" aria-valuemin="0"><div class="fill"></div><div class="head"></div></div><span data-o="tot"></span></div>
+          </div>
+          <div class="wpl-end"><span class="demo" data-s="demo"></span></div>
+        </div>
+      </div>
+      <ul class="web-notes">
+        <li><b>Halves face each other.</b><span>With room to spare, the bayt is set the way diwans print it: sadr and 'ajuz side by side across the caesura.</span></li>
+        <li><b>Commentary in a side panel.</b><span>The sharh and the word meanings stay open while you listen. Tapping a dotted word shows its entry at the top.</span></li>
+        <li><b>Every verse has an address.</b><span>The URL follows the playing verse, so a shared link can open the poem at a single bayt.</span></li>
+        <li><b>Narrow windows fold up.</b><span>Below tablet width the panel tucks away and the verses stagger again, as on the phone.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="next">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">الخطوة التالية</span><span class="en">Next decisions</span></h2>
+    </div>
+    <ul class="decide">
+      <li><b>Final wordmark</b><span>Commission an Arabic letterer to draw <span lang="ar">شوارد</span> with the mark's diamond dots, plus a Latin companion.</span></li>
+      <li><b>Verse translations</b><span>Optional. English readers already get the commentary and word meanings in English; the toggles show the screen with and without translations. Copyright is parked for later.</span></li>
+      <li><b>Recordings</b><span>Who recites, and who owns the recordings. This shapes the catalogue more than any design choice.</span></li>
+      <li><b>Sync data</b><span>Every half-verse needs a start time. Forced alignment can make a first pass from audio and text; a person then checks it.</span></li>
+      <li><b>Tech stack</b><span>One codebase for iOS, Android and web, or native apps. Whatever we pick has to set Arabic with full vowel marks cleanly.</span></li>
+    </ul>
+  </section>
+
+  <footer>Draft 0.3 for shawared.com. Poem text: al-Mutanabbi, public domain, checked against Arabic Wikisource. English translations, commentary summaries and word meanings are drafts written for this mockup. There is no audio.</footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var AR = '٠١٢٣٤٥٦٧٨٩';
+  function dg(v, l){ v = String(v); return l === 'ar' ? v.replace(/[0-9]/g, function(d){ return AR[+d]; }) : v; }
+  function fmt(s, l){ s = Math.max(0, Math.floor(s)); var m = Math.floor(s / 60), r = s % 60; return dg(m + ':' + (r < 10 ? '0' + r : r), l); }
+  function norm(w){ return w.replace(/[ـً-ٰ]/g, '').replace(/[.,،؛]/g, ''); }
+  function tpl(s, o){ return s.replace(/\{(\w+)\}/g, function(_, k){ return o[k]; }); }
+  function el(tag, cls){ var e = document.createElement(tag); if (cls) e.className = cls; return e; }
+  function each(list, fn){ Array.prototype.forEach.call(list, fn); }
+
+  var STR = {
+    ar:{ brand:'شوارد', from:'يُعرض من', diwan:'ديوان المتنبي', poet:'المتنبي', titleSub:'', meter:'البسيط', rhyme:'قافية الميم', count:'٣٨ بيتًا',
+      now:'البيت {n} من {N}', verse:'البيت {n}', demo:'مقطع تجريبي بلا صوت', sharh:'الشرح', words:'معاني الكلمات',
+      root:'الجذر: {r}', ctx:'من البيت {n} · {half}', sadr:'الصدر', ajuz:'العَجُز', meaning:'معنى {w}',
+      navDiscover:'اكتشف', navPoets:'الشعراء', navMeters:'البحور', navLibrary:'مكتبتي', search:'ابحث عن بيت أو شاعر',
+      back:'رجوع', more:'المزيد', repeat:'تكرار البيت', prev:'البيت السابق', next:'البيت التالي', play:'تشغيل', pause:'إيقاف مؤقت',
+      close:'إغلاق', seek:'موضع التشغيل', versesLabel:'أبيات القصيدة', of:'{a} من {b}', url:'shawared.com/mutanabbi/wahrra-qalbah/{n}' },
+    en:{ brand:'Shawared', from:'Playing from', diwan:'Diwan of al-Mutanabbi', poet:'al-Mutanabbi', titleSub:'Wā ḥarra qalbāh · “How my heart burns”', meter:'al-Basīṭ', rhyme:'Rhymes on mīm', count:'38 verses',
+      now:'Verse {n} of {N}', verse:'Verse {n}', demo:'Demo · no audio', sharh:'Commentary', words:'Word meanings',
+      root:'Root {r}', ctx:'Verse {n} · {half}', sadr:'first half', ajuz:'second half', meaning:'Meaning of {w}',
+      navDiscover:'Discover', navPoets:'Poets', navMeters:'Meters', navLibrary:'Library', search:'Search a verse or a poet',
+      back:'Back', more:'More', repeat:'Repeat verse', prev:'Previous verse', next:'Next verse', play:'Play', pause:'Pause',
+      close:'Close', seek:'Playback position', versesLabel:'Verses of the poem', of:'{a} of {b}', url:'shawared.com/en/mutanabbi/wahrra-qalbah/{n}' }
+  };
+
+  var GL = {
+    jam:{w:'الجَمْع', r:'ج م ع', ar:'الجماعة من الناس. والمراد مَن حضر مجلس سيف الدولة من الشعراء والحُسّاد.', en:'The gathering: here, the poets and rivals present at Sayf al-Dawla’s court.'},
+    samam:{w:'الصَّمَم', r:'ص م م', ar:'ذهاب السمع. يقول: شعري يُسمِع حتى مَن فقد سمعه.', en:'Deafness. His poetry makes even the deaf hear.'},
+    jufun:{w:'مِلءَ جُفوني', r:'ج ف ن', ar:'الجفون أغطية العين. ونام مِلءَ جفونه: نام نومًا عميقًا هانئًا لا يقلقه شيء.', en:'Literally “filling my eyelids”: sleeping deeply, with nothing to trouble you.'},
+    shawarid:{w:'شَوارِد', r:'ش ر د', ar:'جمع شارِدة، وهي النافرة الذاهبة في الأرض. والمراد أبياته السائرة في الناس، وكلماته الغريبة التي تحتاج إلى شرح.', en:'Plural of shārida, an animal that bolts and roams far from the herd. Here, his verses that travel among people, and his rare words that need explaining.'},
+    jarra:{w:'جَرّاها', r:'ج ر ر', ar:'من أجلها وبسببها.', en:'Because of them; on their account.'},
+    khasm:{w:'يَختَصِم', r:'خ ص م', ar:'يتنازع الناس ويتجادلون في معانيها ورواياتها.', en:'Quarrel: people argue over the verses’ meanings and wordings.'},
+    farrasa:{w:'فَرّاسَة', r:'ف ر س', ar:'كثيرة الافتراس، صيغة مبالغة. يشبّه بطشه بمن تمادى في جهله ببطش الأسد.', en:'That mauls and tears; an intensive form. His punishment of the fool is likened to a lion’s attack.'},
+    nab:{w:'نُيوب', r:'ن ي ب', ar:'جمع ناب، وهو السنّ الحادّة خلف الرَّباعية.', en:'Fangs; plural of nāb, a canine tooth.'},
+    layth:{w:'اللَّيث', r:'ل ي ث', ar:'من أسماء الأسد.', en:'One of the Arabic names for the lion.'},
+    bariza:{w:'بارِزة', r:'ب ر ز', ar:'ظاهرة مكشوفة.', en:'Showing; laid bare.'},
+    muhja:{w:'مُهْجة', r:'م ه ج', ar:'الروح، وقيل دم القلب. والمعنى: رُبَّ روحِ عدوٍّ كان همُّه أن يقتلني.', en:'The soul, or the heart’s blood. Many an enemy whose one aim was to take my life.'},
+    jawad:{w:'جَواد', r:'ج و د', ar:'الفرس السريع الكريم.', en:'A swift, noble horse.'},
+    haram:{w:'حَرَم', r:'ح ر م', ar:'ما يُحمى ويُؤمَن فيه. أي: مَن ركب ظهر هذا الفرس أمِن كأنه في الحرم.', en:'A sanctuary, where no one may be harmed. Whoever rides this horse is as safe as in the Sanctuary.'},
+    rakd:{w:'الرَّكْض', r:'ر ك ض', ar:'العَدْو والجري الشديد.', en:'Galloping; running hard.'},
+    murhaf:{w:'مُرْهَف', r:'ر ه ف', ar:'السيف المرقَّق الحدّ، أي القاطع.', en:'A sword thinned to a keen edge.'},
+    jahfal:{w:'الجَحْفَلان', r:'ج ح ف ل', ar:'مثنّى جَحْفَل، وهو الجيش الكثير. أي: بين الجيشين.', en:'Dual of jaḥfal, a vast army: between the two armies.'},
+    latm:{w:'يَلْتَطِم', r:'ل ط م', ar:'يضرب بعضه بعضًا، كما تتلاطم الأمواج.', en:'Crashing into one another, as waves do.'},
+    bayda:{w:'البَيْداء', r:'ب ي د', ar:'الصحراء الواسعة التي يَهلِك فيها السالك.', en:'The open desert, where travellers can perish.'},
+    qirtas:{w:'القِرْطاس', r:'ق ر ط س', ar:'الصحيفة أو الورق الذي يُكتب فيه.', en:'A sheet of paper or parchment to write on.'}
+  };
+  var MAP = {'الجمع':'jam','صمم':'samam','جفوني':'jufun','شواردها':'shawarid','جراها':'jarra','ويختصم':'khasm','فراسة':'farrasa','نيوب':'nab','الليث':'layth','بارزة':'bariza','ومهجة':'muhja','بجواد':'jawad','حرم':'haram','الركض':'rakd','ومرهف':'murhaf','الجحفلين':'jahfal','يلتطم':'latm','والبيداء':'bayda','والقرطاس':'qirtas'};
+
+  var ABYAT = [
+    {n:15, s:'سَيَعلَمُ الجَمعُ مِمَّن ضَمَّ مَجلِسُنا', a:'بِأَنَّني خَيرُ مَن تَسعى بِهِ قَدَمُ',
+      tr:['All who are gathered in our company will learn', 'that I am the best of any who walk on feet.'],
+      sh:'سيعرف كلُّ مَن حضر مجلسنا هذا أنني خيرُ مَن مشى على قدم. فخرٌ يردّ به على الحُسّاد الحاضرين في مجلس سيف الدولة.',
+      she:'Everyone at this gathering will learn that I am the best man who walks the earth. A boast aimed at the jealous poets and rivals present at Sayf al-Dawla’s court.'},
+    {n:16, s:'أَنا الَّذي نَظَرَ الأَعمى إِلى أَدَبي', a:'وَأَسمَعَت كَلِماتي مَن بِهِ صَمَمُ',
+      tr:['I am the one whose art the blind have seen,', 'whose words have reached the ears of the deaf.'],
+      sh:'أدبي ظاهرٌ حتى كأن الأعمى يراه، وشعري نافذٌ حتى كأن الأصمّ يسمعه. مبالغةٌ في شيوع شعره وقوة أثره.',
+      she:'My art is so plain that even the blind can see it, and my poetry so strong that even the deaf can hear it: an exaggeration of how far his verse has spread.'},
+    {n:17, s:'أَنامُ مِلءَ جُفوني عَن شَوارِدِها', a:'وَيَسهَرُ الخَلقُ جَرّاها وَيَختَصِمُ',
+      tr:['I sleep soundly, unconcerned with my roaming verses,', 'while people stay up all night over them, arguing.'],
+      sh:'أقول الشعر ثم أنام قرير العين، لا تشغلني أبياتي السائرة ولا كلماتي النادرة، بينما يسهر الناس في حفظها وتفسيرها ويختلفون في معانيها.',
+      she:'I compose my poems and then sleep content, untroubled by the verses that roam among people or by my rare words, while others stay up memorizing and explaining them and arguing over what they mean.'},
+    {n:18, s:'وَجاهِلٍ مَدَّهُ في جَهلِهِ ضَحِكي', a:'حَتّى أَتَتهُ يَدٌ فَرّاسَةٌ وَفَمُ',
+      tr:['Many a fool my laughter let run on in his folly,', 'until a mauling hand, and a mouth, came for him.'],
+      sh:'ورُبَّ جاهلٍ أغراه تبسّمي وإغضائي عنه فتمادى في جهله، حتى أخذته مني يدٌ تبطش به كالأسد وفمٌ ينهشه. وقيل: الفم هنا لسانه بالهجاء.',
+      she:'Many a fool took my smiles and patience as weakness and went further in his folly, until a hand that strikes like a lion’s, and a mouth, took hold of him. Some commentators read the mouth as his tongue in satire.'},
+    {n:19, s:'إِذا رَأَيتَ نُيوبَ اللَيثِ بارِزَةً', a:'فَلا تَظُنَّنَّ أَنَّ اللَيثَ يَبتَسِمُ',
+      tr:['When you see the lion’s fangs laid bare,', 'do not suppose the lion is smiling.'],
+      sh:'يُتمّ معنى البيت السابق: إذا رأيت أنياب الأسد ظاهرة فلا تحسبه يبتسم لك، فهو يتهيأ للافتراس. وكذلك ضحكه للجاهل ليس رضًا.',
+      she:'This completes the verse before it. When you see a lion’s fangs showing, don’t think it is smiling at you; it is about to strike. His laughter at the fool was never approval either.'},
+    {n:20, s:'وَمُهجَةٍ مُهجَتي مِن هَمِّ صاحِبِها', a:'أَدرَكتُها بِجَوادٍ ظَهرُهُ حَرَمُ',
+      tr:['Many a life whose owner’s one care was my life', 'I overtook on a steed whose back is a sanctuary.'],
+      sh:'ورُبَّ روحِ عدوٍّ كان همُّ صاحبها أن يقتلني، لحقتُ بها على فرسٍ سريع، مَن ركب ظهره أمِن كأنه في الحرم.',
+      she:'Many an enemy whose one aim was to kill me, I caught up with on a swift horse. Whoever rides on its back is as safe as someone in a sanctuary.'},
+    {n:21, s:'رِجلاهُ في الرَكضِ رِجلٌ وَاليَدانِ يَدٌ', a:'وَفِعلُهُ ما تُريدُ الكَفُّ وَالقَدَمُ',
+      tr:['At the gallop his hind legs strike as one, his forelegs as one,', 'and he does whatever hand and heel would have.'],
+      sh:'يصف سرعة فرسه: تقع رجلاه معًا ويداه معًا من شدة العَدْو، ويفعل ما يريده فارسه بيده وقدمه.',
+      she:'He describes his horse’s speed. At full gallop its hind legs land together and its forelegs land together, and it does whatever its rider asks with hand and heel.'},
+    {n:22, s:'وَمُرهَفٍ سِرتُ بَينَ الجَحفَلَينِ بِهِ', a:'حَتّى ضَرَبتُ وَمَوجُ المَوتِ يَلتَطِمُ',
+      tr:['Many a keen blade I carried between the two armies', 'until I struck, as the waves of death crashed.'],
+      sh:'ورُبَّ سيفٍ قاطع سرتُ به بين الجيشين حتى ضربتُ به، والموت حولي كالموج يضرب بعضه بعضًا.',
+      she:'Many a keen sword I carried between the two armies until I struck with it, while death surged around me like waves crashing together.'},
+    {n:23, s:'الخَيلُ وَاللَيلُ وَالبَيداءُ تَعرِفُني', a:'وَالسَيفُ وَالرُمحُ وَالقِرطاسُ وَالقَلَمُ',
+      tr:['The horses, the night, and the desert know me,', 'and the sword, the spear, the page, and the pen.'],
+      sh:'تشهد لي الخيل والليل والصحراء بالفروسية والسُّرى، ويشهد السيف والرمح بشجاعتي، والقرطاس والقلم بشعري وأدبي.',
+      she:'The horses, the night, and the desert bear witness to my horsemanship and my night journeys; the sword and spear to my courage; the page and pen to my poetry.'}
+  ];
+  var TOTAL_ABYAT = 38;
+
+  ABYAT.forEach(function(b){
+    b.gl = [];
+    [b.s, b.a].forEach(function(txt, h){ txt.split(' ').forEach(function(w){ var k = MAP[norm(w)]; if (k) b.gl.push({k:k, h:h}); }); });
+  });
+
+  // simulated timing: each half-verse lasts in proportion to its letters, with a breath after each bayt
+  var halves = [], acc = 0;
+  ABYAT.forEach(function(b, i){
+    [b.s, b.a].forEach(function(txt, h){
+      var len = norm(txt).replace(/\s/g, '').length, dur = 0.9 + len * 0.16;
+      halves.push({i:i, h:h, start:acc, end:acc + dur}); acc += dur;
+    });
+    acc += 0.7;
+  });
+  var TOTAL = acc;
+  function bStart(i){ return halves[i * 2].start; }
+  function bEnd(i){ return halves[i * 2 + 1].end; }
+  function halfAt(x){ for (var k = halves.length - 1; k >= 0; k--) { if (x >= halves[k].start) return k; } return 0; }
+
+  var PLAY = '<svg aria-hidden="true"><use href="#i-play"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4.2" height="14" rx="1.3"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.3"/></svg>';
+
+  var t = halves[4].start + 1.2, playing = false, repeat = false, showSharh = true;
+  var curHalf = -1, curBayt = -1, raf = 0, last = 0;
+
+  function makeView(root, kind){
+    var v = {root:root, kind:kind, lang:root.getAttribute('data-lang') || 'ar', gl:null, lastFocus:null,
+      verses:root.querySelector('.verses'), bar:root.querySelector('.bar'), fill:root.querySelector('.fill'), head:root.querySelector('.head'),
+      bayt:[], half:[], trh:[], nums:[], sharh:[], shLab:[], shTxt:[], gEls:[]};
+    ABYAT.forEach(function(b, i){
+      var d = el('div', 'bayt'); d.setAttribute('data-i', i);
+      var num = el('span', 'num'); num.setAttribute('aria-hidden', 'true'); d.appendChild(num); v.nums.push(num);
+      var row = el('div', 'hrow');
+      [b.s, b.a].forEach(function(txt, h){
+        var p = el('p', 'h ' + (h ? 'ajuz' : 'sadr')); p.setAttribute('data-k', i * 2 + h);
+        var words = txt.split(' ');
+        words.forEach(function(w, wi){
+          var key = MAP[norm(w)];
+          if (key) {
+            var s = el('span', 'g'); s.textContent = w; s.setAttribute('data-g', key); s.tabIndex = 0; s.setAttribute('role', 'button');
+            p.appendChild(s); v.gEls.push(s);
+          } else p.appendChild(document.createTextNode(w));
+          if (wi < words.length - 1) p.appendChild(document.createTextNode(' '));
+        });
+        row.appendChild(p); v.half.push(p);
+        if (!h) { var cz = el('i', 'cz'); cz.setAttribute('aria-hidden', 'true'); row.appendChild(cz); }
+      });
+      d.appendChild(row);
+      var tr = el('p', 'tr'); tr.lang = 'en'; tr.dir = 'ltr';
+      b.tr.forEach(function(x, h){
+        var s = el('span', 'trh'); s.textContent = x; s.setAttribute('data-k', i * 2 + h);
+        tr.appendChild(s); if (!h) tr.appendChild(document.createTextNode(' ')); v.trh.push(s);
+      });
+      d.appendChild(tr);
+      if (kind === 'phone') {
+        var sh = el('div', 'sharh'); sh.hidden = true;
+        var lab = el('b'), tx = el('span');
+        sh.appendChild(lab); sh.appendChild(tx); d.appendChild(sh);
+        v.sharh.push(sh); v.shLab.push(lab); v.shTxt.push(tx);
+      }
+      v.verses.appendChild(d); v.bayt.push(d);
+    });
+    return v;
+  }
+
+  var phone = makeView(document.getElementById('phone'), 'phone');
+  var web = makeView(document.getElementById('web'), 'web');
+  var VIEWS = [phone, web];
+
+  function q(v, sel){ return v.root.querySelectorAll(sel); }
+  function setText(v, sel, txt){ each(q(v, sel), function(e){ e.textContent = txt; }); }
+
+  function chipState(v){
+    each(q(v, '[data-chip]'), function(c){ c.setAttribute('aria-pressed', String(!!(v.gl && v.gl.k === c.getAttribute('data-chip')))); });
+  }
+  function panel(v){
+    if (v.kind !== 'web' || curBayt < 0) return;
+    var l = v.lang, S = STR[l], b = ABYAT[curBayt];
+    setText(v, '[data-o="wpVerse"]', tpl(S.verse, {n:dg(b.n, l)}) + ' · ' + S.sharh);
+    setText(v, '[data-o="wpSharhText"]', l === 'ar' ? b.sh : b.she);
+    var box = v.root.querySelector('[data-o="wpChips"]'); box.textContent = '';
+    b.gl.forEach(function(g){
+      var c = el('button'); c.type = 'button'; c.lang = 'ar';
+      c.setAttribute('data-chip', g.k); c.setAttribute('data-h', g.h);
+      c.textContent = GL[g.k].w; box.appendChild(c);
+    });
+    chipState(v);
+  }
+  function labels(v){
+    if (curBayt < 0) return;
+    var l = v.lang, n = ABYAT[curBayt].n;
+    setText(v, '[data-o="now"]', tpl(STR[l].now, {n:dg(n, l), N:dg(TOTAL_ABYAT, l)}));
+    setText(v, '[data-o="url"]', tpl(STR[l].url, {n:n}));
+    panel(v);
+  }
+
+  function scrollToBayt(v, i, smooth){
+    var c = v.verses, b = v.bayt[i];
+    if (!b || !c.clientHeight) return;
+    var top = b.offsetTop - (c.clientHeight - b.offsetHeight) / 2;
+    c.scrollTo({top:Math.max(0, top), behavior:(smooth && !reduce) ? 'smooth' : 'auto'});
+  }
+  function render(smooth){
+    var k = halfAt(t);
+    if (k !== curHalf) {
+      VIEWS.forEach(function(v){
+        if (curHalf >= 0) { v.half[curHalf].classList.remove('on'); v.trh[curHalf].classList.remove('on'); }
+        v.half[k].classList.add('on'); v.trh[k].classList.add('on');
+      });
+      curHalf = k;
+      var bi = halves[k].i;
+      if (bi !== curBayt) {
+        var prev = curBayt; curBayt = bi;
+        VIEWS.forEach(function(v){
+          if (prev >= 0) { v.bayt[prev].classList.remove('on'); if (v.sharh[prev]) v.sharh[prev].hidden = true; }
+          v.bayt[bi].classList.add('on'); if (v.sharh[bi]) v.sharh[bi].hidden = !showSharh;
+          labels(v); scrollToBayt(v, bi, smooth);
+        });
+      }
+    }
+    var pct = Math.min(100, t / TOTAL * 100);
+    VIEWS.forEach(function(v){
+      v.fill.style.width = pct + '%'; v.head.style.insetInlineStart = pct + '%';
+      setText(v, '[data-o="cur"]', fmt(t, v.lang));
+      v.bar.setAttribute('aria-valuenow', Math.round(t));
+      v.bar.setAttribute('aria-valuetext', tpl(STR[v.lang].of, {a:fmt(t, v.lang), b:fmt(TOTAL, v.lang)}));
+    });
+  }
+  function frame(ts){
+    if (!playing) return;
+    if (last) t += Math.min(0.25, (ts - last) / 1000);
+    last = ts;
+    if (repeat && curBayt >= 0 && t >= bEnd(curBayt) + 0.5) t = bStart(curBayt);
+    if (t >= TOTAL) { t = TOTAL - 0.001; render(true); setPlaying(false); return; }
+    render(true);
+    raf = requestAnimationFrame(frame);
+  }
+  function playBtns(){
+    VIEWS.forEach(function(v){
+      each(q(v, '[data-act="play"]'), function(b){ b.innerHTML = playing ? PAUSE : PLAY; b.setAttribute('aria-label', STR[v.lang][playing ? 'pause' : 'play']); });
+    });
+  }
+  function setPlaying(p){
+    playing = p; playBtns(); cancelAnimationFrame(raf);
+    if (p) { if (t >= TOTAL - 0.05) t = 0; last = 0; raf = requestAnimationFrame(frame); }
+  }
+  function seek(x){ t = Math.max(0, Math.min(TOTAL - 0.001, x)); last = 0; render(true); }
+  function toggles(){
+    VIEWS.forEach(function(v){
+      each(q(v, '[data-act="repeat"]'), function(b){ b.setAttribute('aria-pressed', String(repeat)); });
+      each(q(v, '[data-act="sharh"]'), function(b){ b.setAttribute('aria-pressed', String(showSharh)); });
+      if (v.sharh[curBayt]) v.sharh[curBayt].hidden = !showSharh;
+      var ws = v.root.querySelector('[data-o="wpSharh"]'); if (ws) ws.hidden = !showSharh;
+    });
+  }
+
+  function fillGloss(v){
+    var g = v.gl, e = GL[g.k], l = v.lang, S = STR[l];
+    setText(v, '[data-o="gw"]', e.w);
+    setText(v, '[data-o="groot"]', tpl(S.root, {r:e.r}));
+    setText(v, '[data-o="gm"]', l === 'ar' ? e.ar : e.en);
+    setText(v, '[data-o="gctx"]', tpl(S.ctx, {n:dg(ABYAT[g.bi].n, l), half:S[g.h ? 'ajuz' : 'sadr']}));
+    each(q(v, '[data-o="gm"], [data-o="gctx"]'), function(p){ p.lang = l; });
+  }
+  function openGloss(v, k, bi, h, src){
+    v.gl = {k:k, bi:bi, h:h}; fillGloss(v);
+    if (v.kind === 'phone') {
+      var sh = v.root.querySelector('.sheet'); sh.classList.add('open'); sh.setAttribute('aria-hidden', 'false');
+      v.lastFocus = src || null;
+      try { sh.querySelector('[data-act="gclose"]').focus({preventScroll:true}); } catch (e) {}
+    } else {
+      v.root.querySelector('.wp-card').hidden = false; chipState(v);
+      v.root.querySelector('.web-panel').scrollTop = 0;
+    }
+  }
+  function closeGloss(v){
+    v.gl = null;
+    if (v.kind === 'phone') {
+      var sh = v.root.querySelector('.sheet'); sh.classList.remove('open'); sh.setAttribute('aria-hidden', 'true');
+      if (v.lastFocus) { try { v.lastFocus.focus({preventScroll:true}); } catch (e) {} }
+    } else { v.root.querySelector('.wp-card').hidden = true; chipState(v); }
+  }
+  function glossFrom(v, g){ openGloss(v, g.getAttribute('data-g'), +g.closest('.bayt').getAttribute('data-i'), g.closest('.h').classList.contains('ajuz') ? 1 : 0, g); }
+
+  function segState(v, k, val){
+    each(document.querySelectorAll('.seg[data-for="' + v.root.id + '"][data-k="' + k + '"] button'), function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === val)); });
+  }
+  function applyTr(v, on){ v.root.classList.toggle('show-tr', on); segState(v, 'tr', on ? 'on' : 'off'); }
+  function applyTheme(v, night){ v.root.classList.toggle('is-night', night); segState(v, 'theme', night ? 'night' : 'day'); }
+  function applyLang(v, l){
+    var S = STR[l]; v.lang = l;
+    v.root.setAttribute('data-lang', l); v.root.setAttribute('lang', l); v.root.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    each(q(v, '[data-s]'), function(e){ e.textContent = S[e.getAttribute('data-s')]; });
+    each(q(v, '[data-sa]'), function(e){ e.setAttribute('aria-label', S[e.getAttribute('data-sa')]); });
+    v.verses.setAttribute('aria-label', S.versesLabel);
+    v.nums.forEach(function(n, i){ n.textContent = dg(ABYAT[i].n, l); });
+    v.shLab.forEach(function(b){ b.textContent = S.sharh; });
+    v.shTxt.forEach(function(x, i){ x.textContent = l === 'ar' ? ABYAT[i].sh : ABYAT[i].she; });
+    v.sharh.forEach(function(s){ s.dir = l === 'ar' ? 'rtl' : 'ltr'; s.lang = l; });
+    v.gEls.forEach(function(g){ g.setAttribute('aria-label', tpl(S.meaning, {w:g.textContent})); });
+    setText(v, '[data-o="clock"]', dg('9:41', l));
+    setText(v, '[data-o="tot"]', fmt(TOTAL, l));
+    setText(v, '[data-o="cur"]', fmt(t, l));
+    v.bar.setAttribute('aria-valuemax', Math.round(TOTAL));
+    labels(v); playBtns();
+    if (v.gl) fillGloss(v);
+    segState(v, 'lang', l);
+    each(document.querySelectorAll('.seg[data-for="' + v.root.id + '"][data-k="tr"]'), function(sg){ sg.setAttribute('aria-disabled', String(l === 'ar')); });
+  }
+
+  function isRtl(v){ return getComputedStyle(v.bar).direction === 'rtl'; }
+  function seekFromX(v, x){ var r = v.bar.getBoundingClientRect(); seek((isRtl(v) ? r.right - x : x - r.left) / r.width * TOTAL); }
+  VIEWS.forEach(function(v){
+    v.root.addEventListener('click', function(e){
+      var a = e.target.closest('[data-act]');
+      if (a) {
+        var n = a.getAttribute('data-act');
+        if (n === 'play') setPlaying(!playing);
+        else if (n === 'prev') { var into = t - bStart(curBayt); seek(into > 1.5 ? bStart(curBayt) : bStart(Math.max(0, curBayt - 1))); }
+        else if (n === 'next') seek(bStart(Math.min(ABYAT.length - 1, curBayt + 1)));
+        else if (n === 'repeat') { repeat = !repeat; toggles(); }
+        else if (n === 'sharh') { showSharh = !showSharh; toggles(); scrollToBayt(phone, curBayt, true); }
+        else if (n === 'gclose') closeGloss(v);
+        return;
+      }
+      var c = e.target.closest('[data-chip]');
+      if (c) { openGloss(v, c.getAttribute('data-chip'), curBayt, +c.getAttribute('data-h'), c); return; }
+      var g = e.target.closest('.g');
+      if (g) { glossFrom(v, g); return; }
+      var h = e.target.closest('.h, .trh');
+      if (h) seek(halves[+h.getAttribute('data-k')].start);
+    });
+    v.root.addEventListener('keydown', function(e){
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('g')) { e.preventDefault(); glossFrom(v, e.target); }
+      else if (e.key === 'Escape' && v.gl) closeGloss(v);
+    });
+    v.bar.addEventListener('pointerdown', function(e){
+      try { v.bar.setPointerCapture(e.pointerId); } catch (err) {}
+      seekFromX(v, e.clientX);
+      function mv(ev){ seekFromX(v, ev.clientX); }
+      function up(){ v.bar.removeEventListener('pointermove', mv); v.bar.removeEventListener('pointerup', up); v.bar.removeEventListener('pointercancel', up); }
+      v.bar.addEventListener('pointermove', mv); v.bar.addEventListener('pointerup', up); v.bar.addEventListener('pointercancel', up);
+    });
+    v.bar.addEventListener('keydown', function(e){
+      var step = isRtl(v) ? {ArrowLeft:5, ArrowRight:-5} : {ArrowLeft:-5, ArrowRight:5};
+      if (e.key in step) { seek(t + step[e.key]); e.preventDefault(); }
+      else if (e.key === 'Home') { seek(0); e.preventDefault(); }
+      else if (e.key === 'End') { seek(TOTAL); e.preventDefault(); }
+    });
+  });
+
+  each(document.querySelectorAll('.seg'), function(seg){
+    var v = seg.getAttribute('data-for') === 'phone' ? phone : web, k = seg.getAttribute('data-k');
+    seg.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      var val = b.getAttribute('data-v');
+      if (k === 'lang') { applyLang(v, val); scrollToBayt(v, curBayt, false); }
+      else if (k === 'tr') { applyTr(v, val === 'on'); scrollToBayt(v, curBayt, false); }
+      else applyTheme(v, val === 'night');
+    });
+  });
+
+  render(false);
+  applyTheme(phone, false); applyTheme(web, false);
+  applyTr(phone, false); applyTr(web, false);
+  applyLang(phone, 'ar'); applyLang(web, 'en');
+  toggles();
+  openGloss(web, 'shawarid', 2, 0, null);
+  function rescroll(){ VIEWS.forEach(function(v){ scrollToBayt(v, curBayt, false); }); }
+  rescroll();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rescroll);
+})();
+</script>
+</body>
+</html>

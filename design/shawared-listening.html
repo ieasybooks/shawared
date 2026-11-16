@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shawared Listening</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Readex+Pro:wght@300;400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap">
+<style>
+/* Draft 0.4: the listening experience. Same tokens as the identity page (draft 0.3); this page only adds the reading rules. */
+:root{
+  --bg:#EFEBE2; --surface:#F9F7F2; --line:#DDD6C8; --fg:#1A2036; --muted:#5B6078; --accent:#B8650C; --frame:#05070D;
+  --f-verse:"Amiri","Scheherazade New","Noto Naskh Arabic","Times New Roman",serif;
+  --f-tr:"Newsreader","Iowan Old Style",Georgia,serif;
+  --f-ui:"Readex Pro","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --f-kufi:"Reem Kufi","Noto Kufi Arabic","Readex Pro",sans-serif;
+  --t-xs:.8125rem; --t-s:.9375rem; --t-m:1.125rem; --t-l:1.5rem;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#0E1424; --surface:#161E35; --line:#26304F; --fg:#ECE5D3; --muted:#8F97B2; --accent:#E8A33C; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --bg:#0E1424; --surface:#161E35; --line:#26304F; --fg:#ECE5D3; --muted:#8F97B2; --accent:#E8A33C; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--f-ui); font-size:var(--t-s); line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:40px 72px;
+}
+.wrap{max-width:1080px; margin:0 auto; display:flex; flex-direction:column; gap:80px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+p{margin:0}
+[hidden]{display:none !important}
+
+/* page head */
+.hero{display:grid; gap:22px}
+.brand{display:flex; align-items:center; gap:12px; direction:rtl; width:fit-content}
+.brand svg{width:44px; height:44px; color:var(--fg); --mk-dot:var(--accent)}
+.brand span{font-family:var(--f-kufi); font-weight:600; font-size:2rem; line-height:1}
+.eyebrow{font-size:var(--t-xs); letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+.hero h1{margin:0; font-size:clamp(1.6rem,4vw,2.3rem); font-weight:500; line-height:1.25; text-wrap:balance; max-width:26ch}
+.lede{font-size:var(--t-m); line-height:1.6; max-width:64ch; color:var(--muted)}
+.decided{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px}
+.decided li{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 14px 13px 36px; position:relative; line-height:1.45}
+.decided li::before{content:""; position:absolute; left:15px; top:19px; width:8px; height:8px; background:var(--accent); transform:rotate(45deg)}
+.decided b{display:block; font-weight:500}
+.decided span{color:var(--muted); font-size:var(--t-xs)}
+
+section{display:grid; gap:26px}
+.sec-head{display:grid; gap:10px; max-width:68ch}
+.sec-head h2{margin:0; font-size:var(--t-l); font-weight:500; line-height:1.3; display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.sec-head h2::before{content:""; width:9px; height:9px; background:var(--accent); transform:rotate(45deg); flex:none}
+.sec-head h2 .ar{font-family:var(--f-kufi); font-weight:600; font-size:1.15em}
+.sec-head h2 .en{color:var(--muted); font-weight:400; font-size:.8em}
+.sec-head p{color:var(--muted)}
+
+/* controls outside the frames */
+.frame-ctrls{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+.seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; background:var(--surface)}
+.seg button{font:inherit; font-size:var(--t-xs); border:0; background:none; color:var(--muted); padding:6px 14px; border-radius:999px; cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--bg); color:var(--fg); box-shadow:inset 0 0 0 1px var(--line)}
+
+/* what the rules are doing right now, shown under each frame */
+.demo-status{display:grid; gap:5px; justify-items:center; text-align:center; font-size:var(--t-xs); color:var(--muted); min-height:3.6em}
+.demo-status > span{display:inline-flex; align-items:center; gap:8px}
+.demo-status i{width:7px; height:7px; transform:rotate(45deg); border:1.5px solid var(--muted); flex:none}
+.demo-status .on i{background:var(--accent); border-color:var(--accent)}
+.demo-status .on{color:var(--fg)}
+
+.stage{display:grid; grid-template-columns:minmax(0,360px) minmax(0,1fr); gap:56px; align-items:start}
+.phone-col, .web-col{display:grid; justify-items:center; gap:14px}
+.try{margin:0; padding:0; list-style:none; counter-reset:try; display:grid; gap:16px; max-width:52ch; padding-top:52px}
+.try li{counter-increment:try; position:relative; padding-inline-start:36px}
+.try li::before{content:counter(try); position:absolute; inset-inline-start:0; top:0; width:24px; height:24px; border-radius:50%; border:1px solid var(--line); background:var(--surface); display:grid; place-items:center; font-size:12px; color:var(--muted)}
+.try b{font-weight:500}
+.try span{color:var(--muted)}
+.try .ar-i{font-family:var(--f-verse); font-size:1.15em; color:var(--fg)}
+@media (max-width:880px){ .stage{grid-template-columns:1fr; gap:32px} .try{padding-top:0; max-width:none} }
+
+/* ---------- the app, shared by phone and web ---------- */
+.app{
+  --a-bg:#F3F0E8; --a-raise:#FFFDF8; --a-fold:#EAE5D8; --a-fg:#1A2036; --a-partner:#434A69; --a-rest:#666A7E; --a-muted:#5A6283;
+  --a-accent:#B8650C; --a-line:#E0D9CB; --a-line2:#CDC5B4; --a-chrome:#E6E1D5; --a-shadow:rgba(26,32,54,.16);
+  background:var(--a-bg); color:var(--a-fg); font-family:var(--f-ui);
+  transition:background-color .4s, color .4s;
+}
+.app.is-night{
+  --a-bg:#131A2E; --a-raise:#1B2440; --a-fold:#212B4A; --a-fg:#ECE5D3; --a-partner:#A9AFC6; --a-rest:#7A83A2; --a-muted:#8F97B2;
+  --a-accent:#E8A33C; --a-line:#27304C; --a-line2:#3A4570; --a-chrome:#0D1322; --a-shadow:rgba(4,6,16,.5);
+}
+.app :focus-visible{outline:2px solid var(--a-accent); outline-offset:2px}
+.app[data-lang="ar"] .en-only{display:none}
+.app[dir="ltr"] .flip svg, .app[dir="ltr"] [data-act="prev"] svg, .app[dir="ltr"] [data-act="next"] svg{transform:scaleX(-1)}
+.ic{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background:none; border:0; color:var(--a-muted); cursor:pointer; position:relative; padding:0; flex:none}
+.ic svg{width:22px; height:22px}
+.nq{display:inline-block; width:6px; height:6px; background:var(--a-accent); transform:rotate(45deg); flex:none}
+.chips{display:flex; gap:6px; flex-wrap:wrap; align-items:center}
+.chip{font:inherit; font-size:12px; padding:2px 11px; border-radius:999px; border:1px solid var(--a-line); background:none; color:var(--a-muted); cursor:pointer}
+.chip.ghost{border-color:transparent; cursor:default; padding-inline:4px}
+.ttl-sub{font-family:var(--f-tr); font-style:italic; font-size:14px; color:var(--a-muted); line-height:1.4}
+
+/* the translation switch: only shown when the reader's language has a translation */
+.trp{margin-inline-start:auto; display:inline-flex; align-items:center; gap:7px; font:inherit; font-size:12px; padding:3px 12px 3px 10px; border-radius:999px; border:1px solid var(--a-line); background:none; color:var(--a-muted); cursor:pointer}
+.trp::before{content:""; width:7px; height:7px; border:1.5px solid currentColor; transform:rotate(45deg); flex:none}
+.trp[aria-pressed="true"]{color:var(--a-fg); border-color:var(--a-accent)}
+.trp[aria-pressed="true"]::before{background:var(--a-accent); border-color:var(--a-accent)}
+
+/* verses */
+.verses{
+  flex:1; min-height:0; overflow-y:auto; position:relative; scrollbar-width:none; overscroll-behavior:contain; outline:none;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 88%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 88%,transparent 100%);
+}
+.verses::-webkit-scrollbar{display:none}
+.bayt{position:relative; padding-block:8px; padding-inline:32px 6px; border-radius:14px; cursor:pointer; transition:background-color .3s}
+.bayt.pin{background:var(--a-fold); box-shadow:inset 0 0 0 1px var(--a-line)}
+.num{position:absolute; inset-inline-start:2px; top:14px; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; border:0; padding:0; background:none; font:inherit; font-size:11px; color:var(--a-rest); font-variant-numeric:tabular-nums; cursor:pointer; transition:background-color .2s, color .3s}
+.num .n, .num .pi{grid-area:1/1}
+.num .pi{width:13px; height:13px; color:var(--a-fg); opacity:0; transition:opacity .2s}
+.num::after{content:""; grid-area:1/1; width:8px; height:8px; background:var(--a-accent); transform:rotate(45deg) scale(0); transition:transform .3s}
+.bayt.on .num .n{opacity:0}
+.bayt.on .num::after{transform:rotate(45deg) scale(1)}
+.num:hover, .num:focus-visible{background:color-mix(in srgb,var(--a-fg) 9%,transparent)}
+.num:hover .n, .num:focus-visible .n{opacity:0}
+.num:hover .pi, .num:focus-visible .pi{opacity:1}
+.bayt .num:hover::after, .bayt .num:focus-visible::after{transform:rotate(45deg) scale(0)}
+.h{margin:0; font-family:var(--f-verse); font-size:19.5px; line-height:2.05; color:var(--a-rest); transition:color .35s}
+.bayt.on .h{color:var(--a-partner)}
+.bayt.on .h.on{color:var(--a-fg)}
+.cz{display:none}
+.g{position:relative; border-radius:5px; cursor:pointer}
+.g::after{content:""; position:absolute; left:50%; bottom:-.02em; width:4px; height:4px; background:var(--a-accent); transform:translateX(-50%) rotate(45deg); opacity:.55}
+.h.on .g::after{opacity:1}
+.g:hover{background:color-mix(in srgb,var(--a-accent) 16%,transparent)}
+.trl, .trs{margin:0; font-family:var(--f-tr); font-size:14px; line-height:1.45; color:var(--a-rest); text-wrap:balance; transition:color .35s}
+.app:not(.show-tr) .trl, .app:not(.show-tr) .trs{display:none}
+.bayt.on .trl{color:var(--a-partner)}
+.bayt.on .trl.on, .bayt.on .trs{color:var(--a-fg)}
+
+/* progress and controls */
+.bar{position:relative; height:20px; cursor:pointer; touch-action:none}
+.bar::before{content:""; position:absolute; left:0; right:0; top:50%; height:3px; margin-top:-1.5px; border-radius:2px; background:var(--a-line)}
+.fill{position:absolute; inset-inline-start:0; top:50%; height:3px; margin-top:-1.5px; border-radius:2px; background:var(--a-accent)}
+.head{position:absolute; top:50%; width:12px; height:12px; margin-top:-6px; margin-inline-start:-6px; background:var(--a-accent); transform:rotate(45deg); border-radius:1px}
+.ctrls{display:flex; justify-content:space-between; align-items:center; padding-inline:2px}
+.ctrls .ic{color:var(--a-fg)}
+.ctrls .ic.tog{color:var(--a-muted)}
+.ctrls .ic.tog[aria-pressed="true"]{color:var(--a-accent)}
+.ctrls .ic.tog[aria-pressed="true"]::after{content:""; position:absolute; left:50%; bottom:3px; width:4px; height:4px; background:var(--a-accent); transform:translateX(-50%) rotate(45deg)}
+.play{width:60px; height:60px; border-radius:50%; border:0; background:var(--a-fg); color:var(--a-bg); display:grid; place-items:center; cursor:pointer; padding:0; flex:none}
+.play svg{width:24px; height:24px}
+.demo{color:var(--a-muted)}
+
+/* the explanation: one block, used by the phone sheet and the web side panel */
+.ex{display:grid; align-content:start; gap:12px}
+.ex-head{display:flex; align-items:center; gap:8px; min-height:34px}
+.ex-title{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500}
+.sp{flex:1}
+.np{font:inherit; font-size:12px; display:inline-flex; align-items:center; gap:6px; border:1px solid var(--a-accent); color:var(--a-accent); background:none; border-radius:999px; padding:3px 12px; cursor:pointer; white-space:nowrap}
+.np svg{width:12px; height:12px}
+.app[dir="ltr"] .np svg{transform:scaleX(-1)}
+.ex-bayt{margin:0; padding:8px 14px; border-radius:12px; background:var(--a-fold); font-family:var(--f-verse); font-size:17px; line-height:1.95; color:var(--a-rest)}
+.ex-bayt p{margin:0}
+.ex-bayt .sadr{text-align:start; padding-inline-end:10%}
+.ex-bayt .ajuz{text-align:end; padding-inline-start:10%}
+.ex-bayt.live p{color:var(--a-partner)}
+.ex-bayt.live p.on{color:var(--a-fg)}
+.ex-src{display:flex; gap:6px; flex-wrap:wrap}
+.ex-src button{font:inherit; font-size:12.5px; padding:3px 13px; border-radius:999px; border:1px solid var(--a-line); background:none; color:var(--a-muted); cursor:pointer}
+.ex-src button[aria-pressed="true"]{color:var(--a-fg); border-color:var(--a-accent); box-shadow:inset 0 0 0 1px var(--a-accent)}
+.ex-body{font-size:14px; line-height:1.9}
+.ex-words{display:grid; gap:0; margin-top:4px}
+.ex-words h4{margin:0 0 4px; font-size:12px; font-weight:500; color:var(--a-muted)}
+.ex-words ul{list-style:none; margin:0; padding:0; display:grid}
+.ex-words li{display:grid; gap:1px; padding-block:9px; border-top:1px solid var(--a-line)}
+.xw{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.xw b{font-family:var(--f-verse); font-weight:700; font-size:20px; line-height:1.5}
+.xw span{font-size:11px; color:var(--a-muted); border:1px solid var(--a-line); border-radius:999px; padding:0 9px}
+.ex-words p{font-size:13px; line-height:1.75; color:var(--a-muted)}
+.ex-bayt, .ex-src, .ex-body, .ex-words{transition:opacity .16s}
+.ex.fade .ex-bayt, .ex.fade .ex-src, .ex.fade .ex-body, .ex.fade .ex-words{opacity:.1}
+
+/* word card */
+.sh-head{display:flex; align-items:center; gap:12px}
+.sh-w{font-family:var(--f-verse); font-size:31px; font-weight:700; line-height:1.55}
+.sh-root{font-size:12px; color:var(--a-muted); border:1px solid var(--a-line); border-radius:999px; padding:1px 10px; white-space:nowrap}
+.sh-head .ic{margin-inline-start:auto}
+.sh-m{font-size:14px; line-height:1.85}
+.sh-ctx{font-size:12px; color:var(--a-muted); margin-top:8px}
+
+/* phone */
+.phone{
+  position:relative; width:100%; max-width:360px; height:760px; border-radius:46px; border:10px solid var(--frame);
+  overflow:hidden; display:flex; flex-direction:column; box-shadow:0 40px 80px -34px rgba(4,6,16,.5), 0 0 0 1px var(--line);
+}
+.ph-status{display:flex; justify-content:space-between; align-items:center; padding:10px 24px 0; height:36px; font-size:12px; font-weight:500; flex:none}
+.ph-island{width:96px; height:26px; border-radius:14px; background:var(--frame)}
+.ph-sig{display:flex; gap:3px; align-items:flex-end}
+.ph-sig i{display:block; width:3px; background:currentColor; border-radius:1px}
+.ph-top{display:flex; align-items:center; justify-content:space-between; padding:6px 8px 0; flex:none}
+.ph-from{text-align:center; font-size:11px; color:var(--a-muted); line-height:1.5}
+.ph-from b{display:block; color:var(--a-fg); font-weight:500; font-size:13px}
+.ph-meta{padding:4px 20px 2px; display:grid; gap:5px; flex:none}
+.ph-meta h3{margin:0; font-family:var(--f-verse); font-weight:700; font-size:26px; line-height:1.35}
+.ph-title{display:flex; align-items:center; gap:10px}
+.phone .verses{padding:34px 12px 50px}
+.phone .h.sadr{text-align:start; padding-inline-end:8%}
+.phone .h.ajuz{text-align:end; padding-inline-start:8%}
+.phone.show-tr .h.sadr, .phone.show-tr .h.ajuz{text-align:center; padding-inline:0}
+.phone .trl, .phone .trs{text-align:center; margin:-5px 0 7px}
+.peek{flex:none; display:grid; gap:1px; width:100%; text-align:start; font:inherit; color:inherit; border:0; border-top:1px solid var(--a-line); background:var(--a-fold); padding:8px 18px 10px; cursor:pointer; touch-action:none}
+.pk-h{display:flex; align-items:center; gap:8px; font-size:11px; color:var(--a-muted)}
+.pk-h svg{width:16px; height:16px; margin-inline-start:auto}
+.pk-t{display:block; font-size:13px; line-height:1.6; color:var(--a-fg); overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+.ph-player{flex:none; padding:8px 18px 14px; display:grid; gap:5px; border-top:1px solid var(--a-line); background:var(--a-bg); position:relative; z-index:5}
+.ph-now{display:flex; justify-content:space-between; gap:8px; font-size:11px; color:var(--a-muted)}
+.times{display:flex; justify-content:space-between; font-size:11px; color:var(--a-muted); font-variant-numeric:tabular-nums; margin-top:-6px}
+.exsheet{
+  position:absolute; left:0; right:0; top:82px; bottom:var(--pl-h,150px); z-index:4; background:var(--a-raise);
+  border-radius:22px 22px 0 0; box-shadow:0 -14px 40px var(--a-shadow); display:flex; flex-direction:column;
+  transform:translateY(calc(100% + 40px)); visibility:hidden;
+  transition:transform .34s cubic-bezier(.2,.8,.2,1), visibility 0s linear .34s;
+}
+.exsheet.open{transform:none; visibility:visible; transition:transform .34s cubic-bezier(.2,.8,.2,1), visibility 0s}
+.grip-btn{flex:none; display:block; width:100%; height:22px; border:0; background:none; cursor:pointer; padding:8px 0 0}
+.grip{display:block; width:38px; height:4px; border-radius:2px; background:var(--a-line2); margin:0 auto}
+.exsheet .ex{flex:1; min-height:0; overflow-y:auto; padding:2px 20px 22px; overscroll-behavior:contain}
+.sheet{
+  position:absolute; left:0; right:0; bottom:0; z-index:6; background:var(--a-raise); border-radius:24px 24px 0 0;
+  padding:10px 22px 26px; box-shadow:0 -16px 44px var(--a-shadow); transform:translateY(105%); visibility:hidden;
+  transition:transform .34s cubic-bezier(.2,.8,.2,1), visibility 0s linear .34s;
+}
+.sheet.open{transform:none; visibility:visible; transition:transform .34s cubic-bezier(.2,.8,.2,1), visibility 0s}
+.sheet .grip{margin-bottom:10px}
+@media (max-width:420px){ .phone{max-width:none; border-width:0; border-radius:0; height:100svh; box-shadow:none} }
+
+/* web */
+.web{width:100%; height:740px; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; border:1px solid var(--line); box-shadow:0 30px 70px -38px rgba(4,6,16,.45)}
+.web-chrome{flex:none; height:38px; display:flex; align-items:center; gap:12px; padding:0 14px; background:var(--a-chrome); border-bottom:1px solid var(--a-line); direction:ltr}
+.lights{display:flex; gap:6px; flex:none; width:58px}
+.lights i{width:10px; height:10px; border-radius:50%; background:var(--a-line2)}
+.url{flex:0 1 460px; min-width:0; margin-inline:auto; height:24px; border-radius:7px; background:var(--a-bg); color:var(--a-muted); font-size:12px; display:flex; align-items:center; justify-content:center; gap:6px; white-space:nowrap; overflow:hidden; padding:0 10px}
+.url svg{width:11px; height:11px; flex:none}
+.url span, .web-search span{min-width:0; overflow:hidden; text-overflow:ellipsis}
+.web-head{flex:none; height:56px; display:flex; align-items:center; gap:28px; padding:0 22px; border-bottom:1px solid var(--a-line)}
+.web-logo{display:flex; align-items:center; gap:9px; flex:none}
+.web-logo svg{width:28px; height:28px; color:var(--a-fg); --mk-dot:var(--a-accent)}
+.web-logo span{font-family:var(--f-kufi); font-weight:600; font-size:21px; line-height:1}
+.web-nav{display:flex; gap:22px; font-size:14px; color:var(--a-muted)}
+.web-nav .on{color:var(--a-fg)}
+.web-search{margin-inline-start:auto; display:flex; align-items:center; gap:8px; height:34px; padding:0 14px; border-radius:999px; border:1px solid var(--a-line); color:var(--a-muted); font-size:13px; width:250px; min-width:0; white-space:nowrap; overflow:hidden}
+.web-search svg{width:15px; height:15px; flex:none}
+.web-main{flex:1; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 340px}
+.web-poem{min-height:0; display:flex; flex-direction:column; border-inline-end:1px solid var(--a-line)}
+.web-meta{flex:none; padding:16px 36px 0; display:grid; gap:4px}
+.web-from{font-size:12px; color:var(--a-muted)}
+.web-meta h3{margin:0; font-family:var(--f-verse); font-weight:700; font-size:28px; line-height:1.4}
+.web .verses{padding:34px 30px 90px}
+.web .bayt{padding-block:10px; padding-inline:44px 14px}
+.web .hrow{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:22px; align-items:start}
+.web .hcol{text-align:center}
+.web .h{text-align:center; font-size:22px}
+.web .cz{display:block; width:6px; height:6px; background:var(--a-line2); transform:rotate(45deg); margin-top:21px}
+.web .bayt.on .cz{background:var(--a-partner)}
+.web .num{top:19px}
+.web .trl{text-align:center; font-size:14.5px; margin-top:-4px}
+.web .trs{text-align:center; font-size:14.5px; margin-top:2px; padding-inline:6%}
+.web-panel{min-height:0; overflow-y:auto; padding:14px 22px 24px; display:flex; flex-direction:column; gap:14px}
+.wp-card{background:var(--a-raise); border:1px solid var(--a-line); border-radius:16px; padding:8px 14px 14px; box-shadow:0 6px 20px -12px var(--a-shadow)}
+.wp-card .sh-w{font-size:27px}
+.wp-card .ic{width:34px; height:34px}
+.wp-card .ic svg{width:18px; height:18px}
+.wp-card .sh-m{font-size:13.5px; line-height:1.75}
+.web-player{flex:none; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr); align-items:center; gap:24px; padding:8px 22px 10px; border-top:1px solid var(--a-line)}
+.wpl-now{display:flex; align-items:center; gap:12px; min-width:0}
+.wpl-art{width:46px; height:46px; border-radius:9px; flex:none; display:grid; place-items:center; background:var(--a-fold); color:var(--a-fg); --mk-dot:var(--a-accent)}
+.wpl-art svg{width:30px; height:30px}
+.wpl-now .tx{min-width:0}
+.wpl-now b{display:block; font-family:var(--f-verse); font-weight:700; font-size:17px; line-height:1.5}
+.wpl-now .sub{display:block; font-size:12px; color:var(--a-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.wpl-mid{display:grid; min-width:0}
+.web .ctrls{justify-content:center; gap:14px}
+.web .ctrls .ic{width:38px; height:38px}
+.web .ctrls .ic svg{width:20px; height:20px}
+.web .play{width:42px; height:42px}
+.web .play svg{width:18px; height:18px}
+.wpl-bar{display:flex; align-items:center; gap:10px; font-size:11px; color:var(--a-muted); font-variant-numeric:tabular-nums}
+.wpl-bar .bar{flex:1}
+.wpl-end{justify-self:end; font-size:12px; color:var(--a-muted); text-align:end}
+.web-notes{justify-self:stretch; margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px 28px}
+.web-notes li{position:relative; padding-inline-start:22px}
+.web-notes li::before{content:""; position:absolute; inset-inline-start:2px; top:.62em; width:7px; height:7px; background:var(--accent); transform:rotate(45deg)}
+.web-notes b{font-weight:500; display:block}
+.web-notes span{color:var(--muted)}
+@media (max-width:960px){
+  .web-main{grid-template-columns:1fr; grid-template-rows:minmax(0,1fr) 260px}
+  .web-panel{border-top:1px solid var(--a-line)}
+  .web-poem{border:0}
+  .web-nav{display:none}
+}
+@media (max-width:640px){
+  .web{height:700px}
+  .web-head{gap:14px; padding:0 14px}
+  .web-search{width:auto; flex:1}
+  .lights{width:auto}
+  .url{justify-content:flex-start}
+  .web-meta{padding:12px 16px 0}
+  .web .verses{padding:26px 10px 70px}
+  .web .bayt{padding-inline:32px 6px}
+  .web .hrow{display:block}
+  .web .h{font-size:19px}
+  .web .cz{display:none}
+  .web .num{top:14px}
+  .web-player{grid-template-columns:1fr; gap:4px; padding:6px 14px 10px}
+  .wpl-now, .wpl-end{display:none}
+}
+footer{color:var(--muted); font-size:var(--t-xs); border-top:1px solid var(--line); padding-top:20px}
+@media (prefers-reduced-motion: reduce){ .app, .app *{transition:none !important} }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mk-a" viewBox="7 -3 104 104">
+      <path d="M93.5 50V80.5H26V66M73.5 58V80.5M53.5 58V80.5" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/>
+      <polygon points="58,30.5 65.5,38 58,45.5 50.5,38" style="fill:var(--mk-dot,#B8650C)"/>
+      <polygon points="40,20.5 46.5,27 40,33.5 33.5,27" style="fill:var(--mk-dot,#B8650C)"/>
+      <polygon points="24,11.5 29.5,17 24,22.5 18.5,17" style="fill:var(--mk-dot,#B8650C)"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2v13.6a1 1 0 0 0 1.53.85l10.5-6.8a1 1 0 0 0 0-1.7L9.53 4.35A1 1 0 0 0 8 5.2z"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/></g></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><g fill="currentColor"><rect x="17" y="5" width="2.4" height="14" rx="1.2"/><path d="M5 5.6v12.8a1 1 0 0 0 1.5.86l9.6-6.4a1 1 0 0 0 0-1.72L6.5 4.74A1 1 0 0 0 5 5.6z"/></g></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><g fill="currentColor"><rect x="4.6" y="5" width="2.4" height="14" rx="1.2"/><path d="M19 5.6v12.8a1 1 0 0 1-1.5.86l-9.6-6.4a1 1 0 0 1 0-1.72l9.6-6.4A1 1 0 0 1 19 5.6z"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 7l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="brand" lang="ar"><svg aria-hidden="true"><use href="#mk-a"/></svg><span>شوارد</span></div>
+    <p class="eyebrow">Shawared · listening experience · draft 0.4, November 2026</p>
+    <h1>How verses, translations and explanations behave while you listen</h1>
+    <p class="lede">Two working mockups of the same screen, phone and web, sharing one clock. They use verses 15 to 23 of <span lang="ar">واحرّ قلباه</span>. There's no sound yet: the timing is simulated, so press play and watch the highlighting move.</p>
+    <ul class="decided">
+      <li><b>The Arabic is always on screen</b><span>Translations and explanations sit around it, never instead of it</span></li>
+      <li><b>Translation under each line</b><span>Shown by default in English, with a switch to hide it</span></li>
+      <li><b>Tap a verse</b><span>Opens its explanation; the recitation keeps going</span></li>
+      <li><b>Tap a verse number</b><span>Plays from that verse</span></li>
+      <li><b>Tap a word with a ◆</b><span>Opens its meaning</span></li>
+      <li><b>Scrolling pauses following</b><span>For 5 seconds after you stop, as in Faqieh</span></li>
+      <li><b>The explanation follows the recitation</b><span>Until you open a verse yourself</span></li>
+      <li><b>Several explanations</b><span>A switch appears only when there's more than one</span></li>
+    </ul>
+  </header>
+
+  <section id="phone-sec">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">على الهاتف</span><span class="en">On the phone · iOS and Android</span></h2>
+      <p>This frame starts in Arabic, which has two explanations per verse. Switch it to English to see the translations.</p>
+    </div>
+    <div class="stage">
+      <div class="phone-col">
+        <div class="frame-ctrls">
+          <div class="seg" role="group" aria-label="Phone appearance" data-for="phone" data-k="theme"><button type="button" data-v="day" aria-pressed="true">Day · نهار</button><button type="button" data-v="night" aria-pressed="false">Night · ليل</button></div>
+          <div class="seg" role="group" aria-label="Phone language" data-for="phone" data-k="lang"><button type="button" data-v="ar" aria-pressed="true" lang="ar">العربية</button><button type="button" data-v="en" aria-pressed="false">English</button></div>
+        </div>
+        <div class="phone app" id="phone" dir="rtl" lang="ar" data-lang="ar">
+          <div class="ph-status" aria-hidden="true"><span data-o="clock">٩:٤١</span><span class="ph-island"></span><span class="ph-sig"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:10px"></i></span></div>
+          <div class="ph-top">
+            <button type="button" class="ic flip" data-sa="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            <div class="ph-from"><span data-s="from"></span><b data-s="diwan"></b></div>
+            <button type="button" class="ic" data-sa="more"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+          </div>
+          <div class="ph-meta">
+            <div class="ph-title"><h3 lang="ar">واحرَّ قلباه</h3><button type="button" class="trp" data-act="tr" data-s="translation" aria-pressed="true"></button></div>
+            <p class="ttl-sub en-only" data-s="titleSub" lang="en"></p>
+            <div class="chips"><button type="button" class="chip" data-s="meter"></button><button type="button" class="chip" data-s="rhyme"></button><span class="chip ghost" data-s="count"></span></div>
+          </div>
+          <div class="verses" dir="rtl" lang="ar" tabindex="0"></div>
+          <button type="button" class="peek" data-act="expand" data-sa="expand"><span class="pk-h"><i class="nq"></i><span data-o="pkVerse"></span><svg aria-hidden="true"><use href="#i-up"/></svg></span><span class="pk-t" data-o="pkText"></span></button>
+          <div class="ph-player">
+            <div class="ph-now"><span data-o="now" dir="auto"></span><span class="demo" data-s="demo" dir="auto"></span></div>
+            <div class="bar" role="slider" tabindex="0" data-sa="seek" aria-valuemin="0"><div class="fill"></div><div class="head"></div></div>
+            <div class="times"><span data-o="cur"></span><span data-o="tot"></span></div>
+            <div class="ctrls">
+              <button type="button" class="ic tog" data-act="repeat" data-sa="repeat" aria-pressed="false"><svg aria-hidden="true"><use href="#i-repeat"/></svg></button>
+              <button type="button" class="ic" data-act="prev" data-sa="prev"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+              <button type="button" class="play" data-act="play"></button>
+              <button type="button" class="ic" data-act="next" data-sa="next"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+              <span class="ic" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="exsheet" role="dialog" aria-hidden="true" data-sa="explDialog">
+            <button type="button" class="grip-btn" data-act="collapse" data-sa="collapse"><span class="grip"></span></button>
+            <div class="ex"></div>
+          </div>
+          <div class="sheet" role="dialog" aria-hidden="true" data-sa="words">
+            <div class="grip"></div>
+            <div class="sh-head"><span class="sh-w" data-o="gw" lang="ar"></span><span class="sh-root" data-o="groot"></span><button type="button" class="ic" data-act="gclose" data-sa="close"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+            <p class="sh-m" data-o="gm"></p>
+            <p class="sh-ctx" data-o="gctx"></p>
+          </div>
+        </div>
+        <p class="demo-status" data-status="phone"><span data-st="scroll"><i></i><span></span></span><span data-st="panel"><i></i><span></span></span></p>
+      </div>
+      <ol class="try">
+        <li><b>Press play.</b> <span>The playing half-verse turns full ink, and the list keeps it centred.</span></li>
+        <li><b>Scroll the verses yourself.</b> <span>Following pauses. Five seconds after you stop, it glides back to the playing verse. The line under the phone shows the countdown.</span></li>
+        <li><b>Tap a verse.</b> <span>Its explanation opens over the verses while the recitation carries on. The verse is shaded so you know which one you're reading.</span></li>
+        <li><b>Let it play on.</b> <span>The explanation stays on your verse and offers “<span lang="ar">البيت الحالي</span> / Now playing” to catch up.</span></li>
+        <li><b>Tap a verse number.</b> <span>Playback jumps to that verse and everything follows again. On a mouse, hovering a number shows ▶.</span></li>
+        <li><b>Tap <span class="ar-i" lang="ar">شَوارِدِها</span> or any word with a ◆.</b> <span>Its meaning opens without stopping the audio.</span></li>
+        <li><b>Switch the explanation.</b> <span>Arabic has two here, <span lang="ar">مختصر</span> and <span lang="ar">مفصّل</span>. English has one, so it shows no switch.</span></li>
+        <li><b>Switch to English.</b> <span>Each line gets its translation underneath. Verses 19 and 23 use a one-sentence translation for the whole bayt. The “Translation” switch hides them.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="web-sec">
+    <div class="sec-head">
+      <h2><span class="ar" lang="ar">على الويب</span><span class="en">On the web</span></h2>
+      <p>The same rules at desktop size. The explanation stays open beside the verses instead of sliding up. This window starts in English.</p>
+    </div>
+    <div class="web-col">
+      <div class="frame-ctrls">
+        <div class="seg" role="group" aria-label="Web appearance" data-for="web" data-k="theme"><button type="button" data-v="day" aria-pressed="true">Day · نهار</button><button type="button" data-v="night" aria-pressed="false">Night · ليل</button></div>
+        <div class="seg" role="group" aria-label="Web language" data-for="web" data-k="lang"><button type="button" data-v="ar" aria-pressed="false" lang="ar">العربية</button><button type="button" data-v="en" aria-pressed="true">English</button></div>
+      </div>
+      <div class="web app" id="web" dir="ltr" lang="en" data-lang="en">
+        <div class="web-chrome" aria-hidden="true">
+          <span class="lights"><i></i><i></i><i></i></span>
+          <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span data-o="url"></span></span>
+          <span class="lights" style="visibility:hidden"></span>
+        </div>
+        <div class="web-head">
+          <div class="web-logo"><svg aria-hidden="true"><use href="#mk-a"/></svg><span data-s="brand"></span></div>
+          <nav class="web-nav" aria-label="Sections"><span class="on" data-s="navDiscover"></span><span data-s="navPoets"></span><span data-s="navMeters"></span><span data-s="navLibrary"></span></nav>
+          <div class="web-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><span data-s="search"></span></div>
+        </div>
+        <div class="web-main">
+          <div class="web-poem">
+            <div class="web-meta">
+              <span class="web-from" data-s="diwan"></span>
+              <h3 lang="ar">واحرَّ قلباه</h3>
+              <p class="ttl-sub en-only" data-s="titleSub" lang="en"></p>
+              <div class="chips"><button type="button" class="chip" data-s="meter"></button><button type="button" class="chip" data-s="rhyme"></button><span class="chip ghost" data-s="count"></span><button type="button" class="trp" data-act="tr" data-s="translation" aria-pressed="true"></button></div>
+            </div>
+            <div class="verses" dir="rtl" lang="ar" tabindex="0"></div>
+          </div>
+          <aside class="web-panel">
+            <div class="wp-card" hidden>
+              <div class="sh-head"><span class="sh-w" data-o="gw" lang="ar"></span><span class="sh-root" data-o="groot"></span><button type="button" class="ic" data-act="gclose" data-sa="close"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+              <p class="sh-m" data-o="gm"></p>
+              <p class="sh-ctx" data-o="gctx"></p>
+            </div>
+            <div class="ex"></div>
+          </aside>
+        </div>
+        <div class="web-player">
+          <div class="wpl-now">
+            <div class="wpl-art"><svg aria-hidden="true"><use href="#mk-a"/></svg></div>
+            <div class="tx"><b lang="ar">واحرَّ قلباه</b><span class="sub"><span data-s="poet"></span> · <span data-o="now"></span></span></div>
+          </div>
+          <div class="wpl-mid">
+            <div class="ctrls">
+              <button type="button" class="ic tog" data-act="repeat" data-sa="repeat" aria-pressed="false"><svg aria-hidden="true"><use href="#i-repeat"/></svg></button>
+              <button type="button" class="ic" data-act="prev" data-sa="prev"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+              <button type="button" class="play" data-act="play"></button>
+              <button type="button" class="ic" data-act="next" data-sa="next"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+              <span class="ic" aria-hidden="true"></span>
+            </div>
+            <div class="wpl-bar"><span data-o="cur"></span><div class="bar" role="slider" tabindex="0" data-sa="seek" aria-valuemin="0"><div class="fill"></div><div class="head"></div></div><span data-o="tot"></span></div>
+          </div>
+          <div class="wpl-end"><span class="demo" data-s="demo"></span></div>
+        </div>
+      </div>
+      <p class="demo-status" data-status="web"><span data-st="scroll"><i></i><span></span></span><span data-st="panel"><i></i><span></span></span></p>
+      <ul class="web-notes">
+        <li><b>Halves side by side.</b><span>With room to spare, sadr and 'ajuz face each other as in a printed diwan, and each translation sits under its own half.</span></li>
+        <li><b>The explanation stays open.</b><span>The side panel follows the playing verse. Click a verse to hold the panel on it; “Now playing” or a verse number releases it.</span></li>
+        <li><b>Word meanings in two places.</b><span>Every ◆ word of the verse is listed under its explanation, and clicking one in the verse opens its card at the top.</span></li>
+        <li><b>Previous, next and the progress bar count as playing something.</b><span>Like a verse number, they release the panel and resume following.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Draft 0.4 of the listening experience. The explanations, word meanings and translations are drafts written for this mockup. The timing is simulated; a real recording will replace it.</footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var AR = '٠١٢٣٤٥٦٧٨٩';
+  function dg(v, l){ v = String(v); return l === 'ar' ? v.replace(/[0-9]/g, function(d){ return AR[+d]; }) : v; }
+  function fmt(s, l){ s = Math.max(0, Math.floor(s)); var m = Math.floor(s / 60), r = s % 60; return dg(m + ':' + (r < 10 ? '0' + r : r), l); }
+  function norm(w){ return w.replace(/[ـً-ٰ]/g, '').replace(/[.,،؛]/g, ''); }
+  function tpl(s, o){ return s.replace(/\{(\w+)\}/g, function(_, k){ return o[k]; }); }
+  function el(tag, cls){ var e = document.createElement(tag); if (cls) e.className = cls; return e; }
+  function each(list, fn){ Array.prototype.forEach.call(list, fn); }
+
+  var STR = {
+    ar:{ brand:'شوارد', from:'يُعرض من', diwan:'ديوان المتنبي', poet:'المتنبي', titleSub:'', meter:'البسيط', rhyme:'قافية الميم', count:'٣٨ بيتًا',
+      now:'البيت {n} من {N}', verse:'البيت {n}', demo:'مقطع تجريبي بلا صوت', expl:'الشرح', words:'معاني الكلمات',
+      root:'الجذر: {r}', ctx:'من البيت {n} · {half}', sadr:'الصدر', ajuz:'العَجُز', meaning:'معنى {w}',
+      navDiscover:'اكتشف', navPoets:'الشعراء', navMeters:'البحور', navLibrary:'مكتبتي', search:'ابحث عن بيت أو شاعر',
+      back:'رجوع', more:'المزيد', repeat:'تكرار البيت', prev:'البيت السابق', next:'البيت التالي', play:'تشغيل', pause:'إيقاف مؤقت',
+      close:'إغلاق', seek:'موضع التشغيل', versesLabel:'أبيات القصيدة', of:'{a} من {b}', url:'shawared.com/mutanabbi/wahrra-qalbah/{n}',
+      translation:'الترجمة', playFrom:'شغّل من البيت {n}', nowPlaying:'البيت الحالي', expand:'افتح الشرح', collapse:'أغلق الشرح', explDialog:'شرح البيت', sources:'الشروح' },
+    en:{ brand:'Shawared', from:'Playing from', diwan:'Diwan of al-Mutanabbi', poet:'al-Mutanabbi', titleSub:'Wā ḥarra qalbāh · “How my heart burns”', meter:'al-Basīṭ', rhyme:'Rhymes on mīm', count:'38 verses',
+      now:'Verse {n} of {N}', verse:'Verse {n}', demo:'Demo · no audio', expl:'Explanation', words:'Word meanings',
+      root:'Root {r}', ctx:'Verse {n} · {half}', sadr:'first half', ajuz:'second half', meaning:'Meaning of {w}',
+      navDiscover:'Discover', navPoets:'Poets', navMeters:'Meters', navLibrary:'Library', search:'Search a verse or a poet',
+      back:'Back', more:'More', repeat:'Repeat verse', prev:'Previous verse', next:'Next verse', play:'Play', pause:'Pause',
+      close:'Close', seek:'Playback position', versesLabel:'Verses of the poem', of:'{a} of {b}', url:'shawared.com/en/mutanabbi/wahrra-qalbah/{n}',
+      translation:'Translation', playFrom:'Play from verse {n}', nowPlaying:'Now playing', expand:'Open the explanation', collapse:'Close the explanation', explDialog:'Verse explanation', sources:'Explanations' }
+  };
+
+  // Explanations available per language. A switch appears only when a language has more than one.
+  var EXSRC = { ar:[{id:'short', name:'مختصر'}, {id:'detail', name:'مفصّل'}], en:[{id:'short', name:'Shawared'}] };
+  // Languages that have a verse translation. Arabic never does; the switch is hidden there.
+  var HAS_TR = { en:true };
+
+  var GL = {
+    jam:{w:'الجَمْع', r:'ج م ع', ar:'الجماعة من الناس. والمراد مَن حضر مجلس سيف الدولة من الشعراء والحُسّاد.', en:'The gathering: here, the poets and rivals present at Sayf al-Dawla’s court.'},
+    samam:{w:'الصَّمَم', r:'ص م م', ar:'ذهاب السمع. يقول: شعري يُسمِع حتى مَن فقد سمعه.', en:'Deafness. His poetry makes even the deaf hear.'},
+    jufun:{w:'مِلءَ جُفوني', r:'ج ف ن', ar:'الجفون أغطية العين. ونام مِلءَ جفونه: نام نومًا عميقًا هانئًا لا يقلقه شيء.', en:'Literally “filling my eyelids”: sleeping deeply, with nothing to trouble you.'},
+    shawarid:{w:'شَوارِد', r:'ش ر د', ar:'جمع شارِدة، وهي النافرة الذاهبة في الأرض. والمراد أبياته السائرة في الناس، وكلماته الغريبة التي تحتاج إلى شرح.', en:'Plural of shārida, an animal that bolts and roams far from the herd. Here, his verses that travel among people, and his rare words that need explaining.'},
+    jarra:{w:'جَرّاها', r:'ج ر ر', ar:'من أجلها وبسببها.', en:'Because of them; on their account.'},
+    khasm:{w:'يَختَصِم', r:'خ ص م', ar:'يتنازع الناس ويتجادلون في معانيها ورواياتها.', en:'Quarrel: people argue over the verses’ meanings and wordings.'},
+    farrasa:{w:'فَرّاسَة', r:'ف ر س', ar:'كثيرة الافتراس، صيغة مبالغة. يشبّه بطشه بمن تمادى في جهله ببطش الأسد.', en:'That mauls and tears; an intensive form. His punishment of the fool is likened to a lion’s attack.'},
+    nab:{w:'نُيوب', r:'ن ي ب', ar:'جمع ناب، وهو السنّ الحادّة خلف الرَّباعية.', en:'Fangs; plural of nāb, a canine tooth.'},
+    layth:{w:'اللَّيث', r:'ل ي ث', ar:'من أسماء الأسد.', en:'One of the Arabic names for the lion.'},
+    bariza:{w:'بارِزة', r:'ب ر ز', ar:'ظاهرة مكشوفة.', en:'Showing; laid bare.'},
+    muhja:{w:'مُهْجة', r:'م ه ج', ar:'الروح، وقيل دم القلب. والمعنى: رُبَّ روحِ عدوٍّ كان همُّه أن يقتلني.', en:'The soul, or the heart’s blood. Many an enemy whose one aim was to take my life.'},
+    jawad:{w:'جَواد', r:'ج و د', ar:'الفرس السريع الكريم.', en:'A swift, noble horse.'},
+    haram:{w:'حَرَم', r:'ح ر م', ar:'ما يُحمى ويُؤمَن فيه. أي: مَن ركب ظهر هذا الفرس أمِن كأنه في الحرم.', en:'A sanctuary, where no one may be harmed. Whoever rides this horse is as safe as in the Sanctuary.'},
+    rakd:{w:'الرَّكْض', r:'ر ك ض', ar:'العَدْو والجري الشديد.', en:'Galloping; running hard.'},
+    murhaf:{w:'مُرْهَف', r:'ر ه ف', ar:'السيف المرقَّق الحدّ، أي القاطع.', en:'A sword thinned to a keen edge.'},
+    jahfal:{w:'الجَحْفَلان', r:'ج ح ف ل', ar:'مثنّى جَحْفَل، وهو الجيش الكثير. أي: بين الجيشين.', en:'Dual of jaḥfal, a vast army: between the two armies.'},
+    latm:{w:'يَلْتَطِم', r:'ل ط م', ar:'يضرب بعضه بعضًا، كما تتلاطم الأمواج.', en:'Crashing into one another, as waves do.'},
+    bayda:{w:'البَيْداء', r:'ب ي د', ar:'الصحراء الواسعة التي يَهلِك فيها السالك.', en:'The open desert, where travellers can perish.'},
+    qirtas:{w:'القِرْطاس', r:'ق ر ط س', ar:'الصحيفة أو الورق الذي يُكتب فيه.', en:'A sheet of paper or parchment to write on.'}
+  };
+  var MAP = {'الجمع':'jam','صمم':'samam','جفوني':'jufun','شواردها':'shawarid','جراها':'jarra','ويختصم':'khasm','فراسة':'farrasa','نيوب':'nab','الليث':'layth','بارزة':'bariza','ومهجة':'muhja','بجواد':'jawad','حرم':'haram','الركض':'rakd','ومرهف':'murhaf','الجحفلين':'jahfal','يلتطم':'latm','والبيداء':'bayda','والقرطاس':'qirtas'};
+
+  // tr: a pair (one line per half) or one sentence for the whole bayt.
+  var ABYAT = [
+    {n:15, s:'سَيَعلَمُ الجَمعُ مِمَّن ضَمَّ مَجلِسُنا', a:'بِأَنَّني خَيرُ مَن تَسعى بِهِ قَدَمُ',
+      tr:['All who are gathered in our company will learn', 'that I am the best of any who walk on feet.'],
+      ex:{ ar:{ short:'سيعرف كلُّ مَن حضر مجلسنا هذا أنني خيرُ مَن مشى على قدم. فخرٌ يردّ به على الحُسّاد الحاضرين في مجلس سيف الدولة.',
+                detail:'«الجمع» الجماعة، و«مِن» في «مِمَّن» لبيان الجمع، أي: سيعلم الجمعُ الذين ضمّهم مجلسنا. والسين تُخلص الفعل للمستقبل وتؤكّده، كأنه يتوعّد حاسديه بأن الأيام ستُظهر فضله عليهم. و«خيرُ مَن تسعى به قدم» كناية عن الناس جميعًا، فكلُّ ماشٍ على الأرض تسعى به قدمه.' },
+           en:{ short:'Everyone at this gathering will learn that I am the best man who walks the earth. A boast aimed at the jealous poets and rivals present at Sayf al-Dawla’s court.' } } },
+    {n:16, s:'أَنا الَّذي نَظَرَ الأَعمى إِلى أَدَبي', a:'وَأَسمَعَت كَلِماتي مَن بِهِ صَمَمُ',
+      tr:['I am the one whose art the blind have seen,', 'whose words have reached the ears of the deaf.'],
+      ex:{ ar:{ short:'أدبي ظاهرٌ حتى كأن الأعمى يراه، وشعري نافذٌ حتى كأن الأصمّ يسمعه. مبالغةٌ في شيوع شعره وقوة أثره.',
+                detail:'مبالغة في شهرة شعره: فالأعمى على فقده البصر قد رأى أدبه، والأصمّ على فقده السمع قد سمع كلماته، أي إن شعره سار في البلاد حتى بلغ مَن لا يُتوقَّع أن يبلغه. وفي البيت مقابلة بين النظر والعمى، وبين الإسماع والصمم. ويُروى أن أبا العلاء المعرّي كان إذا أنشد هذا البيت قال: أنا الأعمى.' },
+           en:{ short:'My art is so plain that even the blind can see it, and my poetry so strong that even the deaf can hear it: an exaggeration of how far his verse has spread.' } } },
+    {n:17, s:'أَنامُ مِلءَ جُفوني عَن شَوارِدِها', a:'وَيَسهَرُ الخَلقُ جَرّاها وَيَختَصِمُ',
+      tr:['I sleep soundly, unconcerned with my roaming verses,', 'while people stay up all night over them, arguing.'],
+      ex:{ ar:{ short:'أقول الشعر ثم أنام قرير العين، لا تشغلني أبياتي السائرة ولا كلماتي النادرة، بينما يسهر الناس في حفظها وتفسيرها ويختلفون في معانيها.',
+                detail:'«مِلءَ جفوني» منصوب نيابةً عن المصدر، أي: أنام نومًا يملأ جفوني. والضمير في «شواردها» يعود إلى «كلماتي» في البيت السابق، والشوارد: الأبيات السائرة في الناس، من قولهم: شرد البعير إذا نفر. و«جرّاها» أي من أجلها. وفي البيت مقابلة بين نومه هانئًا وسهر الخلق، وبين راحته واختصامهم.' },
+           en:{ short:'I compose my poems and then sleep content, untroubled by the verses that roam among people or by my rare words, while others stay up memorizing and explaining them and arguing over what they mean.' } } },
+    {n:18, s:'وَجاهِلٍ مَدَّهُ في جَهلِهِ ضَحِكي', a:'حَتّى أَتَتهُ يَدٌ فَرّاسَةٌ وَفَمُ',
+      tr:['Many a fool my laughter let run on in his folly,', 'until a mauling hand, and a mouth, came for him.'],
+      ex:{ ar:{ short:'ورُبَّ جاهلٍ أغراه تبسّمي وإغضائي عنه فتمادى في جهله، حتى أخذته مني يدٌ تبطش به كالأسد وفمٌ ينهشه. وقيل: الفم هنا لسانه بالهجاء.',
+                detail:'الواو واو رُبَّ، و«جاهلٍ» مجرور بها. و«مدَّه في جهله» أمهله وزاده تماديًا، يقول: كان ضحكي وإغضائي عنه يُطمعه، فظنّه رضًا حتى بطشتُ به. و«فرّاسة» صيغة مبالغة من الافتراس، وجعل له يدًا وفمًا كالأسد تمهيدًا للتشبيه في البيت التالي.' },
+           en:{ short:'Many a fool took my smiles and patience as weakness and went further in his folly, until a hand that strikes like a lion’s, and a mouth, took hold of him. Some commentators read the mouth as his tongue in satire.' } } },
+    {n:19, s:'إِذا رَأَيتَ نُيوبَ اللَيثِ بارِزَةً', a:'فَلا تَظُنَّنَّ أَنَّ اللَيثَ يَبتَسِمُ',
+      tr:'When you see the lion’s fangs laid bare, do not suppose the lion is smiling.',
+      ex:{ ar:{ short:'يُتمّ معنى البيت السابق: إذا رأيت أنياب الأسد ظاهرة فلا تحسبه يبتسم لك، فهو يتهيأ للافتراس. وكذلك ضحكه للجاهل ليس رضًا.',
+                detail:'البيت تتمة لما قبله، وهو من أشهر حِكَمه. و«بارزةً» حال من النيوب، و«تظنَّنَّ» مؤكَّد بالنون الثقيلة لتقوية النهي. يمثّل حاله مع الجاهل بحال الأسد يكشّر عن أنيابه، فيحسبه الغافل مبتسمًا وهو يتهيأ للافتراس.' },
+           en:{ short:'This completes the verse before it. When you see a lion’s fangs showing, don’t think it is smiling at you; it is about to strike. His laughter at the fool was never approval either.' } } },
+    {n:20, s:'وَمُهجَةٍ مُهجَتي مِن هَمِّ صاحِبِها', a:'أَدرَكتُها بِجَوادٍ ظَهرُهُ حَرَمُ',
+      tr:['Many a life whose owner’s one care was my life', 'I overtook on a steed whose back is a sanctuary.'],
+      ex:{ ar:{ short:'ورُبَّ روحِ عدوٍّ كان همُّ صاحبها أن يقتلني، لحقتُ بها على فرسٍ سريع، مَن ركب ظهره أمِن كأنه في الحرم.',
+                detail:'الواو واو رُبَّ أيضًا. وجملة «مُهجتي مِن همِّ صاحبها» صفة لـ«مهجةٍ»، أي: رُبَّ نفسٍ كان صاحبها لا همَّ له إلا قتلي. و«أدركتُها» لحقتُ بها. و«ظهرُه حرم» أي مَن ركبه أمِن كما يأمن مَن دخل الحرم، لأنه لا يُلحَق.' },
+           en:{ short:'Many an enemy whose one aim was to kill me, I caught up with on a swift horse. Whoever rides on its back is as safe as someone in a sanctuary.' } } },
+    {n:21, s:'رِجلاهُ في الرَكضِ رِجلٌ وَاليَدانِ يَدٌ', a:'وَفِعلُهُ ما تُريدُ الكَفُّ وَالقَدَمُ',
+      tr:['At the gallop his hind legs strike as one, his forelegs as one,', 'and he does whatever hand and heel would have.'],
+      ex:{ ar:{ short:'يصف سرعة فرسه: تقع رجلاه معًا ويداه معًا من شدة العَدْو، ويفعل ما يريده فارسه بيده وقدمه.',
+                detail:'يصف الفرس بشدّة العَدْو: إذا ركض وقعت رجلاه معًا كأنهما رجلٌ واحدة، ويداه معًا كأنهما يدٌ واحدة. ثم يصفه بحسن الطاعة: يفعل ما يريده فارسه بكفّه على العِنان وقدمه في الرِّكاب.' },
+           en:{ short:'He describes his horse’s speed. At full gallop its hind legs land together and its forelegs land together, and it does whatever its rider asks with hand and heel.' } } },
+    {n:22, s:'وَمُرهَفٍ سِرتُ بَينَ الجَحفَلَينِ بِهِ', a:'حَتّى ضَرَبتُ وَمَوجُ المَوتِ يَلتَطِمُ',
+      tr:['Many a keen blade I carried between the two armies', 'until I struck, as the waves of death crashed.'],
+      ex:{ ar:{ short:'ورُبَّ سيفٍ قاطع سرتُ به بين الجيشين حتى ضربتُ به، والموت حولي كالموج يضرب بعضه بعضًا.',
+                detail:'والواو واو رُبَّ. و«المرهف» السيف الرقيق الحدّ، و«الجحفلان» الجيشان العظيمان. و«موجُ الموت يلتطم» استعارة، جعل للموت موجًا يضرب بعضه بعضًا، والجملة في موضع الحال.' },
+           en:{ short:'Many a keen sword I carried between the two armies until I struck with it, while death surged around me like waves crashing together.' } } },
+    {n:23, s:'الخَيلُ وَاللَيلُ وَالبَيداءُ تَعرِفُني', a:'وَالسَيفُ وَالرُمحُ وَالقِرطاسُ وَالقَلَمُ',
+      tr:'The horses, the night and the desert know me, and so do the sword, the spear, the page and the pen.',
+      ex:{ ar:{ short:'تشهد لي الخيل والليل والصحراء بالفروسية والسُّرى، ويشهد السيف والرمح بشجاعتي، والقرطاس والقلم بشعري وأدبي.',
+                detail:'أشهر أبيات القصيدة، جمع فيه مفاخره: الفروسية (الخيل)، والسُّرى (الليل)، وقطع الفلوات (البيداء)، والشجاعة (السيف والرمح)، والأدب (القرطاس والقلم). وبين «الخيل» و«الليل» جناس ناقص. ويقال إن هذا البيت هو الذي قتل صاحبه.' },
+           en:{ short:'The horses, the night, and the desert bear witness to my horsemanship and my night journeys; the sword and spear to my courage; the page and pen to my poetry.' } } }
+  ];
+  var TOTAL_ABYAT = 38;
+
+  ABYAT.forEach(function(b){
+    b.gl = [];
+    [b.s, b.a].forEach(function(txt, h){ txt.split(' ').forEach(function(w){ var k = MAP[norm(w)]; if (k) b.gl.push({k:k, h:h}); }); });
+  });
+
+  // simulated timing: each half-verse lasts in proportion to its letters, with a breath after each bayt
+  var halves = [], acc = 0;
+  ABYAT.forEach(function(b, i){
+    [b.s, b.a].forEach(function(txt, h){
+      var len = norm(txt).replace(/\s/g, '').length, dur = 0.9 + len * 0.16;
+      halves.push({i:i, h:h, start:acc, end:acc + dur}); acc += dur;
+    });
+    acc += 0.7;
+  });
+  var TOTAL = acc;
+  function bStart(i){ return halves[i * 2].start; }
+  function bEnd(i){ return halves[i * 2 + 1].end; }
+  function halfAt(x){ for (var k = halves.length - 1; k >= 0; k--) { if (x >= halves[k].start) return k; } return 0; }
+
+  var PLAY = '<svg aria-hidden="true"><use href="#i-play"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4.2" height="14" rx="1.3"/><rect x="13.8" y="5" width="4.2" height="14" rx="1.3"/></svg>';
+  var RESUME_MS = 5000;
+
+  var t = halves[4].start + 1.2, playing = false, repeat = false;
+  var curHalf = -1, curBayt = -1, raf = 0, last = 0;
+
+  function exHTML(kind){
+    return '<div class="ex-head"><span class="ex-title"><i class="nq"></i><span data-o="exVerse"></span></span><span class="sp"></span>' +
+      '<button type="button" class="np" data-act="unpin" hidden><i class="nq"></i><span data-s="nowPlaying"></span></button>' +
+      (kind === 'phone' ? '<button type="button" class="ic" data-act="collapse" data-sa="collapse"><svg aria-hidden="true"><use href="#i-down"/></svg></button>' : '') + '</div>' +
+      '<div class="ex-bayt" lang="ar" dir="rtl"><p class="sadr"></p><p class="ajuz"></p></div>' +
+      '<div class="ex-src" role="group" data-o="exSrc"></div>' +
+      '<p class="ex-body" data-o="exText"></p>' +
+      '<div class="ex-words"><h4 data-s="words"></h4><ul data-o="exWords"></ul></div>';
+  }
+
+  function makeView(root, kind){
+    var v = {root:root, kind:kind, id:root.id, lang:root.getAttribute('data-lang') || 'ar', gl:null, lastFocus:null,
+      trOn:true, src:{ar:'short', en:'short'}, pinned:null, shown:-1, shownKey:'', sheetOpen:false,
+      userScrolled:false, resumeAt:0, scrollTimer:0, fadeTimer:0,
+      verses:root.querySelector('.verses'), bar:root.querySelector('.bar'), fill:root.querySelector('.fill'), head:root.querySelector('.head'),
+      ex:root.querySelector('.ex'), bayt:[], half:[], trl:[], nums:[], gEls:[]};
+    v.ex.innerHTML = exHTML(kind);
+    ABYAT.forEach(function(b, i){
+      var d = el('div', 'bayt'); d.setAttribute('data-i', i);
+      var num = el('button', 'num'); num.type = 'button'; num.setAttribute('data-act', 'playfrom');
+      num.innerHTML = '<span class="n"></span><svg class="pi" aria-hidden="true"><use href="#i-play"/></svg>';
+      d.appendChild(num); v.nums.push(num);
+      var row = el('div', 'hrow');
+      [b.s, b.a].forEach(function(txt, h){
+        var col = el('div', 'hcol');
+        var p = el('p', 'h ' + (h ? 'ajuz' : 'sadr')); p.setAttribute('data-k', i * 2 + h);
+        var words = txt.split(' ');
+        words.forEach(function(w, wi){
+          var key = MAP[norm(w)];
+          if (key) {
+            var s = el('span', 'g'); s.textContent = w; s.setAttribute('data-g', key); s.tabIndex = 0; s.setAttribute('role', 'button');
+            p.appendChild(s); v.gEls.push(s);
+          } else p.appendChild(document.createTextNode(w));
+          if (wi < words.length - 1) p.appendChild(document.createTextNode(' '));
+        });
+        col.appendChild(p); v.half.push(p);
+        var tl = null;
+        if (Array.isArray(b.tr)) { tl = el('p', 'trl'); tl.lang = 'en'; tl.dir = 'ltr'; tl.textContent = b.tr[h]; col.appendChild(tl); }
+        v.trl.push(tl);
+        row.appendChild(col);
+        if (!h) { var cz = el('i', 'cz'); cz.setAttribute('aria-hidden', 'true'); row.appendChild(cz); }
+      });
+      d.appendChild(row);
+      if (typeof b.tr === 'string') { var ts = el('p', 'trs'); ts.lang = 'en'; ts.dir = 'ltr'; ts.textContent = b.tr; d.appendChild(ts); }
+      v.verses.appendChild(d); v.bayt.push(d);
+    });
+    return v;
+  }
+
+  var phone = makeView(document.getElementById('phone'), 'phone');
+  var web = makeView(document.getElementById('web'), 'web');
+  var VIEWS = [phone, web];
+
+  function q(v, sel){ return v.root.querySelectorAll(sel); }
+  function setText(v, sel, txt){ each(q(v, sel), function(e){ e.textContent = txt; }); }
+
+  /* ---------- the explanation panel ---------- */
+  function panelBayt(v){ return v.pinned != null ? v.pinned : curBayt; }
+  function npState(v){ v.root.querySelector('[data-act="unpin"]').hidden = !(v.pinned != null && v.pinned !== curBayt); }
+  function liveHalf(v){
+    var box = v.root.querySelector('.ex-bayt'), live = v.shown === curBayt && curHalf >= 0, ps = box.querySelectorAll('p');
+    box.classList.toggle('live', live);
+    ps[0].classList.toggle('on', live && halves[curHalf].h === 0);
+    ps[1].classList.toggle('on', live && halves[curHalf].h === 1);
+  }
+  function fillPanel(v, animate){
+    if (curBayt < 0) return;
+    var i = panelBayt(v), l = v.lang, key = i + '|' + l + '|' + v.src[l];
+    function fill(){
+      var S = STR[l], b = ABYAT[i], list = EXSRC[l];
+      v.shown = i; v.shownKey = key;
+      var head = tpl(S.verse, {n:dg(b.n, l)}) + ' · ' + S.expl;
+      setText(v, '[data-o="exVerse"]', head);
+      var ps = v.ex.querySelectorAll('.ex-bayt p'); ps[0].textContent = b.s; ps[1].textContent = b.a;
+      var sb = v.ex.querySelector('[data-o="exSrc"]'); sb.textContent = ''; sb.hidden = list.length < 2;
+      sb.setAttribute('aria-label', S.sources);
+      if (list.length > 1) list.forEach(function(s){
+        var c = el('button'); c.type = 'button'; c.setAttribute('data-src', s.id); c.lang = l;
+        c.setAttribute('aria-pressed', String(v.src[l] === s.id)); c.textContent = s.name; sb.appendChild(c);
+      });
+      var text = (b.ex[l] && b.ex[l][v.src[l]]) || '';
+      var tx = v.ex.querySelector('[data-o="exText"]'); tx.textContent = text; tx.lang = l;
+      var ul = v.ex.querySelector('[data-o="exWords"]'); ul.textContent = '';
+      b.gl.forEach(function(g){
+        var e = GL[g.k], li = el('li'), hd = el('div', 'xw'), w = el('b'), r = el('span'), p = el('p');
+        w.lang = 'ar'; w.textContent = e.w; r.textContent = tpl(S.root, {r:e.r}); p.lang = l; p.textContent = l === 'ar' ? e.ar : e.en;
+        hd.appendChild(w); hd.appendChild(r); li.appendChild(hd); li.appendChild(p); ul.appendChild(li);
+      });
+      v.ex.querySelector('.ex-words').hidden = !b.gl.length;
+      if (v.kind === 'phone') {
+        setText(v, '[data-o="pkVerse"]', head);
+        var pk = v.root.querySelector('[data-o="pkText"]'); pk.textContent = text; pk.lang = l;
+      }
+      liveHalf(v); npState(v);
+    }
+    clearTimeout(v.fadeTimer);
+    if (animate && !reduce && key !== v.shownKey) {
+      v.ex.classList.add('fade');
+      v.fadeTimer = setTimeout(function(){ fill(); v.ex.classList.remove('fade'); }, 170);
+    } else { v.ex.classList.remove('fade'); fill(); }
+    npState(v);
+  }
+  function pinMark(v){ v.bayt.forEach(function(d, i){ d.classList.toggle('pin', v.pinned === i); }); }
+  function pin(v, i){
+    v.pinned = i; pinMark(v); fillPanel(v, true);
+    if (v.kind === 'phone' && !v.sheetOpen) openSheet(v);
+    if (v.kind === 'web') v.root.querySelector('.web-panel').scrollTo({top:0, behavior:reduce ? 'auto' : 'smooth'});
+    status(v);
+  }
+  function unpin(v){
+    if (v.pinned == null) return;
+    v.pinned = null; pinMark(v); fillPanel(v, true); status(v);
+  }
+  function openSheet(v){
+    var sh = v.root.querySelector('.exsheet');
+    sh.style.setProperty('--pl-h', v.root.querySelector('.ph-player').offsetHeight + 'px');
+    sh.classList.add('open'); sh.setAttribute('aria-hidden', 'false'); v.sheetOpen = true;
+    v.ex.scrollTop = 0;
+  }
+  function closeSheet(v){
+    var sh = v.root.querySelector('.exsheet');
+    sh.classList.remove('open'); sh.setAttribute('aria-hidden', 'true'); v.sheetOpen = false;
+    unpin(v);
+  }
+
+  /* ---------- following and the 5-second pause ---------- */
+  function scrollToBayt(v, i, smooth){
+    var c = v.verses, b = v.bayt[i];
+    if (!b || !c.clientHeight) return;
+    var top = b.offsetTop - (c.clientHeight - b.offsetHeight) / 2;
+    c.scrollTo({top:Math.max(0, top), behavior:(smooth && !reduce) ? 'smooth' : 'auto'});
+  }
+  function userScroll(v){
+    v.userScrolled = true; v.resumeAt = Date.now() + RESUME_MS;
+    clearTimeout(v.scrollTimer);
+    v.scrollTimer = setTimeout(function(){
+      v.userScrolled = false;
+      if (playing && curBayt >= 0) scrollToBayt(v, curBayt, true);
+      status(v);
+    }, RESUME_MS);
+    status(v);
+  }
+  function follow(v){ clearTimeout(v.scrollTimer); v.userScrolled = false; if (curBayt >= 0) scrollToBayt(v, curBayt, true); status(v); }
+  function status(v){
+    var s = document.querySelector('[data-status="' + v.id + '"]'); if (!s) return;
+    var a = s.querySelector('[data-st="scroll"]'), p = s.querySelector('[data-st="panel"]');
+    if (v.userScrolled) {
+      a.classList.remove('on');
+      a.lastChild.textContent = 'Auto-scroll paused by your scroll · resumes in ' + Math.max(1, Math.ceil((v.resumeAt - Date.now()) / 1000)) + ' s';
+    } else {
+      a.classList.add('on');
+      a.lastChild.textContent = 'Auto-scroll follows the recitation';
+    }
+    if (v.pinned != null) {
+      p.classList.remove('on');
+      p.lastChild.textContent = 'Explanation held on verse ' + ABYAT[v.pinned].n + ' until you tap a verse number or “Now playing”';
+    } else {
+      p.classList.add('on');
+      p.lastChild.textContent = 'Explanation follows the playing verse';
+    }
+  }
+  setInterval(function(){ VIEWS.forEach(function(v){ if (v.userScrolled) status(v); }); }, 250);
+
+  function labels(v){
+    if (curBayt < 0) return;
+    var l = v.lang, n = ABYAT[curBayt].n;
+    setText(v, '[data-o="now"]', tpl(STR[l].now, {n:dg(n, l), N:dg(TOTAL_ABYAT, l)}));
+    setText(v, '[data-o="url"]', tpl(STR[l].url, {n:n}));
+  }
+
+  function render(smooth){
+    var k = halfAt(t);
+    if (k !== curHalf) {
+      VIEWS.forEach(function(v){
+        if (curHalf >= 0) { v.half[curHalf].classList.remove('on'); if (v.trl[curHalf]) v.trl[curHalf].classList.remove('on'); }
+        v.half[k].classList.add('on'); if (v.trl[k]) v.trl[k].classList.add('on');
+      });
+      curHalf = k;
+      var bi = halves[k].i, changed = bi !== curBayt, prev = curBayt;
+      curBayt = bi;
+      VIEWS.forEach(function(v){
+        if (changed) {
+          if (prev >= 0) v.bayt[prev].classList.remove('on');
+          v.bayt[bi].classList.add('on');
+          labels(v);
+          if (v.pinned == null) fillPanel(v, true); else npState(v);
+        }
+        if (!v.userScrolled) scrollToBayt(v, bi, smooth);
+        liveHalf(v);
+      });
+    }
+    var pct = Math.min(100, t / TOTAL * 100);
+    VIEWS.forEach(function(v){
+      v.fill.style.width = pct + '%'; v.head.style.insetInlineStart = pct + '%';
+      setText(v, '[data-o="cur"]', fmt(t, v.lang));
+      v.bar.setAttribute('aria-valuenow', Math.round(t));
+      v.bar.setAttribute('aria-valuetext', tpl(STR[v.lang].of, {a:fmt(t, v.lang), b:fmt(TOTAL, v.lang)}));
+    });
+  }
+  function frame(ts){
+    if (!playing) return;
+    if (last) t += Math.min(0.25, (ts - last) / 1000);
+    last = ts;
+    if (repeat && curBayt >= 0 && t >= bEnd(curBayt) + 0.5) t = bStart(curBayt);
+    if (t >= TOTAL) { t = TOTAL - 0.001; render(true); setPlaying(false); return; }
+    render(true);
+    raf = requestAnimationFrame(frame);
+  }
+  function playBtns(){
+    VIEWS.forEach(function(v){
+      each(q(v, '[data-act="play"]'), function(b){ b.innerHTML = playing ? PAUSE : PLAY; b.setAttribute('aria-label', STR[v.lang][playing ? 'pause' : 'play']); });
+    });
+  }
+  function setPlaying(p){
+    playing = p; playBtns(); cancelAnimationFrame(raf);
+    if (p) { if (t >= TOTAL - 0.05) t = 0; last = 0; raf = requestAnimationFrame(frame); }
+  }
+  function seek(x){ t = Math.max(0, Math.min(TOTAL - 0.001, x)); last = 0; render(true); }
+  // Previous, next, the progress bar and a verse number all mean "play something": release the panel and follow again.
+  function jumped(v){ unpin(v); follow(v); }
+
+  /* ---------- word card ---------- */
+  function fillGloss(v){
+    var g = v.gl, e = GL[g.k], l = v.lang, S = STR[l];
+    setText(v, '[data-o="gw"]', e.w);
+    setText(v, '[data-o="groot"]', tpl(S.root, {r:e.r}));
+    setText(v, '[data-o="gm"]', l === 'ar' ? e.ar : e.en);
+    setText(v, '[data-o="gctx"]', tpl(S.ctx, {n:dg(ABYAT[g.bi].n, l), half:S[g.h ? 'ajuz' : 'sadr']}));
+    each(q(v, '[data-o="gm"], [data-o="gctx"]'), function(p){ p.lang = l; });
+  }
+  function openGloss(v, k, bi, h, src){
+    v.gl = {k:k, bi:bi, h:h}; fillGloss(v);
+    if (v.kind === 'phone') {
+      var sh = v.root.querySelector('.sheet'); sh.classList.add('open'); sh.setAttribute('aria-hidden', 'false');
+      v.lastFocus = src || null;
+      try { sh.querySelector('[data-act="gclose"]').focus({preventScroll:true}); } catch (e) {}
+    } else {
+      v.root.querySelector('.wp-card').hidden = false;
+      v.root.querySelector('.web-panel').scrollTop = 0;
+    }
+  }
+  function closeGloss(v){
+    v.gl = null;
+    if (v.kind === 'phone') {
+      var sh = v.root.querySelector('.sheet'); sh.classList.remove('open'); sh.setAttribute('aria-hidden', 'true');
+      if (v.lastFocus) { try { v.lastFocus.focus({preventScroll:true}); } catch (e) {} }
+    } else v.root.querySelector('.wp-card').hidden = true;
+  }
+
+  /* ---------- language, theme, translation ---------- */
+  function segState(v, k, val){
+    each(document.querySelectorAll('.seg[data-for="' + v.id + '"][data-k="' + k + '"] button'), function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === val)); });
+  }
+  function applyTr(v){
+    var has = !!HAS_TR[v.lang];
+    v.root.classList.toggle('show-tr', has && v.trOn);
+    each(q(v, '.trp'), function(b){ b.hidden = !has; b.setAttribute('aria-pressed', String(v.trOn)); });
+  }
+  function applyTheme(v, night){ v.root.classList.toggle('is-night', night); segState(v, 'theme', night ? 'night' : 'day'); }
+  function applyLang(v, l){
+    var S = STR[l]; v.lang = l;
+    v.root.setAttribute('data-lang', l); v.root.setAttribute('lang', l); v.root.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
+    each(q(v, '[data-s]'), function(e){ e.textContent = S[e.getAttribute('data-s')]; });
+    each(q(v, '[data-sa]'), function(e){ e.setAttribute('aria-label', S[e.getAttribute('data-sa')]); });
+    v.verses.setAttribute('aria-label', S.versesLabel);
+    v.nums.forEach(function(n, i){ n.querySelector('.n').textContent = dg(ABYAT[i].n, l); n.setAttribute('aria-label', tpl(S.playFrom, {n:dg(ABYAT[i].n, l)})); });
+    v.gEls.forEach(function(g){ g.setAttribute('aria-label', tpl(S.meaning, {w:g.textContent})); });
+    setText(v, '[data-o="clock"]', dg('9:41', l));
+    setText(v, '[data-o="tot"]', fmt(TOTAL, l));
+    setText(v, '[data-o="cur"]', fmt(t, l));
+    v.bar.setAttribute('aria-valuemax', Math.round(TOTAL));
+    labels(v); playBtns(); applyTr(v); fillPanel(v, false);
+    if (v.gl) fillGloss(v);
+    segState(v, 'lang', l);
+  }
+
+  /* ---------- input ---------- */
+  function isRtl(v){ return getComputedStyle(v.bar).direction === 'rtl'; }
+  function seekFromX(v, x){ var r = v.bar.getBoundingClientRect(); seek((isRtl(v) ? r.right - x : x - r.left) / r.width * TOTAL); }
+  VIEWS.forEach(function(v){
+    v.root.addEventListener('click', function(e){
+      var a = e.target.closest('[data-act]');
+      if (a) {
+        var n = a.getAttribute('data-act');
+        if (n === 'play') setPlaying(!playing);
+        else if (n === 'prev') { var into = t - bStart(curBayt); seek(into > 1.5 ? bStart(curBayt) : bStart(Math.max(0, curBayt - 1))); jumped(v); }
+        else if (n === 'next') { seek(bStart(Math.min(ABYAT.length - 1, curBayt + 1))); jumped(v); }
+        else if (n === 'repeat') { repeat = !repeat; each(document.querySelectorAll('[data-act="repeat"]'), function(b){ b.setAttribute('aria-pressed', String(repeat)); }); }
+        else if (n === 'playfrom') { var bi = +a.closest('.bayt').getAttribute('data-i'); seek(bStart(bi)); jumped(v); setPlaying(true); }
+        else if (n === 'unpin') { unpin(v); follow(v); }
+        else if (n === 'expand') openSheet(v);
+        else if (n === 'collapse') closeSheet(v);
+        else if (n === 'tr') { v.trOn = !v.trOn; applyTr(v); if (!v.userScrolled) scrollToBayt(v, curBayt, false); }
+        else if (n === 'gclose') closeGloss(v);
+        return;
+      }
+      var s = e.target.closest('[data-src]');
+      if (s) { v.src[v.lang] = s.getAttribute('data-src'); fillPanel(v, true); return; }
+      var g = e.target.closest('.g');
+      if (g) { openGloss(v, g.getAttribute('data-g'), +g.closest('.bayt').getAttribute('data-i'), g.closest('.h').classList.contains('ajuz') ? 1 : 0, g); return; }
+      var d = e.target.closest('.bayt');
+      if (d) pin(v, +d.getAttribute('data-i'));
+    });
+    v.root.addEventListener('keydown', function(e){
+      if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('g')) {
+        e.preventDefault(); openGloss(v, e.target.getAttribute('data-g'), +e.target.closest('.bayt').getAttribute('data-i'), e.target.closest('.h').classList.contains('ajuz') ? 1 : 0, e.target);
+      } else if (e.key === 'Escape') { if (v.gl) closeGloss(v); else if (v.sheetOpen) closeSheet(v); }
+    });
+    // Only a reader's own input pauses following; the app's own scrolling never does.
+    v.verses.addEventListener('wheel', function(){ userScroll(v); }, {passive:true});
+    v.verses.addEventListener('touchmove', function(){ userScroll(v); }, {passive:true});
+    v.verses.addEventListener('keydown', function(e){ if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].indexOf(e.key) >= 0 && e.target === v.verses) userScroll(v); });
+    v.bar.addEventListener('pointerdown', function(e){
+      try { v.bar.setPointerCapture(e.pointerId); } catch (err) {}
+      seekFromX(v, e.clientX); jumped(v);
+      function mv(ev){ seekFromX(v, ev.clientX); }
+      function up(){ v.bar.removeEventListener('pointermove', mv); v.bar.removeEventListener('pointerup', up); v.bar.removeEventListener('pointercancel', up); }
+      v.bar.addEventListener('pointermove', mv); v.bar.addEventListener('pointerup', up); v.bar.addEventListener('pointercancel', up);
+    });
+    v.bar.addEventListener('keydown', function(e){
+      var step = isRtl(v) ? {ArrowLeft:5, ArrowRight:-5} : {ArrowLeft:-5, ArrowRight:5};
+      if (e.key in step) { seek(t + step[e.key]); jumped(v); e.preventDefault(); }
+      else if (e.key === 'Home') { seek(0); jumped(v); e.preventDefault(); }
+      else if (e.key === 'End') { seek(TOTAL); jumped(v); e.preventDefault(); }
+    });
+    if (v.kind === 'phone') {
+      // drag the explanation strip up to open it, or the sheet's grip down to close it
+      var pk = v.root.querySelector('.peek'), grip = v.root.querySelector('.grip-btn');
+      pk.addEventListener('pointerdown', function(e){
+        var y0 = e.clientY;
+        function mv(ev){ if (y0 - ev.clientY > 18) { openSheet(v); done(); } }
+        function done(){ pk.removeEventListener('pointermove', mv); pk.removeEventListener('pointerup', done); pk.removeEventListener('pointercancel', done); }
+        pk.addEventListener('pointermove', mv); pk.addEventListener('pointerup', done); pk.addEventListener('pointercancel', done);
+      });
+      grip.addEventListener('pointerdown', function(e){
+        var y0 = e.clientY;
+        function mv(ev){ if (ev.clientY - y0 > 24) { closeSheet(v); done(); } }
+        function done(){ grip.removeEventListener('pointermove', mv); grip.removeEventListener('pointerup', done); grip.removeEventListener('pointercancel', done); }
+        grip.addEventListener('pointermove', mv); grip.addEventListener('pointerup', done); grip.addEventListener('pointercancel', done);
+      });
+    }
+  });
+
+  each(document.querySelectorAll('.seg'), function(seg){
+    var v = seg.getAttribute('data-for') === 'phone' ? phone : web, k = seg.getAttribute('data-k');
+    seg.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if (!b) return;
+      var val = b.getAttribute('data-v');
+      if (k === 'lang') { applyLang(v, val); scrollToBayt(v, curBayt, false); }
+      else applyTheme(v, val === 'night');
+    });
+  });
+
+  render(false);
+  applyTheme(phone, false); applyTheme(web, false);
+  applyLang(phone, 'ar'); applyLang(web, 'en');
+  VIEWS.forEach(status);
+  function rescroll(){ VIEWS.forEach(function(v){ if (!v.userScrolled) scrollToBayt(v, curBayt, false); }); }
+  rescroll();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rescroll);
+  window.addEventListener('resize', rescroll);
+})();
+</script>
+</body>
+</html>
