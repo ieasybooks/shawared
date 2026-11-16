@@ -8,6 +8,7 @@ The Arabic text is the backbone. Translations, explanations, word meanings and a
 content/
   poems/<poem>/
     poem.json                 the Arabic text, as the recordings say it
+    sources.md                where the text and explanations come from
     ar.json, en.json          one language from one source
     ar.<source>.json          a second source in the same language
     recitations/<reciter>.json
@@ -49,8 +50,6 @@ Audio is copied from `media/audio` alongside them. Schemas are in `packages/cont
 
 ## Making a poem
 
-1. Download the recording: `uvx --from 'yt-dlp[default]' yt-dlp -f 'bv*+ba/b' ...` into `media/sources/`.
-2. Make the app audio: mono AAC at 96 kbps with a plain volume gain only, into `media/audio/<poem>/<reciter>.m4a`.
-3. Transcribe it (tafrigh, Cohere), research the text and settle the disputed readings with `scripts/variants.py`.
-4. Write the files, align with `scripts/align.py`, and check each half by re-transcribing its clip.
-5. `bun run content:check`, then `bun run content:preview <poem>` to listen through.
+[writing.md](writing.md) has the steps, in order, and what goes into each file: the text and its harakat, the introduction, sharh, translation and word notes. Each poem also keeps a `sources.md` beside its `poem.json`: the recording and what was cut from it, the editions, every reading decided by ear and the commentaries the explanations draw on.
+
+Recordings waiting to be made into poems are listed in `content/queue.md`.

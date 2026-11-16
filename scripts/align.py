@@ -4,12 +4,19 @@
 # ///
 """Force-align a poem's Arabic text to a recording, word by word.
 
-    uv run scripts/align.py content/poems/<id>/poem.json <audio> [--plan 1.1,1.2,...] [--out words.json]
+    uv run scripts/align.py content/poems/<id>/poem.json media/work/<id>/app16k.wav
+        [--plan 1.1,1.2,...] [--out words.json]
+        [--recitation content/poems/<id>/recitations/<reciter>.json [--source <url>]]
 
 The plan lists the half-verses in the order the reciter says them (repeats and
 skips allowed). By default it is every half in order. Prints one line per word
 with its time and a confidence, flags weak words, and writes the word timings
-plus a proposed half-verse timeline to --out. It does not edit content files.
+plus a proposed half-verse timeline to --out. With --recitation it also writes
+that timeline into the recitation file (creating it if needed; the reciter is
+the file's name and the duration is read from the app audio).
+
+Align the app audio (app16k.wav, made by scripts/audio.ts from the .m4a), so the
+times are the ones the app plays.
 
 Model: MMS-300m forced aligner (ONNX), cached in ~/.cache/shawared.
 """
@@ -40,6 +47,8 @@ def main():
     ap.add_argument("--plan")
     ap.add_argument("--out")
     ap.add_argument("--weak", type=float, default=0.35, help="flag words below this confidence")
+    ap.add_argument("--recitation")
+    ap.add_argument("--source")
     a = ap.parse_args()
 
     poem = json.load(open(a.poem, encoding="utf-8"))
@@ -109,6 +118,27 @@ def main():
         json.dump({"audio": a.audio, "stride_ms": stride, "words": out_words, "timeline": timeline},
                   open(a.out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         print(f"\nwrote {a.out}")
+
+    if a.recitation:
+        write_recitation(a.recitation, poem["id"], a.source, timeline)
+
+
+def write_recitation(path, poem_id, source, timeline):
+    import subprocess
+    rec_id = os.path.splitext(os.path.basename(path))[0]
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    audio = f"{poem_id}/{rec_id}.m4a"
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                          os.path.join(root, "media", "audio", audio)], capture_output=True, text=True, check=True)
+    old = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {}
+    rec = {"reciter": old.get("reciter", rec_id), "audio": audio, "duration": round(float(out.stdout), 2)}
+    if source or old.get("source"):
+        rec["source"] = source or old["source"]
+    lines = ",\n".join(f'    [{json.dumps(h)}, {s:.2f}, {e:.2f}]' for h, s, e, _ in timeline)
+    head = ",\n".join(f"  {json.dumps(k)}: {json.dumps(v, ensure_ascii=False)}" for k, v in rec.items())
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    open(path, "w", encoding="utf-8").write("{\n" + head + ',\n  "timeline": [\n' + lines + "\n  ]\n}\n")
+    print(f"wrote {path}")
 
 
 if __name__ == "__main__":

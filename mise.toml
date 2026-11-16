@@ -2,6 +2,7 @@
 bun = "1.4.4"
 node = "24.19.0"
 caddy = "2.11.4"
+"github:ieasybooks/tafrigh-rs" = "0.5.0"
 
 [tasks.dev]
 run = "bun run dev"

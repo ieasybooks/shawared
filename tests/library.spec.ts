@@ -111,12 +111,17 @@ test("a card's opening bayt is set at the poem's measure", async ({ page }) => {
         .filter((d) => d.style.width && getComputedStyle(d).justifyContent === "space-between" && !d.closest("[inert]"))
         .map((d) => ({ width: Math.round(d.getBoundingClientRect().width), text: d.textContent ?? "" })),
     );
-  await expect.poll(async () => (await halves()).length).toBe(2);
-  const [sadr, ajuz] = await halves();
-  expect(sadr!.width).toBe(157);
-  expect(ajuz!.width).toBe(157);
+  // Every card shows two halves; a poem's pair share its measure.
+  await expect.poll(async () => (await halves()).length).toBeGreaterThanOrEqual(4);
+  const all = await halves();
+  const plain = (t: string) => t.replace(/ـ/g, "");
   // Shown with kashida; the words are the poem's own.
-  expect(sadr!.text.replace(/ـ/g, "")).toBe("تَقولُبُثَينَةُلَمّارَأَت");
+  const at = all.findIndex((h) => plain(h.text) === "تَقولُبُثَينَةُلَمّارَأَت");
+  expect(at).toBeGreaterThanOrEqual(0);
+  const [sadr, ajuz] = [all[at]!, all[at + 1]!];
+  expect(sadr.width).toBe(157);
+  expect(ajuz.width).toBe(157);
+  for (let i = 0; i < all.length; i += 2) expect(all[i]!.width, plain(all[i]!.text)).toBe(all[i + 1]!.width);
 });
 
 test("search finds a poem by title, opening bayt, poet or reciter, with or without harakat", async ({ page }) => {
@@ -128,7 +133,12 @@ test("search finds a poem by title, opening bayt, poet or reciter, with or witho
     await expect(nothing, q).toHaveCount(0);
     await expect(page.getByText(TITLE).first(), q).toBeVisible();
   }
-  await search.fill("المتنبي");
+  for (const q of ["لعينيك", "المتنبي", "al-Mutanabbi"]) {
+    await search.fill(q);
+    await expect(page.getByText("لِعَينَيكِ ما يَلقى الفُؤادُ وَما لَقي").first(), q).toBeVisible();
+    await expect(page.getByText(TITLE), q).toHaveCount(0);
+  }
+  await search.fill("الخنساء");
   await expect(nothing).toBeVisible();
   await page.getByRole("button", { name: "امسح البحث" }).click();
   await expect(search).toHaveValue("");
@@ -152,6 +162,8 @@ test("the poets and reciters tabs search by name", async ({ page }) => {
     await expect(shown(page, "جَميل بُثَينة"), q).toBeVisible();
   }
   await search.fill("المتنبي");
+  await expect(shown(page, "المُتَنَبّي")).toBeVisible();
+  await search.fill("الخنساء");
   await expect(shown(page, "لا نتائج تطابق بحثك")).toBeVisible();
   await page.goto("/reciters");
   await page.getByRole("textbox", { name: "ابحث عن مُلقٍ" }).fill("الواعظ");

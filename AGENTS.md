@@ -4,12 +4,12 @@ Arabic poetry as it is recited: audio with the verses lighting up, translations,
 
 ## Where code lives
 
-- `content/` – the poems, poets and reciters, written by hand. Format: [docs/content-format.md](docs/content-format.md).
+- `content/` – the poems, poets and reciters, written by hand. Format: [docs/content-format.md](docs/content-format.md); how to write them: [docs/writing.md](docs/writing.md). `content/queue.md` lists recordings waiting to be made into poems.
 - `apps/app` – the Expo Router app. `src/app` holds routes only: Arabic at `/…`, the same routes for English under `src/app/en`. The four tabs (`(tabs)/`) are home, poets, reciters and meters; every page opened from them (a poem, a poet, a reciter, a meter) sits on the root stack above the tabs, so back retraces the reader's steps. Screens live in `src/features/<feature>`, shared pieces in `src/components/ui`, plumbing in `src/lib`. `src/server` runs only while web pages are rendered ahead of time: each page's data (`loader`), its title and description (`generateMetadata`) and its params.
 - `packages/contracts` – zod schemas: the strict authoring format (`source.ts`), the lenient published format the app downloads (`published.ts`) and addresses.
 - `packages/listening` – pure playback logic: timelines, the line being recited, previous/next/repeat, word-note lookup. No React, tested with vitest.
 - `packages/design` – colours, fonts, the mark, the gap scale, the follow-pause rule, and ink-trimmed text boxes (`type.ts`, see [docs/typography.md](docs/typography.md)).
-- `scripts/` – `check.ts` (content checker), `build-content.ts` (publishes content into `apps/app/public`), `align.py` and `variants.py` (forced alignment, picking readings), `preview.ts` (a review page per poem), `sitemap.ts` (sitemap.xml for the exported site), `kashida.ts` (sets every half of a poem to one width, run by the publish step).
+- `scripts/` – making poems, in the order [docs/writing.md](docs/writing.md) uses them: `intake.ts` (a recording's audio, silences, loudness and transcript), `shamela.py` and `collate.py` (fetching editions and comparing them bayt by bayt), `tashkeel.ts` (harakat in the house style), `audio.ts` (the app audio at −20 LUFS), `align.py` (timings), `variants.py` (which reading the reciter says), `verify.py` (every half transcribed again and compared), `notes.ts` (fills and lists the words each note points at), `preview.ts` (a review page per poem). Then `check.ts` (content checker), `build-content.ts` (publishes content into `apps/app/public`), `kashida.ts` (sets every half of a poem to one width, run by the publish step) and `sitemap.ts` (sitemap.xml for the exported site).
 - `design/` – the HTML prototypes the app follows (0.3 identity, 0.4 listening).
 - `media/` – downloads, app audio and work files. Gitignored; audio will move to R2.
 
@@ -25,7 +25,8 @@ Run through mise so bun, node and caddy match `mise.toml`: `mise exec -- bun run
 ## Rules
 
 - Every bayt the app shows is set to its poem's measure with kashida (`Half`/`Measure` in `components/ui/Measure.tsx`) ([docs/typography.md](docs/typography.md#verses-at-one-width)). Kashida is shown, never written into content; find verse words in tests with a pattern that allows tatweel.
-- The verse text follows the recording. Where editions differ, `scripts/variants.py` decides what the reciter says; word cards show the dictionary form in `head`.
+- The verse text follows the recording. Where editions differ, `scripts/variants.py` decides what the reciter says; word cards show the dictionary form in `head`. Harakat follow the house style in `packages/contracts/src/tashkeel.ts`.
+- Transcription (`intake.ts`, `verify.py`) runs tafrigh; set `TAFRIGH` to a CUDA build of it when there's an NVIDIA GPU, which is many times faster than the CPU build.
 - Arabic verses are always on screen and always right-to-left. The UI flips with the language: English is left-to-right, including the progress bar and controls.
 - Saffron (`accent`) is for the nuqta and active marks, never body text.
 - Every `Text` takes a role from `useType()` (`apps/app/src/lib/type.ts`). Never set font size, line height or vertical margins/padding on a `Text`; space texts with container gaps from `space`. Bordered labels wrap their `Text` in a `View` (`Chip`, `Tag`). See [docs/typography.md](docs/typography.md).

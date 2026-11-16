@@ -8,7 +8,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import type { z } from "zod";
-import { parseLineAddress, parseWordAddress, source, wordsOf } from "@shawared/contracts";
+import { houseStyle, parseLineAddress, parseWordAddress, source, tashkeelIssues, wordsOf } from "@shawared/contracts";
 
 const { Poem, PoemLang, Recitation, Poet, Reciter, PersonLang } = source;
 
@@ -112,6 +112,21 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
     else if (prev && b.n < prev.n) error(pf, `bayt ${b.n} comes after bayt ${prev.n}; numbers must go up`, `abyat.${i}.n`);
     if (b.n > poem.abyat_in_full) error(pf, `bayt ${b.n} is past abyat_in_full (${poem.abyat_in_full})`, `abyat.${i}.n`);
   });
+  // Harakat in the house style (packages/contracts/src/tashkeel.ts).
+  let restyle = 0;
+  poem.abyat.forEach((b, i) => {
+    for (const [h, text] of [
+      [1, b.sadr],
+      [2, b.ajuz],
+    ] as const) {
+      if (houseStyle(text) !== text) restyle++;
+      for (const m of tashkeelIssues(text)) warn(pf, m, `abyat.${i} (${b.n}.${h})`);
+    }
+  });
+  if (restyle)
+    warn(pf, `${restyle} half${restyle > 1 ? "s" : ""} not in the house style for harakat; run bun scripts/tashkeel.ts ${id} --fix`);
+  if (!existsSync(join(dir, "sources.md"))) warn(dir, "no sources.md (the editions used and how each reading was decided)");
+
   if (poem.abyat.length > poem.abyat_in_full)
     error(pf, `${poem.abyat.length} abyat but abyat_in_full is ${poem.abyat_in_full}`, "abyat_in_full");
 
