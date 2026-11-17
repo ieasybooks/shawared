@@ -57,7 +57,7 @@ Scores come from `scripts/variants.py` on the app audio, run over a stretch of s
 
 **Vowels and spelling:**
 - 9.2 «وَلَوَ اَنَّني» and 32.1 «وَلَوَ اَنَّها»: the hamza is dropped and its fatha moved to the waw, as the old shamela writes «ولوَ انّها»; with the hamza the first foot is u – – u – and the half doesn't scan. Each has an Arabic note.
-- 18.1 «يوسُفٌ» with tanwin, as all three editions print it: the sadr's last foot needs a long last syllable. An Arabic note explains it.
+- 18.1 «يوسُفٌ» with tanwin, as all three editions print it: a called name takes damma without tanwin (يا يوسفُ), and tanwin there is a licence of verse. The meter allows either, since the sadr's last vowel can be lengthened; the aligner can't hear tanwin, so the text keeps the editions'. An Arabic note explains it.
 - 27.1 «مُسبَلاً»: both editions put fatha on the ب; the lexicons also allow مُسبِل (أسبل المطر).
 - 36.1 «يا مَن» (Dar Sadir, Palmer, old shamela, Nuzhat): Dar al-Ma'arif prints «ويا من», which breaks the meter (u – – u –); the transcript hears «يا من».
 - 36.2 «يَتَأَوَّلا»: the draft had Dar al-Ma'arif's passive «يُتَأَوَّلا», the easier grammar, but the aligner hears the fatha (−5.7 for the passive) and Dar Sadir prints it; تأوّل is read as the mutawi' of أوّل (it admits interpretation). A note gives the passive.
@@ -86,3 +86,12 @@ Scores come from `scripts/variants.py` on the app audio, run over a stretch of s
 - **Bayt 25** has no gloss in any source. The sharh reads the cloak as the riders spread over the ground.
 - **The patron:** al-Zirikli, *al-A'lam*, vol. 8, pp. 249–250 (shamela 12286/7723–7724, `alam-nasir*.txt`): al-Nasir Yusuf ruled Aleppo from 634, took Damascus in 648 and was killed by Hulagu in 659.
 - **The poet's life:** al-Zirikli, *al-A'lam*, vol. 3, p. 52 (shamela 12286/2082, `alam.txt`), and Ibn Khallikan, *Wafayat al-A'yan*, vol. 2, pp. 332–338 (shamela 1000/804–810, `wafayat.txt`), who knew him.
+
+## Review
+
+The second reader could not be started (the machine's limit on concurrent agents was reached), so this poem still needs one. The drafter re-read the text letter by letter against Dar Sadir's page images, scanned every half again, and checked the notes against the sharh (2026-11-17). Fixed in that pass:
+
+- **Text:** no change; every half matches Dar Sadir or a reading listed above.
+- **Notes:** 18.1 no longer claims the tanwin of «يوسُفٌ» is forced by the meter; 33.1 credits «أغرب» to Palmer as well.
+- **Sharh:** 28 no longer repeats the note on «كاعباً».
+- **English:** 4.1, 26.1 and 31.2 retranslated more closely.
