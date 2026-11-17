@@ -33,7 +33,8 @@ export function IconButton({
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
-      {...(on === undefined ? {} : { accessibilityState: { selected: on } })}
+      // A toggle: selected to iOS and Android, pressed to the web (React Native Web drops accessibilityState).
+      {...(on === undefined ? {} : { accessibilityState: { selected: on }, "aria-pressed": on })}
       onPress={onPress}
       style={(s: PressState) => [
         styles.icon,
