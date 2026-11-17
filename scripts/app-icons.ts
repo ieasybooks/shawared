@@ -1,4 +1,5 @@
-// Draws the native apps' icons and splash images in apps/app/assets/app from
+// Draws the native apps' icons and splash images in apps/app/assets/app, and
+// the artwork lock screens show with a recitation in apps/app/public, from
 // Shawared's mark (@shawared/design), the one apps/app/public/favicon.svg
 // shows, in the day and night palettes. Run it after changing the mark or its
 // colors, and commit what it writes. It needs rsvg-convert (brew install
@@ -49,18 +50,30 @@ export const ICONS: Record<string, string> = {
   "splash-dark.png": image(512, 1, NIGHT),
 };
 
+// What the site serves next to the app: the picture of a recitation on lock
+// screens, in media notifications and in the browser's media controls (the
+// app's ARTWORK_URL), opaque, as they show it on a square of its own.
+export const PUBLIC: Record<string, string> = {
+  "artwork.png": image(512, 0.6, DAY, DAY.paper),
+};
+
 if (import.meta.main) {
-  const out = join(root(), "apps/app/assets/app");
-  mkdirSync(out, { recursive: true });
   const work = mkdtempSync(join(tmpdir(), "app-icons-"));
   try {
-    for (const [name, svg] of Object.entries(ICONS)) {
-      const source = join(work, `${name}.svg`);
-      writeFileSync(source, svg);
-      execFileSync("rsvg-convert", ["--format=png", "--output", join(out, name), source]);
+    for (const [dir, images] of [
+      ["apps/app/assets/app", ICONS],
+      ["apps/app/public", PUBLIC],
+    ] as const) {
+      const out = join(root(), dir);
+      mkdirSync(out, { recursive: true });
+      for (const [name, svg] of Object.entries(images)) {
+        const source = join(work, `${name}.svg`);
+        writeFileSync(source, svg);
+        execFileSync("rsvg-convert", ["--format=png", "--output", join(out, name), source]);
+      }
+      console.log(`${Object.keys(images).join(", ")} in ${out}`);
     }
   } finally {
     rmSync(work, { recursive: true, force: true });
   }
-  console.log(`app icons: ${Object.keys(ICONS).join(", ")} in ${out}`);
 }
