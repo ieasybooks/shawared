@@ -8,7 +8,7 @@
 
 ## Title
 
-The poem is known by two names: «بائية أبي تمام» (the video's description; al-Maqqari, *Nafh al-Tib*, ed. Ihsan Abbas, vol. 3, p. 592, shamela 1002/2001: «معارضاً بائية أبي تمام: السيف أصدق أنباء من الكتب»; the editors of al-Maqrizi's *al-Muqaffa* and al-Sam'ani's *al-Ansab*) and «قصيدة فتح عمورية» (Ibn Ma'sum, *Anwar al-Rabi'*, p. 512; Ihsan Abbas, *Tarikh al-Naqd al-Adabi*, p. 150). The title takes the first, on the pattern of لامية ابن الوردي and تائية الإلبيري. The id keeps the first words.
+The poem is known by two names: «بائية أبي تمام» (the video's description; al-Maqqari, *Nafh al-Tib*, ed. Ihsan Abbas, vol. 3, p. 592, shamela 1002/2001: «معارضاً بائية أبي تمام: السيف أصدق أنباء من الكتب»; the editors of al-Maqrizi's *al-Muqaffa* and al-Sam'ani's *al-Ansab*) and «قصيدة فتح عمورية» (Ibn Ma'sum, *Anwar al-Rabi'*, p. 512; Ihsan Abbas, *Tarikh al-Naqd al-Adabi*, p. 150). The title takes the first, on the pattern of لامية ابن الوردي and تائية الإلبيري. The id keeps the first words. A shamela search (second reading) finds «بائية أبي تمام» used for this poem in ten places (besides those above: Abdallah al-Tayyib, *al-Murshid*, vol. 3, p. 111 and vol. 4, p. 17; Muhammad Salih al-Shanti, *Fann al-Tahrir al-Arabi*, p. 291; the editor of Ibn al-Najjar's *al-Durra al-Thamina*, p. 163, «من بائية أبي تمام المشهورة … في فتح عمورية»; *al-Risala*, no. 316, p. 14), and «قصيدة فتح عمورية» in five, all books on rhetoric or criticism. Abdallah al-Tayyib once uses «بائية أبي تمام» for another poem («أهن عوادي يوسف وصواحبه», *al-Murshid*, vol. 5, p. 408), so the name is not unique, but for this poem it is the commoner one.
 
 ## Editions
 
@@ -57,6 +57,7 @@ Scores come from `scripts/variants.py` on the app audio (run in one batch with t
 | 42.1 | واثِقينَ (both) | آمِنينَ (both, ويروى) | −12.2 |
 | 42.2 | مِفتاحُ … المَعقِلِ (both) | فَتّاحُ (MS ظ); المَقفَلِ (al-Suli's ويروى) | −2.3; −15.5 |
 | 43.1 | صَدَدٌ (both) | أَمَمٌ (both, ويروى) | −21.3 |
+| 46.1 | زِبَطرِيّاً (al-Tibrizi, p. 62: «والقياس إذا نطقت به العرب أن يكسر أوله»; Yaqut in Azzam's note) | زَبَطرِيّاً («والعامة يقولون زَبطرة بفتح الزاي», ibid.) | +1.2 (second reading; a coin toss, so the text keeps al-Tibrizi's form) |
 | 47.1 | عَداكَ (both) | حَماكَ (MS ظ) | −15.7 |
 | 48.1 | مُعلِناً (al-Tibrizi) | مُعلَماً (al-Suli) | −4.6 |
 | 48.2 | أَجَبتَ (both) | دُعيتَ (MSS س، ل) | −27.6 |
@@ -64,14 +65,14 @@ Scores come from `scripts/variants.py` on the app audio (run in one batch with t
 | 51.2 | وَالحَدَبِ (both) | وَالعَبَبِ (al-Suli's diwan) | −15.5 |
 | 53.1 | يُنفِقِ (both) | تُنفِقِ (MS ن) | −6.6 |
 | 54.1 | الغيلِ (al-Tibrizi) | الغابِ (al-Suli) | −9.5 |
-| 56.1 | أَحذى (both) | أَخفى (MSS م، س) | −5.2 |
+| 56.1 | أَحذى (both) … صَرفَ (al-Tibrizi's print, p. 68) | أَخفى (MSS م، س); صِرفَ | −5.2; −5.9 (second reading) |
 | 56.2 | يَحتَثُّ أَنجى … مِنَ (al-Tibrizi) | أَخفى (al-Suli, with يَحُثُّ); إِلى; عَلى | −28.2; −19.5; −26.9 |
 | 57.1 | يُشرِفُهُ (al-Tibrizi) | يَشرُفُهُ (al-Suli); يَفرَعُهُ (MSS ل، س) | −5.9; −20.7 |
 | 58.1 | يَعدُ (both) | تَعدُ (MS ظ) | −5.7 |
 | 59.2 | جُلودُهُم (al-Tibrizi's MSS س، د; the old shamela text) | أَعمارُهُم (both prints) | −28.4 |
 | 60.1 | حينَ (neither) | لَمّا (both) | −13.0 |
 | 61.2 | مِن رَداهُم (both) | عَن رَداهُم (al-Suli's diwan) | −11.4 |
-| 62.2 | يَجثو (al-Suli) … القِيامُ … صُغراً (both) | تَجثو (al-Tibrizi); الكُماةُ (al-Tibrizi's ويروى); صُعراً (MSS ل، ظ); قَسراً (al-Suli's ويروى) | −7.4; −24.7; +8.3 and +2.8 (see below) |
+| 62.2 | يَجثو (al-Suli) … القِيامُ … صُغراً (both) | تَجثو (al-Tibrizi); الكُماةُ (al-Tibrizi's ويروى); صُعراً (MSS ل، ظ); قَسراً (al-Suli's ويروى) | −7.4; −24.7; +8.3 and +2.8, and +7.0 in the second reading (see below) |
 | 64.2 | العَذراءِ (both) | الحَسناءِ (margin of م) | −16.0 |
 | 65.2 | مِن قُضُبٍ (al-Tibrizi) | في قُضُبٍ (al-Suli) | −9.4 |
 | 66.2 | أَتراباً (al-Tibrizi) | أَبداناً (al-Suli); أَقراناً (MS ل) | −21.9; −15.6 |
@@ -89,7 +90,7 @@ Scores come from `scripts/variants.py` on the app audio (run in one batch with t
   - 70.2 «أَوثَقُ»: clear by score (again the longer candidate), weak in the old alignment as «أقرب» (0.08), and heard as «اوثق/أوثاق» in every transcript. No edition or manuscript reading found.
 - **Settled by the transcripts against the aligner's score:**
   - 37.2 «مُرتَغِبِ» (al-Tibrizi's text): the aligner prefers «مُرتَقِبِ» (+6.6 to +6.9 in two runs, the reading of al-Suli's MSS ن، ل), but it romanizes غ as two letters and so favours any one-letter consonant there: with controls, ق beats ك by 3.4 and غ beats خ by 1.3, and the two groups sit 6–8 apart. The full transcript and both clip transcripts hear «مرتغب».
-  - 62.2 «صُغراً» (both prints): the consonant is barely audible. All three transcripts hear «صورا/صُرا», the aligner's confidence for the word is 0.24, and with controls it scores neither letter above a stand-in (ه −0.0, ق −3.8, ع −4.1; خ −9.9, غ −11.5). The text keeps the editions; the note gives «صُعراً», the reading of al-Tibrizi's MSS ل، ظ, which al-Suli is reported (Nu'man's edition, p. 205 n. 2, from MS ن) to have preferred, calling «صغرا» a misreading. Left open for the second reader.
+  - 62.2 «صُغراً» (both prints): the consonant is barely audible. All three transcripts hear «صورا/صُرا», the aligner's confidence for the word is 0.24, and with controls it scores neither letter above a stand-in (ه −0.0, ق −3.8, ع −4.1; خ −9.9, غ −11.5). The text keeps the editions; the note gives «صُعراً», the reading of al-Tibrizi's MSS ل، ظ, which al-Suli is reported (Nu'man's edition, p. 205 n. 2, from MS ن) to have preferred, calling «صغرا» a misreading; Azzam's note on al-Tibrizi p. 71 n. 1 reports the same words of al-Suli («ويروى «صغرا» وهو تصحيف»). Second reading: scored again on 559.1–563.5 s, «صُعراً» beats «صُغراً» by 7.0, but the stand-ins show the aligner's bias (ق −1.1, خ −6.0 against ع): within each pair of like-romanized letters neither stands out. A tight clip (560.9–563.5 s) is heard as «صوراً على الركاب» (cohere) and «في صورا على الركاب» (audar). The transcribers hear غ wherever else it is said in this recording (37.2 and the words listed under Review) and ع in «صعد», «أعصر», «العيون», so neither consonant's absence here decides it. Still open: the editions' text and both prints for «صُغراً»; al-Suli's verdict, MSS ل، ظ and a slight lean in the scores for «صُعراً».
 - **Coin tosses that keep the editions:** 8.1 «مُرَتِّبَةً» (al-Tibrizi's text; Abu al-Ala' calls the fatha weak); 11.1 «فَتحُ» (al-Suli's print and the old shamela text; Abu al-Ala' prefers the accusative but allows it); 16.1 «وَبَرزَةُ» (both prints); 24.1 «وَالحِنّاءُ» (al-Tibrizi allows both cases); 42.2 «مِفتاحُ» (both, and every transcript).
 - **21.1 «أَنقَرَةٍ»:** al-Tibrizi says the name is said with the qaf in any of its three vowels and prints «أَنقِرَةَ»; the reciter's fatha is al-Suli's voweling (−7.7 for kasra). The tanwin is al-Suli's too; the last foot of the sadr (فَعِلُن) needs the long syllable it gives.
 - **8.1 «الأَبرُجَ»:** both editions; the old shamela text's «الأبراج» would make the second foot − − −, which basit doesn't allow, though the audar clip transcript hears it.
@@ -106,7 +107,7 @@ Scores come from `scripts/variants.py` on the app audio (run in one batch with t
   - **misheard or dropped letters:** 16.2 «كريم» for «كَرِبِ» (also in the full transcript; the rhyme rules it out), 17.2 «همه وب», 18.1 «قاتل» for «قَد», 25.2 «النار» for «لِلنّارِ», 44.2 «ضب», 51.1 «ودا» for «غَدا» (the full transcript has «غاد»), 65.1 «قطب»;
   - **43.2:** the transcriber began repeating itself and kept nothing; the full transcript hears the half as written;
   - **62.2 «صورا»:** see above;
-  - **70.1 «التي» for «اللّاتي»:** the full transcript also hears «التي». Both scan (with «الَّتي» the third foot is مُتَفعِلُن, which basit allows), so the meter can't decide, and the aligner can't hear the long ā. Every text has «اللاتي», shamela finds no «أيامك التي نصرت بها», and the aligner's confidence for «اللّاتي» is 0.55, so the text keeps it; the transcribers may be writing the commoner word. Left open for the second reader;
+  - **70.1 «التي» for «اللّاتي»:** the full transcript also hears «التي». Both scan (with «الَّتي» the third foot is مُتَفعِلُن, which basit allows), so the meter can't decide, and the aligner can't hear the long ā. Every text has «اللاتي», shamela finds no «أيامك التي نصرت بها», and the aligner's confidence for «اللّاتي» is 0.55, so the text keeps it; the transcribers may be writing the commoner word. Second reading: a tight clip (625.2–629.9 s) is heard as «الَّتي» by both cohere and audar, so four transcripts in all hear it; a spectrogram gives the vowel after the doubled ل about 0.20 s, against 0.25 s for the long ī of «تي» and 0.17 s for the short «نُ», too close to call in a chant that stretches the closed «كَل» to 0.57 s. Still open: every text for «اللّاتي», every transcript for «التي»;
   - **edges:** 58.2 starts with «قد», the end of 58.1.
 - **Clip transcripts** (cohere and audar, `media/work/QoJyWCwi9xE/clips/`) for 8.1, 11.1, 16.1, 21.1, 33.2, 37.2, 39.1, 42.2, 48.1, 59.2, 60.1, 62.2 and 70.2 agree with the full transcript on every reading above.
 
@@ -120,10 +121,12 @@ Scores come from `scripts/variants.py` on the app audio (run in one batch with t
 
 ## Review
 
-The second reader could not be started: the Agent tool refused a new subagent (the machine's limit of 20 concurrent subagents was reached). The drafter checked instead (2026-11-17): every half collated by script against the old shamela text (six differences, all listed above), the readings in the table against al-Tibrizi's and al-Suli's apparatus, the page images of al-Tibrizi pp. 47, 50, 57, 69 and 73 and al-Suli pp. 197 and 205, every half scanned, case endings read for grammar, and the sharh, notes, intro and bio against the commentaries' notes and al-A'lam. Fixed in the drafting, against the earlier, uncommitted draft:
+The drafter checked the draft first, when no second reader could be started. A second reader then read it (2026-11-17): every reading against the drafter's notes on both editions and the page images of al-Tibrizi pp. 58, 62, 68 and 71; every half scanned as basit (`scan.py`, its four flags by hand); harakat and case endings read for grammar; 46.1, 56.1 and 62.2 scored again (`vbatch.py`) and 62.2 and 70.1 transcribed again on tight clips with both backends; every sharh, translation and note against the commentaries; heads, notes repeated in the sharh, the intro, the bio against al-A'lam, and the title against shamela. Fixed after the review:
 
-- **Text:** 21.1 «أَنقَرَةٍ» (al-Suli's voweling, by ear) for «أَنقِرَةٍ»; 70.2 «أَوثَقُ», which the reciter says, for «أَقرَبُ».
-- **Title:** «بائِيَّةُ أَبي تَمّامٍ», the poem's name, for its first sadr.
-- **Audio:** re-aligned in five pieces; verify.py run on the final timeline.
-- **Open:** 62.2 «صُغراً/صُعراً», 70.1 «اللّاتي/التي», 37.2 «مُرتَغِبِ/مُرتَقِبِ» (evidence above).
-
+- **Meaning:** 17, the man who took the city for Khosrow and then rebelled was his general, the Isbahbadh, not the city; 58, the firewood is the city's people, cut down by the army the caliph left in it (al-Tibrizi), not "the men he left behind"; 68, dropped the claim that the campaign was fought in cold and snow, which the Byzantines only threatened; 53.2 retranslated, as it read as the reason he did not spend; 11, the objection to «تعالى» is Ibn al-Mustawfi's, not something against al-Suli's word.
+- **Notes:** 56.1 «صَرفَ الرَّدى» was glossed as صِرف, unmixed; al-Tibrizi prints صَرفَ (p. 68) and the reciter says it (−5.9 for صِرفَ), so the note, sharh and translation now give صَرف الدهر, the stroke of death; 46.1.4 head «هَراقَ» for «هَرَقَ» (al-Tibrizi, p. 62); 44.1.1 «أَمانِياً» added (the light ي), 45.1.6 «سُمُرٍ» gives the moved mim; 3.2.5-6 reworded, as it repeated the sharh.
+- **Sharh:** 39 the hadith «نُصرت بالرعب مسيرة شهر», 41 al-Anfal 17 on Badr, 59 al-Nisa' 56 behind the reciter's «نضجت جلودهم»; 4 al-Suli's reading of «الرواية» as the Byzantines' prophecy; 36 the answer of «لو» left unsaid; 46 al-Tibrizi's cup set aside; 62 Abu al-Ala's parallel from al-Thaqafi; 1, 5, 21 and 42 reworded where they repeated a note.
+- **English:** 63, "arid both a rain cloud…" read as the English word, and "glare and radiance" was not two senses; 1, 16, 19, 40, 46 and 59 reworded or deepened; 56.1 retranslated.
+- **sources.md:** 46.1 and 56.1 added to the table and the second reading's scores for 62.2; the title question answered (above).
+- **Settled:** 37.2 «مُرتَغِبِ» stays: the transcribers hear غ in this recording wherever it is said (غيلان, الغربي, تغرب, غافلة, الغمام, مغضب, غزو, لغدا, تغب), and hear it here too.
+- **Open:** 62.2 «صُغراً/صُعراً» and 70.1 «اللّاتي/التي» (evidence above).
