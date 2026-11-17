@@ -92,6 +92,7 @@ Scores come from `scripts/variants.py` on the app audio (run in one batch with t
   - 62.2 «صُغراً» (both prints): the consonant is barely audible. All three transcripts hear «صورا/صُرا», the aligner's confidence for the word is 0.24, and with controls it scores neither letter above a stand-in (ه −0.0, ق −3.8, ع −4.1; خ −9.9, غ −11.5). The text keeps the editions; the note gives «صُعراً», the reading of al-Tibrizi's MSS ل، ظ, which al-Suli is reported (Nu'man's edition, p. 205 n. 2, from MS ن) to have preferred, calling «صغرا» a misreading. Left open for the second reader.
 - **Coin tosses that keep the editions:** 8.1 «مُرَتِّبَةً» (al-Tibrizi's text; Abu al-Ala' calls the fatha weak); 11.1 «فَتحُ» (al-Suli's print and the old shamela text; Abu al-Ala' prefers the accusative but allows it); 16.1 «وَبَرزَةُ» (both prints); 24.1 «وَالحِنّاءُ» (al-Tibrizi allows both cases); 42.2 «مِفتاحُ» (both, and every transcript).
 - **21.1 «أَنقَرَةٍ»:** al-Tibrizi says the name is said with the qaf in any of its three vowels and prints «أَنقِرَةَ»; the reciter's fatha is al-Suli's voweling (−7.7 for kasra). The tanwin is al-Suli's too; the last foot of the sadr (فَعِلُن) needs the long syllable it gives.
+- **8.1 «الأَبرُجَ»:** both editions; the old shamela text's «الأبراج» would make the second foot − − −, which basit doesn't allow, though the audar clip transcript hears it.
 - **19.1 «مَخَّضَ»:** the aligner can't hear shadda; al-Tibrizi prints it, and both مَخَّضَ and مَخَضَ scan.
 - **23.2 «آني»:** al-Suli's print has «قاني دم», but his own gloss explains «الآني الذي انتهى وبلغ حرًّا».
 - **Meter:** every half scans as basit (مستفعلن فاعلن مستفعلن فعِلن), checked with `/tmp/shw/b3/tools/scan.py`. Of its four flags, 15.2 «مِنهُمُ» scans with its mim lengthened (مِنهُمو), as the mim of the plural usually is in verse, and 37.1, 37.2 and 42.2 are the script misreading «بِاللَّهِ», «لِلَّهِ» and «وَاللَّهُ».
@@ -116,3 +117,13 @@ Scores come from `scripts/variants.py` on the app audio (run in one batch with t
 - **The astrologers and the figs and grapes:** al-Tibrizi's heading (p. 40) and al-Suli's note on 59 (p. 203), from Abu Malik Awn ibn Muhammad al-Kindi, from his father, who was at Amorium; al-Suli also gives it in *Akhbar Abi Tammam*. Ibn al-Mu'tazz's censure of 59 («من خسيس الكلام») is reported by Ibn al-Mustawfi in Nu'man's note (p. 204).
 - **Zibatra and the woman's cry:** al-Suli on 46 (p. 199); al-Tibrizi and al-Kharzanji's version on pp. 61–62; Yaqut for the place.
 - **The poet's life:** al-Zirikli, *al-A'lam*, vol. 2, p. 165 (shamela 12286/1418, `alam.txt`).
+
+## Review
+
+The second reader could not be started: the Agent tool refused a new subagent (the machine's limit of 20 concurrent subagents was reached). The drafter checked instead (2026-11-17): every half collated by script against the old shamela text (six differences, all listed above), the readings in the table against al-Tibrizi's and al-Suli's apparatus, the page images of al-Tibrizi pp. 47, 50, 57, 69 and 73 and al-Suli pp. 197 and 205, every half scanned, case endings read for grammar, and the sharh, notes, intro and bio against the commentaries' notes and al-A'lam. Fixed in the drafting, against the earlier, uncommitted draft:
+
+- **Text:** 21.1 «أَنقَرَةٍ» (al-Suli's voweling, by ear) for «أَنقِرَةٍ»; 70.2 «أَوثَقُ», which the reciter says, for «أَقرَبُ».
+- **Title:** «بائِيَّةُ أَبي تَمّامٍ», the poem's name, for its first sadr.
+- **Audio:** re-aligned in five pieces; verify.py run on the final timeline.
+- **Open:** 62.2 «صُغراً/صُعراً», 70.1 «اللّاتي/التي», 37.2 «مُرتَغِبِ/مُرتَقِبِ» (evidence above).
+
