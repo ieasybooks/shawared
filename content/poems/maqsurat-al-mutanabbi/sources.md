@@ -26,6 +26,7 @@ The poem has no settled name. No book on shamela calls it «مقصورة الم�
 | Bayt | Text (al-Barquqi) | al-Wahidi | al-Ukbari |
 | --- | --- | --- | --- |
 | 1.2 | الهَيذَبى | الهَيدَبا | الهَيدَبى (and says it is said with د or ذ) |
+| 2.1 | وَكُلُّ … بِجاوِيَّةٍ | وَكُلِّ … بَجاوِيَّةٍ | «بالخفض» … بُجاوِيَّةٍ |
 | 6.1 | بِنَخلٍ | بِنَخلٍ | بِنَحلٍ (and in his note) |
 | 13.1 | وَالصَّباحَ | وَالصَّباحُ | وَالصَّباحَ (and allows both) |
 | 18.1 | وَبِتنا | وَبِتنا | وَثُبنا |
@@ -48,6 +49,8 @@ Scores come from `scripts/variants.py` on the app audio (one model load for all 
 | Bayt | Text | Other reading | Gap |
 | --- | --- | --- | --- |
 | 1.2 | الهَيذَبى (al-Barquqi; the transcript) | الهَيدَبى (al-Wahidi, al-Ukbari) | +9.7, see below |
+| 2.1 | بُجاوِيَّةٍ (al-Ukbari; the Qamus: «بُجاوة، كزُغاوة») | بَجاوِيَّةٍ (al-Wahidi; Lisan); بِجاوِيَّةٍ (al-Barquqi) | −1.5; −2.1 |
+| 2.1 | وَكُلِّ (al-Wahidi; al-Ukbari «بالخفض»; al-Barquqi's note) | وَكُلُّ (al-Barquqi's print) | −2.3 |
 | 6.1 | بِنَخلٍ (al-Wahidi, al-Barquqi) | بِنَحلٍ (al-Ukbari) | −1.8 |
 | 7.1 | تُخَيِّرُنا (all three) | تُخَبِّرُنا (Ibn al-Iflili; *Mu'jiz Ahmad*, shamela 753/413: «وروى بالباء») | −8.5 |
 | 13.1 | وَالصَّباحَ (al-Barquqi, al-Ukbari) | وَالصَّباحُ (al-Wahidi) | −4.0 |
@@ -58,6 +61,7 @@ Scores come from `scripts/variants.py` on the app audio (one model load for all 
 | 21.2 | وَلا (al-Barquqi, al-Ukbari) | وَما (al-Wahidi) | −6.7 |
 
 - **1.2 «الهَيذَبى»:** the score favours «الهيدبى», but the aligner writes ذ as "th" and scores it badly, so the score says little here. The transcribers split: cohere hears «الهيذباء» in the full recording and «الهيذبان» in the clip, audar «الهيدا بارك». A spectrogram of the word (the audio is low-passed near 4 kHz, so frication doesn't show, but a stop's closure does) shows no closure or burst between «هَي» and «بى», where the reciter's د in «فِدى» (1.2) has a sharp burst and the ب of the same word a clear gap: the consonant is a continuant, ذ. The reciter's own description writes «الهَيْذَبَى». The text keeps al-Barquqi's ذ; al-Wahidi and al-Ukbari print د, and al-Ukbari says the word is said both ways. The note gives both.
+- **2.1:** both are coin tosses by score, and both lean to the text. «وَكُلِّ» is the grammar: it is joined to «كُلِّ ماشِيَةِ الهَيذَبى», as al-Ukbari («وكل بالخفض عطفا على الذى قبله») and al-Barquqi's own note 111 («عطف على كل ماشية الهيذبى») say; his print's damma contradicts his note. The lexicons give all three vowels of بجاوة (*Lisan al-Arab*, vol. 14, p. 65, shamela 1687/7189: «بَجاوة … وذكر القزاز بُجاوة وبِجاوة»; the Qamus in *Taj al-Arus*, shamela 7030/19454: «بُجاوة، كزُغاوة»); the text keeps al-Ukbari's damma, and the note gives the others.
 - **6.1** is a coin toss by score; the transcript hears «بنخل», and Nakhl is the name al-Wahidi, al-Barquqi and Ibn al-Iflili give the water. The text keeps it.
 - **17.2:** the description under the reciter's video prints «بَين مكارمنا», but he says «فوق», as every edition has it.
 - **22–23:** he says «ولا بُدّ للقلب» before «ومن يك قلبٌ», al-Barquqi's and al-Ukbari's order (the transcript runs «… صم الصفا ومن يك قلب كقلبي»).
@@ -94,3 +98,12 @@ The meter decides:
 - **The occasion:** al-Wahidi's heading (Kufa, Rabi' al-Awwal 351); his heading to «عيد بأية حال» for the flight from Egypt in 350 (shamela 754/343: «وقال يوم عرفة وقد خرج من مصر سنة خمسين وثلثمائة»). Al-Badi'i dates the arrival in Kufa to Rabi' al-Akhir 351; the intro gives al-Wahidi's date.
 - **The intro's verdict:** Shawqi Dayf, *al-Fann wa-madhahibuhu fi al-shi'r al-'arabi*, p. 335 (shamela 8666/366, `dayf.txt`): «إذ يحشد فيها الألفاظ الغريبة حشدًا».
 - **Wadi al-Qura:** Yaqut, *Mu'jam al-Buldan*, vol. 5, p. 345 (shamela 23735/2378): «واد بين المدينة والشام من أعمال المدينة كثير القرى».
+
+## Review
+
+No independent second reader could be started: the agent tool refused a new agent (the limit of 20 running at once was reached by the other poems of the batch). The drafter re-checked the draft as REVIEW.md asks (2026-11-17): every half against al-Barquqi's page images and the other two prints, every half scanned by hand for the meter, the sharh and notes against al-Wahidi, al-Ukbari, al-Barquqi and Ibn al-Iflili. Fixed after the first commit:
+
+- **Text:** 2.1 «وَكُلِّ … بُجاوِيَّةٍ», where the three prints disagree, tested on the audio and recorded above with the lexicons.
+- **Notes:** 2.1.3 gives the other vowels of بجاوة.
+- **Sharh:** 16 states al-Jurjani's objection instead of putting it as a question.
+
