@@ -122,7 +122,8 @@ Every bayt has one, in Arabic and in English.
 - **A phrase** gets one note over the phrase (`7.2.3-4`) when its meaning is the phrase's.
 - **`head`.** The word as a dictionary would list it, when that differs from the verse:
   - without its attached و ف ب ك ل (بِاللِّوى → اللِّوى; وَأَودى → أَودى) and its pronoun (مَرامُها → مَرام; يَمِّمهُ → يَمِّم);
-  - an imperative in its plain form (فَاقصُري → اُقصُري).
+  - an imperative in its plain form (فَاقصُري → اُقصُري; وَاحتَفِل → اِحتَفِل), and no head when that is the word itself (مِل, دارِ);
+  - any other verb under its past tense (بانَت → بانَ; يُفدَ → فَدى).
   - Write it with harakat, like the verse, but without the final case ending (اللِّوى, العَنبَر, ماء الشَّباب).
 - **`root`.** For words derived from an Arabic root: ش ع ر. None for names and loanwords.
 - **Arabic meaning.** A short gloss first, then the sense here if it's different.
