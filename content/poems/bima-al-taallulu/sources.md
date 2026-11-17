@@ -107,3 +107,5 @@ A second reader checked the text against the page images of al-Tibyan, al-Barquq
 - **Notes:** 19.2.6 head «دَرَن» (not «الدَّرَن») and the noun against the editions' adjective explained; 22.1.2 «الأَجِلَّة» the plural of جِلال, as Ibn Jinni and al-Ma'arri say; 8.2.2 its head and the editions' forms; 1.1.1, 12.2.6, 21.1.4, 24.1.5 (al-Barquqi's variant «بعض نائله»), 25.1.2 and 25.2.4 added; the English 7.1.2 without an ellipsis.
 - **English:** the intro's closing test is of the love the poet professed, not "his loyalty".
 - **sources.md:** 18.2 al-Tibyan prints «جَبَنُ», not «جُبُنُ»; 4.1 «لعل الأظهر» is the verdict of «بعضهم» whom al-Barquqi quotes, not his own; al-Fasr's publisher and date from its imprint page; 19.1, 21.1, 21.2 and 23.2 scores added; the meter notes put right.
+
+After the review, the drafter dropped from the sharh of 21, in both languages, a clause reading Sayf al-Dawla's «سارَ وحقِّ أبي» as his understanding that the poet would leave Kafur too: Ibn Jinni reports the words without a gloss. The al-Barquqi note on 24 («يشير إلى ما وعده به من خطة الولاية») and its «يروى: بعض نائله» were checked on the page image (p. 1561).
