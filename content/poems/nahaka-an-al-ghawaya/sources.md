@@ -30,6 +30,7 @@ Scores come from `scripts/variants.py` (through `/tmp/shw/b3/tools/vbatch.py`, w
 | 1.1 | عَنِ (Dar al-Ma'arif, encyclopedia) | مِنَ (Palmer) | −6.3 |
 | 1.1 | الغَوايَةِ (Palmer, encyclopedia) | الغَوايَةَ (the description) | −3.8 |
 | 3.2 | وَقُل (Dar al-Ma'arif, encyclopedia) | فَقُل (Palmer) | −6.3 |
+| 4.2 | تَبَيَّنَ (Dar al-Ma'arif) | تُبَيِّنُ | −19.9 |
 | 6.2 | تَعرِف (all three) | تُبصِر (ل) | −27.5 |
 | 7.1 | ضَنيتُ … وَشَقيتُ (Palmer, encyclopedia) | لَقيتُ … وَضَنيتُ (Dar al-Ma'arif) | −16.4 |
 | 7.1 | ضَنيتُ … شَقيتُ, first person (Dar al-Ma'arif, Palmer, encyclopedia) | ضَنيتَ … شَقيتَ | −4.6 |
@@ -39,15 +40,14 @@ Scores come from `scripts/variants.py` (through `/tmp/shw/b3/tools/vbatch.py`, w
 | 13.2 | وِدادي (Palmer) | وَدادي (encyclopedia); وُدادي | −2.4; −3.6 |
 | 15.1 | عُذراً (all three) | غَدراً (ح, al-Hashimi) | −2.7 |
 | 15.2 | يُعذَرُ (all three) | يَغدِرُ (ح, al-Hashimi) | −3.4 |
+| 17.1 | لِضُعفِ (Palmer, encyclopedia) | لِضَعفِ | −2.6 |
 | 18.2 | عَن | في (all three, al-Hashimi) | −10.3 |
 | 19.2 | المَليحَةَ أَو (Palmer, encyclopedia) | المِلاحَ وَلا (Dar al-Ma'arif) | −16.4 |
 | 19.2 | حُلاكا (Dar al-Ma'arif, Palmer) | حِلاكا (the description) | +3.4 |
-| 22.2 | بَلاكا (Dar al-Ma'arif) | بِلاكا (Palmer) | −5.8 |
 | 20.1 | وِدادِكَ (Palmer) | وَدادِكَ (encyclopedia); وُدادِكَ | −5.6; −7.6 |
 | 21.1 | لِجِسمِكَ (Dar al-Ma'arif, encyclopedia, al-Hashimi) | لِحُسنِكَ (Palmer, ل) | −14.1 |
 | 21.2 | وَيَذهَبُ بَعدَ بَهجَتِهِ (Dar al-Ma'arif, encyclopedia, al-Hashimi) | وَتَذهَبُ بَهجَةٌ فيها (Palmer) | −11.6 |
-| 4.2 | تَبَيَّنَ (Dar al-Ma'arif) | تُبَيِّنُ | −19.9 |
-| 17.1 | لِضُعفِ (Palmer, encyclopedia) | لِضَعفِ | −2.6 |
+| 22.2 | بَلاكا (Dar al-Ma'arif) | بِلاكا (Palmer) | −5.8 |
 | 23.1 | وَما أَموتُ (encyclopedia, ح) | وَلا أَموتُ (Dar al-Ma'arif, Palmer) | −6.6 |
 | 23.2 | وَحَقِّ اللَّهِ | وَحَقِّ هَواكَ (all three) | −18.0 |
 | 26.1 | فَيا (Palmer, encyclopedia) | وَيا (Dar al-Ma'arif) | −4.6 |
@@ -102,4 +102,3 @@ A second reader checked the text letter by letter against the page images of Dar
 - **Notes:** 30.2 «يَرِفُّ» now gives the reading of both prints, «يَرِقُّ»; 22.2 «بَلاكا» gives Palmer's «بِلاكا» and the sense of decay (both languages); added 12.2 «قَبلُ», 20.2 «وَلَيسَ يَزالُ», 29.1 «وَإِلّا», and an English note for 18.1 «يَعِزُّ عَلَيَّ».
 - **Intro:** the Cairo heading «وقال يرثي بعض من يعزّ عليه» is the heading in their edition, not a verdict of the editors (both languages).
 - **sources.md:** the encyclopedia's agreements with the reciter listed correctly (23.1 and 30.2 are against both prints, not where they differ); وِداد credited to Palmer, not Dar al-Ma'arif; Palmer's damma in 7.1 added; the new scores added.
-
