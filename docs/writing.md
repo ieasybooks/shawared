@@ -25,9 +25,12 @@ the audio settles, but they are where the text comes from.
 - **Where they differ,** score each reading against the audio with `scripts/variants.py`,
   candidates of the same length. A gap of 5 or more is clear; under 2 is a coin toss, so
   listen and decide. The aligner can't hear vowel length (ـة against ـات, حَكَمَت against
-  حاكَمَت), and the meter often allows both: there, transcribe the half with two backends
-  (`--transcriber cohere` and `audar`) on a clip cut with a wide margin, and follow them
-  when they agree.
+  حاكَمَت), and the meter often allows both. Transcribe the half with two backends
+  (`--transcriber cohere` and `audar`) on a clip cut with a wide margin, but don't take a
+  long vowel from them on its own: reciters stretch short syllables in the chant, above all
+  the last of a shortened foot (فَعولُ), and the transcribers then hear الرصافات for
+  الرصافة. Follow a long vowel only where the same reciter doesn't stretch that spot
+  elsewhere; otherwise keep the editions.
 - **Where the reciter differs from every edition,** the text still follows him, and that
   word gets a note giving the editions' reading and its meaning («زَردَقاً»: the editions
   have رَزدَقاً, a row).

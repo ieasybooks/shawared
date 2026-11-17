@@ -20,6 +20,10 @@ describe("houseStyle", () => {
     expect(houseStyle("وَبَينَ الرِضا وَالسُخطِ لِلنَدى سَقى اللَهُ اللَيلِ")).toBe("وَبَينَ الرِّضا وَالسُّخطِ لِلنَّدى سَقى اللَّهُ اللَّيلِ");
     expect(houseStyle("القَمَرِ لِلحُبِّ اِبنِ اِلتَقى")).toBe("القَمَرِ لِلحُبِّ اِبنِ اِلتَقى");
   });
+  it("keeps the damma before the silent و of أُولي", () => {
+    expect(houseStyle("أَن أَطيعوا أُولي الأَمرِ")).toBe("أَن أَطيعوا أُولي الأَمرِ");
+    expect(houseStyle("أُولَئِكَ")).toBe("أُولَئِكَ");
+  });
   it("leaves text already in the house style alone", () => {
     for (const t of ["تَقولُ بُثَينَةُ لَمّا رَأَت", "فُنوناً مِنَ الشَّعَرِ الأَحمَرِ", "أَلا تَذكُرينَ بَلى فَاذكُري", "وَإِذ لَمَّتي كَجَناحِ الغُرابِ", "يَومَ بَينَ"])
       expect(houseStyle(t)).toBe(t);
@@ -38,6 +42,7 @@ describe("tashkeelIssues", () => {
     expect(tashkeelIssues("وَما كَمَدُ الحُسّادِ شَيئاً قَصَدتُهُ")).toEqual([]);
     expect(tashkeelIssues("وَكانَ حَيّاً بِحُلوِ العَيشِ مُغتَذِيا")).toEqual([]);
     expect(tashkeelIssues("لِيَكسِبَ مالاً أَو يُنَثَّ لَهُ حَمدُ")).toEqual([]);
+    expect(tashkeelIssues("مُعَنّىً وَهَل في قَتلِهِ لَكِ مِن عُذرِ")).toEqual([]);
   });
   it("finds missing vowels", () => {
     expect(tashkeelIssues("قلت")).toEqual(["«قلت» starts without a vowel", "«قلت» has two silent letters in a row (لت)"]);

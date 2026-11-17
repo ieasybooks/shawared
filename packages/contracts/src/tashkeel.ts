@@ -52,7 +52,7 @@ const isWasl = (ls: Letter[], i: number) => {
     then = ls[i + 2];
   // The letter after it is silent: bare, and not taking its vowel from a long letter (وادي)
   // or from the alif that carries tanwin al-fath (مالاً).
-  const long = then && "اىوي".includes(then.ch) && (bare(then) || (then.ch === "ا" && then.marks.every((m) => m === FATHATAN)));
+  const long = then && "اىوي".includes(then.ch) && (bare(then) || ("اى".includes(then.ch) && then.marks.every((m) => m === FATHATAN)));
   return i > 0 && !!after && bare(after) && after.ch !== "ا" && !long;
 };
 
@@ -93,7 +93,9 @@ function styleWord(word: string): string {
     // و and its silent alif (كانوا).
     const then = ls[i + 2];
     const consonant = (then?.ch === "ا" && (next.ch === "ي" || i + 2 < ls.length - 1)) || then?.ch === "ى";
-    if (has(l, DAMMA) && next.ch === "و" && bare(next) && !consonant) drop(l, DAMMA);
+    // The و of أُولو, أُولي, أُولَئِكَ and أُولات is only written, never said: the damma stays.
+    const silentWaw = l.ch === "أ" && ls[i + 2]?.ch === "ل";
+    if (has(l, DAMMA) && next.ch === "و" && bare(next) && !consonant && !silentWaw) drop(l, DAMMA);
     if (has(l, KASRA) && next.ch === "ي" && bare(next) && !consonant) drop(l, KASRA);
   }
   return join(ls);
@@ -117,7 +119,7 @@ export function tashkeelIssues(text: string): string[] {
       if ((l.ch === "و" || l.ch === "ي") && i > 0 && !has(ls[i - 1], FATHA)) return true;
       // A letter right before a long alif, alif maqsura, و or ي takes its vowel from it.
       const next = ls[i + 1];
-      const long = next && (bare(next) || (next.ch === "ا" && next.marks.every((m) => m === FATHATAN)));
+      const long = next && (bare(next) || ("اى".includes(next.ch) && next.marks.every((m) => m === FATHATAN)));
       if (long && "اىوي".includes(next.ch) && !(next.ch === "ا" && isWasl(ls, i + 1))) return true;
       return false;
     });
@@ -130,9 +132,10 @@ export function tashkeelIssues(text: string): string[] {
     }
     ls.forEach((l, i) => {
       const next = ls[i + 1];
-      // Before a long letter, or before the alif that carries tanwin al-fath (حَيّاً), the
+      // Before a long letter, or before the alif or alif maqsura that carries tanwin al-fath
+      // (حَيّاً, مُعَنّىً), the
       // vowel is already written.
-      const carried = next && "اىوي".includes(next.ch) && (bare(next) || (next.ch === "ا" && next.marks.every((m) => m === FATHATAN)));
+      const carried = next && "اىوي".includes(next.ch) && (bare(next) || ("اى".includes(next.ch) && next.marks.every((m) => m === FATHATAN)));
       if (has(l, SHADDA) && !l.marks.some((m) => VOWELS.includes(m)) && !carried)
         issues.push(`«${word}» has a shadda with no vowel on ${l.ch}`);
       if (l.marks.filter((m) => VOWELS.includes(m)).length > 1) issues.push(`«${word}» has two vowels on ${l.ch}`);
