@@ -31,7 +31,7 @@ To publish recordings, upload them where they are, with the bucket's upload keys
 
 ```sh
 mise run vault:run SHAWARED_AUDIO_ACCESS_KEY_ID SHAWARED_AUDIO_SECRET_ACCESS_KEY -- \
-  bun --cwd ../shawared run audio:upload
+  bun run --cwd ../shawared audio:upload
 ```
 
 It uploads each recording whose key isn't in the bucket yet, with `Content-Type: audio/mp4` and `Cache-Control: public, max-age=31536000, immutable`, and writes its key into the recitation's `audio` field. A key already there holds the same bytes, so it's left alone.
