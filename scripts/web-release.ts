@@ -3,6 +3,9 @@
 //
 // - 404.html, the not-found page, which Workers serves with a 404 for any
 //   unknown path.
+// - en.html, from en/index.html: Workers serves /x from x.html, but redirects
+//   /x to /x/ when the page is x/index.html, and the sitemap and the pages'
+//   canonical links name /en.
 // - _headers. Files whose names carry their content's hash (_expo/static,
 //   assets) are cached for a year as immutable, each by its own rule: a rule
 //   with * would also mark the 404 page served for a missing one immutable.
@@ -14,7 +17,7 @@
 // holds no audio and that the pages' og:audio points at audio.shawared.com.
 //
 //   bun scripts/web-release.ts [--remote-audio]
-import { copyFileSync, existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { AUDIO_HOST, IMMUTABLE, root, SITE } from "./recordings.ts";
 
@@ -61,6 +64,22 @@ export function headersFor(dist: string): { text: string; hashed: number } {
   return { text: `${rules.join("\n\n")}\n`, hashed: hashed.length };
 }
 
+// Moves each folder's home page, x/index.html, to x.html, so Workers serves it
+// at /x rather than redirecting there to /x/. Group copies such as
+// (tabs)/index.html aren't addresses and stay. Returns the pages it moved.
+export function pagesWithoutSlash(dist: string): string[] {
+  const moved: string[] = [];
+  for (const file of [...files(dist)]) {
+    const parts = relative(dist, file).split(sep);
+    if (parts.length < 2 || parts.at(-1) !== "index.html" || parts.some((p) => /^[([]/.test(p))) continue;
+    const target = join(dist, ...parts.slice(0, -2), `${parts.at(-2)}.html`);
+    if (existsSync(target)) continue;
+    renameSync(file, target);
+    moved.push(relative(dist, target));
+  }
+  return moved.sort();
+}
+
 export function remoteAudioProblems(dist: string): string[] {
   const problems: string[] = [];
   for (const file of files(dist)) {
@@ -77,9 +96,10 @@ if (import.meta.main) {
   const dist = join(root(), "apps/app/dist");
   if (!existsSync(dist) || !statSync(dist).isDirectory()) throw new Error(`${dist} doesn't exist: export the web first`);
   copyFileSync(join(dist, "+not-found.html"), join(dist, "404.html"));
+  const moved = pagesWithoutSlash(dist);
   const { text, hashed } = headersFor(dist);
   writeFileSync(join(dist, "_headers"), text);
-  console.log(`web: 404.html, and immutable caching for ${hashed} hashed files`);
+  console.log(`web: 404.html, ${moved.join(", ") || "no pages moved"}, and immutable caching for ${hashed} hashed files`);
   if (process.argv.includes("--remote-audio")) {
     const problems = remoteAudioProblems(dist);
     if (problems.length) {

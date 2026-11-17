@@ -48,6 +48,17 @@ test("pages, loaders, published content and the sitemap are revalidated", async 
   expect((await loader.json()).bundle.poem.id).toBe("taqulu-buthaynatu");
 });
 
+test("every address in the sitemap answers with its page, without a redirect", async ({ request }) => {
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  const paths = [...sitemap.matchAll(/<loc>https:\/\/shawared\.com([^<]*)<\/loc>/g)].map((m) => m[1]!);
+  expect(paths).toEqual(expect.arrayContaining(["/", "/en", POEM, `/en${POEM}`]));
+  for (const path of paths) {
+    const r = await request.get(path, { maxRedirects: 0 });
+    expect(r.status(), path).toBe(200);
+    expect(header(r, "content-type"), path).toContain("text/html");
+  }
+});
+
 test("an unknown address is a 404 with the not-found page", async ({ page }) => {
   const response = await page.goto("/no-such-page");
   expect(response?.status()).toBe(404);
