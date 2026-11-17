@@ -211,6 +211,7 @@ export const METER_FEET: Record<string, string> = {
 
 const LETTERS: Record<string, [string, string]> = {
   ء: ["الهمزة", "hamza"],
+  ا: ["الألف", "alif"],
   ب: ["الباء", "bāʾ"],
   ت: ["التاء", "tāʾ"],
   ث: ["الثاء", "thāʾ"],
