@@ -4,7 +4,7 @@
 // pages ahead of time.
 import type { PublishedRecitation } from "@shawared/contracts";
 import { buildTrack, PRE_ROLL, REPEAT_GAP, segmentAt, type Track } from "@shawared/listening";
-import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from "expo-audio";
+import { createAudioPlayer, setAudioModeAsync, type AudioPlayer, type AudioStatus } from "expo-audio";
 import { audioUrl } from "../../lib/content";
 import { createStore, type Store } from "../../lib/store";
 
@@ -30,6 +30,16 @@ export type Clock = {
 export const idleClock = (time = 0): Clock => ({ time, playing: false, ready: false, buffering: false, seq: 0 });
 
 const sameItem = (a: NowItem | null, b: NowItem) => !!a && a.poemId === b.poemId && a.recitation.id === b.recitation.id;
+
+/**
+ * Whether a status update leaves the recitation playing. A recording that was asked to play is
+ * still playing while it starts or waits for data, though a status then says it isn't: the web
+ * says so until its time moves, iOS while it buffers. Only a pause, an end or an error stops it,
+ * by the app, the lock screen or the system.
+ */
+export function stillPlaying(wasPlaying: boolean, s: AudioStatus, audio: Pick<AudioPlayer, "playing">): boolean {
+  return s.playing || (wasPlaying && !s.didJustFinish && (s.isBuffering || audio.playing));
+}
 
 class Player {
   readonly now: Store<{ item: NowItem | null; track: Track | null }> = createStore<{ item: NowItem | null; track: Track | null }>({
@@ -69,13 +79,14 @@ class Player {
         audio.seekTo(this.pendingSeek).catch(() => {});
         this.pendingSeek = null;
       }
+      const playing = stillPlaying(this.clock.get().playing, s, audio);
       this.clock.set({
-        playing: s.playing,
+        playing,
         ready: s.isLoaded,
         buffering: s.isBuffering,
-        ...(s.playing || this.pendingSeek !== null ? {} : { time: s.currentTime }),
+        ...(playing || this.pendingSeek !== null ? {} : { time: s.currentTime }),
       });
-      if (s.playing) this.tick();
+      if (playing) this.tick();
     });
     try {
       audio.setActiveForLockScreen(true, { title: item.title, artist: `${item.poet} · ${item.reciter}`, albumTitle: "شوارد · Shawared" });
