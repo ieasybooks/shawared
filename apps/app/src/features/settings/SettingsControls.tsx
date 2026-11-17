@@ -1,9 +1,11 @@
 import type { UiLang } from "@shawared/contracts";
+import { usePathname } from "expo-router";
 import { useRef, useState } from "react";
 import { Modal, Pressable, StyleSheet, Text, View, type HostInstance } from "react-native";
-import { IconButton, Nuqta, type PressState } from "../../components/ui/controls";
+import { IconButton, IconLink, Nuqta, type PressState } from "../../components/ui/controls";
 import { Dir } from "../../components/ui/Dir";
 import { t } from "../../lib/i18n";
+import { langOfPath, paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { typeFor } from "../../lib/type";
 import { useWindowWidth } from "../../lib/viewport";
@@ -14,13 +16,32 @@ const LANGS: { value: UiLang; label: string }[] = [
 ];
 const MENU_W = 176;
 
-/** Appearance and language, as two icon buttons. */
-export function SettingsButtons({ size = 40 }: { size?: number }) {
+/** Appearance and language, as two icon buttons, and with `about` a link to the About page. */
+export function SettingsButtons({ size = 40, about = false }: { size?: number; about?: boolean }) {
   return (
     <View style={styles.row}>
       <ThemeToggle size={size} />
       <LanguageMenu size={size} />
+      {about && <AboutLink size={size} />}
     </View>
+  );
+}
+
+/** An "i" that opens About Shawared, which leads on to the privacy policy. */
+function AboutLink({ size }: { size: number }) {
+  const { lang, href, palette } = useSettings();
+  const pathname = usePathname();
+  const bare = langOfPath(pathname) === "en" ? pathname.slice(3) : pathname;
+  return (
+    <IconLink
+      icon="info"
+      label={t(lang, "aboutShawared")}
+      href={href(paths.about)}
+      current={bare === paths.about}
+      size={size}
+      iconSize={size * 0.5}
+      color={palette.fg}
+    />
   );
 }
 

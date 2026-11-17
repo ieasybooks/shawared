@@ -20,7 +20,8 @@ export type IconName =
   | "mic"
   | "waves"
   | "search"
-  | "link";
+  | "link"
+  | "info";
 
 /** Icons that point along the reading direction. They are drawn for left-to-right and mirrored in Arabic. */
 const DIRECTIONAL = new Set<IconName>(["play", "prev", "next", "back"]);
@@ -98,6 +99,13 @@ export function Icon({ name, size = 22, color }: { name: IconName; size?: number
         </G>
       )}
       {name === "moon" && <Path {...stroke} strokeWidth={1.9} d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" />}
+      {name === "info" && (
+        <G {...stroke} strokeWidth={1.8}>
+          <Circle cx={12} cy={12} r={9} />
+          <Path d="M12 11v5.5" />
+          <Circle cx={12} cy={7.6} r={0.4} strokeWidth={2.2} />
+        </G>
+      )}
       {name === "globe" && (
         <G {...stroke} strokeWidth={1.8}>
           <Circle cx={12} cy={12} r={9} />

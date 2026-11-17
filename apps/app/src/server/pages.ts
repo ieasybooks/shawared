@@ -1,5 +1,6 @@
 import type { Catalog, CatalogPerson, CatalogPoem, PersonKind, UiLang } from "@shawared/contracts";
 import type { Metadata } from "expo-router/server";
+import { ABOUT, PRIVACY } from "../features/about/texts";
 import { abyatCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../lib/i18n";
 import { AUDIO, pathInLang, paths, SITE } from "../lib/routes";
 import { catalog, personBundle, poemBundle } from "./content";
@@ -116,6 +117,8 @@ const notFound = (lang: UiLang): Metadata => ({ title: titled(lang, t(lang, "not
 /** Each page's title, description and preview. */
 export const pageMeta = {
   home: (lang: UiLang) => describe(lang, paths.home, t(lang, "siteTitle"), t(lang, "tagline")),
+  about: (lang: UiLang) => describe(lang, paths.about, ABOUT[lang].title, ABOUT[lang].description),
+  privacy: (lang: UiLang) => describe(lang, paths.privacy, titled(lang, PRIVACY[lang].title), PRIVACY[lang].description),
   people: (kind: PersonKind, lang: UiLang) =>
     describe(
       lang,
