@@ -2,7 +2,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { liveProblems, LiveError, scripts, sitemapPaths, waitForBuild } from "./check-live.ts";
+import { checkLive, liveProblems, LiveError, scripts, sitemapPaths, waitForBuild } from "./check-live.ts";
 
 const SITE = "https://shawared.com";
 const REVALIDATE = "public, max-age=0, must-revalidate";
@@ -218,5 +218,28 @@ describe("liveProblems", () => {
     expect((await liveProblems(SITE, dist({ ...FILES, "sitemap.xml": sitemap }), served.fetchFn)).problems).toEqual([
       "the sitemap doesn't list /poems/p",
     ]);
+  });
+});
+
+describe("checkLive", () => {
+  const redirect = { status: 307, headers: { location: "/en/" } };
+
+  it("asks again while a location still serves the last deploy, whose scripts were the same", async () => {
+    const live = stand();
+    let stale = 2;
+    const fetchFn = (async (url: string, init?: RequestInit) =>
+      url === `${SITE}/en` && stale-- > 0 ? new Response(null, redirect) : live.fetchFn(url, init)) as unknown as typeof fetch;
+    const slept: number[] = [];
+    expect(await checkLive(SITE, dist(), fetchFn, async (ms) => void slept.push(ms))).toBe(4);
+    expect(slept).toEqual([10_000, 10_000]);
+  });
+
+  it("gives up after the last try with what's still wrong", async () => {
+    const { fetchFn } = stand({ "/en": redirect });
+    const slept: number[] = [];
+    const error = await checkLive(SITE, dist(), fetchFn, async (ms) => void slept.push(ms), 3).catch((e: unknown) => e);
+    expect(error).toBeInstanceOf(LiveError);
+    expect((error as Error).message).toBe(`${SITE} serves this build's scripts, but after 3 tries:\n  - /en: HTTP 307 to /en/, not 200`);
+    expect(slept).toEqual([10_000, 10_000]);
   });
 });
