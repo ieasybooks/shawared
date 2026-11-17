@@ -32,20 +32,26 @@ async function expectCurrent(page: Page, name: string) {
 /** Scrolls a virtual list until a row is drawn and on screen. */
 async function scrollTo(page: Page, text: string) {
   const row = shown(page, text, true);
-  const onScreen = async () => {
-    if (!(await row.count())) return false;
-    const box = await row.boundingBox();
-    return !!box && box.y >= 0 && box.y + box.height <= (page.viewportSize()?.height ?? 0);
+  const where = async (): Promise<"on" | "off" | "unsure"> => {
+    if (!(await row.count())) return "off";
+    // The list can draw the row again between the two looks: then look again, in place.
+    const box = await row.boundingBox({ timeout: 1000 }).catch(() => null);
+    if (!box) return "unsure";
+    return box.y >= 0 && box.y + box.height <= (page.viewportSize()?.height ?? 0) ? "on" : "off";
   };
   await page.waitForLoadState("networkidle");
-  for (let i = 0; i < 80 && !(await onScreen()); i++) {
+  for (let i = 0; i < 80; i++) {
+    const at = await where();
+    if (at === "on") break;
     // Scroll the current screen's scrolling boxes (touch emulation ignores the mouse wheel).
-    await page.evaluate(() => {
-      for (const el of document.querySelectorAll("div")) {
-        const o = getComputedStyle(el).overflowY;
-        if ((o === "auto" || o === "scroll") && el.scrollHeight > el.clientHeight && !el.closest("[inert]")) el.scrollBy(0, 400);
-      }
-    });
+    if (at === "off") {
+      await page.evaluate(() => {
+        for (const el of document.querySelectorAll("div")) {
+          const o = getComputedStyle(el).overflowY;
+          if ((o === "auto" || o === "scroll") && el.scrollHeight > el.clientHeight && !el.closest("[inert]")) el.scrollBy(0, 400);
+        }
+      });
+    }
     await page.waitForTimeout(150);
   }
   return row;
@@ -207,7 +213,8 @@ test("moving to another page never shows an empty screen", async ({ page }) => {
     const front = (el: Element | null) => !!el && !el.closest("[inert]");
     const tick = () => {
       const texts = [...document.querySelectorAll("#root *")].filter(
-        (e) => front(e) && [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent!.trim()) && (e as HTMLElement).offsetParent !== null,
+        (e) =>
+          front(e) && [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent!.trim()) && (e as HTMLElement).offsetParent !== null,
       ).length;
       const spinner = [...document.querySelectorAll('[role="progressbar"]')].some((e) => front(e));
       if (texts < 2 && !spinner) w.emptyFrames++;
