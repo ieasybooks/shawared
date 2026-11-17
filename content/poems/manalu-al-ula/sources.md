@@ -43,6 +43,7 @@ Scores come from `scripts/variants.py` on the app audio; the gap is the other re
 - **5.1, 19.1, 30.1, 39.1, 46.1:** the transcribers hear «بالغ», «مانعت», «حاشدوا», «خاضعت», «عادمت»: each is the third syllable of a first foot shortened to فعولُ, which this reciter stretches throughout. The editions' short vowels stay (at 5.1 the aligner also prefers «بَلَغَ» by 10.3).
 - **31.2:** the aligner prefers the lithograph's «هارب» by 2.4, but both transcribers and the full transcript hear «هائب», the reading of both editions; the text keeps «هائِبِ».
 - **39.1:** both transcribers hear «قلب»; the aligner can't tell غ from ق here, and «قُلب الرقاب» makes no sense. The text keeps «غُلبُ».
+- **Tanwin:** 29.1 «سَعيدٌ وَمَسعودٌ» with tanwin, as al-Khatib prints them; al-Janbi's «سَعِيدُ وَمَسعُودُ» leaves the second foot a syllable short.
 - **Meter:** 36.2 «الأَعدا» shortened, as both editions print it («الأعداء» breaks the foot); 28.1 «الشَّآمِ» in three syllables (al-Janbi's «الشّآم»), against «الشّامِ» in 30.2 and 44.2; 27.2 «الوَفا»; 9.2 «مَلكاً» with a silent lam, as the commentary notes; 41.1 «سَطواتٍ» with a silent ṭ. The long mim of 12.2 «صَبوحُهُمُ», 18.2 «سِلاحُهُمُ», 23.1 «عَلَيهِمُ», 30.2 «أَهليهِمُ» and 37.1 «وَمُناهُمُ», and the long pronoun of 19.1 «مِنهُ» and 43.2 «وَسَمّاهُ», are the meter's (with «عليه», which the full transcript hears at 23.1, the sadr would be a syllable short).
 - **Spelling:** 42.2 «اِبنِ» in the house style, where the editions print «بنِ» between the two names.
 
