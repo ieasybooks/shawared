@@ -65,9 +65,10 @@ Mutaqarib, every half scanned (`/tmp/shw-tatawala/tools/scan_mutaqarib.py`, the 
 
 - **Alignment:** 15 weak words of 128: the four single-letter ends of split words (5.2 «لُ», 9.2 «ةِ», 10.2 «نِ», 15.2 «رِ», the weakest at 0.01), short words (لَهُ, مِنَ, مِن, أَبي, دَمِ, فَإِن, وَإِن twice, عَلى) and 4.1 «غَيرِهِ», 16.1 «كَلمُهُ». The halves pass by ear.
 - **`scripts/verify.py`:** 15 of 32 clips differ from the text (17 of 128 words). Each difference is the transcriber's, not the reciter's:
-  - **split words:** the reciter says each split word whole before the pause, so the sadr's clip hears it whole (5.1 «يزال», 10.1 «الجفاق», 15.1 «الجرور») and the ajuz's clip misses its first letter (9.2 «ة», 10.2 «ن», 15.2 «ر»; 5.2 hears «قالوا» for «لُ يُؤثَرُ»). The editions' layout is kept; since only halves are timed, the ajuz starts on its first full word;
+  - **split words:** the last letter of a split word falls at the pause between the halves, so the clips on either side catch it or miss it: the sadr's clip hears it whole (5.1 «يزال», 10.1 «الجفاق», 15.1 «الجرور») and the ajuz's clip misses it (9.2 «ة», 10.2 «ن», 15.2 «ر»), or both hear part of it (5.2 «قالوا» for «لُ يُؤثَرُ»; the second transcriber's 10.2 «الجناني والنار»). The editions' layout is kept, and the timeline's joins sit in those pauses;
   - **a stretched ending heard as letters:** 2.2 «كليلات», 11.1 «وثابتا», 14.2 «الججدين», 16.1 «كالمهور» (the full transcript also hears «كالمهو» for «كَلمُهُ»), 6.2 «مرسده» (ث heard as س, the rhyme stretched);
   - **misheard words:** 3.1 «بان» for «نَبَأٍ», 4.1 «نفي» for «نَثا», 12.2 «الساعه في المقدير» for «السَّعَفِ الموقَدِ» (the full transcript has «الساعة في الموقد»: the «فِ» of السَّعَفِ and the article run together as «في»; «الساعة في» would break the meter, and every edition has السعف).
+- **Second transcriber** (`tafrigh --transcriber audar` on the same 32 clips, `media/work/q4NZPjC0h5o/clips/audar/`): it hears 3.2 «وخبرته» and 12.2 «السعف», which settle the two places above. Its other differences are of the same kinds: stretched endings (2.2 «كليلى», 7.1 «نخفيه», 8.2 «نقصديه», 11.1 «والثابتة», 15.2 «الأجردية») and misheard or run-together words (4.1 «عنف», 6.2 «أعندا معمر على مرفدين», 9.1 «الكمال», 16.2 «إذا أصاب بالعمى»; «إذا أصابَ» would break the meter, and the first transcriber hears «صاب»).
 
 ## Commentary drawn on
 
@@ -79,3 +80,16 @@ Mutaqarib, every half scanned (`/tmp/shw-tatawala/tools/scan_mutaqarib.py`, the 
 - **Abyat 13–14:** al-Tufi, *Mawa'id al-Hays*, p. 319 (shamela 148534/160); Abu Hilal al-Askari, *al-Sina'atayn*, p. 246 (shamela 23787/246); Ibn al-Mu'tazz, *al-Badi'*, p. 166 (shamela 11661/157), quoted in the intro.
 - **The poet's life:** al-Zirikli, *al-A'lam*, vol. 2, pp. 11–12 (shamela 12286/962–963), for his name, family, exile, his words on his father's death, his flight, Constantinople, Palestine and his death at Ankara; Ibn Sallam, *Tabaqat Fuhul al-Shu'ara'*, vol. 1, pp. 54–55 (shamela 6738/53–54), for Labid's «الملك الضليل» and what his partisans said he was first to do; the first Mu'allaqa as his, from the note of al-Ayni's editor (vol. 2, p. 596 n. 4: «صاحب المعلقة الأولى في الشعر العربي»). Al-A'lam gives his dates only as «نحو ١٣٠ – ٨٠ ق هـ = نحو ٤٩٧ – ٥٤٥ م»; `poet.json` has no `died`, since the format can't express a year before the Hijra, and the bio gives the dates.
 - Research files: `media/research/tatawala-layluka/` (shamela pages) and `media/research/_archive/` (the scans).
+
+## Review
+
+No independent second reader could be started (the machine was at its limit of concurrent agents), so the drafter checked the draft against `/tmp/shw/b3/REVIEW.md` on 2026-11-17: every half against Ibrahim's page images, every half scanned, the case endings, every gloss against Ibrahim's and al-Sukkari's notes and al-Ayni, every quotation against its page, and the second transcriber on all 32 clips. Fixed in the course of that check:
+
+- **Text:** 11.2 «وَالمَروَدِ» with fatha, as Ibrahim prints it (the batch scores agree); 6.2 «عَمرٍو» with the tanwin on the ر.
+- **Meaning:** bayt 3 gives al-Ayni's reading (news of Abu al-Aswad's death) as the other view; bayt 15 no longer claims more for the rope simile than the commentary says; bayt 14 credits Abu Hilal with "whiteness", his word.
+- **Quotations:** al-Ayni (3) and al-Tufi (13) paraphrased as reported speech rather than introduced with «قال».
+- **Notes:** heads «سَبوح» and «جَموح» without the tanwin.
+- **Poet:** Ibn Sallam's "first to do things others copied" given as the argument of those who ranked him first, which is how Ibn Sallam reports it; al-Mundhir "king of Iraq", as in al-A'lam.
+- **sources.md:** an unverified volume number and an unchecked reference dropped.
+
+An independent second reading is still owed.
