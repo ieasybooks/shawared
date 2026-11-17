@@ -5,6 +5,7 @@
     "": {
       "name": "shawared",
       "devDependencies": {
+        "@ieasybooks/release": "github:ieasybooks/release#116c69c2b2ca4e03450b8728575fea5c050685da",
         "@playwright/test": "^1.65.1",
         "@shawared/contracts": "workspace:*",
         "@shawared/design": "workspace:*",

@@ -21,6 +21,8 @@
     "content:preview": "bun scripts/preview.ts",
     "audio:upload": "bun scripts/upload-audio.ts",
     "audio:verify": "bun scripts/verify-audio.ts",
+    "store:check": "ieasybooks-release store check --app apps/app",
+    "store:screenshots": "bun scripts/store-screenshots.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p apps/app/tsconfig.json",
     "test": "vitest run",
     "test:e2e": "playwright test",
@@ -29,6 +31,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
+    "@ieasybooks/release": "github:ieasybooks/release#116c69c2b2ca4e03450b8728575fea5c050685da",
     "@playwright/test": "^1.65.1",
     "@shawared/contracts": "workspace:*",
     "@shawared/design": "workspace:*",
