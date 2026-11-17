@@ -15,6 +15,7 @@ describe("houseStyle", () => {
   it("keeps the prefix's vowel before the alif of wasl", () => {
     expect(houseStyle("وَالعَنبَرِ فَاقصُرِي وَاللَّيلِ")).toBe("وَالعَنبَرِ فَاقصُري وَاللَّيلِ");
     expect(houseStyle("وَادِي فَارِسٌ")).toBe("وادي فارِسٌ");
+    expect(houseStyle("وَاتَّقِ فَاطَّرِح وَادَّرِع")).toBe("وَاتَّقِ فَاطَّرِح وَادَّرِع");
   });
   it("gives a sun letter after the article its shadda", () => {
     expect(houseStyle("وَبَينَ الرِضا وَالسُخطِ لِلنَدى سَقى اللَهُ اللَيلِ")).toBe("وَبَينَ الرِّضا وَالسُّخطِ لِلنَّدى سَقى اللَّهُ اللَّيلِ");
@@ -43,6 +44,7 @@ describe("tashkeelIssues", () => {
     expect(tashkeelIssues("وَكانَ حَيّاً بِحُلوِ العَيشِ مُغتَذِيا")).toEqual([]);
     expect(tashkeelIssues("لِيَكسِبَ مالاً أَو يُنَثَّ لَهُ حَمدُ")).toEqual([]);
     expect(tashkeelIssues("مُعَنّىً وَهَل في قَتلِهِ لَكِ مِن عُذرِ")).toEqual([]);
+    expect(tashkeelIssues("فَاترُكِ الحيلَةَ فيها وَاتَّئِد")).toEqual([]);
   });
   it("finds missing vowels", () => {
     expect(tashkeelIssues("قلت")).toEqual(["«قلت» starts without a vowel", "«قلت» has two silent letters in a row (لت)"]);

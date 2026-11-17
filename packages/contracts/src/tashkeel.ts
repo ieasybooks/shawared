@@ -53,7 +53,10 @@ const isWasl = (ls: Letter[], i: number) => {
   // The letter after it is silent: bare, and not taking its vowel from a long letter (وادي)
   // or from the alif that carries tanwin al-fath (مالاً).
   const long = then && "اىوي".includes(then.ch) && (bare(then) || ("اى".includes(then.ch) && then.marks.every((m) => m === FATHATAN)));
-  return i > 0 && !!after && bare(after) && after.ch !== "ا" && !long;
+  // Form VIII of a verb whose first letter merges with the t (اِتَّقى, اِدَّرَعَ, اِطَّرَحَ):
+  // after a one-letter prefix the alif comes before a doubled letter (وَاتَّقِ, فَاطَّرِح).
+  const doubled = i === 1 && "وف".includes(ls[0]!.ch) && has(after, SHADDA) && "تدطذصضظزثسش".includes(after!.ch);
+  return i > 0 && !!after && ((bare(after) && after.ch !== "ا" && !long) || doubled);
 };
 
 const SUN = "تثدذرزسشصضطظلن";
