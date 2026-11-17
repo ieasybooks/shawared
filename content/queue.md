@@ -15,5 +15,5 @@ Status: **transcribed** (`scripts/intake.ts` done), then **drafted** (all files 
 | 7 | https://www.youtube.com/watch?v=ZPFPDIH-vng | بطيبة رسم للرسول ومعهد | حسان بن ثابت | أسامة الواعظ | 11:00 | reviewed: `bi-taybata` | The corrected version of an earlier upload. |
 | 8 | https://www.youtube.com/watch?v=y6CKU_ob1xU | لعينيك ما يلقى الفؤاد وما لقي | المتنبي | أسامة الواعظ | 7:21 | published: `liaynayki-ma-yalqa` | The text is in the description; check it against an edition. |
 | 9 | https://www.youtube.com/watch?v=oWzo-SsqOVY | لامية ابن الوردي | ابن الوردي | أسامة الواعظ | 8:33 | reviewed: `lamiyyat-ibn-al-wardi` | |
-| 10 | https://www.youtube.com/watch?v=HEYIcr8ODcI | تائية الإلبيري | أبو إسحاق الإلبيري | أحمد النفيس | 18:22 | drafted, in review: `taiyyat-al-ilbiri` | The description names the edition he follows: عبد المحسن القاسم. |
+| 10 | https://www.youtube.com/watch?v=HEYIcr8ODcI | تائية الإلبيري | أبو إسحاق الإلبيري | أحمد النفيس | 18:22 | reviewed: `taiyyat-al-ilbiri` | The description names the edition he follows: عبد المحسن القاسم. |
 | 11 | https://www.youtube.com/watch?v=5hdN4hWWw4A | بانت سعاد | كعب بن زهير | أسامة الواعظ | 9:45 | reviewed: `banat-suad` | |
