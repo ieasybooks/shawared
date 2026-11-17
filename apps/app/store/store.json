@@ -1,0 +1,12 @@
+{
+  "name": "Shawared",
+  "languages": {
+    "ar": { "appStore": "ar-SA", "googlePlay": "ar", "appGallery": "ar" },
+    "en": { "appStore": "en-US", "googlePlay": "en-US", "appGallery": "en-US" }
+  },
+  "appStore": {
+    "supportUrl": "https://shawared.com/about",
+    "marketingUrl": "https://shawared.com/",
+    "privacyUrl": "https://shawared.com/privacy"
+  }
+}
