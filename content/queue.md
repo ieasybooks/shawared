@@ -6,7 +6,7 @@ Status: **transcribed** (`scripts/intake.ts` done), then **drafted** (all files 
 
 | # | Recording | Poem | Poet | Reciter | Length | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | https://www.youtube.com/watch?v=xsM1deqwsI8 | يا أرض أندلس الخضراء حيينا | أبو الفضل الوليد (الوليد بن طعمة) | أسامة الواعظ | 20:31 | drafted, in review: `ya-arda-andalus` | Uploaded by another channel (الحارث). The description says some abyat were left out and flags one recited bayt («هذا لعمري لسخط الله أو غضب…») as unsound. |
+| 1 | https://www.youtube.com/watch?v=xsM1deqwsI8 | يا أرض أندلس الخضراء حيينا | أبو الفضل الوليد (الوليد بن طعمة) | أسامة الواعظ | 20:31 | reviewed: `ya-arda-andalus` | Uploaded by another channel (الحارث). The description says some abyat were left out and flags one recited bayt («هذا لعمري لسخط الله أو غضب…») as unsound. |
 | 2 | https://www.youtube.com/watch?v=-bg5Ld09uW4 | إن السلامة أن ترضى بما قضيا | أبو العتاهية | أحمد النفيس | 1:57 | reviewed: `inna-al-salamata` | No description. The transcript shows the ya-iyya «إن السلامة أن ترضى بما قُضِيا», about a dozen abyat. |
 | 3 | https://www.youtube.com/watch?v=tNtwyDZnMQw | ألا لا على العاشقين جناح | إيهاب الشباطات | أسامة الواعظ | 6:02 | reviewed: `ala-la-ala-al-ashiqin` | A contemporary poet. The description links an explanation of the poem (Google Drive). |
 | 4 | https://www.youtube.com/watch?v=SzW9YSxWA6Q | عيون المها بين الرصافة والجسر | علي بن الجهم | أسامة الواعظ | 9:08 | reviewed: `uyun-al-maha` | The text is in the description; check it against an edition. |
