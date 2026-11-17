@@ -1,0 +1,40 @@
+{
+  "lang": "en",
+  "source": { "name": "Shawared" },
+  "title": "Safety Is to Accept What Is Decreed",
+  "intro": "One of Abu al-Atahiya's poems of renunciation (zuhd); the sources do not say when or why he wrote it. It opens by making acceptance of what God decrees the way to safety, then turns to death: the mourner is soon mourned, the man who announces deaths has his own announced, and the dead are forgotten and shunned once people have nothing more to hope from them. It closes with praise of God, the thought that true happiness is piety, and the observation that everything the eye sees is seen only to pass away. Like much of his poetry, it has lines that became sayings, such as “a man hopes, and hopes are liars”.",
+  "abyat": {
+    "1":  { "translation": ["Safety is to accept what is decreed;", "whoever accepts it will surely be safe, by God's leave."],
+            "sharh": "Safety comes from accepting what God has ordained rather than resenting it. The second half is phrased like an oath: whoever accepts his lot is sure to be safe." },
+    "2":  { "translation": ["A man hopes, and hopes are liars,", "yet his hopes go with him as long as he lives."],
+            "sharh": "Hope deceives, and still no one gives it up: it keeps a man company to his last day." },
+    "3":  { "translation": ["How many men and women who wept over someone dead", "were wept for themselves soon after him."],
+            "sharh": "Those who mourn today are mourned tomorrow. The verb is in the dual, so the weeping man and the weeping woman share the same end." },
+    "4":  { "translation": ["Many a man who announced the deaths of those he loved", "went on announcing them, until his own death was announced."],
+            "sharh": "The bearer of the news has his turn too. The man who spent his days telling people of his loved ones' deaths ends as the subject of the same news." },
+    "5":  { "translation": ["Knowing that I will taste death has spoiled", "the sweetness of life, so life is never clear for me."],
+            "sharh": "The certainty of death clouds every pleasure. The verb for “clear” is the one used of water when it settles and runs pure; for him, life never settles." },
+    "6":  { "translation": ["How many a brother the worms of the earth feed on", "who, when alive, fed on the sweetness of life."],
+            "sharh": "The same verb, “to feed on”, is in both halves: the man who fed on the good things of life is now fed on." },
+    "7":  { "translation": ["Along with the dead, the memory of those who remember him decays:", "whoever is gone like one whose return no one hopes for is forgotten."],
+            "sharh": "As the body decays, so does the memory of him. A traveller is remembered because people expect him back; no one expects the dead, and so they are forgotten." },
+    "8":  { "translation": ["Whoever dies, people's hope of him dies, and so they give", "him coldness: whoever offers no hope is shunned."],
+            "sharh": "People's affection follows their hopes, and the dead can no longer give anything. The same is true of the living who have nothing to offer." },
+    "9":  { "translation": ["Leaving this world unsettles me:", "if not in the evening, it will take me in the morning."],
+            "sharh": "Death is a journey always about to begin. The two participles name the times of day when journeys set out, evening and early morning: the departure will carry him off at one or the other." },
+    "10": { "translation": ["Praise be to God, and blessed is the happy one; and he", "whom God does not make happy with piety is wretched."],
+            "sharh": "Happiness here is not good fortune but piety. Anyone to whom God does not grant piety is wretched, whatever his luck in the world." },
+    "11": { "translation": ["How many are heedless of the pools of death, at play,", "evening and morning riding whatever they desire."],
+            "sharh": "To ride one's desires is an Arabic way of saying one follows them wherever they lead. The heedless man does so day and night, never thinking of the water he must come down to." },
+    "12": { "translation": ["All that the eye sees is passing, coming to an end:", "nothing is seen except to pass away."],
+            "sharh": "The last line turns the observation into a law: whatever is seen is seen only to pass." }
+  },
+  "words": {
+    "1.1.6":    { "word": "قُضِيا", "head": "قَضى", "root": "ق ض ي", "meaning": "Has been decreed, by God. The long a at the end only lengthens the final vowel for the rhyme." },
+    "2.1.2":    { "word": "يَأمَلُ", "head": "أَمَلَ", "root": "أ م ل", "meaning": "Hopes. The dictionaries and Shukri Faisal's edition have ya'mulu; one of his manuscripts has ya'malu, as the reciter says." },
+    "4.1.2":    { "word": "ناعٍ", "root": "ن ع ي", "meaning": "Na'i: one who announces a death, going about to spread the news." },
+    "8.1.7":    { "word": "فَوَ", "meaning": "Fa-wa: the start of fa-wallawhu, “so they gave him”, which ends at the start of the second half. Arabic prosody lets a word run across the break." },
+    "10.1.3":   { "word": "طوبى", "root": "ط ي ب", "meaning": "Tuba: a word of blessing, “joy to him”; it is also said to be the name of a tree in Paradise." },
+    "11.1.4-5": { "word": "حِياضِ المَوتِ", "head": "حِياض المَوت", "root": "ح و ض", "meaning": "“The pools of death”: death as the watering place every living thing must come to." }
+  }
+}

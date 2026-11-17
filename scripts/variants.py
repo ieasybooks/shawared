@@ -21,6 +21,13 @@ import onnxruntime
 MODEL = __import__("os").path.expanduser("~/.cache/shawared/mms-300m-forced-aligner.onnx")
 
 
+def romanize(u, word):
+    """As scripts/align.py does: a voweled taa marbuta is said as t, a pausal one as h."""
+    word = re.sub(r"ة(?=[\u064B-\u0650])", "ت", word)
+    word = re.sub(r"ة(?=[\u0651\u0652]?$)", "ه", word)
+    return re.sub(r"[^a-z']", "", u.romanize_string(word).lower())
+
+
 def main():
     audio, start, end, *cands = sys.argv[1:]
     start, end = float(start), float(end)
@@ -34,7 +41,7 @@ def main():
     for c in cands:
         tokens = []
         for w in c.split():
-            r = re.sub(r"[^a-z']", "", u.romanize_string(w).lower())
+            r = romanize(u, w)
             tokens += ["<star>", " ".join(r)]
         _, scores, _ = cfa.get_alignments(em, tokens, tok)
         rows.append((float(np.asarray(scores).sum()), c, " ".join(t.replace(" ", "") for t in tokens if t != "<star>")))

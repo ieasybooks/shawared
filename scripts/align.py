@@ -29,9 +29,16 @@ import uroman as ur
 MODEL = os.path.expanduser("~/.cache/shawared/mms-300m-forced-aligner.onnx")
 
 
+def spoken(word):
+    """The word's letters as recited: a taa marbuta carrying a vowel is said as t
+    (uroman would drop it), and one at a pause as h."""
+    word = re.sub(r"ة(?=[\u064B-\u0650])", "ت", word)
+    return re.sub(r"ة(?=[\u0651\u0652]?$)", "ه", word)
+
+
 def romanize(u, word):
     # uroman keeps the vowels written as tashkeel, which helps the aligner.
-    r = u.romanize_string(word).lower()
+    r = u.romanize_string(spoken(word)).lower()
     r = re.sub(r"[^a-z']", "", r)
     return r
 

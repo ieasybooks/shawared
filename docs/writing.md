@@ -11,16 +11,27 @@ the audio settles, but they are where the text comes from.
 
 - **Editions.** Set the text from at least two scholarly sources: a critical edition of
   the diwan, or a classical commentary that quotes every bayt (al-Wahidi on al-Mutanabbi,
-  for example). Put them in `media/research/<poem>/` (`scripts/shamela.py` fetches
-  shamela pages) and collate with `scripts/collate.py`. A website's text or a video's
-  description can be the starting point, never the authority: they drop shadda after the
-  article, run words together («مالَم») and carry typos.
+  for example). Put them in `media/research/<poem>/` and collate with `scripts/collate.py`.
+  A website's text or a video's description can be the starting point, never the
+  authority: they drop shadda after the article, run words together («مالَم») and carry
+  typos. Where to look:
+  - `scripts/shamela.py search '"<a rare half>"'` finds every book on shamela that quotes
+    the poem, and `shamela.py <book> <page>` fetches the pages;
+  - `scripts/shamela-old.py list` and `shamela-old.py <id>` read the diwans that only the
+    old shamela has (they are the Abu Dhabi encyclopedia's text: one source, not an edition);
+  - `scripts/archive.py find`, `grep` and `page` find a critical edition's scan on
+    archive.org and fetch the pages. Read the page image, never the OCR, and cite the
+    printed page.
 - **Where they differ,** score each reading against the audio with `scripts/variants.py`,
   candidates of the same length. A gap of 5 or more is clear; under 2 is a coin toss, so
-  listen and decide.
+  listen and decide. The aligner can't hear vowel length (ـة against ـات, حَكَمَت against
+  حاكَمَت), and the meter often allows both: there, transcribe the half with two backends
+  (`--transcriber cohere` and `audar`) on a clip cut with a wide margin, and follow them
+  when they agree.
 - **Where the reciter differs from every edition,** the text still follows him, and that
   word gets a note giving the editions' reading and its meaning («زَردَقاً»: the editions
   have رَزدَقاً, a row).
+- **Abyat he repeats** stay once in the text; the timeline plays them as often as he says them (`align.py --plan`).
 - **Abyat he leaves out** are not in the text. The abyat are numbered 1..N in the order of
   the poem; `abyat_in_full` is the count in the edition `sources.md` names. Any silence
   left where the editor cut them out is cut from the audio too.

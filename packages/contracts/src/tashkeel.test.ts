@@ -36,6 +36,8 @@ describe("tashkeelIssues", () => {
     expect(tashkeelIssues("فَقُلتُ بُثَينُ أَلا فَاقصُري")).toEqual([]);
     expect(tashkeelIssues("لَيالِيَ نَحنُ بِذي جَهوَرِ")).toEqual([]);
     expect(tashkeelIssues("وَما كَمَدُ الحُسّادِ شَيئاً قَصَدتُهُ")).toEqual([]);
+    expect(tashkeelIssues("وَكانَ حَيّاً بِحُلوِ العَيشِ مُغتَذِيا")).toEqual([]);
+    expect(tashkeelIssues("لِيَكسِبَ مالاً أَو يُنَثَّ لَهُ حَمدُ")).toEqual([]);
   });
   it("finds missing vowels", () => {
     expect(tashkeelIssues("قلت")).toEqual(["«قلت» starts without a vowel", "«قلت» has two silent letters in a row (لت)"]);

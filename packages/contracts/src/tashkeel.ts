@@ -50,8 +50,10 @@ const drop = (l: Letter, m: string) => (l.marks = l.marks.filter((x) => x !== m)
 const isWasl = (ls: Letter[], i: number) => {
   const after = ls[i + 1],
     then = ls[i + 2];
-  // The letter after it is silent: bare, and not taking its vowel from a long letter (وادي).
-  return i > 0 && !!after && bare(after) && after.ch !== "ا" && !(then && bare(then) && "اىوي".includes(then.ch));
+  // The letter after it is silent: bare, and not taking its vowel from a long letter (وادي)
+  // or from the alif that carries tanwin al-fath (مالاً).
+  const long = then && "اىوي".includes(then.ch) && (bare(then) || (then.ch === "ا" && then.marks.every((m) => m === FATHATAN)));
+  return i > 0 && !!after && bare(after) && after.ch !== "ا" && !long;
 };
 
 const SUN = "تثدذرزسشصضطظلن";
@@ -128,7 +130,10 @@ export function tashkeelIssues(text: string): string[] {
     }
     ls.forEach((l, i) => {
       const next = ls[i + 1];
-      if (has(l, SHADDA) && !l.marks.some((m) => VOWELS.includes(m)) && !(next && bare(next) && "اىوي".includes(next.ch)))
+      // Before a long letter, or before the alif that carries tanwin al-fath (حَيّاً), the
+      // vowel is already written.
+      const carried = next && "اىوي".includes(next.ch) && (bare(next) || (next.ch === "ا" && next.marks.every((m) => m === FATHATAN)));
+      if (has(l, SHADDA) && !l.marks.some((m) => VOWELS.includes(m)) && !carried)
         issues.push(`«${word}» has a shadda with no vowel on ${l.ch}`);
       if (l.marks.filter((m) => VOWELS.includes(m)).length > 1) issues.push(`«${word}» has two vowels on ${l.ch}`);
       if (l.marks.includes(DAGGER)) issues.push(`«${word}» has a dagger alif; write the plain spelling (هَذا, لَكِن)`);
