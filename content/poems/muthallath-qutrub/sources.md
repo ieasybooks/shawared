@@ -106,7 +106,7 @@ Under 1 point is a coin toss: 12.1, 39.2, 71.2, 91.2, 111.2, 116.1, 128.1 and 14
 | 79.1 | رَفيعُ | كَريمُ (U, C) | +0.6 |
 | 80.2 | المُخَرَّبِ | المُضطَرِبِ (U, C) | −14.5 |
 | 92.2 | كَرَبِ (the starting text) | كُرَبِ | −5.9 |
-| 93.1 | يَهدِرُ (the dictionaries) | يَهدُرُ (the starting text) | +3.0 on the half; +1.2 on the word alone |
+| 93.1 | يَهدُرُ (the starting text; al-Fayyumi, *al-Misbah al-Munir*, gives both يَهدُرُ and يَهدِرُ) | يَهدِرُ | −3.0 on the half; −1.2 on the word alone |
 | 94.2 | بِالِاسمِ | بِالإِسمِ (the starting text) | +1.6 |
 | 96.1 | وَلُبسُهُ (the starting text) | وَلِبسُهُ | −3.6 |
 | 104.1 | هَل نَطَقوا | لَم يَنطِقوا (C) | −21.4 |
@@ -128,7 +128,7 @@ Under 1 point is a coin toss: 12.1, 39.2, 71.2, 91.2, 111.2, 116.1, 128.1 and 14
 - **Ibn Zurayq's «وَالكَسرِ … وَالضَّمِّ»:** the earlier draft had put them in the nominative; the reciter says them in the genitive, joined to «بِالفَتحِ», in every half tested (eighteen), as the starting text prints them.
 - **Coin tosses kept with the starting text and the transcript:** 44.2 «أَصرَمَ» (the transcript hears «اصرم»; the score leans to the editions' صَرَّمَ/صَرَمَ, which romanize alike); 79.1 «رَفيعُ» (the transcript hears «رفيع»); 70.2, 73.2, 48.2 and 155.2 within 2 points; 23.2 «مُحذي» (both transcripts hear «محذي»).
 - **129.2 «زَجُّ»** is restored by ear: the earlier draft had made it the dictionaries' «زُجُّ» (the spear's butt-spike), but the reciter says zajj, as the starting text prints it (the gap is over 5 points both on the half and on the two words). Zajj is the verbal noun, the thrust of a spear; the note gives the dictionary word.
-- **Split evidence, the text kept:** 93.1 «يَهدِرُ», as the dictionaries have it (هَدَرَ الحَمامُ يَهدِرُ), though the starting text has «يَهدُرُ» and the score leans to it (+3.0 on the half, +1.2 on the word); 52.2 «رَفيعُ», nominative like «سامٍ» before it, though the starting text has «رَفيعِ» and the score leans to it (+2.7); 94.2 «بِالِاسمِ» (the starting text «بِالإِسمِ»; +1.6, and both scan).
+- **Split evidence, the text kept:** 52.2 «رَفيعُ», nominative like «سامٍ» before it, though the starting text has «رَفيعِ» and the score leans to it (+2.7); 94.2 «بِالِاسمِ» (the starting text «بِالإِسمِ»; +1.6, and both scan).
 - **31.2 «لَمّا»** follows U and C and the score (5.8) against the starting text's «لِمَا».
 - **Not decidable by score:** 12.1 «فَصِرتُ» against the editions' «فَسِرتُ» (the romanizer writes ص and س alike; the transcript hears «فصرت»); 91.1 «قولوا» against U's «قولا» (+4.5 for the shorter word, which the scorer always favours; the transcript hears «قولوا»); 103.1 «عَلامَةُ» against «عَلاماتُ» (identical once romanized; the transcript hears «علامه»); 122.2 «عَقَّدتَهُ» (the starting text's shadda; the aligner cannot hear one) and 128.2 «وُدٌّ» (above).
 
@@ -182,3 +182,5 @@ A second reader checked every half against the starting text, Uwayda's text and 
 - **sources.md:** the departures from Cheikho at 12.1, 23.2, 32.2, 64.1, 72.1 and 76.1 added; the readings at 7.2, 15.1, 23.2, 31.2, 52.2, 93.1, 94.2, 128.2 and 129.2 scored and recorded; the credits for proof verses completed (Suwayd, Abu Dawud, the unnamed poets) and 55:9 credited to al-Muhallabi.
 - **Intro:** the attribution to Qutrub put down to Kashf al-Zunun, as al-Zirikli says, not to "some".
 - **Poet:** the bio no longer says he was a copyist before he was a jurist (the sources say only that he was a warraq); the appointment dated Rajab 680 and the loss of Cairo Jumada II 681, as Ibn Qadi Shuhba has them; al-Subki's anecdote explained (he gave «أربعة» a kasra in every case, so the judge asked who had made it indeclinable); the shadda of الدِّين in the name.
+
+After the review, the drafter settled 93.1 «يَهدُرُ»: the reader had kept «يَهدِرُ», but *al-Misbah al-Munir* (shamela 12145/3224) gives «هَدَرَ الحَمامُ يَهدُرُ ويَهدِرُ», so the recording, which the score and the starting text both favour, decides.
