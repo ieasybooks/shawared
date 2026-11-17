@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { ICONS } from "./app-icons.ts";
+import { DAY, ICONS, NIGHT } from "./app-icons.ts";
 
 const ASSETS = join(import.meta.dirname, "../apps/app/assets/app");
 
@@ -26,5 +26,16 @@ describe("the apps' icons", () => {
 
   it("draw the others over the system's own background", () => {
     for (const name of Object.keys(ICONS).filter((n) => n !== "icon.png")) expect(png(name).alpha, name).toBe(true);
+  });
+});
+
+describe("app.json", () => {
+  const expo = JSON.parse(readFileSync(join(import.meta.dirname, "../apps/app/app.json"), "utf8")).expo;
+  const splash = expo.plugins.find((p: unknown) => Array.isArray(p) && p[0] === "expo-splash-screen")[1];
+
+  it("sets the icons and the splash screen on the palettes' backgrounds", () => {
+    expect(expo.android.adaptiveIcon.backgroundColor).toBe(DAY.paper);
+    expect(splash.backgroundColor).toBe(DAY.paper);
+    expect(splash.dark.backgroundColor).toBe(NIGHT.paper);
   });
 });
