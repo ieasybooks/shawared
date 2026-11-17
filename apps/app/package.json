@@ -45,6 +45,7 @@
     "react-native-web": "^0.21.4"
   },
   "devDependencies": {
+    "@ieasybooks/release": "github:ieasybooks/release#116c69c2b2ca4e03450b8728575fea5c050685da",
     "@types/react": "~19.3.0",
     "typescript": "^7.0.2"
   },

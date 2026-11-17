@@ -54,6 +54,7 @@
         "react-native-web": "^0.21.4",
       },
       "devDependencies": {
+        "@ieasybooks/release": "github:ieasybooks/release#116c69c2b2ca4e03450b8728575fea5c050685da",
         "@types/react": "~19.3.0",
         "typescript": "^7.0.2",
       },
@@ -377,6 +378,8 @@
     "@expo/sudo-prompt": ["@expo/sudo-prompt@9.3.2", "", {}, "sha512-HHQigo3rQWKMDzYDLkubN5WQOYXJJE2eNqIQC2axC2iO3mHdwnIR7FgZVvHWtBwAdzBgAP0ECp8KqS8TiMKvgw=="],
 
     "@expo/xcpretty": ["@expo/xcpretty@4.4.7", "", { "dependencies": { "@babel/code-frame": "^7.20.0", "chalk": "^4.1.0", "js-yaml": "^4.1.0" }, "bin": { "excpretty": "build/cli.js" } }, "sha512-EbxYllZ7/ozONVZd425cm4XnolfW+AmSFT5aP7Jdno6oc3WrYQcHz2CO20z/2rwWwYgztmV2PXvYH+BQ8YFjqg=="],
+
+    "@ieasybooks/release": ["@ieasybooks/release@github:ieasybooks/release#116c69c", { "bin": { "ieasybooks-release": "./bin/ieasybooks-release.ts" } }, "ieasybooks-release-116c69c", "sha512-RIb6ONhvKiT5IpxkknKv46pmYBS7LDCXYv+5MGK+HjWiZON4MsEYON8L5VoUgD8F03sa7DMP8hVZKH/RJSVujA=="],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 

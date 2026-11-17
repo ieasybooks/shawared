@@ -4,12 +4,15 @@ import { useCallback, useEffect, useSyncExternalStore } from "react";
 import { Platform } from "react-native";
 import type { z } from "zod";
 import { readCached, writeCached } from "./diskCache";
+import { AUDIO_HOST, SITE } from "./routes";
 
-// Published content and audio. On the web they're served next to the app. Native builds read
-// them from the dev server the app was loaded from (Expo Go), until the content host exists.
+// Published content and audio. On the web they're served next to the app. The apps' release
+// builds read them from shawared.com and audio.shawared.com, as the web's release does; a dev
+// build from the dev server it was loaded from.
 const devHost = `http://${Constants.expoConfig?.hostUri ?? "localhost:8081"}`;
-const CONTENT_URL = process.env.EXPO_PUBLIC_CONTENT_URL ?? (Platform.OS === "web" ? "/content" : `${devHost}/content`);
-const AUDIO_URL = process.env.EXPO_PUBLIC_AUDIO_URL ?? (Platform.OS === "web" ? "/audio" : `${devHost}/audio`);
+const native = (dev: string, release: string) => (__DEV__ ? `${devHost}${dev}` : release);
+const CONTENT_URL = process.env.EXPO_PUBLIC_CONTENT_URL ?? (Platform.OS === "web" ? "/content" : native("/content", `${SITE}/content`));
+const AUDIO_URL = process.env.EXPO_PUBLIC_AUDIO_URL ?? (Platform.OS === "web" ? "/audio" : native("/audio", AUDIO_HOST));
 
 export const audioUrl = (key: string) => `${AUDIO_URL}/${key}`;
 
