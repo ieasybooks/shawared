@@ -1,8 +1,8 @@
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { headersFor, MAX_RULES, remoteAudioProblems } from "./web-release.ts";
+import { headersFor, MAX_RULES, pagesWithoutSlash, remoteAudioProblems } from "./web-release.ts";
 
 const scratch = mkdtempSync(join(tmpdir(), "shawared-web-release-"));
 afterAll(() => rmSync(scratch, { recursive: true, force: true }));
@@ -47,6 +47,34 @@ describe("headersFor", () => {
   it("refuses more rules than Cloudflare reads", () => {
     const files = Object.fromEntries(Array.from({ length: MAX_RULES }, (_, i) => [`assets/a${i}.${H}.png`, ""]));
     expect(() => headersFor(dist(files))).toThrow(`${MAX_RULES + 1} header rules, over Cloudflare's ${MAX_RULES}`);
+  });
+});
+
+describe("pagesWithoutSlash", () => {
+  it("moves each folder's home page beside its folder, and leaves the root, group copies and taken names alone", () => {
+    const d = dist({
+      "index.html": "ar home",
+      "en/index.html": "en home",
+      "en/(tabs)/index.html": "group copy",
+      "(tabs)/index.html": "group copy",
+      "en/poems/x.html": "poem",
+      "meters.html": "meters",
+      "meters/index.html": "shadowed",
+      "[id]/index.html": "fallback",
+    });
+    expect(pagesWithoutSlash(d)).toEqual(["en.html"]);
+    expect(readFileSync(join(d, "en.html"), "utf8")).toBe("en home");
+    expect(existsSync(join(d, "en/index.html"))).toBe(false);
+    for (const kept of [
+      "index.html",
+      "en/(tabs)/index.html",
+      "(tabs)/index.html",
+      "en/poems/x.html",
+      "meters/index.html",
+      "[id]/index.html",
+    ])
+      expect(existsSync(join(d, kept)), kept).toBe(true);
+    expect(pagesWithoutSlash(d)).toEqual([]);
   });
 });
 
