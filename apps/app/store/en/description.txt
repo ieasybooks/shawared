@@ -1,0 +1,14 @@
+Shawared is a library of Arabic poetry as it is recited: hear each poem in its reciter's voice, read its verses as they are recited, and understand what they mean.
+
+• The verse being recited lights up as you listen. Move between verses, or repeat one to learn it by heart.
+• Every verse comes with its explanation and the meanings of its words, and every poem with notes on it and its poet.
+• Poems from before Islam to today: Imru' al-Qays, Antara, Jarir, al-Mutanabbi, Abu Tammam, al-Buhturi, Abu Firas al-Hamdani, Ibn Zurayq, Ahmad Shawqi and more.
+• An English translation of every poem, beside the Arabic.
+• Browse by poet, reciter and meter, or search by title, opening line or poet, with or without vowel marks.
+• Fully vowelled texts that follow what the reciter says, checked against their sources.
+• The recitation keeps playing while you browse the app or lock your screen.
+• An Arabic or English interface, in day or night colors.
+
+Shawared needs no account and has no ads or purchases. Loading poems and recordings needs an internet connection; the poems you've opened stay on your device.
+
+Shawared is made by the EasyBooks initiative.

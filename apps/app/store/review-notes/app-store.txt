@@ -1,0 +1,7 @@
+Shawared is a native React Native (Expo) app, not a wrapped website. No account, login or payment is needed, and there are no ads or purchases. Poems load from https://shawared.com/content/v1/catalog.json and recordings stream from https://audio.shawared.com, so an internet connection is needed.
+
+To review: open any poem from the home screen and press play. The verse being recited is highlighted and followed. Tap a verse's number to play from it, use previous and next to move between verses, and the repeat button to repeat one. The panel under the verses explains the current verse; tap a word marked with a small diamond under it for its meaning. Leave the poem: the mini player keeps the recitation going above the tabs, and it continues in the background and on the lock screen (audio is the app's only background mode).
+
+The globe button switches between Arabic and English, the moon button between day and night colors, and the "i" button (on the home screen of an iPhone, in the header on an iPad) opens About Shawared, with the support contact and the privacy policy (https://shawared.com/privacy).
+
+The content is classical and modern Arabic poetry, with recitations credited to their reciters, explanations and English translations. There are no user accounts, uploads, comments or messaging.
