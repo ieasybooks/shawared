@@ -9,12 +9,12 @@ import { join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import type { z } from "zod";
 import { houseStyle, parseLineAddress, parseWordAddress, source, tashkeelIssues, wordsOf } from "@shawared/contracts";
+import { hashOf, parseKey, root, sourcePath } from "./recordings.ts";
 
 const { Poem, PoemLang, Recitation, Poet, Reciter, PersonLang } = source;
 
-const ROOT = join(import.meta.dir, "..");
+const ROOT = root();
 const CONTENT = join(ROOT, "content");
-const MEDIA = join(ROOT, "media", "audio");
 
 type Issue = { level: "error" | "warning"; file: string; where?: string; msg: string };
 const issues: Issue[] = [];
@@ -238,14 +238,24 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
     const r = load(file, Recitation);
     if (!r) continue;
     if (!reciters.has(r.reciter)) error(file, `no reciter "${r.reciter}" in content/reciters`, "reciter");
-    if (r.audio !== `${id}/${rid}.m4a`) error(file, `audio should be "${id}/${rid}.m4a"`, "audio");
+    // The key is the recording's name before its upload, and its name with the
+    // hash after it (scripts/recordings.ts).
+    const key = parseKey(r.audio);
+    if (!key || key.poem !== id || key.recitation !== rid) {
+      error(file, `audio should be "${id}/${rid}.m4a", or once uploaded "${id}/${rid}.<hash>.m4a"`, "audio");
+    } else if (!key.hash) {
+      warn(file, "audio isn't uploaded yet: bun run audio:upload, where the recordings are", "audio");
+    }
 
-    const local = join(MEDIA, r.audio);
+    const local = sourcePath(ROOT, id, rid);
     if (!existsSync(local)) warn(file, `audio not found at ${rel(local)}; duration not verified`, "audio");
     else {
       const d = audioDuration(local);
       if (d === null) warn(file, "couldn't read the audio duration (is ffprobe installed?)", "duration");
       else if (Math.abs(d - r.duration) > 0.05) error(file, `duration is ${r.duration} but the audio is ${d.toFixed(2)} s`, "duration");
+      if (key?.hash && hashOf(readFileSync(local)) !== key.hash) {
+        error(file, `${rel(local)} isn't the uploaded recording ${r.audio}; upload the new one with bun run audio:upload`, "audio");
+      }
     }
 
     const heard = new Map<string, number>();

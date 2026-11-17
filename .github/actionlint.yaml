@@ -1,0 +1,6 @@
+# actionlint 1.7.12 doesn't know concurrency's queue key yet, which GitHub
+# Actions takes (rhysd/actionlint#654).
+paths:
+  .github/workflows/web.yml:
+    ignore:
+      - 'unexpected key "queue" for "concurrency" section'

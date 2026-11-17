@@ -4,6 +4,8 @@ const baseURL = process.env.BASE_URL ?? "http://localhost:8081";
 
 export default defineConfig({
   testDir: "./tests",
+  // Cloudflare's headers and 404s: playwright.release.config.ts runs it.
+  testIgnore: "hosting.spec.ts",
   timeout: 90_000,
   fullyParallel: false,
   workers: 1,

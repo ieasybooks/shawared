@@ -1,0 +1,98 @@
+name: Release please
+
+# On each push to main: runs every check the web needs (check.yml) on the
+# pushed commit, marks the commit with a "Web checks" status saying how they
+# ended, and once they passed deploys it to shawared.com (web.yml). Run by
+# hand on main, it does the same for main's newest commit. See
+# docs/web-deployment.md.
+#
+# The file is named for the release-please job the apps will add here. The
+# vault knows web.yml's calls from it by that name, and serves them the deploy
+# token only in runs Ali (AliOsm) started. When someone else pushes, the checks
+# still run and nothing deploys; a note says so. Re-running doesn't help, as a
+# re-run keeps the pusher's identity: Ali runs Release web on main instead,
+# which deploys main's newest commit once its checks passed.
+#
+# Run by hand with access-check ticked, it deploys nothing and only checks
+# that the vault gives web.yml's jobs Shawared's deploy token and refuses them
+# Mofied's, the store secrets and the audio upload keys.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      access-check:
+        description: Only check the vault's rules for the web workflow; deploy nothing
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check
+    if: github.ref == 'refs/heads/main' && !inputs.access-check
+    permissions:
+      contents: read
+    uses: ./.github/workflows/check.yml
+    with:
+      sha: ${{ github.sha }}
+
+  # Marks the commit with how its checks ended, as its "Web checks" status,
+  # which Release web needs when run by hand. It runs however they ended, also
+  # on a re-run, so a later run whose checks failed or was cancelled takes an
+  # earlier success back.
+  checks-status:
+    name: Mark the commit's web checks
+    needs: check
+    if: ${{ always() && github.ref == 'refs/heads/main' && !inputs.access-check }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      statuses: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ needs.check.result }}
+        run: |
+          case $RESULT in
+            success) state=success description="Every web check passed on main." ;;
+            failure) state=failure description="A web check failed on main." ;;
+            *) state=error description="Main's web checks didn't finish ($RESULT)." ;;
+          esac
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" \
+            -f state="$state" -f context="Web checks" \
+            -f description="$description" \
+            -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > /dev/null
+          echo "Marked $GITHUB_SHA: $description"
+      - name: Note that nothing deploys
+        if: needs.check.result == 'success' && github.actor != 'AliOsm'
+        env:
+          ACTOR: ${{ github.actor }}
+        run: |
+          echo "::notice::$ACTOR started this run, so it doesn't deploy $GITHUB_SHA: the vault serves the deploy token only in runs AliOsm started. AliOsm can run Release web on main to deploy main's newest commit."
+
+  web:
+    name: Release web
+    needs: check
+    if: github.actor == 'AliOsm'
+    permissions:
+      contents: read
+      id-token: write
+      statuses: read
+    uses: ./.github/workflows/web.yml
+    with:
+      sha: ${{ github.sha }}
+
+  # The vault access check, run by hand on main (see the top).
+  access-check:
+    name: Vault access check
+    if: github.ref == 'refs/heads/main' && inputs.access-check
+    permissions:
+      contents: read
+      id-token: write
+      statuses: read
+    uses: ./.github/workflows/web.yml
+    with:
+      access-check: true

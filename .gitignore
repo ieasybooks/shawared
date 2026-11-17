@@ -15,3 +15,4 @@ apps/app/ios/
 apps/app/public/content/
 apps/app/public/audio/
 artifacts/
+apps/app/.wrangler/

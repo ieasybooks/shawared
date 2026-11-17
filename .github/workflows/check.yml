@@ -1,0 +1,64 @@
+name: Check
+
+# Every check the web needs, on pull requests and, called with the commit, on
+# main (release-please.yml's Web checks status, which deploys depend on):
+# the content check, typecheck and unit tests, then the browser and hosting
+# tests against the export as Cloudflare serves it, and a dry run of the
+# release deploy. See docs/web-deployment.md.
+on:
+  pull_request:
+  workflow_call:
+    inputs:
+      sha:
+        description: The commit to check
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+# A new push to a pull request replaces its running checks. Runs on main each
+# get their own group: a deploy waits on its run, which nothing may cancel.
+concurrency:
+  group: check-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  web:
+    name: Web
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.sha }}
+          persist-credentials: false
+      # Static rendering reads the published content through Node 24's
+      # process.getBuiltinModule.
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: 1.4.4
+      # The audio tests and the browser tests' stand-in recordings need it.
+      - name: Install ffmpeg
+        run: command -v ffmpeg > /dev/null || { sudo apt-get update -q && sudo apt-get install -y -q ffmpeg; }
+      - run: bun install --frozen-lockfile
+      - run: bun run check
+      - run: bun run web:build:test
+      - run: bun run test:release
+        env:
+          WRANGLER_SEND_METRICS: "false"
+      - name: Build the release and check its deploy
+        run: bun run deploy:check
+        env:
+          WRANGLER_SEND_METRICS: "false"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: failure()
+        with:
+          name: browser-test-results
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7

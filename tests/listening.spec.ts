@@ -16,9 +16,25 @@ async function open(page: Page) {
   return errors;
 }
 
+/** Scrolls the home page's list until the poem's card is drawn: it lists many poems, newest first. */
+async function scrollToCard(page: Page, title: string) {
+  const card = page.getByText(title, { exact: true }).filter({ visible: true }).first();
+  await page.waitForLoadState("networkidle");
+  for (let i = 0; i < 12 && !(await card.count()); i++) {
+    await page.evaluate(() => {
+      for (const el of document.querySelectorAll("div")) {
+        const o = getComputedStyle(el).overflowY;
+        if ((o === "auto" || o === "scroll") && el.scrollHeight > el.clientHeight && !el.closest("[inert]")) el.scrollBy(0, 400);
+      }
+    });
+    await page.waitForTimeout(150);
+  }
+  return card;
+}
+
 test("home lists the poem and opens it", async ({ page }) => {
   await page.goto("/");
-  await page.getByText("تَقولُ بُثَينَةُ لَمّا رَأَت").first().click();
+  await (await scrollToCard(page, "تَقولُ بُثَينَةُ لَمّا رَأَت")).click();
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
   await expect(slider(page)).toBeVisible();
 });

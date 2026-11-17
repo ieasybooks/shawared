@@ -88,7 +88,13 @@ export const TimelineEntry = z.tuple([
 /** recitations/<id>.json: one recording and where each line falls in it, in audio order. */
 export const Recitation = z.strictObject({
   reciter: Slug,
-  audio: z.string().regex(/^[a-z0-9-]+\/[a-z0-9-]+\.m4a$/, "audio is <poem>/<recitation>.m4a"),
+  /** <poem>/<recitation>.m4a, or once uploaded <poem>/<recitation>.<hash>.m4a (scripts/audio.ts). */
+  audio: z
+    .string()
+    .regex(
+      /^[a-z0-9-]+\/[a-z0-9-]+(\.[0-9a-f]{12})?\.m4a$/,
+      "audio is <poem>/<recitation>.m4a, or <poem>/<recitation>.<hash>.m4a once uploaded",
+    ),
   duration: z.number().positive(),
   source: z.url().optional(),
   timeline: z.array(TimelineEntry).min(1),
