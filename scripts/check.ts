@@ -22,6 +22,16 @@ const rel = (f: string) => relative(ROOT, f);
 const error = (file: string, msg: string, where?: string) => issues.push({ level: "error", file: rel(file), where, msg });
 const warn = (file: string, msg: string, where?: string) => issues.push({ level: "warning", file: rel(file), where, msg });
 
+// What docs/writing.md asks of the prose: no exclamation marks (a translation may keep one
+// inside quoted speech), and in English no ' for an ʿayn or hamza that starts a word
+// (Ali, Udhra; Ka'b keeps it).
+function proseStyle(file: string, lang: string, text: string, where: string, translation = false) {
+  const outsideQuotes = translation ? text.replace(/“[^”]*”/g, "") : text;
+  if (outsideQuotes.includes("!")) warn(file, translation ? "an exclamation mark outside quoted speech" : "an exclamation mark", where);
+  if (lang !== "en") return;
+  for (const m of text.match(/(?<![\p{L}'])'\p{L}+/gu) ?? []) warn(file, `«${m}»: drop the ' of an ʿayn or hamza that starts a word (Ali, Udhra)`, where);
+}
+
 const nfc = (s: string) => s.normalize("NFC");
 const isDir = (p: string) => existsSync(p) && statSync(p).isDirectory();
 const dirs = (p: string) =>
@@ -169,7 +179,11 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
       }
       if (v.sharh) sh++;
       if (!v.translation && !v.sharh) warn(file, "empty entry", `abyat.${k}`);
+      if (v.sharh) proseStyle(file, l.lang, v.sharh, `abyat.${k}.sharh`);
+      if (v.translation) [v.translation].flat().forEach((t, i) => proseStyle(file, l.lang, t, `abyat.${k}.translation.${i}`, true));
     }
+    if (l.intro) proseStyle(file, l.lang, l.intro, "intro");
+    for (const [addr, note] of Object.entries(l.words)) if (l.lang === "en") proseStyle(file, l.lang, note.meaning, `words.${addr}.meaning`);
 
     // word notes: address must exist, the Arabic must match, notes must not overlap
     const taken = new Map<string, string>(); // "n.h.w" -> address that uses it
