@@ -54,7 +54,8 @@ Scores come from `scripts/variants.py`'s scoring on the app audio, run for all t
   - **misheard:** 29.1 «ونفرتاهم», 36.1 «الظبع», 46.1 «وقع»;
   - **16.2:** the clip came back empty (the model began repeating itself and the tool kept nothing); the full transcript hears «سروا بجياد ما لهن قوائم», and the aligner's confidence on its five words is 0.44–1.00.
   - **22.1** starts with «إن», though the clip starts 0.46 s after 21.2 ends; the clip's timing matches the aligner's, and «إن» is not in the full transcript, which runs «…من لا يصادم وقفت وما في الموت».
-- **Both sayings of bayt 46** (clips 090–093) are heard in full, which confirms the repeat.
+- **The second transcriber** (audar, on the same 94 clips; `media/work/01v6T9wghjw/audar/`) hears 16.2 «وسري بجياد ما لهن قوايم» and 22.1 without «إن», which settles both. It is noisier than cohere (27 clips differ, 52 of 473 words), and every one of its differences is its own: a dropped rhyme letter (13.2 «الجواز», 20.2 «ضبار»), split or run-together words (17.2 «فيا ابوهم», 25.1 «ضم امتاج ناحيهم», 41.1 «ليلفظه», 42.2 «ان تنادم», 46.2 «العذاب كدايم»), stretched vowels (9.1 «والقناه», 30.1 «الذره», 38.1 «جهالات») and mishearings (12.2 «وهم», 31.1 «الفضخ انا كثرتها», 34.1 «اينك»), each heard as the text by cohere. Where both transcribers depart from the text the same way (11.1, 29.1, 37.1, 38.1, 41.2, and 46.1 «وقع» for the stretched «وَقى»), it is a stretched vowel or a split word, as above.
+- **Both sayings of bayt 46** (clips 090–093) are heard in full by both transcribers, which confirms the repeat.
 - **8.1** is heard as «سقتها الغمام الغر قبل نزوله», as the text has it.
 
 ## Commentary drawn on
