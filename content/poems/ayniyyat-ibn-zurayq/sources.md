@@ -49,21 +49,22 @@ Scores come from `scripts/variants.py`'s scoring (run in batches by a copy of it
 | 7.2 | بِفَضاءِ اللَّهِ (al-Batluni) | بِفَضاءِ الأَرضِ (al-Subki, Ibn Hijja, al-Suyuti, al-Safadi, al-Kashkul, al-Tanahi, Ibn Aydamir); بِقَضاءِ اللَّهِ (al-Sarraj) | −21.3; −7.7 |
 | 8.1 | الزَّمانُ (al-Safadi, al-Batluni, Ibn Darham, al-Hashimi) | الزَّماعُ (al-Subki, Ibn Hijja, al-Suyuti, al-Tanahi, Ibn Aydamir); إِنَّ الزَّمانَ (al-Kashkul) | −8.9; −4.8 |
 | 8.2 | السِّندِ … يُزمِعُهُ | السَّدِّ (Ibn Hijja, al-Kashkul); مَربَعُهُ (al-Safadi, al-Suyuti) | −4.8; −17.4 |
-| 9.1 | المَطامِعُ (al-Subki, Ibn Hijja, al-Tanahi) | المَطالِبُ (al-Safadi, al-Suyuti, al-Kashkul) | −7.1 |
+| 9.1 | المَطامِعُ (al-Subki, Ibn Hijja, al-Tanahi, Ibn Darham, al-Hashimi) | المَطالِبُ (al-Safadi, al-Suyuti, al-Kashkul, Ibn Aydamir) | −7.1 |
 | 9.2 | كَدّاً (al-Subki, Ibn Hijja, al-Tanahi) | كَدحاً (al-Safadi, al-Suyuti, al-Kashkul) | −7.2 |
 | 10.1 | توصِلُهُ (Ibn Darham, al-Hashimi) | واصِلَةٌ (every older source, and al-Batluni) | −10.2 |
-| 11.1 | قَد وَزَّعَ اللَّهُ بَينَ الخَلقِ (al-Kashkul) | وَاللَّهُ قَسَّمَ (al-Subki, Ibn Hijja, al-Tanahi); بَينَ النّاسِ (al-Safadi, al-Suyuti) | −34.3; −19.7 |
+| 11.1 | قَد وَزَّعَ اللَّهُ بَينَ الخَلقِ (al-Kashkul) | وَاللَّهُ قَسَّمَ (al-Subki, Ibn Hijja, al-Tanahi, Ibn Darham, al-Hashimi); قَد قَسَّمَ (Ibn Aydamir, al-Batluni); بَينَ النّاسِ (Ibn Hijja, al-Safadi, al-Suyuti, al-Batluni) | −34.3; −18.6; −19.7 |
 | 11.2 | مِن خَلقٍ (al-Safadi, al-Suyuti, al-Kashkul) | مَخلوقاً (al-Subki, Ibn Hijja, al-Tanahi) | −18.7 |
 | 12.1 | كُلِّفوا حِرصاً (al-Kashkul, al-Batluni) | مُلِئوا حِرصاً (al-Subki, Ibn Hijja, al-Tanahi); كُلِّفوا رِزقاً (al-Safadi, al-Suyuti) | −17.7; −14.2 |
 | 12.2 | الغاياتِ | الفاقاتِ (al-Subki) | −17.3 |
 | 13.1 | في الرِّزقِ | في المَرءِ (Ibn Hijja, al-Sarraj) | −25.5 |
-| 14.1 | مِن حَيثُ يَمنَعُهُ (al-Safadi, al-Suyuti, al-Kashkul, Ibn Aydamir) | ما لَيسَ يَطلُبُهُ (al-Subki, Ibn Hijja, al-Tanahi) | −46.2 |
-| 14.2 | إِرثاً … يُطمِعُهُ (al-Kashkul) | إِرباً (al-Safadi, al-Suyuti, Ibn Aydamir); عَفواً (al-Batluni); يُطعِمُهُ (al-Kashkul) | −5.0; −13.6; −7.8 |
-| 16.1 | وَبِوُدّي لَو (Ibn Hijja, al-Suyuti, al-Kashkul, al-Tanahi) | أَن (al-Subki, al-Safadi, Usama) | −7.8 |
-| 16.2 | صَفوُ | طيبُ (Ibn Hijja); روحُ (Usama ibn Munqidh) | −6.7; −7.3 |
+| 14.1 | مِن حَيثُ يَمنَعُهُ (al-Safadi, al-Suyuti, al-Kashkul, Ibn Aydamir, al-Batluni) | ما لَيسَ يَطلُبُهُ (al-Subki, Ibn Hijja, al-Tanahi, Ibn Darham, al-Hashimi) | −46.2 |
+| 14.2 | إِرثاً … يُطمِعُهُ (al-Kashkul) | إِرباً (al-Safadi, al-Suyuti, Ibn Aydamir); عَفواً (al-Batluni); يُطعِمُهُ (al-Kashkul, Ibn Aydamir) | −5.0; −13.6; −7.8 |
+| 16.1 | وَبِوُدّي لَو (Ibn Hijja, al-Suyuti, al-Kashkul, al-Tanahi) | أَن (al-Subki, al-Safadi, Usama, Ibn Darham) | −7.8 |
+| 16.2 | صَفوُ | طيبُ (Ibn Hijja, Ibn Aydamir, Ibn Darham); روحُ (Usama ibn Munqidh) | −6.7; −7.3 |
 | 17.1 | وَكَم تَشَفَّعَ بي (al-Subki, al-Tanahi, al-Batluni) | كَم قَد تَشَفَّعَ (Ibn Hijja, al-Kashkul); في (al-Safadi, al-Suyuti, Usama) | −26.8; −9.2 |
 | 18.1 | وَكَم … يَومَ الرَّحيلِ | وَقَد (al-Kashkul); خَوفَ الفِراقِ (al-Safadi, al-Suyuti) | −14.2; −47.2 |
-| 19.1 | الصَّبرِ (Usama ibn Munqidh, al-Kashkul, Ibn Darham) | العُذرِ (al-Subki, Ibn Hijja, al-Suyuti, al-Safadi, al-Tanahi, al-Batluni) | −26.9 |
+| 19.1 | الصَّبرِ (Usama ibn Munqidh, al-Kashkul, Ibn Darham) | العُذرِ (al-Subki, Ibn Hijja, al-Suyuti, al-Safadi, al-Tanahi, al-Batluni, al-Hashimi); الغَدرِ (Ibn Aydamir's print) | −26.9; −16.4 |
+| 19.2 | عَنّي بِفُرقَتِهِ | لِفُرقَتِهِ (Usama); مِنّي (al-Batluni) | −6.2; −8.4 |
 | 20.2 | عَنهُ وَجُرمي | عَنّي (al-Subki, al-Safadi, al-Suyuti, al-Kashkul); وَقَلبي (al-Subki, Ibn Hijja, al-Tanahi, al-Batluni) | −2.2, −0.5; −15.9 |
 | 21.1 | أُعطيتُ (al-Subki, Ibn Hijja, al-Tanahi, al-Sarraj) | رُزِقتُ (al-Safadi, al-Suyuti, al-Kashkul, Ibn Aydamir) | −31.7 |
 | 21.2 | وَكُلُّ … يَخلَعُهُ | كَذاكَ (Ibn Hijja); يُخلَعُهُ | −21.3; −4.4 |
@@ -77,10 +78,11 @@ Scores come from `scripts/variants.py`'s scoring (run in batches by a copy of it
 | 28.1 | لِجَنبي مَضجَعٌ (al-Safadi, al-Suyuti) | بِجَنبي (al-Subki, Ibn Hijja, al-Tanahi, Ibn Aydamir); مُضطَجَعٌ (al-Kashkul) | −5.3; −15.6 |
 | 28.2 | لَهُ مُذ بِنتُ | بِتُّ (al-Kashkul); بِهِ (Ibn Aydamir, al-Batluni) | −2.0; −18.5 |
 | 29.1 | أَنَّ الدَّهرَ (al-Kashkul, Ibn Aydamir) | رَيبَ الدَّهرِ (al-Subki, Ibn Hijja, al-Safadi, al-Suyuti, al-Tanahi) | −23.2 |
-| 30.1 | البَينُ | الدَّهرُ (Ibn Aydamir, al-Batluni) | −19.7 |
+| 30.1 | البَينُ | الدَّهرُ (Ibn Aydamir, al-Batluni, Ibn Darham, al-Hashimi) | −19.7 |
 | 30.2 | حَظّي | حَقّي (al-Kashkul, al-Batluni) | −1.3 |
 | 31.1 | قَد كُنتُ … فَرِقاً | وَكُنتُ (Ibn Hijja, al-Tanahi); فَكُنتُ (al-Safadi, al-Suyuti); فَزِعاً (al-Kashkul); قَلِقاً (Ibn Aydamir) | −7.4; −9.4; −15.0; −10.1 |
-| 32.1 | العَيشِ (al-Kashkul) | اللَّهوِ (Usama); القَصرِ (al-Subki); الأُنسِ (Ibn Hijja, al-Tanahi); القَصفِ (al-Safadi, al-Suyuti, Ibn Aydamir) | −10.5; −14.0; −14.2; −15.8 |
+| 32.1 | العَيشِ (al-Kashkul) | اللَّهوِ (Usama); القَصرِ (al-Subki, al-Batluni); الأُنسِ (Ibn Hijja, al-Tanahi); القَصفِ (al-Safadi, al-Suyuti, Ibn Aydamir, Ibn Darham, al-Hashimi) | −10.5; −14.0; −14.2; −15.8 |
+| 32.2 | بِنتُ | غِبتُ (Ibn Darham, al-Hashimi) | −23.1 |
 | 33.1 | لَذَّتَنا | عيشَتَنا (al-Kashkul) | −16.0 |
 | 33.2 | أَمضَتهُ تُرجِعُهُ (Ibn Aydamir's vowels) | أَمضَت تُرَجِّعُهُ (al-Subki); تَرجِعُهُ | +1.2; ±0.0 |
 | 34.2 | مَغناكَ يُمرِعُهُ | يُمناكَ (al-Safadi, al-Suyuti); مُمرِعُهُ (Ibn Aydamir) | −15.6; −6.8 |
@@ -120,3 +122,13 @@ Scores come from `scripts/variants.py`'s scoring (run in batches by a copy of it
 - **Parallels named in the sharh:** Abu Nuwas's «دع عنك لومي فإنّ اللوم إغراء» beside bayt 1, as al-Abbasi sets them (*Ma'ahid al-Tansis*, vol. 2, p. 256, shamela 6951/634, `maahid.txt`); Ibn al-Mu'tazz's «وجيد الظبي في أزراره» as the source of 15's «الأزرار», after Muhyi al-Din Darwish (*I'rab al-Qur'an wa-Bayanuh*, vol. 6, p. 380, shamela 2163/3193); Hud 11:6 (11), Ibrahim 14:7 (22), al-Sharh 94:5 (38).
 - **Intro and bio:** the story from al-Sarraj (*Masari'*, vol. 1, pp. 23–24) and al-Subki (vol. 1, pp. 311–312); Ibn Hazm's saying as al-Humaydi gives it (al-Safadi, vol. 21, p. 77; al-Suyuti, p. 289; al-Tanahi, p. 119); the poet's name from al-Subki and al-Tanahi; "travelled to al-Andalus and died there", the lack of a dated biography and Brockelmann's "about 420" from al-Tanahi (p. 119); the elegy for a rooster from al-Safadi (vol. 21, pp. 78–79). Al-Zirikli's *al-A'lam* has no entry for him (searched on shamela 12286), so `poet.json` has no `died`: the only date is Brockelmann's estimate.
 - **Not used:** the later anthologies' story that he left a cousin he loved (al-Batluni) and that the poem was found «تحت وساده» (Ibn Darham), which the older sources don't have; and the story of a singing girl who sang bayt 15 before Tamim ibn al-Mu'izz (d. 368 by Sibt ibn al-Jawzi's placing, 374 by Ibn Khallikan's, as the *Mir'at*'s editor notes), told by al-Tanukhi (*Nishwar al-Muhadara*, vol. 7, p. 267) and Sibt ibn al-Jawzi (*Mir'at al-Zaman*, vol. 17, p. 522, `mirat.txt`). Like Abu Hayyan's quotation, which al-Tanahi discusses, it would put at least that bayt well before 420. Neither is used here.
+
+## Review
+
+The separate second reader could not be started (the machine's limit on concurrent agents was reached), so the drafter re-read the draft against `/tmp/shw/b3/REVIEW.md` (2026-11-17): every half collated again against the eleven texts, every half scanned, the harakat and case endings checked, every gloss read against the sense of the bayt, and the intro and bio against al-Sarraj, al-Subki, al-Safadi and al-Tanahi. Fixed after that reading:
+
+- **Credits:** the readings table completed (Ibn Aydamir, al-Batluni, Ibn Darham and al-Hashimi added where they agree; rows for 19.2 and 32.2 added).
+- **Notes:** the head of 31.2.2 is «وَقّى» (the verb is the passive of the second form); 30.2.1 gives both senses of «عسراء», the left hand and hardship; 7.1.4 says that al-Subki's editors vowel «حِلّ» and quotes al-Tanahi's later correction exactly.
+- **Sharh:** readings given both in a note and in the sharh now appear once (6, 8, 12, 14, 19, 29, and the English 5, 8, 14, 19); 6 deepened.
+
+**Left open for the owner:** 18.2 «مستهلّات» or «مستهلّة» (two clip transcribers against the full transcript and every source); 7.1 «حِلّ» or «حَلّ» (the audio leans to the kasra by less than 2; al-Tanahi calls it an error); the poet's death date, left out of `poet.json` because the only date is Brockelmann's estimate.
