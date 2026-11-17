@@ -9,7 +9,7 @@
 ## Editions
 
 - **al-Barquqi**, شرح ديوان المتنبي (Hindawi Foundation reset, Cairo, 2014), pp. 1230–1231, with his notes 162–208 on pp. 1309–1322: archive.org `20201020_20201020_1638`, leaves 1229–1230 and 1308–1321, read from the page images (`barquqi.txt`; the notes' OCR in `barquqi-notes-ocr.txt`). Fully voweled, 46 abyat, headed «وقال يمدحه ويذكر بناءه ثغر الحدث سنة ثلاث وأربعين وثلاثمائة». **The reciter says al-Barquqi's text word for word**, and it is the starting text, put in the house style.
-- **al-Ukbari (attributed)**, التبيان في شرح الديوان, ed. Mustafa al-Saqqa, Ibrahim al-Abyari and Abd al-Hafiz Shalabi (al-Babi al-Halabi, Cairo, 1936–38; reprinted by Dar al-Ma'rifa, Beirut), vol. 3, pp. 378–392, poem 225: archive.org `20240104_20240104_1855`, leaves 1184–1198, read from the page images (`ukbari-verses.txt`). Fully voweled, 46 abyat, headed «وقال يمدحه. وهي من الطويل، والقافية من المتدارك»; the commentary on bayt 1 tells the occasion. Shamela 6908/1110–1124 has the same print's commentary without the verses (`ukbari.txt`); shamela's card notes that the attribution to al-Ukbari is disputed.
+- **al-Ukbari (attributed)**, التبيان في شرح الديوان, ed. Mustafa al-Saqqa, Ibrahim al-Abyari and Abd al-Hafiz Shalabi (al-Babi al-Halabi, Cairo, 1936–38; reprinted by Dar al-Ma'rifa, Beirut), vol. 3, pp. 378–392, poem 225: archive.org `20240104_20240104_1855`, leaves 1184–1198, read from the page images (`ukbari-verses.txt`, which fills in al-Barquqi's vowels where the print has none). Partly voweled, 46 abyat, headed «وقال يمدحه. وهي من الطويل، والقافية من المتدارك»; the commentary on bayt 1 tells the occasion. Shamela 6908/1110–1124 has the same print's commentary without the verses (`ukbari.txt`); shamela's card notes that the attribution to al-Ukbari is disputed.
 - **al-Wahidi**, شرح ديوان المتنبي: shamela 754/274–278 (`wahidi.txt`; shamela numbers this book's pages itself, not by a print). Unvoweled, 46 abyat with commentary, headed «وقال يمدحه ويذكر بناءه ثغر الحدث ومنازلته أصناف الروم سنة ٣٤٣». The digital text has typos that are not readings: 10.2 «تمتئم», 35.2 «حملاتث», 46.1 «ولام», 46.2 «وتغليقه»; 5.1 drops «الطير».
 - **Ibn al-Iflili**, شرح معاني شعر المتنبي: shamela 37065/473–476, vol. 2, pp. 244–247 (`iflili.txt`): the occasion and its dates, and the first abyat.
 
@@ -23,7 +23,7 @@ Scores come from `scripts/variants.py`'s scoring on the app audio, run for all t
 | --- | --- | --- | --- |
 | 5.2 | المَلا (all three) | الفَلا (al-Barquqi's «ويروى») | −8.8 |
 | 9.1 | تَقرَعُ (al-Ukbari, al-Barquqi) | يَقرَعُ (al-Wahidi) | −6.4 |
-| 10.1 | مِثلُ (al-Barquqi) | مِثلَ (al-Ukbari) | −0.5, see below |
+| 10.1 | مِثلُ (al-Barquqi) | مِثلَ (al-Ukbari) | −0.5; −2.7 on «بها مثل الجنون» alone, see below |
 | 12.1 | أَخَذتَهُ (all three) | أَخَذنَهُ (the reading the poet rejected, in al-Ukbari and al-Barquqi) | −7.1 |
 | 19.2 | تُفهِمُ الحُدّاثَ … التَّراجِمُ (al-Ukbari, al-Barquqi) | تَفهَمُ الحُدّاثُ … التَّراجِمَ | −10.3 |
 | 21.2 | الأَبطالِ (al-Ukbari, al-Barquqi) | الفُرسانِ (al-Wahidi) | −25.4 |
@@ -34,13 +34,14 @@ Scores come from `scripts/variants.py`'s scoring on the app audio, run for all t
 | 44.1 | لَيسَ (al-Barquqi; al-Wahidi's «ويروى») | لَستَ (al-Wahidi, al-Ukbari) | −8.2 |
 | 44.2 | فيهِ … مِنهُ (al-Barquqi) | فيكَ … مِنكَ (al-Wahidi, al-Ukbari) | −13.3 (−6.0 and −7.3 for each word alone) |
 
-- **10.1** is a coin toss by score. The text keeps al-Barquqi's «مِثلُ», which his note parses as the subject of كان («أي شيء مثل الجنون»).
+- **10.1** was a coin toss on the whole half (−0.5). The second reader scored the three words «بها مثل الجنون» alone (75.7–77.7 s, `variants-review.txt`), and «مِثلُ» led by 2.7: a lean, not proof. The text keeps al-Barquqi's «مِثلُ», which his note parses as the subject of كان («أي شيء مثل الجنون»); al-Ukbari's print has «مِثلَ».
+- **Tanwin at the end of a sadr can't be scored.** The reciter pauses after every sadr, and on the second reader's tests (`variants-review.txt`) the bare word beats both the tanwin and the lengthened vowel even where every edition prints the tanwin (26.1 «غائِبٌ» −1.0, 33.1 «مُقدِمٌ» −2.0). The tanwin of 6.1, 13.1, 15.1, 19.1, 22.1, 23.1, 25.1, 26.1, 33.1, 38.1, 40.1 and 44.1 follows al-Barquqi's print, which has it at every one of them.
 - **Where the reciter follows one edition against another** (9.1, 21.2, 29.1, 36.2, 38.1, 44), he follows al-Barquqi every time; the sharh gives al-Wahidi's or al-Ukbari's reading where the meaning changes (21, 36, 44). No word departs from every edition, so no note gives an editions' reading.
 - **Meter decides:**
   - 8.1 «الغَمامُ الغُرُّ», as all three editions have it: the full transcript's «الغمائم» falls on a chunk boundary, and «سَقَتها الغَمائِمُ الغُرُّ» would break the second foot of the tawil;
-  - 14.2 «آساسٌ» (al-Wahidi, al-Barquqi): al-Ukbari's print has «أَساسٌ», which leaves the second foot a syllable short; al-Ukbari's own gloss gives «آساس» as the plural;
+  - 14.2 «آساسٌ» (al-Wahidi, al-Barquqi): al-Ukbari's print has «أَساسٌ», which turns the second foot («نُ آساسُن», u - - -) into u u - -, short where the meter needs a long syllable; al-Ukbari's own gloss gives «آساس» as the plural;
   - 25.1 «جَناحَيهِم» with a silent mim, 17.2 «ثِيابُهُمُ» and 29.1 «نَثَرتَهُمُ» with a long one, 41.2 «وَإِنِّيَ» (al-Barquqi), 46.1 «وَلِم» (al-Barquqi: «لِمَ» with its mim silenced for the meter);
-  - 15.1 «حَواكِمٌ», 40.1 «عَدنانٌ» and «رَبيعَةٌ»: diptotes given tanwin, which the meter needs (without it 40.1's second foot falls apart, and 15.1 and 40.1 end their sadr on a short syllable); al-Ukbari and al-Barquqi both print the tanwin, and the notes say so;
+  - 6.1 «مَخالِبٍ», 15.1 «حَواكِمٌ», 40.1 «عَدنانٌ» and «رَبيعَةٌ»: diptotes given tanwin, which the meter needs (without it 40.1's second foot falls apart, and 6.1, 15.1 and 40.1 end their sadr on a short syllable); al-Barquqi prints the tanwin on all four (al-Ukbari on 15.1 and 40.1; his 6.1 is too faint to read), and the notes say so;
   - 12.1 «اللَّيالي» with its accusative ya silent, which al-Barquqi notes as a licence;
   - 41.2 «فَإِنَّكَ مُعطيهِ» scans with the second foot مفاعيلُ (kaff), as in all three editions; every other half scans normally (`scan_tawil.py`, a tawil wrapper of /tmp/shw/b3/tools/scan.py that also teaches it the hidden alifs of ذلك, لكنّ, لله and الرحمن, short أنا and the long mim of هُمُ).
 - **Long vowels not taken from the transcripts** (the reciter stretches short syllables, and every edition and the meter agree on the short one). The clip transcripts hear 3.2 «عاجزت» for «عَجَزَت», 7.1 «الحادث» for «الحَدَثُ», 10.1 «وكانا» for «وَكانَ», 11.1 «طريذات» for «طَريدَةُ», 17.1 «بارقوا» for «بَرَقوا», 23.1 «كالما» for «كَلمى», 28.1 «طالب» for «طَلَبَ» (the «الجليلا» after it confirms the accusative object of a verb), 30.2 «كاثرت» for «كَثُرَت», 32.1 «زالقت» for «زَلِقَت» and 37.1 «المشرفيات» for «المَشرَفِيَّةِ»; the full transcript also has 24.1 «الشجاعات» and 43.2 «واقعت», which the clips hear short. At 7.1 the meter would allow «الحادِثُ», but the place is al-Hadath in every source, and the reciter stretches short syllables the same way all through.
@@ -71,9 +72,11 @@ Scores come from `scripts/variants.py`'s scoring on the app audio, run for all t
 
 ## Review
 
-No independent second reader could be started: the session had reached its limit of concurrent agents. The drafter read the committed draft again on 2026-11-17 as REVIEW.md asks: every half against al-Barquqi's and al-Ukbari's page images and al-Wahidi's text, every half scanned, the case endings parsed, every gloss against the commentaries, and the sharh, notes and intro against the commentaries and histories. Fixed after that reading:
+The drafter read the draft again first, as no second-reader agent could be started then. A second reader then checked every half against al-Barquqi's and al-Ukbari's page images (the sadr endings and the disputed vowels zoomed in) and al-Wahidi's text, scanned every half, scored the 10.1 vowel and the tanwin at the sadr ends again, and checked the sharh, notes and intro against al-Wahidi, al-Ukbari, al-Barquqi, Ibn al-Iflili and the histories (2026-11-17). Fixed after the review:
 
-- **Text:** no word or vowel changed. The diptotes given tanwin for the meter (15.1 «حَواكِمٌ», 40.1 «عَدنانٌ», «رَبيعَةٌ») and 12.1's silent ya are now recorded above and in the notes.
-- **Notes:** 15.1 «حَواكِمٌ» added; the tanwin of necessity noted on 40.1's names; the head of 45.2 «راجٍ», not «راجي».
-- **English:** the notes on Rudayni and Mashrafi now start with the romanized name; 25's sharh says "from the foremost to the hindmost", as al-Ukbari has it («أوّلهم وآخرهم»), not "the best and the rest".
-- **Intro:** the Arabic first sentence restructured so that «فنازله» clearly has Sayf al-Dawla as its object.
+- **Text:** no word or vowel changed; every vowel al-Barquqi's page images print is the text's, and the departures from al-Ukbari stand as recorded. 6.1 «مَخالِبٍ», a diptote given tanwin as al-Barquqi prints it, is now recorded with the other three; the tanwin at the sadr ends is recorded as following al-Barquqi, since the audio can't tell; 10.1 scored again on its own words (a 2.7 lean to the text).
+- **Meaning:** 43, «على» belongs to «نادم» in 42, as al-Wahidi and al-Ukbari both say, not to «تعدو»; both languages rewritten.
+- **Sharh:** 5 (why the longest-lived birds, after Ibn al-Iflili) and 30 (the pursuit into the remotest crags, after al-Ukbari) deepened to the range.
+- **Notes:** 14.2 «آساسٌ» is the plural of «أُسّ», not of «أَساس»; 6.1 «مَخالِبٍ» notes its tanwin; the heads of 23.1 «كَليم» and 43.2 «مِسمَع» without an article the verse word lacks.
+- **English:** 19.2, the interpreters make the talkers understand one another (أفهم), not "understood"; the note on 20.1 «الغِشَّ» no longer repeats the sharh.
+- **sources.md:** al-Ukbari's print is partly voweled, not fully, and `ukbari-verses.txt` fills its gaps from al-Barquqi; the meter fault of al-Ukbari's 14.2 «أَساسٌ» described correctly (a short syllable where a long one is needed, not a syllable short).
