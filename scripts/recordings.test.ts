@@ -7,7 +7,7 @@ import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, write
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { hashOf, keyFor, parseKey, recordings, sourcePath } from "./audio.ts";
+import { hashOf, keyFor, parseKey, recordings, sourcePath } from "./recordings.ts";
 import { uploadAudio, withKey, type Bucket } from "./upload-audio.ts";
 import { audioProblems } from "./verify-audio.ts";
 

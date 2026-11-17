@@ -7,7 +7,7 @@
 //
 //   bun scripts/verify-audio.ts
 import { relative } from "node:path";
-import { AUDIO_HOST, CONTENT_TYPE, IMMUTABLE, parseKey, recordings, root, SITE, type Recording } from "./audio.ts";
+import { AUDIO_HOST, CONTENT_TYPE, IMMUTABLE, parseKey, recordings, root, SITE, type Recording } from "./recordings.ts";
 
 export async function audioProblems(rootDir: string, list: Recording[], fetchFn: typeof fetch = fetch): Promise<string[]> {
   const problems: string[] = [];

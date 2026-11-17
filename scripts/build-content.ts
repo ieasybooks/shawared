@@ -7,7 +7,7 @@
 //
 // Defaults write into the app's public/ folder, so the web app serves them.
 // Audio from earlier runs is cleared first. Each recording with its source in
-// media/audio is then copied to its key (scripts/audio.ts), for local
+// media/audio is then copied to its key (scripts/recordings.ts), for local
 // previews; with --remote-audio, for release builds that play audio from
 // audio.shawared.com, none is.
 import { createHash } from "node:crypto";
@@ -29,7 +29,7 @@ import {
   type CatalogPoem,
   type PublishedSource,
 } from "@shawared/contracts";
-import { root, sourcePath } from "./audio.ts";
+import { root, sourcePath } from "./recordings.ts";
 import { planPoem } from "./kashida.ts";
 
 const ROOT = root();

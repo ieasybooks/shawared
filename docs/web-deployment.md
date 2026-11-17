@@ -22,7 +22,7 @@ The test and release builds export with an empty Metro cache (`export:web:clean`
 
 ## Audio
 
-Each recording is uploaded once, under a key with its content's hash, which never takes other bytes, so `audio.shawared.com` caches it as immutable. A new recording gets a new key. `scripts/audio.ts` names a recording two ways:
+Each recording is uploaded once, under a key with its content's hash, which never takes other bytes, so `audio.shawared.com` caches it as immutable. A new recording gets a new key. `scripts/recordings.ts` names a recording two ways:
 
 - its source, `media/audio/<poem>/<recitation>.m4a`, on the Mac with the recordings;
 - its key, the recitation's `audio` field: `<poem>/<recitation>.m4a` until it's uploaded, then `<poem>/<recitation>.<hash>.m4a`, with the first 12 hex digits of the source's SHA-256.
