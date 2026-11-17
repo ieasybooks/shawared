@@ -92,3 +92,13 @@ Scores come from `scripts/variants.py`'s scoring on the app audio (run for all t
 - **The critics on 39:** Ibn Rashiq, *al-'Umda*, vol. 2, p. 130 (shamela 10909/446, `umda.txt`): «وعابوا على الأحوص قوله للملك… فقالوا: إن الملوك لا تمدح بما يلزمها فعله كما تمدح العامة».
 - **Atika:** al-Baghdadi (Khizana 2:50, 2:54: daughter of Yazid ibn Mu'awiya, wife of Abd al-Malik) and Jamal (p. 209: daughter of Abd Allah ibn Yazid ibn Mu'awiya).
 - **The poet's life:** al-Zirikli, *al-A'lam*, vol. 4, pp. 115–116 (shamela 12286/3314–3315, `alam.txt`).
+
+## Review
+
+No independent second reader could be started (the machine's limit of concurrent agents was reached), so the drafter re-read the draft against the second reader's checklist (2026-11-17): every half against Jamal's page images at full zoom, the meter of every half, case endings, the audio and timeline, every sharh, translation and note against the sources, and style. Fixed:
+
+- **Text:** 19.1 «كَفانِيَ» with the ya voweled, as Jamal prints it (the draft had «كَفاني»; both scan, and the scorer can't judge an added vowel).
+- **Meaning:** 7 no longer asserts that the line is about the kashih: no commentator explains it, and it can be read of "the affair" in 6; the kashih is given as the likelier reading, with the reason (al-Baghdadi on 8). Translation of 7 made neutral to match.
+- **Sharh:** 8 quotes the Mughni version unvoweled, since al-Baghdadi gives «استُلين» passive in Khizana and active in Sharh Abyat al-Mughni; 28 gives Muntaha's «بنقله» as shamela's text prints it.
+- **Notes:** 26.2 head «حَصَّلَ» (the active past, as the guide turns يُفدَ into فَدى); 21.2 «الصَّيقَل» glossed as the polisher, not the maker.
+- **English:** 9.2 «مُعضِلُ» as "hard and baffling"; 23.2 «لا تُجهَلُ» as "that none can fail to know"; "metre" for "meter".
