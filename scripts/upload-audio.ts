@@ -7,7 +7,7 @@
 // vault. From an ieasybooks/infrastructure checkout:
 //
 //   mise run vault:run SHAWARED_AUDIO_ACCESS_KEY_ID SHAWARED_AUDIO_SECRET_ACCESS_KEY -- \
-//     bun --cwd ../shawared run audio:upload
+//     bun run --cwd ../shawared audio:upload
 //
 // A key already in the bucket holds the same bytes, so it's left alone.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
