@@ -85,22 +85,28 @@ describe("the round trip", () => {
     expect(unuploaded.status, unuploaded.stdout + unuploaded.stderr).toBe(0);
     expect(unuploaded.stdout).toContain("audio isn't uploaded yet");
 
+    // The other recordings have no source here.
+    const others = recordings(root)
+      .slice(1)
+      .map((o) => `media/audio/${o.poem}/${o.recitation}.m4a`);
     const bucket = memoryBucket();
     const first = await uploadAudio(root, bucket, () => {});
-    expect(first).toEqual({ uploaded: [key], present: [], updated: [r!.file.slice(root.length + 1)], noSource: [] });
+    expect(first).toEqual({ uploaded: [key], present: [], updated: [r!.file.slice(root.length + 1)], noSource: others });
     expect(Buffer.from(bucket.objects.get(key)!).equals(readFileSync(source))).toBe(true);
     // Only the audio line changed, so the file keeps its formatting.
     const after = readFileSync(r!.file, "utf8");
     expect(after).toBe(before.replace(`"audio": "${r!.audio}"`, `"audio": "${key}"`));
 
     // Again: nothing to upload or change.
-    expect(await uploadAudio(root, bucket, () => {})).toEqual({ uploaded: [], present: [key], updated: [], noSource: [] });
+    expect(await uploadAudio(root, bucket, () => {})).toEqual({ uploaded: [], present: [key], updated: [], noSource: others });
 
     // The checker takes the key, and checks the source's duration and hash against it.
     const uploaded = run(root, "check.ts");
     expect(uploaded.status, uploaded.stdout + uploaded.stderr).toBe(0);
-    expect(uploaded.stdout).not.toContain("audio isn't uploaded yet");
-    expect(uploaded.stdout).not.toContain("duration not verified");
+    // Its warnings are gone; any other recording's stay.
+    const mine = r!.file.slice(root.length + 1);
+    expect(uploaded.stdout).not.toContain(`${mine} [audio]: audio isn't uploaded yet`);
+    expect(uploaded.stdout).not.toContain(`${mine} [audio]: audio not found`);
 
     // A local preview build plays the source from the key's path.
     const out = join(root, "public");
@@ -129,10 +135,15 @@ describe("the round trip", () => {
   it("leaves recordings without a source alone", async () => {
     const root = mkdtempSync(join(scratch, "root-"));
     cpSync(join(REPO, "content"), join(root, "content"), { recursive: true });
-    const [r] = recordings(root);
+    const all = recordings(root);
     const result = await uploadAudio(root, memoryBucket(), () => {});
-    expect(result).toEqual({ uploaded: [], present: [], updated: [], noSource: [`media/audio/${r!.poem}/${r!.recitation}.m4a`] });
-    expect(readFileSync(r!.file, "utf8")).toContain(`"audio": "${r!.audio}"`);
+    expect(result).toEqual({
+      uploaded: [],
+      present: [],
+      updated: [],
+      noSource: all.map((r) => `media/audio/${r.poem}/${r.recitation}.m4a`),
+    });
+    for (const r of all) expect(readFileSync(r.file, "utf8")).toContain(`"audio": "${r.audio}"`);
   });
 
   it("changes only the audio line, and only when it's there once", () => {
