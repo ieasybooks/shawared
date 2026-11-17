@@ -3,25 +3,35 @@
     "name": "شوارد",
     "slug": "shawared",
     "scheme": "shawared",
-    "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
+    "icon": "./assets/app/icon.png",
     "ios": {
       "supportsTablet": true,
+      "appleTeamId": "KJ597HLVMB",
       "bundleIdentifier": "com.shawared.app",
+      "icon": {
+        "light": "./assets/app/icon.png",
+        "dark": "./assets/app/icon-dark.png",
+        "tinted": "./assets/app/icon-tinted.png"
+      },
       "infoPlist": {
-        "UIBackgroundModes": ["audio"],
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
       "package": "com.shawared.app",
-      "blockedPermissions": ["android.permission.RECORD_AUDIO"],
-      "permissions": [
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/app/adaptive-foreground.png",
+        "monochromeImage": "./assets/app/adaptive-monochrome.png",
+        "backgroundColor": "#F3F0E8"
+      },
+      "blockedPermissions": [
         "android.permission.RECORD_AUDIO",
-        "android.permission.MODIFY_AUDIO_SETTINGS",
-        "android.permission.FOREGROUND_SERVICE",
-        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.VIBRATE"
       ]
     },
     "web": {
@@ -36,10 +46,30 @@
           "sitemap": false
         }
       ],
-      "expo-audio",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": true
+        }
+      ],
       "expo-font",
       "expo-status-bar",
-      "expo-splash-screen"
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/app/splash.png",
+          "imageWidth": 96,
+          "resizeMode": "contain",
+          "backgroundColor": "#F3F0E8",
+          "dark": {
+            "image": "./assets/app/splash-dark.png",
+            "backgroundColor": "#131A2E"
+          }
+        }
+      ],
+      "./plugins/with-release-signing"
     ],
     "extra": {
       "router": {
