@@ -100,11 +100,14 @@ test("the tabs lead to poets, reciters and meters", async ({ page }) => {
   await expect(shown(page, "فَعولُنْ مَفاعيلُنْ فَعولُنْ مَفاعيلُنْ")).toBeVisible();
   await section(page, "الرئيسية").click();
   await expect(page).toHaveURL(/\/$/);
-  await expect(shown(page, TITLE)).toBeVisible();
+  // The library lists many poems, newest first: scroll to this one.
+  await expect(await scrollTo(page, TITLE)).toBeVisible();
 });
 
 test("a card's opening bayt is set at the poem's measure", async ({ page }) => {
   await page.goto("/");
+  // Cards are drawn as they come on screen.
+  await scrollTo(page, TITLE);
   const halves = () =>
     page.evaluate(() =>
       [...document.querySelectorAll<HTMLElement>("div")]
@@ -126,13 +129,14 @@ test("search finds a poem by title, opening bayt, poet or reciter, with or witho
   for (const q of ["بثينه لما رات", "فنونا من الشعر", "جميل", "Jamil", "الواعظ", "Al-Waaedh"]) {
     await search.fill(q);
     await expect(nothing, q).toHaveCount(0);
-    await expect(page.getByText(TITLE).first(), q).toBeVisible();
+    // Other poems can match too, and come first.
+    await expect(await scrollTo(page, TITLE), q).toBeVisible();
   }
   await search.fill("المتنبي");
   await expect(nothing).toBeVisible();
   await page.getByRole("button", { name: "امسح البحث" }).click();
   await expect(search).toHaveValue("");
-  await expect(page.getByText(TITLE).first()).toBeVisible();
+  await expect(await scrollTo(page, TITLE)).toBeVisible();
 });
 
 test("search fields start where the language reads from", async ({ page }) => {
@@ -178,7 +182,7 @@ test("every page has its title at the top, with back beside it on pages opened f
 
 test("back retraces the reader's steps", async ({ page }) => {
   await page.goto("/");
-  await shown(page, TITLE).click();
+  await (await scrollTo(page, TITLE)).click();
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
   await live(page, page.getByRole("link", { name: /جَميل بُثَينة/ })).click();
   await expect(page).toHaveURL(/\/poets\/jamil-buthayna$/);
@@ -201,7 +205,7 @@ test("a reciter's page links to their channel and lists their poems", async ({ p
   await page.goto("/reciters/osama-alwaaedh");
   await expect(page.getByText("أسامة مصطفى الواعظ")).toBeVisible();
   await expect(page.getByRole("button", { name: "يوتيوب" })).toBeVisible();
-  await page.getByText(TITLE).first().click();
+  await (await scrollTo(page, TITLE)).click();
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
 });
 
@@ -211,8 +215,9 @@ test("a meter's page shows its feet and its poems", async ({ page }) => {
   await (await scrollTo(page, "المتقارب")).click();
   await expect(page).toHaveURL(/\/meters\/mutaqarib$/);
   await expect(shown(page, "فَعولُنْ فَعولُنْ فَعولُنْ فَعولُنْ")).toBeVisible();
-  await expect(shown(page, "قصيدة واحدة")).toBeVisible();
-  await expect(shown(page, TITLE)).toBeVisible();
+  // How many poems the meter has, in the app's words: قصيدة واحدة, قصيدتان, ٣ قصائد, ١١ قصيدة.
+  await expect(live(page, page.getByText(/^(قصيدة واحدة|قصيدتان|[٠-٩]+ قصائد|[٠-٩]+ قصيدة)$/))).toBeVisible();
+  await expect(await scrollTo(page, TITLE)).toBeVisible();
 });
 
 test("the mini player keeps the recitation going between pages", async ({ page }) => {
