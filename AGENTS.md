@@ -11,7 +11,7 @@ Arabic poetry as it is recited: audio with the verses lighting up, translations,
 - `packages/design` – colours, fonts, the mark, the gap scale, the follow-pause rule, and ink-trimmed text boxes (`type.ts`, see [docs/typography.md](docs/typography.md)).
 - `scripts/` – `check.ts` (content checker), `build-content.ts` (publishes content into `apps/app/public`), `align.py` and `variants.py` (forced alignment, picking readings), `preview.ts` (a review page per poem), `sitemap.ts` (sitemap.xml for the exported site), `kashida.ts` (sets every half of a poem to one width, run by the publish step).
 - `design/` – the HTML prototypes the app follows (0.3 identity, 0.4 listening).
-- `media/` – downloads, app audio and work files. Gitignored; audio will move to R2.
+- `media/` – downloads, app audio and work files. Gitignored. Recordings are published to `audio.shawared.com` with `bun run audio:upload` ([docs/web-deployment.md](docs/web-deployment.md#audio)); `media/test-audio` holds the browser tests' silent stand-ins.
 
 ## Commands
 
@@ -21,6 +21,8 @@ Run through mise so bun, node and caddy match `mise.toml`: `mise exec -- bun run
 - `bun run check` – content check, typecheck, unit tests.
 - `bun run test:e2e` – Playwright against the dev server; `BASE_URL=http://localhost:8090` tests the production build instead. Includes the overlap audit (`tests/typography.spec.ts`).
 - `bun run web:build`, then `bun run web:serve` – every page rendered ahead of time, in both languages, plus the sitemap, served through Caddy on port 8090.
+- `bun run web:build:test`, then `bun run test:release` – the browser tests and the hosting tests against the export as Cloudflare serves it, with silent stand-ins for the recordings. CI runs these ([docs/web-deployment.md](docs/web-deployment.md)).
+- `bun run deploy:check` – the release build (audio from `audio.shawared.com`) and Wrangler's dry run of its deploy.
 
 ## Rules
 

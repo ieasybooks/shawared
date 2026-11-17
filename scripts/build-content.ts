@@ -3,9 +3,13 @@
 // packages/contracts/src/published.ts). Runs the
 // checker first and refuses to publish content that fails it.
 //
-//   bun scripts/build-content.ts [--out <dir>] [--audio-out <dir>]
+//   bun scripts/build-content.ts [--out <dir>] [--audio-out <dir>] [--remote-audio]
 //
 // Defaults write into the app's public/ folder, so the web app serves them.
+// Audio from earlier runs is cleared first. Each recording with its source in
+// media/audio is then copied to its key (scripts/audio.ts), for local
+// previews; with --remote-audio, for release builds that play audio from
+// audio.shawared.com, none is.
 import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -25,18 +29,24 @@ import {
   type CatalogPoem,
   type PublishedSource,
 } from "@shawared/contracts";
+import { root, sourcePath } from "./audio.ts";
 import { planPoem } from "./kashida.ts";
 
-const ROOT = join(import.meta.dir, "..");
+const ROOT = root();
 const CONTENT = join(ROOT, "content");
 const { values: args } = parseArgs({
-  options: { out: { type: "string" }, "audio-out": { type: "string" }, "skip-check": { type: "boolean" } },
+  options: {
+    out: { type: "string" },
+    "audio-out": { type: "string" },
+    "remote-audio": { type: "boolean" },
+    "skip-check": { type: "boolean" },
+  },
 });
 const OUT = args.out ?? join(ROOT, "apps/app/public/content");
 const AUDIO_OUT = args["audio-out"] ?? join(ROOT, "apps/app/public/audio");
 
 if (!args["skip-check"]) {
-  const r = spawnSync("bun", [join(ROOT, "scripts/check.ts")], { stdio: ["ignore", "pipe", "inherit"], encoding: "utf8" });
+  const r = spawnSync("bun", [join(import.meta.dir, "check.ts")], { stdio: ["ignore", "pipe", "inherit"], encoding: "utf8" });
   if (r.status !== 0) {
     process.stdout.write(r.stdout);
     console.error("content check failed; nothing published");
@@ -91,6 +101,9 @@ const reciters = people("reciters");
 const hash = (s: string) => createHash("sha256").update(s).digest("hex").slice(0, 12);
 
 rmSync(join(OUT, `v${SCHEMA}`), { recursive: true, force: true });
+// Audio from an earlier run, which a release build mustn't carry.
+rmSync(AUDIO_OUT, { recursive: true, force: true });
+const remoteAudio = args["remote-audio"] === true;
 const write = (rel: string, data: unknown) => {
   const file = join(OUT, rel);
   mkdirSync(dirname(file), { recursive: true });
@@ -135,10 +148,10 @@ for (const id of dirs(join(CONTENT, "poems"))) {
     return { id: f.replace(/\.json$/, ""), reciter: r.reciter, audio: r.audio, duration: r.duration, timeline: r.timeline };
   });
 
-  for (const r of recitations) {
-    const from = join(ROOT, "media/audio", r.audio);
+  for (const r of remoteAudio ? [] : recitations) {
+    const from = sourcePath(ROOT, id, r.id);
     if (!existsSync(from)) {
-      audioMissing.push(r.audio);
+      audioMissing.push(`${id}/${r.id}.m4a`);
       continue;
     }
     const to = join(AUDIO_OUT, r.audio);
@@ -251,6 +264,8 @@ for (const [kind, map] of [
   }
 }
 
-console.log(`published ${catalogPoems.length} poem${catalogPoems.length === 1 ? "" : "s"} to ${OUT}; audio: ${audioCopied} copied`);
+console.log(
+  `published ${catalogPoems.length} poem${catalogPoems.length === 1 ? "" : "s"} to ${OUT}; audio: ${remoteAudio ? "none, played from audio.shawared.com" : `${audioCopied} copied`}`,
+);
 if (audioMissing.length) console.warn(`audio not found in media/audio: ${audioMissing.join(", ")}`);
 if (wideSpaces.length) console.log(`halves whose spaces more than double at the measure (have a look): ${wideSpaces.join(", ")}`);
