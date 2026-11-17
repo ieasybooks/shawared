@@ -31,6 +31,11 @@ the audio settles, but they are where the text comes from.
   the last of a shortened foot (فَعولُ), and the transcribers then hear الرصافات for
   الرصافة. Follow a long vowel only where the same reciter doesn't stretch that spot
   elsewhere; otherwise keep the editions.
+- **The scores have blind spots.** A candidate with fewer words scores better by default,
+  so never test a missing word with `variants.py`: read the word's confidence in
+  `align.py` and the clip transcripts instead. The aligner also writes ذ as "th" and scores
+  it badly against ز or against nothing; trust the transcribers there. And a merged tanwin
+  before و («وعظاً ومثل») sounds like «أو» to the transcribers.
 - **Where the reciter differs from every edition,** the text still follows him, and that
   word gets a note giving the editions' reading and its meaning («زَردَقاً»: the editions
   have رَزدَقاً, a row).

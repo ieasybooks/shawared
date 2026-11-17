@@ -53,9 +53,10 @@ const isWasl = (ls: Letter[], i: number) => {
   // The letter after it is silent: bare, and not taking its vowel from a long letter (وادي)
   // or from the alif that carries tanwin al-fath (مالاً).
   const long = then && "اىوي".includes(then.ch) && (bare(then) || ("اى".includes(then.ch) && then.marks.every((m) => m === FATHATAN)));
-  // Form VIII of a verb whose first letter merges with the t (اِتَّقى, اِدَّرَعَ, اِطَّرَحَ):
-  // after a one-letter prefix the alif comes before a doubled letter (وَاتَّقِ, فَاطَّرِح).
-  const doubled = i === 1 && "وف".includes(ls[0]!.ch) && has(after, SHADDA) && "تدطذصضظزثسش".includes(after!.ch);
+  // After a one-letter prefix, an alif before a doubled letter is wasl: form VIII of a verb
+  // whose first letter merges with the t (وَاتَّقِ, فَاطَّرِح), or the article on الَّذي and
+  // الَّتي, whose lam is doubled (كَالَّذي).
+  const doubled = i === 1 && "وفكبل".includes(ls[0]!.ch) && has(after, SHADDA) && "تدطذصضظزثسشل".includes(after!.ch);
   return i > 0 && !!after && ((bare(after) && after.ch !== "ا" && !long) || doubled);
 };
 
@@ -127,6 +128,10 @@ export function tashkeelIssues(text: string): string[] {
       return false;
     });
     if (!free[0]) issues.push(`«${word}» starts without a vowel`);
+    // A bare alif that starts a word is the article's (الـ) or a wasl alif missing its vowel.
+    // (An article-like ال whose lam is a root letter, اِلتَقى, can't be told apart here.)
+    if (ls.length > 2 && ls[0]!.ch === "ا" && bare(ls[0]) && ls[1]!.ch !== "ل")
+      issues.push(`«${word}» starts with an alif of wasl; write its vowel (اِبنِ, اِنقَطَعَ, اُكتُب)`);
     for (let i = 1; i < ls.length; i++) {
       if (!free[i] && !free[i - 1] && i - 1 > 0) {
         issues.push(`«${word}» has two silent letters in a row (${ls[i - 1]!.ch}${ls[i]!.ch})`);

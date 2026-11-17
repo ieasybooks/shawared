@@ -16,6 +16,7 @@ describe("houseStyle", () => {
     expect(houseStyle("وَالعَنبَرِ فَاقصُرِي وَاللَّيلِ")).toBe("وَالعَنبَرِ فَاقصُري وَاللَّيلِ");
     expect(houseStyle("وَادِي فَارِسٌ")).toBe("وادي فارِسٌ");
     expect(houseStyle("وَاتَّقِ فَاطَّرِح وَادَّرِع")).toBe("وَاتَّقِ فَاطَّرِح وَادَّرِع");
+    expect(houseStyle("كَالَّذي وَالَّتي")).toBe("كَالَّذي وَالَّتي");
   });
   it("gives a sun letter after the article its shadda", () => {
     expect(houseStyle("وَبَينَ الرِضا وَالسُخطِ لِلنَدى سَقى اللَهُ اللَيلِ")).toBe("وَبَينَ الرِّضا وَالسُّخطِ لِلنَّدى سَقى اللَّهُ اللَّيلِ");
@@ -51,5 +52,9 @@ describe("tashkeelIssues", () => {
     expect(tashkeelIssues("بِحبٍّ")).toEqual([]);
     expect(tashkeelIssues("بِحبرِ")).toEqual(["«بِحبرِ» has two silent letters in a row (حب)"]);
     expect(tashkeelIssues("مُدّ")).toEqual(["«مُدّ» has a shadda with no vowel on د"]);
+  });
+  it("finds a wasl alif without its vowel, but not the article's", () => {
+    expect(tashkeelIssues("ابنِ")).toEqual(["«ابنِ» starts with an alif of wasl; write its vowel (اِبنِ, اِنقَطَعَ, اُكتُب)"]);
+    expect(tashkeelIssues("اِبنِ اُكتُمِ الَّذي التَّقوى وَاترُكِ")).toEqual([]);
   });
 });
