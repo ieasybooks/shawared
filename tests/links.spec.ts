@@ -12,6 +12,8 @@ const PAGES = [
   "/poems/taqulu-buthaynatu",
   "/en/poems/taqulu-buthaynatu",
   "/en/poets/jamil-buthayna",
+  "/about",
+  "/en/privacy",
   "/a-page-that-is-not-here",
 ];
 

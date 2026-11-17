@@ -49,7 +49,7 @@ test("pages, loaders, published content and the sitemap are revalidated", async 
 test("every address in the sitemap answers with its page, without a redirect", async ({ request }) => {
   const sitemap = await (await request.get("/sitemap.xml")).text();
   const paths = [...sitemap.matchAll(/<loc>https:\/\/shawared\.com([^<]*)<\/loc>/g)].map((m) => m[1]!);
-  expect(paths).toEqual(expect.arrayContaining(["/", "/en", POEM, `/en${POEM}`]));
+  expect(paths).toEqual(expect.arrayContaining(["/", "/en", POEM, `/en${POEM}`, "/about", "/privacy", "/en/about", "/en/privacy"]));
   for (const path of paths) {
     const r = await request.get(path, { maxRedirects: 0 });
     expect(r.status(), path).toBe(200);

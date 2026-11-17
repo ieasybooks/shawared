@@ -1,5 +1,6 @@
 import { space } from "@shawared/design";
-import type { ReactNode } from "react";
+import { Link } from "expo-router";
+import { useState, type ReactNode } from "react";
 import { Pressable, StyleSheet, Text, View, type PressableStateCallbackType, type StyleProp, type ViewStyle } from "react-native";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
@@ -44,6 +45,48 @@ export function IconButton({
       <Icon name={icon} size={iconSize} color={color ?? palette.muted} />
       {on && <View style={[styles.onDot, { backgroundColor: palette.accent }]} />}
     </Pressable>
+  );
+}
+
+/** An icon that opens a page: a link, round like `IconButton`, marked when its page is open. */
+export function IconLink({
+  icon,
+  label,
+  href,
+  current,
+  size = 42,
+  iconSize = 22,
+  color,
+}: {
+  icon: IconName;
+  label: string;
+  href: string;
+  current?: boolean;
+  size?: number;
+  iconSize?: number;
+  color?: string;
+}) {
+  const { palette } = useSettings();
+  // Link asChild needs one flat style object, so the hover shade comes from state.
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Link href={href} asChild>
+      <Pressable
+        accessibilityRole="link"
+        accessibilityLabel={label}
+        aria-current={current ? "page" : undefined}
+        onHoverIn={() => setHovered(true)}
+        onHoverOut={() => setHovered(false)}
+        style={StyleSheet.flatten([
+          styles.icon,
+          { width: size, height: size, borderRadius: size / 2 },
+          hovered && { backgroundColor: palette.fold },
+        ])}
+      >
+        <Icon name={icon} size={iconSize} color={color ?? palette.muted} />
+        {current && <View style={[styles.onDot, { backgroundColor: palette.accent }]} />}
+      </Pressable>
+    </Link>
   );
 }
 

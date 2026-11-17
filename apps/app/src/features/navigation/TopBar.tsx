@@ -53,7 +53,8 @@ export function TopBar({
           lead
         )}
       </View>
-      <SettingsButtons />
+      {/* At home, where the wordmark leads, the bar also opens About Shawared. */}
+      <SettingsButtons about={!!lead && !title} />
     </View>
   );
 }

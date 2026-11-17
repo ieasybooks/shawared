@@ -129,6 +129,8 @@ for (const lang of ["ar", "en"] as const) {
       "/meters",
       "/meters/mutaqarib",
       "/meters/kamil",
+      "/about",
+      "/privacy",
     ])
       test(path, async ({ page }) => {
         await page.goto(at(lang, path));

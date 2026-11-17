@@ -33,4 +33,6 @@ export const paths = {
   meters: "/meters",
   meter: (id: string) => `/meters/${id}`,
   poem: (id: string, bayt?: number) => (bayt ? `/poems/${id}?b=${bayt}` : `/poems/${id}`),
+  about: "/about",
+  privacy: "/privacy",
 };

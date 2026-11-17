@@ -9,7 +9,7 @@ import { useType } from "../../lib/type";
 import { SettingsButtons } from "../settings/SettingsControls";
 import { TABS, tabOf } from "./tabs";
 
-/** The header of wide windows: the wordmark, the four sections, and the settings. */
+/** The header of wide windows: the wordmark, the four sections, the settings and About. */
 export function SiteHeader() {
   const { palette, lang, href } = useSettings();
   const type = useType();
@@ -30,7 +30,7 @@ export function SiteHeader() {
         })}
       </View>
       <View style={styles.flex} />
-      <SettingsButtons />
+      <SettingsButtons about />
     </View>
   );
 }
