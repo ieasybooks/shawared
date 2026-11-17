@@ -205,10 +205,33 @@ describe("audioProblems", () => {
     expect(noCors[0]).toContain("Cache-Control no-cache");
   });
 
-  it("reports a network failure", async () => {
+  it("asks again when the connection drops, and reports a network failure that lasts", async () => {
+    const slept: number[] = [];
+    const sleep = async (ms: number) => void slept.push(ms);
+    let calls = 0;
+    const dropsOnce = (async () => {
+      if (++calls === 1) throw new Error("ECONNRESET: The socket connection was closed unexpectedly");
+      return answer(206, good)();
+    }) as unknown as typeof fetch;
+    expect(await audioProblems(scratch, [recording("p/r.0123456789ab.m4a")], dropsOnce, sleep)).toEqual([]);
+    expect(slept).toEqual([2000]);
+
+    slept.length = 0;
     const fetchFn = (async () => {
       throw new Error("fetch failed");
     }) as unknown as typeof fetch;
-    expect((await audioProblems(scratch, [recording("p/r.0123456789ab.m4a")], fetchFn))[0]).toContain("fetch failed");
+    const [problem] = await audioProblems(scratch, [recording("p/r.0123456789ab.m4a")], fetchFn, sleep);
+    expect(problem).toContain("fetch failed (after 3 tries)");
+    expect(slept).toEqual([2000, 2000]);
+  });
+
+  it("doesn't ask again for a wrong answer", async () => {
+    let calls = 0;
+    const fetchFn = (async () => {
+      calls++;
+      return answer(404, {})();
+    }) as unknown as typeof fetch;
+    await audioProblems(scratch, [recording("p/r.0123456789ab.m4a")], fetchFn, async () => {});
+    expect(calls).toBe(1);
   });
 });
