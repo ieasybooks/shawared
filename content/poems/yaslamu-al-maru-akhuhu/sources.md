@@ -91,3 +91,4 @@ A second reader checked the text against Faisal's page images (leaves 461–464)
 - **English:** 1 quotes the verb as 18 translates it; 20.1 retranslated.
 - **Intro:** the ending now names the closing abyat on the fair-weather friend, which the recording ends on.
 - **sources.md:** al-Salman's other departures (24, 37.2) and Ibn Abi al-Dunya's order (no 41) recorded; 13.1 added to the halves that lengthen the pronoun; the word-alone scores added.
+- **Checked after the review:** the new 21.1.1 note claimed that form VIII means building for oneself; *Lisan al-Arab* (shamela 1687/7218) has «وابتنى دارًا وبنى بمعنًى», and the note now says so.
