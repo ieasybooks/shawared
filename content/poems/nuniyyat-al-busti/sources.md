@@ -18,10 +18,11 @@
 
 ## Readings settled by ear
 
-Scores come from `scripts/variants.py` on the app audio (run in one process for all halves by `media/work/yRu-P1Xz6bI/notes/vbatch.py`, which calls variants.py's own scoring; output in `notes/variants.txt`); the gap is the other reading's score against the text's. Al-Qasim is his commentary's text unless marked; where his printed text differs, it is named.
+Scores come from `scripts/variants.py` on the app audio (run in one process for all halves by `media/work/yRu-P1Xz6bI/notes/vbatch.py`, which calls variants.py's own scoring; output in `notes/variants.txt` and `notes/variants2.txt`); the gap is the other reading's score against the text's. Al-Qasim is his commentary's text unless marked; where his printed text differs, it is named.
 
 | Bayt | Text | Other reading | Gap |
 | --- | --- | --- | --- |
+| 1.1 | في (al-Qasim, Abu Ghudda, the diwan) | مِن (al-Tha'alibi) | −10.5 |
 | 3.1 | الدّارِ (Abu Ghudda, al-Tha'alibi; the diwan's apparatus: the margin of خ, نثر النظم, طبقات الشافعية) | الدَّهرِ (al-Qasim, the diwan) | −7.4 |
 | 3.2 | بِاللَّهِ … العُمرِ (al-Qasim, Abu Ghudda, al-Tha'alibi) | تَاللَّهِ; الدَّهرِ (the diwan) | −6.0; −15.3 |
 | 4.1 | تَجمَعُها (al-Qasim, Abu Ghudda) | يَجمَعُها (the diwan, al-Tha'alibi) | −7.3 |
@@ -41,7 +42,9 @@ Scores come from `scripts/variants.py` on the app audio (run in one process for 
 | 35.1 | حَصِرٌ (al-Qasim, Abu Ghudda) | حَصِراً (the diwan) | −3.7 |
 | 36.1 | وَشّاءً بِهِ مَذِلاً (al-Qasim, al-Tha'alibi) | وَشّاءً يَبوحُ بِهِ (Abu Ghudda, the diwan) | −29.5 |
 | 37.2 | تُحصيها وَأَلوانُ (al-Qasim) | تُحصيهِنَّ أَلوانُ (Abu Ghudda); وَأَكنانُ (the diwan) | −8.9; −9.8 |
+| 38.1 | لِوارِدِهِ (al-Qasim, Abu Ghudda, the diwan) | لِشارِبِهِ (al-Tha'alibi) | −15.8 |
 | 40.2 | فيهِ (al-Qasim, Abu Ghudda) | مِنهُ (the diwan) | −12.4 |
+| 41.1 | فَلِلتَّدابيرِ (al-Qasim, Abu Ghudda, the diwan) | وَلِلتَّدابيرِ (al-Tha'alibi) | −5.0 |
 | 43.1 | في الأَمرِ (al-Qasim, the diwan) | بِالأَمرِ (Abu Ghudda) | −9.7 |
 | 44.2 | فَفيهِ … قُنيانٌ وَغُنيانُ (al-Qasim) | وَفيهِ (the diwan, al-Tha'alibi); إِن حَقَّقتَ غُنيانُ (Abu Ghudda) | −3.6; −36.9 |
 | 45.1 | مِن (al-Qasim, Abu Ghudda, al-Tha'alibi) | في (the diwan) | −8.5 |
@@ -57,7 +60,7 @@ Scores come from `scripts/variants.py` on the app audio (run in one process for 
 | 63.2 | يَصُغها (al-Qasim, Abu Ghudda) | يَقُلها (the diwan) | +0.2 |
 
 - **The reciter's departures from al-Qasim's commentary:** 3.1 «الدّار», 21.2 «العصر» and 57.1 «نضر» are the readings of other witnesses (above); the full transcript and both clip transcribers (`media/work/yRu-P1Xz6bI/clips2-*`) hear all three. Each has a note giving al-Qasim's reading.
-- **56.1 «الرَّحلِ»:** no source has it. The aligner prefers it to Abu Ghudda's «الرّحب» by 6.5 and to «الوحف» by 13.6, and the full transcript and both clip transcribers (cohere and audar, on a clip cut with a wide margin) hear «الرحل». The text follows him; the note gives the editions' «الوَحف» (and Abu Ghudda's and al-Damiri's «الرَّحب») with their meaning, the sharh explains the bayt by «الوحف», and the English sharh says so.
+- **56.1 «الرَّحلِ»:** no source has it. The aligner prefers it to Abu Ghudda's «الرّحب» by 6.5 and to «الوحف» by 13.6, and the full transcript and both clip transcribers (cohere and audar, on a clip cut with a wide margin) hear «الرحل». Scored on its own (words 4–6), «الرحل» also beats every other word of its shape tried: «الرّحب» −5.8, «الرّوح» −5.9, «الوحف» −7.5, «الرّطب» −8.9, «الرّغد» −12.5. The text follows him; the note gives the editions' «الوَحف» (and Abu Ghudda's and al-Damiri's «الرَّحب») with their meaning, the sharh explains the bayt by «الوحف», and the English sharh says so.
 - **Coin tosses:** 63.2 keeps «يَصُغها», the reading of both texts of the poem as «عنوان الحكم» (the cohere clip hears «يصغها», audar «يصوها»); 27.1 and 59.1 keep al-Qasim's text, which the full transcript also hears («يغرن منك», «تبدي»).
 - **Not a reading:** al-Qasim's commentary repeats 33.1 without «ونهى» (pp. 48–49) while discussing it; the half scans only with it, and the reciter says it (the full transcript's «عرم تقوانها» is «يعرى من تقىً ونُهى» run together).
 - **Vowels:** 9.2 «الرِّبحَ» where the commentary's block prints «الرَّبح»; 57.2 «الشّيبِ» (shib, the grey-haired), al-Qasim's vowel, where the diwan prints «الشَّيب» but its editors prefer shib, the vowel of ن (note 42); 37.2 «غَرائِزٌ» takes tanwin for the meter; the mim of 20.1 «مِنهُمُ», 20.2 «سوسَهُمُ» and 24.2 «مِنهُمُ» is long by the meter.
@@ -82,3 +85,7 @@ Scores come from `scripts/variants.py` on the app audio (run in one process for 
 - **Added here:** Quran 3:103 (12), 68:12 (15, note), 96:6–7 (47), 2:255 (49, note); the hadiths of the believer who mixes with people (20, Ahmad) and of «قد أفلح من أسلم» (44, Muslim).
 - **The intro:** the poem's place in his work and its commentators (al-Suja'i's «بلوغ الأرب», Nuqrakar) from the diwan's introduction, pp. 5–6; al-Tha'alibi's prose version from the diwan's introduction and نثر النظم itself; Ibn al-Qayyim's quotation of 9 («كما قيل») in مدارج السالكين, الروح and مفتاح دار السعادة (shamela search); the names and al-Qasim's «لكن أشهرها: بنونية البستي» from his introduction, p. 7; his text among the set texts from the title of متون طالب العلم and its note «ليسهل على الطالب الحفظ».
 - **The poet's life:** al-Zirikli, *al-A'lam*, vol. 4, p. 326 (shamela 12286/3942, `alam.txt`); al-Tha'alibi, *Yatimat al-Dahr*, vol. 4, pp. 345–346 (shamela 6743/1829–1830, `yatima.txt`) for his service to the lord of Bust and Sebuktigin, his name for wordplay, «المتشابه», and the phrase «صاحب الطريقة الأنيقة في التجنيس الأنيس البديع التأسيس»; Ibn Khallikan, *Wafayat al-A'yan*, vol. 3, pp. 376–378 (shamela 1000/1387–1389, `wafayat.txt`) for «عادات السادات سادات العادات» and the two death dates; Bust in today's Afghanistan from al-Qasim's commentary, p. 7.
+
+## Review
+
+Not yet read by a second reader: the drafter could not start one (the limit on concurrent subagents was reached), 2026-11-17. The drafter's own pass, after taking over an unfinished draft, checked the text against all five witnesses (the diwan as page images; the commentary through a page-by-page summary made from its page images, checked against pp. 7, 20, 73 and 74), scanned every half, scored every reading, and checked the notes, intro and bio against the sources; it fixed overlapping notes on 1.2, three heads (4.2 «أَنسى», 28.1 «مَقدُرَة», 56.1 «مُنتَشٍ»), the credits in the notes on 3.1, 21.2 and 57.1, the bio's partial quotation of al-Tha'alibi, an ellipsis (28) and a question (56) in the sharh, sharh that repeated its notes (11, 43), the translation of 49.1, and the 34.1 note; it added al-Tha'alibi's prose version as a witness and source (31, 45, 56, 57), rewrote the intros on the diwan editors' account, and deepened 45, 46 and 50.
