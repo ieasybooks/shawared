@@ -1,0 +1,96 @@
+# أَراكَ عَصِيَّ الدَّمعِ شيمَتُكَ الصَّبرُ
+
+## Recording
+
+- أسامة الواعظ («أداء ومونتاج»), sound by استوديو القمة: https://www.youtube.com/watch?v=zbB2x1afhYU (uploaded 2021-02-13, 7:42), «أراك عصي الدمع -لأبي فراس الحمداني بصوت أسامة الواعظ». The description adds only «المتوفى سنة 357هـ».
+- **Audio:** kept 3.2–457.0 s of the download (the silence before the first word and after the last cut), gain −6.9 dB, giving −20 LUFS with a peak of −7.6 dBTP.
+- **Abyat recited:** 53 of al-Dahhan's 54, in his order. He leaves out al-Dahhan's 45, «وَلا خَيرَ في دَفعِ الرَّدى بِمَذَلَّةٍ / كَما رَدَّها يَوماً بِسَوءَتِهِ عَمرُو» (al-Duwayhi: Amr ibn al-As uncovering himself when he fought Ali ibn Abi Talib, so that Ali turned his face away), so from 45 on the bayt numbers here are al-Dahhan's minus one. There is no gap in the audio where it would fall. He says the opening bayt twice and the last bayt twice, and the timeline plays them twice.
+
+## Editions
+
+- **ديوان أبي فراس الحمداني، رواية أبي عبد الله الحسين بن خالويه**, ed. Sami al-Dahhan (Beirut, 1944): scan archive.org `0453_20191224`, a reprint in two PDFs (`media/research/araka-asiyya-al-dami/dahhan/`), read as page images. The base text.
+  - Poem 160, pp. 209–214, «من الطويل», 54 abyat, voweled and numbered, under Ibn Khalawayh's heading «وَقالَ، يَفتَخِرُ، وَقَد بَلَغَهُ أَنَّ الرّومَ قالَت: ما أَسَرنا أَحَداً لَم نَسلُب سِلاحَهُ غَيرَ أَبي فِراس». Al-Dahhan's note on the heading takes it from his manuscripts ب and تي and gives the others' (بج: «لما بلغه أن الروم اعتدوه أمانة ولم يؤسر أحد لم يترك دروعه ولم يسلب سلاحه غيره»).
+  - His general note: «تكاد تكون هذه القصيدة أشهر ما عرف لأبي فراس», found in many anthologies and manuscripts «مختلفة أشد الاختلاف في رواية أبياتها وعددها» (31 abyat in ح, 39 in ط and طا, 46 in ب). He takes bayt 6 and 19–20 from MS Pet. 354, 7 from ف alone, 43 from ح and ف, and 50 (our 49) from ب. He prints the second half of 48 (our 47) in brackets: «في أكثر النسخ: "ستذكرني قومي" وعجز البيت لعنترة».
+  - The French introduction (the first PDF) says Ibn Khalawayh's commentary «ne fournit pas la date de la composition des pièces» (p. 71), lists 160 among the «pièces composées pendant sa captivité (351-355/962-966)» (p. 76) and describes it: «54 vers. 1 à 25 nasib d'une forme très aisée; 26 et suiv. fakhr» (p. 96).
+- **شرح ديوان أبي فراس الحمداني لابن خالويه حسب المخطوطة التونسية**, ed. Muhammad Bencherifa: archive.org `20240327_20240327_1433`, pp. 147–152 (leaves 147–152, read as images). The Tunisian manuscript (ن.ت) of Ibn Khalawayh's recension. Its heading: «وقال الرومُ اعتداداً عليه إنه لم يُؤسر أحد فبقي عليه ثيابه وفرسه وسلاحه غيره فقال». A shorter text in another order: it lacks al-Dahhan's 6–9, 17, 20, 27, 42–44 and the last bayt, ends at «تهون علينا», and puts «سيذكرني قومي» after «وإن متّ». Its readings are in the table below.
+- **ديوان أبي فراس الحمداني**, commentary by Khalil al-Duwayhi (Dar al-Kitab al-Arabi, Beirut): archive.org `DiwanAbiFarasAlhmdany`, poem 147, pp. 162–165 (leaves 161–165, read as images). Al-Dahhan's heading and his 54 abyat in his order, fully voweled, with short glosses. It departs from al-Dahhan at 20.2 «عَذَّبَها الفِكرُ» (al-Dahhan's ف) and 27.2 «وَاستُنزِلَ النَّضرُ», prints 7.1 «صَحائِفُ» without al-Dahhan's tanwin, and drops «الفقر» from 36.2 (a misprint). At 6.2 it has al-Dahhan's «وَأَحسَنَ».
+- **الثعالبي، يتيمة الدهر**, vol. 1, p. 103 (shamela 6743/80, `yatima.txt`): eleven abyat (our 1–4, 28, 30, 38–41 and al-Dahhan's 45), «وقال من قصيدة», inside the chapter on what he wrote as a prisoner, which opens on p. 85: «وقد كانت تصدر أشعاره في الأسر والمرض… عن صدر حرج وقلب شج». The edition heads that chapter «[الروميات من غرر أبي فراس]»; the brackets are the editor's.
+- **The Abu Dhabi encyclopedia text** (old shamela 4389, pp. 153–158, `encyclopedia.txt`): al-Dahhan's 54 abyat, with «إذا البين أنساني» at 22.2 and al-Duwayhi's «النضر» and missing «الفقر». One source, not an edition.
+
+`abyat_in_full` is 54, al-Dahhan's count.
+
+## Readings settled by ear
+
+Scores come from `scripts/variants.py`'s scoring (run in one batch, `media/research/araka-asiyya-al-dami/tools/vbatch.py`; tests and log beside it, same model and code) on the app audio, each half on its own; the gap is the other reading's score against the text's.
+
+| Bayt | Text | Other reading | Gap |
+| --- | --- | --- | --- |
+| 3.1 | يَدَ الهَوى (al-Dahhan, Bencherifa, al-Duwayhi) | يَدَ الرَّجا (al-Tha'alibi; al-Dahhan's ي) | −16.2 |
+| 5.1 | بِالوَصلِ (al-Dahhan, al-Duwayhi) | بِالوَعدِ (Bencherifa; al-Dahhan's ط، ب، طا) | −13.2 |
+| 5.2 | ظَمآناً (al-Dahhan, al-Duwayhi) | عَطشاناً (Bencherifa; al-Dahhan's ب، ط) | −15.9 |
+| 6.2 | وَأَحسَنُ | وَأَحسَنَ (the vowel al-Dahhan and al-Duwayhi print) | −1.3, see below |
+| 8.1 | مِنَ الغادينَ (al-Dahhan, al-Duwayhi) | مَعَ الغادينَ (al-Dahhan's م); في الغادينَ (his به، بد، ف) | −7.8; −12.9 |
+| 10.2 | مِن أَهلِها (al-Dahhan, Bencherifa) | في أَهلِها (al-Dahhan's بد) | −8.3 |
+| 11.1 | قَومي (al-Dahhan, Bencherifa) | أَهلي (عيون التواريخ, in al-Dahhan's note) | −12.8 |
+| 12.1 | فَإِن كانَ (al-Dahhan) | وَإِن كانَ (al-Dahhan's ط، طا) | −2.7 |
+| 12.2 | الإيمانُ (al-Dahhan, Bencherifa) | الإِسلامُ (al-Dahhan's ف، بج) | −25.6 |
+| 13.2 | لِآنِسَةٍ (al-Dahhan, al-Duwayhi) | لِإِنسانَةٍ (Bencherifa; al-Dahhan's ب) | −18.9 |
+| 20.2 | الفِكرُ (al-Duwayhi; al-Dahhan's ف) | الهَجرُ (al-Dahhan) | −12.6 |
+| 22.2 | الهَمُّ أَسلاني (al-Dahhan, al-Duwayhi) | الهَمُّ أَنساني; البَينُ أَنساني (Bencherifa, the encyclopedia) | −8.8; −26.3 |
+| 24.1 | أُنادي (al-Dahhan, al-Duwayhi) | أُناجي (Bencherifa) | −4.9 |
+| 25.2 | تُنادي (al-Dahhan, al-Duwayhi) | تُراعي (Bencherifa; al-Dahhan's با، به) | −13.5 |
+| 26.2 | مَن أَنكَرتِهِ (al-Dahhan, Bencherifa) | ما أَنكَرتِهِ (al-Dahhan's ب) | +0.2, see below |
+| 27.2 | النَّضرُ (al-Duwayhi, the encyclopedia) | النَّصرُ (al-Dahhan) | −1.8, see below |
+| 29.2 | نُزّالِها (al-Dahhan, Bencherifa) | أَبطالِها (al-Dahhan's ب) | −22.7 |
+| 30.1 | فَأَظمَأُ (al-Dahhan, al-Duwayhi) | فَأَصدَأُ (Bencherifa; al-Tha'alibi «وأصدأ») | −5.6 |
+| 31.1 | بِغارَةٍ (al-Dahhan, Bencherifa) | بِغادَةٍ (al-Dahhan's م، بد) | −5.7 |
+| 35.2 | لِأَثوابِها (al-Dahhan, al-Duwayhi) | لِأَبياتِها (Bencherifa; al-Dahhan's ط، طا، ف) | −18.0 |
+| 36.1 | وَلا راحَ (al-Dahhan, al-Duwayhi; Bencherifa's text) | وَما راحَ (al-Dahhan's ب; the Tunisian manuscript, Bencherifa's note 708) | −6.7 |
+| 37.1 | بِالمالِ (al-Dahhan, al-Duwayhi) | فِي المالِ (Bencherifa; al-Dahhan's ط، طا) | −11.2 |
+| 46.2 | رُمحي (al-Dahhan, Bencherifa, al-Duwayhi) | رُمحٍ (al-Dahhan's ط، طا; the encyclopedia) | +2.2, see below |
+| 48.1 | يَعرِفونَهُ (al-Dahhan, al-Duwayhi) | تَعرِفونَهُ (Bencherifa; al-Dahhan's م، به) | −7.2 |
+| 50.2 | يَغلو (all) | يُغني (al-Dahhan's م) | −16.3 |
+| 51.1 | عِندَنا (al-Dahhan, Bencherifa) | بَينَنا (al-Dahhan's طا، به) | −9.2 |
+| 53.1 | العُلا (al-Dahhan, al-Duwayhi) | النُّهى (al-Dahhan's ف) | −3.9 |
+
+- **6.2:** al-Dahhan and al-Duwayhi print «وَأَحسَنَ», which gives no sense (أحسنَ as a verb takes no «مِن» of comparison). The text has «وَأَحسَنُ», the comparative put before its subject «العُذرُ»: better than some loyalty is the excuse for you. The aligner prefers it by 1.3, a coin toss, and the second transcriber hears «وأحسنوا», a final u. The second reader measured the vowel before «مِن» (55.96–56.38 s of the app audio, LPC formants): its second formant falls from about 1,500 Hz to 870–970 Hz and stays there from 56.22 to 56.38 s, as the u of «الدَّهرُ» does (153.80–154.00 s, about 800–1,000 Hz), while a fatha in the same voice stays near 1,450 Hz («بَلى» 17.70 s, «المَوَدَّةَ» 54.10–54.26 s). He says «وَأَحسَنُ». No parse of the fatha holds: as a verb أحسنَ takes no «مِن» of comparison, and as the elative it is the fronted predicate and takes damma. The word has a note giving the editions' fatha, since every edition departs from the reciter here.
+- **20.2:** the reciter says «الفِكرُ», al-Duwayhi's text and al-Dahhan's manuscript ف, not al-Dahhan's «الهَجرُ»; the sharh gives both.
+- **26.2:** a coin toss; one transcriber hears «من», the other «ما». The text keeps «مَن», al-Dahhan's and Bencherifa's. A nasal-like murmur at 222.50–222.58 s fits «مَن أَنكَرتِهِ», but the hamza of «أنا» in 2.1 (18.14–18.18 s) looks the same, so the measurement settles nothing.
+- **27.2:** the aligner prefers «النَّضرُ» by 1.8, and both transcribers hear ض here («النضر», «نضرو»), as does the full transcript, while the same word one line later (28.2) is heard «النصر», with ص. So the reciter says what al-Duwayhi prints. Al-Dahhan has «النَّصرُ» and records no manuscript with ض, and النَّضر is gold (*Lisan al-Arab*, vol. 5, p. 213, after Ibn Jinni), which makes no sense here: al-Duwayhi's ض is most likely a misprint. The text follows the reciter; the word's note gives «النَّصرُ», and the sharh and translation follow it. The second reader tested it on the spectrum (share of energy above 3.5 kHz, 10 ms frames): this reciter's ص is loud hiss, 39–69% of the energy for 80 ms in 28.2's «النَّصرُ» (241.28–241.36 s) and 79–97% in 1.1's «الصَّبرُ» (4.14–4.27 s), while 27.2's last word (232.50–233.40 s) never passes 4%, as a voiced stop like ض would. So the ض is his, not the transcribers'.
+- **46.2:** the aligner can't tell «رُمحي» from «رُمحٍ» (+2.2 for the tanwin); both transcribers hear «رمحي», the reading of al-Dahhan, Bencherifa and al-Duwayhi. Bencherifa notes that the Tunisian manuscript has «ريح» here and corrects it to «رمح».
+- **12.1, 24.1:** both transcribers hear «فإن»; «كأني ينادي» is «أُنادي» with its hamza lost in the join.
+- **Bencherifa's other readings,** shorter or longer than the text and so not scored: 2.2 «لا يضيع له سرّ», 12.1 «فإن يكُ», 23.1 «وجدتُ», 25.1 «ثم تدعو وإنّما», 26.1 «يا ابنة الشيخ», 28.2 «بها نصرُ», 34.2 «جافي اللقاء», 35.2 «وآبت», 39.2 «يُقِلُّ» (al-Dahhan «يقيه»), and the manuscript's 40.1 «الغمار» (his note 711, for «الفرار»). The transcripts have the text's words in each.
+- **Meter:** the long mim of 16.2 «فَهُمُ», 45.2 «دِمائِهِمُ» and 46.2 «فيهِمُ» (in 46.1 the mim's u runs into the wasl: fīhimu-ndaqqa); 25.2 «بِالوادِ», as al-Dahhan prints it (with «بالوادي» the third foot breaks; the transcribers' «بالوادي» is the stretched vowel); «أَنا» said short in 2.1 and 32.2; 7.1 «صَحائِفٌ» with al-Dahhan's tanwin. Every half was scanned (`media/research/araka-asiyya-al-dami/tools/scan_tawil.py`, `/tmp/shw/b3/tools/scan.py` with tawil feet); the opening is muṣarraʿ, its first half ending like the rhyme. The second reader scanned all 106 halves again with these licences and the long vowels of وَلَكِن, وَاللَّهِ and طَلاً written out: every half scans.
+
+## Ear check
+
+- **Alignment:** `scripts/align.py` flagged 26 weak words, mostly short words and rhyme words (من, عن, الصبر, أمر, عذر), and the whole of the last bayt's repeat. That repeat is said about 15 dB softer, an echo from 448.7 s of the download to the fade at 457 s; the full alignment smeared it, so the last 17 s were aligned again on their own (`media/research/araka-asiyya-al-dami/tools/tail/`), giving 53.1 at 445.44–449.58 s and 53.2 at 449.80–453.40 s. Both transcribers hear exactly those halves in clips cut at the new times.
+- **`scripts/verify.py`:** 39 of 110 clips differ from the text (73 of 601 words). Each is the transcriber's, or settled above:
+  - **made up:** the first 1.1 «والله يوم المومنين» and 9.2 «ولا انت»; the second transcriber and wider clips hear the halves;
+  - **a stretched vowel or ة heard as letters:** 7.2 «بشروط», 8.2 «الهوايه», 13.1 «ما ذلت», 28.2 «معودات», 33.1 «ملكتهم», 34.1 «وساحبات», 38.1 «الوغار», 43.2 «والضروب», 52.2 «المهروم»;
+  - **words run together or split:** 19.1 «لو لك», 20.2 «معاداها», 21.1 «لعز بعد لي عاشق», 22.2 «الا حبي», 40.2 «فقلتهما», 43.1 «يتاجفعني», 48.2 «القاناوالبيض», 49.1 «لابد», 49.2 «وانفسحال عمر»;
+  - **the short «أنا» swallowed:** 2.1 «بلاءنا», 32.2 «بالرداءنا»;
+  - **ظ and ض confused:** 24.1 «ضابيه», 24.2 «ضم يا اجل لها», 29.2 «النضار»;
+  - **misheard words:** 9.1 «ترووا», 14.1 «للصبا», 17.2 «خضر», 19.2 «للبلاد», 26.2 «لا يعرف» (la-yaʿrifu), 30.1 «فاوماوا», 40.1 «اصايح بالفرار», 45.2 «دمايه موحمر» (the long mim), 46.1 «فيه مندقنا اصله», 50.2 «يول»;
+  - **37.2** drops «الوفر» at the clip's end; the full transcript has «فلا وفر وفر»;
+  - **27.2** «نضر», settled above; **53.1, 53.2** (the repeat), the old boundary, now fixed.
+
+## Commentary drawn on
+
+- **Glosses:** al-Duwayhi's notes (أضواني, الجوانح, أذكتها, معلّلتي, بشر, تروغ, الوقر, بدوت, حاضرون, القفر, وقور, ريعان, تأرن, نكر, تتعنّتي, المهجة, البين, أسلاني, تُجزى, الميثاء, ظمياء, جلّلها, الذعر, الطلا, الحضر, جرّار, نزّال, المخوفة, الشزر, أظمأ, أسغب, الخلوف, البراقع, الخُمُر, جهم, ساحبة الأذيال, يطغيني, وفوره, أفِر, الوفر, حُمّ, يتجافى, النصل, الضُّمّر, التبر, الصفر), checked against *Lisan al-Arab*: ضوى إلينا «أوى إلينا … وقد أضواه الليل إلينا» (vol. 14, p. 490, shamela 1687/7614), with «وأَضْوَيْت الأَمْرَ إِذا أَضْعَفْتَه» (p. 489) behind al-Duwayhi's «أضعفني»; two of al-Dahhan's manuscripts read «إذا الليل واراني» and «أخفاني», which support the first sense; الميثاء «الأرض اللينة … والتلعة التي تعظم حتى تكون مثل نصف الوادي» (vol. 2, pp. 192–193); شفة ظمياء «إذا كان فيها سمرة وذبول» (vol. 15, p. 25); الأَرَن «النشاط» (vol. 13, p. 14); جرّار «كانت العرب تقول للرجل إذا قاد ألفاً جرّار» (vol. 5, p. 337); وَفَر عِرضَه (vol. 5, p. 288).
+- **The occasion** is Ibn Khalawayh's heading (al-Dahhan's and Bencherifa's wording above); 45 answers it. **The date** is al-Dahhan's: he classes the poem with those of the captivity, 351–355 AH, and says Ibn Khalawayh gives no dates; al-Tha'alibi quotes it among the captivity poems. The poem itself speaks from captivity: «أُسِرتُ» (38), «يَمُنّونَ أَن خَلّوا ثِيابي» (45), «سَيَذكُرُني قَومي» (47), «فَإِن عِشتُ … وَإِن مِتُّ» (48–49). So it is one of the Rumiyyat, the poems of his Byzantine captivity, in the sense al-Zirikli gives the word («فامتاز شعره في الأسر برومياته»).
+- **The turn from love to boasting at 26** is al-Dahhan's division (p. 96).
+- **Allusions:** 12, the hadith «الإسلام يهدم ما كان قبله» (Muslim, Kitab al-Iman); 53, «أنا سيّد ولد آدم ولا فخر» (al-Tirmidhi, Ibn Maja); 47, the half al-Dahhan gives to Antara. That attribution is his alone: the half is not in the Abu Dhabi encyclopedia's text of Antara's diwan (old shamela 4472, `r2/antara_oldshamela.txt`), and shamela's full-text search finds it given to Antara only in a modern anthology (38154/5966), so the sharh says that al-Dahhan attributes it.
+- **Phrases in use today** (the intro): Ahmad Mukhtar Umar, *Mu'jam al-Lugha al-Arabiyya al-Mu'asira*, vol. 1, p. 711 («خايره بين أمرين أحلاهما مُرّ», shamela 29511/8253) and vol. 2, p. 1440 («وفي الليلة الظلماء يُفتقد البدر», 29511/18095).
+- **The poet's life:** al-Zirikli, *al-A'lam*, vol. 2, p. 155 (shamela 12286/1388–1389, `alam.txt`), with al-Dahhan's dates (vol. 1, p. 72: born 320, captured 351, freed 355, killed 357).
+
+## Review
+
+A second reader checked the text against the page images of al-Dahhan, al-Duwayhi and Bencherifa and al-Dahhan's apparatus, scanned every half, tested 6.2, 26.2, 27.2 and 46.2 on the app audio's spectrum (`media/research/araka-asiyya-al-dami/r2/`: `fric.py`, `formant.py`, `scan2.py`), and checked the sharh, notes, intro and bio against the sources (2026-11-17). Fixed after the review:
+
+- **Text:** no word changed. 6.2 «وَأَحسَنُ» and 27.2 «النَّضرُ» confirmed on the spectrum (above); 26.2 and 46.2 stay coin tosses with the editions.
+- **Notes:** 6.2 «وَأَحسَنُ» now gives the editions' «وأحسنَ», as a departure from every edition must; 7.1 «صَحائِفٌ» gives al-Duwayhi's «صَحائِفُ»; 3.1 «أَضواني» adds the manuscripts' «واراني» and «أخفاني»; 24.2 «ظَمياءَ» adds al-Duwayhi's second gloss; 22.2 «أَسلاني» no longer says the care turns him from the beloved, against the sharh; 52.2 «يُغلِها» glosses the word without the verse's «لم»; new notes at 11.2 «وَإِيّايَ», 35.2 «وَرُحتُ», 39.2 «بَرٌّ», 41.2 «وَحَسبُكَ», 43.2 «وَالضُّرُّ» and 44.2 «ما حَيِيَ الذِّكرُ».
+- **Sharh:** the thin Arabic sharh deepened (1, 3, 6, 10, 13, 15, 19, 24, 29, 35, 40, 41): 1 allows that he addresses himself, as the English says; 15 now says the dialogue runs to 19, where al-Dahhan and al-Duwayhi close the quotation; 41 gives the bitter point of «خيرهما الأسر»; 47 reports the Antara attribution as al-Dahhan's instead of stating it.
+- **English:** 36.2 "overnight" (suddenly) replaced by "spent a night", as «باتَ» means; 41.2 retranslated, "when the better of two courses is captivity, that says enough"; 46.2 «الصَّدرُ» is the upper shaft, not the spear's head; 8.1 shortened to a half's length; the 41 sharh says what the second half means; 47 reports the Antara attribution as al-Dahhan's.
+- **sources.md:** the spectrum tests; Bencherifa's manuscript readings at 36.1, 39.2, 40.1 and 46.2; al-Duwayhi's 6.2 and 7.1; Lisan's second sense of «أضوى»; the Antara check; 46.1's mim corrected (short, into the wasl).
+- **After the review** (the drafter): the 52.2 note now has «المهرُ» as the subject of «يُغلِها» (the dowry does not make her dear), not the suitor; 41.2's English smoothed.

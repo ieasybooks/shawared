@@ -1,0 +1,41 @@
+{
+  "lang": "en",
+  "source": { "name": "Shawared" },
+  "title": "When You Risk Your Life for Honour",
+  "intro": "Al-Mutanabbi wrote these lines after a surprise raid on Antioch in which his colt, the subject of an earlier poem, and its dam, his mare, were killed; so say the headings in the commentaries of al-Wahidi and al-Ukbari. Al-Ma'arri passes on the report that it happened while the poet was praising Abu al-Asha'ir, and al-Barquqi's life of the poet tells the story: Abu al-Asha'ir governed Antioch for Sayf al-Dawla; al-Mutanabbi had left Ramla for Antioch in 336 AH (947 CE) and praised him there; and while the poet was staying there, the Ikhshidid commander Banis al-Mu'nisi raided the city, and Abu al-Asha'ir, taken by surprise, fought his way out to Aleppo. The poem opens with advice on ambition: whoever risks death should risk it for the highest prize, since death tastes the same in any cause. The poet then vows to avenge the two horses with swords tempered in fire and sharp enough to wound their makers, and ends with lines on cowards who take their weakness for good sense and on critics who blame what they fail to understand. Al-Sahib ibn Abbad chose five of its nine lines for his collection of al-Mutanabbi's proverbial verses, and al-Raghib al-Isfahani quotes the first two under the heading “bearing hardship to win honour”.",
+  "abyat": {
+    "1": { "translation": ["When you risk your life for an honour you seek,", "do not settle for anything below the stars."],
+           "sharh": "If you are going to put your life in danger for glory, aim for the highest glory there is. The danger is the same either way, so let it be for the greatest prize." },
+    "2": { "translation": ["For death tastes the same in a small matter", "as it tastes in a great one."],
+           "sharh": "This is the reason for the first line. Dying in a trivial cause is no easier than dying in a great one, so whoever must face death should face it for something worth dying for." },
+    "3": { "translation": ["My mare and my colt will be wept for, in grief,", "by broad swords whose tears are the water of bodies."],
+           "sharh": "He vows to avenge his two horses. His swords will mourn them, and their tears will be the blood of the men who killed them: blood dripping from a blade is the sword's weeping. Al-Ma'arri allows another reading: he will drive the two horses into battle until they fall, and his swords will weep for them." },
+    "4": { "translation": ["They came to the fire as camels to water, then grew up in it,", "as young girls grow up in comfort and ease."],
+           "sharh": "He turns to how his swords were made. Fire destroys what it touches, but these blades came down to it as camels come down to water and were raised by it like girls brought up in luxury, and they came out pure and beautiful." },
+    "5": { "translation": ["They left the polishers refined and pure,", "and the polishers' hands were covered in wounds."],
+           "sharh": "The swords left the smiths who polished them free of all dross, and so sharp that they cut the hands that worked them. If they wounded their own makers, his enemies can expect far worse." },
+    "6": { "translation": ["Cowards think their weakness is good sense:", "that is the trick a base nature plays."],
+           "sharh": "Cowards dress up their failure to act as prudence and call staying out of danger wisdom. It is their own mean nature deceiving them, so that cowardice can pass for good sense." },
+    "7": { "translation": ["All courage serves a man well,", "but none is like the courage of the wise."],
+           "sharh": "Courage is useful in anyone, but in a wise man it is at its best, because judgement tells him when and where to use it and keeps it from turning into recklessness. Al-Barquqi draws the corollary: good sense is no substitute for courage, which serves even on its own, but together sense makes courage stronger." },
+    "8": { "translation": ["How many find fault with a sound saying,", "when the flaw lies in their sick understanding."],
+           "sharh": "Many people condemn what is well said because they have not understood it; the fault is in their minds, not in the words. Al-Wahidi traces it to Abu Tammam: when Abu Sa'id al-Darir asked him why he did not say what could be understood, he replied, “Why do you not understand what is said?”" },
+    "9": { "translation": ["But ears take from it", "in the measure of their gifts and their learning."],
+           "sharh": "Everyone takes from what he hears only as much as his natural gifts and his learning allow. So when a sound saying is faulted, the fault lies with the listener. Al-Ukbari and al-Barquqi compare the Quran (46:11): “Since they are not guided by it, they will say, ‘This is an old lie.’”" }
+  },
+  "words": {
+    "1.1.2":   { "word": "غامَرتَ", "head": "غامَرَ", "root": "غ م ر", "meaning": "You plunge into danger, risk your life." },
+    "1.1.5":   { "word": "مَرومِ", "head": "مَروم", "root": "ر و م", "meaning": "Sought after, aimed at." },
+    "2.1.5":   { "word": "صَغيرٍ", "head": "صَغير", "root": "ص غ ر", "meaning": "Small, trivial. Al-Wahidi, al-Ma'arri and al-Sahib read haqir, “contemptible”, to the same effect." },
+    "3.1.3":   { "word": "فَرَسي", "head": "فَرَس", "root": "ف ر س", "meaning": "My mare: the colt's dam, killed with it. Al-Ukbari's heading calls her al-hijr, a word for a mare." },
+    "3.1.4":   { "word": "وَمُهري", "head": "مُهر", "root": "م ه ر", "meaning": "A colt. This is the colt he had praised in an earlier poem; al-Barquqi's heading and Ibn Furraja call it al-Tukhrur." },
+    "3.2.1":   { "word": "صَفائِحُ", "head": "صَفائِح", "root": "ص ف ح", "meaning": "Broad swords, broad blades." },
+    "3.2.3-4": { "word": "ماءُ الجُسومِ", "meaning": "“The water of bodies”: blood." },
+    "4.1.1":   { "word": "قَرَبنَ", "head": "قَرَبَ", "root": "ق ر ب", "meaning": "They came down to water, as camels do on the morning after a night march. Others read qurina, “they were given the fire as a guest is given food”." },
+    "5.1.2":   { "word": "الصَّياقِلَ", "head": "الصَّياقِل", "root": "ص ق ل", "meaning": "Sayaqil: sword polishers, the smiths who finish and sharpen blades." },
+    "7.1.5":   { "word": "تُغني", "head": "أَغنى", "root": "غ ن ي", "meaning": "Serves, suffices, avails; not “makes rich”." },
+    "7.2.5":   { "word": "الحَكيمِ", "head": "الحَكيم", "root": "ح ك م", "meaning": "Hakim: a man of wisdom and sound judgement; not the colloquial sense “doctor”." },
+    "8.2.1":   { "word": "وَآفَتُهُ", "head": "آفَة", "root": "أ و ف", "meaning": "Afa: a blight, the flaw that spoils a thing. Al-Barquqi refers the pronoun to the saying: what spoils it comes from the listener's sick understanding." },
+    "9.2.3":   { "word": "القَرائِحِ", "head": "القَرائِح", "root": "ق ر ح", "meaning": "Qara'ih: natural gifts, talents; originally, the first water drawn from a newly dug well." }
+  }
+}
