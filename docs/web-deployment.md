@@ -63,7 +63,7 @@ The site only moves forward along main. Each deploy records its full commit SHA 
 
 Deploys wait for each other in one queue (`queue: max`, up to 100) from reading the live commit to checking the site, so none can go live in between. GitHub starts queued runs roughly in order but doesn't promise it, so a commit that waited behind a newer one is skipped instead of putting the site back.
 
-`check-live.ts` waits up to two minutes for the home page to load the new build's scripts, then checks that the sitemap and the published catalog are this build's, every address in the sitemap answers in its language without a redirect, a poem's loader is JSON, a hashed script is cached as immutable, an unknown address is a 404, and the recording a poem page links plays from `audio.shawared.com`.
+`check-live.ts` checks that the home page loads the new build's scripts, then that the sitemap and the published catalog are this build's, every address in the sitemap answers in its language without a redirect, a poem's loader is JSON, a hashed script is cached as immutable, an unknown address is a 404, and the recording a poem page links plays from `audio.shawared.com`. A deploy takes a few seconds to reach every location, and one that changes no script looks like the last until it has, so while the scripts and then anything else are off, it asks again every 10 seconds, for up to two minutes each.
 
 ### Who deploys
 

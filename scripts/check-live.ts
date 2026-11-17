@@ -5,7 +5,9 @@
 //   bun scripts/check-live.ts [https://shawared.com]
 //
 // - The home page loads this build's scripts. A deploy takes a few seconds to
-//   reach every location, so it asks again for up to two minutes.
+//   reach every location, and one that changes no script looks the same until
+//   it has, so while the scripts and then anything below are off, it asks again
+//   every 10 seconds, for up to two minutes each.
 // - The sitemap and the published catalog are this build's, byte for byte.
 // - Every address in the sitemap answers with its page, without a redirect, in
 //   its language, revalidated on each visit.
@@ -136,13 +138,27 @@ export async function liveProblems(site: string, dist: string, fetchFn: Fetch = 
   return { problems, pages: paths.length };
 }
 
+// Waits for the build's scripts, then checks the rest until it's right; throws
+// what's still wrong after the last try. Returns the number of pages checked.
+export async function checkLive(site: string, dist: string, fetchFn: Fetch = fetch, sleep = wait, attempts = 12): Promise<number> {
+  await waitForBuild(site, dist, fetchFn, sleep, attempts);
+  for (let attempt = 1; ; attempt++) {
+    const { problems, pages } = await liveProblems(site, dist, fetchFn);
+    if (!problems.length) return pages;
+    if (attempt === attempts) {
+      throw new LiveError(
+        `${site} serves this build's scripts, but after ${attempts} tries:\n${problems.map((p) => `  - ${p}`).join("\n")}`,
+      );
+    }
+    await sleep(10_000);
+  }
+}
+
 if (import.meta.main) {
   const site = (process.argv[2] ?? SITE).replace(/\/+$/, "");
   const dist = join(root(), "apps/app/dist");
   try {
-    await waitForBuild(site, dist);
-    const { problems, pages } = await liveProblems(site, dist);
-    if (problems.length) throw new LiveError(`${site} serves this build, but:\n${problems.map((p) => `  - ${p}`).join("\n")}`);
+    const pages = await checkLive(site, dist);
     console.log(`${site} serves this build: its ${pages} pages, content, a poem's loader and recording, and the 404 page.`);
   } catch (error) {
     if (!(error instanceof LiveError)) throw error;
