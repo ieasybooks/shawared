@@ -20,7 +20,7 @@ async function open(page: Page) {
 async function scrollToCard(page: Page, title: string) {
   const card = page.getByText(title, { exact: true }).filter({ visible: true }).first();
   await page.waitForLoadState("networkidle");
-  for (let i = 0; i < 12 && !(await card.count()); i++) {
+  for (let i = 0; i < 80 && !(await card.count()); i++) {
     await page.evaluate(() => {
       for (const el of document.querySelectorAll("div")) {
         const o = getComputedStyle(el).overflowY;

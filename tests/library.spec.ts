@@ -38,7 +38,7 @@ async function scrollTo(page: Page, text: string) {
     return !!box && box.y >= 0 && box.y + box.height <= (page.viewportSize()?.height ?? 0);
   };
   await page.waitForLoadState("networkidle");
-  for (let i = 0; i < 12 && !(await onScreen()); i++) {
+  for (let i = 0; i < 80 && !(await onScreen()); i++) {
     // Scroll the current screen's scrolling boxes (touch emulation ignores the mouse wheel).
     await page.evaluate(() => {
       for (const el of document.querySelectorAll("div")) {
@@ -90,7 +90,8 @@ test("the tabs lead to poets, reciters and meters", async ({ page }) => {
   await section(page, "الشعراء").click();
   await expect(page).toHaveURL(/\/poets$/);
   await expectCurrent(page, "الشعراء");
-  await expect(shown(page, "جَميل بُثَينة")).toBeVisible();
+  // The library has many poets: scroll to this one.
+  await expect(await scrollTo(page, "جَميل بُثَينة")).toBeVisible();
   await section(page, "المُلقون").click();
   await expect(page).toHaveURL(/\/reciters$/);
   await expect(shown(page, "أسامة الواعظ")).toBeVisible();
@@ -129,6 +130,7 @@ test("a card's opening bayt is set at the poem's measure", async ({ page }) => {
 
 test("search finds a poem by title, opening bayt, poet or reciter, with or without harakat", async ({ page }) => {
   await page.goto("/");
+  await page.waitForLoadState("networkidle");
   const search = page.getByRole("textbox", { name: "ابحث بعنوان أو مطلع قصيدة أو شاعر أو مُلقٍ" });
   const nothing = page.getByText("لا نتائج تطابق بحثك");
   for (const q of ["بثينه لما رات", "فنونا من الشعر", "جميل", "Jamil", "الواعظ", "Al-Waaedh"]) {
@@ -160,6 +162,8 @@ test("search fields start where the language reads from", async ({ page }) => {
 
 test("the poets and reciters tabs search by name", async ({ page }) => {
   await page.goto("/poets");
+  // Type once the page has woken up: a field filled before that is reset.
+  await page.waitForLoadState("networkidle");
   const search = page.getByRole("textbox", { name: "ابحث عن شاعر" });
   for (const q of ["جميل", "بثينه", "Jamil"]) {
     await search.fill(q);
@@ -170,6 +174,7 @@ test("the poets and reciters tabs search by name", async ({ page }) => {
   await search.fill("الخنساء");
   await expect(shown(page, "لا نتائج تطابق بحثك")).toBeVisible();
   await page.goto("/reciters");
+  await page.waitForLoadState("networkidle");
   await page.getByRole("textbox", { name: "ابحث عن مُلقٍ" }).fill("الواعظ");
   await expect(shown(page, "أسامة الواعظ")).toBeVisible();
 });
@@ -206,7 +211,7 @@ test("back retraces the reader's steps", async ({ page }) => {
 
 test("a poet's page tells who they were and lists their poems", async ({ page }) => {
   await page.goto("/poets");
-  await page.getByText("جَميل بُثَينة").first().click();
+  await (await scrollTo(page, "جَميل بُثَينة")).click();
   await expect(page).toHaveURL(/\/poets\/jamil-buthayna$/);
   await expect(page.getByText("جَميل بن عبد الله بن مَعمَر العُذْري")).toBeVisible();
   await page.getByText(TITLE).first().click();
@@ -281,7 +286,7 @@ test("English pages live under /en, and switching language keeps the page", asyn
   await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
   await section(page, "Poets").click();
   await expect(page).toHaveURL(/\/en\/poets$/);
-  await shown(page, "Jamil Buthayna").click();
+  await (await scrollTo(page, "Jamil Buthayna")).click();
   await expect(page).toHaveURL(/\/en\/poets\/jamil-buthayna$/);
   await live(page, page.getByRole("button", { name: "Language" })).click();
   await page.getByRole("menuitem", { name: "العربية" }).click();
@@ -311,8 +316,10 @@ test("pages arrive rendered, with what search engines read", async ({ request })
   expect(en).toContain('<html lang="en" dir="ltr"');
   expect(en).toContain("Jamil Buthayna · Shawared</title>");
 
+  // The home page arrives with its first cards, the newest poems.
+  const catalog = (await (await request.get("/content/v1/catalog.json")).json()) as { poems: { title: string }[] };
   const home = await (await request.get("/")).text();
-  expect(home).toContain(TITLE);
+  expect(home).toContain(catalog.poems[0]!.title);
   const meters = await (await request.get("/meters")).text();
   expect(meters).toContain("الطويل");
   expect(meters).toContain("المتدارك");
