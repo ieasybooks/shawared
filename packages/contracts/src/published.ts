@@ -88,7 +88,7 @@ export type PublishedSource = z.infer<typeof PublishedSource>;
 export const PublishedRecitation = z.object({
   id: z.string(),
   reciter: z.string(),
-  /** A key under the audio base URL: <poem>/<recitation>.m4a */
+  /** A key under the audio base URL: <poem>/<recitation>.<hash>.m4a once uploaded, which never takes other bytes. */
   audio: z.string(),
   duration: z.number(),
   timeline: z.array(z.tuple([z.string(), z.number(), z.number()])),

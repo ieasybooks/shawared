@@ -1,7 +1,7 @@
 import type { Catalog, CatalogPerson, CatalogPoem, PersonKind, UiLang } from "@shawared/contracts";
 import type { Metadata } from "expo-router/server";
 import { abyatCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../lib/i18n";
-import { pathInLang, paths, SITE } from "../lib/routes";
+import { AUDIO, pathInLang, paths, SITE } from "../lib/routes";
 import { catalog, personBundle, poemBundle } from "./content";
 
 // What each web page is rendered with ahead of time, and how it describes itself to search
@@ -166,7 +166,7 @@ export const pageMeta = {
       .join(" ");
     return describe(lang, paths.poem(id), titled(lang, title, poet.name), description, {
       type: "article",
-      ...(recitation ? { audio: `${SITE}/audio/${recitation.audio}` } : {}),
+      ...(recitation ? { audio: `${AUDIO}/${recitation.audio}` } : {}),
     });
   },
   notFound,

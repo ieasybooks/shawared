@@ -7,6 +7,9 @@ import { Platform } from "react-native";
 
 export const SITE = "https://shawared.com";
 
+/** Where recordings are served: audio.shawared.com in release builds, which set EXPO_PUBLIC_AUDIO_URL; the site's /audio otherwise. */
+export const AUDIO = process.env.EXPO_PUBLIC_AUDIO_URL ?? `${SITE}/audio`;
+
 export const langOfPath = (pathname: string): UiLang => (pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ar");
 
 /** The same page in another language. */

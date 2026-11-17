@@ -30,7 +30,7 @@ Every word note repeats the Arabic it points at (`word`), so a later text edit c
 
 - **poem.json**: `id`, `poet`, `title`, `meter`, `rawiy` (rhyme letter), `abyat_in_full`, `added` (the ISO date it joined the library; the home page lists the newest first), and `abyat` as `{ n, sadr, ajuz }`. Verse text is Arabic letters, harakat and single spaces only.
 - **&lt;lang&gt;.json**: `lang`, `source.name` (shown as the explanation's name), optional `title` and `intro`, then `abyat` keyed by bayt number, each with an optional `translation` (a pair, one per half, or one sentence) and `sharh`. `words` holds notes keyed by address, each with `word`, optional `head` and `root`, and `meaning`. Arabic files have no translation.
-- **recitations/&lt;id&gt;.json**: `reciter`, `audio` (`<poem>/<id>.m4a`), `duration`, optional `source`, and `timeline`: `[address, start, end]` in the order the audio says them. Repeats and skips are allowed.
+- **recitations/&lt;id&gt;.json**: `reciter`, `audio` (`<poem>/<id>.m4a`, or `<poem>/<id>.<hash>.m4a` once uploaded: [web deployment](web-deployment.md#audio)), `duration`, optional `source`, and `timeline`: `[address, start, end]` in the order the audio says them. Repeats and skips are allowed.
 - **poet.json**: `id`, `name` (how readers know them), optional `full_name` and `died` (`{ hijri, ce }`).
 - **reciter.json**: `id`, `name`, optional `full_name` and `links` (`{ youtube: url }`).
 - **poets and reciters' &lt;lang&gt;.json**: `lang`, optional `name` in that language and `bio`.
@@ -45,7 +45,7 @@ If a language is missing, the app shows nothing for it: no fallback.
 - `v1/poems/<poem>/<lang>.json`: everything one reader needs, which is the Arabic text, that language's sources, the timings, the poet and the reciters. It also carries how the verses are set: the width every half shares (`measure`) and each half's kashida (`kashida`), worked out from the text ([typography](typography.md#verses-at-one-width)).
 - `v1/poets/<poet>/<lang>.json`, `v1/reciters/<reciter>/<lang>.json`: a person's page, which is their names, dates, bio and links in that language, and their poems.
 
-Audio is copied from `media/audio` alongside them. Schemas are in `packages/contracts/src/published.ts`. Apps keep a copy of every file they have read and ask once per session whether it changed. The web site is rendered from these files ahead of time (`bun run web:build`), so a content change on the web means a new build.
+The apps and the web play the recordings from `audio.shawared.com` ([web deployment](web-deployment.md#audio)); local previews copy them from `media/audio` alongside the content. Schemas are in `packages/contracts/src/published.ts`. Apps keep a copy of every file they have read and ask once per session whether it changed. The web site is rendered from these files ahead of time (`bun run web:build`), so a content change on the web means a new build.
 
 ## Making a poem
 
@@ -54,3 +54,4 @@ Audio is copied from `media/audio` alongside them. Schemas are in `packages/cont
 3. Transcribe it (tafrigh, Cohere), research the text and settle the disputed readings with `scripts/variants.py`.
 4. Write the files, align with `scripts/align.py`, and check each half by re-transcribing its clip.
 5. `bun run content:check`, then `bun run content:preview <poem>` to listen through.
+6. `bun run audio:upload` (with the bucket's keys from the vault), and commit the key it writes into the recitation.
