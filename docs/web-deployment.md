@@ -41,4 +41,48 @@ It uploads each recording whose key isn't in the bucket yet, with `Content-Type:
 
 ## Checks
 
-`.github/workflows/check.yml` runs on pull requests: `bun run check`, the test build and `bun run test:release`, and the release build with `bun run deploy:check`.
+`.github/workflows/check.yml` runs on pull requests, and on each commit pushed to main before it deploys: `bun run check`, the test build and `bun run test:release`, and the release build with `bun run deploy:check`.
+
+## Deploys
+
+Each commit pushed to main deploys once its checks pass. `.github/workflows/release-please.yml` runs `check.yml` on it, marks it with a **Web checks** status saying how they ended, and once they passed calls `.github/workflows/web.yml`, which:
+
+1. gets `SHAWARED_WEB_DEPLOY_TOKEN` from the vault, a token that can deploy the `shawared-web` Worker and nothing else;
+2. compares the commit with the one live (`scripts/deploy-order.ts`);
+3. checks `audio.shawared.com` serves every recording (`audio:verify`), builds the release, and deploys it with `wrangler deploy --message <commit> --tag <its first 12 digits>`;
+4. checks shawared.com serves it (`scripts/check-live.ts`).
+
+The site only moves forward along main. Each deploy records its full commit SHA as its Worker version's message, and `deploy-order.ts` reads the commit of the version serving all of the site's traffic, then asks GitHub how the new commit compares:
+
+| The commit, against the live one | What happens |
+| --- | --- |
+| Newer | It deploys. |
+| The same | Nothing uploads; the site is checked again, which is what re-running a deploy whose live check failed does. |
+| Older | It's skipped: a newer commit is live. |
+| Diverged, or the live version records no commit, or traffic is split between versions | The run fails; sort the site out by hand first. |
+
+Deploys wait for each other in one queue (`queue: max`, up to 100) from reading the live commit to checking the site, so none can go live in between. GitHub starts queued runs roughly in order but doesn't promise it, so a commit that waited behind a newer one is skipped instead of putting the site back.
+
+`check-live.ts` waits up to two minutes for the home page to load the new build's scripts, then checks that the sitemap and the published catalog are this build's, every address in the sitemap answers in its language without a redirect, a poem's loader is JSON, a hashed script is cached as immutable, an unknown address is a 404, and the recording a poem page links plays from `audio.shawared.com`.
+
+### Who deploys
+
+The vault serves the deploy token only in runs Ali (AliOsm) started: his pushes to main, and his runs of the workflows by hand. When someone else pushes, the checks still run and set the status, and the run ends with a note instead of deploying. Re-running it doesn't help, as a re-run keeps the pusher's identity. Ali deploys it by running **Release web** on main (Actions, Run workflow), which deploys main's newest commit once its **Web checks** passed.
+
+### By hand
+
+With your Wrangler login, from a clean checkout of a main commit:
+
+```sh
+bun run audio:verify && bun run web:build:release
+bun run --cwd apps/app deploy --message "$(git rev-parse HEAD)" --tag "$(git rev-parse --short=12 HEAD)"
+bun scripts/check-live.ts
+```
+
+Always pass the full SHA as the message: without it, the next deploy stops because the live version doesn't record its commit.
+
+To go back, revert the change on main: the revert is a new commit and deploys like any other. `bun run --cwd apps/app wrangler rollback` goes back at once, to a version that recorded its commit; the next push deploys main again.
+
+### Vault access check
+
+Run **Release please** on main with **access-check** ticked. It deploys nothing: it checks that the vault gives `web.yml`'s jobs Shawared's deploy token, and refuses them Mofied's, the store secrets and the audio upload keys.
