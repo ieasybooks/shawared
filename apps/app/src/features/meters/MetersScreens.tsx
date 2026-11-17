@@ -64,6 +64,7 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
   const { palette, lang, start } = useSettings();
   const type = useType();
   const poems = useMemo(() => data?.poems.filter((p) => p.meter === id) ?? [], [data, id]);
+  const list = useMemo(() => poems.map((p) => p.id), [poems]);
   const title = meterName(id, lang);
   if (!data)
     return (
@@ -89,7 +90,7 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
       header={header}
       data={poems}
       keyOf={(p) => p.id}
-      renderItem={(p) => <PoemRow poem={p} catalog={data} show="poet" />}
+      renderItem={(p) => <PoemRow poem={p} catalog={data} show="poet" list={list} />}
       estimatedItemSize={86}
     />
   );

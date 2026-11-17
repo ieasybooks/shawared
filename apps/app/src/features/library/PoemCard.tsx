@@ -10,6 +10,7 @@ import { abyatCount, clock, meterName, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
+import { rememberList } from "../player/queue";
 
 /** A person's name in the reader's language. */
 export const nameOf = (p: CatalogPerson | undefined, lang: UiLang) => (p ? (lang === "ar" ? p.name : (p.names[lang] ?? p.name)) : "");
@@ -19,19 +20,34 @@ function facts(poem: CatalogPoem, lang: UiLang) {
   return [meterName(poem.meter, lang), abyatCount(poem.abyat, lang), rec ? clock(rec.duration, lang) : null].filter(Boolean).join(" · ");
 }
 
+/**
+ * Opening a poem from a list remembers the list: when the poem ends, the next one in it plays.
+ * `list` is the poems' ids as the list shows them.
+ */
+function useOpen(href: string, poemId: string, list: readonly string[] | undefined) {
+  const prefetch = usePrefetch(href);
+  return {
+    ...prefetch,
+    onPressIn: () => {
+      prefetch.onPressIn();
+      if (list) rememberList(poemId, list);
+    },
+  };
+}
+
 /** A poem on the home page: title, opening bayt, poet, reciter. */
-export function PoemCard({ poem, catalog }: { poem: CatalogPoem; catalog: Catalog }) {
+export function PoemCard({ poem, catalog, list }: { poem: CatalogPoem; catalog: Catalog; list?: readonly string[] }) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const rec = poem.recitations[0];
   const reciter = rec ? catalog.reciters[rec.reciter] : undefined;
   const to = href(paths.poem(poem.id));
-  const prefetch = usePrefetch(to);
+  const open = useOpen(to, poem.id, list);
   return (
     <Link href={to} asChild>
       <Pressable
         accessibilityRole="link"
-        {...prefetch}
+        {...open}
         style={StyleSheet.flatten([
           styles.card,
           { backgroundColor: palette.raise, borderColor: palette.line, shadowColor: palette.shadow },
@@ -82,7 +98,17 @@ export function PoemCard({ poem, catalog }: { poem: CatalogPoem; catalog: Catalo
 }
 
 /** A poem in a list: its title, and who and how long. */
-export function PoemRow({ poem, catalog, show }: { poem: CatalogPoem; catalog: Catalog; show: "poet" | "reciter" }) {
+export function PoemRow({
+  poem,
+  catalog,
+  show,
+  list,
+}: {
+  poem: CatalogPoem;
+  catalog: Catalog;
+  show: "poet" | "reciter";
+  list?: readonly string[];
+}) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const rec = poem.recitations[0];
@@ -93,10 +119,10 @@ export function PoemRow({ poem, catalog, show }: { poem: CatalogPoem; catalog: C
         ? t(lang, "recitedBy", { name: nameOf(catalog.reciters[rec.reciter], lang) })
         : "";
   const to = href(paths.poem(poem.id));
-  const prefetch = usePrefetch(to);
+  const open = useOpen(to, poem.id, list);
   return (
     <Link href={to} asChild>
-      <Pressable accessibilityRole="link" {...prefetch} style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
+      <Pressable accessibilityRole="link" {...open} style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
         <Text style={[type.listTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>{poem.title}</Text>
         <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{[who, facts(poem, lang)].filter(Boolean).join(" · ")}</Text>
       </Pressable>
