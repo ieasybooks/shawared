@@ -23,6 +23,7 @@ Run through mise so bun, node and caddy match `mise.toml`: `mise exec -- bun run
 - `bun run web:build`, then `bun run web:serve` – every page rendered ahead of time, in both languages, plus the sitemap, served through Caddy on port 8090.
 - `bun run web:build:test`, then `bun run test:release` – the browser tests and the hosting tests against the export as Cloudflare serves it, with silent stand-ins for the recordings. CI runs these ([docs/web-deployment.md](docs/web-deployment.md)).
 - `bun run deploy:check` – the release build (audio from `audio.shawared.com`) and Wrangler's dry run of its deploy.
+- Each commit pushed to main deploys to shawared.com once its checks pass, and only moves the site forward along main ([docs/web-deployment.md](docs/web-deployment.md#deploys)).
 
 ## Rules
 
