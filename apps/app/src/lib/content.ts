@@ -135,3 +135,15 @@ export const usePoemBundle = (id: string | undefined, lang: string, initial?: Po
 
 export const usePerson = (kind: PersonKind, id: string | undefined, lang: string, initial?: PersonBundle) =>
   useResource(id ? personPath(kind, id, lang) : null, PersonBundle, { initial });
+
+/**
+ * Starts loading the file the page at `href` opens with (a poem, a poet, a reciter, in `lang`),
+ * so that the page usually has it by the time it opens. Other addresses need nothing.
+ */
+export function prefetchPage(href: string, lang: string) {
+  const m = /^(?:\/en)?\/(poems|poets|reciters)\/([^/?#]+)/.exec(href);
+  if (!m) return;
+  const [, kind, id] = m as unknown as [string, "poems" | PersonKind, string];
+  if (kind === "poems") void load(bundlePath(id, lang), PoemBundle);
+  else void load(personPath(kind, id, lang), PersonBundle);
+}

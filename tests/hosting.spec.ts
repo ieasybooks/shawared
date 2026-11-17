@@ -14,11 +14,9 @@ const header = (r: APIResponse, name: string) => r.headers()[name];
 const webJs = readdirSync(join(DIST, "_expo/static/js/web"));
 
 test("files whose names carry their hash are cached as immutable, whatever characters they use", async ({ request }) => {
-  for (const name of [
-    webJs.find((f) => f.startsWith("[id]"))!,
-    webJs.find((f) => f.startsWith("+"))!,
-    webJs.find((f) => f.startsWith("_layout"))!,
-  ]) {
+  // Every script; a route's own (its name starting "[id]" or "+") when routes are split off.
+  expect(webJs.length).toBeGreaterThan(0);
+  for (const name of webJs) {
     const r = await request.get(`/_expo/static/js/web/${name}`);
     expect(r.status(), name).toBe(200);
     expect(header(r, "cache-control"), name).toBe(IMMUTABLE);

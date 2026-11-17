@@ -1,4 +1,5 @@
 import { Link } from "expo-router";
+import { usePrefetch } from "../../lib/prefetch";
 import type { ReactNode } from "react";
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from "react-native";
 
@@ -19,12 +20,14 @@ export function TextLink({
   /** The page it leads to is the one open. */
   current?: boolean;
 }) {
+  const prefetch = usePrefetch(href);
   return (
     // A row hugs its children: the link inside gets its text's width wherever the row sits.
     <View style={styles.line}>
       <Link href={href} asChild>
         <Pressable
           accessibilityRole="link"
+          {...prefetch}
           aria-current={current ? "page" : undefined}
           // Link asChild needs one flat style object.
           style={StyleSheet.flatten([styles.link, style])}

@@ -1,7 +1,7 @@
 import { FOLLOW_RESUME_MS, space } from "@shawared/design";
 import { segmentAt } from "@shawared/listening";
 import { LinearGradient } from "expo-linear-gradient";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { startTransition, useCallback, useEffect, useRef, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { Dir } from "../../components/ui/Dir";
 import { useSettings } from "../../lib/settings";
+import { useHydrated } from "../../lib/viewport";
 import { BaytRow } from "./BaytRow";
 import { useCurrentLine, usePlaying } from "./playback";
 import { useCurrentBayt, useListening } from "./state";
@@ -22,6 +23,28 @@ const FADE_TOP = 36;
 const FADE_BOTTOM = 48;
 /** When the list has to move, the bayt lands this far down it: room for what comes next. */
 const READ_AT = 0.2;
+/** Rows drawn with the page, enough to fill a tall screen; the rest follow a batch a frame. */
+const FIRST_ROWS = 14;
+const BATCH_ROWS = 24;
+
+/**
+ * How many rows to draw. Every row is a dozen elements and more, so drawing a long poem's
+ * every row before showing any took 0.4 s on a laptop and over a second on a phone, with the
+ * page empty meanwhile. A page moved to draws what fills the screen at once, then the rest a
+ * batch a frame, out of the way of the reader (a transition). The page the browser opened is
+ * drawn whole, as it was rendered ahead of time and as search engines read it. `upTo` is the
+ * index of a row that must be there now: the playing or held bayt.
+ */
+function useShownRows(count: number, upTo: number): number {
+  const hydrated = useHydrated();
+  const [shown, setShown] = useState(() => (hydrated ? Math.min(count, Math.max(FIRST_ROWS, upTo + 4)) : count));
+  useEffect(() => {
+    if (shown >= count) return;
+    const id = requestAnimationFrame(() => startTransition(() => setShown((n) => Math.min(count, n + BATCH_ROWS))));
+    return () => cancelAnimationFrame(id);
+  }, [shown, count]);
+  return Math.max(shown, Math.min(count, upTo + 1));
+}
 
 /**
  * The verse list. Keeps the playing bayt in view, moving only when it nears an edge, and
@@ -36,6 +59,13 @@ export function Verses() {
   const currentHalf = lineInfo ? lineInfo.half : null;
   const started = line >= 0;
   const playing = usePlaying(playback);
+  const shown = useShownRows(
+    abyat.length,
+    Math.max(
+      abyat.findIndex((b) => b.n === current),
+      abyat.findIndex((b) => b.n === pinned),
+    ),
+  );
 
   const scroll = useRef<ScrollViewInstance>(null);
   const rows = useRef(new Map<number, { y: number; h: number }>());
@@ -159,7 +189,7 @@ export function Verses() {
         accessibilityLabel="verses"
       >
         <Dir dir="rtl" lang="ar" onLayout={(e) => (listY.current = e.nativeEvent.layout.y)}>
-          {abyat.map((b) => (
+          {abyat.slice(0, shown).map((b) => (
             <BaytRow
               key={b.n}
               bayt={b}

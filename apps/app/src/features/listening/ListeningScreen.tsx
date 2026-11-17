@@ -2,6 +2,7 @@ import type { PoemBundle } from "@shawared/contracts";
 import { useEffect, useRef } from "react";
 import { Platform } from "react-native";
 import { StateView } from "../../components/ui/StateView";
+import { PageFrame } from "../library/Page";
 import { usePoemBundle } from "../../lib/content";
 import { useSettings } from "../../lib/settings";
 import { useWide } from "../navigation/layout";
@@ -26,7 +27,13 @@ export function ListeningScreen({
   const last = useRef<PoemBundle | undefined>(undefined);
   if (data) last.current = data;
   const bundle = data ?? (last.current?.poem.id === id ? last.current : undefined);
-  if (!bundle) return <StateView error={error} onRetry={retry} />;
+  // Until the poem is here, the page already has its bar, with back.
+  if (!bundle)
+    return (
+      <PageFrame back>
+        <StateView error={error} onRetry={retry} />
+      </PageFrame>
+    );
   const recitation = bundle.recitations[0];
   if (!recitation) return <StateView error={new Error("no recitation")} />;
   const validBayt = bayt && bundle.poem.abyat.some((b) => b.n === bayt) ? bayt : undefined;

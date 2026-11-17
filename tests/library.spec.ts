@@ -197,6 +197,40 @@ test("every page has its title at the top, with back beside it on pages opened f
   }
 });
 
+test("moving to another page never shows an empty screen", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  // Each frame: does the screen in front show text, or the loading spinner?
+  await page.evaluate(() => {
+    const w = window as unknown as { emptyFrames: number };
+    w.emptyFrames = 0;
+    const front = (el: Element | null) => !!el && !el.closest("[inert]");
+    const tick = () => {
+      const texts = [...document.querySelectorAll("#root *")].filter(
+        (e) => front(e) && [...e.childNodes].some((n) => n.nodeType === 3 && n.textContent!.trim()) && (e as HTMLElement).offsetParent !== null,
+      ).length;
+      const spinner = [...document.querySelectorAll('[role="progressbar"]')].some((e) => front(e));
+      if (texts < 2 && !spinner) w.emptyFrames++;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+  // Expo fetching a page's code or its loader data held the whole page back, showing nothing.
+  const fetched: string[] = [];
+  page.on("request", (r) => {
+    const path = new URL(r.url()).pathname;
+    if (path.startsWith("/_expo/")) fetched.push(path);
+  });
+  await (await scrollTo(page, TITLE)).click();
+  await expect(page).toHaveURL(new RegExp(`${POEM}$`));
+  await expect(live(page, page.getByRole("slider"))).toBeVisible();
+  await live(page, page.getByRole("link", { name: /جَميل بُثَينة/ })).click();
+  await expect(page).toHaveURL(/\/poets\/jamil-buthayna$/);
+  await expect(shown(page, "جَميل بن عبد الله بن مَعمَر العُذْري")).toBeVisible();
+  expect(fetched).toEqual([]);
+  expect(await page.evaluate(() => (window as unknown as { emptyFrames: number }).emptyFrames)).toBe(0);
+});
+
 test("back retraces the reader's steps", async ({ page }) => {
   await page.goto("/");
   await (await scrollTo(page, TITLE)).click();

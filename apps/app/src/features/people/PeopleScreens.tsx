@@ -6,6 +6,7 @@ import { Linking, Pressable, StyleSheet, Text, View } from "react-native";
 import { Chip } from "../../components/ui/controls";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog, usePerson } from "../../lib/content";
+import { usePrefetch } from "../../lib/prefetch";
 import { poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { searchPeople } from "../../lib/search";
@@ -56,9 +57,11 @@ function PersonRow({ kind, person }: { kind: PersonKind; person: CatalogPerson }
   const facts = [poemsCount(person.poems, lang), person.died ? t(lang, "died", { h: person.died.hijri, c: person.died.ce }) : null]
     .filter(Boolean)
     .join(" · ");
+  const to = href(kind === "poets" ? paths.poet(person.id) : paths.reciter(person.id));
+  const prefetch = usePrefetch(to);
   return (
-    <Link href={href(kind === "poets" ? paths.poet(person.id) : paths.reciter(person.id))} asChild>
-      <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
+    <Link href={to} asChild>
+      <Pressable accessibilityRole="link" {...prefetch} style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
         <Text style={[lang === "ar" ? type.nameAr : type.heading, styles.name, { color: palette.fg, textAlign: start }]}>
           {nameOf(person, lang)}
         </Text>

@@ -1,6 +1,7 @@
 import type { Catalog, CatalogPerson, CatalogPoem, UiLang } from "@shawared/contracts";
 import { fonts, space } from "@shawared/design";
 import { Link } from "expo-router";
+import { usePrefetch } from "../../lib/prefetch";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Dir } from "../../components/ui/Dir";
 import { Icon } from "../../components/ui/Icon";
@@ -24,10 +25,13 @@ export function PoemCard({ poem, catalog }: { poem: CatalogPoem; catalog: Catalo
   const type = useType();
   const rec = poem.recitations[0];
   const reciter = rec ? catalog.reciters[rec.reciter] : undefined;
+  const to = href(paths.poem(poem.id));
+  const prefetch = usePrefetch(to);
   return (
-    <Link href={href(paths.poem(poem.id))} asChild>
+    <Link href={to} asChild>
       <Pressable
         accessibilityRole="link"
+        {...prefetch}
         style={StyleSheet.flatten([
           styles.card,
           { backgroundColor: palette.raise, borderColor: palette.line, shadowColor: palette.shadow },
@@ -88,9 +92,11 @@ export function PoemRow({ poem, catalog, show }: { poem: CatalogPoem; catalog: C
       : rec
         ? t(lang, "recitedBy", { name: nameOf(catalog.reciters[rec.reciter], lang) })
         : "";
+  const to = href(paths.poem(poem.id));
+  const prefetch = usePrefetch(to);
   return (
-    <Link href={href(paths.poem(poem.id))} asChild>
-      <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
+    <Link href={to} asChild>
+      <Pressable accessibilityRole="link" {...prefetch} style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
         <Text style={[type.listTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>{poem.title}</Text>
         <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{[who, facts(poem, lang)].filter(Boolean).join(" · ")}</Text>
       </Pressable>
