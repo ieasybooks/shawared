@@ -9,14 +9,22 @@
 import { relative } from "node:path";
 import { AUDIO_HOST, CONTENT_TYPE, IMMUTABLE, parseKey, recordings, root, SITE, type Recording } from "./recordings.ts";
 
+const wait = (ms: number) => new Promise<void>((done) => setTimeout(done, ms));
+
 // What's wrong with how a recording is served to shawared.com's player, or
 // null when nothing is. scripts/check-live.ts asks for the one a live page links.
-export async function servingProblem(url: string, fetchFn: typeof fetch = fetch): Promise<string | null> {
+// A request that fails on the network, such as a dropped connection, says
+// nothing about the recording, so it's asked again, twice, before it counts.
+export async function servingProblem(url: string, fetchFn: typeof fetch = fetch, sleep = wait, attempts = 3): Promise<string | null> {
   let response: Response;
-  try {
-    response = await fetchFn(url, { headers: { Range: "bytes=0-0", Origin: SITE }, signal: AbortSignal.timeout(30_000) });
-  } catch (error) {
-    return (error as Error).message;
+  for (let attempt = 1; ; attempt++) {
+    try {
+      response = await fetchFn(url, { headers: { Range: "bytes=0-0", Origin: SITE }, signal: AbortSignal.timeout(30_000) });
+      break;
+    } catch (error) {
+      if (attempt === attempts) return `${(error as Error).message} (after ${attempts} tries)`;
+      await sleep(2000);
+    }
   }
   await response.body?.cancel();
   if (response.status !== 206) return `HTTP ${response.status}, not 206`;
@@ -30,7 +38,7 @@ export async function servingProblem(url: string, fetchFn: typeof fetch = fetch)
   return wrong.length ? wrong.join(", ") : null;
 }
 
-export async function audioProblems(rootDir: string, list: Recording[], fetchFn: typeof fetch = fetch): Promise<string[]> {
+export async function audioProblems(rootDir: string, list: Recording[], fetchFn: typeof fetch = fetch, sleep = wait): Promise<string[]> {
   const problems: string[] = [];
   for (const r of list) {
     const where = relative(rootDir, r.file);
@@ -42,7 +50,7 @@ export async function audioProblems(rootDir: string, list: Recording[], fetchFn:
       continue;
     }
     const url = `${AUDIO_HOST}/${r.audio}`;
-    const problem = await servingProblem(url, fetchFn);
+    const problem = await servingProblem(url, fetchFn, sleep);
     if (problem) problems.push(`${url} (${where}): ${problem}`);
   }
   return problems;
