@@ -15,8 +15,9 @@ const REPO = join(import.meta.dirname, "..");
 const scratch = mkdtempSync(join(tmpdir(), "shawared-audio-"));
 afterAll(() => rmSync(scratch, { recursive: true, force: true }));
 
-// A copy of the repository's content, with a silent recording of the real
-// one's length in its source's place.
+// A copy of the repository's content, as before its first recording's upload:
+// that recording's key back to its plain name, and a silent recording of its
+// length in its source's place.
 function copyOfContent(): string {
   const root = mkdtempSync(join(scratch, "root-"));
   cpSync(join(REPO, "content"), join(root, "content"), { recursive: true });
@@ -41,6 +42,7 @@ function copyOfContent(): string {
     source,
   ]);
   if (ffmpeg.status !== 0) throw new Error("ffmpeg couldn't make the test recording");
+  writeFileSync(r!.file, withKey(readFileSync(r!.file, "utf8"), r!, `${r!.poem}/${r!.recitation}.m4a`));
   return root;
 }
 
