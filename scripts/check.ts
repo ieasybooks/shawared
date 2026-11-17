@@ -9,7 +9,7 @@ import { join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import type { z } from "zod";
 import { parseLineAddress, parseWordAddress, source, wordsOf } from "@shawared/contracts";
-import { hashOf, parseKey, root, sourcePath } from "./audio.ts";
+import { hashOf, parseKey, root, sourcePath } from "./recordings.ts";
 
 const { Poem, PoemLang, Recitation, Poet, Reciter, PersonLang } = source;
 
@@ -210,7 +210,7 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
     if (!r) continue;
     if (!reciters.has(r.reciter)) error(file, `no reciter "${r.reciter}" in content/reciters`, "reciter");
     // The key is the recording's name before its upload, and its name with the
-    // hash after it (scripts/audio.ts).
+    // hash after it (scripts/recordings.ts).
     const key = parseKey(r.audio);
     if (!key || key.poem !== id || key.recitation !== rid) {
       error(file, `audio should be "${id}/${rid}.m4a", or once uploaded "${id}/${rid}.<hash>.m4a"`, "audio");

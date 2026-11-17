@@ -1,6 +1,6 @@
 // Uploads each recording whose source is in media/audio to audio.shawared.com
 // (the shawared-audio bucket) under its key, once, and writes the key into its
-// recitation's `audio` field (scripts/audio.ts). Commit the changed recitation
+// recitation's `audio` field (scripts/recordings.ts). Commit the changed recitation
 // files: CI never has the recordings, only their keys.
 //
 // Run it on the Mac with the recordings, with the bucket's upload keys from the
@@ -12,7 +12,7 @@
 // A key already in the bucket holds the same bytes, so it's left alone.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { relative } from "node:path";
-import { CONTENT_TYPE, IMMUTABLE, keyFor, recordings, root, sourcePath, type Recording } from "./audio.ts";
+import { CONTENT_TYPE, IMMUTABLE, keyFor, recordings, root, sourcePath, type Recording } from "./recordings.ts";
 
 export type Bucket = {
   exists(key: string): Promise<boolean>;

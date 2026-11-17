@@ -16,7 +16,7 @@
 //   bun scripts/web-release.ts [--remote-audio]
 import { copyFileSync, existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, sep } from "node:path";
-import { AUDIO_HOST, IMMUTABLE, root, SITE } from "./audio.ts";
+import { AUDIO_HOST, IMMUTABLE, root, SITE } from "./recordings.ts";
 
 // Cloudflare reads at most 100 rules from _headers.
 export const MAX_RULES = 100;
