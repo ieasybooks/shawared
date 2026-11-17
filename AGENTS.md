@@ -25,9 +25,12 @@ Run through mise so bun, node and caddy match `mise.toml`: `mise exec -- bun run
 - `bun run web:build:test`, then `bun run test:release` – the browser tests and the hosting tests against the export as Cloudflare serves it, with silent stand-ins for the recordings. CI runs these ([docs/web-deployment.md](docs/web-deployment.md)).
 - `bun run deploy:check` – the release build (audio from `audio.shawared.com`) and Wrangler's dry run of its deploy.
 - Each commit pushed to main deploys to shawared.com once its checks pass, and only moves the site forward along main ([docs/web-deployment.md](docs/web-deployment.md#deploys)).
+- `bun run store:check`, `bun run store:screenshots` – the stores' listing (`apps/app/store`): its check, and its images redrawn from the test build. `bun run fastlane:check` loads the release lanes.
+- The apps are released by release-please from Conventional Commits, to the App Store, Google Play and AppGallery ([docs/releasing.md](docs/releasing.md)).
 
 ## Rules
 
+- Commit titles are Conventional Commits, pushed to main or not: `fix:` and `feat:` release the apps when they change `apps/app` or `packages/`; `content:`, `docs:`, `test:`, `ci:`, `build:`, `chore:` and `refactor:` release nothing. A title that isn't one releases nothing, so a change to the apps under it never reaches the stores ([docs/releasing.md](docs/releasing.md#commit-messages)).
 - Every bayt the app shows is set to its poem's measure with kashida (`Half`/`Measure` in `components/ui/Measure.tsx`) ([docs/typography.md](docs/typography.md#verses-at-one-width)). Kashida is shown, never written into content; find verse words in tests with a pattern that allows tatweel.
 - The verse text follows the recording. Where editions differ, `scripts/variants.py` decides what the reciter says; word cards show the dictionary form in `head`. Harakat follow the house style in `packages/contracts/src/tashkeel.ts`.
 - Transcription (`intake.ts`, `verify.py`) runs tafrigh; set `TAFRIGH` to a CUDA build of it when there's an NVIDIA GPU, which is many times faster than the CPU build.

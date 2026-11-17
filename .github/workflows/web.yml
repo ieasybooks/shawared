@@ -3,7 +3,7 @@ name: Release web
 # Deploys a commit of main to shawared.com, then checks the site serves it.
 # release-please.yml calls it with each commit pushed to main, once that
 # commit's checks passed. Run by hand on main, it deploys main's newest commit,
-# which needs a "Web checks" status saying its checks passed. See
+# which needs a "Checks" status saying its checks passed. See
 # docs/web-deployment.md.
 #
 # The site only moves forward along main. scripts/deploy-order.ts compares the
@@ -70,9 +70,9 @@ jobs:
             # Main's newest commit when the run was started.
             sha=$GITHUB_SHA
             state=$(gh api "repos/$GITHUB_REPOSITORY/commits/$sha/status" \
-              --jq '[.statuses[] | select(.context == "Web checks")][0].state // "missing"')
+              --jq '[.statuses[] | select(.context == "Checks")][0].state // "missing"')
             if [ "$state" != success ]; then
-              echo "::error::Main's newest commit, $sha, has no passing Web checks status ($state). Wait for release-please.yml's checks on it, or re-run them."
+              echo "::error::Main's newest commit, $sha, has no passing Checks status ($state). Wait for release-please.yml's checks on it, or re-run them."
               exit 1
             fi
           fi
@@ -142,6 +142,7 @@ jobs:
           expect-refused: |
             MOFIED_WEB_DEPLOY_TOKEN
             MOFIED_ANDROID_KEYSTORE
+            ANDROID_UPLOAD_KEYSTORE
             APPLE_DISTRIBUTION_CERTIFICATE_PASSWORD
             SHAWARED_AUDIO_SECRET_ACCESS_KEY
           secrets: SHAWARED_WEB_DEPLOY_TOKEN=DEPLOY_TOKEN

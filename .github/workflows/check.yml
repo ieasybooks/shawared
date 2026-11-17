@@ -1,10 +1,12 @@
 name: Check
 
-# Every check the web needs, on pull requests and, called with the commit, on
-# main (release-please.yml's Web checks status, which deploys depend on):
+# Every check, on pull requests and, called with the commit, on main
+# (release-please.yml's Checks status, which deploys and releases depend on):
 # the content check, typecheck and unit tests, then the browser and hosting
 # tests against the export as Cloudflare serves it, and a dry run of the
-# release deploy. See docs/web-deployment.md.
+# release deploy; and that fastlane loads the apps' release lanes. The apps'
+# native builds run in release.yml only (docs/releasing.md). See
+# docs/web-deployment.md.
 on:
   pull_request:
   workflow_call:
@@ -62,3 +64,20 @@ jobs:
             playwright-report
             test-results
           retention-days: 7
+
+  # The apps' release lanes load with the gems Gemfile.lock pins: a broken
+  # Fastfile or Gemfile would otherwise show only when a release runs.
+  fastlane:
+    name: Fastlane
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.sha }}
+          persist-credentials: false
+      - uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+      - run: bundle exec fastlane lanes

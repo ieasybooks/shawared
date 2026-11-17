@@ -1,0 +1,207 @@
+# Store releases, run by .github/workflows/release.yml (see docs/releasing.md).
+# Secrets come from the ieasybooks vault through the job's environment:
+#   APPLE_API_KEY_FILE                       App Store Connect API key, as fastlane's JSON
+#   APPLE_DISTRIBUTION_CERTIFICATE_FILE      the Apple Distribution .p12
+#   APPLE_DISTRIBUTION_CERTIFICATE_PASSWORD  its password
+#   GOOGLE_PLAY_SERVICE_ACCOUNT_FILE         Google Play service account key (JSON)
+# Store texts and images come from apps/app/store/, written for deliver and
+# supply into STORE_METADATA_DIR by ieasybooks-release store fastlane-metadata
+# (ieasybooks/release, pinned in package.json).
+
+require "open3"
+require "securerandom"
+require "ieasybooks/release"
+
+ROOT = File.expand_path("..", __dir__)
+APP_IDENTIFIER = "com.shawared.app"
+TEAM_ID = "KJ597HLVMB"
+IOS_PROJECT = File.join(ROOT, "apps/app/ios")
+# Expo names the Xcode project and its target from the app's name, شوارد.
+IOS_NAME = "shward"
+OUTPUT = File.join(ROOT, "build/release")
+
+skip_docs
+opt_out_usage
+
+# The version in apps/app/package.json and the build numbers that follow
+# from it, from ieasybooks-release in node_modules, never a downloaded one.
+RELEASE_TOOL = File.join(ROOT, "node_modules/.bin/ieasybooks-release")
+
+def release_info
+  out, status = Open3.capture2(RELEASE_TOOL, "release-info", "--app", "apps/app", chdir: ROOT)
+  UI.user_error!("ieasybooks-release release-info failed; is node_modules installed?") unless status.success?
+  info = JSON.parse(out)
+  {
+    version: info.fetch("version"),
+    ios_build_number: info.fetch("iosBuildNumber"),
+    android_version_code: info.fetch("androidVersionCode")
+  }
+end
+
+def dry_run?(options)
+  options[:dry_run].to_s == "true"
+end
+
+def metadata_dir
+  ENV.fetch("STORE_METADATA_DIR")
+end
+
+# The App Store Connect API key, for the actions' api_key option and for
+# spaceship. The key file doesn't say whether the team is an enterprise one,
+# which choosing a provisioning profile type needs; ieasybooks's isn't.
+def apple_api_key
+  key = JSON.parse(File.read(ENV.fetch("APPLE_API_KEY_FILE")))
+  app_store_connect_api_key(key_id: key.fetch("key_id"), issuer_id: key.fetch("issuer_id"), key_content: key.fetch("key"), in_house: false)
+end
+
+platform :ios do
+  # Signs and builds the App Store IPA in a throwaway keychain, then uploads
+  # it to App Store Connect. A dry run asks App Store Connect to validate the
+  # IPA instead, which doesn't use up the build number. The upload leaves the
+  # App Store version alone: while an older version is waiting for review or
+  # in review, App Store Connect refuses to create or rename one, so the
+  # submit lane does that once it has pulled the older one out.
+  lane :build do |options|
+    api_key = apple_api_key
+    keychain_name = "shawared-release"
+    keychain_password = SecureRandom.hex(24)
+    create_keychain(
+      name: keychain_name,
+      password: keychain_password,
+      unlock: true,
+      timeout: 0,
+      lock_when_sleeps: false,
+      default_keychain: false,
+      add_to_search_list: true
+    )
+    begin
+      import_certificate(
+        certificate_path: ENV.fetch("APPLE_DISTRIBUTION_CERTIFICATE_FILE"),
+        certificate_password: ENV.fetch("APPLE_DISTRIBUTION_CERTIFICATE_PASSWORD"),
+        keychain_name: keychain_name,
+        keychain_password: keychain_password
+      )
+      # Reuses the App Store profile for the certificate, or creates one.
+      get_provisioning_profile(
+        api_key: api_key,
+        app_identifier: APP_IDENTIFIER,
+        team_id: TEAM_ID,
+        readonly: false,
+        output_path: OUTPUT
+      )
+      profile = lane_context[SharedValues::SIGH_NAME]
+      update_code_signing_settings(
+        path: File.join(IOS_PROJECT, "#{IOS_NAME}.xcodeproj"),
+        use_automatic_signing: false,
+        team_id: TEAM_ID,
+        targets: [IOS_NAME],
+        build_configurations: ["Release"],
+        code_sign_identity: "Apple Distribution",
+        profile_name: profile,
+        bundle_identifier: APP_IDENTIFIER
+      )
+      ipa = build_app(
+        workspace: File.join(IOS_PROJECT, "#{IOS_NAME}.xcworkspace"),
+        scheme: IOS_NAME,
+        configuration: "Release",
+        clean: true,
+        export_method: "app-store",
+        export_team_id: TEAM_ID,
+        export_options: { signingStyle: "manual", provisioningProfiles: { APP_IDENTIFIER => profile } },
+        output_directory: OUTPUT,
+        output_name: "Shawared.ipa"
+      )
+      upload_to_app_store(
+        api_key: api_key,
+        app_identifier: APP_IDENTIFIER,
+        ipa: ipa,
+        skip_metadata: true,
+        skip_screenshots: true,
+        skip_app_version_update: true,
+        submit_for_review: false,
+        run_precheck_before_submit: false,
+        verify_only: dry_run?(options),
+        force: true
+      )
+    ensure
+      delete_keychain(name: keychain_name)
+    end
+  end
+
+  # Waits for App Store Connect to process the uploaded build, then sends the
+  # store texts, screenshots and reviewer notes and submits the version for
+  # review, released once approved. An older version still waiting for review
+  # or in review is pulled back first so this one replaces it, a newer one
+  # stops the lane, and a re-run finding this build already submitted stops
+  # there (Ieasybooks::Release::ReviewReplacement, which alone cancels reviews:
+  # deliver's reject_if_possible stays off). A dry run says what it would do.
+  lane :submit do |options|
+    api_key = apple_api_key
+    info = release_info
+    app = Spaceship::ConnectAPI::App.find(APP_IDENTIFIER) || UI.user_error!("App Store Connect has no #{APP_IDENTIFIER}")
+    replacement = Ieasybooks::Release::ReviewReplacement.new(
+      store: Ieasybooks::Release::AppStoreReviews.new(app, Spaceship::ConnectAPI::Platform::IOS),
+      version: info[:version],
+      build: info[:ios_build_number],
+      log: ->(message) { UI.message(message) }
+    )
+    clear_review = lambda do |dry_run|
+      replacement.run(dry_run: dry_run)
+    rescue Ieasybooks::Release::ReviewReplacement::Error => e
+      UI.user_error!(e.message)
+    end
+    if dry_run?(options)
+      live = app.get_live_app_store_version
+      UI.message("Would submit #{info[:version]} (#{info[:ios_build_number]}) to replace #{live&.version_string || 'nothing'} on the App Store.")
+      clear_review.call(true)
+      next
+    end
+
+    FastlaneCore::BuildWatcher.wait_for_build_processing_to_be_complete(
+      app_id: app.id,
+      platform: Spaceship::ConnectAPI::Platform::IOS,
+      app_version: info[:version],
+      build_version: info[:ios_build_number],
+      poll_interval: 30,
+      timeout_duration: 3 * 60 * 60,
+      return_spaceship_testflight_build: false
+    )
+    next if clear_review.call(false) == :already_submitted
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: APP_IDENTIFIER,
+      app_version: info[:version],
+      build_number: info[:ios_build_number],
+      skip_binary_upload: true,
+      metadata_path: File.join(metadata_dir, "app-store/metadata"),
+      screenshots_path: File.join(metadata_dir, "app-store/screenshots"),
+      overwrite_screenshots: true,
+      submit_for_review: true,
+      automatic_release: true,
+      run_precheck_before_submit: false,
+      submission_information: { add_id_info_uses_idfa: false },
+      force: true
+    )
+  end
+end
+
+platform :android do
+  # Sends the AAB to Google Play's production track with the store texts,
+  # release notes and images (only those that changed). Google reviews it and,
+  # with Managed Publishing off, publishes it once approved. A dry run checks
+  # the same edit with Google Play without committing it.
+  lane :publish do |options|
+    info = release_info
+    upload_to_play_store(
+      json_key: ENV.fetch("GOOGLE_PLAY_SERVICE_ACCOUNT_FILE"),
+      package_name: APP_IDENTIFIER,
+      aab: options.fetch(:aab),
+      track: "production",
+      release_status: "completed",
+      version_name: "#{info[:version]} (#{info[:android_version_code]})",
+      metadata_path: File.join(metadata_dir, "google-play/metadata"),
+      sync_image_upload: true,
+      validate_only: dry_run?(options)
+    )
+  end
+end

@@ -22,6 +22,7 @@
     "audio:upload": "bun scripts/upload-audio.ts",
     "audio:verify": "bun scripts/verify-audio.ts",
     "store:check": "ieasybooks-release store check --app apps/app",
+    "fastlane:check": "bundle exec fastlane lanes",
     "store:screenshots": "bun scripts/store-screenshots.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p apps/app/tsconfig.json",
     "test": "vitest run",
