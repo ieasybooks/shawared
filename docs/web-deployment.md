@@ -14,12 +14,14 @@ The test and release builds export with an empty Metro cache (`export:web:clean`
 
 `scripts/web-release.ts` finishes the test and release exports:
 
+- Asset addresses. Expo names the files of packages under `node_modules/.bun` by their folders, with `@` and `+` (`@expo-google-fonts+amiri@0.4.1`), and Cloudflare answers such an address with a 307 to its percent-encoded form: a round trip before each font, and text waits for its font. Those files move to the same path with each such character made `_`, and every page, script and style sheet names the new address.
+- Font preloads. Expo preloads every face the app loads, on every page. A page keeps the preloads of the faces its markup draws with, inline or through a class it uses; the others (English on an Arabic page) load when the app asks for them, out of the way of those it needs and of the scripts.
 - `404.html`, the not-found page, which Cloudflare serves with a 404 for any unknown address.
 - `en.html`, the English home page, moved from `en/index.html`. Cloudflare serves `/x` from `x.html` but redirects it to `/x/` when the page is `x/index.html`, and the sitemap and the pages' canonical links name `/en`.
 - `_headers`. Files whose names carry their content's hash (`_expo/static`, `assets`) are cached for a year as immutable, each by its own rule: a rule with `*` would also mark the 404 page served for a missing one immutable. It fails the build if a file there has no hash, or if the rules pass Cloudflare's 100. Loaders (`_expo/loaders`) are served as JSON. Everything else (pages, loaders, `content/`, the sitemap) keeps Cloudflare's `public, max-age=0, must-revalidate`, so a deploy shows at once.
 - For the release build, a check that the export holds no audio and that every page's `og:audio` points at `audio.shawared.com`.
 
-`tests/hosting.spec.ts` checks each kind of file's status, type and caching, including names with `+`, `[id]` and `@`, a missing hashed file and an unknown page, and that every address in the sitemap answers without a redirect.
+`tests/hosting.spec.ts` checks each kind of file's status, type and caching, including names with `+`, `[id]` and `@`, a missing hashed file and an unknown page, and that every address in the sitemap and every file a page loads, its fonts included, answers without a redirect.
 
 ## Audio
 

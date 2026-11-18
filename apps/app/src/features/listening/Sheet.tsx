@@ -11,12 +11,17 @@ export function Sheet({
   style,
   children,
   grip,
+  gripStyle,
+  dataSet,
 }: {
   open: boolean;
   onClose: () => void;
   style: StyleProp<ViewStyle>;
   children: ReactNode;
   grip?: ReactNode;
+  gripStyle?: StyleProp<ViewStyle>;
+  /** On the web, data-* attributes for the page's stylesheet. */
+  dataSet?: Record<string, string>;
 }) {
   const { palette } = useSettings();
   const [height, setHeight] = useState(800);
@@ -56,6 +61,7 @@ export function Sheet({
   const translateY = Animated.add(shown.interpolate({ inputRange: [0, 1], outputRange: [height + 40, 0] }), drag);
   return (
     <Animated.View
+      {...(dataSet ? ({ dataSet } as object) : {})}
       pointerEvents={open ? "auto" : "none"}
       onLayout={(e) => setHeight(e.nativeEvent.layout.height)}
       style={[
@@ -65,7 +71,7 @@ export function Sheet({
         style,
       ]}
     >
-      <View {...pan.panHandlers} style={styles.gripArea}>
+      <View {...pan.panHandlers} style={[styles.gripArea, gripStyle]}>
         {grip ?? <View style={[styles.grip, { backgroundColor: palette.line2 }]} />}
       </View>
       {children}

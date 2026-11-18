@@ -50,8 +50,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       });
   }, []);
 
-  // A web page waits to show while the saved theme or a wide window would change it (see
-  // app/+html.tsx). Both are applied by now; show it once they're painted.
+  // A web page in the night theme waits to show until the theme is applied (see
+  // app/+html.tsx). It is by now; show the page once it's painted.
   useEffect(() => {
     if (!web || !restored || typeof document === "undefined") return;
     const frame = requestAnimationFrame(() => document.documentElement.removeAttribute("data-wait"));

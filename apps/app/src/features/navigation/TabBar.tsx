@@ -7,8 +7,8 @@ import { Icon } from "../../components/ui/Icon";
 import { t } from "../../lib/i18n";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
+import { Only } from "../../lib/responsive";
 import { MiniPlayer } from "../player/MiniPlayer";
-import { useWide } from "./layout";
 import { TABS, tabOf } from "./tabs";
 
 /**
@@ -20,35 +20,35 @@ export function TabBar() {
   const { palette, lang, href } = useSettings();
   const type = useType();
   const insets = useSafeAreaInsets();
-  const wide = useWide();
   const current = tabOf(usePathname());
-  if (wide) return <MiniPlayer />;
   return (
     <View>
       <MiniPlayer />
-      <View
-        accessibilityRole="tablist"
-        style={[styles.bar, { backgroundColor: palette.bg, borderTopColor: palette.line, paddingBottom: insets.bottom + space.s }]}
-      >
-        {TABS.map((tab) => {
-          const on = tab.name === current;
-          const color = on ? palette.fg : palette.muted;
-          return (
-            <Pressable
-              key={tab.name}
-              accessibilityRole="tab"
-              aria-selected={on}
-              accessibilityLabel={t(lang, tab.label)}
-              onPress={() => router.navigate(href(tab.path))}
-              style={styles.tab}
-            >
-              <Icon name={tab.icon} size={23} color={color} />
-              <Text style={[on ? type.captionStrong : type.caption, { color }]}>{t(lang, tab.label)}</Text>
-              <Nuqta size={4} style={{ opacity: on ? 1 : 0 }} />
-            </Pressable>
-          );
-        })}
-      </View>
+      <Only on="phone">
+        <View
+          accessibilityRole="tablist"
+          style={[styles.bar, { backgroundColor: palette.bg, borderTopColor: palette.line, paddingBottom: insets.bottom + space.s }]}
+        >
+          {TABS.map((tab) => {
+            const on = tab.name === current;
+            const color = on ? palette.fg : palette.muted;
+            return (
+              <Pressable
+                key={tab.name}
+                accessibilityRole="tab"
+                aria-selected={on}
+                accessibilityLabel={t(lang, tab.label)}
+                onPress={() => router.navigate(href(tab.path))}
+                style={styles.tab}
+              >
+                <Icon name={tab.icon} size={23} color={color} />
+                <Text style={[on ? type.captionStrong : type.caption, { color }]}>{t(lang, tab.label)}</Text>
+                <Nuqta size={4} style={{ opacity: on ? 1 : 0 }} />
+              </Pressable>
+            );
+          })}
+        </View>
+      </Only>
     </View>
   );
 }

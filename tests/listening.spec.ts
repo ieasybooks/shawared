@@ -61,7 +61,13 @@ test("playing a bayt in view leaves the list still, and the player names that ba
   const scrollTop = () => page.getByLabel("verses").evaluate((el) => el.scrollTop);
   await page.getByRole("button", { name: "شغّل من البيت ٢" }).click();
   // Playback starts a moment early (the run-up); the bayt is still the one pressed.
-  await expect(page.getByText(/البيت ٢ من ١٠/).first()).toBeVisible();
+  // Pages hold both players, the phone's and the wide window's; CSS shows one.
+  await expect(
+    page
+      .getByText(/البيت ٢ من ١٠/)
+      .filter({ visible: true })
+      .first(),
+  ).toBeVisible();
   await page.waitForTimeout(1500);
   expect(await scrollTop()).toBe(0);
 });

@@ -3,6 +3,7 @@ import { space } from "@shawared/design";
 import type { ReactNode } from "react";
 import { StyleSheet, Text, View, type StyleProp, type TextStyle, type ViewStyle } from "react-native";
 import { ARABIC } from "../../lib/align";
+import { scale } from "../../lib/responsive";
 
 // Every half of a poem shares one width, its measure (docs/typography.md, "Verses at one
 // width"): the half's kashida is shown and its words are spread across the measure.
@@ -10,12 +11,13 @@ import { ARABIC } from "../../lib/align";
 type Plan = readonly (readonly [number, number])[] | undefined;
 
 /**
- * A half's words laid across the measure, `size` being their font size. Without a measure,
- * the words as they are. A box too narrow for the measure wraps them instead.
+ * A half's words laid across the measure, `size` being their font size (a number, or on the
+ * web a size from lib/responsive that differs by layout). Without a measure, the words as they
+ * are. A box too narrow for the measure wraps them instead.
  */
 export function Measure({ measure, size, children }: { measure: number | undefined; size: number; children: ReactNode }) {
   if (measure === undefined) return <>{children}</>;
-  return <View style={[styles.measure, { width: measure * size, columnGap: size * 0.2 }]}>{children}</View>;
+  return <View style={[styles.measure, { width: scale(size, measure), columnGap: scale(size, 0.2) }]}>{children}</View>;
 }
 
 /** A half's words as shown: with its kashida. Their order and count are the text's. */

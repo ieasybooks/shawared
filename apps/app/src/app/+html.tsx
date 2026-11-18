@@ -3,18 +3,26 @@ import { useServerDocumentContext } from "expo-router/html";
 import type { ReactNode } from "react";
 import { t } from "../lib/i18n";
 import { langOfPath } from "../lib/routes";
+import { RESPONSIVE_CSS, WIDE_MIN } from "../lib/responsive";
 import { SETTINGS_KEY } from "../lib/settings";
-import { WIDE_MIN } from "../features/navigation/layout";
 
 // The document around every web page, rendered ahead of time (web only).
 //
-// Pages are rendered for a phone in the day theme: the server has no window and no settings.
-// A wide window or the night theme would change the page as soon as the app starts, so for
-// those the page waits for the app before it shows (data-wait), on the night background.
-// Everyone else sees the page at once.
-const waitScript = `(function(){var d=document.documentElement;try{var s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)})||"{}");if(s.theme==="night")d.setAttribute("data-theme","night")}catch(e){}if(d.hasAttribute("data-theme")||innerWidth>=${WIDE_MIN}){d.setAttribute("data-wait","");setTimeout(function(){d.removeAttribute("data-wait")},4000)}})();`;
+// Pages are rendered in the day theme, for every window at once: the server has no window and
+// no settings. Phones and wide windows are laid out by CSS from WIDE_MIN (lib/responsive), so
+// every window sees the page at once, in its layout. The night theme would change the page as
+// soon as the app starts, so for it the page waits for the app before it shows (data-wait), on
+// the night background.
+const waitScript = `(function(){var d=document.documentElement;try{var s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)})||"{}");if(s.theme==="night"){d.setAttribute("data-theme","night");d.setAttribute("data-wait","");setTimeout(function(){d.removeAttribute("data-wait")},4000)}}catch(e){}})();`;
 
 const css = `
+${RESPONSIVE_CSS}
+/* The poem's explanation is a sheet over the verses on phones and a panel beside them on wide
+   windows (features/listening/layouts.tsx): there it stays in place and open. */
+@media (min-width: ${WIDE_MIN}px) {
+  html [data-panel] { transform: none !important; opacity: 1 !important; pointer-events: auto !important; }
+  html [data-panel] > * { pointer-events: auto; }
+}
 html, body { height: 100%; background: ${palettes.day.bg}; }
 html[data-theme="night"], html[data-theme="night"] body { background: ${palettes.night.bg}; color-scheme: dark; }
 body { overflow: hidden; margin: 0; }

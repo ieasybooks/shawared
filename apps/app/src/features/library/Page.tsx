@@ -6,8 +6,8 @@ import { IconButton, Nuqta } from "../../components/ui/controls";
 import { t } from "../../lib/i18n";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
-import { useHydrated, useWindowWidth } from "../../lib/viewport";
-import { useWide } from "../navigation/layout";
+import { Only, responsive, useLayout } from "../../lib/responsive";
+import { useHydrated } from "../../lib/viewport";
 import { SiteHeader } from "../navigation/SiteHeader";
 import { TopBar, useGoBack } from "../navigation/TopBar";
 import { MiniPlayer } from "../player/MiniPlayer";
@@ -17,7 +17,8 @@ import { MiniPlayer } from "../player/MiniPlayer";
  *
  * Phones get the top bar (back, the title, the settings); wide windows get the site header,
  * with back and the title at the top of the page. Pages opened from another (`back`) are
- * outside the tabs, so they carry the mini player themselves.
+ * outside the tabs, so they carry the mini player themselves. The list is a column at most
+ * `maxWidth` wide, centred; wide windows lay it out in `columns`, which phones stack.
  */
 export function ListPage<T>({
   title,
@@ -45,33 +46,36 @@ export function ListPage<T>({
   keyOf: (item: T) => string;
   empty?: string;
   maxWidth?: number;
+  /** Columns on wide windows. */
   columns?: number;
   estimatedItemSize?: number;
 }) {
   const { palette, lang, start } = useSettings();
   const type = useType();
-  const width = useWindowWidth();
-  const wide = useWide();
+  const layout = useLayout();
   const hydrated = useHydrated();
   const goBack = useGoBack();
-  const gutter = Math.max(space.xl, (width - maxWidth) / 2);
+  // Phones show one column. The web, which can't tell, groups the rows for wide windows at
+  // every width and stacks each row's cells on phones (CSS).
+  const perRow = layout.wide === false ? 1 : columns;
   // The list positions rows across its full width and ignores padding on itself, and its own
-  // grid always runs left to right. So rows carry the gutter, and a grid is built from rows of
-  // cells that follow the reading direction.
+  // grid always runs left to right. So each row is the centred column, and a grid is built
+  // from rows of cells that follow the reading direction.
   const rows = useMemo(() => {
-    if (columns === 1) return data.map((item) => [item]);
+    if (perRow === 1) return data.map((item) => [item]);
     const out: T[][] = [];
-    for (let i = 0; i < data.length; i += columns) out.push(data.slice(i, i + columns));
+    for (let i = 0; i < data.length; i += perRow) out.push(data.slice(i, i + perRow));
     return out;
-  }, [data, columns]);
-  const pad = { paddingHorizontal: gutter };
+  }, [data, perRow]);
+  // The column: `maxWidth` wide and centred, with a gutter of at least space.xl either side.
+  const column = [styles.column, { maxWidth: maxWidth + 2 * space.xl }];
   const rowOf = (row: T[]) =>
-    columns === 1 ? (
-      <View style={pad}>{renderItem(row[0]!)}</View>
+    perRow === 1 ? (
+      <View style={column}>{renderItem(row[0]!)}</View>
     ) : (
-      <View style={[pad, styles.row]}>
-        {Array.from({ length: columns }, (_, i) => (
-          <View key={i} style={styles.cell}>
+      <View style={[column, layout.style(grid.row)]}>
+        {Array.from({ length: perRow }, (_, i) => (
+          <View key={i} style={layout.style(grid.cell)}>
             {row[i] !== undefined && renderItem(row[i]!)}
           </View>
         ))}
@@ -79,16 +83,18 @@ export function ListPage<T>({
     );
   const rowKey = (row: T[]) => row.map(keyOf).join("|");
   const top = (
-    <View style={[pad, styles.head, { paddingTop: wide ? space.xxl : space.s }]}>
-      {wide && (back || title) && (
-        <View style={[styles.titleRow, back && styles.pullStart]}>
-          {back && <IconButton icon="back" label={t(lang, "back")} onPress={goBack} />}
-          {title && (
-            <Text accessibilityRole="header" style={[type.pageTitle, styles.title, { color: palette.fg, textAlign: start }]}>
-              {title}
-            </Text>
-          )}
-        </View>
+    <View style={[column, styles.head, layout.style(headTop)]}>
+      {(back || title) && (
+        <Only on="wide">
+          <View style={[styles.titleRow, back && styles.pullStart]}>
+            {back && <IconButton icon="back" label={t(lang, "back")} onPress={goBack} />}
+            {title && (
+              <Text accessibilityRole="header" style={[type.pageTitle, styles.title, { color: palette.fg, textAlign: start }]}>
+                {title}
+              </Text>
+            )}
+          </View>
+        </Only>
       )}
       {header}
     </View>
@@ -140,10 +146,14 @@ export function PageFrame({
   children: ReactNode;
 }) {
   const { palette } = useSettings();
-  const wide = useWide();
   return (
     <View style={[styles.frame, { backgroundColor: palette.bg }]}>
-      {wide ? <SiteHeader /> : <TopBar back={back} title={title} lead={lead} />}
+      <Only on="wide">
+        <SiteHeader />
+      </Only>
+      <Only on="phone">
+        <TopBar back={back} title={title} lead={lead} />
+      </Only>
       {children}
       {back && <MiniPlayer docked />}
     </View>
@@ -179,15 +189,25 @@ export function SectionHead({ title, count }: { title: string; count?: string })
   );
 }
 
+const headTop = responsive({ paddingTop: space.s }, { paddingTop: space.xxl });
+const grid = {
+  // Phones stack a row's cells; wide windows set them side by side, as wide as each other.
+  row: responsive({ flexDirection: "column" as const, gap: 0 }, { flexDirection: "row" as const, gap: space.xl }),
+  cell: responsive(
+    { flexGrow: 0, flexShrink: 0, flexBasis: "auto" as const, minWidth: 0 },
+    { flexGrow: 1, flexShrink: 1, flexBasis: "0%" as const, minWidth: 0 },
+  ),
+};
+
 const styles = StyleSheet.create({
   frame: { flex: 1 },
+  // Auto margins centre it in the list, whose header sits in a block rather than a flex box.
+  column: { width: "100%", marginHorizontal: "auto", paddingHorizontal: space.xl },
   head: { gap: space.l, paddingBottom: space.l },
   titleRow: { flexDirection: "row", alignItems: "center", gap: space.s },
   // The back arrow's glyph, not its round button, lines up with the text below.
   pullStart: { marginStart: -space.m },
   title: { flex: 1 },
-  row: { flexDirection: "row", gap: space.xl },
-  cell: { flex: 1, minWidth: 0 },
   empty: { textAlign: "center", paddingVertical: space.xxl },
   foot: { height: space.xxl },
   facts: { gap: space.m },

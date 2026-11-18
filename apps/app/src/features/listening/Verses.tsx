@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { Dir } from "../../components/ui/Dir";
 import { useSettings } from "../../lib/settings";
+import { responsive, useLayout, useLayoutChanges } from "../../lib/responsive";
 import { useHydrated } from "../../lib/viewport";
 import { BaytRow } from "./BaytRow";
 import { useCurrentLine, usePlaying } from "./playback";
@@ -51,8 +52,10 @@ function useShownRows(count: number, upTo: number): number {
  * stops doing so for FOLLOW_RESUME_MS after the reader scrolls (the Faqieh rule).
  */
 export function Verses() {
-  const { abyat, playback, layout, pinned, trOn, followRef } = useListening();
+  const { abyat, playback, pinned, trOn, followRef } = useListening();
   const { palette, lang } = useSettings();
+  const layout = useLayout();
+  const layoutChanges = useLayoutChanges();
   const current = useCurrentBayt();
   const line = useCurrentLine(playback);
   const lineInfo = playback.track.lines[line];
@@ -137,13 +140,13 @@ export function Verses() {
     if (Date.now() >= userUntil.current) revealBayt(current, true);
   }, [current, revealBayt]);
 
-  // The translation switch and the language change every row's height: keep the playing bayt in view.
+  // The translation switch, the language and the layout change every row's height: keep the playing bayt in view.
   useEffect(() => {
     const id = setTimeout(() => {
       if (Date.now() >= userUntil.current) revealBayt(currentRef.current, false);
     }, 120);
     return () => clearTimeout(id);
-  }, [trOn, lang, layout, revealBayt]);
+  }, [trOn, lang, layoutChanges, revealBayt]);
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const p = programmatic.current;
@@ -167,13 +170,12 @@ export function Verses() {
     [revealBayt],
   );
 
-  const wide = layout === "wide";
   return (
     <View style={styles.wrap}>
       <ScrollView
         ref={scroll}
         style={styles.scroll}
-        contentContainerStyle={wide ? styles.contentWide : styles.content}
+        contentContainerStyle={layout.style(listPadding)}
         onLayout={(e) => {
           viewport.current = e.nativeEvent.layout.height;
           updateEdges();
@@ -209,11 +211,14 @@ export function Verses() {
   );
 }
 
+const listPadding = responsive(
+  { paddingTop: space.l, paddingBottom: space.xl, paddingHorizontal: 12 },
+  { paddingTop: space.xl, paddingBottom: space.xxl, paddingHorizontal: 30 },
+);
+
 const styles = StyleSheet.create({
   wrap: { flex: 1, minHeight: 0 },
   scroll: { flex: 1 },
-  content: { paddingTop: space.l, paddingBottom: space.xl, paddingHorizontal: 12 },
-  contentWide: { paddingTop: space.xl, paddingBottom: space.xxl, paddingHorizontal: 30 },
   fade: { position: "absolute", left: 0, right: 0 },
   fadeTop: { top: 0, height: FADE_TOP },
   fadeBottom: { bottom: 0, height: FADE_BOTTOM },

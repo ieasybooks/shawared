@@ -8,8 +8,7 @@ import { usePoemBundle } from "../../lib/content";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { player } from "../player/player";
-import { useWide } from "../navigation/layout";
-import { CompactLayout, WideLayout } from "./layouts";
+import { ListeningLayout } from "./layouts";
 import { ListeningProvider, useListening } from "./state";
 
 /** A poem: its verses with the recitation, explanations and word meanings. */
@@ -24,7 +23,6 @@ export function ListeningScreen({
   initial?: { bundle: PoemBundle } | undefined;
 }) {
   const { lang } = useSettings();
-  const wide = useWide();
   const { data, error, retry } = usePoemBundle(id, lang, initial?.bundle.lang === lang ? initial.bundle : undefined);
   // Switching language loads another bundle; keep the current one meanwhile so the page stays put.
   const last = useRef<PoemBundle | undefined>(undefined);
@@ -40,12 +38,11 @@ export function ListeningScreen({
   const recitation = bundle.recitations[0];
   if (!recitation) return <StateView error={new Error("no recitation")} />;
   const validBayt = bayt && bundle.poem.abyat.some((b) => b.n === bayt) ? bayt : undefined;
-  const layout = wide ? "wide" : "compact";
   return (
-    <ListeningProvider bundle={bundle} recitation={recitation} layout={layout} initialBayt={validBayt}>
+    <ListeningProvider bundle={bundle} recitation={recitation} initialBayt={validBayt}>
       <SpaceKey />
       <FollowQueue id={id} />
-      {layout === "wide" ? <WideLayout /> : <CompactLayout />}
+      <ListeningLayout />
     </ListeningProvider>
   );
 }
