@@ -47,7 +47,7 @@ It uploads each recording whose key isn't in the bucket yet, with `Content-Type:
 
 ## Deploys
 
-Each commit pushed to main deploys once its checks pass. `.github/workflows/release-please.yml` runs `check.yml` on it, marks it with a **Web checks** status saying how they ended, and once they passed calls `.github/workflows/web.yml`, which:
+Each commit pushed to main deploys once its checks pass. When a release pull request's merge tags the apps, the same run deploys that commit and releases the apps from it ([releasing](releasing.md)). `.github/workflows/release-please.yml` runs `check.yml` on it, marks it with a **Checks** status saying how they ended, and once they passed calls `.github/workflows/web.yml`, which:
 
 1. gets `SHAWARED_WEB_DEPLOY_TOKEN` from the vault, a token that can deploy the `shawared-web` Worker and nothing else;
 2. compares the commit with the one live (`scripts/deploy-order.ts`);
@@ -69,7 +69,7 @@ Deploys wait for each other in one queue (`queue: max`, up to 100) from reading 
 
 ### Who deploys
 
-The vault serves the deploy token only in runs Ali (AliOsm) started: his pushes to main, and his runs of the workflows by hand. When someone else pushes, the checks still run and set the status, and the run ends with a note instead of deploying. Re-running it doesn't help, as a re-run keeps the pusher's identity. Ali deploys it by running **Release web** on main (Actions, Run workflow), which deploys main's newest commit once its **Web checks** passed.
+The vault serves the deploy token only in runs Ali (AliOsm) started: his pushes to main, and his runs of the workflows by hand. When someone else pushes, the checks still run and set the status, and the run ends with a note instead of deploying. Re-running it doesn't help, as a re-run keeps the pusher's identity. Ali deploys it by running **Release web** on main (Actions, Run workflow), which deploys main's newest commit once its **Checks** passed.
 
 ### By hand
 
