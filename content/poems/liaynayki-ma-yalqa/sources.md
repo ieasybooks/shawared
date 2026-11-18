@@ -29,19 +29,22 @@ Scores come from `scripts/variants.py` on the app audio; the gap is from the bes
 | 15.2 | الخَدَرنَقِ | الحَذَرنَقِ (al-Wahidi's print) | −13.8 |
 | 16.1 | الجُيوشِ | البِلادِ (al-Ma'arri) | −20.6 |
 | 17.1 | تَقُدُّ | تَفُكُّ (al-Ma'arri) | −16.3 |
-| 18.2 | وَيُركِزُها | وَيَركِزُها; وَيَركُزُها (the dictionaries give both) | −3.4; −6.3 |
+| 18.2 | وَيُركِزُها (the reciter) | وَيَركِزُها; وَيَركُزُها (the dictionaries give both) | −3.4; −6.3 |
 | 23.1 | جُدتَ … جُدتَ | جادَ … جادَ | −5.0 |
 | 24.1 | رَأى مَلِكُ الرّومِ | وَأَملاكُ الرّومِ | −1.2 |
 | 25.2 | لِأَدرَبَ | لِأَذرَبَ (al-Wahidi) | −9.2 |
 | 29.2 | يَمشي | يَسعى (al-Wahidi) | −9.5 |
 | 32.1 | مِنكَ الأَمانَ | بَعضَ الأَمانِ (al-Wahidi, al-Ma'arri) | −32.9 |
 | 33.2 | أَسيراً | حَبيساً (al-Wahidi) | −9.3 |
-| 34.2 | زَردَقاً بَعدَ زَردَقِ | رَزدَقاً بَعدَ رَزدَقِ (al-Wahidi, al-Ma'arri) | −21.0 |
+| 34.2 | زَردَقاً بَعدَ زَردَقِ (the reciter) | رَزدَقاً بَعدَ رَزدَقِ (al-Wahidi, al-Ma'arri) | −21.0 |
 | 35.2 | أَثَرتُ | أَنَرتُ (al-Wahidi, al-Ma'arri) | −6.1 |
 | 42.2 | سَعى جَدُّهُ في كَيدِهِم | سَعى مَجدُهُ في جَدِّهِ (the prints of al-Wahidi and al-Ma'arri; both their glosses read جَدُّهُ as the subject) | −17.2 |
 
 - **24.1** is a coin toss by score. The transcript's vowels (وامالك) fit رأى مَلِكُ better than أملاك, and all three editions have رأى ملك الروم, so the text keeps it.
-- **Where the reciter departs from every edition that quotes the bayt** (25.2, 29.2, 32.1, 33.2, 34.2, 35.2), the word note gives the editions' reading. Bayt 18.2's note gives the dictionary forms of the verb.
+- **Where the reciter departs from every edition that quotes the bayt** (25.2, 29.2, 32.1, 33.2, 35.2), the text follows him and the word note gives the editions' reading: each of his words is a real word that fits the meter and the sense.
+- **Where he is clearly wrong, the text follows the editions** (the owner's rule of 2026-11-18), and the word note says what he says:
+  - **34.2 «رَزدَقاً بَعدَ رَزدَقِ»:** he says «زَردَقاً بَعدَ زَردَقِ» (the gap above is clear), al-Wahidi's and al-Ma'arri's word with its first two letters swapped. Both gloss رزدق as a row of men, a Persian loanword; زردق is no word for it.
+  - **18.2 «وَيَركِزُها»:** he says «وَيُركِزُها», a form IV the dictionaries don't give for planting a spear (*Taj al-Arus* and *al-Qamus*: «رَكَزَ الرُّمحَ يَركُزُه ويَركِزُه», and «رَكَّزَه»). The editions leave the word unvoweled; the text has the dictionaries' «يَركِزُ», which keeps his kasra.
 
 **Spelling fixes against the starting text:**
 - داوُدَ (one waw);
