@@ -7,7 +7,7 @@ Everything the App Store, Google Play and AppGallery show besides the apps thems
 - `release-notes/<version>/<language>.txt`: what's new in each release, at most 500 characters.
 - `review-notes/`: what App Review and AppGallery's reviewers read.
 - `screenshots/`: drawn by `bun run store:screenshots` from the test build (`bun run web:build:test` first), so redraw them when the app's look changes:
-  - five scenes per language: the library, a poem playing, a word's meaning at night, a poet, the meters;
-  - sizes: an iPhone 6.9" (1320x2868) and an iPad 13" (2064x2752) for the App Store, and a 1080x1920 phone for Google Play and AppGallery;
+  - six scenes per language: the library, a poem playing, a word's meaning at night, a poet, the reader's own library (favourites and playlists), the meters;
+  - sizes: an iPhone 6.9" (1320x2868) and an iPad 13" (2064x2752) for the App Store, and a 1080x1920 phone for Google Play and AppGallery, which takes the first five scenes only;
   - the stores' icons, drawn from the mark;
   - Google Play's feature graphic.
