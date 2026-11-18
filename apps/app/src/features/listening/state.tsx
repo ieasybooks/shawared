@@ -1,11 +1,11 @@
 import type { PoemBundle, PublishedBayt, PublishedRecitation, PublishedSource } from "@shawared/contracts";
 import { startOfBayt, wordIndex, type WordHit } from "@shawared/listening";
 import { createContext, use, useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
+import { isWide } from "../../lib/responsive";
 import { useStore } from "../../lib/store";
 import { nowItemOf, player, type NowItem } from "../player/player";
 import { useCurrentSegment, usePlaying, usePoemPlayback, type Playback } from "./playback";
 
-export type Layout = "compact" | "wide";
 /** What the explanation holds: a bayt, the poem's introduction, or null to follow the recitation. */
 export type Held = number | "intro" | null;
 
@@ -13,7 +13,6 @@ type ListeningValue = {
   bundle: PoemBundle;
   recitation: PublishedRecitation;
   playback: Playback;
-  layout: Layout;
   abyat: PublishedBayt[];
   /** All sources in the reader's language; the chosen one first in `ordered`. */
   sources: PublishedSource[];
@@ -50,13 +49,11 @@ const Ctx = createContext<ListeningValue | null>(null);
 export function ListeningProvider({
   bundle,
   recitation,
-  layout,
   initialBayt,
   children,
 }: {
   bundle: PoemBundle;
   recitation: PublishedRecitation;
-  layout: Layout;
   /** Opened from a link to one bayt: hold its explanation and start there. */
   initialBayt?: number | undefined;
   children: ReactNode;
@@ -131,7 +128,6 @@ export function ListeningProvider({
       bundle,
       recitation,
       playback,
-      layout,
       abyat: bundle.poem.abyat,
       sources,
       source,
@@ -145,14 +141,15 @@ export function ListeningProvider({
       pin: (n) => hold(n),
       unpin: () => hold(null),
       intro,
+      // Phones open the explanation's sheet; wide windows show it beside the verses.
       showIntro: () => {
         hold("intro");
-        if (layout === "compact") setSheetOpen(true);
+        if (!isWide()) setSheetOpen(true);
       },
       focus,
       openWord: (key, n) => {
         hold(n, key);
-        if (layout === "compact") setSheetOpen(true);
+        if (!isWide()) setSheetOpen(true);
       },
       repeat,
       setRepeat,
@@ -166,7 +163,6 @@ export function ListeningProvider({
       bundle,
       recitation,
       playback,
-      layout,
       sources,
       source,
       ordered,

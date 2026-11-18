@@ -316,7 +316,12 @@ test("a link to one bayt holds it, ready to play from there", async ({ page }) =
   await page.goto(`${POEM}?b=7`);
   await expect(panelTitle(page)).toHaveText("البيت ٧ · الشرح");
   // Waiting at the bayt's run-up, the player already names it.
-  await expect(page.getByText(/البيت ٧ من ١٠/).first()).toBeVisible();
+  await expect(
+    page
+      .getByText(/البيت ٧ من ١٠/)
+      .filter({ visible: true })
+      .first(),
+  ).toBeVisible();
   await page.getByRole("button", { name: "تشغيل", exact: true }).click();
   // Bayt 7 starts at 39 s.
   await expect.poll(async () => Number(await slider(page).getAttribute("aria-valuenow"))).toBeGreaterThanOrEqual(38);

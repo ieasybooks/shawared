@@ -1,7 +1,8 @@
 // Every text in the app uses one of these roles. Each is trimmed to its ink (see
 // packages/design/src/type.ts), so layouts space texts with true gaps from `space`.
 import type { UiLang } from "@shawared/contracts";
-import { textBox } from "@shawared/design";
+import { textBox, type TextBox } from "@shawared/design";
+import { responsive, useLayout, type Layout } from "./responsive";
 import { useSettings } from "./settings";
 
 function roles(lang: UiLang) {
@@ -10,10 +11,7 @@ function roles(lang: UiLang) {
   return {
     // Arabic content in Amiri, the same in every language.
     verse: textBox("verse", 19.5, "ar", 2.05),
-    verseWide: textBox("verse", 22, "ar", 2.05),
     verseSmall: textBox("verse", 17, "ar", 2.05),
-    title: textBox("verseBold", 26, "ar", 2.05),
-    titleWide: textBox("verseBold", 28, "ar", 2.05),
     cardTitle: textBox("verseBold", 25, "ar", 2.05),
     listTitle: textBox("verseBold", 21, "ar", 2.05),
     smallTitle: textBox("verseBold", 17, "ar", 2.05),
@@ -47,9 +45,7 @@ function roles(lang: UiLang) {
     /** One line of an explanation, cut short. */
     proseLine: en ? textBox("translation", 14.5, "latin") : textBox("ui", 13, "ar"),
 
-    // English under the verses, and translated titles.
-    translation: textBox("translation", 14, "latin", 1.43),
-    translationWide: textBox("translation", 14.5, "latin", 1.43),
+    // Translated titles.
     subtitle: textBox("translationItalic", 14, "latin", 1.43),
 
     // Page titles: in the top bar on phones, at the top of the page on wide windows. Readex,
@@ -63,14 +59,43 @@ function roles(lang: UiLang) {
   };
 }
 
-export type Type = ReturnType<typeof roles>;
-const cache: Partial<Record<UiLang, Type>> = {};
+/** The font size of `verseLine`, for what is sized from it (lib/responsive's `scale`). */
+export const VERSE_LINE = { phone: 19.5, wide: 22 } as const;
 
-export function typeFor(lang: UiLang): Type {
+/**
+ * The poem page's roles, a size larger on wide windows (lib/responsive). The same in every
+ * language: Arabic verses, English translations. On the web their values are CSS that differs
+ * by layout: style with them, never read them.
+ */
+const SIZED = {
+  /** The verses of the poem page. */
+  verseLine: responsive(textBox("verse", VERSE_LINE.phone, "ar", 2.05), textBox("verse", VERSE_LINE.wide, "ar", 2.05)),
+  /** The poem's title on its page. */
+  poemTitle: responsive(textBox("verseBold", 26, "ar", 2.05), textBox("verseBold", 28, "ar", 2.05)),
+  /** English under the verses. */
+  verseTranslation: responsive(textBox("translation", 14, "latin", 1.43), textBox("translation", 14.5, "latin", 1.43)),
+};
+
+type Base = ReturnType<typeof roles>;
+export type Type = Base & { [K in keyof typeof SIZED]: TextBox };
+const cache: Partial<Record<UiLang, Base>> = {};
+const sizedCache = new Map<Layout, Partial<Record<UiLang, Type>>>();
+
+/** The roles for a language that are the same in every layout. */
+export function typeFor(lang: UiLang): Base {
   return (cache[lang] ??= roles(lang));
 }
 
-/** The type roles for the reader's language. */
+/** The type roles for the reader's language, in this window's layout. */
 export function useType(): Type {
-  return typeFor(useSettings().lang);
+  const { lang } = useSettings();
+  const layout = useLayout();
+  let forLayout = sizedCache.get(layout);
+  if (!forLayout) sizedCache.set(layout, (forLayout = {}));
+  return (forLayout[lang] ??= {
+    ...typeFor(lang),
+    verseLine: layout.style(SIZED.verseLine),
+    poemTitle: layout.style(SIZED.poemTitle),
+    verseTranslation: layout.style(SIZED.verseTranslation),
+  });
 }

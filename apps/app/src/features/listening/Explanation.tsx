@@ -6,6 +6,7 @@ import { Chip, IconButton, Nuqta, Tag } from "../../components/ui/controls";
 import { Dir } from "../../components/ui/Dir";
 import { Half } from "../../components/ui/Measure";
 import { t } from "../../lib/i18n";
+import { isWide, Only } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { useReveal } from "./PanelScroll";
@@ -19,7 +20,10 @@ export function usePanel(): number | "intro" {
   return pinned ?? current;
 }
 
-/** One block for both the phone sheet and the web side panel: the poem's introduction, or one bayt explained. */
+/**
+ * One block for both the phone sheet and the side panel of wide windows: the poem's
+ * introduction, or one bayt explained. `onCollapse` puts the sheet away (phones only).
+ */
 export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
   const { abyat, sources, source, setSourceId, words, pinned, unpin, followRef, playback, bundle, intro, focus } = useListening();
   const { palette, lang, start } = useSettings();
@@ -73,7 +77,11 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
             <Text style={[type.label, { color: palette.accent }]}>{t(lang, "nowPlaying")}</Text>
           </Pressable>
         )}
-        {onCollapse && <IconButton icon="down" label={t(lang, "collapse")} onPress={onCollapse} size={36} iconSize={20} />}
+        {onCollapse && (
+          <Only on="phone">
+            <IconButton icon="down" label={t(lang, "collapse")} onPress={onCollapse} size={36} iconSize={20} />
+          </Only>
+        )}
       </View>
 
       <Animated.View style={[styles.body, { opacity: fade }]}>
@@ -131,7 +139,6 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
 
 /** One word's meaning; the word just tapped in the verse is brought forward and into view. */
 function WordNote({ hit, focused }: { hit: WordHit; focused: boolean }) {
-  const { layout } = useListening();
   const { palette, lang, start } = useSettings();
   const type = useType();
   const reveal = useReveal();
@@ -139,9 +146,9 @@ function WordNote({ hit, focused }: { hit: WordHit; focused: boolean }) {
   useEffect(() => {
     if (!focused) return;
     // On phones the sheet slides up first.
-    const id = setTimeout(() => reveal(ref.current), layout === "compact" ? 380 : 60);
+    const id = setTimeout(() => reveal(ref.current), isWide() ? 60 : 380);
     return () => clearTimeout(id);
-  }, [focused, reveal, layout]);
+  }, [focused, reveal]);
   return (
     <View
       ref={ref}

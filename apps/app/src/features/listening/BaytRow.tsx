@@ -2,13 +2,14 @@ import type { PublishedBayt } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { wordKey } from "@shawared/listening";
 import { memo } from "react";
-import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent } from "react-native";
+import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent, type StyleProp, type ViewStyle } from "react-native";
 import type { PressState } from "../../components/ui/controls";
 import { Icon } from "../../components/ui/Icon";
 import { Measure, shownWords } from "../../components/ui/Measure";
 import { digits, t } from "../../lib/i18n";
+import { isWide, responsive, scale, useLayout } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
-import { useType } from "../../lib/type";
+import { useType, VERSE_LINE } from "../../lib/type";
 import { useListening } from "./state";
 
 type Props = {
@@ -19,12 +20,15 @@ type Props = {
   onLayout: (n: number, e: LayoutChangeEvent) => void;
 };
 
+/**
+ * One bayt of the poem page. Phones stack its halves, the sadr at the start and the ajuz at
+ * the end; wide windows set them side by side in two even columns, with a rhombus between.
+ */
 export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isPinned, onLayout }: Props) {
-  const { layout, trOn, ordered, pin, setSheetOpen, playFrom } = useListening();
+  const { trOn, ordered, pin, setSheetOpen, playFrom } = useListening();
   const { palette, lang } = useSettings();
   const type = useType();
-  const wide = layout === "wide";
-  const trStyle = wide ? type.translationWide : type.translation;
+  const layout = useLayout();
   const translation = trOn ? ordered.find((s) => s.abyat[bayt.n]?.translation)?.abyat[bayt.n]?.translation : undefined;
   const pair = Array.isArray(translation) ? translation : null;
   const sentence = typeof translation === "string" ? translation : null;
@@ -35,26 +39,19 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
 
   const open = () => {
     pin(bayt.n);
-    if (!wide) setSheetOpen(true);
+    // Phones open the explanation's sheet; wide windows show it beside the verses.
+    if (!isWide()) setSheetOpen(true);
   };
 
   const half = (h: 1 | 2) => {
     const text = h === 1 ? bayt.sadr : bayt.ajuz;
-    const align = wide || pair || sentence ? "center" : h === 1 ? "flex-start" : "flex-end";
+    // Under a translation, or side by side on wide windows, each half is centred.
+    const align = pair || sentence ? styles.center : h === 1 ? layout.style(sized.alignStart) : layout.style(sized.alignEnd);
     return (
-      <View style={[wide ? styles.col : null, pair && styles.withTr]}>
-        <Words
-          n={bayt.n}
-          half={h}
-          text={text}
-          color={halfColor(h)}
-          on={halfOn(h)}
-          align={align}
-          size={wide ? 22 : 19.5}
-          inset={!wide && !trOn ? h : 0}
-        />
+      <View style={[layout.style(sized.half), pair && styles.withTr]}>
+        <Words n={bayt.n} half={h} text={text} color={halfColor(h)} on={halfOn(h)} align={align} inset={trOn ? 0 : h} />
         {pair && (
-          <Text style={[trStyle, styles.tr, { color: halfOn(h) ? palette.fg : isCurrent ? palette.partner : palette.rest }]}>
+          <Text style={[type.verseTranslation, styles.tr, { color: halfOn(h) ? palette.fg : isCurrent ? palette.partner : palette.rest }]}>
             {pair[h - 1]}
           </Text>
         )}
@@ -70,39 +67,35 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
       accessibilityHint={t(lang, "expand")}
       style={[
         styles.bayt,
-        wide ? styles.baytWide : null,
+        layout.style(sized.bayt),
         (pair || sentence) && styles.baytTr,
         isPinned && { backgroundColor: palette.fold, borderColor: palette.line },
       ]}
     >
-      <NumberButton n={bayt.n} isCurrent={isCurrent} wide={wide} onPress={() => playFrom(bayt.n)} />
-      {wide ? (
-        <View style={styles.hrow}>
-          {half(1)}
-          <View style={[styles.cz, { backgroundColor: isCurrent ? palette.partner : palette.line2 }]} />
-          {half(2)}
-        </View>
-      ) : (
-        <>
-          {half(1)}
-          {half(2)}
-        </>
+      <NumberButton n={bayt.n} isCurrent={isCurrent} onPress={() => playFrom(bayt.n)} />
+      <View style={layout.style(pair || sentence ? sized.halvesTr : sized.halves)}>
+        {half(1)}
+        <View style={[styles.cz, layout.style(sized.cz), { backgroundColor: isCurrent ? palette.partner : palette.line2 }]} />
+        {half(2)}
+      </View>
+      {sentence && (
+        <Text style={[type.verseTranslation, styles.tr, styles.trs, { color: isCurrent ? palette.fg : palette.rest }]}>{sentence}</Text>
       )}
-      {sentence && <Text style={[trStyle, styles.tr, styles.trs, { color: isCurrent ? palette.fg : palette.rest }]}>{sentence}</Text>}
     </Pressable>
   );
 });
 
-function NumberButton({ n, isCurrent, wide, onPress }: { n: number; isCurrent: boolean; wide: boolean; onPress: () => void }) {
+function NumberButton({ n, isCurrent, onPress }: { n: number; isCurrent: boolean; onPress: () => void }) {
   const { palette, lang } = useSettings();
   const type = useType();
+  const layout = useLayout();
   // All three marks stay mounted and fade, so the element under the pointer never changes mid-press.
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={t(lang, "playFrom", { n })}
       onPress={onPress}
-      style={(s: PressState) => [styles.num, { top: wide ? 19 : 14 }, s.hovered && { backgroundColor: palette.fold }]}
+      style={(s: PressState) => [styles.num, layout.style(sized.num), s.hovered && { backgroundColor: palette.fold }]}
     >
       {(s: PressState) => {
         const hover = !!s.hovered;
@@ -140,7 +133,6 @@ function Words({
   color,
   on,
   align,
-  size,
   inset,
 }: {
   n: number;
@@ -148,14 +140,17 @@ function Words({
   text: string;
   color: string;
   on: boolean;
-  align: "center" | "flex-start" | "flex-end";
-  size: number;
+  align: StyleProp<ViewStyle>;
+  /** Phones step the halves when there's no translation: the sadr keeps off the end, the ajuz off the start. */
   inset: 0 | 1 | 2;
 }) {
-  const { words, openWord, focus, layout, bundle } = useListening();
+  const { words, openWord, focus, bundle } = useListening();
   const { palette } = useSettings();
   const type = useType();
-  const base = [layout === "wide" ? type.verseWide : type.verse, { color }];
+  const layout = useLayout();
+  // The verses' font size; on the web a CSS value, used only through `scale`.
+  const size = layout.value(VERSE_LINE.phone, VERSE_LINE.wide);
+  const base = [type.verseLine, { color }];
   // Every half at the poem's measure, with its kashida (scripts/kashida.ts). The words keep
   // their places: kashida never adds a space.
   const { measure, kashida } = bundle.poem;
@@ -184,7 +179,7 @@ function Words({
         ]}
       >
         <Text style={base}>{w}</Text>
-        <View style={[styles.gDot, { backgroundColor: palette.accent, opacity: on ? 1 : 0.55, top: size * MARK_BELOW - 2 }]} />
+        <View style={[styles.gDot, { backgroundColor: palette.accent, opacity: on ? 1 : 0.55, top: scale(size, MARK_BELOW, -2) }]} />
       </Pressable>
     );
   });
@@ -192,9 +187,10 @@ function Words({
     <View
       style={[
         styles.words,
-        { justifyContent: align, columnGap: size * 0.28 },
-        inset === 1 && { paddingEnd: "8%" },
-        inset === 2 && { paddingStart: "8%" },
+        align,
+        { columnGap: scale(size, 0.28) },
+        inset === 1 && layout.style(sized.insetEnd),
+        inset === 2 && layout.style(sized.insetStart),
       ]}
     >
       <Measure measure={measure} size={size}>
@@ -204,22 +200,39 @@ function Words({
   );
 }
 
+const sized = {
+  bayt: responsive(
+    { paddingVertical: space.m, paddingStart: 32, paddingEnd: 6 },
+    { paddingVertical: 10, paddingStart: 44, paddingEnd: 14 },
+  ),
+  // The halves: stacked on phones (spaced like the rest of the bayt), side by side on wide windows.
+  halves: responsive(
+    { flexDirection: "column" as const, alignItems: "stretch" as const, gap: 0 },
+    { flexDirection: "row" as const, alignItems: "flex-start" as const, gap: 22 },
+  ),
+  halvesTr: responsive(
+    { flexDirection: "column" as const, alignItems: "stretch" as const, gap: space.m },
+    { flexDirection: "row" as const, alignItems: "flex-start" as const, gap: 22 },
+  ),
+  half: responsive(
+    { flexGrow: 0, flexShrink: 0, flexBasis: "auto", minWidth: 0 },
+    { flexGrow: 1, flexShrink: 1, flexBasis: "0%", minWidth: 0 },
+  ),
+  /** The rhombus between the halves, on wide windows. */
+  cz: responsive({ display: "none" as const }, { display: "flex" as const }),
+  alignStart: responsive({ justifyContent: "flex-start" as const }, { justifyContent: "center" as const }),
+  alignEnd: responsive({ justifyContent: "flex-end" as const }, { justifyContent: "center" as const }),
+  insetEnd: responsive({ paddingEnd: "8%" }, { paddingEnd: 0 }),
+  insetStart: responsive({ paddingStart: "8%" }, { paddingStart: 0 }),
+  num: responsive({ top: 14 }, { top: 19 }),
+};
+
 const styles = StyleSheet.create({
-  bayt: {
-    position: "relative",
-    paddingVertical: space.m,
-    paddingStart: 32,
-    paddingEnd: 6,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: "transparent",
-  },
-  baytWide: { paddingVertical: 10, paddingStart: 44, paddingEnd: 14 },
+  bayt: { position: "relative", borderRadius: 14, borderWidth: 1, borderColor: "transparent" },
   /** With translations, the halves and their lines are spaced by gaps rather than by line height. */
   baytTr: { gap: space.m },
   withTr: { gap: space.xs },
-  hrow: { flexDirection: "row", alignItems: "flex-start", gap: 22 },
-  col: { flex: 1, minWidth: 0 },
+  center: { justifyContent: "center" },
   cz: { width: 6, height: 6, marginTop: 21, transform: [{ rotate: "45deg" }] },
   words: { flexDirection: "row", flexWrap: "wrap" },
   g: { borderRadius: 5, position: "relative", alignItems: "center" },

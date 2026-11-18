@@ -8,7 +8,6 @@ import { t } from "../../lib/i18n";
 import { indexCatalog, search } from "../../lib/search";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
-import { useWide } from "../navigation/layout";
 import { ListPage, PageFrame, SectionHead } from "./Page";
 import { PoemCard } from "./PoemCard";
 import { SearchField } from "./SearchField";
@@ -18,7 +17,6 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { palette, lang, start } = useSettings();
   const type = useType();
-  const wide = useWide();
   const [query, setQuery] = useState("");
   const index = useMemo(() => (data ? indexCatalog(data) : []), [data]);
   const poems = useMemo(() => search(index, query), [index, query]);
@@ -51,7 +49,7 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
           <PoemCard poem={p} catalog={data} list={ids} />
         </View>
       )}
-      columns={wide ? 2 : 1}
+      columns={2}
       maxWidth={1080}
       estimatedItemSize={300}
       empty={t(lang, "noResults")}
