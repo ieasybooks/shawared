@@ -1,5 +1,5 @@
 // Draws the store images in apps/app/store/screenshots from the app itself:
-// five scenes in each language, at the sizes the App Store (iPhone, iPad),
+// six scenes in each language, at the sizes the App Store (iPhone, iPad),
 // Google Play and AppGallery take, plus the stores' icons and Google Play's
 // feature graphic. Run it after a change to how the app looks, and commit what
 // it writes; the release sends the images to the stores.
@@ -24,6 +24,7 @@ const SITE = "http://127.0.0.1:8787";
 const POEM = "araka-asiyya-al-dami";
 const POET = "al-mutanabbi";
 const SETTINGS_KEY = "shawared.settings.v1";
+const SAVED_KEY = "shawared.saved.v1";
 
 // The screens each store shows, by the size it takes: an iPhone 6.9" (1320x2868), an iPad 13"
 // (2064x2752), and a 9:16 phone for Google Play and AppGallery (1080x1920).
@@ -61,7 +62,13 @@ async function settle(page: Page, ms = 900) {
 }
 
 /** The scenes, in the order the stores show them. */
-const SCENES: { name: string; night?: boolean; show: (page: Page, lang: Lang) => Promise<void> }[] = [
+const SCENES: {
+  name: string;
+  night?: boolean;
+  /** What the reader has saved (favourites, playlists), as lib/saved.ts stores it. */
+  saved?: (lang: Lang) => object;
+  show: (page: Page, lang: Lang) => Promise<void>;
+}[] = [
   {
     name: "01-library",
     show: async (page, lang) => {
@@ -99,7 +106,31 @@ const SCENES: { name: string; night?: boolean; show: (page: Page, lang: Lang) =>
     },
   },
   {
-    name: "05-meters",
+    name: "05-library",
+    saved: (lang) => ({
+      poems: ["araka-asiyya-al-dami", "ayniyyat-ibn-zurayq", "banat-suad", "nuniyyat-ibn-zaydun"],
+      poets: ["al-mutanabbi", "abu-firas-al-hamdani", "ahmad-shawqi"],
+      reciters: ["osama-alwaaedh"],
+      playlists: [
+        {
+          id: "store-memorise",
+          name: lang === "ar" ? "للحفظ" : "To learn by heart",
+          poems: ["ayniyyat-ibn-zurayq", "lamiyyat-ibn-al-wardi", "nuniyyat-al-busti"],
+        },
+        {
+          id: "store-mutanabbi",
+          name: lang === "ar" ? "من شعر المتنبي" : "Al-Mutanabbi",
+          poems: ["kafa-bika-daan", "ala-qadri-ahli-al-azm", "liaynayki-ma-yalqa", "maqsurat-al-mutanabbi"],
+        },
+      ],
+    }),
+    show: async (page, lang) => {
+      await page.goto(SITE + at(lang, "/library"));
+      await settle(page);
+    },
+  },
+  {
+    name: "06-meters",
     show: async (page, lang) => {
       await page.goto(SITE + at(lang, "/meters"));
       await settle(page);
@@ -113,13 +144,20 @@ async function screenshots(browser: Browser, out: string) {
       for (const scene of SCENES) {
         const context = await browser.newContext(options);
         await context.addInitScript(
-          ([key, settings]) => localStorage.setItem(key!, settings!),
-          [SETTINGS_KEY, JSON.stringify({ lang, theme: scene.night ? "night" : "day" })],
+          (items) => {
+            for (const [key, value] of items) localStorage.setItem(key, value);
+          },
+          [
+            [SETTINGS_KEY, JSON.stringify({ lang, theme: scene.night ? "night" : "day" })],
+            ...(scene.saved ? [[SAVED_KEY, JSON.stringify(scene.saved(lang))]] : []),
+          ] as [string, string][],
         );
         const page = await context.newPage();
         await scene.show(page, lang);
         const shot = await page.screenshot();
-        const folders = device === "phone" ? [`google-play/${lang}/phone`, `appgallery/${lang}/phone`] : [`app-store/${lang}/${device}`];
+        // AppGallery takes at most five screenshots (ieasybooks-release store check): the first five scenes.
+        const appGallery = SCENES.indexOf(scene) < 5 ? [`appgallery/${lang}/phone`] : [];
+        const folders = device === "phone" ? [`google-play/${lang}/phone`, ...appGallery] : [`app-store/${lang}/${device}`];
         for (const folder of folders) {
           mkdirSync(join(out, folder), { recursive: true });
           writeFileSync(join(out, folder, `${scene.name}.png`), shot);
