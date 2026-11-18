@@ -1,0 +1,104 @@
+# الدَّهرُ ذو دُوَلٍ وَالمَوتُ ذو عِلَلٍ
+
+## Recording
+
+- أسامة الواعظ, produced by استوديو القمة: https://www.youtube.com/watch?v=MUORJT3kPSE (uploaded 2019-12-20, 4:38), «الدهر ذو دول - قصيدة لأبي العتاهية - بصوت: أسامة الواعظ». No description.
+- **Audio:** kept 0.1–271.0 s of the download (the voice starts at 0.6 s and stops at about 269.9 s; the music tail after it, which fades out by 275.5 s, is cut), gain −5.3 dB, giving −20 LUFS with a peak of −5.5 dBTP (`media/work/MUORJT3kPSE/audio.json`).
+- **Background:** a faint bed or reverb under the voice, about −35 to −40 dB in the gaps between halves; the aligner managed on the mix.
+- **Abyat recited:** all 24 of Faisal's, none left out. He says 1–2 twice at the start: first quickly (0.54–16.60 s of the app audio, about 3.5 s a half), then again at the pace of the rest (16.96–38.16 s, about 5 s a half); the timeline plays both.
+- **Order:** he says «يا رُبَّ يَومٍ أَتَت بُشراهُ» before «أَنصِف هُديتَ», the reverse of Faisal, al-Anwar al-Zahiya and al-Salman, which all put «أنصف» first. The text follows the recording, so the bayt numbers here are the recording's: our 14 is Faisal's 15 and our 15 is his 14 (and his note 14 belongs to our 15). Every other bayt has the same number in all four.
+
+## Editions
+
+- **Shukri Faisal**, أبو العتاهية: أشعاره وأخباره (Damascus University, 1965), poem 437, pp. 419–420: archive.org `0017pdf_202002`, leaves 459–460, read as page images (crops in `_scratch/p419*.png`, `p420*.png`, `z419*.png`, `z420*.png`). 24 abyat, headed «وقال*: [من البسيط]», fully voweled. **The text is Faisal's**, put in the house style, except where the reciter departs from it (18.1, the order of 14–15). His notes:
+  - «* ليست القطعة في (ظ).» (ظ) is the Zahiriyya manuscript of Ibn Abd al-Barr's collection, (ت) the Tübingen manuscript, which a note in it dates to 603 AH, and (ل) al-Anwar al-Zahiya (his introduction, pp. 8–10, leaves 8–10).
+  - «١ و ٢ - أكثر كلمات البيتين مطموس في (ت)».
+  - 5: «في (ل): ربٍّ. وفي (ت) و (ل): قد تدبّره. ولعل الصواب ما أثبتّه.»
+  - 10: «في (ل): لغَرور.»
+  - 14 (our 15): «في (ل): لا ترضى.»
+  - 18: «في (ت): مَمْسانا ومَصبحنا ومن.»
+  - 19: «في (ل): للقبر.» 20: «في (ل): في الدنيا وأبعده.»
+  - 21: «في (ل): وكابر وفي (ت): وكابد. ولعلّ الصواب ما أثبته.»
+  - 22: «في (ل): الشقيق. واللفظة الأخيرة في (ت): وسحّاه.»
+- **الأنوار الزاهية في ديوان أبي العتاهية** (al-Matba'a al-Kathulikiyya lil-Aba' al-Yasu'iyyin, Beirut; the scan's title page is dated 1888), pp. 292–293: archive.org `in.ernet.dli.2015.361423`, leaves 306–307, read as page images (`_scratch/b292*.png`, `b293*.png`). The title page says only «جمعه أحد الآباء اليسوعيين»; Faisal names the compiler, Louis Cheikho, says he gave each piece a heading of his own, and dates the first printing to 1886 (introduction, p. 10). This is Faisal's (ل), and its text has (ل)'s readings at 5, 15, 19, 20, 21 and 22, as his notes say. 24 abyat in Faisal's order, headed «وقال في خداع الاماني الباطلة وهو من غرر شعره (من البسيط)». Shawqi Dayf cites the 1886 Beirut print of the diwan at the same page, 292.
+- **عبد العزيز السلمان، مجموعة القصائد الزهديات**: shamela 38155, vol. 2, pp. 291–292 (`salman.txt`, `salman-ed.txt`), headed only «وقال:». A modern anthology, fully voweled: Faisal's 24 abyat in his order, with «الوَقتُ» for «الدهر» (1.1), «ضلَّةً» (10.1) and «تَلْهو» (18.1). Vol. 1, p. 410 (`salman-v1.txt`) has 7, 8, 9, 11, 20, 22, 23 and 24 under «آخر:», with «تَغْتَرُّ بالجَهْل في الدنيا» (11.1), «وأبْعَدهُ» (20.1) and «الشَّقِيْقِ» (22.1). His *Mawarid al-Zam'an*, vol. 4, p. 135 (shamela 7480/1903, `mawarid.txt`), has 22–24 under «آخر:».
+- **The old shamela diwan** (book 4381, the Abu Dhabi encyclopedia's text, `media/research/inna-al-salamata/diwan-old-shamela.txt`) does not have the poem: none of its rhyme words (أجراه, مولاه, عقباه, أبكاه, ينساه, الجاه) is in it.
+- `scripts/collate.py` against the text (`collation.txt`): Faisal differs only at 18.1 «تلهو»; the Beirut print at 5.1, 15.2, 18.1, 19.2, 20.1, 21.1 and 22.1; al-Salman at 1.1 and 18.1.
+
+`abyat_in_full` is 24, as in all three.
+
+## Attribution
+
+Abu al-Atahiya's in both of Faisal's manuscripts that have it and in the Beirut diwan, and in two independent books:
+- Ibn Abd al-Barr, *Bahjat al-Majalis*, p. 41 (shamela 558/41, `bahja-41.txt`): «وقال أبو العتاهية: والناس حيث يكون المال والجاه» (4.2); p. 238 (558/238, `bahja-238.txt`): «قال أبو العتاهية: إن الشقي لمن غرته دنياه» (11.2).
+- Ibn Muflih, *al-Adab al-Shar'iyya*, vol. 3, p. 266 (shamela 21582/1182, `adab-shariyya.txt`): «وقال أبو العتاهية: والناس حيث يكون المال والجاه».
+- Shawqi Dayf, *al-Fann wa-Madhahibuh fi al-Shi'r al-Arabi*, p. 115 (shamela 8666/123, `dayf.txt`): 8, 9, 11, 12 and 18 as Abu al-Atahiya's, «وأخذ يتغنى بالموت والفناء… على شاكلة قوله», citing «ديوان أبي العتاهية "طبعة بيروت سنة ١٨٨٦" ص٢٩٢».
+- Unattributed: Ahmad Matlub, *Asalib Balaghiyya*, p. 121 (shamela 17376/113, `matlub.txt`), and Abd al-Aziz Atiq, *Ilm al-Ma'ani*, p. 101 (17670/95, `atiq.txt`, with «فاتحا فاه»), quote 8 as a question of «الاستبطاء». No source gives the poem to anyone else.
+
+## Readings settled by ear
+
+Scores come from `/home/alifadel/.cache/shw-tmp/b4/tools/vbatch.py` (the scoring of `scripts/variants.py`, one model load) on the app audio, each test on the half or on the word (`_scratch/tests.txt`, `_scratch/vbatch.out`); the gap is the other reading's score against the text's. Every pair has the same number of words.
+
+| Bayt | Text | Other reading | Gap |
+| --- | --- | --- | --- |
+| 1.1 | الدَّهرُ (Faisal, Beirut) | الوَقتُ (al-Salman) | −24.7 (first saying); −15.4 (second) |
+| 4.1 | فَهُوَ (Faisal, al-Salman) | فَهوَ; فاهُ (the full transcript) | +0.0; +4.6, see below |
+| 5.1 | رَبّي قَد يُدَبِّرُهُ (Faisal) | رَبٍّ قَد تَدَبَّرَهُ ((ل), Beirut); رَبّي قَد تَدَبَّرَهُ ((ت)); قَد تُدَبِّرُهُ | −16.2; −14.1; −5.6. On the verb alone: تَدَبَّرَهُ −7.8, تُدَبِّرُهُ −3.3. On رَبّي alone (with its phrase) رَبٍّ −1.1, see below |
+| 10.1 | لَغُرورٌ ضِلَّةٌ (Faisal) | لَغَرورٌ ((ل)); ضِلَّةً (al-Salman); ضَلَّةٌ | −3.1; −2.5; −3.2. On the words alone −1.0, −1.7, −1.0; see below |
+| 12.1 | كَأَنَّ (all) | كانَ (the full transcript) | +8.6 (on the word +4.7), see below |
+| 15.2 | لا تَرضَ (Faisal) | لا تَرضى ((ل), Beirut) | 0.0, see below |
+| 17.2 | أَمرِكَ ما (all) | أَمري كَما (what the transcribers hear) | +2.0, see below |
+| 18.1 | نَلهو (Dayf) | تَلهو (Faisal, Beirut, al-Salman) | −4.2; on the word alone −3.0 (يَلهو −3.7) |
+| 18.1 | مُمسانا وَمُصبَحُنا (Faisal) | مَمسانا وَمَصبَحُنا ((ت)) | −5.3 |
+| 19.2 | لِلمَوتِ (Faisal) | لِلقَبرِ ((ل), Beirut) | −21.6 |
+| 20.1 | وَأَفظَعَهُ (Faisal, al-Salman vol. 2) | وَأَبعَدَهُ ((ل), Beirut, al-Salman vol. 1) | −7.1; on the word alone +2.4, see below |
+| 21.1 | وَكايَدَ (Faisal, al-Salman) | وَكابَدَ ((ت)); وَكابَرَ ((ل), Beirut) | −8.5; −17.7 |
+| 22.1 | الشَّفيقُ (Faisal, al-Salman vol. 2) | الشَّقيقُ ((ل), Beirut, al-Salman vol. 1) | −7.7; on the word alone −4.8 |
+| 22.2 | أَغمَضَهُ (all) | إِغماضُهُ (the full transcript); أَغمَضُهُ | −13.6; −3.8 |
+| 22.2 | وَسَجّاهُ (Faisal) | وَسَحّاهُ ((ت)) | −4.7; on the word alone −3.4 |
+
+- **18.1, the one word that departs from every edition:** the reciter says «نَلهو», which Dayf prints; Faisal, the Beirut print and al-Salman have «تَلهو». Both transcribers hear «نلهو» (cohere «نَلْهُوَّ», audar «نلهو»), as does the full transcript, and «نَلهو» leads by 3.0 on the word alone against «تَلهو». The text follows him; the note on 18.1.1 gives the editions' reading. «مُمسانا وَمُصبَحُنا» (we) agrees with it.
+- **5.1:** Faisal's «يُدَبِّرُهُ» is his own choice against both manuscripts («ولعل الصواب ما أثبتّه»), and the reciter says it. On the LPC formants of the app audio (`_scratch/tools/formant.py`): after the closure of «قد» (63.24–63.29 s), 63.30–63.46 s is a weak voiced stretch with F2 near 2,100 Hz, a ya, and 63.52–63.60 s a vowel with F2 near 950 Hz, a u: «يُ», not the «تَ» of the manuscripts. «رَبّي» against (ل)'s «رَبٍّ»: after the doubled b (62.69–62.79 s) comes a vowel with F2 near 2,000 Hz (62.83–62.93 s) running straight into the closure of «قد», with no nasal: «رَبّي قَد». Both transcribers hear «يدبره».
+- **4.1:** the meter decides «فَهُوَ» (fa-hu-wal, faʿilun); with «فَهوَ» or «فاهُ» the second foot has three long syllables. Both clip transcribers hear «فهو». The full transcript's «فاه» is the reciter's stretch of the first syllable of this foot (below, 17.2).
+- **10.1:** the reciter holds the «لَ» of «لَغُرورٌ» for 0.58 s (114.44–115.02 s, F1 near 590 Hz, F2 near 1,430 Hz), so the transcribers hear «لا غرور»; the vowel after the غ (115.12–115.26 s) has F2 near 720–860 Hz, a u, as Faisal prints, not (ل)'s fatha. «ضِلَّةٌ»: the vowel after the t (116.68–116.76 s) has F2 falling to about 1,000 Hz with F1 near 420 Hz, a u, against about 1,450 Hz for this voice's a; so Faisal's nominative (a second predicate of «إنّ»), not al-Salman's «ضلَّةً». Both scores were under 2.
+- **12.1:** every edition, both clip transcribers («كَأَنَّ», «كأن») and the meter have «كَأَنَّ»: «ka-ʾan-na-ḥay» is mutafʿilun (u - u -), while «kā-na-ḥay-yan» (- u - -) is no form of mustafʿilun. The aligner's lean comes from the hamza, which it can't hear: «كَأَن» without the shadda scores as badly (−4.1 on the word). The nasal after the first vowel lasts 0.24 s (134.52–134.76 s), as long as the doubled «نّ» of 16.1 «تَحقِرَنَّ» (177.16–177.40 s).
+- **15.2:** the scores can't tell vowel length. The meter needs «لا تَرضَ» (lā-tar-ḍa-lin, mustafʿilun; «تَرضى» gives four long syllables), and the reciter says the vowel after the ḍ short: about 0.06 s (171.45–171.49 s), against 0.30 s for the long «ترضى» of 7.2 (86.98–87.28 s). The transcribers write «ترضى/ترضي» by habit.
+- **17.2:** «أَمرِكَ ما» and «أَمري كَما» are the same sounds but for the length of the i, which the aligner can't hear, and both transcribers and the full transcript write «أمري كما». The i is 0.55 s long (192.92–193.46 s). But that is this reciter's stretch of the first, short syllable of a shortened second foot (faʿilun, u u -), which he makes in other halves where no long vowel is possible: 2.1 «عِبَرٌ» (the ʿi, 29.44–29.94 s), 10.1 «لَغُرورٌ» (the la, above), 16.1 «تَحقِرَنَّ» (the final a, 177.42–177.98 s) and 22.1 «الشَّفيقُ» (the final u, 239.46–239.96 s), each about 0.5 s. All three editions have «أَمرِكَ ما», and «أمري كما أحمدتَ» mixes «my» with «you» and has no sense. The text keeps the editions.
+- **20.1:** on the half «وَأَفظَعَهُ» leads by 7.1, on the word alone «وَأَبعَدَهُ» by 2.4; both clip transcribers hear «وأفظعه» («وافضاعه», the ظ heard as ض), as does the full transcript. The text keeps Faisal's.
+- **Not scored:** al-Salman's 11.1 «بالجهل في الدنيا» (both transcribers hear «للجهل بالدنيا»); Atiq's 8.2 «فاتحًا» (both hear «فاغرا»); the «ومن» of (ت) at 18.2 (a word more; neither transcriber hears a و).
+
+## Meter
+
+Al-basit: mustafʿilun faʿilun mustafʿilun faʿilun, the ʿarud makhbuna (faʿilun, u u -) and the darb maqtuʿa (faʿlun, - -); rawiy ه, after the ridf alif, with the long u of the pronoun or the case ending. Scanned by hand: 1.1 ad-dah-ru-dhū | du-wa-lin | wal-maw-tu-dhū | ʿi-la-lin, 1.2 wal-mar-ʾu-dhū | ʾa-ma-lin | wan-nā-su-ʾash | bā-hū; 12.1 ka-ʾan-na-ḥay | yan-wa-qad | ṭā-lat-sa-lā | ma-tu-hu, 12.2 qad-ṣā-ra-fī | sa-ka-rā | til-maw-ti-tagh | shā-hū. Every half scans with `/home/alifadel/.cache/shw-tmp/b4/tools/scan.py` («0 halves to check by hand»). The meter decides 4.1 «فَهُوَ», 12.1 «كَأَنَّ» and 15.2 «لا تَرضَ» (above), and 6.2 «قَد», where the first two runs of the clip transcriber heard «لقد» (audar and the final run hear «قد»): «la-qad-fā-za» (u - - u) is no form of mustafʿilun. 21 is mudawwar: «فيـ / ـهِ» is split where the meter splits it, as Faisal prints it («وكايدَ فيـــ / ـهِ النّاسَ»); the notes say so on 21.1.7.
+
+## Ear check
+
+- **Alignment** (`scripts/align.py`, `_scratch/align.log`, `_scratch/words.json`): 11 weak words of 273: seven sayings of «ذو» and 24.1, 24.2 «ذي» (the aligner writes ذ as "th"), 22.2 «إِذ» (0.26) and 21.2's fragment «هِ» (0.10). The halves pass by ear.
+- **Timeline:** the aligner ends nearly every half 0.2–0.5 s before the held rhyme vowel stops, so each half's end was moved to where the voice falls below −28 dB, never past the next half's start (45 of 52 entries; `_scratch/tools/edges.py`, `_scratch/edges.before.txt`; the aligner's timeline is `_scratch/rec.aligner.json`). The 16.1/16.2 join was moved from 180.98/181.08 to 181.18/181.22 s, where the voice dips after «أَصغَرَهُ» (the first verify run heard «او» at the start of 16.2). 21.1 ends after «في» (the f's hiss is 232.68–232.76 s, its stretched i runs to 233.02 s). The last half is lit until 270.48 s; the voice stops at about 269.8 s, and the app audio ends at 270.9 s.
+- **`scripts/verify.py`** on the final timeline (`_scratch/verify3.out`): 8 of 52 clips differ, 14 of 273 words. Each is the transcriber's:
+  - **a stretched vowel heard long:** 10.1 «لا غرور» (above), 19.1 «رحلاته», 20.1 «وافضاعه» (also ظ heard as ض);
+  - **words run together or split:** 9.2 «في ما», 15.1 «انصفه ديت» (the h of «هُديتَ» joined to «أنصف»), 19.1 «قدنت» (the two d's of «قد دنت» as one), 20.2 «امراجنا»; 21.1 «وكا يدفيه» and 21.2 missing «ه»: the word split across the halves, heard whole in the first;
+  - **at the clip's edge:** 18.2 ends with «[النبيّ:25]», a citation tag the transcriber invented (audar hears the half exactly, `_scratch/edge-audar/`); 22.1 ends with «ان», the «إِ» of 22.2's «إِذ» inside the clip's 0.05 s padding (the «هِ» of «بِهِ» runs to 243.22 s and «إِذ» starts at 243.30 s).
+- **The second transcriber** (audar, on the first run's 52 clips, `_scratch/audar/`) hears the text in every half but for its own mishearings, each heard as the text by cohere (3.1 «ويضحى كذو», 5.1 «من خالق راب», 6.1 «إن باتوا», 7.1 «يباء عديني», 10.2 «لعل أحد فامرئ», 11.2 «فإن الشقي», 13.2 «وللحواضي … وإن باهون», 14.2 «بصوت نعيب شراه»), stretched vowels (2.2 «قادر», 8.1 «لاعب», 12.1 «سلاماته», 22.1 «الشافيق»), and 17.2 «أمري كما» (above). It hears as the text every half that cohere gets wrong, but for the stretched vowels both hear (10.1 «لا غرور», 19.1 «رحلاته»).
+
+## Commentary drawn on
+
+- No classical commentary on the poem is known, and Faisal has no glosses on it; the sharh is a plain reading of the words, with the glosses below.
+- **Glosses:** *Lisan al-Arab* (shamela 1687; pages in `lisan/`): دول «الدَّولة والدُّولة: العقبة في المال والحرب سواء … والجمع دُوَل» (vol. 11, p. 252); علّة «المرض» and «هذا علّة لهذا أي سبب» (vol. 11, p. 471); الشِّبه (vol. 13, p. 505); العبرة «كالموعظة مما يتّعظ به الإنسان» and «الاعتبار بما مضى» (vol. 4, p. 531); الصَّرف «ردّ الشيء عن وجهه» (vol. 9, p. 189); ابتلاه الله «امتحنه» (vol. 14, p. 84); الجاه «المنزلة والقدر عند السلطان» (vol. 13, p. 487); أعبده «استعبده» and «صيّره كالعبد» (vol. 3, pp. 270–271); المولى «المالك والعبد» (vol. 15, p. 411); طوبى «فُعلى من الطِّيب» and «اسم شجرة في الجنة» (vol. 1, p. 565); الإنابة «الرجوع إلى الله بالتوبة» (vol. 1, p. 775); الأوّاه (vol. 13, p. 473); الباطل «نقيض الحق» (vol. 11, p. 56); يسوى: al-Farra' «لم يعرف يسوى», al-Layth «يسوى نادرة، ولا يقال منه سَوِيَ ولا سوى», al-Azhari «أحسبه لغة أهل الحجاز» (vol. 14, p. 410; p. 414); هوى يهوي «إذا أسرع في السير» (vol. 15, p. 371); فغر فاه «فتحه» (vol. 5, p. 59); الحتف «الموت» (vol. 9, p. 38); الأمنيّة «جمعها الأماني» (vol. 15, p. 294); الغُرور «ما اغتُرّ به من متاع الدنيا» (vol. 5, p. 12); الضِّلّة «الضلال» (vol. 11, p. 394); الزخرف (vol. 9, p. 132); الشقاء «ضدّ السعادة» (vol. 14, p. 438); سكرة الموت «شدّته» (vol. 4, p. 373); الرقدة «النومة» (vol. 3, p. 183); حوادث الدهر «نُوَبه» (vol. 2, p. 132); أنبهه (vol. 13, p. 546); البشارة «ما بشّرت به» and «البشارة المطلقة لا تكون إلا بالخير» (vol. 4, pp. 61–62); حال الشيء «يكون تغيّرًا، ويكون تحوّلًا» (vol. 11, p. 187); النَّعي «خبر الموت» (vol. 15, p. 334); الإنصاف and انتصف (vol. 9, p. 332); التحقير «التصغير» (vol. 4, p. 207); المعروف «ضدّ المنكر» and «اسم ما تبذله وتسديه» (vol. 9, p. 239); الحُسنى «تأنيث الأحسن» (vol. 13, p. 116); عاقبة and عُقبى «آخره» (vol. 1, p. 611); أحمدته «وجدته محمودًا» (vol. 3, p. 156); المُمسى والمُصبَح «مصدران وموضعان», with Umayya ibn Abi al-Salt's «الحمد لله ممسانا ومصبحنا» (vol. 15, p. 280); صبّحه «جاءهم صباحًا» (vol. 2, p. 505); الفتى «الشابّ» (vol. 15, p. 145); الزاد «طعام السفر والحضر» (vol. 3, p. 198); فظُع (vol. 8, p. 254); جنى الثمرة (vol. 14, p. 155); المنافسة (vol. 6, p. 238); الكيد «الخبث والمكر، وكذلك المكايدة» (vol. 3, p. 383); خلّى الأمر «تركه» (vol. 14, p. 239); بينا «بينا نحن كذلك إذ حدث كذا» (vol. 13, p. 65); الشفيق «الناصح الحريص على صلاح المنصوح» (vol. 10, p. 180); الإلف «الأليف» (vol. 9, p. 11); أغمض الميت (vol. 7, p. 199); سجّى الميت «غطّاه» (vol. 14, p. 371); أمكنه منه (vol. 13, p. 414); الأجل «غاية الوقت في الموت» (vol. 11, p. 11). The others (قدر, مُقبلة, أمرّ, رحلة, يخرجه, سيلقاه) are in their common senses.
+- **Quran:** 53:43 (3), 3:140 (1.1 note), 50:33 and 11:75 (6.2 notes), 50:19 (12.2 note), 2:197 (19).
+- **Hadith:** «لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه» (15): al-Bukhari, vol. 1, p. 14 (shamela 735/33, `bukhari-33.txt`), and Muslim, vol. 1, p. 67 (1727/134, `muslim-134.txt`); «لا تحقرن من المعروف شيئا، ولو أن تلقى أخاك بوجه طلق» (16): Muslim, vol. 4, p. 2026 (1727/6626, `muslim-6626.txt`).
+- **Al-Mutanabbi's line (9):** al-Jarawi, *al-Hamasa al-Maghribiyya*, vol. 2, p. 1258, no. 874, among al-Mutanabbi's pieces (shamela 6902/1200, `hamasa-maghribiyya.txt`): «ما كل ما يتمنى المرء يدركه … تجري الرياح بما لا تشتهي السفن»; al-Qazwini, *al-Idah*, vol. 2, p. 77 (7380/279, `idah-279.txt`), gives the sadr as «قول أبي الطيب», with «تأتي الرياح».
+- **The rhetoric books on 8** (Matlub, Atiq) for the sharh's «الاستبطاء».
+- **The intro:** the occasion is unknown (no source gives one); Cheikho's heading (Beirut print, p. 292) and Faisal's naming of Cheikho (p. 10); Ibn Abd al-Barr and Dayf as above.
+
+## Review
+
+Checked by the drafter, 2026-11-18, point by point against the second reader's checklist (`/home/alifadel/.cache/shw-tmp/b4/REVIEW.md`):
+
+- **Text:** every half against Faisal's page images (leaves 459–460, zoomed on the vowels of 4.1, 5.1, 10.1, 18.1, 19.1 and 5.2 «كُلٌّ») and his notes, against the Beirut print's page images (leaves 306–307) and al-Salman's text; `collate.py` lists exactly the departures recorded above. The one word against every edition (18.1 «نَلهو») has a note giving theirs; the reversed order of 14–15 is recorded.
+- **Attribution:** Faisal's two manuscripts, the Beirut diwan, Ibn Abd al-Barr (two half-lines) and Ibn Muflih give it to Abu al-Atahiya; Dayf quotes five abyat as his; no source names anyone else. The title is the first sadr: no source gives the poem a name.
+- **Meter:** every half scanned by `scan.py`, four by hand; the readings the meter decides (4.1, 6.2, 12.1, 15.2) recorded.
+- **Vowels:** the doubtful ones tested on the audio with same-length candidates and, where the scores were under 2 or the aligner is blind (vowel length, hamza), on the LPC formants and durations: 5.1 «رَبّي … يُدَبِّرُهُ», 10.1 «لَغُرورٌ ضِلَّةٌ», 12.1 «كَأَنَّ», 15.2 «تَرضَ», 17.2 «أَمرِكَ ما»; `tashkeel.ts` clean; wasl alifs voweled (9.2, 10.2 «اِمرِئٍ», 14.2 «اِستَحالَت»).
+- **Audio:** the cut (0.5 s before the first word; the music tail after the last cut), the repeat of 1–2, every half's end against the voice, the 16.1/16.2 and 21.1/21.2 joins; `verify.py` run three times (the last on the final timeline) and every difference explained, with the second transcriber on all clips and on the two edge clips.
+- **Meaning:** each bayt's grammar read again (the subject of 5.1 «يُدَبِّرُهُ» is «ربّي»; 12.2 «تَغشاهُ» has «سكرات الموت» as subject; in 22 the «الشفيق» closes the eyes of the «إلف», who is then mourned, buried and forgotten in 23); every gloss against *Lisan al-Arab* with its page; the Quran and hadith references checked against their texts (the hadiths in al-Bukhari and Muslim, with shamela pages); the al-Mutanabbi sadr checked in al-Hamasa al-Maghribiyya and al-Idah.
+- **Fixed in this pass:** sharh 14 said both halves end in «بشراه» (the sadr ends in «مقبلةً»); sharh 22 now reads «الشفيق على إلف» as «المشفق على صاحب»; notes that repeated the sharh (13.1.4-6; English 1.1.3, 1.1.6) reworded; heads of 16.2.4 «حُسنى» and 18.1.3-4 «مُمسى ومُصبَح» without an article the verse lacks; the 7.2.5 note gives al-Layth's whole remark, which is why its head is «يَسوى» (the verb has no past); the intro no longer dates Cheikho's print, since the scan read is dated 1888 and Faisal gives 1886 for the first printing; English sharh cut to a median of 37 words and five translation lines to twelve words or fewer; a sources.md claim that «كانَ حيًّا» would be ungrammatical removed (it isn't; the meter excludes it); 21.1's end, which a first edit had put before «في», restored after it.
