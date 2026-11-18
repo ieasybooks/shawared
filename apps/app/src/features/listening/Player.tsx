@@ -1,6 +1,6 @@
 import { space } from "@shawared/design";
 import { nextTarget, previousTarget } from "@shawared/listening";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pressable, StyleSheet, Text, View, type GestureResponderEvent } from "react-native";
 import { IconButton } from "../../components/ui/controls";
 import { TextLink } from "../../components/ui/TextLink";
@@ -8,7 +8,9 @@ import { Icon, Logo } from "../../components/ui/Icon";
 import { clock, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
+import { useStore } from "../../lib/store";
 import { useType } from "../../lib/type";
+import { player } from "../player/player";
 import { usePlaying, useTime } from "./playback";
 import { useCurrentBayt, useListening } from "./state";
 
@@ -84,10 +86,14 @@ function ProgressRow() {
   );
 }
 
+const selectOn = (s: { on: boolean }) => s.on;
+
 function Controls({ wide }: { wide?: boolean }) {
   const { playback, repeat, setRepeat, jump } = useListening();
   const { palette, lang } = useSettings();
   const playing = usePlaying(playback);
+  const continuous = useStore(player.continuous, selectOn);
+  useEffect(() => player.restore(), []);
   const size = wide ? 38 : 42;
   const iconSize = wide ? 20 : 22;
   const playSize = wide ? 42 : 60;
@@ -129,7 +135,16 @@ function Controls({ wide }: { wide?: boolean }) {
         iconSize={iconSize}
         color={palette.fg}
       />
-      <View style={{ width: size, height: size }} />
+      {/* Repeat's counterpart at the other end: when the poem ends, the next one in its list plays. */}
+      <IconButton
+        icon="continuous"
+        label={t(lang, "continuous")}
+        pressed={continuous}
+        onPress={() => player.setContinuous(!continuous)}
+        size={size}
+        iconSize={iconSize}
+        color={continuous ? palette.accent : palette.muted}
+      />
     </View>
   );
 }

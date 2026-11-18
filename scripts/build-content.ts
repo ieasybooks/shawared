@@ -212,7 +212,7 @@ for (const id of dirs(join(CONTENT, "poems"))) {
     added: poem.added,
     opening: poem.abyat[0]!,
     langs: [...byLang.keys()],
-    recitations: recitations.map((r) => ({ id: r.id, reciter: r.reciter, duration: r.duration })),
+    recitations: recitations.map((r) => ({ id: r.id, reciter: r.reciter, duration: r.duration, audio: r.audio })),
     hash: hash(texts.join("\n")),
     measure: layout.measure,
     kashida: Object.fromEntries(Object.entries(layout.kashida).filter(([address]) => address.startsWith(`${poem.abyat[0]!.n}.`))),

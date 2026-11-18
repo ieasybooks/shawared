@@ -8,6 +8,7 @@ export type IconName =
   | "prev"
   | "next"
   | "repeat"
+  | "continuous"
   | "close"
   | "up"
   | "down"
@@ -59,6 +60,13 @@ export function Icon({ name, size = 22, color }: { name: IconName; size?: number
           <Path d="M7 22l-3-3 3-3" />
           <Path d="M20 13v2a4 4 0 0 1-4 4H4" />
         </G>
+      )}
+      {name === "continuous" && (
+        <Path
+          {...stroke}
+          strokeWidth={1.9}
+          d="M12 12c-1.5-2.2-3-3.6-4.8-3.6a3.6 3.6 0 0 0 0 7.2c1.8 0 3.3-1.4 4.8-3.6zm0 0c1.5 2.2 3 3.6 4.8 3.6a3.6 3.6 0 0 0 0-7.2c-1.8 0-3.3 1.4-4.8 3.6z"
+        />
       )}
       {name === "close" && <Path {...stroke} strokeWidth={2} d="M6 6l12 12M18 6L6 18" />}
       {name === "up" && <Path {...stroke} strokeWidth={2} d="M6 15l6-6 6 6" />}

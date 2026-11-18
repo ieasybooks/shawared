@@ -90,6 +90,7 @@ export function PersonScreen({
     const ids = new Set(person.data.poems);
     return catalog.data.poems.filter((p) => ids.has(p.id));
   }, [catalog.data, person.data]);
+  const list = useMemo(() => poems.map((p) => p.id), [poems]);
   if (!catalog.data || !person.data)
     return (
       <PageFrame back>
@@ -127,7 +128,7 @@ export function PersonScreen({
       header={header}
       data={poems}
       keyOf={(x) => x.id}
-      renderItem={(x) => <PoemRow poem={x} catalog={catalog.data!} show={kind === "poets" ? "reciter" : "poet"} />}
+      renderItem={(x) => <PoemRow poem={x} catalog={catalog.data!} show={kind === "poets" ? "reciter" : "poet"} list={list} />}
       estimatedItemSize={86}
     />
   );

@@ -28,7 +28,17 @@ export const CatalogPoem = z.object({
   opening: PublishedBayt,
   /** Languages that have explanations, translations or word meanings. */
   langs: z.array(z.string()).default([]),
-  recitations: z.array(z.object({ id: z.string(), reciter: z.string(), duration: z.number() })).default([]),
+  recitations: z
+    .array(
+      z.object({
+        id: z.string(),
+        reciter: z.string(),
+        duration: z.number(),
+        /** The recording's key under the audio base URL, as in the poem's bundle: what plays next is queued from the catalog. */
+        audio: z.string().optional(),
+      }),
+    )
+    .default([]),
   /** Changes whenever any of the poem's files change. */
   hash: z.string(),
   /** The poem's measure and the opening bayt's kashida, as in its bundle. */

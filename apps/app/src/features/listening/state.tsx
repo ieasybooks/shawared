@@ -2,7 +2,7 @@ import type { PoemBundle, PublishedBayt, PublishedRecitation, PublishedSource } 
 import { startOfBayt, wordIndex, type WordHit } from "@shawared/listening";
 import { createContext, use, useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import { useStore } from "../../lib/store";
-import { player, type NowItem } from "../player/player";
+import { nowItemOf, player, type NowItem } from "../player/player";
 import { useCurrentSegment, usePlaying, usePoemPlayback, type Playback } from "./playback";
 
 export type Layout = "compact" | "wide";
@@ -61,17 +61,7 @@ export function ListeningProvider({
   initialBayt?: number | undefined;
   children: ReactNode;
 }) {
-  const item = useMemo<NowItem>(
-    () => ({
-      poemId: bundle.poem.id,
-      title: bundle.poem.title,
-      poet: bundle.poet.name,
-      reciter: bundle.reciters[recitation.reciter]?.name ?? recitation.reciter,
-      abyat: bundle.poem.abyat.length,
-      recitation,
-    }),
-    [bundle, recitation],
-  );
+  const item = useMemo<NowItem>(() => nowItemOf(bundle, recitation)!, [bundle, recitation]);
   const playback = usePoemPlayback(item);
   const sources = bundle.sources;
   const [sourceId, setSourceId] = useState<string | undefined>(sources[0]?.id);

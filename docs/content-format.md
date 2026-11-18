@@ -42,7 +42,7 @@ If a language is missing, the app shows nothing for it: no fallback.
 
 `bun run content:build` checks the content, then writes the files the app downloads:
 
-- `v1/catalog.json`: every poem, newest first, with its title, poet, meter, opening bayt (with its measure and kashida), recordings, the date it was added and a hash that changes with any of its files; every poet and reciter with how many poems they have; and how many poems each meter has.
+- `v1/catalog.json`: every poem, newest first, with its title, poet, meter, opening bayt (with its measure and kashida), recordings (with their audio keys, so the player can queue what plays next), the date it was added and a hash that changes with any of its files; every poet and reciter with how many poems they have; and how many poems each meter has.
 - `v1/poems/<poem>/<lang>.json`: everything one reader needs, which is the Arabic text, that language's sources, the timings, the poet and the reciters. It also carries how the verses are set: the width every half shares (`measure`) and each half's kashida (`kashida`), worked out from the text ([typography](typography.md#verses-at-one-width)).
 - `v1/poets/<poet>/<lang>.json`, `v1/reciters/<reciter>/<lang>.json`: a person's page, which is their names, dates, bio and links in that language, and their poems.
 

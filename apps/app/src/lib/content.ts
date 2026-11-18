@@ -16,6 +16,9 @@ const AUDIO_URL = process.env.EXPO_PUBLIC_AUDIO_URL ?? (Platform.OS === "web" ? 
 
 export const audioUrl = (key: string) => `${AUDIO_URL}/${key}`;
 
+/** The picture lock screens and media notifications show with a recitation: the mark (public/artwork.png). */
+export const ARTWORK_URL = Platform.OS === "web" ? "/artwork.png" : native("/artwork.png", `${SITE}/artwork.png`);
+
 // Stale-while-revalidate: show what we have (memory, then the device), and ask the
 // server once per session whether it changed. An unchanged file costs one 304.
 type Entry = { data?: unknown; error?: Error; etag?: string; checked?: boolean };
@@ -129,6 +132,16 @@ function useResource<S extends z.ZodType>(
   const data = (server ? undefined : (e?.data as z.infer<S> | undefined)) ?? initial ?? preview;
   return { data, error: data === undefined ? e?.error : undefined, retry };
 }
+
+/** The whole catalog if it's here, without waiting for it (the player queues from it). */
+export const catalogNow = () => entries.get(catalogPath())?.data as Catalog | undefined;
+
+/** The whole catalog, loading it if it isn't here; undefined if it can't be loaded. */
+export const loadCatalog = () => load(catalogPath(), Catalog).then(catalogNow);
+
+/** A poem's bundle in `lang`, loading it if it isn't here; undefined if it can't be loaded. */
+export const loadPoem = (id: string, lang: string) =>
+  load(bundlePath(id, lang), PoemBundle).then(() => entries.get(bundlePath(id, lang))?.data as PoemBundle | undefined);
 
 /** The catalog. A page's slice of it shows until the whole catalog is here. */
 export const useCatalog = (preview?: Catalog) => useResource(catalogPath(), Catalog, { preview });

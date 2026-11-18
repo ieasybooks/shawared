@@ -1,10 +1,13 @@
 import type { PoemBundle } from "@shawared/contracts";
+import { router, useNavigation } from "expo-router";
 import { useEffect, useRef } from "react";
 import { Platform } from "react-native";
 import { StateView } from "../../components/ui/StateView";
 import { PageFrame } from "../library/Page";
 import { usePoemBundle } from "../../lib/content";
+import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
+import { player } from "../player/player";
 import { useWide } from "../navigation/layout";
 import { CompactLayout, WideLayout } from "./layouts";
 import { ListeningProvider, useListening } from "./state";
@@ -41,12 +44,35 @@ export function ListeningScreen({
   return (
     <ListeningProvider bundle={bundle} recitation={recitation} layout={layout} initialBayt={validBayt}>
       <SpaceKey />
+      <FollowQueue id={id} />
       {layout === "wide" ? <WideLayout /> : <CompactLayout />}
     </ListeningProvider>
   );
 }
 
-/** On the web, space plays and pauses this poem. Media keys are the player's own (expo-audio). */
+/**
+ * When the queue moves on from this poem (it ended, or the lock screen, a headset or a media key
+ * skipped it) while its page is in front, the page moves on with it.
+ */
+function FollowQueue({ id }: { id: string }) {
+  const navigation = useNavigation();
+  const { href } = useSettings();
+  useEffect(() => {
+    let last = player.now.get().item?.poemId;
+    let followed = false;
+    return player.now.subscribe(() => {
+      const { item, from } = player.now.get();
+      const was = last;
+      last = item?.poemId;
+      if (followed || !item || was !== id || item.poemId === id || from !== id || !navigation.isFocused()) return;
+      followed = true;
+      router.replace(href(paths.poem(item.poemId)));
+    });
+  }, [id, navigation, href]);
+  return null;
+}
+
+/** On the web, space plays and pauses this poem. Media keys reach the player through the Media Session (player/playlist.web.ts). */
 function SpaceKey() {
   const { playback } = useListening();
   useEffect(() => {

@@ -22,6 +22,7 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
   const [query, setQuery] = useState("");
   const index = useMemo(() => (data ? indexCatalog(data) : []), [data]);
   const poems = useMemo(() => search(index, query), [index, query]);
+  const ids = useMemo(() => poems.map((p) => p.id), [poems]);
   const wordmark = <Text style={[type.wordmark, { color: palette.fg }]}>{t(lang, "brand")}</Text>;
   if (!data)
     return (
@@ -47,7 +48,7 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
       keyOf={(p) => p.id}
       renderItem={(p) => (
         <View style={styles.cardGap}>
-          <PoemCard poem={p} catalog={data} />
+          <PoemCard poem={p} catalog={data} list={ids} />
         </View>
       )}
       columns={wide ? 2 : 1}
