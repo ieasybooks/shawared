@@ -63,3 +63,20 @@ test("an unknown address is a 404 with the not-found page", async ({ page }) => 
   expect(response?.headers()["cache-control"]).toBe(REVALIDATE);
   await expect(page).toHaveTitle(/لم نجد هذه الصفحة/);
 });
+
+test("every file a page names, its fonts included, answers without a redirect", async ({ request }) => {
+  for (const path of ["/", POEM, `/en${POEM}`]) {
+    const html = await (await request.get(path)).text();
+    const urls = [...html.matchAll(/(?:href|src)="(\/(?:assets|_expo)\/[^"]+)"|url\("(\/assets\/[^"]+)"\)/g)].map((m) => m[1] ?? m[2]!);
+    expect(
+      urls.some((u) => u.endsWith(".ttf")),
+      path,
+    ).toBe(true);
+    for (const url of new Set(urls)) {
+      expect(url, path).toMatch(/^[A-Za-z0-9._~/-]+$/);
+      const r = await request.get(url, { maxRedirects: 0 });
+      expect(r.status(), url).toBe(200);
+      expect(header(r, "cache-control"), url).toBe(IMMUTABLE);
+    }
+  }
+});

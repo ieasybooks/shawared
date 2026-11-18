@@ -2,7 +2,15 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { headersFor, MAX_RULES, pagesWithoutSlash, remoteAudioProblems } from "./web-release.ts";
+import {
+  headersFor,
+  MAX_RULES,
+  pagesWithoutSlash,
+  plainAssetPaths,
+  plainPath,
+  remoteAudioProblems,
+  trimFontPreloads,
+} from "./web-release.ts";
 
 const scratch = mkdtempSync(join(tmpdir(), "shawared-web-release-"));
 afterAll(() => rmSync(scratch, { recursive: true, force: true }));
@@ -101,5 +109,53 @@ describe("remoteAudioProblems", () => {
         "poems/x.html links audio on https://shawared.com/audio/ instead of https://audio.shawared.com",
       ].sort(),
     );
+  });
+});
+
+describe("plainAssetPaths", () => {
+  const FONT = `assets/__node_modules/.bun/@expo-google-fonts+amiri@0.4.1/node_modules/@expo-google-fonts/amiri/400Regular/Amiri_400Regular.${H}.ttf`;
+  const PLAIN = `assets/__node_modules/.bun/_expo-google-fonts_amiri_0.4.1/node_modules/_expo-google-fonts/amiri/400Regular/Amiri_400Regular.${H}.ttf`;
+
+  it("moves assets whose addresses need encoding, and names the new address in pages, scripts and style sheets", () => {
+    const d = dist({
+      [FONT]: "font",
+      [`assets/plain/logo.${H}.png`]: "png",
+      "poems/x.html": `<link rel="preload" href="/${FONT}" as="font"/><style>@font-face{src:url("/${FONT}")}</style><img src="/assets/plain/logo.${H}.png">`,
+      [`_expo/static/js/web/entry-${H}.js`]: `var a={uri:"/${FONT}"},b='/${FONT}';`,
+      "content/v1/catalog.json": `{"note":"/${FONT}"}`,
+    });
+    expect(plainPath(FONT)).toBe(PLAIN);
+    expect(plainAssetPaths(d)).toBe(1);
+    expect(readFileSync(join(d, PLAIN), "utf8")).toBe("font");
+    expect(existsSync(join(d, FONT))).toBe(false);
+    expect(existsSync(join(d, "assets/__node_modules/.bun/@expo-google-fonts+amiri@0.4.1"))).toBe(false);
+    expect(readFileSync(join(d, "poems/x.html"), "utf8")).toBe(
+      `<link rel="preload" href="/${PLAIN}" as="font"/><style>@font-face{src:url("/${PLAIN}")}</style><img src="/assets/plain/logo.${H}.png">`,
+    );
+    expect(readFileSync(join(d, `_expo/static/js/web/entry-${H}.js`), "utf8")).toBe(`var a={uri:"/${PLAIN}"},b='/${PLAIN}';`);
+    // Published content isn't a page or a script.
+    expect(readFileSync(join(d, "content/v1/catalog.json"), "utf8")).toBe(`{"note":"/${FONT}"}`);
+    expect(plainAssetPaths(d)).toBe(0);
+  });
+
+  it("refuses two assets that would move to the same address", () => {
+    expect(() => plainAssetPaths(dist({ [`assets/a+b/x.${H}.ttf`]: "", [`assets/a@b/x.${H}.ttf`]: "" }))).toThrow("would both move to");
+  });
+});
+
+describe("trimFontPreloads", () => {
+  const preload = (f: string) => `<link rel="preload" href="/assets/${f}.ttf" as="font" crossorigin=""/>`;
+  const page = (body: string) =>
+    `<head>${preload("Amiri")}${preload("Kufi")}${preload("News")}<style id="react-native-stylesheet">.r-a{font-family:Kufi_600SemiBold;}.r-b{font-family:News_400Regular;}</style></head>` +
+    `<body>${body}<style id="expo-generated-fonts">@font-face{font-family:"Amiri_400Regular";src:url("/assets/Amiri.ttf")}
+@font-face{font-family:"Kufi_600SemiBold";src:url("/assets/Kufi.ttf")}
+@font-face{font-family:"News_400Regular";src:url("/assets/News.ttf")}</style></body>`;
+
+  it("keeps the preloads of the faces the markup draws with, inline or through a class it uses", () => {
+    const html = trimFontPreloads(page(`<div style="font-family:Amiri_400Regular">بيت</div><div class="css-x r-a">شوارد</div>`));
+    expect(html).toContain(preload("Amiri"));
+    expect(html).toContain(preload("Kufi"));
+    expect(html).not.toContain(preload("News"));
+    expect(html).toContain('font-family:"News_400Regular"');
   });
 });
