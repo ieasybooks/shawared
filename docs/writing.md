@@ -6,8 +6,9 @@ what goes in them. `bun run content:check` enforces what a machine can.
 
 ## The text
 
-**The recording decides.** The verses are what the reciter says. Editions decide nothing
-the audio settles, but they are where the text comes from.
+**The recording decides.** The verses are what the reciter says, unless he is clearly
+wrong. Otherwise editions decide nothing the audio settles, but they are where the text
+comes from.
 
 - **Editions.** Set the text from at least two scholarly sources: a critical edition of
   the diwan, or a classical commentary that quotes every bayt (al-Wahidi on al-Mutanabbi,
@@ -36,9 +37,15 @@ the audio settles, but they are where the text comes from.
   `align.py` and the clip transcripts instead. The aligner also writes ذ as "th" and scores
   it badly against ز or against nothing; trust the transcribers there. And a merged tanwin
   before و («وعظاً ومثل») sounds like «أو» to the transcribers.
-- **Where the reciter differs from every edition,** the text still follows him, and that
-  word gets a note giving the editions' reading and its meaning («زَردَقاً»: the editions
-  have رَزدَقاً, a row).
+- **Where the reciter differs from every edition,** the text still follows him if his
+  word could be right: a real word that fits the meter, the grammar and the sense, even if
+  no edition prints it. That word gets a note giving the editions' reading and its meaning
+  («صافِيا»: the editions have جازِيا, one who repays).
+- **Where he is clearly wrong,** the text follows the editions, and the word's note says
+  what he says. He is clearly wrong when his word breaks the meter, takes a case or form
+  the grammar doesn't allow, is no word at all (a letter or vowel slipped, or two letters
+  swapped) or makes nonsense of the bayt where the editions' word fits («رَزدَقاً», a row:
+  he says زَردَقاً). When in doubt, follow him. Say why in `sources.md`.
 - **Abyat he repeats** stay once in the text; the timeline plays them as often as he says them (`align.py --plan`).
 - **Abyat he leaves out** are not in the text. The abyat are numbered 1..N in the order of
   the poem; `abyat_in_full` is the count in the edition `sources.md` names. Any silence
