@@ -34,7 +34,7 @@ Statuses arrive four times a second, in the background too, where frames don't: 
 
 The browser tests (`tests/playback.spec.ts`) cover continuous play and the Media Session on the web. Native playback was last checked on an Android emulator before the playlist, so everything below needs a phone.
 
-In Expo Go the lock screen, Control Center and the notification name Expo Go, with its icon; a store build shows شوارد and its own. Expo Go also brings its own background audio settings (iOS's audio background mode, Android's playback service), which `app.json` gives a store build.
+Test on iOS with a build of the app, not Expo Go. Expo Go from the App Store can't play in the background: Expo removes iOS's audio background mode from it before they publish it, so iOS freezes it when the phone locks (the poem stops, and the lock screen's play does nothing). A build gets the mode from expo-audio's plugin in `app.json`. On a Mac with Xcode and the phone paired, `bunx expo run:ios --configuration Release --device <udid>` in `apps/app` builds one that reads shawared.com and audio.shawared.com, as the store's does.
 
 ## Device checklist
 
