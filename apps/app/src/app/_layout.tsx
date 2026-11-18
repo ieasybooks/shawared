@@ -2,7 +2,6 @@ import { Amiri_400Regular } from "@expo-google-fonts/amiri/400Regular";
 import { Amiri_700Bold } from "@expo-google-fonts/amiri/700Bold";
 import { Newsreader_400Regular } from "@expo-google-fonts/newsreader/400Regular";
 import { Newsreader_400Regular_Italic } from "@expo-google-fonts/newsreader/400Regular_Italic";
-import { ReadexPro_300Light } from "@expo-google-fonts/readex-pro/300Light";
 import { ReadexPro_400Regular } from "@expo-google-fonts/readex-pro/400Regular";
 import { ReadexPro_500Medium } from "@expo-google-fonts/readex-pro/500Medium";
 import { ReemKufi_600SemiBold } from "@expo-google-fonts/reem-kufi/600SemiBold";
@@ -24,7 +23,6 @@ export default function RootLayout() {
     Amiri_700Bold,
     Newsreader_400Regular,
     Newsreader_400Regular_Italic,
-    ReadexPro_300Light,
     ReadexPro_400Regular,
     ReadexPro_500Medium,
     ReemKufi_600SemiBold,

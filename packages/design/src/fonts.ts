@@ -5,7 +5,6 @@ export const fonts = {
   translation: "Newsreader_400Regular",
   translationItalic: "Newsreader_400Regular_Italic",
   ui: "ReadexPro_400Regular",
-  uiLight: "ReadexPro_300Light",
   uiMedium: "ReadexPro_500Medium",
   display: "ReemKufi_600SemiBold",
 } as const;

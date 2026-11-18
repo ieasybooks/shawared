@@ -27,7 +27,6 @@ const FAMILY: Record<Face, keyof typeof METRICS> = {
   verse: "amiri",
   verseBold: "amiri",
   ui: "readex",
-  uiLight: "readex",
   uiMedium: "readex",
   translation: "newsreader",
   translationItalic: "newsreader",
