@@ -1,0 +1,32 @@
+{
+  "lang": "en",
+  "source": { "name": "Shawared" },
+  "title": "I Say, as a Dove Mourns Close Beside Me",
+  "intro": "The heading in Ibn Khalawayh's recension says that Abu Firas composed it when he heard a dove mourning on a tall tree while he was a prisoner. His editor Sami al-Dahhan places it in his Byzantine captivity, 351–355 AH (962–966 CE), which makes it one of the Rumiyyat; al-Tha'alibi quotes it among his prison poems, and al-Taftazani, as al-Baha' al-Amili reports, gives it as an example of them. He speaks to the dove as one neighbour to another: he asks whether she feels what he is going through, denies that she has ever known parting or care, invites her to share his sorrows and see his failing spirit, marvels that the grieving captive is silent while the free bird laments, and ends by saying his eye had more cause to weep, but his tears are too precious to spend. Ibn Khallikan and Ibn al-Jawzi quote it, and its “ta'ali”, “come”, with a kasra kept grammarians busy: Ibn Hisham reports that they called it a mistake, al-Zamakhshari notes that the people of Mecca said it so, and al-Baghdadi defends it with Ibn Jinni's explanation.",
+  "abyat": {
+    "1": { "translation": ["I say, as a dove mourns close beside me:", "“Neighbour, do you feel what I am going through?”"],
+           "sharh": "Hearing a dove mourn close by in his captivity, he calls her his neighbour and asks whether she feels what he suffers. He speaks to the bird as to a person, as if she grieved like him." },
+    "2": { "translation": ["Love forbid: you have never tasted the parting that strikes by night,", "and cares have never crossed your mind."],
+           "sharh": "He will not call her his equal: she has never known separation, which comes upon a lover like a visitor in the night, nor any care. He invokes love as others invoke God, and makes parting a bitter taste." },
+    "3": { "translation": ["Can wing feathers carry one whose heart is grieving", "up on a branch so far away and high?"],
+           "sharh": "Grief weighs a creature down, so wings could not lift a grieving heart to so high and far a branch. The question expects no: the bird perched up there cannot really be grieving." },
+    "4": { "translation": ["Neighbour, has fate been fair between us?", "Come, let me share my cares with you; come."],
+           "sharh": "Calling her again, he asks if fate has been fair, freeing her and holding him captive. It has not, so he begs her to come and take half his cares, and repeats the call in longing." },
+    "5": { "translation": ["Come, and you will see a feeble soul in me,", "wavering in a tortured, worn-out body."],
+           "sharh": "He asks her to come and see his spirit, too weak to take in the world and barely staying in a body that captivity has tortured and wasted almost to nothing." },
+    "6": { "translation": ["Is the captive to laugh, and the free one weep,", "the grieving keep silent, and the carefree mourn?"],
+           "sharh": "He protests at the reversal: he, the captive, holds back his tears as if laughing, while the free bird weeps; he grieves in silence, while she, who has no care, laments aloud." },
+    "7": { "translation": ["My eye had more right to tears than yours,", "but my tears are too dear to spend on misfortune."],
+           "sharh": "His eye had more cause to weep than hers, but his tears are too precious to spend on misfortune. A commentator explains that he holds them back to keep his composure before those who would gloat." }
+  },
+  "words": {
+    "1.2.2":   { "word": "جارَتا", "head": "جارَة", "root": "ج و ر", "meaning": "Jarata: “my neighbour”, said to a woman. In a call, the “my” can become a long a." },
+    "2.1.1-2": { "word": "مَعاذَ الهَوى", "meaning": "“Refuge in love”: love forbid, on the pattern of “God forbid”." },
+    "2.1.5":   { "word": "طارِقَةَ", "head": "طارِقَة", "root": "ط ر ق", "meaning": "Tariqa: one who comes by night. Here, the parting that comes upon a lover." },
+    "3.1.4":   { "word": "قَوادِمٌ", "head": "قَوادِم", "root": "ق د م", "meaning": "Qawadim: the large feathers at the front of a bird's wing." },
+    "4.1.3":   { "word": "هَل", "meaning": "So the reciter, as a question. The editions have “fate has not been fair between us”." },
+    "4.2.1":   { "word": "تَعالي", "head": "تَعالَ", "root": "ع ل و", "meaning": "Ta'ali: “come”, said to a woman. The rule is ta'alay, as in the next line; the reciter says ta'ali, the form grammarians faulted in this very half." },
+    "6.2.4":   { "word": "سالِ", "head": "سالي", "root": "س ل و", "meaning": "Sali: one who has got over a love or a grief; carefree." },
+    "7.2.5":   { "word": "غالِ", "head": "غالي", "root": "غ ل و", "meaning": "Ghali: high-priced, dear." }
+  }
+}
