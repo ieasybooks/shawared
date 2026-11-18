@@ -14,6 +14,8 @@ require "ieasybooks/release"
 
 ROOT = File.expand_path("..", __dir__)
 APP_IDENTIFIER = "com.shawared.app"
+# Google Play's answer to a completed release for an app it has never published.
+DRAFT_APP = "Only releases with status draft may be created on draft app"
 TEAM_ID = "KJ597HLVMB"
 IOS_PROJECT = File.join(ROOT, "apps/app/ios")
 # Expo names the Xcode project and its target from the app's name, شوارد.
@@ -190,18 +192,34 @@ platform :android do
   # release notes and images (only those that changed). Google reviews it and,
   # with Managed Publishing off, publishes it once approved. A dry run checks
   # the same edit with Google Play without committing it.
+  #
+  # Google Play takes only a draft release for an app it has never published,
+  # so the first release goes up as a draft, to be sent for review in Play
+  # Console (Publishing overview).
   lane :publish do |options|
     info = release_info
-    upload_to_play_store(
-      json_key: ENV.fetch("GOOGLE_PLAY_SERVICE_ACCOUNT_FILE"),
-      package_name: APP_IDENTIFIER,
-      aab: options.fetch(:aab),
-      track: "production",
-      release_status: "completed",
-      version_name: "#{info[:version]} (#{info[:android_version_code]})",
-      metadata_path: File.join(metadata_dir, "google-play/metadata"),
-      sync_image_upload: true,
-      validate_only: dry_run?(options)
-    )
+    upload = lambda do |status|
+      upload_to_play_store(
+        json_key: ENV.fetch("GOOGLE_PLAY_SERVICE_ACCOUNT_FILE"),
+        package_name: APP_IDENTIFIER,
+        aab: options.fetch(:aab),
+        track: "production",
+        release_status: status,
+        version_name: "#{info[:version]} (#{info[:android_version_code]})",
+        metadata_path: File.join(metadata_dir, "google-play/metadata"),
+        sync_image_upload: true,
+        validate_only: dry_run?(options)
+      )
+    end
+    begin
+      upload.call("completed")
+    rescue StandardError => e
+      raise unless e.message.include?(DRAFT_APP)
+      note = "Google Play has never published #{APP_IDENTIFIER}, so it takes this release only as a draft. " \
+             "Send it for review in Play Console (Publishing overview); Google publishes it once approved."
+      UI.important(note)
+      puts("::notice::#{note}")
+      upload.call("draft")
+    end
   end
 end
