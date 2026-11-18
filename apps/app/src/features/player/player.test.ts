@@ -407,6 +407,20 @@ describe("the player", () => {
     expect(list.play).toHaveBeenCalledTimes(2);
   });
 
+  it("queues the next poem when autoplay comes on after the end, once the poem plays again", () => {
+    player.setContinuous(false);
+    player.play(item);
+    const list = last();
+    list.playing = false;
+    list.currentTime = 30;
+    list.emit({ didJustFinish: true });
+    player.setContinuous(true);
+    expect(list.add).not.toHaveBeenCalled();
+    player.play();
+    expect(list.add).toHaveBeenCalledWith({ uri: url("c") });
+    expect(player.now.get().item?.poemId).toBe("b");
+  });
+
   it("closing stops it and takes it off the lock screen", () => {
     player.play(item);
     const list = last();

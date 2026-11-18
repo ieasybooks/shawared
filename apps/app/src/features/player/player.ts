@@ -172,6 +172,8 @@ class Player {
       s.finished = false;
       s.list.skipTo(s.at - s.base);
       this.clock.set({ ready: false });
+      this.fill(s, false);
+      this.show();
     }
     if (this.clock.get().time >= cur.recitation.duration - 0.3) this.seek(0);
     s.list.play();
@@ -290,7 +292,8 @@ class Player {
    */
   private fill(s: Session, before: boolean) {
     const slot = s.at - s.base;
-    if (this.continuous.get().on && slot === s.size - 1 && s.at + 1 < s.ids.length) {
+    // A finished queue waits to be played again: on iOS a recording added now would start.
+    if (this.continuous.get().on && !s.finished && slot === s.size - 1 && s.at + 1 < s.ids.length) {
       s.list.add(this.urlOf(s, s.at + 1));
       s.size++;
     }
