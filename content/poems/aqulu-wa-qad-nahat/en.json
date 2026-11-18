@@ -9,7 +9,7 @@
     "2": { "translation": ["Love forbid: you have never tasted the parting that strikes by night,", "and cares have never crossed your mind."],
            "sharh": "He will not call her his equal: she has never known separation, which comes upon a lover like a visitor in the night, nor any care. He invokes love as others invoke God, and makes parting a bitter taste." },
     "3": { "translation": ["Can wing feathers carry one whose heart is grieving", "up on a branch so far away and high?"],
-           "sharh": "Grief weighs a creature down, so wings could not lift a grieving heart to so high and far a branch. The question expects no: the bird perched up there cannot really be grieving." },
+           "sharh": "The bird perched on so high and distant a branch cannot really be grieving: grief weighs a creature down, and no wings could lift a heavy heart up there. The commentators pass over the line; this is the likelier reading." },
     "4": { "translation": ["Neighbour, has fate been fair between us?", "Come, let me share my cares with you; come."],
            "sharh": "Calling her again, he asks if fate has been fair, freeing her and holding him captive. It has not, so he begs her to come and take half his cares, and repeats the call in longing." },
     "5": { "translation": ["Come, and you will see a feeble soul in me,", "wavering in a tortured, worn-out body."],
@@ -17,10 +17,11 @@
     "6": { "translation": ["Is the captive to laugh, and the free one weep,", "the grieving keep silent, and the carefree mourn?"],
            "sharh": "He protests at the reversal: he, the captive, holds back his tears as if laughing, while the free bird weeps; he grieves in silence, while she, who has no care, laments aloud." },
     "7": { "translation": ["My eye had more right to tears than yours,", "but my tears are too dear to spend on misfortune."],
-           "sharh": "His eye had more cause to weep than hers, but his tears are too precious to spend on misfortune. A commentator explains that he holds them back to keep his composure before those who would gloat." }
+           "sharh": "He, the captive, had more cause to weep than the free bird, yet misfortune will not have his tears; they cost too much. A commentator explains that he holds them back to keep his composure before those who would gloat." }
   },
   "words": {
     "1.2.2":   { "word": "جارَتا", "head": "جارَة", "root": "ج و ر", "meaning": "Jarata: “my neighbour”, said to a woman. In a call, the “my” can become a long a." },
+    "1.2.3-5": { "word": "هَل تَشعُرينَ بِحالي", "meaning": "“Do you feel what I am going through”: so al-Tha'alibi. The editions of the diwan have “has your plight become like mine?”" },
     "2.1.1-2": { "word": "مَعاذَ الهَوى", "meaning": "“Refuge in love”: love forbid, on the pattern of “God forbid”." },
     "2.1.5":   { "word": "طارِقَةَ", "head": "طارِقَة", "root": "ط ر ق", "meaning": "Tariqa: one who comes by night. Here, the parting that comes upon a lover." },
     "3.1.4":   { "word": "قَوادِمٌ", "head": "قَوادِم", "root": "ق د م", "meaning": "Qawadim: the large feathers at the front of a bird's wing." },
