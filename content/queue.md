@@ -48,3 +48,34 @@ Added 2026-11-17: 24 recordings, each made in its own branch, read a second time
 | 33 | https://www.youtube.com/watch?v=_qXLo4wTk9E | مثلث قطرب | سديد الدين البهنسي | أسامة الواعظ | 12:34 | reviewed: `muthallath-qutrub` | Both texts are recited: al-Bahnasi's nazm and Ibn Zurayq's verse sharh after each stanza. |
 | 34 | https://www.youtube.com/watch?v=NAmc74KK7JI | يسلم المرء أخوه | أبو العتاهية | أسامة الواعظ | 2:58 | reviewed: `yaslamu-al-maru-akhuhu` | He skips Faisal's 37–40. A music bed runs throughout. |
 | 35 | https://www.youtube.com/watch?v=r02Nuhxi3g0 | الأرجوزة المحبرة | علي بن الجهم | أسامة الواعظ | 36:17 | reviewed: `al-urjuza-al-muhabbara` | A history in rajaz muzdawij, 335 abyat; no rawiy. 163.2, 253 and 312 are open (see sources.md). |
+
+## Batch 4
+
+Added 2026-11-18: 24 recordings chosen with the owner, each drafted and read a second time independently in its own branch. Open readings and decisions are in each poem's sources.md.
+
+| # | Recording | Poem | Poet | Reciter | Length | Status | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 36 | https://www.youtube.com/watch?v=12ahz197wow | نونية الرندي | أبو البقاء الرندي | أسامة الواعظ | 7:34 | reviewed: `nuniyyat-al-rundi` | Nafh al-Tib's 42 abyat; the 19 later additions in al-Khafaji are not recited. al-Dhakhira al-Saniyya dates it to 665 AH. |
+| 37 | https://www.youtube.com/watch?v=Y0tWGG-SzCw | نونية ابن زيدون | ابن زيدون | أسامة الواعظ | 8:55 | reviewed: `nuniyyat-ibn-zaydun` | He leaves out one bayt that is not in the Diwan's manuscripts. 18.2 «أَن» departs from both editions. |
+| 38 | https://www.youtube.com/watch?v=3GEarxDwhSE | هل تذكرون غريبا عاده شجن | ابن زيدون | أسامة الواعظ | 2:04 | reviewed: `hal-tadhkuruna-ghariban` | **Attribution open:** only al-Mu'jib gives it to Ibn Zaydun; the older Kharida (via Ibn Bashrun) gives it to Ibn al-Waddah al-Mursi. Kept under Ibn Zaydun pending the owner. |
+| 39 | https://www.youtube.com/watch?v=KzQI9MLobtM | ألا لا تلوماني كفى اللوم ما بيا | عبد يغوث الحارثي | أسامة الواعظ | 3:40 | reviewed: `ala-la-talumani` | al-Mufaddaliyyat no. 30. Lyall thinks bayt 13 spurious; it is recited and kept. |
+| 40 | https://www.youtube.com/watch?v=lU12RCIusqM | ألا ما لعينك أم ما لها | الخنساء | أسامة الواعظ | 4:31 | reviewed: `ala-ma-li-aynika` | For Mu'awiya (Tha'lab), though several sources say Sakhr; both sides are in sources.md. |
+| 41 | https://www.youtube.com/watch?v=CpCfQUkhJNk | كذا فليجل الخطب وليفدح الأمر | أبو تمام | أسامة الواعظ | 4:48 | reviewed: `kadha-fal-yajilla-al-khatbu` | He leaves out the editions' 22–23. |
+| 42 | https://www.youtube.com/watch?v=GLaWhcwEHFA | ألا من رأى الطفل المفارق أمه | ابن الزيات | أسامة الواعظ | 4:37 | reviewed: `ala-man-raa-al-tifla` | 5.1/5.2 «سِجل» follows the reciter against every edition's سَجل. |
+| 43 | https://www.youtube.com/watch?v=mjl2pGLfeJM | سكن الظلام وبات قلبك يخفق | حافظ إبراهيم | أسامة الواعظ | 3:38 | reviewed: `sakana-al-zalamu` | The love prelude only: 19 of 35 abyat. |
+| 44 | https://www.youtube.com/watch?v=JcGj8Aj91oI | الشهيد | عبد الرحيم محمود | أسامة الواعظ | 3:05 | reviewed: `al-shahid` | Titled by the diwan's heading «الشهيد». The poem's date (1938 or early 1939) is open. |
+| 45 | https://www.youtube.com/watch?v=FI2QgS1fgGA | سألوني لم لم أرث أبي | أحمد شوقي | أسامة الواعظ | 4:24 | reviewed: `ana-man-mata` | Shawqi's elegy for his father; recited from the edition's bayt 7. **Title open:** the first sadr «سألوني لم لم أرث أبي» is not in the recording. |
+| 46 | https://www.youtube.com/watch?v=Nl1VF67p9aU | لهوى النفوس سريرة لا تعلم | المتنبي | أسامة الواعظ | 4:48 | reviewed: `li-hawa-al-nufusi` | He leaves out 9 abyat, mostly the obscene satire. |
+| 47 | https://www.youtube.com/watch?v=Fp_4J5UpV7I | كفى بك داء أن ترى الموت شافيا | المتنبي | أسامة الواعظ | 1:55 | reviewed: `kafa-bika-daan` | The opening 12 abyat, before the turn to Kafur. 11.2 «صافيا» follows the reciter against every edition's «جازيا». |
+| 48 | https://www.youtube.com/watch?v=MUORJT3kPSE | الدهر ذو دول والموت ذو علل | أبو العتاهية | أسامة الواعظ | 4:38 | reviewed: `al-dahru-dhu-duwalin` | The order of 14–15 and 18.1 «نَلهو» follow the reciter against all editions. |
+| 49 | https://www.youtube.com/watch?v=uA2xzFOE0H0 | دعوا الوشاة وما قالوا وما نقلوا | بهاء الدين زهير | أسامة الواعظ | 5:39 | reviewed: `daw-al-wushata` |  |
+| 50 | https://www.youtube.com/watch?v=UboOYH9fJxQ | أقول وقد ناحت بقربي حمامة | أبو فراس الحمداني | أسامة الواعظ | 1:31 | reviewed: `aqulu-wa-qad-nahat` | One of the Rumiyyat. 4.1 «هل أنصف» follows the reciter against every source's «ما». |
+| 51 | https://www.youtube.com/watch?v=IX1uewE5zOg | هل من طبيب لداء الحب أو راقي | محمود سامي البارودي | أسامة الواعظ | 2:17 | reviewed: `hal-min-tabibin` | The first 8 of 30 abyat (written in exile in Ceylon). 5.2 «أنيسَ» follows the reciter. |
+| 52 | https://www.youtube.com/watch?v=u3y9U4eTvRQ | دموع ودموع | بدوي الجبل | أسامة الواعظ | 4:21 | reviewed: `ghanni-ya-bulbulu` | Titled by the diwan's heading «دموع ودموع»; first printed in al-Irfan, 1923. Stanzaic: a refrain and four rhymes, so no single rawiy. |
+| 53 | https://www.youtube.com/watch?v=W2Oxo9Xjv5I | على البان قمرية تسجع | الملك الأمجد | أسامة الواعظ | 3:58 | reviewed: `ala-al-bani-qumriyya` | 22.2 «وأحفرها» follows the reciter; the sense follows the manuscripts' «أحفزها». |
+| 54 | https://www.youtube.com/watch?v=fCpTX7jn5yI | إنا محيوك يا سلمى فحيينا | بشامة بن حزن النهشلي | أسامة الواعظ | 2:19 | reviewed: `inna-muhayyuki-ya-salma` | From the Hamasa. **Attribution open:** Bashama ibn Hazn (most sources) against an anonymous ascription (Abu Tammam names no one). |
+| 55 | https://www.youtube.com/watch?v=1bNbTvWcwIo | بعدنا وإن جاورتنا البيوت | لسان الدين ابن الخطيب | أسامة الواعظ | 1:10 | reviewed: `baduna-wa-in-jawaratna` | Written in prison in Fez before his death in 776 AH. |
+| 56 | https://www.youtube.com/watch?v=OaIsGlS8ONY | معلقة امرئ القيس | امرؤ القيس | عمر الشرفي | 12:17 | reviewed: `muallaqat-imri-al-qays` | A new reciter, Omar al-Sharafi (Alqimmah Studio). 82 abyat, al-Zawzani's order. |
+| 57 | https://www.youtube.com/watch?v=LpGGs4yOXTc | معلقة عنترة | عنترة بن شداد | عمر الشرفي | 13:54 | reviewed: `muallaqat-antara` | 86 recited, a mix of recensions; abyat_in_full 113 follows al-Durra's fullest text. |
+| 58 | https://www.youtube.com/watch?v=IJQhVS1q3Bc | معلقة عمرو بن كلثوم | عمرو بن كلثوم | عمر الشرفي | 16:08 | reviewed: `muallaqat-amr-ibn-kulthum` | 118 recited: al-Zawzani's 103 plus 15 from other versions. The video shows the voweled text on screen. |
+| 59 | https://www.youtube.com/watch?v=b25dp6oirQA | المؤنسة | مجنون ليلى | خالد بن حسن | 9:03 | reviewed: `al-muinisa` | A new reciter, Khalid ibn Hasan. Majnun's existence was doubted by early authorities; both sides are in the intro. |
