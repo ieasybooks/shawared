@@ -1,0 +1,119 @@
+# أَلا لا تَلوماني كَفى اللَّومَ ما بِيا
+
+## Recording
+
+- أسامة الواعظ: https://www.youtube.com/watch?v=KzQI9MLobtM (uploaded 2022-05-01, 3:40), «مرثية عبد يغوث الحارثي | إلقاء: أسامة الواعظ». The description tells the story (the tongue bound, the request to be untied to lament himself and blame his companions, wine before his death), quotes al-Jahiz («وليس في الأرض أعجب من طرفة بن العبد وعبد يغوث…»), and gives the 20 abyat he recites, in Shakir and Harun's order and words.
+- **Audio:** kept 6.9–218.9 s of the download (digital silence before the first word at 7.4 s and after the fade at 218.75 s), gain −6.1 dB, giving −20 LUFS with a peak of −7.9 dBTP. No music bed; the aligner managed on the recording as it is.
+- **Abyat recited:** all 20, in order. He says the last bayt twice (191.52–201.42 s and 201.56–211.40 s of the app audio), and the timeline plays it twice.
+
+## Attribution and title
+
+- **The poet** is the same in every source read: al-Mufaddaliyyat (both editions below: «وقال عبد يغوث بن وقاص الحارثي»), al-Aghani (vol. 16, p. 223: «الشعر لعبد يغوث بن صلاءة الحارثي»), Abu Ubayda's Naqa'id, al-Jahiz's al-Bayan, Ibn Rashiq, Yaqut, al-Baghdadi, *Lisan al-Arab* and *al-A'lam*.
+- **Bayt 3 only** has been confused with Malik ibn al-Rayb's poem in the same meter and rhyme («فيا راكبا إما عرضت فبلغن / بني مالك والريب أن لا تلاقيا»). Shakir and Harun (p. 156) explain that Sibawayh cites the bayt as Abd Yaghuth's (vol. 1, p. 312, for calling to an indefinite noun), that al-A'lam al-Shantamari added «ويروى لمالك بن الريب», and that al-Baghdadi set the two poems out separately to end the confusion; al-Baghdadi (Khizana, vol. 2, pp. 196–203) gives Abd Yaghuth's poem and then Malik's 58 abyat. *Lisan al-Arab* (vol. 7, p. 173) gives the bayt to Abd Yaghuth.
+- **Title:** the classical sources give the poem no name. «يائية عبد يغوث» appears only in Abd Allah al-Tayyib's modern *al-Murshid* (shamela 150936/647, 1862), and the video's «مرثية عبد يغوث» is the uploader's. So the title is the first sadr.
+
+## Editions
+
+- **Ahmad Muhammad Shakir and Abd al-Salam Harun, المفضليات** (Dar al-Ma'arif, Cairo; shamela's card says 6th ed.): poem 30, printed pp. 155–158, read from the page images of the PDF on archive.org `AAskZad-1136745` (`media/research/ala-la-talumani/shakir/`, PDF pages 153–156 = printed pp. 155–158). Headed «وقال عبدُ يغوثَ بنُ وقّاصٍ الحارثيُّ», 20 abyat, fully voweled, with a biography, the background («جوّ القصيدة»), the list of other sources and notes on the words. **The base text**, put in the house style. Shamela 6904/129–132 has the same edition typed; it matches the scan word for word, except a typo «ترد» in 13.2 (the scan has «تُرِيدُ») and the vowel of 11.2 (below).
+- **Charles Lyall, *The Mufaddaliyat … with the commentary of al-Anbari*, vol. 1** (Oxford, 1921): poem XXX, pp. 315–320, read from the page images, archive.org `mufaddaliyatant01mufauoft`, leaves 619–614 (the scan runs backwards). Al-Anbari's recension with his commentary (glosses, the story, the variants «ويروى»), and Lyall's apparatus. Its 20 abyat are Shakir and Harun's in the same order and words; the one difference of vowel is 11.2 «الرُّعاء». Lyall's notes give the readings of Ibn al-Athir (BA), the Aghani, the Iqd, the Naqa'id, the Khizana, al-Qali and *Lisan*. His English translation and notes are in vol. 2 (archive.org `mufaddaliyatanth00mufauoft`, leaves 148–151, pp. 111–114).
+- **Abu al-Faraj al-Isfahani, الأغاني** (ed. Ihsan Abbas et al., Dar Sadir), vol. 16, pp. 223–229, «أخبار عبد يغوث ونسبه»: archive.org `ala3any_201702`, leaves 4206–4212, read from the page images. A sawt of 3, 4, 12 and 8 (p. 223), the story of the day, then the poem: 19 abyat (no 13 or 17) in another order (1–7, 12, 14, 8–11, 15, 16, 18, 19, 20).
+- **Abu Ubayda, شرح نقائض جرير والفرزدق** (ed. Muhammad Ibrahim Hur and Walid Mahmud Khalis, Abu Dhabi, 2nd ed. 1998), vol. 1, pp. 324–326: shamela 13609/169–171 (`naqaid.txt`). The story, and 14 abyat in another order (1–4, 12, 13, 8, 10, 11, 19, 20, 5–7), lacking 9 and 14–18.
+- **Other witnesses** (shamela text): al-Baghdadi, *Khizanat al-Adab* (ed. Harun, Khanji, 4th ed.), vol. 2, pp. 196–203 (12732/666–672, `khizana.txt`), all 20 with commentary; Ibn Abd Rabbih, *al-Iqd al-Farid* (Dar al-Kutub al-Ilmiyya), vol. 6, pp. 82–85 (23789/1893–1896, `iqd.txt`), 18 abyat; Ibn Maymun, *Muntaha al-Talab* (732/71, shamela's own page numbers), 18 abyat, «وهي مفضلية قرأتها على شيخي ابن الخشاب»; Ibn al-Athir, *al-Kamil* (ed. Tadmuri), vol. 1, pp. 558–559 (21712/554–555, `kamil.txt`), 12 abyat (1–4, 8, 19, 20, 14, 5, 6, 17, 10) and one not in the poem («فيا عاص فك القيد عني…»); al-Jahiz, *al-Bayan wa-l-Tabyin* (Dar al-Hilal), vol. 2, pp. 183–184 (1–5, 8, 12) and vol. 3, p. 273 (8, 12, 19); Ibn Habib, *Asma' al-Mughtalin* (in *Nawadir al-Makhtutat*, ed. Harun), p. 246 (950/139, `mughtalin.txt`), 8, 12, 13.
+
+`abyat_in_full` is 20, as in both editions of al-Mufaddaliyyat. Al-Anbari reports that al-Asma'i heard the poem only as far as bayt 12 («إلى ههنا سمعتُ من هذه القصيدة ولم أسمع بقيّتها», Lyall p. 318).
+
+**Abu Tammam's Hamasa** has no abyat of this poem. A search of shamela's al-Marzuqi (26536) and al-Tibrizi (6907) for the poet's name and the rhyme words finds only al-Marzuqi quoting 17.2 as «قول الآخر» (p. 107, unnamed); the Abd Yaghuth on his pp. 583 and 593 is Durayd ibn al-Simma's brother. Lyall's references «Ham. 73, 18» (14.2) and «Ham. 64, 20» (17) are to commentary on other poems in Freytag's print, not to Abu Tammam's selection; shamela's al-Tibrizi has neither.
+
+## The text against the editions
+
+The text is Shakir and Harun's in every word. Where it differs in a vowel or a mark, and where other witnesses differ:
+
+| Half | Text | Other reading | Gap |
+| --- | --- | --- | --- |
+| 1.1 | كَفى اللَّومَ (Shakir, Lyall; the Khizana: «اللوم مفعول مقدم») | اللَّومُ (Muntaha's and Ibn al-Athir's prints) | −8.3; −6.3 on «كفى اللوم ما» |
+| 1.2 | وَما لَكُما (Shakir, Lyall) | فَما (the Aghani, Naqa'id, Khizana, Iqd, Muntaha, Bayan, Ibn al-Athir) | −7.6; −5.5 on the two words |
+| 1.2 | خَيرٌ (Shakir, Lyall, Iqd, Muntaha, Bayan) | نَفعٌ (the Aghani, Naqa'id, Ibn al-Athir) | −23.3; −22.5 on three words |
+| 2.2 | أَخي (all read) | أَخا (Ibn al-Athir's Bulaq text, per Lyall's note b) | −4.6 |
+| 3.1 | راكِباً (Shakir, Lyall) | راكِبا, al-Asma'i's recitation (al-Anbari); *Lisan* | +0.6; +0.8 on three words, see below |
+| 3.1 | فَبَلِّغَن (Shakir, Lyall, the Aghani) | فَبَلِّغا (*Lisan* vol. 7 p. 173; the Aghani per Lyall) | +0.7, see below |
+| 5.1 | جَزى اللَّهُ قَومي بِالكُلابِ مَلامَةً | لَحا اللَّهُ خَيلاً بِالكُلابِ دَعَوتُها (Naqa'id; al-Anbari's «ويروى») | −73.5 |
+| 5.2 | وَالآخَرينَ (Lyall; shamela's typed Shakir) | Shakir's scan prints «والاخَرينَ» without the madda; the meter needs the hamza (wal-ʾā) | not scored |
+| 6.1 | مِنَ الخَيلِ نَهدَةٌ | مِنَ القَومِ نَهدَةٌ (Iqd); مِنَ القَومِ شَطبَةٌ (Ibn al-Athir) | −21.5; −40.7 |
+| 6.2 | الحُوَّ الجِيادَ | الحُوَّ العِتاقَ (Naqa'id, Muntaha); الجُردَ الجِيادَ (Iqd); الكُمتَ العِتاقَ (Ibn al-Athir) | −21.2; −17.5; −36.2 |
+| 7.2 | وَكانَ الرِّماحُ | وَكانَ العَوالي (Abu Ubayda per al-Anbari; Naqa'id); وَكادَ الرِّماحُ (Iqd) | −19.5; −5.3 |
+| 8.2 | عَن لِسانِيا (Shakir, Lyall, Naqa'id, Iqd, Muntaha; the Aghani's sawt p. 223) | مِن لِسانِيا (Bayan, Ibn Habib, Ibn al-Athir); لي لِسانِيا (the Aghani's full poem p. 228; al-Anbari's «ويروى») | −8.2; −5.7 |
+| 10.2 | تَحرُبوني (Shakir: «من باب طلب»; Lyall) | تَحرِبوني (Ibn al-Athir's print) | −4.1; −3.2 on two words |
+| 11.2 | الرُّعاءِ (Lyall; shamela's typed Shakir; Naqa'id) | الرِّعاءِ (Shakir's scan, whose note allows the damma) | +5.7; +4.2 on three words, see below |
+| 12.1 | شَيخَةٌ | كَهلَةٌ (Naqa'id) | −14.5 |
+| 12.2 | تَرى (Shakir, Lyall, Naqa'id, Bayan vol. 3) | تَرَي (Khizana, Iqd p. 85, Muntaha: al-Akhfash's correction); تَرَ (Bayan vol. 2, Iqd p. 83, *Lisan*); تَرا (the Aghani); يَرَوا (Ibn Habib) | −9.7 for تَرَي; −5.8 on four words |
+| 13.1 | الحَيِّ | التَّيمِ (Naqa'id, Ibn Habib) | −17.1 |
+| 13.2 | يُراوِدنَ | تُحاوِلُ (Ibn Habib) | −29.0 |
+| 14.2 | عَلَيَّ (Shakir, Lyall; *Lisan* vol. 6, p. 115) | عَلَيهِ (the Aghani, Iqd, Muntaha, Ibn al-Athir) | −14.5; −6.4 on three words |
+| 14.2 | مَعدُوّاً | مَعدِيّاً (Shakir's note; Sibawayh and al-Radi per the Khizana) | −9.5 |
+| 16.1 | وَأَنحَرُ | وَأَعقِرُ (Iqd; al-Anbari's «ويروى»); وَأَعبِطُ (al-Anbari's «ويروى») | −24.5; −30.5 |
+| 17.1 | شَمَّصَها (all read) | شَمَّسَها (Khizana: «وهي أجود»); نَفَّرَها (Shakir's and the Khizana's «رويت») | 0.0 (ص and س score alike); −25.7 |
+| 18.2 | بِكَفّي | بِرُمحي (Iqd); بِكَرّي (Muntaha) | −22.1; −6.9 |
+| 19.2 | نَفِّسي | قاتِلي (Iqd; the Khizana's «روي») | −17.1 |
+| 20.2 | أَعظِموا (Shakir, Lyall, the Aghani, Iqd, Muntaha, Khizana) | عَظِّموا (Naqa'id, Ibn al-Athir) | +5.1; +2.8 on three words, see below |
+
+Scores come from `scripts/variants.py`'s scoring run in one batch (`/home/alifadel/.cache/shw-tmp/b4/tools/vbatch.py`; tests and log in `media/research/ala-la-talumani/_scratch/`, `tests.txt` and `vbatch.log`) on the app audio; the gap is the other reading's score against the text's, first on the whole half, then (where given) on the few words around the difference. Every pair has the same number of words.
+
+- **11.2:** the reciter says «الرُّعاء», with damma: the aligner prefers it by 5.7 on the half and 4.2 on «نشيد الرعاء المعزبين», and the first transcriber writes «الرُّعَاءِ». Shakir and Harun print the kasra but say «ويجوز ضم الراء» (note 11, p. 157); Lyall prints the damma. The text follows the reciter; the word's note gives both.
+- **20.2:** the aligner leans to «عَظِّموا» (5.1 on the half, 2.8 on three words), but both transcribers hear an alif before the ع in both sayings of the bayt («أعظم ضوء ناريا» in all four clips), and both scan alike. The text keeps «أَعظِموا», the reading of both editions of al-Mufaddaliyyat and the Aghani; the note gives the Naqa'id's «عظّموا». A lean, not proof.
+- **3.1:** «راكِباً» against «راكِبا» and «فَبَلِّغَن» against «فَبَلِّغا» are coin tosses (under 1). The transcribers hear «فيا راكبا … فبلغا»: the nun of emphasis after a fatha is said as an alif at a pause, which is what a sadr's end is, so the hearing does not decide between the readings. The text keeps both editions' «راكِباً» and «فَبَلِّغَن»; the notes give al-Asma'i's recitation without tanwin and *Lisan*'s «فبلّغا». Shakir and Harun attribute «أراد فيا راكباه للندبة» to Abu Ubayda; *Lisan* (vol. 7, p. 173) gives the same words to Abu Ubayd, and adds that the tanwin is wrong because a particular rider is meant. The note says «وقيل».
+- **17.1:** the aligner writes ص and س alike. The first transcriber hears «شَمَّصَهَا», with ص, as every text read prints it.
+- **Readings of another length, not scored:** 3.2 «ألّا» (Muntaha, Ibn al-Athir), 6.1 «كُمَيتٌ رَجيلَةٌ» (Naqa'id, al-Anbari's «ويروى»), 10.2 «تحرِبونيَ ماليا» (Ibn al-Athir), 12.2 «لم ترَ» and «لم يروا», Ibn al-Athir's 5 and 19.2 («لحى الله قوما بالكلاب شهدتهم صميمهم والتابعين المواليا», «كرّي كرّةً من ورائيا»), 18.2 Iqd's whole half. The transcripts have the text's words in every one.
+
+**House style and spelling:** the tashkeel of both editions, put in the house style (no sukun; tanwin on the alif: «سَيِّداً», «رُكَّداً», «مَعدُوّاً»). The split word of bayt 15 is printed as both editions print it, «وَمُعمِلَ ال / مَطِيِّ», so that both halves scan (as in `yaslamu-al-maru-akhuhu` and `maqsurat-ibn-durayd`).
+
+## Meter
+
+Tawil, rhyme in ي with the alif of release (يا). The opening bayt is musarra'. `python3 -I /home/alifadel/.cache/shw-tmp/b4/tools/scan.py content/poems/ala-la-talumani/poem.json` scans all 40 halves with no half left to check. Licences and spellings the meter depends on, scanned by hand:
+
+- the plural mim long in 5.2 «صَريحَهُمُ» (ṣarīḥahumū, the hashw's mafāʿīlun) and at the sadr's end in 7.1 «أَبيكُمُ», as both editions print them;
+- the yā' of the first person given a fatha where a short syllable is needed: 10.1 «بِيَ», 13.1 «حَولِيَ», 19.1 «كَأَنِّيَ», 19.2 «لِخَيلِيَ» (Shakir prints the fatha on all four; Lyall's print shows it clearly only on «بِيَ»);
+- 12.2 «لَم تَرى»: the alif kept after the jussive gives the long syllable the foot needs (ka-ʾan-lam / ta-rā-qab-lī); with «تَرَ» the foot breaks. Al-Anbari keeps it («والرواية هي الأولى») and reports al-Farra' («أبقى من الهمزة خلفاً»);
+- 5.2 «وَالآخَرينَ» with its hamza (wal-ʾā), above.
+
+## Ear check
+
+- **Alignment:** `scripts/align.py` (through the heavy wrapper) aligned every word above the weak threshold except 2.2 «مِن», 3.2 «أَن» and 11.1 «أَن» (short words; their halves pass the ear check). The plan repeats 20.1 and 20.2.
+- **Timeline fixes** (`media/research/ala-la-talumani/_scratch/bin/gaps.py`, `fixends.py`): the aligner started 2.1 at 10.10 s, inside 1.2's stretched rhyme; the pause between them is at 10.35–10.55 s (−40 dB), so 2.1 now starts at 10.56 s and 1.2 ends at 10.40 s. Where the reciter stretches a rhyme past the aligner's end and then pauses (below −30 dB), the half's end was moved to the pause (25 halves). The last half ends at 211.40 s, where the voice has died to −46 dB (the file ends at 212.0 s). Between sadr and ajuz he often runs on without a pause; the short dips there (36.2, 66.5, 106.4, 136.5, 157.2, 186.9, 197.1 s) are the stops and fricatives of the ajuz's first word (وقيسا, وكان, نشيد, أنا, وأصدع, لخيلي, لأيسار), not boundaries.
+- **`scripts/verify.py`:** 17 of 42 clips differ from the text (26 of 213 words). Each is the transcriber's:
+  - a stretched last syllable or rhyme heard as letters: 2.1 «الملامات», 2.2 «شماليه», 9.2 «بواييه», 13.2 «نساييه», 17.1 «القنار», 17.2 «القنات», 18.1 «وعاديات», 3.2 «تلقيه»;
+  - words run together or split: 4.2 «حاضر موت», 6.2 «الحوالجياد», 8.2 «معشرتيم», 20.1 «الزقاروي» (both sayings);
+  - the hamza of «أمعشر» heard as «يا» (8.2, and 9.1's flag «starts with يا»);
+  - 7.1 «احمد ما راي بكمون» for «أَحمي ذِمارَ أَبيكُمُ» (ذ misheard; the second transcriber hears «أحميد ما رأى بكم», the full transcript «احمي ذما رأى بكم»);
+  - 18.2 «الحواليا» for «العواليا» (both transcribers);
+  - 15.1 «الورق» and 15.2 «النطي»: the article of «المطيّ» sits on the boundary and is heard in both clips;
+  - 3.2 «والندم يا» for «نداماي» (the second transcriber «وأن ندمى يا»): the energy shows the ajuz starting at 25.84 s with the n of نداماي and the d closure at 26.1 s, as aligned.
+- **Second transcriber** (`audar`, on clips cut 0.3 s wider, `media/research/ala-la-talumani/_scratch/audar/`): it agrees with the text, or mishears differently, in every half; it confirms 1.2 «خير», 10.2 «تحربوني», 12.2 «لم تر», 13.1 «الحي», 14.2 «علي», 16.1 «وأنحر», 19.2 «نفسي», 20.2 «أعظم».
+
+## The story, and where the sources differ
+
+- **The battle** (Second Day of al-Kulab): Madhhij and its allies, twelve thousand by Abu Ubayda's count, under Abd Yaghuth, against Sa'd and al-Ribab of Tamim; al-Nu'man ibn Jassas, chief of al-Ribab, was killed on the first day; on the second Madhhij broke (the Aghani vol. 16, pp. 224–227; Naqa'id pp. 320–324). Who killed al-Nu'man differs: a Yemeni with a Hanzalite mother, Abd Allah ibn Ka'b, who shot him («رماه», the Aghani p. 226); a man who speared him in the upper arm when his tired horse failed him (al-Anbari, Lyall p. 317); Yazid ibn Shaddad ibn Qanan al-Harithi, with an arrow (Ibn al-Athir vol. 1, p. 558).
+- **His capture:** a rash youth of Banu Abd Shams (of Sa'd) took him; he paid the youth's mother a hundred camels to be handed to al-Ahtam; Sa'd and al-Ribab quarrelled over him; al-Ahtam gave him up and Ismat ibn Ubayr al-Taymi took him (the Aghani pp. 227–228; the Naqa'id the same). In al-Anbari (Lyall p. 317) Musad ibn Rabi'a of Taym took him; Musad, bleeding from a wound in his akhal, fell, Abd Yaghuth finished him and fled; Ismat ibn Ubayr **al-Sa'di** tracked and caught him, and, on Qays ibn Asim's advice, the sons of al-Nu'man bought him from Ismat, who said «إني أحبّ اللبن», for «ثلاثين من الإبل». The Iqd (vol. 6, pp. 82–84) has Abu Ubayda's version close to al-Anbari's, with a hundred camels, «وقال رؤبة بن العجاج: بل أرضوه بثلاثين من حواشي النعم». Ibn Rashiq (al-Umda vol. 1, pp. 193–194) says he offered a thousand camels for his ransom «فأبوا إلا قتله».
+- **The tongue:** the Naqa'id («شدّوا لسانه بنسعة لا يهجكم»), the Aghani p. 229 («لمّا أسروه شدّوا لسانه بنسعة، لئلا يهجوهم»), al-Jahiz (al-Bayan vol. 3, p. 273: «وربما شدوا لسانه بنسعة، كما صنعوا بعبد يغوث»), Ibn al-Athir and Ibn Habib say his tongue was tied. Al-Anbari (Lyall pp. 316–317) gives both views: «هذا مثلٌ واللسان لا يُشَدّ بنسعة… وإنما أراد افعلوا بي خيراً لينطلق لساني بشكركم», and the story that they gagged him («كعموه بنسعة») after hearing him recite, until he promised not to satirise them. Al-Baghdadi (vol. 2, pp. 199–200) sets out the two views: the figure («شرّاح أبيات الشعراء والقالي في أماليه، وحكاه ابن الأنباري») and the literal strap («الجاحظ… والأصفهاني في الأغاني، وحكاه أيضاً ابن الأنباري»). *Al-Hamasa al-Basriyya* (vol. 1, p. 93) says it was tied except when he ate and drank.
+- **His death:** wine, then Ismat cut his akhal vein and left him bleeding, with his two sons (or two men, the Khizana) to watch him; the poem is his answer to their taunt (the Aghani pp. 227–228; the Khizana vol. 2, p. 197). The Naqa'id has the wine and the two sons but says only «فأبوا إلا قتله. فقتلوه بالنعمان بن جساس». Ibn Habib (*Asma' al-Mughtalin*, p. 246): «فندّموه فضربت عنقه». *Al-Hamasa al-Basriyya*: both akhal veins cut. Al-Zirikli (*al-A'lam* vol. 4, p. 187) has the choice of death, neat wine and the akhal. Dhu al-Rumma's line, in *Lisan* (vol. 6, p. 316), «وعبدُ يغوثَ يحجلُ الطيرُ حولَه / قد احتزّ عُرشَيهِ الحسامُ المذكَّرُ», also has him killed by the sword, and Ibn Manzur adds that he was not killed in the battle «وإنما أُسر وقُتل بعد ذلك».
+- **The intro and bio** give the tongue and the death in each version, each with its source.
+
+## Commentary drawn on
+
+- **Glosses:** al-Anbari (Lyall pp. 315–320) and Shakir and Harun's notes (pp. 156–158) for the words they explain: كفى اللوم ما بيا (1), شمالي (2), راكباً, عرضت (3), أبو كرب, الأيهمان, قيس (4, after Ibn al-Athir vol. 1, p. 559), الكلاب, صريحهم, الموالي (5), نهدة, الحوّ, تواليا and al-Asma'i on the حوّ (6), الذمار, يختطفن (7), النسعة (8), أسجحوا, أخاكم, البواء (9), حربه (10), الرعاء, المعزب, المتالي (11), عبشمية, ترى (12), معدوّاً (14), الشَّرب, المطيّة, أصدع, القينة (16), شمّصها, لبيق (17), عادية, سوم الجراد, وزعتها, أنحوا, العالية (18), السِّباء, الرويّ, الأيسار (20). The Khizana adds نداماي, نجران (from al-Bakri), the parsing of 1.1 and 3.2, the two readings of 12.2 (al-Akhfash via al-Qali, Ibn al-Sid), نفّسي «وسّعي», the purchase of wine «للشرب لا للبيع», and that 19–20 are taken from Imru' al-Qays.
+- ***Lisan al-Arab*** (Dar Sadir, shamela 1687, files in `media/research/ala-la-talumani/lisan/`): شمص (vol. 7, p. 49), لبق (vol. 10, p. 326), نسع (vol. 8, p. 352), شمال (vol. 11, p. 365), عرض and «فبلّغا» (vol. 7, p. 173), المتالي (vol. 14, p. 103), ركد (vol. 3, p. 184), زقّ (vol. 10, p. 143), نفّس (vol. 6, p. 237), عرس (vol. 6, p. 136), رجال جمع راجل (vol. 11, p. 269), الأكحل «عرق في وسط الذراع» (vol. 11, p. 586), عبشمي (vol. 6, p. 115).
+- **Places:** Yaqut, *Mu'jam al-Buldan* (Dar Sadir): al-Kulab, vol. 4, pp. 472–473 (with the second day and the poem); Hadramawt, vol. 2, p. 270.
+- **Bayt by bayt:** 1, the two men left with him (the Aghani p. 228) and al-Baghdadi's «فالخطاب لاثنين حقيقة» (vol. 2, p. 197); 4, Qays's «لبيك وإن كنت قد أخرتني» (the Khizana vol. 2, p. 199, after the Aghani and al-Lakhmi); 9, both readings of البواء from al-Anbari (his own and Ahmad's «لم يكن أخوكم نظيراً لي»), with the Aghani's note «لم يكن نظيراً لي فأبوء به» and Shakir's «أني لم أقتل صاحبكم حتى تريدوا قتلي به»; 10, Ibn Rashiq; 12, the Aghani's story (p. 227) and al-Asma'i in al-Anbari; 17, al-Marzuqi (*Sharh Diwan al-Hamasa*, Dar al-Kutub al-Ilmiyya, p. 107); 18, al-Anbari's «فالعادية ههنا القوم يعدون» against Shakir's «يريد وخيل عادية»; 19, Imru' al-Qays (the Khizana and *Simt al-La'ali* vol. 2, p. 64).
+- **Where the commentators are silent,** the sharh says so: 7 (whom «أبيكم» addresses: his own tribe, whom he blamed in 5; Lyall reads it the same way), 13 (no commentary on it; the women's wanting him is taken as a boast, Lyall's reading too) and 20 (the fire is taken as the fire lit for guests).
+- **The poet:** al-Zirikli, *al-A'lam* (15th ed.), vol. 4, p. 187 (shamela 12286/3526, `alam.txt`): the name «عبد يغوث بن صلاءة بن ربيعة», «شاعر جاهلي يماني، وفارس معدود. كان سيد قومه من بني الحارث وقائدهم», the death, and the date «نحو ٤٠ ق هـ = نحو ٥٨٤ م». The Aghani vol. 16, p. 224 for the other lineage (Ibn al-Kalbi's «عبد يغوث بن الحارث بن وقاص بن صلاءة») and the family of poets (al-Lajlaj, Mushir, Ja'far ibn Ulba). `poet.json` has no `died`, as for the other pre-Islamic poets (antara, imru-al-qays); the bio gives al-Zirikli's approximate date.
+- **Al-Jahiz** (intro): *al-Bayan wa-l-Tabyin* vol. 2, p. 184 (shamela 10614/494): «وليس في الأرض أعجب من طرفة بن العبد وعبد يغوث، وذلك أنا إذا قسنا جودة أشعارهما في وقت إحاطة الموت بهما لم تكن دون سائر أشعارهما في حال الأمن والرفاهية».
+
+## Review
+
+Checked by the drafter, 2026-11-18: every half against Shakir and Harun's page images (pp. 155–158, zoomed on 5.2, 11.2 and the notes) and Lyall's (pp. 315–320), letter by letter and vowel by vowel, and against shamela's typed Shakir with a short script (the only differences are its typo in 13.2 and the vowel of 11.2); all 40 halves scanned with `scan.py` and the licences above scanned by hand; every case ending parsed (subjects, objects, the hal of 6.2 and 14.2, the rubba of 18.1, the badal of 4 and 5.2, «بنانيا» as the subject of «لبيقا»); the scored readings and both transcribers on every half; the start of every half and the end of the last against the energy of the app audio; every gloss against al-Anbari, Shakir and Harun's notes, the Khizana or *Lisan*; every fact in the intro, bio and sharh against the page cited above (and the story's versions kept apart by source); every quotation against its page. Fixed in this pass:
+
+- **Text:** 11.2 «الرُّعاءِ» after scoring (the draft had Shakir's kasra).
+- **Audio:** 2.1 started inside 1.2's rhyme; half ends moved to the pause where the rhyme runs on; the last half to the end of the voice.
+- **Notes:** heads without an article the verse word lacks (شِمال, ذِمار, صَريح, بَواء, بَنان, رِجال, عِرس, أَيسار, مَطِيّ), the imperatives in their plain form (أَسجِحوا; none for أَعظِموا, كُرّي, نَفِّسي); 3.1.2 no longer names Abu Ubayda, since Shakir and *Lisan* disagree on the name; 8.2.4 separates the Aghani's sawt («عن») from its full text («لي»); 12.1.4 the clan of Abd Shams as the Naqa'id gives it.
+- **Sharh:** eleven Arabic sharh reworded where they repeated their notes (5, 6, 7, 10, 11, 13, 15, 17, 18, 19, 20); 16 lost an unsourced «إذا لم يجد غيرها», 18 an unsourced «وحده»; 13 and 20 say where the commentators are silent; 2 deepened.
+- **English:** 9.2 translated by al-Anbari's reading, with Ahmad's in the sharh; 3.1 «al-Arud» for an unsourced "Hijaz"; 19.2 «كُرّي» as "charge again"; 4's quotation of Qays made literal.
+- **sources.md:** the Naqa'id has 14 abyat in its shamela edition, Ibn al-Athir 12 and one extra; «إني أحب اللبن» is Ismat's, not Qays ibn Asim's.
