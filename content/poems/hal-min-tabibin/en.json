@@ -1,0 +1,40 @@
+{
+  "lang": "en",
+  "source": { "name": "Shawared" },
+  "title": "Is There a Doctor for the Sickness of Love, or a Charmer?",
+  "intro": "Al-Barudi wrote this in exile on Sarandib, the Arabic name for Ceylon, and his diwan, edited by Ali al-Jarim and Muhammad Shafiq Ma'ruf, heads it “He said, while in Sarandib, longing for his homeland”; the editors date his banishment there, after the Urabi revolt, to Safar 1300 AH (December 1882 CE). It opens with a complaint of lovesickness, grief and sleepless nights, then turns to his solitude on the island, without a friend or companion, keeping watch over the stars from a mountain top; these are the first eight of its thirty lines, the ones the recording gives. The rest of the poem prays for rain on Rawdat al-Nil, which the editors take to be the Nile island of al-Rawda with its old Nilometer, or Egypt as a whole, longs for his people and his youth, and ends in acceptance of fate: “after despair, hardship must find relief”. Writing in al-Risala on the centenary of his birth, Ahmad al-Zayn faulted al-Barudi for how seldom his poetry showed feeling for his country, then excepted “the few poems he wrote in his exile in Sarandib” and quoted this one.",
+  "abyat": {
+    "1": { "translation": ["Is there a doctor for the sickness of love, or a charmer,", "to cure a sick man, a brother of grief and sleeplessness?"],
+           "sharh": "He longs for a doctor, or a charmer with healing spells, to cure the lovesickness that keeps him grieving and awake. The love, his editors explain, is longing for his homeland and his people." },
+    "2": { "translation": ["Love had left a last breath of life in my heart,", "until parting came and took what remained."],
+           "sharh": "Love had already worn his heart down to a last flicker of life. Then parting from his home and family took even that, and brought him close to death." },
+    "3": { "translation": ["Grief has worn me thin, and longings have grazed on my liver:", "pity my soul for its grief and its longings."],
+           "sharh": "Grief has wasted his body and longing has eaten at his liver, in Arabic a seat of strong feeling. Exiled and alone, he can only pity himself for what he suffers and hope for release." },
+    "4": { "translation": ["I charge my soul with patience while it frets,", "and patience in love has defeated every man who longs."],
+           "sharh": "He forces himself to be patient while his soul is in turmoil. That is no wonder: he is a lover far from home, and patience in love has always been beyond those who long." },
+    "5": { "translation": ["In Sarandib I have no friend to turn to,", "no companion but my sorrow and my downcast silence."],
+           "sharh": "On the island of his exile he has no friend to turn to and no one to keep him company. His only companions are his sorrow and long hours of silent brooding." },
+    "6": { "translation": ["I spend the night herding the stars, leaning on my elbow,", "on a peak whose ascent defeats the climber."],
+           "sharh": "He lies awake all night watching the stars in his grief, on a peak that is hard for any climber to scale. The rhyme word of line 1 comes back with another meaning: there a charmer, here a climber." },
+    "7": { "translation": ["It has girded itself with a belt of star-pearls,", "tied with a sash that does not slip."],
+           "sharh": "The peak wears the stars as a belt round its waist and a sash across its body. A slender beauty's sash slips on her narrow waist; this one holds firm, so vast and high is the mountain." },
+    "8": { "translation": ["As if the Pleiades, trembling beside the crescent,", "were a lamp gleaming in a niche."],
+           "sharh": "The Pleiades, trembling beside the crescent moon, look like a lamp flickering in a niche, with the curve of the moon around them like the arch around the lamp. It is the sky he watches from the summit." }
+  },
+  "words": {
+    "1.1.7":   { "word": "راقي", "head": "راقٍ", "root": "ر ق ي", "meaning": "Raqi: a charmer, one who treats the sick with spells and prayers." },
+    "1.2.5":   { "word": "وَإيراقِ", "head": "إيراق", "root": "أ ر ق", "meaning": "Sleeplessness, as the editors gloss it; they also give a second sense, failure, from a verb used of a hunter whose snare catches nothing." },
+    "2.1.7":   { "word": "رَمَقاً", "head": "رَمَق", "root": "ر م ق", "meaning": "Ramaq: the last remnant of life, the final breath." },
+    "3.2.2":   { "word": "وَيحَ", "head": "وَيح", "root": "و ي ح", "meaning": "Wayha: a cry of pity for someone in distress." },
+    "5.1.3":   { "word": "سَرَنديبَ", "meaning": "Sarandib: Ceylon, today's Sri Lanka, where al-Barudi was exiled after the Urabi revolt. Yaqut says that dib means “island” in the language of India." },
+    "5.2.2":   { "word": "أَنيسَ", "head": "أَنيس", "root": "أ ن س", "meaning": "A companion, one who keeps loneliness away. The editions print anisun, continuing the denial of the first half; the reciter says anisa, which denies any companion at all. The sense is the same." },
+    "6.1.2-4": { "word": "أَرعى نُجومَ اللَّيلِ", "meaning": "“I herd the stars of the night”: I watch them until they set, a figure for sleeplessness and care, as in a line of al-Khansa': “I herd the stars, though no one set me to herd them”." },
+    "6.1.5":   { "word": "مُرتَفِقاً", "head": "مُرتَفِق", "root": "ر ف ق", "meaning": "Leaning on one's elbow, a posture of grief and worry." },
+    "6.2.2":   { "word": "قُنَّةٍ", "head": "قُنَّة", "root": "ق ن ن", "meaning": "Qunna: the top of a mountain." },
+    "7.1.1":   { "word": "تَقَلَّدَت", "head": "تَقَلَّدَ", "root": "ق ل د", "meaning": "Has put on, as a sword-belt over the shoulder or a necklace; the editors think the poet uses it here for girding a belt round the waist." },
+    "7.1.3-4": { "word": "جُمانِ الشُّهبِ", "meaning": "“The juman of the stars”: stars like pearls. Juman are silver beads made in the shape of pearls; shuhub, which in modern Arabic means meteors, is here the stars in general, as the editors note." },
+    "7.2.2-4": { "word": "بِوِشاحٍ غَيرِ مِقلاقِ", "meaning": "“With a sash not loose”: a wishah is a broad band set with jewels, worn from the shoulder to the hip." },
+    "8.1.2-3": { "word": "نَجمَ الثُّرَيّا", "meaning": "The Pleiades, the star cluster the Arabs also called simply al-Najm, “the Star”." },
+    "8.2.6":   { "word": "طاقِ", "head": "طاق", "root": "ط و ق", "meaning": "Taq: an arch, or an arched niche in a wall." }
+  }
+}
