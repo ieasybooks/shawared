@@ -1,0 +1,37 @@
+{
+  "lang": "en",
+  "source": { "name": "Shawared" },
+  "title": "We Are Far Away, Though the Houses Are Our Neighbours",
+  "intro": "Ibn al-Khatib wrote this elegy for himself in prison in Fez in 776 AH (1374 CE). The Marinid sultan Abu al-Abbas Ahmad had arrested him, as he had agreed to do with Ibn al-Ahmar, the ruler of Granada, and he was tried for heresy. Ibn Khaldun, whom Ibn Hajar calls his friend, records that during his ordeal in prison he was “expecting the calamity of death” and composed these lines, and that men sent by his enemy Sulayman ibn Dawud then came to the prison at night and strangled him; al-Maqqari copied the account and the poem from Ibn Khaldun into Nafh al-Tib and Azhar al-Riyad. He speaks as a man already dead: a silent sermon, breath cut off, the great turned to bones and the feeder to food, suns set, swords and fortunes failing those who trusted them, a youth with chests of clothes carried to the grave in a rag; then he turns to his enemies: Ibn al-Khatib is gone, and only one who never dies has any right to rejoice. Ibn Hajar says it was widely believed he composed it as he was led to his death, but holds Ibn Khaldun's account, that he wrote it in prison, to be the correct one; and al-Maqqari saw in Fez a takhmis of it, which sets three new half-lines before each of its lines, attributed to one of the Banu al-Sabbagh, with extra lines that he thought resembled Ibn al-Khatib's own manner.",
+  "abyat": {
+    "1": { "translation": ["We are far away, though the houses are our neighbours;", "we have come with a sermon, and we are silent."],
+           "sharh": "He speaks as one of the dead: far from the living though houses stand beside them, their state a sermon preached without a word. The line sets distance against nearness and preaching against silence." },
+    "2": { "translation": ["Our breaths fell silent all at once,", "like the prayer said aloud, and after it the qunut."],
+           "sharh": "Their breathing stopped in an instant, the way the dawn prayer's recitation aloud gives way to the qunut, which in the Maliki school is a silent supplication. Their life was a voice, and then it suddenly went quiet." },
+    "3": { "translation": ["We were great men, and we have become bones;", "we fed others, and now we are food."],
+           "sharh": "Once great, they are now bones; once they fed others, now they are food for the earth. One Arabic word, izam, means both great men and bones, and naqutu, we feed, chimes with qut, food." },
+    "4": { "translation": ["We were suns in the sky of glory;", "they set, and the houses wailed over them."],
+           "sharh": "In their greatness they were suns in the sky of glory; when they set, that is, died, the houses, meaning the people in them, wailed over them. The houses of the first line return here as the rhyme." },
+    "5": { "translation": ["How often the blades have felled the man of the sword,", "and the man of fortune: how often his fortunes deserted him."],
+           "sharh": "Many a swordsman has been cut down by blades, and many a lucky man abandoned by his luck: each is undone by the very thing he relied on, the swordsman by swords, the lucky man by luck. Neither strength nor luck lasts." },
+    "6": { "translation": ["How many a youth has been carried to the grave in a rag,", "a youth whose chests were filled with his clothes."],
+           "sharh": "Many a young man whose chests were full of fine clothes has been carried to the grave wrapped in a rag, his shroud. Of all he had to wear, only that cloth went with him." },
+    "7": { "translation": ["So tell the enemies: Ibn al-Khatib is gone,", "he has passed beyond reach; and who does not pass?"],
+           "sharh": "He has the listener tell his enemies that Ibn al-Khatib has gone beyond their reach, naming himself as if writing his own death notice, and reminds them that everyone passes on, themselves included." },
+    "8": { "translation": ["And whoever among you rejoices at it,", "tell him: let him rejoice today who will never die."],
+           "sharh": "To any enemy who rejoices at his death, the answer is that only one who never dies has the right to rejoice today; whoever rejoices will die as he did. Here he addresses the enemies directly." }
+  },
+  "words": {
+    "1.2.2":   { "word": "بِوَعظٍ", "head": "وَعظ", "root": "و ع ظ", "meaning": "A sermon, a warning of what is to come. De Slane's edition of Ibn Khaldun has li-wa'd, “to an appointment”." },
+    "2.1.3":   { "word": "دُفعَةً", "head": "دُفعَة", "root": "د ف ع", "meaning": "All at once. The reciter says duf'a, a gush poured out at one go; Muhammad Miftah's edition of the diwan and Azhar al-Riyad have daf'a, a single time." },
+    "2.2.4":   { "word": "القُنوت", "root": "ق ن ت", "meaning": "Qunut: a supplication made standing in the prayer; the word also means keeping silent." },
+    "3.1.2":   { "word": "عِظاماً", "head": "عِظام", "root": "ع ظ م", "meaning": "Izam: great men, plural of azim." },
+    "3.1.4":   { "word": "عِظاماً", "head": "عِظام", "root": "ع ظ م", "meaning": "Izam: bones, plural of azm." },
+    "4.2.4":   { "word": "البُيوت", "root": "ب ي ت", "meaning": "The houses. Nafh al-Tib, Azhar al-Riyad and de Slane's Ibn Khaldun have “the paths (al-sumut) wailed over us”; the editors of Azhar al-Riyad suggest he means the courses of the stars." },
+    "5.1.5":   { "word": "الظُّبا", "root": "ظ ب و", "meaning": "Blade edges: the plural of zuba, the edge of a sword or spearhead." },
+    "5.2.1-2": { "word": "وَذا البَختِ", "meaning": "The man of fortune. Bakht, luck, is a Persian word taken into Arabic." },
+    "6.2.5":   { "word": "التُّخوت", "meaning": "Tukhut: chests for keeping clothes; the plural of takht, a Persian word taken into Arabic." },
+    "7.1.4-5": { "word": "اِبنُ الخَطيبِ", "meaning": "Ibn al-Khatib: the poet himself." },
+    "8.1.3":   { "word": "يَفرَحُ", "head": "فَرِحَ", "root": "ف ر ح", "meaning": "Rejoices. Ibn Hajar quotes the line with yashmatu, “gloats”." }
+  }
+}
