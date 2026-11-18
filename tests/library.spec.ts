@@ -4,6 +4,8 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 
 const POEM = "/poems/taqulu-buthaynatu";
 const TITLE = "تَقولُ بُثَينَةُ لَمّا رَأَت";
+/** A search no poem, poet or reciter answers, however the library grows. */
+const NO_MATCH = "ظظظظ";
 const panelTitle = (page: Page) => page.getByText(/^البيت [٠-٩]+ · الشرح$/).first();
 const slider = (page: Page) => page.getByRole("slider").first();
 
@@ -150,7 +152,7 @@ test("search finds a poem by title, opening bayt, poet or reciter, with or witho
     await expect(page.getByText("لِعَينَيكِ ما يَلقى الفُؤادُ وَما لَقي").first(), q).toBeVisible();
     await expect(page.getByText(TITLE), q).toHaveCount(0);
   }
-  await search.fill("الخنساء");
+  await search.fill(NO_MATCH);
   await expect(nothing).toBeVisible();
   await page.getByRole("button", { name: "امسح البحث" }).click();
   await expect(search).toHaveValue("");
@@ -177,7 +179,7 @@ test("the poets and reciters tabs search by name", async ({ page }) => {
   }
   await search.fill("المتنبي");
   await expect(shown(page, "المُتَنَبّي")).toBeVisible();
-  await search.fill("الخنساء");
+  await search.fill(NO_MATCH);
   await expect(shown(page, "لا نتائج تطابق بحثك")).toBeVisible();
   await page.goto("/reciters");
   await page.waitForLoadState("networkidle");
