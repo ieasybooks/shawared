@@ -127,6 +127,12 @@ export const pageMeta = {
       t(lang, kind === "poets" ? "metaPoets" : "metaReciters"),
     ),
   meters: (lang: UiLang) => describe(lang, paths.meters, titled(lang, t(lang, "meters")), t(lang, "metaMeters")),
+  // What the reader keeps lives on their device: nothing for search engines.
+  library: (lang: UiLang): Metadata => ({
+    ...describe(lang, paths.library, titled(lang, t(lang, "library")), t(lang, "metaLibrary")),
+    robots: { index: false },
+  }),
+  playlist: (lang: UiLang): Metadata => ({ title: titled(lang, t(lang, "playlists")), robots: { index: false } }),
   person: (kind: PersonKind, id: string, lang: UiLang) => {
     const bundle = personBundle(kind, id, lang);
     if (!bundle) return notFound(lang);

@@ -19,6 +19,8 @@ function* htmlFiles(dir: string): Generator<string> {
 function pathOf(file: string): string | null {
   // Group copies ("(tabs)/…"), dynamic fallbacks ("[id].html") and the not-found page.
   if (/[([]|\+not-found|^_/.test(file)) return null;
+  // The reader's library and playlists, which live on their device.
+  if (/^(en\/)?(library|playlist)\.html$/.test(file)) return null;
   const bare = file.replace(/\.html$/, "").replace(/(^|\/)index$/, "");
   return `/${bare}`;
 }

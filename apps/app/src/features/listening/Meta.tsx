@@ -7,16 +7,21 @@ import { Only, responsive, useLayout } from "../../lib/responsive";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
+import { catalogNow } from "../../lib/content";
 import { useGoBack } from "../navigation/TopBar";
+import { DownloadButton } from "../saved/DownloadButton";
+import { FavouriteButton, PlaylistMenu } from "../saved/SavedButtons";
 import { useListening } from "./state";
 
 /**
- * Title, translated title, meter, rhyme, count and the translation switch. Wide windows add
- * the poet above the title and back beside it (phones have both in the top bar), and put the
- * switch at the end of the chips rather than of the title.
+ * Title, translated title, meter, rhyme, count and the translation switch, and what the reader
+ * can keep: the heart, a playlist, a download (the apps). Wide windows add the poet above the
+ * title and back beside it (phones have both in the top bar), and put the switch at the end of
+ * the chips rather than of the title. The reader's buttons end the chips' line, or take the next
+ * one where it is full.
  */
 export function Meta() {
-  const { bundle, hasTranslation, trOn, setTrOn, sources, intro, showIntro, pinned } = useListening();
+  const { bundle, recitation, hasTranslation, trOn, setTrOn, sources, intro, showIntro, pinned } = useListening();
   const { palette, lang, href } = useSettings();
   const type = useType();
   const layout = useLayout();
@@ -54,10 +59,21 @@ export function Meta() {
             {t(lang, "about")}
           </Chip>
         )}
-        <Only on="wide">
-          <View style={styles.sp} />
-          {pill}
-        </Only>
+        <View style={styles.actions}>
+          <FavouriteButton kind="poems" id={poem.id} size={36} iconSize={20} />
+          <PlaylistMenu poemId={poem.id} size={36} iconSize={20} />
+          <DownloadButton
+            poem={{
+              id: poem.id,
+              title: poem.title,
+              audio: recitation.audio,
+              langs: catalogNow()?.poems.find((p) => p.id === poem.id)?.langs ?? ["ar", "en"],
+            }}
+            size={36}
+            iconSize={20}
+          />
+          <Only on="wide">{pill}</Only>
+        </View>
       </View>
     </View>
   );
@@ -75,4 +91,6 @@ const styles = StyleSheet.create({
   title: { writingDirection: "rtl", flexShrink: 1 },
   chips: { flexDirection: "row", gap: space.s, flexWrap: "wrap", alignItems: "center" },
   sp: { flex: 1 },
+  // The end of the chips' line, or of the next where it is full.
+  actions: { flexDirection: "row", alignItems: "center", gap: space.xxs, marginStart: "auto" },
 });

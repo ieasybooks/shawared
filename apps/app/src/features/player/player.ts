@@ -11,7 +11,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import type { PoemBundle, PublishedRecitation } from "@shawared/contracts";
 import { buildTrack, PRE_ROLL, REPEAT_GAP, segmentAt, type Track } from "@shawared/listening";
 import { AppState } from "react-native";
-import { ARTWORK_URL, audioUrl, catalogNow, loadCatalog, loadPoem } from "../../lib/content";
+import { audioUrl, catalogNow, loadCatalog, loadPoem } from "../../lib/content";
+import { artworkUrl, localAudio } from "../../lib/downloads";
 import { t } from "../../lib/i18n";
 import { createStore, type Store } from "../../lib/store";
 import { createPlaylist } from "./playlist";
@@ -323,7 +324,8 @@ class Player {
   private urlOf(s: Session, i: number) {
     const id = s.ids[i]!;
     const rec = s.items.get(id)?.recitation ?? catalogEntry(s.catalog, id, s.lang)?.recitation;
-    return audioUrl(rec?.audio ?? "");
+    // A downloaded recording plays from its file, so it plays offline.
+    return (rec?.audio && localAudio(rec.audio)) || audioUrl(rec?.audio ?? "");
   }
 
   /** The lock screen, the notification or the browser's controls: this poem, and the buttons the queue has. */
@@ -334,7 +336,7 @@ class Player {
     const slot = s.at - s.base;
     const lang = item.lang === "en" ? "en" : "ar";
     s.list.show(
-      { title: item.title, artist: byline(item.poet, item.reciter, lang), album: t(lang, "brand"), artwork: ARTWORK_URL },
+      { title: item.title, artist: byline(item.poet, item.reciter, lang), album: t(lang, "brand"), artwork: artworkUrl() },
       { previous: slot > 0, next: slot < s.size - 1 },
     );
   }

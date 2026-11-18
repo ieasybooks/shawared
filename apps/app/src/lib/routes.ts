@@ -33,6 +33,9 @@ export const paths = {
   meters: "/meters",
   meter: (id: string) => `/meters/${id}`,
   poem: (id: string, bayt?: number) => (bayt ? `/poems/${id}?b=${bayt}` : `/poems/${id}`),
+  library: "/library",
+  /** A playlist the reader made: it lives on the device, so the address carries its id. */
+  playlist: (id: string) => `/playlist?id=${encodeURIComponent(id)}`,
   about: "/about",
   privacy: "/privacy",
 };

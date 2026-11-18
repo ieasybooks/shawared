@@ -8,7 +8,14 @@ import type { Status } from "./types";
 // status updates a platform would, and moves it to another slot as the system does when a
 // recording ends or a lock-screen button is pressed.
 const { lists, FakePlaylist, env } = vi.hoisted(() => {
-  const env = { os: "ios", stored: null as string | null, catalog: undefined as unknown, late: null as null | ((c: unknown) => void) };
+  const env = {
+    os: "ios",
+    stored: null as string | null,
+    catalog: undefined as unknown,
+    late: null as null | ((c: unknown) => void),
+    /** Downloaded recordings: audio key → file. */
+    local: {} as Record<string, string>,
+  };
   class FakePlaylist {
     sources: string[];
     currentIndex = 0;
@@ -131,6 +138,11 @@ vi.mock("../../lib/content", () => ({
   loadPoem: async (id: string) => bundle(id),
 }));
 
+vi.mock("../../lib/downloads", () => ({
+  localAudio: (key: string) => env.local[key] ?? null,
+  artworkUrl: () => "https://shawared.com/artwork.png",
+}));
+
 const url = (id: string) => `/audio/${id}/osama.m4a`;
 const flush = () => new Promise((r) => setTimeout(r, 0));
 
@@ -162,6 +174,7 @@ beforeEach(() => {
   forgetLists();
   env.os = "ios";
   env.catalog = CATALOG;
+  env.local = {};
   lists.length = 0;
 });
 
@@ -188,6 +201,12 @@ describe("stillPlaying", () => {
 });
 
 describe("the player", () => {
+  it("plays a downloaded recording from its file, and the rest from the server", () => {
+    env.local = { "b/osama.m4a": "file:///audio/b/osama.m4a" };
+    player.play(item);
+    expect(last().sources).toEqual([url("a"), "file:///audio/b/osama.m4a", url("c")]);
+  });
+
   it("pauses at the first tap while the recording is starting", () => {
     player.play(item);
     const list = last();

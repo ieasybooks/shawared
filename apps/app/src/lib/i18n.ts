@@ -68,6 +68,46 @@ const ar = {
   metaReciters: "المُلقون في شوارد، والقصائد التي يلقونها.",
   metaMeters: "بحور الشعر العربي الستة عشر وتفعيلاتها، وقصائد كل بحر.",
   metaMeter: "بحر {meter}: {feet}. {count} في شوارد.",
+  // The reader's library: favourites, playlists and downloads.
+  library: "مكتبتي",
+  favPoems: "القصائد المفضّلة",
+  favPoets: "الشعراء المفضّلون",
+  favReciters: "المُلقون المفضّلون",
+  playlists: "قوائمي",
+  downloads: "التنزيلات",
+  addFav: "أضف إلى المفضّلة",
+  removeFav: "أزل من المفضّلة",
+  favourite: "في المفضّلة",
+  addToPlaylist: "أضف إلى قائمة",
+  newPlaylist: "قائمة جديدة",
+  playlistName: "اسم القائمة",
+  untitled: "قائمة بلا اسم",
+  create: "أنشئ",
+  cancel: "إلغاء",
+  save: "احفظ",
+  rename: "غيّر الاسم",
+  deletePlaylist: "احذف القائمة",
+  deletePlaylistAsk: "أتحذف قائمة «{name}»؟ القصائد نفسها تبقى.",
+  delete: "احذف",
+  playAll: "شغّل الكل",
+  edit: "رتّب",
+  done: "تمّ",
+  moveUp: "انقل إلى أعلى",
+  moveDown: "انقل إلى أسفل",
+  removeFromPlaylist: "أزل من القائمة",
+  download: "نزّل للاستماع دون اتصال",
+  downloading: "جارٍ التنزيل",
+  downloadingPct: "جارٍ التنزيل، {p}٪",
+  stopDownload: "أوقف التنزيل",
+  downloaded: "منزّلة للاستماع دون اتصال",
+  removeDownload: "احذف التنزيل",
+  removeDownloadAsk: "أتحذف تنزيل «{title}»؟ ستحتاج بعدها إلى اتصال لتسمعها.",
+  libraryEmpty: "احفظ هنا ما تحب: اضغط القلب في صفحة قصيدة أو شاعر أو مُلقٍ، وأنشئ قوائم تسمع فيها القصائد بالترتيب الذي تريد.",
+  playlistEmpty: "القائمة فارغة. أضف إليها قصائد من صفحاتها، بزر «أضف إلى قائمة».",
+  playlistMissing: "لم نجد هذه القائمة على هذا الجهاز.",
+  savedApp: "يُحفظ هذا على جهازك وحده.",
+  savedWeb: "يُحفظ هذا في هذا المتصفح وحده.",
+  metaLibrary: "ما حفظته في شوارد: قصائدك وشعراؤك ومُلقوك المفضّلون، وقوائمك.",
 } as const;
 
 export type StringKey = keyof typeof ar;
@@ -139,6 +179,46 @@ const en: Record<StringKey, string> = {
   metaReciters: "The reciters on Shawared, and the poems they recite.",
   metaMeters: "The sixteen meters of Arabic poetry, their feet, and the poems in each.",
   metaMeter: "The {meter} meter: {feet}. {count} on Shawared.",
+  library: "My library",
+  favPoems: "Favourite poems",
+  favPoets: "Favourite poets",
+  favReciters: "Favourite reciters",
+  playlists: "My playlists",
+  downloads: "Downloads",
+  addFav: "Add to favourites",
+  removeFav: "Remove from favourites",
+  favourite: "In favourites",
+  addToPlaylist: "Add to a playlist",
+  newPlaylist: "New playlist",
+  playlistName: "Playlist name",
+  untitled: "Untitled playlist",
+  create: "Create",
+  cancel: "Cancel",
+  save: "Save",
+  rename: "Rename",
+  deletePlaylist: "Delete playlist",
+  deletePlaylistAsk: "Delete the playlist “{name}”? The poems themselves stay.",
+  delete: "Delete",
+  playAll: "Play all",
+  edit: "Reorder",
+  done: "Done",
+  moveUp: "Move up",
+  moveDown: "Move down",
+  removeFromPlaylist: "Remove from playlist",
+  download: "Download for offline listening",
+  downloading: "Downloading",
+  downloadingPct: "Downloading, {p}%",
+  stopDownload: "Stop downloading",
+  downloaded: "Downloaded for offline listening",
+  removeDownload: "Remove download",
+  removeDownloadAsk: "Remove the download of “{title}”? You'll need a connection to hear it again.",
+  libraryEmpty:
+    "Keep what you love here: tap the heart on a poem's, poet's or reciter's page, and make playlists to hear poems in the order you like.",
+  playlistEmpty: "This playlist is empty. Add poems to it from their pages, with “Add to a playlist”.",
+  playlistMissing: "We couldn't find this playlist on this device.",
+  savedApp: "This is saved on this device only.",
+  savedWeb: "This is saved in this browser only.",
+  metaLibrary: "What you've kept on Shawared: your favourite poems, poets and reciters, and your playlists.",
 };
 
 const STRINGS: Record<UiLang, Record<StringKey, string>> = { ar, en };
@@ -166,6 +246,14 @@ export function abyatCount(n: number, lang: UiLang) {
   if (n === 2) return "بيتان";
   if (n <= 10) return `${digits(n, lang)} أبيات`;
   return `${digits(n, lang)} بيتًا`;
+}
+
+/** "٤٫٢ ميغابايت", "4.2 MB": a download's size. */
+export function sizeOf(bytes: number, lang: UiLang) {
+  const mb = bytes / 1_000_000;
+  const n = mb >= 10 ? Math.round(mb) : Math.round(mb * 10) / 10;
+  if (lang === "en") return `${n} MB`;
+  return `${digits(String(n).replace(".", "٫"), lang)} ميغابايت`;
 }
 
 /** "قصيدة واحدة", "قصيدتان", "٣ قصائد", "١١ قصيدةً", "3 poems" */

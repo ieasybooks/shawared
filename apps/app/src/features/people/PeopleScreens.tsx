@@ -15,6 +15,7 @@ import { useType } from "../../lib/type";
 import { DetailFacts, ListPage, PageFrame, SectionHead } from "../library/Page";
 import { nameOf, PoemRow } from "../library/PoemCard";
 import { SearchField } from "../library/SearchField";
+import { FavouriteChip } from "../saved/SavedButtons";
 
 /** Every poet, or every reciter, with how many poems they have, and a search by name. */
 export function PeopleScreen({ kind, initial }: { kind: PersonKind; initial?: { catalog: Catalog } | undefined }) {
@@ -51,7 +52,8 @@ export function PeopleScreen({ kind, initial }: { kind: PersonKind; initial?: { 
   );
 }
 
-function PersonRow({ kind, person }: { kind: PersonKind; person: CatalogPerson }) {
+/** A poet or a reciter in a list: the name, how many poems, and when they died. */
+export function PersonRow({ kind, person }: { kind: PersonKind; person: CatalogPerson }) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const facts = [poemsCount(person.poems, lang), person.died ? t(lang, "died", { h: person.died.hijri, c: person.died.ce }) : null]
@@ -111,13 +113,14 @@ export function PersonScreen({
         )}
       </DetailFacts>
       {p.bio && <Text style={[type.proseLarge, { color: palette.fg, textAlign: start }]}>{p.bio}</Text>}
-      {youtube && (
-        <View style={styles.links}>
+      <View style={styles.links}>
+        <FavouriteChip kind={kind} id={id} />
+        {youtube && (
           <Chip icon="link" onPress={() => Linking.openURL(youtube)}>
             {t(lang, "youtube")}
           </Chip>
-        </View>
-      )}
+        )}
+      </View>
       <SectionHead title={t(lang, "poems")} count={poemsCount(poems.length, lang)} />
     </>
   );
@@ -138,5 +141,5 @@ const styles = StyleSheet.create({
   search: { maxWidth: 620, width: "100%" },
   row: { borderTopWidth: 1, paddingVertical: 14, gap: space.s },
   name: { writingDirection: "auto" },
-  links: { flexDirection: "row", gap: space.s },
+  links: { flexDirection: "row", flexWrap: "wrap", gap: space.s },
 });

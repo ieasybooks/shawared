@@ -22,7 +22,17 @@ export type IconName =
   | "waves"
   | "search"
   | "link"
-  | "info";
+  | "info"
+  | "heart"
+  | "heartFull"
+  | "listAdd"
+  | "download"
+  | "downloaded"
+  | "library"
+  | "plus"
+  | "trash"
+  | "edit"
+  | "check";
 
 /** Icons that point along the reading direction. They are drawn for left-to-right and mirrored in Arabic. */
 const DIRECTIONAL = new Set<IconName>(["play", "prev", "next", "back"]);
@@ -112,6 +122,32 @@ export function Icon({ name, size = 22, color }: { name: IconName; size?: number
           <Circle cx={12} cy={12} r={9} />
           <Path d="M12 11v5.5" />
           <Circle cx={12} cy={7.6} r={0.4} strokeWidth={2.2} />
+        </G>
+      )}
+      {(name === "heart" || name === "heartFull") && (
+        <Path
+          {...stroke}
+          strokeWidth={1.9}
+          fill={name === "heartFull" ? color : "none"}
+          d="M12 20.2s-8.2-4.7-8.2-10.6A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 8.2 2.3c0 5.9-8.2 10.6-8.2 10.6z"
+        />
+      )}
+      {name === "listAdd" && <Path {...stroke} strokeWidth={1.9} d="M4 6.5h12M4 11.5h12M4 16.5h7M18 13.5v7M14.5 17h7" />}
+      {name === "download" && <Path {...stroke} strokeWidth={1.9} d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" />}
+      {name === "downloaded" && <Path {...stroke} strokeWidth={1.9} d="M5 19.5h14M7.5 11.5l3.2 3.2 6-6.2" />}
+      {name === "library" && <Path {...stroke} strokeWidth={1.8} d="M5.5 4.5v14.5M10 4.5v14.5M14 5.8l4.3 13.2M3.5 19.5h17" />}
+      {name === "plus" && <Path {...stroke} strokeWidth={2} d="M12 5v14M5 12h14" />}
+      {name === "check" && <Path {...stroke} strokeWidth={2} d="M5 12.5l4.5 4.5L19 7.5" />}
+      {name === "trash" && (
+        <G {...stroke} strokeWidth={1.8}>
+          <Path d="M4.5 7h15M9.5 7V4.8h5V7M10 10.5v6M14 10.5v6" />
+          <Path d="M6.5 7l.9 12.1a1 1 0 0 0 1 .9h7.2a1 1 0 0 0 1-.9L17.5 7" />
+        </G>
+      )}
+      {name === "edit" && (
+        <G {...stroke} strokeWidth={1.8}>
+          <Path d="M4.5 19.5l1-4.2L15.8 5a1.8 1.8 0 0 1 2.6 0l.6.6a1.8 1.8 0 0 1 0 2.6L8.7 18.5z" />
+          <Path d="M14 6.8l3.2 3.2" />
         </G>
       )}
       {name === "globe" && (

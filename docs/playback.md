@@ -30,6 +30,18 @@ expo-audio handles the rest natively, for both its players and its playlists:
 
 Statuses arrive four times a second, in the background too, where frames don't: the player keeps the clock and repeat going from them, and catches up when the app comes back.
 
+## Downloads
+
+In the apps, the poem page's download button keeps a poem to listen to offline (`lib/downloads.ts`). It downloads:
+
+- the recording, to the app's documents at its audio key (`audio/<poem>/<reciter>.<hash>.m4a`), through a `.part` file that becomes the recording only once it is whole;
+- the poem's text in each of its languages, into the content cache, so its page opens offline;
+- the lock screen's picture, once, so the lock screen shows it offline.
+
+The player plays a downloaded recording from its file (`localAudio` in `player.ts`'s `urlOf`), and the rest of the queue from audio.shawared.com. A poem published again with a new recording has a new audio key: when the app starts it downloads the new recording in place of the old, and removes the recordings of poems the catalog no longer has (`refreshDownloads`). The library tab lists the downloads with their size, and removes them; so does the button, once a poem is downloaded.
+
+The web has no downloads (`downloads.web.ts`): browsers stream the recordings.
+
 ## What only a device can show
 
 The browser tests (`tests/playback.spec.ts`) cover continuous play and the Media Session on the web. Native playback was last checked on an Android emulator before the playlist, so everything below needs a phone.
@@ -50,4 +62,5 @@ Use a phone with the ringer off, and a poem list with a few poems in it.
 8. **Headphones.** Pull out wired headphones or take out AirPods: it pauses. A single press or tap plays and pauses; a double, the next poem; a triple, the previous.
 9. **Long background.** Leave it playing locked for ten minutes, across poems. It keeps going; reopen the app and it shows the right poem, position and state.
 10. **Close.** Close the mini player: the lock screen's controls go away.
-11. **The web on a phone.** In Safari or Chrome, play a poem and lock the phone: the lock screen shows it with the mark, and the next poem plays by itself.
+11. **Offline.** Download a poem from its page and watch the button fill. Turn on airplane mode, close the app and open it again: the library tab lists the download with its size, the poem opens, plays and shows on the lock screen with the mark. Remove the download there: the poem no longer plays offline.
+12. **The web on a phone.** In Safari or Chrome, play a poem and lock the phone: the lock screen shows it with the mark, and the next poem plays by itself.

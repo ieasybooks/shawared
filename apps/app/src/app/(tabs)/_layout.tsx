@@ -3,7 +3,7 @@ import { TabBar } from "../../features/navigation/TabBar";
 import { useSettings } from "../../lib/settings";
 
 /**
- * Home, Poets, Reciters and Meters, with the mini player above the tabs. Each page draws its
+ * Home, Poets, Reciters, Meters and the reader's library, with the mini player above the tabs. Each page draws its
  * own top bar (phones) or site header (wide windows). Pages opened from these (a poem, a
  * poet, a reciter, a meter) sit on the root stack above the tabs, so back retraces the
  * reader's steps.
@@ -16,6 +16,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="poets" />
       <Tabs.Screen name="reciters" />
       <Tabs.Screen name="meters" />
+      <Tabs.Screen name="library" />
     </Tabs>
   );
 }

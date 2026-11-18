@@ -81,6 +81,8 @@ test("every kind of page wakes up without errors", async ({ page }) => {
     "/poets/jamil-buthayna",
     "/reciters/osama-alwaaedh",
     "/meters/mutaqarib",
+    "/library",
+    "/playlist?id=none",
     POEM,
     "/en",
     `/en${POEM}`,

@@ -106,6 +106,7 @@ export const PRIVACY: Record<UiLang, PageText> = {
         title: "ما يُحفظ على جهازك",
         body: [
           "يحفظ شوارد على جهازك اختيارك للغة والمظهر، وهل تُشغَّل القصيدة التالية تلقائيًا، ليتذكر ذلك في المرة القادمة. ويحفظ التطبيقان القصائد التي فتحتها، لتُفتح بسرعة ودون اتصال.",
+          "ويحفظ كذلك ما تضعه في مكتبتك: القصائد والشعراء والمُلقين المفضّلين، وقوائمك. والتسجيلات التي تنزّلها في التطبيقين تُحفظ على جهازك لتسمعها دون اتصال.",
           "لا يُرسَل شيء من ذلك إلينا، ويمكنك إزالته بمسح بيانات التطبيق أو الموقع.",
         ],
       },
@@ -150,6 +151,7 @@ export const PRIVACY: Record<UiLang, PageText> = {
         title: "Information stored on your device",
         body: [
           "Shawared saves your language and appearance choices, and whether the next poem plays by itself, on your device, so it remembers them next time. The apps also keep the poems you've opened, so they open quickly and offline.",
+          "It also keeps what you put in your library: your favourite poems, poets and reciters, and your playlists. Recordings you download in the apps are stored on your device, so you can listen to them offline.",
           "None of this is sent to us, and you can remove it by clearing the app's or the site's data.",
         ],
       },

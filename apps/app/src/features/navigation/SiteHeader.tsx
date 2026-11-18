@@ -9,7 +9,7 @@ import { useType } from "../../lib/type";
 import { SettingsButtons } from "../settings/SettingsControls";
 import { TABS, tabOf } from "./tabs";
 
-/** The header of wide windows: the wordmark, the four sections, the settings and About. */
+/** The header of wide windows: the wordmark, the five sections, the settings and About. */
 export function SiteHeader() {
   const { palette, lang, href } = useSettings();
   const type = useType();

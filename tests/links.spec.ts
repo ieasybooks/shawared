@@ -9,6 +9,7 @@ const PAGES = [
   "/reciters/osama-alwaaedh",
   "/meters",
   "/meters/mutaqarib",
+  "/library",
   "/poems/taqulu-buthaynatu",
   "/en/poems/taqulu-buthaynatu",
   "/en/poets/jamil-buthayna",

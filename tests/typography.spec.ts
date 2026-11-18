@@ -76,6 +76,14 @@ const isPhone = (page: Page) => (page.viewportSize()?.width ?? 0) < 960;
 /** A page in a language: English lives under /en. */
 const at = (lang: "ar" | "en", path: string) => (lang === "ar" ? path : path === "/" ? "/en" : `/en${path}`);
 
+/** A reader's library with something in every part: what lib/saved.ts keeps in the browser. */
+const SAVED = {
+  poems: ["taqulu-buthaynatu"],
+  poets: ["jamil-buthayna"],
+  reciters: ["osama-alwaaedh"],
+  playlists: [{ id: "t1", name: "قصائد الحب والفراق في المساء الطويل", poems: ["taqulu-buthaynatu"] }],
+};
+
 for (const lang of ["ar", "en"] as const) {
   test.describe(`no overlapping text (${lang})`, () => {
     test("home", async ({ page }) => {
@@ -129,6 +137,7 @@ for (const lang of ["ar", "en"] as const) {
       "/meters",
       "/meters/mutaqarib",
       "/meters/kamil",
+      "/library",
       "/about",
       "/privacy",
     ])
@@ -136,6 +145,16 @@ for (const lang of ["ar", "en"] as const) {
         await page.goto(at(lang, path));
         await expectNoOverlap(page, path, 3);
       });
+
+    test("the library and a playlist, with what a reader keeps", async ({ page }) => {
+      await page.addInitScript((saved) => localStorage.setItem("shawared.saved.v1", saved), JSON.stringify(SAVED));
+      await page.goto(at(lang, "/library"));
+      await expect(page.getByText(lang === "ar" ? "القصائد المفضّلة" : "Favourite poems").first()).toBeVisible();
+      await expectNoOverlap(page, "/library", 3);
+      await page.goto(at(lang, "/playlist?id=t1"));
+      await expect(page.getByText(lang === "ar" ? "شغّل الكل" : "Play all").first()).toBeVisible();
+      await expectNoOverlap(page, "a playlist", 3);
+    });
 
     test("mini player", async ({ page }) => {
       await page.goto(at(lang, POEM));
