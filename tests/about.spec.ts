@@ -40,10 +40,12 @@ for (const [lang, home, about, privacy, updated] of [
 
 test("each page is rendered ahead of time, in its language, with its title and description", async ({ request }) => {
   for (const [path, title, description] of [
-    ["/about", "<title>عن شوارد</title>", "مبادرة الكتب المُيسّرة"],
+    ["/about", "<title>عن شوارد</title>", "من الكتب المُيسّرة"],
     ["/privacy", "<title>سياسة الخصوصية · شوارد</title>", "shawared.com"],
-    ["/en/about", "<title>About Shawared</title>", "EasyBooks initiative"],
+    ["/support", "<title>التواصل والدعم · شوارد</title>", "فريق شوارد"],
+    ["/en/about", "<title>About Shawared</title>", "By EasyBooks"],
     ["/en/privacy", "<title>Privacy policy · Shawared</title>", "shawared.com"],
+    ["/en/support", "<title>Contact and support · Shawared</title>", "Shawared team"],
   ] as const) {
     const html = await (await request.get(path)).text();
     expect(html, path).toContain(title);

@@ -12,4 +12,4 @@ Shawared is a library of Arabic poetry as it is recited: hear each poem in its r
 
 Shawared needs no account and has no ads or purchases. Loading poems and recordings needs an internet connection; the poems you've opened and the recordings you download stay on your device.
 
-Shawared is made by the EasyBooks initiative.
+Shawared is made by EasyBooks.
