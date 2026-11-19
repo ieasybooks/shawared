@@ -77,7 +77,7 @@ The stores don't take an older version than one they have, so fix forward with a
 
 Any other `v*` tag is a dry run of the apps: push a throwaway one, such as `git tag v0-dry-run && git push origin v0-dry-run`, on the commit to test. Running the **Release apps** workflow by hand on a `v*` tag is a dry run too, unless **dry-run** is unticked. A dry run builds and signs both apps and checks everything without releasing:
 
-- App Store Connect validates the signed IPA without taking it, and the App Store job only reads the app, saying which version it would pull out of review.
+- App Store Connect validates the signed IPA without taking it, and the App Store job only reads the app, saying which version it would pull out of review. The IPA is built as the next patch version (0.2.1 when `apps/app/package.json` has 0.2.0): App Store Connect refuses a version it has released and a build number it has, even only to validate them.
 - Google Play checks the AAB and listing in an edit it never commits.
 - AppGallery reports what it would upload, change and submit, or that a version in review would stop the release, and issues an upload URL without taking the APK.
 
