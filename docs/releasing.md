@@ -25,7 +25,9 @@ So everything that ships in the apps lives in `apps/app` or `packages/`. The roo
 
 1. Merge commits to main. After each push, the **Release please** workflow (`.github/workflows/release-please.yml`) opens or updates the release pull request, **chore: release main**, with each raised component's new version and its `CHANGELOG.md`.
 2. When it raises the apps, write that version's store release notes in `apps/app/store/release-notes/<version>/ar.txt` and `en.txt` (at most 500 characters each), and anything else in `apps/app/store/` that should change, such as redrawn screenshots (`bun run store:screenshots`), in an ordinary pull request (`docs: …`, which releases nothing). The release pull request's **Release check** status fails until main has them. `bun run store:check` checks the same on your Mac, once `apps/app/package.json` has the new version.
-3. Ali (`AliOsm`) squash-merges the release pull request. release-please tags the apps and creates their GitHub release. In the same run, the workflow runs every check (`check.yml`) on the commit it tagged, marks the commit with a **Checks** status saying how they ended, and once they passed deploys the commit to shawared.com (`web.yml`) and releases the apps (`release.yml`). Each release job checks out exactly that commit, never the tag by name, and first checks that the tag still points at it and that no newer apps release exists.
+3. Ali (`AliOsm`) squash-merges the release pull request. release-please tags the apps and creates their GitHub release. In the same run, the workflow runs every check (`check.yml`) on the merge commit, marks it with a **Checks** status saying how they ended, and once they passed deploys it to shawared.com (`web.yml`) and releases the apps from it (`release.yml`). Each release job checks out exactly that commit, never the tag by name, and first checks that the tag still points at it and that no newer apps release exists.
+
+If that run fails before release-please tags the merge, the next push's run tags it instead. That run checks the merge commit on its own, marks it, and releases the apps from it, while it checks and deploys the commit it was pushed for. The **Release please** runs take their turns (`queue: max`), so none is cancelled while it waits, and so do the releases: an older release whose checks finished after a newer one's would otherwise replace it in the queue, then stop as superseded, so neither shipped.
 
 GitHub's checks on the release pull request wait for someone to approve them, since GitHub Actions opened it. They're not needed: the merge is checked on main before anything ships, and its **Release please** run keeps `bun.lock` in step with the new versions and sets the **Release check** status.
 
@@ -75,7 +77,7 @@ The stores don't take an older version than one they have, so fix forward with a
 
 Any other `v*` tag is a dry run of the apps: push a throwaway one, such as `git tag v0-dry-run && git push origin v0-dry-run`, on the commit to test. Running the **Release apps** workflow by hand on a `v*` tag is a dry run too, unless **dry-run** is unticked. A dry run builds and signs both apps and checks everything without releasing:
 
-- App Store Connect validates the signed IPA without taking it, and the App Store job only reads the app, saying which version it would pull out of review.
+- App Store Connect validates the signed IPA without taking it, and the App Store job only reads the app, saying which version it would pull out of review. The IPA is built as the next patch version (0.2.1 when `apps/app/package.json` has 0.2.0): App Store Connect refuses a version it has released and a build number it has, even only to validate them.
 - Google Play checks the AAB and listing in an edit it never commits.
 - AppGallery reports what it would upload, change and submit, or that a version in review would stop the release, and issues an upload URL without taking the APK.
 
@@ -107,7 +109,7 @@ Done once, by hand, in each store's console, with the bundle ID and package name
 
 - **App Store Connect:** register the bundle ID in Certificates, Identifiers & Profiles, then create the app (primary language Arabic) with the name in `apps/app/store/ar/app-store-name.txt`, which must be free across the store. Fill in App Privacy (no data collected), the age rating, the price (free) and the availability.
 - **Google Play Console:** create the app, enrol it in Play App Signing with the shared upload key, and upload the first AAB by hand (Google takes later ones through the API). Fill in the data safety form (no data collected or shared), the content rating, the target audience, and the foreground service declaration for media playback, which the background recitation uses.
-- **AppGallery Connect:** create the app, sign it with the shared upload key as the APK is signed, and add its app ID to `apps/app/store/store.json` as `"appGallery": { "appId": "…" }`.
+- **AppGallery Connect:** create the app, sign it with the shared upload key as the APK is signed, and add its app ID to `apps/app/store/store.json` as `"appGallery": { "appId": "…" }`. AppGallery serves the APK as that key signed it, and Android installs an update only from the same signer, so the shared key (SHA-256 `9D:E6:FD…`) is Shawared's signature on AppGallery for good, as it is Faqieh's. It can't be replaced there, so keep a copy of it, with its password, outside the vault.
 
 Then push a dry run tag (above) to check everything before the first release.
 
