@@ -1,8 +1,25 @@
 # Recordings waiting to become poems
 
-Added 2026-11-16. Notes come from each video's title, description and transcript. Each one goes through the steps in [docs/writing.md](../docs/writing.md); the status says how far it has got.
+The original queue was added on 16 November 2026. Intake notes come from each video's title, description and transcript. Each one goes through the steps in [docs/writing.md](../docs/writing.md); the status says how far it has got.
 
 Status: **transcribed** (`scripts/intake.ts` done), then **drafted** (all files written), **reviewed** (second reader done), **published**.
+
+## Ten selected recordings, 19 November 2026
+
+| Shortlist # | Recording | Poem | Poet | Reciter | Length | Status | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | https://www.youtube.com/watch?v=9rFXL42DyQY | توكلنا على رب السماء | علي بن الجهم | أسامة الواعظ | 2:07 | reviewed: `tawakkalna-ala-rabbi-al-samai` | Fourteen of the 29 bayts in Khalil Mardam’s edition. The recording repeats the last bayt. |
+| 2 | https://www.youtube.com/watch?v=YHe5baPfjOE | قد أكثر الناس في المنسوخ من عدد | جلال الدين السيوطي | أسامة الواعظ | 1:45 | reviewed: `qad-akthara-al-nasu` | Ten bayts from al-Itqan on passages discussed under abrogation. |
+| 3 | https://www.youtube.com/watch?v=qiaoPWeCOBc | أتظعن يا قلب مع من ظعن | المتنبي | أسامة الواعظ | 1:59 | reviewed: `atazanu-ya-qalbu` | The 14-bayt version names Ahmad ibn al-Hasan. The last bayt is recited twice. |
+| 4 | https://www.youtube.com/watch?v=xjoLXbKTwr4 | يا سلامى طاب لي منها سلاما | إيهاب الشباطات | خالد الشرفي | 2:51 | reviewed: `ya-sulama` | Sixteen bayts addressed to the poet’s mother. The studio shows the text on screen. |
+| 5 | https://www.youtube.com/watch?v=2Nv4hOz0Muw | حكاية الخفاش ومليكة الفراش | أحمد شوقي | أسامة الواعظ | 2:21 | reviewed: `al-khuffash-wa-malikat-al-farash` | Verse 23 repeats the opening in the printed fable. The reciter also repeats verses 15 and 23. |
+| 6 | https://www.youtube.com/watch?v=ekyIqiT-Tp0 | ألا ليت شعري هل تغير بعدنا | أبو قطيفة الأموي | أسامة الواعظ | 1:52 | reviewed: `ala-layta-shiri` | Nine bayts on separation from Medina. The final bayt is heard twice. |
+| 7 | https://www.youtube.com/watch?v=Py9c3ewV4N8 | عرف الهوى في نظرتي فنهاني | محمود سامي البارودي | أسامة الواعظ | 2:29 | reviewed: `arafa-al-hawa` | The reciter gives fourteen of the sixteen bayts in the diwan. |
+| 8 | https://www.youtube.com/watch?v=RpgYQw1XtF0 | ليبك رسول الله من كان باكيا | أبو العتاهية | أسامة الواعظ | 3:56 | reviewed: `li-yabki-rasula-allah` | The opening lament leads into a reproach against hoarding wealth while others go hungry. |
+| 9 | https://www.youtube.com/watch?v=gSty6-XZEJM | حائية ابن أبي داود | ابن أبي داود السجستاني | أسامة الواعظ | 6:05 | reviewed: `haiyyat-ibn-abi-dawud` | Thirty-three bayts. The whole opening bayt and the closing half are each heard twice. |
+| 10 | https://www.youtube.com/watch?v=QBAo9vHxZLM | نعد المشرفية والعوالي | المتنبي | أسامة الواعظ | 3:21 | reviewed: `nuiddu-al-mashrafiyya` | For the death of Sayf al-Dawla’s mother. The reciter gives verses 1–15 and 17 of al-Wahidi’s 45. |
+
+## Original queue
 
 | # | Recording | Poem | Poet | Reciter | Length | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
