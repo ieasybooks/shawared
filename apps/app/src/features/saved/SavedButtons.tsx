@@ -1,6 +1,6 @@
 import { space } from "@shawared/design";
-import { useCallback, useRef, useState } from "react";
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View, type HostInstance } from "react-native";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Animated, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View, type HostInstance } from "react-native";
 import { IconButton, type PressState } from "../../components/ui/controls";
 import { Dialog } from "../../components/ui/Dialog";
 import { Dir } from "../../components/ui/Dir";
@@ -33,16 +33,30 @@ export function FavouriteButton({
 }) {
   const { palette, lang } = useSettings();
   const on = useFavourite(kind, id);
+  // A heart filled by the reader pops; one that loads filled doesn't.
+  const pop = useRef(new Animated.Value(1)).current;
+  const pressed = useRef(false);
+  useEffect(() => {
+    if (!on || !pressed.current) return;
+    pressed.current = false;
+    pop.setValue(0.6);
+    Animated.spring(pop, { toValue: 1, friction: 4, tension: 160, useNativeDriver: Platform.OS !== "web" }).start();
+  }, [on, pop]);
   return (
-    <IconButton
-      icon={on ? "heartFull" : "heart"}
-      label={t(lang, on ? "removeFav" : "addFav")}
-      pressed={on}
-      onPress={() => void toggleFav(kind, id)}
-      size={size}
-      iconSize={iconSize}
-      color={on ? palette.accent : palette.muted}
-    />
+    <Animated.View style={{ transform: [{ scale: pop }] }}>
+      <IconButton
+        icon={on ? "heartFull" : "heart"}
+        label={t(lang, on ? "removeFav" : "addFav")}
+        pressed={on}
+        onPress={() => {
+          pressed.current = true;
+          void toggleFav(kind, id);
+        }}
+        size={size}
+        iconSize={iconSize}
+        color={on ? palette.accent : palette.muted}
+      />
+    </Animated.View>
   );
 }
 

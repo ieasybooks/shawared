@@ -189,7 +189,7 @@ test("the poets and reciters tabs search by name", async ({ page }) => {
   await expect(shown(page, "أسامة الواعظ")).toBeVisible();
 });
 
-test("every page has its title at the top, with back beside it on pages opened from another", async ({ page }) => {
+test("every page has its title at the top, with back beside it on phones and above it on wide windows", async ({ page }, info) => {
   await page.goto("/poets");
   await expect(live(page, page.getByRole("heading", { name: "الشعراء" }))).toBeVisible();
   for (const [path, title] of [
@@ -202,8 +202,11 @@ test("every page has its title at the top, with back beside it on pages opened f
     const back = live(page, page.getByRole("button", { name: "رجوع" }));
     await expect(heading).toBeVisible();
     const [h, b] = [(await heading.boundingBox())!, (await back.boundingBox())!];
-    // One row: back and the title share a middle line.
-    expect(Math.abs(h.y + h.height / 2 - (b.y + b.height / 2)), path).toBeLessThan(8);
+    if (info.project.name === "phone")
+      // One row: back and the title share a middle line.
+      expect(Math.abs(h.y + h.height / 2 - (b.y + b.height / 2)), path).toBeLessThan(8);
+    // Wide windows: back in the toolbar over the page, the title under it, both at the start.
+    else expect(b.y + b.height, path).toBeLessThanOrEqual(h.y + 1);
   }
 });
 
@@ -349,7 +352,7 @@ test("the night theme is there from the first paint", async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem("shawared.settings.v1", JSON.stringify({ lang: "ar", theme: "night" })));
   await page.goto("/");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "night");
-  await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe("rgb(19, 26, 46)");
+  await expect.poll(() => page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe("rgb(18, 21, 31)");
   await expect(page.getByRole("button", { name: "المظهر النهاري" })).toBeVisible();
 });
 

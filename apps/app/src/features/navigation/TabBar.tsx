@@ -14,7 +14,7 @@ import { TABS, tabOf } from "./tabs";
 /**
  * The bottom of every tab screen: the mini player, then the tabs. Ours rather than the
  * system's, so the tabs follow the app's language and run right to left in Arabic.
- * Wide windows show the tabs in the header instead and keep only the mini player.
+ * Wide windows have the sidebar and the player bar instead, drawn by each page (PageFrame).
  */
 export function TabBar() {
   const { palette, lang, href } = useSettings();
@@ -22,12 +22,12 @@ export function TabBar() {
   const insets = useSafeAreaInsets();
   const current = tabOf(usePathname());
   return (
-    <View>
-      <MiniPlayer />
-      <Only on="phone">
+    <Only on="phone">
+      <View>
+        <MiniPlayer />
         <View
           accessibilityRole="tablist"
-          style={[styles.bar, { backgroundColor: palette.bg, borderTopColor: palette.line, paddingBottom: insets.bottom + space.s }]}
+          style={[styles.bar, { backgroundColor: palette.raise, borderTopColor: palette.line, paddingBottom: insets.bottom + space.s }]}
         >
           {TABS.map((tab) => {
             const on = tab.name === current;
@@ -48,8 +48,8 @@ export function TabBar() {
             );
           })}
         </View>
-      </Only>
-    </View>
+      </View>
+    </Only>
   );
 }
 

@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { useMemo, useState } from "react";
 import { Linking, Pressable, StyleSheet, Text, View } from "react-native";
 import { Chip } from "../../components/ui/controls";
+import { CoverTile } from "../../components/ui/Girih";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog, usePerson } from "../../lib/content";
 import { usePrefetch } from "../../lib/prefetch";
@@ -45,15 +46,15 @@ export function PeopleScreen({ kind, initial }: { kind: PersonKind; initial?: { 
       }
       data={people}
       keyOf={(p) => p.id}
-      renderItem={(person) => <PersonRow kind={kind} person={person} />}
+      renderItem={(person, i) => <PersonRow kind={kind} person={person} first={i === 0} />}
       estimatedItemSize={72}
       empty={t(lang, "noResults")}
     />
   );
 }
 
-/** A poet or a reciter in a list: the name, how many poems, and when they died. */
-export function PersonRow({ kind, person }: { kind: PersonKind; person: CatalogPerson }) {
+/** A poet or a reciter in a list: the name, how many poems, and when they died. The `first` has no rule above it. */
+export function PersonRow({ kind, person, first }: { kind: PersonKind; person: CatalogPerson; first?: boolean }) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const facts = [poemsCount(person.poems, lang), person.died ? t(lang, "died", { h: person.died.hijri, c: person.died.ce }) : null]
@@ -63,7 +64,11 @@ export function PersonRow({ kind, person }: { kind: PersonKind; person: CatalogP
   const prefetch = usePrefetch(to);
   return (
     <Link href={to} asChild>
-      <Pressable accessibilityRole="link" {...prefetch} style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
+      <Pressable
+        accessibilityRole="link"
+        {...prefetch}
+        style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && styles.first])}
+      >
         <Text style={[lang === "ar" ? type.nameAr : type.heading, styles.name, { color: palette.fg, textAlign: start }]}>
           {nameOf(person, lang)}
         </Text>
@@ -107,20 +112,27 @@ export function PersonScreen({
 
   const header = (
     <>
-      <DetailFacts arabic={arabic}>
-        {p.died && (
-          <Text style={[type.body, { color: palette.muted, textAlign: start }]}>{t(lang, "died", { h: p.died.hijri, c: p.died.ce })}</Text>
-        )}
-      </DetailFacts>
-      {p.bio && <Text style={[type.proseLarge, { color: palette.fg, textAlign: start }]}>{p.bio}</Text>}
-      <View style={styles.links}>
-        <FavouriteChip kind={kind} id={id} />
-        {youtube && (
-          <Chip icon="link" onPress={() => Linking.openURL(youtube)}>
-            {t(lang, "youtube")}
-          </Chip>
-        )}
+      <View style={styles.who}>
+        <CoverTile size={104} name={p.name} radius={14} />
+        <View style={styles.whoText}>
+          <DetailFacts arabic={arabic}>
+            {p.died && (
+              <Text style={[type.body, { color: palette.muted, textAlign: start }]}>
+                {t(lang, "died", { h: p.died.hijri, c: p.died.ce })}
+              </Text>
+            )}
+          </DetailFacts>
+          <View style={styles.links}>
+            <FavouriteChip kind={kind} id={id} />
+            {youtube && (
+              <Chip icon="link" onPress={() => Linking.openURL(youtube)}>
+                {t(lang, "youtube")}
+              </Chip>
+            )}
+          </View>
+        </View>
       </View>
+      {p.bio && <Text style={[type.proseLarge, { color: palette.fg, textAlign: start }]}>{p.bio}</Text>}
       <SectionHead title={t(lang, "poems")} count={poemsCount(poems.length, lang)} />
     </>
   );
@@ -138,8 +150,11 @@ export function PersonScreen({
 }
 
 const styles = StyleSheet.create({
-  search: { maxWidth: 620, width: "100%" },
-  row: { borderTopWidth: 1, paddingVertical: 14, gap: space.s },
+  search: { width: "100%" },
+  row: { borderTopWidth: 1, paddingVertical: 16, gap: space.s },
+  first: { borderTopWidth: 0 },
   name: { writingDirection: "auto" },
   links: { flexDirection: "row", flexWrap: "wrap", gap: space.s },
+  who: { flexDirection: "row", alignItems: "center", gap: space.xl },
+  whoText: { flex: 1, minWidth: 0, gap: space.l },
 });

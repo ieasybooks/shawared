@@ -1,6 +1,6 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { Dimensions, Platform, StyleSheet, View } from "react-native";
-import { useWindowWidth } from "./viewport";
+import { useHydrated, useWindowWidth } from "./viewport";
 
 // Phones and wide windows lay pages out differently: the top and tab bars or the site header,
 // the poem's explanation in a sheet or beside the verses, a few sizes.
@@ -127,13 +127,35 @@ const only = web
     }
   : null;
 
+const wideQuery = () => matchMedia(`(min-width: ${WIDE_MIN}px)`);
+const subscribeWide = (changed: () => void) => {
+  const query = wideQuery();
+  query.addEventListener("change", changed);
+  return () => query.removeEventListener("change", changed);
+};
+const wideNow = () => wideQuery().matches;
+const notWide = () => false;
+
 /**
- * What shows only on phones or only on wide windows. On the web it is rendered for both and
- * CSS hides it in the other layout, so keep it small (bars, a few controls), never a poem's
- * verses. The apps render it only where it shows.
+ * What shows only on phones or only on wide windows. In a page rendered ahead of time it is
+ * rendered for both and CSS hides it in the other layout, so keep it small (bars, a few
+ * controls), never a poem's verses. A page the reader moves to afterwards is drawn in the
+ * browser for its window: it renders only what shows, and the other layout when the window
+ * crosses WIDE_MIN. The apps render it only where it shows.
  */
 export function Only({ on, children }: { on: "phone" | "wide"; children: ReactNode }) {
   const { wide } = useLayout();
+  // Whether React drew this piece in the browser rather than picked it up from the page:
+  // false while it hydrates (each Suspense boundary in its turn), and kept for the piece's life.
+  const hydrated = useHydrated();
+  const [drawnHere] = useState(hydrated);
+  if (web && drawnHere) return <OnlyHere on={on}>{children}</OnlyHere>;
   if (only) return <View style={only[on]}>{children}</View>;
   return wide === (on === "wide") ? children : null;
+}
+
+function OnlyHere({ on, children }: { on: "phone" | "wide"; children: ReactNode }) {
+  const wide = useSyncExternalStore(subscribeWide, wideNow, notWide);
+  // The style stays, so CSS agrees with the media query to the pixel.
+  return wide === (on === "wide") ? <View style={only![on]}>{children}</View> : null;
 }

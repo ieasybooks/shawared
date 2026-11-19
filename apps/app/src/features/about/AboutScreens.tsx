@@ -6,7 +6,10 @@ import { t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
+import type { ReactNode } from "react";
+import { Only } from "../../lib/responsive";
 import { ListPage, SectionHead } from "../library/Page";
+import { Counts } from "../navigation/Sidebar";
 import { ABOUT, CONTACT, PRIVACY, PRIVACY_UPDATED, type PageText, type Section } from "./texts";
 
 /** About Shawared: what it is, who makes it, how to reach us, and the way to the privacy policy. */
@@ -14,7 +17,13 @@ export function AboutScreen() {
   const { lang } = useSettings();
   // The apps say which version they are, for reports of a problem.
   const version = Platform.OS === "web" ? undefined : Constants.expoConfig?.version;
-  return <TextPage text={ABOUT[lang]} note={version && t(lang, "version", { v: version })} />;
+  // Wide windows have the counts in the sidebar.
+  const counts = (
+    <Only on="phone">
+      <Counts />
+    </Only>
+  );
+  return <TextPage text={ABOUT[lang]} note={version && t(lang, "version", { v: version })} extra={counts} />;
 }
 
 /** The privacy policy of the apps and the website. */
@@ -24,13 +33,14 @@ export function PrivacyScreen() {
 }
 
 /** A page of prose: its title, a lead paragraph and a note under it, then its sections. */
-function TextPage({ text, note }: { text: PageText; note?: string | undefined }) {
+function TextPage({ text, note, extra }: { text: PageText; note?: string | undefined; extra?: ReactNode }) {
   const { palette, start } = useSettings();
   const type = useType();
   const header = (
     <View style={styles.header}>
       <Text style={[type.lead, { color: palette.fg, textAlign: start }]}>{text.lead}</Text>
       {note && <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{note}</Text>}
+      {extra}
     </View>
   );
   return (

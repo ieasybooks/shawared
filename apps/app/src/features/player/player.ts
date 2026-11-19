@@ -99,15 +99,21 @@ type Session = {
 };
 
 const PREFS_KEY = "shawared.player.v1";
-/** A repeated last bayt starts over this long before the recording ends, so the next poem never starts. */
+/** What repeats: nothing, the whole poem, or the bayt being recited. */
+export type RepeatMode = "off" | "poem" | "bayt";
+/** The repeat button's steps, as in music apps: off, then everything, then just the one. */
+const NEXT_REPEAT: Record<RepeatMode, RepeatMode> = { off: "poem", poem: "bayt", bayt: "off" };
+/** A repeated poem, or its repeated last bayt, starts over this long before the recording ends, so the next poem never starts. */
 const END_MARGIN = 0.5;
 
 class Player {
   readonly now: Store<Now> = createStore<Now>({ item: null, track: null, from: null });
   readonly clock: Store<Clock> = createStore(idleClock());
-  readonly repeat: Store<{ on: boolean }> = createStore<{ on: boolean }>({ on: false });
+  readonly repeat: Store<{ mode: RepeatMode }> = createStore<{ mode: RepeatMode }>({ mode: "off" });
   /** Whether the next poem plays when one ends. The reader's choice is kept on the device. */
   readonly continuous: Store<{ on: boolean }> = createStore<{ on: boolean }>({ on: true });
+  /** Silenced without pausing (the web's player bar); not kept. */
+  readonly muted: Store<{ on: boolean }> = createStore<{ on: boolean }>({ on: false });
 
   private session: Session | null = null;
   private pendingSeek: number | null = null;
@@ -143,12 +149,13 @@ class Player {
     };
     // The poem with the one before it and, playing on, the one after.
     const first = at0 > 0 ? at0 - 1 : at0;
-    const last = this.continuous.get().on && at0 + 1 < ids.length ? at0 + 1 : at0;
+    const last = this.goesOn() && at0 + 1 < ids.length ? at0 + 1 : at0;
     const urls: string[] = [];
     for (let i = first; i <= last; i++) urls.push(this.urlOf(s, i));
     s.base = first;
     s.size = urls.length;
     s.list = createPlaylist(urls, this.onStatus);
+    if (this.muted.get().on) s.list.setMuted(true);
     if (at0 > first) s.list.skipTo(at0 - first);
     this.session = s;
     this.pendingSeek = at > 0 ? at : null;
@@ -211,13 +218,43 @@ class Player {
     this.clock.set({ ...idleClock(), seq: this.clock.get().seq + 1 });
   }
 
+  setMuted(on: boolean) {
+    this.muted.set({ on });
+    this.session?.list.setMuted(on);
+  }
+
   /** Plays the next poem when one ends, or stops there. */
   setContinuous(on: boolean, save = true) {
     this.continuous.set({ on });
     if (save) AsyncStorage.setItem(PREFS_KEY, JSON.stringify({ continuous: on })).catch(() => {});
+    this.queueNext();
+  }
+
+  /** Repeats nothing, the whole poem or the bayt being recited. Not kept: each visit starts without. */
+  setRepeat(mode: RepeatMode) {
+    this.repeat.set({ mode });
+    this.lockedSegment = -1;
+    this.queueNext();
+  }
+
+  /** The repeat button: off, then the whole poem, then the bayt, then off. */
+  cycleRepeat() {
+    this.setRepeat(NEXT_REPEAT[this.repeat.get().mode]);
+  }
+
+  /**
+   * Whether the next poem plays when this one ends: autoplay is on, and nothing repeats. A
+   * repeated poem, or bayt, never ends: even the last bayt starts over before the recording does.
+   */
+  private goesOn() {
+    return this.continuous.get().on && this.repeat.get().mode === "off";
+  }
+
+  /** Puts the next poem after the one playing, or takes it away, as `goesOn` says. */
+  private queueNext() {
     const s = this.session;
     if (!s) return;
-    if (on) this.fill(s, false);
+    if (this.goesOn()) this.fill(s, false);
     else
       while (s.size - 1 > s.at - s.base) {
         s.list.remove(s.size - 1);
@@ -266,6 +303,9 @@ class Player {
       // Statuses go on in the background, where frames don't: repeat keeps working there.
       this.sample();
       this.tick();
+    } else if (s.finished && this.repeat.get().mode !== "off") {
+      // A repeat ran out before it could start over (a late status): play the poem, or its bayt, again.
+      this.play(undefined, this.repeatStart());
     }
   };
 
@@ -294,7 +334,7 @@ class Player {
   private fill(s: Session, before: boolean) {
     const slot = s.at - s.base;
     // A finished queue waits to be played again: on iOS a recording added now would start.
-    if (this.continuous.get().on && !s.finished && slot === s.size - 1 && s.at + 1 < s.ids.length) {
+    if (this.goesOn() && !s.finished && slot === s.size - 1 && s.at + 1 < s.ids.length) {
       s.list.add(this.urlOf(s, s.at + 1));
       s.size++;
     }
@@ -367,7 +407,7 @@ class Player {
     });
   }
 
-  /** Reads the position, and loops the bayt when repeat is on. */
+  /** Reads the position, and loops the poem or the bayt when repeat says so. */
   private sample() {
     const s = this.session;
     if (!s || this.pendingSeek !== null) return;
@@ -375,7 +415,9 @@ class Player {
     const clock = this.clock.get();
     // A jump the app didn't make (the lock screen's scrubber): repeat aims again.
     this.clock.set({ time, ...(Math.abs(time - clock.time) > 1.5 ? { seq: clock.seq + 1 } : {}) });
-    if (this.repeat.get().on) this.loopBayt();
+    const { mode } = this.repeat.get();
+    if (mode === "bayt") this.loopBayt();
+    else if (mode === "poem") this.loopPoem();
   }
 
   /** While playing, read the position every frame. */
@@ -388,6 +430,20 @@ class Player {
       this.frame = requestAnimationFrame(step);
     };
     this.frame = requestAnimationFrame(step);
+  }
+
+  /** Where a repeat starts over: the poem's start, or the repeated bayt's (the last, if none is held yet). */
+  private repeatStart() {
+    const { track } = this.now.get();
+    if (this.repeat.get().mode !== "bayt" || !track) return 0;
+    const seg = track.segments[this.lockedSegment] ?? track.segments[track.segments.length - 1];
+    return seg ? Math.max(0, seg.start - PRE_ROLL) : 0;
+  }
+
+  /** Starts the poem over just before its recording ends, so the next one never starts. */
+  private loopPoem() {
+    const cur = this.now.get().item;
+    if (cur && this.clock.get().time >= cur.recitation.duration - END_MARGIN) this.seek(0);
   }
 
   /** Loops the bayt being recited. Any seek by the reader re-aims it. */

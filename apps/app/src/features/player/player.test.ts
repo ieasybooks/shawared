@@ -170,7 +170,7 @@ const status = (patch: Partial<Status>): Status => ({
 beforeEach(() => {
   player.close();
   player.setContinuous(true, false);
-  player.repeat.set({ on: false });
+  player.setRepeat("off");
   forgetLists();
   env.os = "ios";
   env.catalog = CATALOG;
@@ -394,8 +394,8 @@ describe("the player", () => {
     expect(player.now.get().item?.poemId).toBe("b");
   });
 
-  it("repeats the last bayt before the recording ends, so the next poem doesn't start", () => {
-    player.repeat.set({ on: true });
+  it("repeats the last bayt before the recording ends, with no next poem behind it", () => {
+    player.setRepeat("bayt");
     player.play(
       itemOf("b", [
         ["1.1", 2, 5],
@@ -403,12 +403,82 @@ describe("the player", () => {
       ]),
     );
     const list = last();
+    expect(list.sources).toEqual([url("a"), url("b")]);
     // In the background, statuses are all there is.
     list.currentTime = 26;
     list.emit({ playing: true });
     list.currentTime = 29.6;
     list.emit({ playing: true });
     expect(list.seekTo).toHaveBeenLastCalledWith(25 - 0.12);
+  });
+
+  it("plays a repeated last bayt again when the recording ran out before it could start over", () => {
+    player.setRepeat("bayt");
+    player.play(
+      itemOf("b", [
+        ["1.1", 2, 5],
+        ["2.1", 25, 29.9],
+      ]),
+    );
+    const list = last();
+    list.currentTime = 26;
+    list.emit({ playing: true });
+    // The next status comes only once the recording has ended.
+    list.playing = false;
+    list.currentTime = 30;
+    list.emit({ didJustFinish: true });
+    expect(list.skipTo).toHaveBeenLastCalledWith(1);
+    list.currentTime = 0;
+    list.emit({});
+    expect(list.seekTo).toHaveBeenLastCalledWith(25 - 0.12);
+    expect(list.play).toHaveBeenCalledTimes(2);
+  });
+
+  it("steps repeat through the whole poem, the bayt, and off", () => {
+    expect(player.repeat.get().mode).toBe("off");
+    player.cycleRepeat();
+    expect(player.repeat.get().mode).toBe("poem");
+    player.cycleRepeat();
+    expect(player.repeat.get().mode).toBe("bayt");
+    player.cycleRepeat();
+    expect(player.repeat.get().mode).toBe("off");
+  });
+
+  it("repeats the whole poem just before its recording ends, with no next poem behind it", () => {
+    player.play(item);
+    const list = last();
+    expect(list.sources).toEqual([url("a"), url("b"), url("c")]);
+    // Repeating the poem takes the next one away, and the lock screen stops offering it.
+    player.setRepeat("poem");
+    expect(list.sources).toEqual([url("a"), url("b")]);
+    expect(list.setActiveForLockScreen).toHaveBeenLastCalledWith(true, expect.anything(), {
+      showPreviousTrack: true,
+      showNextTrack: false,
+    });
+    // In the background, statuses are all there is.
+    list.currentTime = 29.6;
+    list.emit({ playing: true });
+    expect(list.seekTo).toHaveBeenLastCalledWith(0);
+    expect(player.now.get().item?.poemId).toBe("b");
+    // Off again: autoplay's next poem is back.
+    player.setRepeat("off");
+    expect(list.sources).toEqual([url("a"), url("b"), url("c")]);
+  });
+
+  it("plays a repeated poem again when it ran out before it could start over", () => {
+    player.setRepeat("poem");
+    player.play(item);
+    const list = last();
+    expect(list.sources).toEqual([url("a"), url("b")]);
+    list.playing = false;
+    list.currentTime = 30;
+    list.emit({ didJustFinish: true });
+    // Loaded again, then sought to its start and played.
+    expect(list.skipTo).toHaveBeenLastCalledWith(1);
+    list.currentTime = 0;
+    list.emit({});
+    expect(list.seekTo).toHaveBeenLastCalledWith(0);
+    expect(list.play).toHaveBeenCalledTimes(2);
   });
 
   it("plays a finished queue's last poem again from the start", () => {

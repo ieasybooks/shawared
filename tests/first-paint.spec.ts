@@ -62,7 +62,7 @@ async function openHeld(page: Page, path: string) {
   };
 }
 
-/** The layout on screen: the site header's navigation on wide windows, the top bar's or tab bar's on phones. */
+/** The layout on screen: the sidebar's navigation on wide windows, the top bar's or tab bar's on phones. */
 async function expectLayout(page: Page, layout: "phone" | "wide", path: string) {
   const nav = page.getByRole("navigation");
   if (layout === "wide") {
@@ -131,8 +131,8 @@ test("resizing across WIDE_MIN switches the layout, and the poem's explanation m
   await expect.poll(panelStyle).toEqual({ position: "relative", opacity: "1", transform: "none" });
   await expect(intro).toBeInViewport();
   const [list, text] = await Promise.all([verses.boundingBox(), intro.boundingBox()]);
-  // Arabic reads from the right: the panel is on the verses' left.
-  expect(text!.x + text!.width).toBeLessThanOrEqual(list!.x + 1);
+  // The explanation is the sidebar, at the start: in Arabic, on the verses' right.
+  expect(text!.x).toBeGreaterThanOrEqual(list!.x + list!.width - 1);
 
   await page.setViewportSize({ width: WIDE_MIN - 1, height: 900 });
   await expectLayout(page, "phone", POEM);

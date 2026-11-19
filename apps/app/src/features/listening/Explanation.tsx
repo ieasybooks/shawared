@@ -6,7 +6,7 @@ import { Chip, IconButton, Nuqta, Tag } from "../../components/ui/controls";
 import { Dir } from "../../components/ui/Dir";
 import { Half } from "../../components/ui/Measure";
 import { t } from "../../lib/i18n";
-import { isWide, Only } from "../../lib/responsive";
+import { isWide, Only, useLayout } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { useReveal } from "./PanelScroll";
@@ -28,6 +28,7 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
   const { abyat, sources, source, setSourceId, words, pinned, unpin, followRef, playback, bundle, intro, focus } = useListening();
   const { palette, lang, start } = useSettings();
   const type = useType();
+  const layout = useLayout();
   const current = useCurrentBayt();
   const line = useCurrentLine(playback);
   const view = usePanel();
@@ -50,7 +51,7 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
     Animated.timing(fade, { toValue: 1, duration: 220, useNativeDriver: false }).start();
   }, [key, fade]);
 
-  const verseColor = (h: 1 | 2) => (live ? (liveHalf === null || liveHalf === h ? palette.fg : palette.partner) : palette.rest);
+  const verseColor = (h: 1 | 2) => (live && (liveHalf === null || liveHalf === h) ? palette.accent : palette.fg);
   // Back to following: from a held bayt, or from the introduction once the recitation is under way.
   const showNowPlaying = view === "intro" ? line >= 0 : pinned !== null && pinned !== current;
 
@@ -89,7 +90,15 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
           <Text style={[type.prose, { color: palette.fg, textAlign: start }]}>{intro}</Text>
         ) : (
           <>
-            <Dir dir="rtl" lang="ar" style={[styles.verse, { backgroundColor: palette.fold }]}>
+            {/* In the phone's sheet on the fold; in the sidebar, a card on it. */}
+            <Dir
+              dir="rtl"
+              lang="ar"
+              style={[
+                styles.verse,
+                { backgroundColor: layout.value(palette.fold, palette.raise), borderColor: layout.value("transparent", palette.line) },
+              ]}
+            >
               <Half
                 text={bayt.sadr}
                 kashida={bundle.poem.kashida[`${bayt.n}.1`]}
@@ -156,7 +165,7 @@ function WordNote({ hit, focused }: { hit: WordHit; focused: boolean }) {
       style={[
         styles.word,
         { borderTopColor: palette.line },
-        focused && [styles.focused, { backgroundColor: `${palette.accent}14`, borderTopColor: "transparent" }],
+        focused && [styles.focused, { backgroundColor: palette.accentSoft, borderTopColor: "transparent" }],
       ]}
     >
       <View style={styles.wordHead}>
@@ -184,7 +193,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: space.l,
   },
   body: { gap: space.l },
-  verse: { borderRadius: 12, paddingVertical: space.m, paddingHorizontal: 14 },
+  verse: { borderRadius: 12, borderWidth: 1, paddingVertical: space.m, paddingHorizontal: 14 },
   sources: { flexDirection: "row", gap: space.s, flexWrap: "wrap" },
   wordsTitle: { paddingBottom: space.m },
   word: { borderTopWidth: 1, paddingVertical: space.l, gap: space.s },

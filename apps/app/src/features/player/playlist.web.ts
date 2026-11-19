@@ -144,6 +144,9 @@ export const createPlaylist: CreatePlaylist = (urls, onStatus) => {
       if (slot < index) index--;
     },
     seamlessInsert: true,
+    setMuted(muted) {
+      media.muted = muted;
+    },
     show(now: NowPlaying, next: Buttons) {
       buttons = next;
       const ms = session();

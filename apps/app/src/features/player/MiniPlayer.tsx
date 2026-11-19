@@ -5,6 +5,8 @@ import { useCallback } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IconButton } from "../../components/ui/controls";
+import { Eq } from "../../components/ui/Eq";
+import { CoverTile } from "../../components/ui/Girih";
 import { Icon } from "../../components/ui/Icon";
 import { t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
@@ -17,8 +19,8 @@ const selectNow = (s: { item: unknown; track: Track | null }) => s;
 const selectPlaying = (s: Clock) => s.playing;
 
 /**
- * What is playing: above the tabs, or at the bottom of a page opened from another. Tap it to
- * go back to the poem; play, pause or close it in place.
+ * What is playing, on phones: a card floating above the tabs, or at the bottom of a page opened
+ * from another. Tap it to go back to the poem; play, pause or close it in place.
  */
 export function MiniPlayer({ docked = false }: { docked?: boolean }) {
   const { item, track } = useStore(player.now, selectNow) as ReturnType<typeof player.now.get>;
@@ -30,50 +32,52 @@ export function MiniPlayer({ docked = false }: { docked?: boolean }) {
   const insets = useSafeAreaInsets();
   if (!item) return null;
   return (
-    <View
-      style={[
-        styles.bar,
-        { backgroundColor: palette.raise, borderTopColor: palette.line },
-        docked && { paddingBottom: insets.bottom + space.m },
-      ]}
-    >
-      <Progress duration={item.recitation.duration} />
-      <Pressable
-        accessibilityRole="link"
-        accessibilityLabel={item.title}
-        onPress={() => router.push(href(paths.poem(item.poemId)))}
-        style={styles.info}
-      >
-        <Text numberOfLines={1} style={[type.miniTitle, styles.rtl, { color: palette.fg }]}>
-          {item.title}
-        </Text>
-        <Text numberOfLines={1} style={[type.caption, { color: palette.muted }]}>
-          {t(lang, "now", { n, N: item.abyat })} · {item.poet}
-        </Text>
-      </Pressable>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={t(lang, playing ? "pause" : "play")}
-        onPress={() => player.toggle()}
-        style={[styles.play, { backgroundColor: palette.fg }]}
-      >
-        <Icon name={playing ? "pause" : "play"} size={18} color={palette.bg} />
-      </Pressable>
-      <IconButton
-        icon="close"
-        label={t(lang, "closePlayer")}
-        onPress={() => player.close()}
-        size={36}
-        iconSize={18}
-        color={palette.muted}
-      />
+    <View style={[styles.wrap, docked && { paddingBottom: insets.bottom + space.s }]}>
+      <View style={[styles.card, { backgroundColor: palette.raise, borderColor: palette.line, shadowColor: palette.shadow }]}>
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel={item.title}
+          onPress={() => router.push(href(paths.poem(item.poemId)))}
+          style={styles.info}
+        >
+          <CoverTile size={42} radius={10} />
+          <View style={styles.text}>
+            <Text numberOfLines={1} style={[type.miniTitle, styles.rtl, { color: palette.fg }]}>
+              {item.title}
+            </Text>
+            <View style={styles.sub}>
+              <Eq on={playing} color={palette.accent} height={10} />
+              <Text numberOfLines={1} style={[type.caption, styles.shrink, { color: palette.muted }]}>
+                {t(lang, "now", { n, N: item.abyat })} · {item.poet}
+              </Text>
+            </View>
+          </View>
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={t(lang, playing ? "pause" : "play")}
+          onPress={() => player.toggle()}
+          style={[styles.play, { backgroundColor: palette.fg }]}
+        >
+          <Icon name={playing ? "pause" : "play"} size={17} color={palette.bg} />
+        </Pressable>
+        <IconButton
+          icon="close"
+          label={t(lang, "closePlayer")}
+          onPress={() => player.close()}
+          size={36}
+          iconSize={18}
+          color={palette.muted}
+        />
+        <Progress duration={item.recitation.duration} />
+      </View>
     </View>
   );
 }
 
 const selectTime = (s: Clock) => s.time;
 
-/** A hairline along the top edge, filling with the recitation from the reading start. */
+/** A hairline along the card's bottom edge, filling with the recitation from the reading start. */
 function Progress({ duration }: { duration: number }) {
   const time = useStore(player.clock, selectTime);
   const { palette } = useSettings();
@@ -85,18 +89,28 @@ function Progress({ duration }: { duration: number }) {
 }
 
 const styles = StyleSheet.create({
-  bar: {
+  wrap: { paddingHorizontal: space.m, paddingBottom: space.m },
+  card: {
     flexDirection: "row",
     alignItems: "center",
     gap: space.m,
     paddingVertical: space.m,
-    paddingStart: space.xl,
-    paddingEnd: space.s,
-    borderTopWidth: 1,
+    paddingStart: space.m,
+    paddingEnd: space.xs,
+    borderWidth: 1,
+    borderRadius: 16,
+    overflow: "hidden",
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.6,
+    shadowRadius: 18,
+    elevation: 6,
   },
-  info: { flex: 1, minWidth: 0, gap: space.xs },
+  info: { flex: 1, minWidth: 0, flexDirection: "row", alignItems: "center", gap: space.l },
+  text: { flex: 1, minWidth: 0, gap: space.s },
+  sub: { flexDirection: "row", alignItems: "center", gap: space.s },
+  shrink: { flexShrink: 1 },
   rtl: { writingDirection: "rtl" },
   play: { width: 40, height: 40, borderRadius: 20, alignItems: "center", justifyContent: "center" },
-  track: { position: "absolute", top: -1, start: 0, end: 0, height: 2 },
+  track: { position: "absolute", bottom: 0, start: 0, end: 0, height: 2 },
   fill: { position: "absolute", top: 0, bottom: 0, start: 0 },
 });
