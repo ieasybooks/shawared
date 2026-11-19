@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.3.0](https://github.com/ieasybooks/shawared/compare/v0.2.0...v0.3.0) (2026-11-19)
+
+
+### Features
+
+* redesign the app around the girih cover tile and a sidebar ([#14](https://github.com/ieasybooks/shawared/issues/14)) ([07e4de5](https://github.com/ieasybooks/shawared/commit/07e4de518834a4315107d183d794cda0bc82bf2c))
+
+
+### Bug Fixes
+
+* declare Arabic and English in the app so the App Store lists both ([#15](https://github.com/ieasybooks/shawared/issues/15)) ([1bd0a4d](https://github.com/ieasybooks/shawared/commit/1bd0a4d5ac7f2b7df7d66462a2113a84b3f89dff))
+* list the app as "Name: tagline", name EasyBooks, and add a support page ([#17](https://github.com/ieasybooks/shawared/issues/17)) ([3dca584](https://github.com/ieasybooks/shawared/commit/3dca584f8bfe889d18aede2a2383c76ce3000f1a))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @shawared/design bumped to 0.2.0
+
 ## [0.2.0](https://github.com/ieasybooks/shawared/compare/v0.1.0...v0.2.0) (2026-11-18)
 
 
