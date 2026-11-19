@@ -47,7 +47,7 @@ It uploads each recording whose key isn't in the bucket yet, with `Content-Type:
 
 ## Deploys
 
-Each commit pushed to main deploys once its checks pass. When a release pull request's merge tags the apps, the same run deploys that commit and releases the apps from it ([releasing](releasing.md)). `.github/workflows/release-please.yml` runs `check.yml` on it, marks it with a **Checks** status saying how they ended, and once they passed calls `.github/workflows/web.yml`, which:
+Each commit pushed to main deploys once its checks pass. When a release pull request's merge tags the apps, the same run deploys that commit and releases the apps from it; if a later push's run tags it instead, that run deploys its own commit and releases the apps from the tagged one ([releasing](releasing.md)). `.github/workflows/release-please.yml` runs `check.yml` on the pushed commit, marks it with a **Checks** status saying how they ended, and once they passed calls `.github/workflows/web.yml`, which:
 
 1. gets `SHAWARED_WEB_DEPLOY_TOKEN` from the vault, a token that can deploy the `shawared-web` Worker and nothing else;
 2. compares the commit with the one live (`scripts/deploy-order.ts`);
