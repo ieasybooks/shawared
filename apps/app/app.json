@@ -6,6 +6,10 @@
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/app/icon.png",
+    "locales": {
+      "ar": "./locales/ar.json",
+      "en": "./locales/en.json"
+    },
     "ios": {
       "supportsTablet": true,
       "appleTeamId": "KJ597HLVMB",
