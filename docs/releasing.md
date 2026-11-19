@@ -109,7 +109,7 @@ Done once, by hand, in each store's console, with the bundle ID and package name
 
 - **App Store Connect:** register the bundle ID in Certificates, Identifiers & Profiles, then create the app (primary language Arabic) with the name in `apps/app/store/ar/app-store-name.txt`, which must be free across the store. Fill in App Privacy (no data collected), the age rating, the price (free) and the availability.
 - **Google Play Console:** create the app, enrol it in Play App Signing with the shared upload key, and upload the first AAB by hand (Google takes later ones through the API). Fill in the data safety form (no data collected or shared), the content rating, the target audience, and the foreground service declaration for media playback, which the background recitation uses.
-- **AppGallery Connect:** create the app, sign it with the shared upload key as the APK is signed, and add its app ID to `apps/app/store/store.json` as `"appGallery": { "appId": "…" }`.
+- **AppGallery Connect:** create the app, sign it with the shared upload key as the APK is signed, and add its app ID to `apps/app/store/store.json` as `"appGallery": { "appId": "…" }`. AppGallery serves the APK as that key signed it, and Android installs an update only from the same signer, so the shared key (SHA-256 `9D:E6:FD…`) is Shawared's signature on AppGallery for good, as it is Faqieh's. It can't be replaced there, so keep a copy of it, with its password, outside the vault.
 
 Then push a dry run tag (above) to check everything before the first release.
 
