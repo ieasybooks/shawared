@@ -126,3 +126,7 @@ The workflows run the command from `node_modules/.bin`, never through `bunx`, wh
 ## Running the steps on a Mac
 
 fastlane runs on Ruby (pinned in `mise.toml`): `mise exec -- bundle install`. With the secrets from `mise run vault:run` in ieasybooks/infrastructure, the lanes in `fastlane/Fastfile` and `node_modules/.bin/ieasybooks-release appgallery publish --app apps/app <apk>` run as they do in the workflow; pass `dry_run:true` (or `--dry-run`) to check without releasing. `bun run fastlane:check` loads the Fastfile with its gems, as the checks do.
+
+## Store settings a release doesn't send
+
+`apps/app/store/store.json`'s `appStore.copyrightHolder` makes the App Store copyright line, "<year> الكتب المُيسّرة", on every release. Its `audit` lists what a release doesn't send: the App Store age rating, Google Play's contact details, and AppGallery's rating and privacy links. Each store job runs `ieasybooks-release store audit` after getting its key and before uploading, and stops if that store's console differs. Fix the console, or `store.json` if the console is right.
