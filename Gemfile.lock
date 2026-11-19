@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/ieasybooks/release.git
-  revision: 116c69c2b2ca4e03450b8728575fea5c050685da
-  ref: 116c69c2b2ca4e03450b8728575fea5c050685da
+  revision: 04442875d8c4f78dd5567ce4aa8f8993c160cada
+  ref: 04442875d8c4f78dd5567ce4aa8f8993c160cada
   glob: ruby/*.gemspec
   specs:
-    ieasybooks-release (1.0.0)
+    ieasybooks-release (2.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -341,7 +341,7 @@ CHECKSUMS
   googleauth (1.17.7) sha256=9db21857ddbe055a8b0d44ddb75d4ceda97511167431e30121c77c25a9ce9fe5
   highline (2.0.3) sha256=2ddd5c127d4692721486f91737307236fe005352d12a4202e26c48614f719479
   http-cookie (1.1.6) sha256=ba4b82be64de61dc281243dac70e3c382c45142f20268ed9276a3670c93feaa9
-  ieasybooks-release (1.0.0)
+  ieasybooks-release (2.1.0)
   io-console (0.9.5) sha256=83dd9bbf4c4680416629245b39cd4212eb5f4d9a4ea91804870c1f6b846414d5
   irb (1.19.0) sha256=55ee56acbdd6c9fe06a2e6909f46a24e5c41f45f16906bab04e8049cf46f1d27
   jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
