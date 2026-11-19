@@ -3,14 +3,16 @@ name: Release please
 # On each push to main, release-please keeps a release pull request open with
 # the apps' next version and changelog, from the Conventional Commits since
 # their last release. Merging it tags the apps (v<version>) and creates their
-# GitHub release. This workflow then runs every check (check.yml) on the
-# commit it tagged, or on the pushed commit when it tagged nothing, marks the
-# commit with a "Checks" status saying how they ended, and once they passed:
+# GitHub release. This workflow runs every check (check.yml) on the pushed
+# commit, marks it with a "Checks" status saying how they ended, and once
+# they passed deploys it to shawared.com (web.yml). When release-please tags
+# the apps, it releases them to the stores (release.yml) from the commit it
+# tagged, once that commit's checks passed: the pushed one, or an earlier one
+# when the run for the release pull request's merge tagged nothing (it
+# failed, say) and this run tagged it, which then gets its own checks and
+# status.
 #
-# - deploys the commit to shawared.com (web.yml), as on every push;
-# - releases the apps to the stores (release.yml) when it tagged them.
-#
-# Each builds exactly that commit. See docs/releasing.md and
+# Each builds exactly its commit. See docs/releasing.md and
 # docs/web-deployment.md.
 #
 # Tags made with GITHUB_TOKEN start no workflows, so this workflow calls the
@@ -43,8 +45,13 @@ jobs:
     if: github.ref == 'refs/heads/main' && !inputs.access-check
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    # One run at a time, each in turn: queue: max keeps up to 100 waiting,
+    # where GitHub would cancel all but the newest, and a run cancelled
+    # before release-please tags the release pull request's merge leaves the
+    # tag to a later push's run.
     concurrency:
       group: release-please
+      queue: max
       cancel-in-progress: false
     permissions:
       contents: write
@@ -52,21 +59,32 @@ jobs:
     outputs:
       apps: ${{ steps.release.outputs['apps/app--release_created'] }}
       apps-tag: ${{ steps.release.outputs['apps/app--tag_name'] }}
-      sha: ${{ steps.commit.outputs.sha }}
+      apps-sha: ${{ steps.apps.outputs.sha }}
+      apps-apart: ${{ steps.apps.outputs.apart }}
     steps:
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         id: release
-      # What the checks run on and the release jobs ship: the commit
-      # release-please tagged, which may not be the pushed one when pushes
-      # queue up, or the pushed commit when it tagged nothing.
-      - name: Pick the commit to check
-        id: commit
+      # The commit the apps release ships: the one release-please tagged,
+      # which is an earlier one than the pushed commit when this run tagged a
+      # release pull request's merge that an earlier run didn't.
+      - name: Pick the apps' commit
+        id: apps
+        if: steps.release.outputs['apps/app--release_created'] == 'true'
         env:
           APPS_SHA: ${{ steps.release.outputs['apps/app--sha'] }}
         run: |
-          sha=${APPS_SHA:-$GITHUB_SHA}
-          echo "sha=$sha" >> "$GITHUB_OUTPUT"
-          echo "Checking $sha."
+          if ! [[ $APPS_SHA =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::release-please tagged the apps without a full commit SHA ($APPS_SHA)."
+            exit 1
+          fi
+          echo "sha=$APPS_SHA" >> "$GITHUB_OUTPUT"
+          if [ "$APPS_SHA" = "$GITHUB_SHA" ]; then
+            echo "apart=false" >> "$GITHUB_OUTPUT"
+            echo "The apps release from the pushed commit, $APPS_SHA."
+          else
+            echo "apart=true" >> "$GITHUB_OUTPUT"
+            echo "The apps release from $APPS_SHA, which release-please tagged; the site deploys the pushed $GITHUB_SHA."
+          fi
 
   # The checks GitHub starts on GITHUB_TOKEN's pull requests wait for someone
   # to approve them, and the release pull request needs none: its merge is
@@ -150,25 +168,39 @@ jobs:
             -f description="${description:0:140}" \
             -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > /dev/null
 
-  # Every check, on the commit the release jobs would ship.
+  # Every check, on the pushed commit, which the site deploys. It doesn't
+  # wait for release-please, so a push is checked and deployed even when
+  # release-please fails.
   check:
     name: Check
-    needs: release-please
+    if: github.ref == 'refs/heads/main' && !inputs.access-check
     permissions:
       contents: read
     uses: ./.github/workflows/check.yml
     with:
-      sha: ${{ needs.release-please.outputs.sha }}
+      sha: ${{ github.sha }}
 
-  # Marks the commit with how its checks ended, as its "Checks" status, which
-  # Release web run by hand and a release from a tag pushed by hand need
-  # (ieasybooks-release verify-commit). It runs however they ended, also on a
-  # re-run, so a later run whose checks failed or was cancelled takes an
-  # earlier success back.
+  # Every check on the apps' commit, when release-please tagged an earlier
+  # commit than the pushed one.
+  apps-check:
+    name: Check the apps' commit
+    needs: release-please
+    if: needs.release-please.outputs.apps-apart == 'true'
+    permissions:
+      contents: read
+    uses: ./.github/workflows/check.yml
+    with:
+      sha: ${{ needs.release-please.outputs.apps-sha }}
+
+  # Marks each checked commit with how its checks ended, as its "Checks"
+  # status, which Release web run by hand and a release from a tag pushed by
+  # hand need (ieasybooks-release verify-commit). It runs however they ended,
+  # also on a re-run, so a later run whose checks failed or was cancelled
+  # takes an earlier success back.
   checks-status:
-    name: Mark the commit's checks
-    needs: [release-please, check]
-    if: ${{ always() && needs.release-please.result == 'success' }}
+    name: Mark the commits' checks
+    needs: [release-please, check, apps-check]
+    if: ${{ always() && needs.check.result != 'skipped' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
@@ -176,35 +208,52 @@ jobs:
     steps:
       - env:
           GH_TOKEN: ${{ github.token }}
-          SHA: ${{ needs.release-please.outputs.sha }}
           RESULT: ${{ needs.check.result }}
+          APPS_APART: ${{ needs.release-please.outputs.apps-apart }}
+          APPS_SHA: ${{ needs.release-please.outputs.apps-sha }}
+          APPS_RESULT: ${{ needs.apps-check.result }}
         run: |
-          case $RESULT in
-            success) state=success description="Every check passed on main." ;;
-            failure) state=failure description="A check failed on main." ;;
-            *) state=error description="Main's checks didn't finish ($RESULT)." ;;
-          esac
-          gh api "repos/$GITHUB_REPOSITORY/statuses/$SHA" \
-            -f state="$state" -f context=Checks \
-            -f description="$description" \
-            -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > /dev/null
-          echo "Marked $SHA: $description"
+          mark() {
+            case $2 in
+              success) state=success description="Every check passed on main." ;;
+              failure) state=failure description="A check failed on main." ;;
+              *) state=error description="Main's checks didn't finish ($2)." ;;
+            esac
+            gh api "repos/$GITHUB_REPOSITORY/statuses/$1" \
+              -f state="$state" -f context=Checks \
+              -f description="$description" \
+              -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > /dev/null
+            echo "Marked $1: $description"
+          }
+          mark "$GITHUB_SHA" "$RESULT"
+          if [ "$APPS_APART" = true ]; then
+            mark "$APPS_SHA" "$APPS_RESULT"
+          fi
       - name: Note that nothing ships
-        if: needs.check.result == 'success' && github.actor != 'AliOsm'
+        if: github.actor != 'AliOsm'
         env:
           ACTOR: ${{ github.actor }}
-          SHA: ${{ needs.release-please.outputs.sha }}
+          RESULT: ${{ needs.check.result }}
           APPS: ${{ needs.release-please.outputs.apps }}
+          APPS_APART: ${{ needs.release-please.outputs.apps-apart }}
+          APPS_RESULT: ${{ needs.apps-check.result }}
           TAG: ${{ needs.release-please.outputs.apps-tag }}
         run: |
-          echo "::notice::$ACTOR started this run, so it doesn't deploy $SHA: the vault serves the deploy token only in runs AliOsm started. AliOsm can run Release web on main to deploy main's newest commit."
-          if [ "$APPS" = true ]; then
-            echo "::notice::Nor does it release the apps' $TAG. AliOsm can run Release apps on $TAG with dry-run unticked."
+          if [ "$RESULT" = success ]; then
+            echo "::notice::$ACTOR started this run, so it doesn't deploy $GITHUB_SHA: the vault serves the deploy token only in runs AliOsm started. AliOsm can run Release web on main to deploy main's newest commit."
+          fi
+          # The apps' commit's checks: this run's, or its own.
+          apps_result=$RESULT
+          if [ "$APPS_APART" = true ]; then
+            apps_result=$APPS_RESULT
+          fi
+          if [ "$APPS" = true ] && [ "$apps_result" = success ]; then
+            echo "::notice::$ACTOR started this run, so it doesn't release the apps' $TAG: AliOsm can run Release apps on $TAG with dry-run unticked."
           fi
 
   web:
     name: Release web
-    needs: [release-please, check]
+    needs: check
     if: github.actor == 'AliOsm'
     permissions:
       contents: read
@@ -212,12 +261,17 @@ jobs:
       statuses: read
     uses: ./.github/workflows/web.yml
     with:
-      sha: ${{ needs.release-please.outputs.sha }}
+      sha: ${{ github.sha }}
 
+  # From the commit release-please tagged, once that commit's own checks
+  # passed: this run's, or the apps' commit's when it's an earlier one.
   apps:
     name: Release apps
-    needs: [release-please, check]
-    if: needs.release-please.outputs.apps == 'true' && github.actor == 'AliOsm'
+    needs: [release-please, check, apps-check]
+    if: >-
+      ${{ !cancelled() && github.actor == 'AliOsm' && needs.release-please.outputs.apps == 'true' &&
+      ((needs.release-please.outputs.apps-apart == 'true' && needs.apps-check.result == 'success') ||
+      (needs.release-please.outputs.apps-apart != 'true' && needs.check.result == 'success')) }}
     permissions:
       contents: read
       id-token: write
@@ -225,7 +279,7 @@ jobs:
     uses: ./.github/workflows/release.yml
     with:
       tag: ${{ needs.release-please.outputs.apps-tag }}
-      sha: ${{ needs.release-please.outputs.sha }}
+      sha: ${{ needs.release-please.outputs.apps-sha }}
 
   # The vault access checks, run by hand on main (see the top).
   access-check-apps:

@@ -12,9 +12,11 @@ shawared.com is the Expo app's web export, every page rendered ahead of time in 
 
 The test and release builds export with an empty Metro cache (`export:web:clean`). Metro's transform cache is shared by every checkout on a machine and keeps the absolute paths of the files with loaders (Expo 58), so a cache filled by another checkout leaves the pages without their data and the export fails ("Failed to load loader data").
 
-`scripts/web-release.ts` finishes the test and release exports:
+Expo names the files of packages under `node_modules/.bun` by their folders, with `@` and `+` (`@expo-google-fonts+amiri@0.4.1`), and Cloudflare answers such an address with a 307 to its percent-encoded form: a round trip before each font, and text waits for its font. So the web exports (`export:web` and `export:web:clean`, which set `SHAWARED_WEB_EXPORT=1`) give each asset's folder those characters as `_`, through a Metro asset plugin (`apps/app/plugins/plain-asset-paths.js`, in `apps/app/metro.config.js`). Metro writes the plain addresses into the scripts before their names take their content's hash, so a script whose addresses change gets a new name. The apps' native builds keep Expo's paths.
 
-- Asset addresses. Expo names the files of packages under `node_modules/.bun` by their folders, with `@` and `+` (`@expo-google-fonts+amiri@0.4.1`), and Cloudflare answers such an address with a 307 to its percent-encoded form: a round trip before each font, and text waits for its font. Those files move to the same path with each such character made `_`, and every page, script and style sheet names the new address.
+`scripts/web-release.ts` finishes the test and release exports, and fails if any step changed a file whose name carries its hash, as new bytes under a name cached for a year would never reach a browser that has the old ones:
+
+- Asset addresses. It fails if a page, script or style sheet still names an asset by an address Cloudflare would redirect, such as an export made without `SHAWARED_WEB_EXPORT=1`.
 - Font preloads. Expo preloads every face the app loads, on every page. A page keeps the preloads of the faces its markup draws with, inline or through a class it uses; the others (English on an Arabic page) load when the app asks for them, out of the way of those it needs and of the scripts.
 - `404.html`, the not-found page, which Cloudflare serves with a 404 for any unknown address.
 - `en.html`, the English home page, moved from `en/index.html`. Cloudflare serves `/x` from `x.html` but redirects it to `/x/` when the page is `x/index.html`, and the sitemap and the pages' canonical links name `/en`.
@@ -47,7 +49,7 @@ It uploads each recording whose key isn't in the bucket yet, with `Content-Type:
 
 ## Deploys
 
-Each commit pushed to main deploys once its checks pass. When a release pull request's merge tags the apps, the same run deploys that commit and releases the apps from it ([releasing](releasing.md)). `.github/workflows/release-please.yml` runs `check.yml` on it, marks it with a **Checks** status saying how they ended, and once they passed calls `.github/workflows/web.yml`, which:
+Each commit pushed to main deploys once its checks pass. When a release pull request's merge tags the apps, the same run deploys that commit and releases the apps from it; if a later push's run tags it instead, that run deploys its own commit and releases the apps from the tagged one ([releasing](releasing.md)). `.github/workflows/release-please.yml` runs `check.yml` on the pushed commit, marks it with a **Checks** status saying how they ended, and once they passed calls `.github/workflows/web.yml`, which:
 
 1. gets `SHAWARED_WEB_DEPLOY_TOKEN` from the vault, a token that can deploy the `shawared-web` Worker and nothing else;
 2. compares the commit with the one live (`scripts/deploy-order.ts`);

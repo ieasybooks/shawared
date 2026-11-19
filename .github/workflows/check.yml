@@ -19,10 +19,11 @@ on:
 permissions:
   contents: read
 
-# A new push to a pull request replaces its running checks. Runs on main each
-# get their own group: a deploy waits on its run, which nothing may cancel.
+# A new push to a pull request replaces its running checks. Checks on main
+# each get their own group, by run and commit (a run can check two): a deploy
+# or release waits on them, which nothing may cancel.
 concurrency:
-  group: check-${{ github.event_name == 'pull_request' && github.ref || github.run_id }}
+  group: check-${{ github.event_name == 'pull_request' && github.ref || format('{0}-{1}', github.run_id, inputs.sha) }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:

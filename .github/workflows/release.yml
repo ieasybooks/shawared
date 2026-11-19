@@ -44,11 +44,14 @@ on:
 permissions:
   contents: read
 
-# One release at a time. The vault access check has its own group: GitHub
-# keeps only the newest waiting run in a group, cancelling the one it
-# replaces, so a check waiting here would cancel a release waiting here.
+# One release at a time, each waiting its turn: queue: max keeps up to 100
+# waiting, where GitHub would cancel all but the newest, which can be an older
+# release whose checks finished later (it then stops as superseded, and
+# nothing ships). The vault access check has its own group, so it doesn't
+# wait behind a release.
 concurrency:
   group: ${{ inputs.access-check && 'release-access-check' || 'release' }}
+  queue: max
   cancel-in-progress: false
 
 env:
@@ -198,6 +201,23 @@ jobs:
         with:
           ruby-version: "3.4"
           bundler-cache: true
+      # App Store Connect refuses a version it has released and a build number
+      # it already has, even only to validate them, and the apps' version is
+      # usually the one last released. So a dry run builds the next patch
+      # version, as a release after it would be.
+      - name: Build a dry run as the next patch version
+        if: needs.check.outputs.dry-run == 'true'
+        working-directory: apps/app
+        run: |
+          version=$(jq -r .version package.json)
+          if ! [[ $version =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "::error::apps/app/package.json's version, $version, isn't major.minor.patch."
+            exit 1
+          fi
+          next="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.$((BASH_REMATCH[3] + 1))"
+          jq --arg version "$next" '.version = $version' package.json > "$RUNNER_TEMP/package.json"
+          mv "$RUNNER_TEMP/package.json" package.json
+          echo "This dry run of $version builds as $next."
       - name: Generate the Xcode project
         working-directory: apps/app
         run: bunx expo prebuild --platform ios

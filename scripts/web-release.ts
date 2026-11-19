@@ -6,11 +6,12 @@
 // - en.html, from en/index.html: Workers serves /x from x.html, but redirects
 //   /x to /x/ when the page is x/index.html, and the sitemap and the pages'
 //   canonical links name /en.
-// - Asset addresses. Expo names the files of packages under node_modules/.bun by
-//   their folders, with @ and +, and Cloudflare answers such an address with a
-//   redirect to its percent-encoded form: a round trip before each font, and
-//   text waits for its font. Those files move to addresses of plain characters,
-//   and every page and script that names them names the new address.
+// - Asset addresses. Cloudflare answers an address with @ or + with a redirect
+//   to its percent-encoded form, a round trip before each font, so the export
+//   names its assets by plain addresses (apps/app/plugins/plain-asset-paths.js,
+//   in Metro, before the scripts' names take their content's hash). It fails if
+//   a page, script or style sheet still names an asset by an address that
+//   would be encoded.
 // - Font preloads. Expo preloads every face the app loads, on every page. A page
 //   keeps the preloads of the faces its markup draws with (English on an Arabic
 //   page has none); the others load when the app asks for them.
@@ -19,14 +20,18 @@
 //   with * would also mark the 404 page served for a missing one immutable.
 //   Loaders (_expo/loaders) are JSON. Everything else (pages, loaders,
 //   content/, the sitemap) keeps Workers' default, public, max-age=0,
-//   must-revalidate, so a new deploy shows at once.
+//   must-revalidate, so a new deploy shows at once. Since a hashed file is
+//   cached under its name for a year, nothing here may change one: it fails if
+//   a step did, as new bytes under an old name would never reach a browser
+//   that has the old ones.
 //
 // With --remote-audio, for release builds, it also checks that the export
 // holds no audio and that the pages' og:audio points at audio.shawared.com.
 //
 //   bun scripts/web-release.ts [--remote-audio]
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { dirname, join, relative, sep } from "node:path";
+import { createHash } from "node:crypto";
+import { copyFileSync, existsSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
+import { join, relative, sep } from "node:path";
 import { AUDIO_HOST, IMMUTABLE, root, SITE } from "./recordings.ts";
 
 // Cloudflare reads at most 100 rules from _headers.
@@ -88,56 +93,47 @@ export function pagesWithoutSlash(dist: string): string[] {
   return moved.sort();
 }
 
-/** An asset's path with every character an address would have to percent-encode made plain. */
-export const plainPath = (path: string) => path.replace(/[^A-Za-z0-9._~/-]/g, "_");
-
 /** Files whose names name assets: the pages, the scripts, and style sheets. */
 const NAMES_ASSETS = /\.(html|js|css)$/;
 const ASSET_URL = /\/assets\/[^"'()\s\\]+/g;
+/** Characters an address would have to percent-encode. */
+const ENCODED = /[^A-Za-z0-9._~/-]/;
 
 /**
- * Moves every file under assets/ whose path holds characters an address would percent-encode
- * (@, + and the like) to its plain path, and names the new path wherever a page, script or
- * style sheet named the old one. Returns how many files moved.
+ * Each "page or script: address" where a page, script or style sheet names a file under
+ * assets/ by an address with characters Cloudflare would answer with a redirect to their
+ * percent-encoded form. The web export names none (apps/app/plugins/plain-asset-paths.js).
  */
-export function plainAssetPaths(dist: string): number {
-  const assets = join(dist, "assets");
-  if (!existsSync(assets)) return 0;
-  const moves = new Map<string, string>();
-  const taken = new Map<string, string>();
-  for (const file of files(assets)) {
-    const rel = relative(dist, file).split(sep).join("/");
-    const plain = plainPath(rel);
-    const other = taken.get(plain);
-    if (other !== undefined && other !== rel) throw new Error(`${rel} and ${other} would both move to ${plain}`);
-    taken.set(plain, rel);
-    if (plain !== rel) moves.set(rel, plain);
-  }
-  for (const [from, to] of moves) {
-    mkdirSync(dirname(join(dist, to)), { recursive: true });
-    renameSync(join(dist, from), join(dist, to));
-  }
-  // Folders left empty.
-  const prune = (dir: string): boolean => {
-    let empty = true;
-    for (const e of readdirSync(dir, { withFileTypes: true })) {
-      if (e.isDirectory() && prune(join(dir, e.name))) rmSync(join(dir, e.name), { recursive: true });
-      else empty = false;
-    }
-    return empty;
-  };
-  prune(assets);
-  if (moves.size === 0) return 0;
+export function encodedAssetAddresses(dist: string): string[] {
+  const found = new Set<string>();
   for (const file of files(dist)) {
     if (!NAMES_ASSETS.test(file)) continue;
-    const text = readFileSync(file, "utf8");
-    const next = text.replace(ASSET_URL, (url) => {
-      const to = moves.get(url.slice(1));
-      return to === undefined ? url : `/${to}`;
-    });
-    if (next !== text) writeFileSync(file, next);
+    for (const [url] of readFileSync(file, "utf8").matchAll(ASSET_URL)) {
+      if (ENCODED.test(url) && existsSync(join(dist, url))) found.add(`${relative(dist, file)}: ${url}`);
+    }
   }
-  return moves.size;
+  return [...found].sort();
+}
+
+/** Each hashed file's SHA-256, by its path in the export. */
+export function hashedContents(dist: string): Map<string, string> {
+  const digests = new Map<string, string>();
+  for (const dir of HASHED_DIRS) {
+    if (!existsSync(join(dist, dir))) continue;
+    for (const file of files(join(dist, dir))) {
+      digests.set(relative(dist, file), createHash("sha256").update(readFileSync(file)).digest("hex"));
+    }
+  }
+  return digests;
+}
+
+/** The hashed files that changed or went since `before` (hashedContents) was taken. */
+export function changedHashedFiles(dist: string, before: Map<string, string>): string[] {
+  const now = hashedContents(dist);
+  return [...before]
+    .filter(([path, digest]) => now.get(path) !== digest)
+    .map(([path]) => path)
+    .sort();
 }
 
 const FONT_FACES = /<style id="expo-generated-fonts">[\s\S]*?<\/style>/;
@@ -193,14 +189,22 @@ export function remoteAudioProblems(dist: string): string[] {
 if (import.meta.main) {
   const dist = join(root(), "apps/app/dist");
   if (!existsSync(dist) || !statSync(dist).isDirectory()) throw new Error(`${dist} doesn't exist: export the web first`);
-  const plain = plainAssetPaths(dist);
+  const encoded = encodedAssetAddresses(dist);
+  if (encoded.length) {
+    throw new Error(
+      `the export names assets by addresses Cloudflare redirects; export with SHAWARED_WEB_EXPORT=1 (apps/app/metro.config.js):\n${encoded.map((e) => `  - ${e}`).join("\n")}`,
+    );
+  }
+  const before = hashedContents(dist);
   const trimmed = trimPagesFontPreloads(dist);
   copyFileSync(join(dist, "+not-found.html"), join(dist, "404.html"));
   const moved = pagesWithoutSlash(dist);
   const { text, hashed } = headersFor(dist);
   writeFileSync(join(dist, "_headers"), text);
+  const changed = changedHashedFiles(dist, before);
+  if (changed.length) throw new Error(`finishing the export changed files cached as immutable under their names: ${changed.join(", ")}`);
   console.log(
-    `web: ${plain} assets moved to plain addresses, ${trimmed} font preloads of faces pages don't draw with dropped, 404.html, ${moved.join(", ") || "no pages moved"}, and immutable caching for ${hashed} hashed files`,
+    `web: plain asset addresses, ${trimmed} font preloads of faces pages don't draw with dropped, 404.html, ${moved.join(", ") || "no pages moved"}, and immutable caching for ${hashed} hashed files`,
   );
   if (process.argv.includes("--remote-audio")) {
     const problems = remoteAudioProblems(dist);

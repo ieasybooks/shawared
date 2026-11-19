@@ -3,11 +3,12 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import {
+  changedHashedFiles,
+  encodedAssetAddresses,
+  hashedContents,
   headersFor,
   MAX_RULES,
   pagesWithoutSlash,
-  plainAssetPaths,
-  plainPath,
   remoteAudioProblems,
   trimFontPreloads,
 } from "./web-release.ts";
@@ -112,34 +113,57 @@ describe("remoteAudioProblems", () => {
   });
 });
 
-describe("plainAssetPaths", () => {
-  const FONT = `assets/__node_modules/.bun/@expo-google-fonts+amiri@0.4.1/node_modules/@expo-google-fonts/amiri/400Regular/Amiri_400Regular.${H}.ttf`;
-  const PLAIN = `assets/__node_modules/.bun/_expo-google-fonts_amiri_0.4.1/node_modules/_expo-google-fonts/amiri/400Regular/Amiri_400Regular.${H}.ttf`;
+describe("encodedAssetAddresses", () => {
+  const FONT = `/assets/__node_modules/.bun/@expo-google-fonts+amiri@0.4.1/node_modules/@expo-google-fonts/amiri/400Regular/Amiri_400Regular.${H}.ttf`;
+  const PLAIN = `/assets/__node_modules/.bun/_expo-google-fonts_amiri_0.4.1/node_modules/_expo-google-fonts/amiri/400Regular/Amiri_400Regular.${H}.ttf`;
 
-  it("moves assets whose addresses need encoding, and names the new address in pages, scripts and style sheets", () => {
+  it("passes an export whose pages, scripts and style sheets name assets by plain addresses", () => {
     const d = dist({
-      [FONT]: "font",
-      [`assets/plain/logo.${H}.png`]: "png",
-      "poems/x.html": `<link rel="preload" href="/${FONT}" as="font"/><style>@font-face{src:url("/${FONT}")}</style><img src="/assets/plain/logo.${H}.png">`,
-      [`_expo/static/js/web/entry-${H}.js`]: `var a={uri:"/${FONT}"},b='/${FONT}';`,
-      "content/v1/catalog.json": `{"note":"/${FONT}"}`,
+      [PLAIN.slice(1)]: "font",
+      // A multi-resolution image's other scales: Expo exports them, and the web names only the first.
+      [`assets/x/close-icon.${H}@2x.png`]: "png",
+      "poems/x.html": `<link rel="preload" href="${PLAIN}" as="font"/><style>@font-face{src:url("${PLAIN}")}</style>`,
+      [`_expo/static/js/web/entry-${H}.js`]: `var a={uri:"${PLAIN}"},b="/assets/?unstable_path=./x@y";`,
+      [`_expo/static/css/web-${H}.css`]: `@font-face{src:url(${PLAIN})}`,
     });
-    expect(plainPath(FONT)).toBe(PLAIN);
-    expect(plainAssetPaths(d)).toBe(1);
-    expect(readFileSync(join(d, PLAIN), "utf8")).toBe("font");
-    expect(existsSync(join(d, FONT))).toBe(false);
-    expect(existsSync(join(d, "assets/__node_modules/.bun/@expo-google-fonts+amiri@0.4.1"))).toBe(false);
-    expect(readFileSync(join(d, "poems/x.html"), "utf8")).toBe(
-      `<link rel="preload" href="/${PLAIN}" as="font"/><style>@font-face{src:url("/${PLAIN}")}</style><img src="/assets/plain/logo.${H}.png">`,
-    );
-    expect(readFileSync(join(d, `_expo/static/js/web/entry-${H}.js`), "utf8")).toBe(`var a={uri:"/${PLAIN}"},b='/${PLAIN}';`);
-    // Published content isn't a page or a script.
-    expect(readFileSync(join(d, "content/v1/catalog.json"), "utf8")).toBe(`{"note":"/${FONT}"}`);
-    expect(plainAssetPaths(d)).toBe(0);
+    expect(encodedAssetAddresses(d)).toEqual([]);
   });
 
-  it("refuses two assets that would move to the same address", () => {
-    expect(() => plainAssetPaths(dist({ [`assets/a+b/x.${H}.ttf`]: "", [`assets/a@b/x.${H}.ttf`]: "" }))).toThrow("would both move to");
+  it("reports each page, script and style sheet naming an asset by an address Cloudflare would redirect", () => {
+    const d = dist({
+      [FONT.slice(1)]: "font",
+      "poems/x.html": `<link rel="preload" href="${FONT}" as="font"/><style>@font-face{src:url("${FONT}")}</style>`,
+      [`_expo/static/js/web/entry-${H}.js`]: `var a={uri:"${FONT}"};`,
+      [`_expo/static/css/web-${H}.css`]: `@font-face{src:url(${FONT})}`,
+      // Published content isn't a page or a script.
+      "content/v1/catalog.json": `{"note":"${FONT}"}`,
+    });
+    expect(encodedAssetAddresses(d)).toEqual(
+      [`_expo/static/css/web-${H}.css: ${FONT}`, `_expo/static/js/web/entry-${H}.js: ${FONT}`, `poems/x.html: ${FONT}`].sort(),
+    );
+  });
+});
+
+describe("changedHashedFiles", () => {
+  it("reports a hashed file whose bytes changed or that went, and nothing for pages", () => {
+    const d = dist({
+      [`_expo/static/js/web/entry-${H}.js`]: "entry",
+      [`_expo/static/js/web/pages-${H}.js`]: "pages",
+      [`assets/x/logo.${H}.png`]: "png",
+      "index.html": "home",
+    });
+    const before = hashedContents(d);
+    expect([...before.keys()].sort()).toEqual([
+      `_expo/static/js/web/entry-${H}.js`,
+      `_expo/static/js/web/pages-${H}.js`,
+      `assets/x/logo.${H}.png`,
+    ]);
+    writeFileSync(join(d, "index.html"), "home, with fewer preloads");
+    writeFileSync(join(d, `_expo/static/js/web/pages-${H}.js`), "pages");
+    expect(changedHashedFiles(d, before)).toEqual([]);
+    writeFileSync(join(d, `_expo/static/js/web/entry-${H}.js`), "entry, rewritten");
+    rmSync(join(d, `assets/x/logo.${H}.png`));
+    expect(changedHashedFiles(d, before)).toEqual([`_expo/static/js/web/entry-${H}.js`, `assets/x/logo.${H}.png`]);
   });
 });
 
