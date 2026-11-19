@@ -1,0 +1,20 @@
+{
+  "lang": "en",
+  "source": {"name": "Shawared"},
+  "title": "I Wept for Youth with Tears in My Eyes",
+  "intro": "Shukri Faisal prints these four verses in his edition of Abu al-Atahiya in the order Omar al-Sharafi recites them. At first the speaker sounds like a mourner at a death. Grey hair brings him the news of his loss, and a bare branch gives it a shape. He ends by imagining himself telling the whole story to the youth he has lost.",
+  "abyat": {
+    "1": {"translation": ["I wept for youth, tears in my eyes,", "but neither tears nor sobs did any good."], "sharh": "The tears can be seen and the sobs heard. Neither brings back the youth he mourns."},
+    "2": {"translation": ["How bitterly I grieved for a youth", "whose death grey hair and a dyed head announced."], "sharh": "Even the dye he uses to cover his grey hair gives his age away. Both the grey and its disguise bring the same news."},
+    "3": {"translation": ["I was stripped of youth while it was fresh,", "as a branch is stripped of its leaves."], "sharh": "The man is still there, as the bare branch is. The word for the freshness he has lost belongs equally to a young body and a green shoot."},
+    "4": {"translation": ["If only youth would come back one day,", "so I could tell it what old age has done."], "sharh": "If youth could come back, the first thing he would do is confide in it. The companion he mourns is the one to whom he longs to tell the story."}
+  },
+  "words": {
+    "1.2.2": {"word": "يُغنِ", "head": "أَغنى", "root": "غ ن ي", "meaning": "To avail, to do some good."},
+    "1.2.5": {"word": "النَّحيبُ", "head": "النَّحيب", "root": "ن ح ب", "meaning": "Weeping that can be heard, sobbing aloud."},
+    "2.2.1": {"word": "نَعاهُ", "head": "نَعى", "root": "ن ع ي", "meaning": "To announce a death. Here grey hair brings the news."},
+    "2.2.4": {"word": "الخَضيبُ", "head": "الخَضيب", "root": "خ ض ب", "meaning": "Dyed, said here of hair coloured to cover the grey."},
+    "3.1.5": {"word": "غَضّاً", "head": "غَضّ", "root": "غ ض ض", "meaning": "Tender and fresh, like new growth."},
+    "3.2.5": {"word": "القَضيبُ", "head": "القَضيب", "root": "ق ض ب", "meaning": "A branch or slender shoot."}
+  }
+}
