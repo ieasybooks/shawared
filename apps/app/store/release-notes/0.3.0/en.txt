@@ -1,0 +1,1 @@
+A new design: the girih cover tile and a sidebar on wide screens, a clearer player with ten-second skips, mute, and repeat for the poem or the verse, and lists you can play from directly. Words with a meaning are underlined with dots, and there's a new contact and support page.
