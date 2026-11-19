@@ -140,6 +140,7 @@ for (const lang of ["ar", "en"] as const) {
       "/library",
       "/about",
       "/privacy",
+      "/support",
     ])
       test(path, async ({ page }) => {
         await page.goto(at(lang, path));

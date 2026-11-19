@@ -57,6 +57,7 @@ const ar = {
   minutes: "{m} د",
   aboutShawared: "عن شوارد",
   privacy: "سياسة الخصوصية",
+  support: "التواصل والدعم",
   version: "الإصدار {v}",
   updated: "آخر تحديث: {date}",
   // Page descriptions, for search engines and link previews.
@@ -169,6 +170,7 @@ const en: Record<StringKey, string> = {
   minutes: "{m} min",
   aboutShawared: "About Shawared",
   privacy: "Privacy policy",
+  support: "Contact and support",
   version: "Version {v}",
   updated: "Last updated: {date}",
   siteTitle: "Shawared · Arabic poetry as it is recited",
