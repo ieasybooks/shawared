@@ -44,11 +44,14 @@ on:
 permissions:
   contents: read
 
-# One release at a time. The vault access check has its own group: GitHub
-# keeps only the newest waiting run in a group, cancelling the one it
-# replaces, so a check waiting here would cancel a release waiting here.
+# One release at a time, each waiting its turn: queue: max keeps up to 100
+# waiting, where GitHub would cancel all but the newest, which can be an older
+# release whose checks finished later (it then stops as superseded, and
+# nothing ships). The vault access check has its own group, so it doesn't
+# wait behind a release.
 concurrency:
   group: ${{ inputs.access-check && 'release-access-check' || 'release' }}
+  queue: max
   cancel-in-progress: false
 
 env:
