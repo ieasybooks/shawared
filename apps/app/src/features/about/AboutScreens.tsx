@@ -7,7 +7,7 @@ import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { ListPage, SectionHead } from "../library/Page";
-import { ABOUT, CONTACT, PRIVACY, PRIVACY_UPDATED, type PageText, type Section } from "./texts";
+import { ABOUT, CONTACT, PRIVACY, PRIVACY_UPDATED, SUPPORT, type PageText, type Section } from "./texts";
 
 /** About Shawared: what it is, who makes it, how to reach us, and the way to the privacy policy. */
 export function AboutScreen() {
@@ -21,6 +21,12 @@ export function AboutScreen() {
 export function PrivacyScreen() {
   const { lang } = useSettings();
   return <TextPage text={PRIVACY[lang]} note={t(lang, "updated", { date: PRIVACY_UPDATED[lang] })} />;
+}
+
+/** How to reach us, what helps in a report, and where privacy requests go: the stores' support page. */
+export function SupportScreen() {
+  const { lang } = useSettings();
+  return <TextPage text={SUPPORT[lang]} />;
 }
 
 /** A page of prose: its title, a lead paragraph and a note under it, then its sections. */
@@ -61,6 +67,11 @@ function SectionView({ section }: { section: Section }) {
       {section.email && (
         <TextLink href={`mailto:${CONTACT}`}>
           <Text style={[type.controlStrong, styles.ltr, { color: palette.accent }]}>{CONTACT}</Text>
+        </TextLink>
+      )}
+      {section.support && (
+        <TextLink href={href(paths.support)}>
+          <Text style={[type.controlStrong, { color: palette.accent }]}>{t(lang, "support")}</Text>
         </TextLink>
       )}
       {section.privacy && (

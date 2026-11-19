@@ -4,7 +4,7 @@ import type { UiLang } from "@shawared/contracts";
 export const CONTACT = "easybooksdev@gmail.com";
 
 /** A part of a page: its heading, its paragraphs, and what it links to after them. */
-export type Section = { title: string; body: string[]; email?: boolean; privacy?: boolean };
+export type Section = { title: string; body: string[]; email?: boolean; privacy?: boolean; support?: boolean };
 
 export type PageText = {
   /** The page's title, and what search engines and link previews show under it. */
@@ -14,14 +14,14 @@ export type PageText = {
   sections: Section[];
 };
 
-// The App Store, Google Play and AppGallery link these pages as the apps' support page and
-// privacy policy. Change the privacy policy's date with it.
-export const PRIVACY_UPDATED: Record<UiLang, string> = { ar: "١٨ نوفمبر ٢٠٢٦", en: "18 November 2026" };
+// The App Store, Google Play and AppGallery link the support page and the privacy policy for
+// the apps. Change the privacy policy's date with it.
+export const PRIVACY_UPDATED: Record<UiLang, string> = { ar: "١٩ نوفمبر ٢٠٢٦", en: "19 November 2026" };
 
 export const ABOUT: Record<UiLang, PageText> = {
   ar: {
     title: "عن شوارد",
-    description: "شوارد: الشعر العربي كما يُلقى، بأصوات مُلقيه، مع شرح أبياته ومعاني كلماته. من مبادرة الكتب المُيسّرة.",
+    description: "شوارد: الشعر العربي كما يُلقى، بأصوات مُلقيه، مع شرح أبياته ومعاني كلماته. من الكتب المُيسّرة.",
     lead: "شوارد مكتبة للشعر العربي كما يُلقى: تسمع القصيدة بصوت مُلقيها، وتقرأ أبياتها وهي تُلقى، وتفهم معانيها.",
     sections: [
       {
@@ -38,7 +38,7 @@ export const ABOUT: Record<UiLang, PageText> = {
       },
       {
         title: "من يصنعه",
-        body: ["شوارد من تطوير مبادرة الكتب المُيسّرة. وهو مجاني، بلا إعلانات ولا حسابات."],
+        body: ["شوارد من تطوير الكتب المُيسّرة. وهو مجاني، بلا إعلانات ولا حسابات."],
       },
       {
         title: "التواصل والدعم",
@@ -47,6 +47,7 @@ export const ABOUT: Record<UiLang, PageText> = {
           "إن كان الخطأ في قصيدة فاذكرها واذكر رقم البيت، وإن كانت المشكلة في التطبيق فاذكر نوع جهازك وإصدار شوارد وما حدث قبلها.",
         ],
         email: true,
+        support: true,
       },
       {
         title: "الخصوصية",
@@ -58,7 +59,7 @@ export const ABOUT: Record<UiLang, PageText> = {
   en: {
     title: "About Shawared",
     description:
-      "Shawared: Arabic poetry as it is recited, in its reciters' voices, with its verses explained and its words glossed. By the EasyBooks initiative.",
+      "Shawared: Arabic poetry as it is recited, in its reciters' voices, with its verses explained and its words glossed. By EasyBooks.",
     lead: "Shawared is a library of Arabic poetry as it is recited: hear each poem in its reciter's voice, read its verses as they are recited, and understand what they mean.",
     sections: [
       {
@@ -77,7 +78,7 @@ export const ABOUT: Record<UiLang, PageText> = {
       },
       {
         title: "Who makes it",
-        body: ["Shawared is made by the EasyBooks initiative. It's free, with no ads and no accounts."],
+        body: ["Shawared is made by EasyBooks. It's free, with no ads and no accounts."],
       },
       {
         title: "Contact and support",
@@ -86,6 +87,7 @@ export const ABOUT: Record<UiLang, PageText> = {
           "If the mistake is in a poem, name the poem and the verse; if the problem is in the app, include your device, Shawared's version and what happened before it.",
         ],
         email: true,
+        support: true,
       },
       {
         title: "Privacy",
@@ -100,7 +102,7 @@ export const PRIVACY: Record<UiLang, PageText> = {
   ar: {
     title: "سياسة الخصوصية",
     description: "كيف يتعامل تطبيقا شوارد وموقع shawared.com مع المعلومات.",
-    lead: "توضح هذه السياسة كيف يتعامل تطبيقا شوارد على iOS وAndroid وموقع shawared.com مع المعلومات. شوارد من تطوير مبادرة الكتب المُيسّرة، ولا يحتاج استخدامه إلى حساب.",
+    lead: "توضح هذه السياسة كيف يتعامل تطبيقا شوارد على iOS وAndroid وموقع shawared.com مع المعلومات. شوارد من تطوير الكتب المُيسّرة، ولا يحتاج استخدامه إلى حساب.",
     sections: [
       {
         title: "ما يُحفظ على جهازك",
@@ -145,7 +147,7 @@ export const PRIVACY: Record<UiLang, PageText> = {
   en: {
     title: "Privacy policy",
     description: "How the Shawared apps and shawared.com handle information.",
-    lead: "This policy covers the Shawared apps for iOS and Android and the shawared.com website. Shawared is made by the EasyBooks initiative, and using it needs no account.",
+    lead: "This policy covers the Shawared apps for iOS and Android and the shawared.com website. Shawared is made by EasyBooks, and using it needs no account.",
     sections: [
       {
         title: "Information stored on your device",
@@ -184,6 +186,73 @@ export const PRIVACY: Record<UiLang, PageText> = {
       {
         title: "Changes to this policy",
         body: ["We publish the current version of this policy, and the date it was last updated, on this page."],
+      },
+    ],
+  },
+};
+
+// The support page the stores link: how to reach us, what helps in a report, and where privacy
+// requests go. Mofied's and Faqieh's support pages follow the same outline.
+export const SUPPORT: Record<UiLang, PageText> = {
+  ar: {
+    title: "التواصل والدعم",
+    description: "كيف تراسل فريق شوارد للأسئلة والدعم والإبلاغ عن الأخطاء.",
+    lead: "شوارد من تطوير الكتب المُيسّرة. للأسئلة والاقتراحات، أو للإبلاغ عن مشكلة في التطبيق أو خطأ في نص أو شرح أو تسجيل، راسلنا.",
+    sections: [
+      {
+        title: "راسلنا",
+        body: ["بريدنا للأسئلة والدعم وطلبات الخصوصية:"],
+        email: true,
+      },
+      {
+        title: "الإبلاغ عن مشكلة",
+        body: [
+          "إن كان الخطأ في قصيدة فاذكرها واذكر رقم البيت. وإن كانت المشكلة في التطبيق فاذكر نوع جهازك وإصدار نظام التشغيل وإصدار شوارد، وما حدث قبلها.",
+          "لا ترسل كلمات مرور أو معلومات حساسة.",
+        ],
+      },
+      {
+        title: "تحميل القصائد والتسجيلات",
+        body: [
+          "تحتاج القصائد والتسجيلات إلى اتصال بالإنترنت، إلا القصائد التي فتحتها من قبل والتسجيلات التي نزّلتها في التطبيقين. إذا تعذر التحميل، فتحقق من الاتصال ثم أعد المحاولة.",
+        ],
+      },
+      {
+        title: "الخصوصية",
+        body: ["لا يحتاج شوارد إلى حساب، ولا يتتبعك. لمعرفة كيف نتعامل مع المعلومات، أو لطلب يخص الخصوصية، راجع سياسة الخصوصية."],
+        privacy: true,
+      },
+    ],
+  },
+  en: {
+    title: "Contact and support",
+    description: "How to reach the Shawared team for questions, support and reporting mistakes.",
+    lead: "Shawared is made by EasyBooks. For questions and suggestions, or to report a problem in the app or a mistake in a text, an explanation or a recording, email us.",
+    sections: [
+      {
+        title: "Email us",
+        body: ["Our address for questions, support and privacy requests:"],
+        email: true,
+      },
+      {
+        title: "Reporting a problem",
+        body: [
+          "If the mistake is in a poem, name the poem and the verse. If the problem is in the app, include your device, its operating system version, Shawared's version and what happened before it.",
+          "Don't send passwords or sensitive information.",
+        ],
+      },
+      {
+        title: "Loading poems and recordings",
+        body: [
+          "Poems and recordings need an internet connection, except the poems you've opened before and the recordings you've downloaded in the apps. If something doesn't load, check your connection and try again.",
+        ],
+      },
+      {
+        title: "Privacy",
+        body: [
+          "Shawared needs no account and doesn't track you. For how we handle information, or for a privacy request, see the privacy policy.",
+        ],
+        privacy: true,
       },
     ],
   },
