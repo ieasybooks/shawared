@@ -86,7 +86,7 @@ Added 2026-11-19. These 21 recordings were new to the collection. The other eigh
 
 | # | Recording | Poem | Poet | Reciter | Length | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 60 | https://www.youtube.com/watch?v=jzXOinJNRp4 | جفا وده فازور أو مل صاحبه | بشار بن برد | أسامة الواعظ | 11:23 | reviewed: `jafa-wudduhu` | All 86 verses of the ode in Ibn Ashur’s edition. See the note on the stones at the waterhole in 13.2. |
+| 60 | https://www.youtube.com/watch?v=jzXOinJNRp4 | جفا وده فازور أو مل صاحبه | بشار بن برد | أسامة الواعظ | 11:23 | reviewed: `jafa-wudduhu` | All 86 verses follow the Abu Dhabi text’s order. Ibn Ashur prints 85. Verse 52 is also in al-Alawi’s edition. See the note on the stones at the waterhole in 13.2. |
 | 61 | https://www.youtube.com/watch?v=T7ViZ9l9EIo | الغراء | فواز بن جريس الدوسري | أسامة الواعظ | 6:10 | reviewed: `al-gharra` | Fawwaz ibn Jurays’s chronology of the expeditions. The length of the second «أبناء» at 9.2 is uncertain. |
 | 62 | https://www.youtube.com/watch?v=hNYzuP0RXos | لا تلم قلبا رق أو سيق رقا | إيهاب الشباطات | خالد الشرفي | 9:02 | reviewed: `la-talum-qalban` | Al-Shabatat’s first visit to Damascus in June 2026. The recording repeats the last verse. |
 | 63 | https://www.youtube.com/watch?v=IXEaPxRvCuU | لغزة مدمى دمعة في المآقي | إيهاب الشباطات | خالد الشرفي | 5:15 | reviewed: `li-ghazzata-mudma-damatin` | The speaker moves from his own tears to the bereaved families of Gaza. |
