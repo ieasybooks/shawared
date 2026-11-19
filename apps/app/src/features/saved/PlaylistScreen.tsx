@@ -14,6 +14,7 @@ import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { useHydrated } from "../../lib/viewport";
 import { ListPage, PageFrame } from "../library/Page";
+import { CoverTile } from "../../components/ui/Girih";
 import { PoemRow } from "../library/PoemCard";
 import { move, playlistName, removePlaylist, removePoem, rename } from "./actions";
 import { PlayAll } from "./LibraryScreen";
@@ -64,7 +65,12 @@ export function PlaylistScreen() {
     .join(" · ");
   const header = (
     <View style={styles.header}>
-      <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{facts}</Text>
+      <View style={styles.top}>
+        <CoverTile size={112} name={name} radius={14} />
+        <View style={styles.flex}>
+          <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{facts}</Text>
+        </View>
+      </View>
       <View style={styles.actions}>
         {poems.length > 0 && !editing && <PlayAll ids={ids} />}
         {poems.length > 1 || editing ? (
@@ -178,7 +184,8 @@ function EditRow({
 }
 
 const styles = StyleSheet.create({
-  header: { gap: space.l },
+  header: { gap: space.xl },
+  top: { flexDirection: "row", alignItems: "center", gap: space.xl },
   actions: { flexDirection: "row", flexWrap: "wrap", gap: space.s, alignItems: "center" },
   edit: { flexDirection: "row", alignItems: "center", gap: space.xs, borderTopWidth: 1, paddingVertical: 10 },
   flex: { flex: 1, minWidth: 0, gap: space.s },

@@ -7,6 +7,7 @@ import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
 import { METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
+import { ARABIC } from "../../lib/align";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { DetailFacts, ListPage, PageFrame, SectionHead } from "../library/Page";
@@ -28,18 +29,19 @@ export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | und
       title={title}
       data={METER_IDS}
       keyOf={(m) => m}
-      renderItem={(m) => <MeterRow id={m} count={data.meters[m] ?? 0} />}
+      renderItem={(m, i) => <MeterRow id={m} count={data.meters[m] ?? 0} first={i === 0} />}
       estimatedItemSize={96}
     />
   );
 }
 
-function MeterRow({ id, count }: { id: string; count: number }) {
+/** A meter in the list: its name, how many poems, and its feet. The `first` has no rule above it. */
+function MeterRow({ id, count, first }: { id: string; count: number; first: boolean }) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   return (
     <Link href={href(paths.meter(id))} asChild>
-      <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
+      <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && styles.first])}>
         <View style={styles.rowHead}>
           <Text
             style={[
@@ -52,7 +54,11 @@ function MeterRow({ id, count }: { id: string; count: number }) {
           </Text>
           <Text style={[type.label, { color: palette.muted }]}>{poemsCount(count, lang)}</Text>
         </View>
-        <Text style={[type.verseSmall, styles.rtl, { color: palette.muted, textAlign: start }]}>{METER_FEET[id]}</Text>
+        <View style={[styles.feetCard, { backgroundColor: palette.fold, borderColor: palette.line }]}>
+          <Text style={[type.verseSmall, styles.rtl, { color: count ? palette.muted : palette.line2, textAlign: ARABIC.start }]}>
+            {METER_FEET[id]}
+          </Text>
+        </View>
       </Pressable>
     </Link>
   );
@@ -77,7 +83,9 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
       <DetailFacts arabic={lang === "ar" ? null : meterName(id, "ar")}>
         <View style={styles.feet}>
           <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "pattern")}</Text>
-          <Text style={[type.verse, styles.rtl, { color: palette.fg, textAlign: start }]}>{METER_FEET[id]}</Text>
+          <View style={[styles.feetCard, { backgroundColor: palette.fold, borderColor: palette.line }]}>
+            <Text style={[type.verse, styles.rtl, { color: palette.fg, textAlign: ARABIC.start }]}>{METER_FEET[id]}</Text>
+          </View>
         </View>
       </DetailFacts>
       <SectionHead title={t(lang, "poems")} count={poemsCount(poems.length, lang)} />
@@ -97,9 +105,11 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
 }
 
 const styles = StyleSheet.create({
-  row: { borderTopWidth: 1, paddingVertical: 14, gap: space.s },
+  row: { borderTopWidth: 1, paddingVertical: 16, gap: space.m },
+  first: { borderTopWidth: 0 },
   rowHead: { flexDirection: "row", alignItems: "center", gap: space.l },
   flex: { flex: 1 },
   rtl: { writingDirection: "rtl" },
-  feet: { gap: space.s },
+  feet: { gap: space.m },
+  feetCard: { borderWidth: 1, borderRadius: 12, paddingHorizontal: space.xl, paddingVertical: space.m },
 });

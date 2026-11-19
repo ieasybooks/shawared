@@ -1,15 +1,15 @@
 import type { Catalog } from "@shawared/contracts";
-import { space } from "@shawared/design";
 import { useMemo, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
 import { t } from "../../lib/i18n";
+import { Only } from "../../lib/responsive";
 import { indexCatalog, search } from "../../lib/search";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { ListPage, PageFrame, SectionHead } from "./Page";
-import { PoemCard } from "./PoemCard";
+import { PoemEntry } from "./PoemCard";
 import { SearchField } from "./SearchField";
 
 /** Every poem, newest first, with search by title, opening bayt, poet and reciter. */
@@ -31,7 +31,10 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
 
   const header = (
     <>
-      <Text style={[type.lead, styles.tagline, { color: palette.muted, textAlign: start }]}>{t(lang, "tagline")}</Text>
+      {/* Wide windows have the tagline in the sidebar. */}
+      <Only on="phone">
+        <Text style={[type.lead, styles.tagline, { color: palette.muted, textAlign: start }]}>{t(lang, "tagline")}</Text>
+      </Only>
       <View style={styles.search}>
         <SearchField value={query} onChange={setQuery} />
       </View>
@@ -44,14 +47,9 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
       header={header}
       data={poems}
       keyOf={(p) => p.id}
-      renderItem={(p) => (
-        <View style={styles.cardGap}>
-          <PoemCard poem={p} catalog={data} list={ids} />
-        </View>
-      )}
-      columns={2}
-      maxWidth={1080}
-      estimatedItemSize={300}
+      renderItem={(p) => <PoemEntry poem={p} catalog={data} list={ids} />}
+      maxWidth={760}
+      estimatedItemSize={250}
       empty={t(lang, "noResults")}
     />
   );
@@ -59,6 +57,5 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
 
 const styles = StyleSheet.create({
   tagline: { maxWidth: 620 },
-  search: { maxWidth: 620, width: "100%" },
-  cardGap: { paddingBottom: space.xl },
+  search: { width: "100%" },
 });

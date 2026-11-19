@@ -5,36 +5,49 @@ export type ThemeName = "day" | "night";
 export const palettes = {
   day: {
     bg: "#F3F0E8",
-    raise: "#FFFDF8",
+    /** Cards, the player, sheets: a step above the page. */
+    raise: "#FBF9F4",
+    /** The sidebar, the explanation's verse, chips: a step below the page. */
     fold: "#EAE5D8",
     fg: "#1A2036",
     /** The other half of the playing bayt. */
-    partner: "#434A69",
+    partner: "#1A2036",
     /** Verses at rest. */
-    rest: "#666A7E",
+    rest: "#1A2036",
     muted: "#5A6283",
-    /** Saffron: the nuqta, never body text. */
+    /** Saffron: the nuqta and what is active (the half being recited), never body text. */
     accent: "#B8650C",
+    /** A wash of saffron behind something picked out. */
+    accentSoft: "#F1DFC6",
     line: "#E0D9CB",
     line2: "#CDC5B4",
     chrome: "#E6E1D5",
     shadow: "rgba(26,32,54,0.16)",
+    /** Frosted buttons over the girih band. */
+    glass: "rgba(255,255,255,0.45)",
+    glassLine: "rgba(255,255,255,0.7)",
   },
   night: {
-    bg: "#131A2E",
-    raise: "#1B2440",
-    fold: "#212B4A",
-    fg: "#ECE5D3",
-    partner: "#A9AFC6",
-    rest: "#7A83A2",
-    muted: "#8F97B2",
-    accent: "#E8A33C",
-    line: "#27304C",
-    line2: "#3A4570",
-    chrome: "#0D1322",
-    shadow: "rgba(4,6,16,0.5)",
+    bg: "#12151F",
+    raise: "#1D2231",
+    fold: "#181C29",
+    fg: "#ECE7DC",
+    partner: "#ECE7DC",
+    rest: "#ECE7DC",
+    muted: "#B3B7C8",
+    accent: "#E0A458",
+    accentSoft: "#3D2C18",
+    line: "#2A3042",
+    line2: "#3B4259",
+    chrome: "#0D1018",
+    shadow: "rgba(0,0,0,0.5)",
+    glass: "rgba(255,255,255,0.06)",
+    glassLine: "rgba(255,255,255,0.10)",
   },
 } as const;
+
+/** The cover tile keeps its night blue and girih in both themes. */
+export const tile = { bg: "#1A2036", fg: "#F3F0E8", girih: "#E0A458" } as const;
 
 export type Palette = { [K in keyof (typeof palettes)["day"]]: string };
 

@@ -1,9 +1,11 @@
 import { space } from "@shawared/design";
 import { router } from "expo-router";
 import type { ReactNode } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IconButton } from "../../components/ui/controls";
+import { IconButton, type PressState } from "../../components/ui/controls";
+import { GirihBand } from "../../components/ui/Girih";
+import { Icon } from "../../components/ui/Icon";
 import { t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
@@ -38,12 +40,13 @@ export function TopBar({
   const goBack = useGoBack();
   return (
     <View style={[styles.bar, { paddingTop: insets.top + space.s, backgroundColor: palette.bg }]}>
+      <GirihBand height={insets.top + 64} />
       {center && (
         <View pointerEvents="box-none" style={[styles.center, { top: insets.top + space.s }]}>
           {center}
         </View>
       )}
-      {back && <IconButton icon="back" label={t(lang, "back")} onPress={goBack} />}
+      {back && <IconButton icon="back" label={t(lang, "back")} onPress={goBack} size={38} iconSize={20} color={palette.fg} glass />}
       <View style={[styles.title, !back && styles.titleAlone]}>
         {title ? (
           <Text numberOfLines={1} accessibilityRole="header" style={[type.barTitle, { color: palette.fg, textAlign: start }]}>
@@ -59,7 +62,54 @@ export function TopBar({
   );
 }
 
+/**
+ * The top of the page column on wide windows, over the girih band: back on pages opened from
+ * another, and the settings at the other end.
+ */
+export function WideToolbar({ back }: { back?: boolean | undefined }) {
+  const { palette, lang } = useSettings();
+  const type = useType();
+  const goBack = useGoBack();
+  return (
+    <View style={styles.wide}>
+      {back && (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={t(lang, "back")}
+          onPress={goBack}
+          style={(s: PressState) => [styles.backPill, (s.hovered || s.pressed) && { backgroundColor: palette.fold }]}
+        >
+          <Icon name="back" size={18} color={palette.muted} />
+          <Text style={[type.controlStrong, { color: palette.muted }]}>{t(lang, "back")}</Text>
+        </Pressable>
+      )}
+      <View style={styles.title} />
+      <SettingsButtons about />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
+  wide: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.m,
+    paddingTop: 28,
+    paddingBottom: space.m,
+    paddingHorizontal: 32,
+    minHeight: 74,
+    zIndex: 2,
+  },
+  backPill: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.xs,
+    height: 36,
+    borderRadius: 18,
+    paddingStart: space.s,
+    paddingEnd: space.l,
+    marginStart: -space.m,
+  },
   bar: { flexDirection: "row", alignItems: "center", gap: space.xs, paddingHorizontal: space.m, paddingBottom: space.s, zIndex: 2 },
   center: { position: "absolute", start: 0, end: 0, bottom: space.s, alignItems: "center", justifyContent: "center" },
   title: { flex: 1, minWidth: 0 },

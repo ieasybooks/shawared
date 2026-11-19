@@ -25,8 +25,17 @@ const ar = {
   words: "معاني الكلمات",
   root: "الجذر: {r}",
   back: "رجوع",
-  repeat: "تكرار البيت",
+  repeat: "التكرار",
+  repeatPoem: "القصيدة كلها",
+  repeatBayt: "هذا البيت",
+  repeatTipOff: "اضغط لتكرار القصيدة كلها، ومرةً أخرى لتكرار البيت وحده.",
+  repeatTipPoem: "تبدأ القصيدة من أولها كلما انتهت. اضغط لتكرار البيت وحده.",
+  repeatTipBayt: "يُعاد البيت الذي يُلقى مرةً بعد مرة. اضغط لإيقاف التكرار.",
+  continuousHeld: "لا يعمل ما دام التكرار مفعّلًا.",
   continuous: "تشغيل القصيدة التالية تلقائيًا",
+  continuousTip: "حين تنتهي القصيدة تبدأ التي تليها في القائمة التي فتحتها منها.",
+  isOn: "مفعّل",
+  isOff: "متوقف",
   prev: "البيت السابق",
   next: "البيت التالي",
   play: "تشغيل",
@@ -109,6 +118,16 @@ const ar = {
   savedApp: "يُحفظ هذا على جهازك وحده.",
   savedWeb: "يُحفظ هذا في هذا المتصفح وحده.",
   metaLibrary: "ما حفظته في شوارد: قصائدك وشعراؤك ومُلقوك المفضّلون، وقوائمك.",
+  // The redesign's player and poem page.
+  back10: "رجوع ١٠ ثوانٍ",
+  forward10: "تقديم ١٠ ثوانٍ",
+  mute: "اكتم الصوت",
+  unmute: "أعد الصوت",
+  versesHint: "مرّر على الكلمة المنقّطة لمعناها، واضغط رقم البيت لتسمعه منه، والبيتَ لشرحه.",
+  wordHint: "اضغط الكلمة لشرح البيت كله",
+  read: "اقرأ القصيدة وشرحها",
+  favourites: "المفضّلة",
+  length: "المدة",
 } as const;
 
 export type StringKey = keyof typeof ar;
@@ -138,8 +157,17 @@ const en: Record<StringKey, string> = {
   words: "Word meanings",
   root: "Root {r}",
   back: "Back",
-  repeat: "Repeat verse",
+  repeat: "Repeat",
+  repeatPoem: "Whole poem",
+  repeatBayt: "This verse",
+  repeatTipOff: "Tap to repeat the whole poem, and again to repeat just the verse.",
+  repeatTipPoem: "The poem starts over each time it ends. Tap to repeat just the verse.",
+  repeatTipBayt: "The verse being recited plays again and again. Tap to stop repeating.",
+  continuousHeld: "Waits while repeat is on.",
   continuous: "Autoplay the next poem",
+  continuousTip: "When the poem ends, the next one in the list you opened it from begins.",
+  isOn: "On",
+  isOff: "Off",
   prev: "Previous verse",
   next: "Next verse",
   play: "Play",
@@ -221,6 +249,15 @@ const en: Record<StringKey, string> = {
   savedApp: "This is saved on this device only.",
   savedWeb: "This is saved in this browser only.",
   metaLibrary: "What you've kept on Shawared: your favourite poems, poets and reciters, and your playlists.",
+  back10: "Back 10 seconds",
+  forward10: "Forward 10 seconds",
+  mute: "Mute",
+  unmute: "Unmute",
+  versesHint: "Hover a dotted word for its meaning; click a verse number to hear it, a verse to read its notes.",
+  wordHint: "Click the word for the verse's notes",
+  read: "Read it, with notes",
+  favourites: "Favourites",
+  length: "Length",
 };
 
 const STRINGS: Record<UiLang, Record<StringKey, string>> = { ar, en };
@@ -249,6 +286,8 @@ export function abyatCount(n: number, lang: UiLang) {
   if (n <= 10) return `${digits(n, lang)} أبيات`;
   return `${digits(n, lang)} بيتًا`;
 }
+
+/** "١٫٢٥×", "1.25×": a playback speed. */
 
 /** "٤٫٢ ميغابايت", "4.2 MB": a download's size. */
 export function sizeOf(bytes: number, lang: UiLang) {

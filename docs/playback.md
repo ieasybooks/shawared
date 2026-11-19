@@ -8,9 +8,11 @@ When a poem ends, the next one plays. "Next" is the next poem in the list the re
 
 The catalog names every recording's audio key, so the player can queue a poem before its bundle is loaded. Poems whose recording the catalog doesn't name, as in an older copy of it, are left out of the queue.
 
-The ∞ button at the end of the player's controls, repeat's counterpart, turns this off: the poem then stops at its end. The choice is kept on the device (`shawared.player.v1`). Repeat, while on, keeps the poem from ending.
+The ∞ button at the end of the player's controls, repeat's counterpart, turns this off: the poem then stops at its end. The choice is kept on the device (`shawared.player.v1`).
 
-When the queue moves on while the poem's page is in front, the page moves to the next poem. Elsewhere, only the mini player changes.
+Repeat is one button with three steps: off, the whole poem, then the bayt being recited (its icon has a "١" in it), then off again. Either keeps the poem from ending: the poem, or its last bayt, starts over half a second before the recording ends, and plays again should a late status find the recording ended. So while repeat is on, no next poem waits behind it (the lock screen offers none) and ∞ is faded; it comes back as it was when repeat is off. Repeat isn't kept: each visit starts without it. On wide windows, repeat and ∞ explain themselves when the mouse rests on them.
+
+When the queue moves on while the poem's page is in front, the next poem opens as a page of its own, so back returns to the poem before it, which shows paused and doesn't play: the poem now playing plays on. The last five poems stay behind the one in front (`KEEP_BEHIND` in `ListeningScreen.tsx`); back from the oldest returns to the page the first poem was opened from. When the queue goes back a poem (the lock screen's previous), the page goes back too. Elsewhere, only the mini player changes.
 
 ## Under the player
 

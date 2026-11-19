@@ -70,7 +70,7 @@
           "backgroundColor": "#F3F0E8",
           "dark": {
             "image": "./assets/app/splash-dark.png",
-            "backgroundColor": "#131A2E"
+            "backgroundColor": "#12151F"
           }
         }
       ],

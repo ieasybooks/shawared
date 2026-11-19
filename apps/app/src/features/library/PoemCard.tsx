@@ -1,8 +1,13 @@
 import type { Catalog, CatalogPerson, CatalogPoem, UiLang } from "@shawared/contracts";
-import { fonts, space } from "@shawared/design";
+import { space } from "@shawared/design";
 import { Link } from "expo-router";
 import { usePrefetch } from "../../lib/prefetch";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { type PressState } from "../../components/ui/controls";
+import { Eq } from "../../components/ui/Eq";
+import { responsive, useLayout } from "../../lib/responsive";
+import { useStore } from "../../lib/store";
+import { player, type Clock, type NowItem } from "../player/player";
 import { Dir } from "../../components/ui/Dir";
 import { Icon } from "../../components/ui/Icon";
 import { Half } from "../../components/ui/Measure";
@@ -10,7 +15,7 @@ import { abyatCount, clock, meterName, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
-import { rememberList } from "../player/queue";
+import { catalogEntry, rememberList } from "../player/queue";
 
 /** A person's name in the reader's language. */
 export const nameOf = (p: CatalogPerson | undefined, lang: UiLang) => (p ? (lang === "ar" ? p.name : (p.names[lang] ?? p.name)) : "");
@@ -35,65 +40,135 @@ function useOpen(href: string, poemId: string, list: readonly string[] | undefin
   };
 }
 
-/** A poem on the home page: title, opening bayt, poet, reciter. */
-export function PoemCard({ poem, catalog, list }: { poem: CatalogPoem; catalog: Catalog; list?: readonly string[] }) {
+const selectItemId = (s: { item: NowItem | null }) => s.item?.poemId ?? null;
+const selectPlaying = (s: Clock) => s.playing;
+
+/** Whether this poem is the one in the player, and playing. */
+function useListenState(poemId: string) {
+  const current = useStore(player.now, selectItemId) === poemId;
+  const playing = useStore(player.clock, selectPlaying) && current;
+  return { current, playing };
+}
+
+/** The Listen button's face: the play mark (or the moving bars) and "Listen" (or "Pause"). */
+function ListenFace({ playing }: { playing: boolean }) {
+  const { palette, lang } = useSettings();
+  const type = useType();
+  return (
+    <>
+      <View style={styles.listenMark}>
+        {playing ? <Eq on color={palette.accent} /> : <Icon name="play" size={12} color={palette.accent} />}
+      </View>
+      <Text style={[type.labelStrong, { color: palette.accent }]}>{t(lang, playing ? "pause" : "listen")}</Text>
+    </>
+  );
+}
+
+/**
+ * The Listen button's place in the card's first line, unseen: as wide as the button over it,
+ * so the slash after it sits as close as the "read" label does.
+ */
+function ListenRoom({ poemId }: { poemId: string }) {
+  const { playing } = useListenState(poemId);
+  return (
+    <View aria-hidden importantForAccessibility="no-hide-descendants" style={[styles.listen, styles.room]}>
+      <ListenFace playing={playing} />
+    </View>
+  );
+}
+
+/** "Listen" or "Pause" for a poem in a list: plays it in place, from the list it is in. */
+function ListenButton({ poem, catalog, list }: { poem: CatalogPoem; catalog: Catalog; list?: readonly string[] }) {
+  const { palette, lang } = useSettings();
+  const { current, playing } = useListenState(poem.id);
+  const press = () => {
+    if (current) return player.toggle();
+    if (list) rememberList(poem.id, list);
+    const item = catalogEntry(catalog, poem.id, lang);
+    if (item) player.play(item);
+  };
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${t(lang, playing ? "pause" : "listen")}: ${poem.title}`}
+      onPress={press}
+      style={(s: PressState) => [styles.listen, (s.hovered || s.pressed) && { backgroundColor: palette.fold }]}
+    >
+      <ListenFace playing={playing} />
+    </Pressable>
+  );
+}
+
+/**
+ * A poem on the home page, like an episode: listen or read it, then its title, poet and reciter,
+ * its meter and length, and its opening bayt. Tap anywhere to open it; "Listen" plays it here.
+ */
+export function PoemEntry({ poem, catalog, list }: { poem: CatalogPoem; catalog: Catalog; list?: readonly string[] }) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
+  const layout = useLayout();
   const rec = poem.recitations[0];
   const reciter = rec ? catalog.reciters[rec.reciter] : undefined;
   const to = href(paths.poem(poem.id));
   const open = useOpen(to, poem.id, list);
   return (
-    <Link href={to} asChild>
-      <Pressable
-        accessibilityRole="link"
-        {...open}
-        style={StyleSheet.flatten([
-          styles.card,
-          { backgroundColor: palette.raise, borderColor: palette.line, shadowColor: palette.shadow },
-        ])}
-      >
-        <View style={styles.top}>
+    <View style={[styles.entry, { borderTopColor: palette.line }]}>
+      <Link href={to} asChild>
+        <Pressable accessibilityRole="link" {...open} style={StyleSheet.flatten([styles.entryLink])}>
+          <View style={styles.actions}>
+            {rec?.audio ? (
+              <>
+                <ListenRoom poemId={poem.id} />
+                <Text style={[type.labelStrong, { color: palette.line2 }]}>/</Text>
+              </>
+            ) : null}
+            <Text style={[type.labelStrong, { color: palette.accent }]}>{t(lang, "read")}</Text>
+          </View>
           <View style={styles.titles}>
             <Text style={[type.cardTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>{poem.title}</Text>
             {lang === "en" && poem.titles.en && <Text style={[type.subtitle, { color: palette.muted }]}>{poem.titles.en}</Text>}
           </View>
-          <View style={[styles.play, { backgroundColor: palette.fg }]}>
-            <Icon name="play" size={18} color={palette.bg} />
+          <View style={styles.byline}>
+            <Text style={[type.controlStrong, { color: palette.fg }]}>{nameOf(catalog.poets[poem.poet], lang)}</Text>
+            {reciter && (
+              <>
+                <Text style={[type.control, { color: palette.line2 }]}>·</Text>
+                <Icon name="mic" size={14} color={palette.muted} />
+                <Text style={[type.control, { color: palette.muted }]}>{nameOf(reciter, lang)}</Text>
+              </>
+            )}
           </View>
-        </View>
-        <Dir dir="rtl" lang="ar" style={[styles.opening, { backgroundColor: palette.fold }]}>
-          <Half
-            text={poem.opening.sadr}
-            kashida={poem.kashida[`${poem.opening.n}.1`]}
-            measure={poem.measure}
-            style={[type.verseSmall, { color: palette.partner }]}
-            side="start"
-            indent="12%"
-          />
-          <Half
-            text={poem.opening.ajuz}
-            kashida={poem.kashida[`${poem.opening.n}.2`]}
-            measure={poem.measure}
-            style={[type.verseSmall, { color: palette.partner }]}
-            side="end"
-            indent="12%"
-          />
-        </Dir>
-        <View style={styles.byline}>
-          <Text style={[type.controlStrong, { color: palette.fg, textAlign: start }]}>
-            {nameOf(catalog.poets[poem.poet], lang)}
-            {reciter ? (
-              <Text style={{ color: palette.muted, fontFamily: fonts.ui }}>
-                {" · "}
-                {t(lang, "recitedBy", { name: nameOf(reciter, lang) })}
-              </Text>
-            ) : null}
-          </Text>
           <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{facts(poem, lang)}</Text>
+          <Dir
+            dir="rtl"
+            lang="ar"
+            style={[styles.opening, layout.style(sized.opening), { backgroundColor: palette.fold, borderColor: palette.line }]}
+          >
+            <Half
+              text={poem.opening.sadr}
+              kashida={poem.kashida[`${poem.opening.n}.1`]}
+              measure={poem.measure}
+              style={[type.verseSmall, { color: palette.muted }]}
+              side="start"
+              indent="8%"
+            />
+            <Half
+              text={poem.opening.ajuz}
+              kashida={poem.kashida[`${poem.opening.n}.2`]}
+              measure={poem.measure}
+              style={[type.verseSmall, { color: palette.muted }]}
+              side="end"
+              indent="8%"
+            />
+          </Dir>
+        </Pressable>
+      </Link>
+      {rec?.audio && (
+        <View style={styles.listenAt}>
+          <ListenButton poem={poem} catalog={catalog} {...(list ? { list } : {})} />
         </View>
-      </Pressable>
-    </Link>
+      )}
+    </View>
   );
 }
 
@@ -130,22 +205,34 @@ export function PoemRow({
   );
 }
 
+const sized = {
+  // The opening bayt: stacked on phones, its halves side by side on wide windows.
+  opening: responsive(
+    { flexDirection: "column" as const, alignItems: "stretch" as const, paddingStart: 14, paddingEnd: 14 },
+    { flexDirection: "row" as const, alignItems: "center" as const, paddingStart: 28, paddingEnd: 28 },
+  ),
+};
+
 const styles = StyleSheet.create({
-  card: {
-    borderWidth: 1,
-    borderRadius: 18,
-    padding: 18,
-    gap: 14,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 12,
-    elevation: 3,
+  entry: { position: "relative", borderTopWidth: 1 },
+  entryLink: { paddingTop: 22, paddingBottom: 26, gap: space.l },
+  actions: { flexDirection: "row", alignItems: "center", gap: space.m, minHeight: 28 },
+  listenAt: { position: "absolute", top: 22, start: 0 },
+  listen: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.s,
+    height: 28,
+    borderRadius: 8,
+    paddingHorizontal: space.xs,
   },
-  top: { flexDirection: "row", alignItems: "center", gap: space.l },
-  titles: { flex: 1, gap: space.xs },
+  // Unseen, and its inner padding taken back, so the gap to the slash is the actions' own.
+  room: { opacity: 0, marginEnd: -space.xs },
+  // The play mark and the bars take the same room, so "Pause" sits where "Listen" did.
+  listenMark: { width: 12, alignItems: "center" },
+  titles: { gap: space.xs },
   rtl: { writingDirection: "rtl" },
-  play: { width: 44, height: 44, borderRadius: 22, alignItems: "center", justifyContent: "center" },
-  opening: { borderRadius: 12, paddingVertical: space.m, paddingHorizontal: 14 },
-  byline: { gap: space.s },
-  row: { borderTopWidth: 1, paddingVertical: 14, gap: space.s },
+  byline: { flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: space.s },
+  opening: { borderRadius: 12, borderWidth: 1, paddingVertical: space.m, justifyContent: "space-between", gap: space.xs },
+  row: { borderTopWidth: 1, paddingVertical: 16, gap: space.s },
 });

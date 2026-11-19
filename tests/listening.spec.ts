@@ -53,7 +53,8 @@ test("a bayt number plays from that bayt", async ({ page }) => {
   await page.getByRole("button", { name: "شغّل من البيت ٩" }).click();
   await expect(panelTitle(page)).toHaveText("البيت ٩ · الشرح");
   await expect.poll(async () => Number(await slider(page).getAttribute("aria-valuenow"))).toBeGreaterThanOrEqual(52);
-  await expect(page.getByRole("button", { name: "إيقاف مؤقت" })).toBeVisible();
+  // Wide windows have two: the big one beside the title, and the player bar's.
+  await expect(page.getByRole("button", { name: "إيقاف مؤقت" }).first()).toBeVisible();
 });
 
 test("playing a bayt in view leaves the list still, and the player names that bayt at once", async ({ page }) => {
@@ -165,7 +166,7 @@ test("one button switches between day and night", async ({ page }) => {
   const background = () => page.evaluate(() => getComputedStyle(document.body).backgroundColor);
   expect(await background()).toBe("rgb(243, 240, 232)");
   await page.getByRole("button", { name: "المظهر الليلي" }).click();
-  await expect.poll(background).toBe("rgb(19, 26, 46)");
+  await expect.poll(background).toBe("rgb(18, 21, 31)");
   await page.getByRole("button", { name: "المظهر النهاري" }).click();
   await expect.poll(background).toBe("rgb(243, 240, 232)");
 });

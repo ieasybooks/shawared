@@ -45,6 +45,8 @@ export interface Playlist {
    * the slot playing, which starts it over.
    */
   readonly seamlessInsert: boolean;
+  /** Silences the recording without pausing it. */
+  setMuted(muted: boolean): void;
   /** Shows what plays on the lock screen, the notification or the browser's media controls. */
   show(now: NowPlaying, buttons: Buttons): void;
   /** Stops, takes the controls off the lock screen, and frees the playlist. */

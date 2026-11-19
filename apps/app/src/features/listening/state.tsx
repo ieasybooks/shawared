@@ -2,8 +2,7 @@ import type { PoemBundle, PublishedBayt, PublishedRecitation, PublishedSource } 
 import { startOfBayt, wordIndex, type WordHit } from "@shawared/listening";
 import { createContext, use, useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import { isWide } from "../../lib/responsive";
-import { useStore } from "../../lib/store";
-import { nowItemOf, player, type NowItem } from "../player/player";
+import { nowItemOf, type NowItem } from "../player/player";
 import { useCurrentSegment, usePlaying, usePoemPlayback, type Playback } from "./playback";
 
 /** What the explanation holds: a bayt, the poem's introduction, or null to follow the recitation. */
@@ -33,8 +32,6 @@ type ListeningValue = {
   /** A word whose meaning the explanation brings forward ("n.h.w"); its bayt is held. */
   focus: string | null;
   openWord: (key: string, n: number) => void;
-  repeat: boolean;
-  setRepeat: (on: boolean) => void;
   /** Seek somewhere and go back to following: previous, next, the progress bar, a bayt number. */
   jump: (seconds: number) => void;
   playFrom: (n: number) => void;
@@ -73,8 +70,6 @@ export function ListeningProvider({
   const [held, setHeld] = useState<Held>(initialBayt ?? (intro && !playback.active ? "intro" : null));
   const pinned: Held = held === "intro" && !intro ? null : held;
   const [focus, setFocus] = useState<string | null>(null);
-  const repeat = useStore(player.repeat, (s) => s.on);
-  const setRepeat = useCallback((on: boolean) => player.repeat.set({ on }), []);
   const [sheetOpen, setSheetOpen] = useState(false);
   const followRef = useRef<(() => void) | null>(null);
 
@@ -151,8 +146,6 @@ export function ListeningProvider({
         hold(n, key);
         if (!isWide()) setSheetOpen(true);
       },
-      repeat,
-      setRepeat,
       jump,
       playFrom,
       followRef,
@@ -173,8 +166,6 @@ export function ListeningProvider({
       intro,
       focus,
       hold,
-      repeat,
-      setRepeat,
       jump,
       playFrom,
       sheetOpen,

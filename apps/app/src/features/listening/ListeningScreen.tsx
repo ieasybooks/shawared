@@ -1,5 +1,6 @@
 import type { PoemBundle } from "@shawared/contracts";
 import { router, useNavigation } from "expo-router";
+import { CommonActions } from "expo-router/react-navigation";
 import { useEffect, useRef } from "react";
 import { Platform } from "react-native";
 import { StateView } from "../../components/ui/StateView";
@@ -47,9 +48,18 @@ export function ListeningScreen({
   );
 }
 
+/** How many poems the queue moved on from stay behind the one in front, for back to return to. */
+const KEEP_BEHIND = 5;
+
+type StackRoute = { name: string; params?: object | undefined };
+const isPoem = (r: StackRoute | undefined): r is StackRoute => !!r && r.name.endsWith("poems/[id]");
+const poemOf = (r: StackRoute) => (r.params as { id?: string } | undefined)?.id;
+
 /**
  * When the queue moves on from this poem (it ended, or the lock screen, a headset or a media key
- * skipped it) while its page is in front, the page moves on with it.
+ * skipped it) while its page is in front, the page moves on with it: the next poem opens as a page
+ * of its own, so back returns here, without playing this poem. When the queue goes back to the
+ * poem whose page is beneath, the page goes back to it. Only the last KEEP_BEHIND poems stay.
  */
 function FollowQueue({ id }: { id: string }) {
   const navigation = useNavigation();
@@ -57,15 +67,36 @@ function FollowQueue({ id }: { id: string }) {
   useEffect(() => {
     let last = player.now.get().item?.poemId;
     let followed = false;
-    return player.now.subscribe(() => {
+    // Back here: this page follows the queue again.
+    const offFocus = navigation.addListener("focus", () => (followed = false));
+    const offNow = player.now.subscribe(() => {
       const { item, from } = player.now.get();
       const was = last;
       last = item?.poemId;
       if (followed || !item || was !== id || item.poemId === id || from !== id || !navigation.isFocused()) return;
       followed = true;
-      router.replace(href(paths.poem(item.poemId)));
+      const { routes, index } = navigation.getState() as { routes: StackRoute[]; index: number };
+      const beneath = routes[index - 1];
+      if (isPoem(beneath) && poemOf(beneath) === item.poemId) navigation.goBack();
+      else router.push(href(paths.poem(item.poemId)));
     });
+    return () => {
+      offFocus();
+      offNow();
+    };
   }, [id, navigation, href]);
+
+  // A page opened on top of others: keep at most KEEP_BEHIND poem pages straight beneath it.
+  useEffect(() => {
+    const state = navigation.getState() as { routes: StackRoute[]; index: number } | undefined;
+    if (!state || !isPoem(state.routes[state.index])) return;
+    let start = state.index;
+    while (isPoem(state.routes[start - 1])) start--;
+    const extra = state.index - start - KEEP_BEHIND;
+    if (extra <= 0) return;
+    const routes = [...state.routes.slice(0, start), ...state.routes.slice(start + extra)];
+    navigation.dispatch(CommonActions.reset({ ...state, routes, index: state.index - extra } as never));
+  }, [navigation]);
   return null;
 }
 

@@ -5,6 +5,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import { Chip, IconButton } from "../../components/ui/controls";
 import { Dialog } from "../../components/ui/Dialog";
+import { CoverTile } from "../../components/ui/Girih";
 import { Icon } from "../../components/ui/Icon";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
@@ -184,8 +185,8 @@ function NewPlaylistRow({ onPress }: { onPress: () => void }) {
   const type = useType();
   return (
     <Pressable accessibilityRole="button" onPress={onPress} style={[styles.row, styles.inline, { borderTopColor: palette.line }]}>
-      <View style={[styles.badge, { borderColor: palette.line }]}>
-        <Icon name="plus" size={18} color={palette.fg} />
+      <View style={[styles.badge, styles.dashed, { borderColor: palette.line2 }]}>
+        <Icon name="plus" size={20} color={palette.fg} />
       </View>
       <Text style={[type.controlStrong, { color: palette.fg }]}>{t(lang, "newPlaylist")}</Text>
     </Pressable>
@@ -201,21 +202,32 @@ function PlaylistRow({ playlist, catalog }: { playlist: Playlist; catalog: Catal
   const facts = [poemsCount(poems.length, lang), poems.length ? t(lang, "minutes", { m: Math.max(1, Math.round(seconds / 60)) }) : null]
     .filter(Boolean)
     .join(" · ");
+  const ids = poems.map((p) => p.id);
   return (
-    <Link href={href(paths.playlist(playlist.id))} asChild>
-      <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.row, styles.inline, { borderTopColor: palette.line }])}>
-        <View style={[styles.badge, { backgroundColor: palette.fold, borderColor: palette.fold }]}>
-          <Icon name="listAdd" size={18} color={palette.fg} />
-        </View>
-        <View style={styles.flex}>
-          {/* The reader's own name for it, in whatever language: the interface's type, not a verse's. */}
-          <Text numberOfLines={1} style={[type.heading, styles.auto, { color: palette.fg, textAlign: start }]}>
-            {playlistName(playlist, lang)}
-          </Text>
-          <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{facts}</Text>
-        </View>
-      </Pressable>
-    </Link>
+    <View style={[styles.inline, styles.playlist, { borderTopColor: palette.line }]}>
+      <Link href={href(paths.playlist(playlist.id))} asChild>
+        <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.inline, styles.flex, styles.playlistLink])}>
+          <CoverTile size={56} name={playlistName(playlist, lang)} radius={12} />
+          <View style={styles.flex}>
+            {/* The reader's own name for it, in whatever language: the interface's type, not a verse's. */}
+            <Text numberOfLines={1} style={[type.heading, styles.auto, { color: palette.fg, textAlign: start }]}>
+              {playlistName(playlist, lang)}
+            </Text>
+            <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{facts}</Text>
+          </View>
+        </Pressable>
+      </Link>
+      {ids.length > 0 && (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={`${t(lang, "playAll")}: ${playlistName(playlist, lang)}`}
+          onPress={() => playList(ids, lang)}
+          style={[styles.playAll, { backgroundColor: palette.fg }]}
+        >
+          <Icon name="play" size={16} color={palette.bg} />
+        </Pressable>
+      )}
+    </View>
   );
 }
 
@@ -253,6 +265,10 @@ const styles = StyleSheet.create({
   text: { paddingVertical: space.l },
   row: { borderTopWidth: 1, paddingVertical: 14, gap: space.s },
   inline: { flexDirection: "row", alignItems: "center", gap: space.l },
-  badge: { width: 40, height: 40, borderRadius: 12, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+  badge: { width: 56, height: 56, borderRadius: 12, borderWidth: 1, alignItems: "center", justifyContent: "center" },
+  dashed: { borderStyle: "dashed", borderWidth: 1.5 },
+  playlist: { borderTopWidth: 1 },
+  playlistLink: { paddingVertical: 12, gap: space.l },
+  playAll: { width: 40, height: 40, borderRadius: 20, alignItems: "center", justifyContent: "center" },
   auto: { writingDirection: "auto" },
 });

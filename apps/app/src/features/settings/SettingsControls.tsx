@@ -16,13 +16,13 @@ const LANGS: { value: UiLang; label: string }[] = [
 ];
 const MENU_W = 176;
 
-/** Appearance and language, as two icon buttons, and with `about` a link to the About page. */
-export function SettingsButtons({ size = 40, about = false }: { size?: number; about?: boolean }) {
+/** Appearance and language, as two icon buttons, and with `about` a link to the About page. Frosted over the girih band. */
+export function SettingsButtons({ size = 38, about = false }: { size?: number; about?: boolean }) {
   return (
     <View style={styles.row}>
-      <ThemeToggle size={size} />
-      <LanguageMenu size={size} />
       {about && <AboutLink size={size} />}
+      <LanguageMenu size={size} />
+      <ThemeToggle size={size} />
     </View>
   );
 }
@@ -41,6 +41,7 @@ function AboutLink({ size }: { size: number }) {
       size={size}
       iconSize={size * 0.5}
       color={palette.fg}
+      glass
     />
   );
 }
@@ -57,6 +58,7 @@ function ThemeToggle({ size }: { size: number }) {
       size={size}
       iconSize={size * 0.5}
       color={palette.fg}
+      glass
     />
   );
 }
@@ -83,6 +85,7 @@ function LanguageMenu({ size }: { size: number }) {
           size={size}
           iconSize={size * 0.5}
           color={palette.fg}
+          glass
         />
       </View>
       <Modal visible={at !== null} transparent animationType="fade" statusBarTranslucent onRequestClose={close}>
@@ -133,7 +136,7 @@ function LanguageMenu({ size }: { size: number }) {
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: "row", alignItems: "center", gap: 2 },
+  row: { flexDirection: "row", alignItems: "center", gap: 8 },
   menu: {
     position: "absolute",
     borderWidth: 1,

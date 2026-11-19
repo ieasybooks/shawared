@@ -1,16 +1,24 @@
 import type { PublishedBayt } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { wordKey } from "@shawared/listening";
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent, type StyleProp, type ViewStyle } from "react-native";
 import type { PressState } from "../../components/ui/controls";
 import { Icon } from "../../components/ui/Icon";
 import { Measure, shownWords } from "../../components/ui/Measure";
 import { digits, t } from "../../lib/i18n";
 import { isWide, responsive, scale, useLayout } from "../../lib/responsive";
+import { createStore, useStore } from "../../lib/store";
 import { useSettings } from "../../lib/settings";
 import { useType, VERSE_LINE } from "../../lib/type";
 import { useListening } from "./state";
+import { hidePeek, peekHandlers } from "./WordPeek";
+
+/**
+ * The bayt under the mouse, whose number turns into ▶. In a store, so moving between bayts
+ * re-renders only the two numbers concerned (hover never comes from touch).
+ */
+const hoveredBayt = createStore<{ n: number | null }>({ n: null });
 
 type Props = {
   bayt: PublishedBayt;
@@ -33,9 +41,9 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
   const pair = Array.isArray(translation) ? translation : null;
   const sentence = typeof translation === "string" ? translation : null;
 
-  // A whole bayt timed at once lights both halves.
+  // The half being recited is saffron; a whole bayt timed at once lights both halves.
   const halfOn = (h: 1 | 2) => isCurrent && (currentHalf === null || currentHalf === h);
-  const halfColor = (h: 1 | 2) => (halfOn(h) ? palette.fg : isCurrent ? palette.partner : palette.rest);
+  const halfColor = (h: 1 | 2) => (halfOn(h) ? palette.accent : palette.rest);
 
   const open = () => {
     pin(bayt.n);
@@ -50,11 +58,7 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
     return (
       <View style={[layout.style(sized.half), pair && styles.withTr]}>
         <Words n={bayt.n} half={h} text={text} color={halfColor(h)} on={halfOn(h)} align={align} inset={trOn ? 0 : h} />
-        {pair && (
-          <Text style={[type.verseTranslation, styles.tr, { color: halfOn(h) ? palette.fg : isCurrent ? palette.partner : palette.rest }]}>
-            {pair[h - 1]}
-          </Text>
-        )}
+        {pair && <Text style={[type.verseTranslation, styles.tr, { color: halfOn(h) ? palette.fg : palette.muted }]}>{pair[h - 1]}</Text>}
       </View>
     );
   };
@@ -63,53 +67,60 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
     <Pressable
       onLayout={(e) => onLayout(bayt.n, e)}
       onPress={open}
+      onHoverIn={() => hoveredBayt.set({ n: bayt.n })}
+      onHoverOut={() => hoveredBayt.get().n === bayt.n && hoveredBayt.set({ n: null })}
       accessibilityLabel={t(lang, "verse", { n: bayt.n })}
       accessibilityHint={t(lang, "expand")}
       style={[
         styles.bayt,
         layout.style(sized.bayt),
         (pair || sentence) && styles.baytTr,
-        isPinned && { backgroundColor: palette.fold, borderColor: palette.line },
+        isCurrent && { backgroundColor: palette.raise, borderColor: palette.line },
+        isPinned && !isCurrent && { backgroundColor: palette.fold, borderColor: palette.line },
       ]}
     >
-      <NumberButton n={bayt.n} isCurrent={isCurrent} onPress={() => playFrom(bayt.n)} />
+      <NumberButton n={bayt.n} onPress={() => playFrom(bayt.n)} />
       <View style={layout.style(pair || sentence ? sized.halvesTr : sized.halves)}>
         {half(1)}
-        <View style={[styles.cz, layout.style(sized.cz), { backgroundColor: isCurrent ? palette.partner : palette.line2 }]} />
+        <View style={[styles.cz, layout.style(sized.cz), { backgroundColor: palette.line2 }]} />
         {half(2)}
       </View>
       {sentence && (
-        <Text style={[type.verseTranslation, styles.tr, styles.trs, { color: isCurrent ? palette.fg : palette.rest }]}>{sentence}</Text>
+        <Text style={[type.verseTranslation, styles.tr, styles.trs, { color: isCurrent ? palette.fg : palette.muted }]}>{sentence}</Text>
       )}
     </Pressable>
   );
 });
 
-function NumberButton({ n, isCurrent, onPress }: { n: number; isCurrent: boolean; onPress: () => void }) {
+function NumberButton({ n, onPress }: { n: number; onPress: () => void }) {
   const { palette, lang } = useSettings();
   const type = useType();
   const layout = useLayout();
-  // All three marks stay mounted and fade, so the element under the pointer never changes mid-press.
+  const rowHovered = useStore(
+    hoveredBayt,
+    useCallback((s: { n: number | null }) => s.n === n, [n]),
+  );
+  // The number, and ▶ on ink while the mouse is on its bayt; the playing bayt is marked by its
+  // row, not its number.
+  // Every layer stays mounted and fades, so the element under the pointer never changes mid-press.
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={t(lang, "playFrom", { n })}
       onPress={onPress}
-      style={(s: PressState) => [styles.num, layout.style(sized.num), s.hovered && { backgroundColor: palette.fold }]}
+      style={[styles.num, layout.style(sized.num)]}
     >
       {(s: PressState) => {
-        const hover = !!s.hovered;
+        const hover = rowHovered || !!s.hovered;
         return (
           <>
-            <Text style={[type.caption, styles.layer, { color: palette.rest, opacity: hover || isCurrent ? 0 : 1 }]}>
-              {digits(n, lang)}
-            </Text>
             <View
               pointerEvents="none"
-              style={[styles.numDot, styles.layerCenter, { backgroundColor: palette.accent, opacity: isCurrent && !hover ? 1 : 0 }]}
+              style={[styles.numInk, styles.layerCenter, { backgroundColor: palette.fg, opacity: hover ? 1 : 0 }]}
             />
+            <Text style={[type.caption, styles.layer, { color: palette.muted, opacity: hover ? 0 : 1 }]}>{digits(n, lang)}</Text>
             <View pointerEvents="none" style={[styles.layerCenter, { opacity: hover ? 1 : 0 }]}>
-              <Icon name="play" size={13} color={palette.fg} />
+              <Icon name="play" size={12} color={palette.bg} />
             </View>
           </>
         );
@@ -119,7 +130,7 @@ function NumberButton({ n, isCurrent, onPress }: { n: number; isCurrent: boolean
 }
 
 /**
- * Where the rhombus under a word with a meaning sits, from the top of the word's box (its
+ * Where the dotted line under a word with a meaning sits, from the top of the word's box (its
  * highest mark, 1.3 em above the baseline): 0.62 em under the baseline, below the kasras and
  * most tails, and still inside the box so it never reaches the next line.
  */
@@ -172,14 +183,18 @@ function Words({
         accessibilityRole="button"
         accessibilityLabel={plain[i]}
         // A word opens its own bayt's explanation, with its meaning brought forward.
-        onPress={() => openWord(key, n)}
+        onPress={() => {
+          hidePeek();
+          openWord(key, n);
+        }}
+        {...peekHandlers(key)}
         style={(s: PressState) => [
           styles.g,
-          (s.hovered || words.get(key)?.address === focused) && { backgroundColor: `${palette.accent}29` },
+          (s.hovered || words.get(key)?.address === focused) && { backgroundColor: `${palette.accent}1F` },
         ]}
       >
         <Text style={base}>{w}</Text>
-        <View style={[styles.gDot, { backgroundColor: palette.accent, opacity: on ? 1 : 0.55, top: scale(size, MARK_BELOW, -2) }]} />
+        <View style={[styles.gLine, { borderColor: palette.accent, opacity: on ? 1 : 0.6, top: scale(size, MARK_BELOW, -1) }]} />
       </Pressable>
     );
   });
@@ -202,8 +217,8 @@ function Words({
 
 const sized = {
   bayt: responsive(
-    { paddingVertical: space.m, paddingStart: 32, paddingEnd: 6 },
-    { paddingVertical: 10, paddingStart: 44, paddingEnd: 14 },
+    { paddingTop: space.m, paddingBottom: space.m, paddingStart: 32, paddingEnd: 6 },
+    { paddingTop: 10, paddingBottom: 10, paddingStart: 44, paddingEnd: 14 },
   ),
   // The halves: stacked on phones (spaced like the rest of the bayt), side by side on wide windows.
   halves: responsive(
@@ -236,11 +251,12 @@ const styles = StyleSheet.create({
   cz: { width: 6, height: 6, marginTop: 21, transform: [{ rotate: "45deg" }] },
   words: { flexDirection: "row", flexWrap: "wrap" },
   g: { borderRadius: 5, position: "relative", alignItems: "center" },
-  gDot: { position: "absolute", width: 4, height: 4, transform: [{ rotate: "45deg" }] },
+  // A box of no height with a dotted border on every side: a dotted line, on every platform.
+  gLine: { position: "absolute", left: 1, right: 1, height: 0, borderWidth: 1, borderStyle: "dotted" },
   tr: { textAlign: "center", writingDirection: "ltr" },
   trs: { paddingHorizontal: "6%" },
   num: { position: "absolute", start: 2, width: 28, height: 28, borderRadius: 14, alignItems: "center", justifyContent: "center" },
   layer: { position: "absolute" },
   layerCenter: { position: "absolute" },
-  numDot: { width: 8, height: 8, transform: [{ rotate: "45deg" }] },
+  numInk: { width: 28, height: 28, borderRadius: 14, alignItems: "center", justifyContent: "center" },
 });

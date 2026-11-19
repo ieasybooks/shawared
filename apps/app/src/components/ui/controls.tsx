@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View, type PressableStateCallbackType, typ
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { Icon, type IconName } from "./Icon";
+import { Tip, type TipText, useTip } from "./Tip";
 
 // React Native Web adds `hovered` and `focused` to the pressable state.
 export type PressState = PressableStateCallbackType & { hovered?: boolean; focused?: boolean };
@@ -18,6 +19,8 @@ export function IconButton({
   color,
   pressed: on,
   style,
+  glass,
+  tip,
 }: {
   icon: IconName;
   label: string;
@@ -27,24 +30,32 @@ export function IconButton({
   color?: string;
   pressed?: boolean;
   style?: StyleProp<ViewStyle>;
+  /** Frosted, for the top of a page over the girih band. */
+  glass?: boolean;
+  /** What it does, shown while a mouse rests on it. */
+  tip?: TipText | undefined;
 }) {
   const { palette } = useSettings();
+  const hint = useTip(!!tip);
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
       // A toggle: selected to iOS and Android, pressed to the web (React Native Web drops accessibilityState).
       {...(on === undefined ? {} : { accessibilityState: { selected: on }, "aria-pressed": on })}
+      {...hint.handlers}
       onPress={onPress}
       style={(s: PressState) => [
         styles.icon,
         { width: size, height: size, borderRadius: size / 2 },
+        glass && { backgroundColor: palette.glass, borderWidth: 1, borderColor: palette.glassLine },
         (s.hovered || s.pressed) && { backgroundColor: palette.fold },
         style,
       ]}
     >
       <Icon name={icon} size={iconSize} color={color ?? palette.muted} />
       {on && <View style={[styles.onDot, { backgroundColor: palette.accent }]} />}
+      {tip && hint.shown && <Tip tip={tip} />}
     </Pressable>
   );
 }
@@ -58,6 +69,7 @@ export function IconLink({
   size = 42,
   iconSize = 22,
   color,
+  glass,
 }: {
   icon: IconName;
   label: string;
@@ -66,6 +78,7 @@ export function IconLink({
   size?: number;
   iconSize?: number;
   color?: string;
+  glass?: boolean;
 }) {
   const { palette } = useSettings();
   // Link asChild needs one flat style object, so the hover shade comes from state.
@@ -81,6 +94,7 @@ export function IconLink({
         style={StyleSheet.flatten([
           styles.icon,
           { width: size, height: size, borderRadius: size / 2 },
+          glass && { backgroundColor: palette.glass, borderWidth: 1, borderColor: palette.glassLine },
           hovered && { backgroundColor: palette.fold },
         ])}
       >
@@ -105,6 +119,8 @@ export function Chip({
   active,
   ghost,
   icon,
+  lead,
+  accent,
 }: {
   children: ReactNode;
   onPress?: () => void;
@@ -112,23 +128,33 @@ export function Chip({
   ghost?: boolean;
   /** An icon after the label, such as "link" for a chip that leaves the app. */
   icon?: IconName;
+  /** An icon before the label: the reciter's microphone, the length's clock. */
+  lead?: IconName;
+  /** Saffron: a chip that opens something (the introduction). */
+  accent?: boolean;
 }) {
   const { palette } = useSettings();
   const type = useType();
-  const color = active ? palette.fg : palette.muted;
+  const color = accent ? palette.accent : active ? palette.fg : palette.muted;
   const text = <Text style={[type.label, { color }]}>{children}</Text>;
-  const body = icon ? (
-    <View style={styles.chipRow}>
-      {text}
-      <Icon name={icon} size={12} color={color} />
-    </View>
-  ) : (
-    text
-  );
+  const body =
+    icon || lead ? (
+      <View style={styles.chipRow}>
+        {lead && <Icon name={lead} size={14} color={accent ? palette.accent : palette.muted} />}
+        {text}
+        {icon && <Icon name={icon} size={12} color={color} />}
+      </View>
+    ) : (
+      text
+    );
   const frame = [
     styles.chip,
-    { borderColor: ghost ? "transparent" : active ? palette.accent : palette.line },
+    {
+      borderColor: ghost ? "transparent" : active || accent ? palette.accent : palette.line,
+      backgroundColor: ghost ? "transparent" : palette.fold,
+    },
     ghost && { paddingHorizontal: space.xs },
+    accent && !active && { backgroundColor: "transparent" },
     active && { borderWidth: 1.5 },
   ];
   if (!onPress) return <View style={frame}>{body}</View>;
@@ -174,7 +200,7 @@ const styles = StyleSheet.create({
   onDot: { position: "absolute", bottom: 4, width: 4, height: 4, transform: [{ rotate: "45deg" }] },
   // Pills keep one height in both languages; the text box inside is its ink, centred.
   chip: { minHeight: 28, justifyContent: "center", borderWidth: 1, borderRadius: 999, paddingHorizontal: 11, paddingVertical: space.xxs },
-  chipRow: { flexDirection: "row", alignItems: "center", gap: space.s },
+  chipRow: { flexDirection: "row", alignItems: "center", gap: space.xs + 1 },
   pill: { flexDirection: "row", alignItems: "center", gap: 7, paddingStart: 10, paddingEnd: 12 },
   pillDot: { width: 7, height: 7, borderWidth: 1.5, transform: [{ rotate: "45deg" }] },
   tag: { minHeight: 22, justifyContent: "center", borderWidth: 1, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 1 },

@@ -59,6 +59,11 @@ export const createPlaylist: CreatePlaylist = (urls, onStatus) => {
     insert: (url, slot) => list.insert({ uri: url }, slot),
     remove: (slot) => list.remove(slot),
     seamlessInsert: Platform.OS !== "ios",
+    setMuted(muted) {
+      try {
+        list.muted = muted;
+      } catch {}
+    },
     show(now, next) {
       const metadata: AudioMetadata = { title: now.title, artist: now.artist, albumTitle: now.album, artworkUrl: now.artwork };
       const key = JSON.stringify(metadata);
