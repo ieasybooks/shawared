@@ -8,8 +8,8 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "export:web": "expo export --platform web",
-    "export:web:clean": "expo export --platform web --clear",
+    "export:web": "SHAWARED_WEB_EXPORT=1 expo export --platform web",
+    "export:web:clean": "SHAWARED_WEB_EXPORT=1 expo export --platform web --clear",
     "preview:cloudflare": "wrangler dev --local --ip 127.0.0.1 --port 8787 --inspector-port 0",
     "deploy:check": "wrangler deploy --dry-run",
     "deploy": "wrangler deploy"
