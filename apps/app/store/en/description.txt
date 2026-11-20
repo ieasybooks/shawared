@@ -6,7 +6,7 @@ Shawared is a library of Arabic poetry as it is recited: hear each poem in its r
 • An English translation of every poem, beside the Arabic.
 • Browse by poet, reciter and meter, or search by title, opening line or poet, with or without vowel marks.
 • Fully vowelled texts that follow what the reciter says, checked against their sources.
-• Your library: keep your favourite poems, poets and reciters, make playlists, and download recordings to listen offline.
+• Your library: keep your favorite poems, poets and reciters, make playlists, and download recordings to listen offline.
 • The recitation keeps playing while you browse the app or lock your screen, moves on to the next poem in its list, and answers the lock screen's controls.
 • An Arabic or English interface, in day or night colors.
 

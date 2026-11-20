@@ -15,6 +15,8 @@ const PAGES = [
   "/en/poets/jamil-buthayna",
   "/about",
   "/en/privacy",
+  "/terms",
+  "/en/terms",
   "/support",
   "/a-page-that-is-not-here",
 ];

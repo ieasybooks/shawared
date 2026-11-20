@@ -50,7 +50,20 @@ test("every address in the sitemap answers with its page, without a redirect", a
   const sitemap = await (await request.get("/sitemap.xml")).text();
   const paths = [...sitemap.matchAll(/<loc>https:\/\/shawared\.com([^<]*)<\/loc>/g)].map((m) => m[1]!);
   expect(paths).toEqual(
-    expect.arrayContaining(["/", "/en", POEM, `/en${POEM}`, "/about", "/privacy", "/support", "/en/about", "/en/privacy", "/en/support"]),
+    expect.arrayContaining([
+      "/",
+      "/en",
+      POEM,
+      `/en${POEM}`,
+      "/about",
+      "/privacy",
+      "/terms",
+      "/support",
+      "/en/about",
+      "/en/privacy",
+      "/en/terms",
+      "/en/support",
+    ]),
   );
   for (const path of paths) {
     const r = await request.get(path, { maxRedirects: 0 });

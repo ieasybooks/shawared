@@ -26,6 +26,7 @@ export function ListPage<T>({
   back,
   lead,
   header,
+  footer,
   data,
   renderItem,
   keyOf,
@@ -42,6 +43,8 @@ export function ListPage<T>({
   lead?: ReactNode;
   /** What comes before the list, under the title. */
   header?: ReactNode;
+  /** What comes after the list, in its column. */
+  footer?: ReactNode;
   data: readonly T[];
   /** `index` is the item's place in `data`: lists leave the first item's top rule off. */
   renderItem: (item: T, index: number) => ReactElement;
@@ -103,7 +106,12 @@ export function ListPage<T>({
       <Text style={[type.control, styles.center, { color: palette.muted }]}>{empty}</Text>
     </View>
   ) : null;
-  const foot = <View style={styles.foot} />;
+  const foot = (
+    <>
+      {footer && <View style={column}>{footer}</View>}
+      <View style={styles.foot} />
+    </>
+  );
   // Clear, so the girih band at the top of the page shows through.
   const style = { flex: 1, backgroundColor: "transparent" };
 
