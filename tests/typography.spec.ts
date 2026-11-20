@@ -140,6 +140,7 @@ for (const lang of ["ar", "en"] as const) {
       "/library",
       "/about",
       "/privacy",
+      "/terms",
       "/support",
     ])
       test(path, async ({ page }) => {
@@ -150,7 +151,7 @@ for (const lang of ["ar", "en"] as const) {
     test("the library and a playlist, with what a reader keeps", async ({ page }) => {
       await page.addInitScript((saved) => localStorage.setItem("shawared.saved.v1", saved), JSON.stringify(SAVED));
       await page.goto(at(lang, "/library"));
-      await expect(page.getByText(lang === "ar" ? "القصائد المفضّلة" : "Favourite poems").first()).toBeVisible();
+      await expect(page.getByText(lang === "ar" ? "القصائد المفضّلة" : "Favorite poems").first()).toBeVisible();
       await expectNoOverlap(page, "/library", 3);
       await page.goto(at(lang, "/playlist?id=t1"));
       await expect(page.getByText(lang === "ar" ? "شغّل الكل" : "Play all").first()).toBeVisible();

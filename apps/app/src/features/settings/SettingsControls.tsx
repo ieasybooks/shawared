@@ -27,7 +27,7 @@ export function SettingsButtons({ size = 38, about = false }: { size?: number; a
   );
 }
 
-/** An "i" that opens About Shawared, which leads on to the privacy policy. */
+/** An "i" that opens About Shawared, which leads on to the privacy policy, the terms of use and support. */
 function AboutLink({ size }: { size: number }) {
   const { lang, href, palette } = useSettings();
   const pathname = usePathname();

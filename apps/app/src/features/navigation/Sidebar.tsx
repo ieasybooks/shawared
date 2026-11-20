@@ -79,6 +79,11 @@ export function Sidebar() {
               {t(lang, "privacy")}
             </Text>
           </TextLink>
+          <TextLink href={href(paths.terms)}>
+            <Text style={[type.label, styles.underline, { color: palette.muted, textDecorationColor: palette.line2 }]}>
+              {t(lang, "terms")}
+            </Text>
+          </TextLink>
         </View>
       </ScrollView>
     </View>
@@ -204,7 +209,7 @@ const styles = StyleSheet.create({
   counts: { flexDirection: "row", gap: space.s },
   count: { flex: 1, minWidth: 0, borderWidth: 1, borderRadius: 12, paddingHorizontal: space.m, paddingVertical: space.m, gap: space.s },
   tabular: { fontVariant: ["tabular-nums"] },
-  foot: { flexDirection: "row", gap: space.xl, marginTop: -space.m },
+  foot: { flexDirection: "row", flexWrap: "wrap", columnGap: space.xl, rowGap: space.m, marginTop: -space.m },
   underline: { textDecorationLine: "underline" },
   head: { paddingTop: 24, paddingHorizontal: 24, gap: space.xl },
   headBrand: { flexDirection: "row", alignItems: "center", gap: space.l },

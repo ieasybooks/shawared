@@ -38,5 +38,6 @@ export const paths = {
   playlist: (id: string) => `/playlist?id=${encodeURIComponent(id)}`,
   about: "/about",
   privacy: "/privacy",
+  terms: "/terms",
   support: "/support",
 };
