@@ -5,7 +5,7 @@
     "": {
       "name": "shawared",
       "devDependencies": {
-        "@ieasybooks/release": "github:ieasybooks/release#04442875d8c4f78dd5567ce4aa8f8993c160cada",
+        "@ieasybooks/release": "github:ieasybooks/release#c361cc1146ffe9349e3b6e592c5bfa0260499bf6",
         "@playwright/test": "^1.65.1",
         "@shawared/contracts": "workspace:*",
         "@shawared/design": "workspace:*",
@@ -55,7 +55,7 @@
         "react-native-web": "^0.21.4",
       },
       "devDependencies": {
-        "@ieasybooks/release": "github:ieasybooks/release#04442875d8c4f78dd5567ce4aa8f8993c160cada",
+        "@ieasybooks/release": "github:ieasybooks/release#c361cc1146ffe9349e3b6e592c5bfa0260499bf6",
         "@types/react": "~19.3.0",
         "typescript": "^7.0.2",
       },
@@ -380,7 +380,7 @@
 
     "@expo/xcpretty": ["@expo/xcpretty@4.4.7", "", { "dependencies": { "@babel/code-frame": "^7.20.0", "chalk": "^4.1.0", "js-yaml": "^4.1.0" }, "bin": { "excpretty": "build/cli.js" } }, "sha512-EbxYllZ7/ozONVZd425cm4XnolfW+AmSFT5aP7Jdno6oc3WrYQcHz2CO20z/2rwWwYgztmV2PXvYH+BQ8YFjqg=="],
 
-    "@ieasybooks/release": ["@ieasybooks/release@github:ieasybooks/release#0444287", { "bin": { "ieasybooks-release": "./bin/ieasybooks-release.ts" } }, "ieasybooks-release-0444287", "sha512-BXz1JBoeqCkwITSr+NEngUbQ2wVGTz9eXsoSfEHN4d86f04KV4A2wTDGUDr6MfFf1mGUj1rMl0Kw1Vzj6Aso4Q=="],
+    "@ieasybooks/release": ["@ieasybooks/release@github:ieasybooks/release#c361cc1", { "bin": { "ieasybooks-release": "./bin/ieasybooks-release.ts" } }, "ieasybooks-release-c361cc1", "sha512-8o9JqsyMPWONu2snFh2B4ojhtgKkqUo5+M8nH6NtKsjSmR/ivsWIM39PdXTYwtd+Utdbwkt1Q5zwyV+5AKkjbw=="],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 

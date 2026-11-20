@@ -32,7 +32,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@ieasybooks/release": "github:ieasybooks/release#04442875d8c4f78dd5567ce4aa8f8993c160cada",
+    "@ieasybooks/release": "github:ieasybooks/release#c361cc1146ffe9349e3b6e592c5bfa0260499bf6",
     "@playwright/test": "^1.65.1",
     "@shawared/contracts": "workspace:*",
     "@shawared/design": "workspace:*",
