@@ -96,7 +96,7 @@ export const ABOUT: Record<UiLang, PageText> = {
 export const PRIVACY: Record<UiLang, PageText> = {
   ar: {
     title: "سياسة الخصوصية",
-    description: "كيف يتعامل تطبيقا شوارد وموقع shawared.com مع المعلومات.",
+    description: "كيف نتعامل مع المعلومات في تطبيق شوارد وموقع shawared.com.",
     lead: "تبيّن هذه السياسة كيف نتعامل مع المعلومات في تطبيق شوارد على iOS وAndroid وموقع shawared.com. شوارد من تطوير الكتب المُيسّرة، ويمكنك استخدامه دون حساب.",
     sections: [
       {
