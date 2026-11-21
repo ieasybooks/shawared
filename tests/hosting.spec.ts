@@ -72,6 +72,18 @@ test("every address in the sitemap answers with its page, without a redirect", a
   }
 });
 
+test("the app page is served as a page, for the browser to send a phone on, and is out of the sitemap", async ({ request }) => {
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  for (const path of ["/app", "/en/app"]) {
+    const r = await request.get(path, { maxRedirects: 0 });
+    expect(r.status(), path).toBe(200);
+    expect(header(r, "content-type"), path).toContain("text/html");
+    expect(header(r, "cache-control"), path).toBe(REVALIDATE);
+    expect(await r.text(), path).toContain("location.replace(");
+    expect(sitemap, path).not.toContain(`https://shawared.com${path}<`);
+  }
+});
+
 test("an unknown address is a 404 with the not-found page", async ({ page }) => {
   const response = await page.goto("/no-such-page");
   expect(response?.status()).toBe(404);
