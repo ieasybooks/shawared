@@ -10,10 +10,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import type { PoemBundle, PublishedRecitation } from "@shawared/contracts";
 import { buildTrack, PRE_ROLL, REPEAT_GAP, segmentAt, type Track } from "@shawared/listening";
-import { AppState } from "react-native";
+import { AppState, Platform } from "react-native";
 import { audioUrl, catalogNow, loadCatalog, loadPoem } from "../../lib/content";
 import { artworkUrl, localAudio } from "../../lib/downloads";
 import { t } from "../../lib/i18n";
+import { OPEN_APP_EVENT } from "../../lib/stores";
 import { createStore, type Store } from "../../lib/store";
 import { createPlaylist } from "./playlist";
 import { byline, catalogEntry, queueFor } from "./queue";
@@ -477,3 +478,7 @@ class Player {
 }
 
 export const player = new Player();
+
+// Leaving for the app from the web's app bar (app/+html.tsx) pauses the page's player, so the
+// page and the app don't play at once.
+if (Platform.OS === "web" && typeof window !== "undefined") window.addEventListener(OPEN_APP_EVENT, () => player.pause());

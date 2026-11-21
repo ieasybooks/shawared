@@ -30,7 +30,8 @@ async function open(page: Page, path: string) {
   await page.goto(path);
   await page.waitForLoadState("networkidle");
   await page.waitForFunction(() => {
-    const el = document.querySelector('[role="button"], button');
+    // The app's, not the app bar's above it (app/+html.tsx), which React never takes over.
+    const el = document.querySelector('#root [role="button"], #root button');
     return !!el && Object.keys(el).some((k) => k.startsWith("__reactProps"));
   });
 }
