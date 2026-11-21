@@ -1,0 +1,34 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["KJ597HLVMB.com.shawared.app"],
+        "components": [
+          {
+            "/": "/",
+            "comment": "The pages the apps have, in Arabic and English (scripts/app-links.test.ts). About, privacy, terms, support and playlists stay on the web."
+          },
+          { "/": "/poets" },
+          { "/": "/reciters" },
+          { "/": "/meters" },
+          { "/": "/library" },
+          { "/": "/app" },
+          { "/": "/poems/*" },
+          { "/": "/poets/*" },
+          { "/": "/reciters/*" },
+          { "/": "/meters/*" },
+          { "/": "/en" },
+          { "/": "/en/poets" },
+          { "/": "/en/reciters" },
+          { "/": "/en/meters" },
+          { "/": "/en/library" },
+          { "/": "/en/app" },
+          { "/": "/en/poems/*" },
+          { "/": "/en/poets/*" },
+          { "/": "/en/reciters/*" },
+          { "/": "/en/meters/*" }
+        ]
+      }
+    ]
+  }
+}
