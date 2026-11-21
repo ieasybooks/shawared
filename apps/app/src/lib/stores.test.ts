@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import appJson from "../../app.json";
 import storeJson from "../../store/store.json";
-import { STORE_OF_DEVICE, STORES, storeRedirect, type Store } from "./stores";
+import { APP_LINK_OF_DEVICE, APP_STORE_ID, STORE_OF_DEVICE, STORES, storeRedirect, type Store } from "./stores";
 
 const storeOf = new Function(`return (${STORE_OF_DEVICE})`)() as (ua: string, touchPoints: number) => Store | null;
 
@@ -116,5 +116,44 @@ describe("the stores' addresses", () => {
     expect(STORES.googlePlay).toBe(`https://play.google.com/store/apps/details?id=${appJson.expo.android.package}`);
     expect(STORES.appGallery).toBe(`https://appgallery.huawei.com/app/C${storeJson.appGallery.appId}`);
     expect(STORES.appStore).toMatch(/^https:\/\/apps\.apple\.com\/app\/id\d+$/);
+  });
+});
+
+describe("the app bar's Open on a phone's browser", () => {
+  const linkOf = new Function(`return (${APP_LINK_OF_DEVICE})`)() as (ua: string, touchPoints: number, path: string) => string | null;
+  const ua = (name: string) => DEVICES.find(([n]) => n === name)![1];
+  const POEM = "/poems/taqulu-buthaynatu?b=3";
+  const intent = (link: string) =>
+    `intent://${link}#Intent;scheme=shawared;package=com.shawared.app;S.browser_fallback_url=${encodeURIComponent(STORES.googlePlay)};end`;
+
+  it("leaves Safari on iPhones and iPads to Apple's banner, and sends other iOS browsers to the App Store", () => {
+    expect(linkOf(ua("Safari on an iPhone"), 5, POEM)).toBeNull();
+    expect(linkOf(ua("Safari on an iPad, which asks for the desktop site"), 5, POEM)).toBeNull();
+    expect(linkOf(ua("Chrome on an iPad"), 5, POEM)).toBe(STORES.appStore);
+    expect(linkOf(ua("Instagram's browser on an iPhone"), 5, POEM)).toBe(STORES.appStore);
+  });
+
+  it("opens the app at the same page from Android's browsers, or Google Play without it", () => {
+    for (const name of ["Chrome on Android, which hides the phone", "Samsung Internet", "Firefox on Android"])
+      expect(linkOf(ua(name), 5, POEM), name).toBe(intent("poems/taqulu-buthaynatu?b=3"));
+    expect(linkOf(ua("Samsung Internet"), 5, "/")).toBe(intent(""));
+    expect(linkOf(ua("Samsung Internet"), 5, "/en/poets/jamil-buthayna")).toBe(intent("en/poets/jamil-buthayna"));
+  });
+
+  it("sends apps' browsers on Android to Google Play, and Huawei phones to AppGallery", () => {
+    const facebook =
+      "Mozilla/5.0 (Linux; Android 14; SM-S921B Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/131.0.6778.135 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/490.0.0.40.109;]";
+    expect(linkOf(facebook, 5, POEM)).toBe(STORES.googlePlay);
+    expect(linkOf(ua("Huawei's browser on a Huawei phone"), 10, POEM)).toBe(STORES.appGallery);
+    expect(linkOf(ua("Facebook's browser on a Huawei phone"), 10, POEM)).toBe(STORES.appGallery);
+  });
+
+  it("shows no bar on computers or HarmonyOS NEXT", () => {
+    for (const name of ["Safari on a Mac", "Chrome on Windows", "Firefox on Linux", "HarmonyOS NEXT's default user agent"])
+      expect(linkOf(ua(name), name.includes("HarmonyOS") ? 10 : 0, POEM), name).toBeNull();
+  });
+
+  it("gives Safari's banner the App Store's ID", () => {
+    expect(STORES.appStore).toBe(`https://apps.apple.com/app/id${APP_STORE_ID}`);
   });
 });
