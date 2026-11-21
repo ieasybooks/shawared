@@ -1,0 +1,23 @@
+# أَلا يا زُهورَ الدّارِ ضاقَت فَمي السَّما
+
+## Text and recording
+
+Ihab al-Shabatat's publication on his al-Diwan account gives all thirty abyat. Alqimmah Studio's recording, credited to the same poet and to reciter Khalid al-Sharafi, displays a second setting of the text with the halves on separate lines. It was published on 27 June 2026. The two witnesses have the same sequence. The performance adds one complete repeat of 30. The saved texts and comparison frames are in *media/research/ala-ya-zuhura-al-dari/* and *media/research/video/FZG1CTZeI9A/*. [Author's text](https://www.aldiwan.net/poem118680.html) · [Studio recitation](https://www.youtube.com/watch?v=FZG1CTZeI9A)
+
+The edit keeps 2.70–373.95 s of 376.683 s and retains the cadence after the repeat. The 371.25 s master measures −20.0 LUFS after a −6.4 dB gain. The opening and 15 follow tawil, alternating فعولن and مفاعيلن with the usual قبض. The m is the rawiy. The final alif or alif maqsura carries the long open rhyme.
+
+## Collation and explanations
+
+- **14.2.** The poet's online text starts «فلا والتي جالت» with an oath. The studio's caption has «فكيف وقد جالت» and both the full recording and an independent padded Audar clip produce فكيف وقد. The MMS comparison on the app recording, 160.54–163.40 s, scores فكيف وقد جالت at −23.85 and فلا والتي جالت at −37.68. The text, translation and bilingual word note follow the recorded question.
+- **20 and 22.** The studio identifies Jurhum as an ancient Arab tribe. The reference to magic in Babylon belongs to the Arabic tradition familiar from the Quran. The journey of the poet's inspiring spirit to learn from the woman is an interpretation of the verse itself. [Quran 2:102](https://quran.com/2/102)
+- The studio glosses الجوى، الردى، لواحظ، واجفة and مُدلج. It marks 24–26 as an especially difficult group without offering a single paraphrase. The explanations here follow the faces of the die into the mirrors and then the revolving millstone. In 28 the studio explicitly identifies البيضاء والحمراء as the white and red blood cells and ظُبا as sword edges. At 29 the returning figure and Mary are left distinct in the verse. The biblical name is explained through the Quranic return of Mary to her people. [Quran 19:27–29](https://quran.com/19/27)
+- The archived collation finds only the change at 14 and the hamza spelling at 21. Standard spelling gives توأماً in 21.2, the twin evoked by the two kinds of darkness. The author's printed تؤأما is not a second word. The verse preserves the long open rhyme (تَوأَما).
+
+## Audio check
+
+The individual Cohere clips flagged 25 of 62 halves, including two hearings of the last ajuz, with 49 of 331 words differing. None of the aligned words scores below 0.35. The full track was compared with both witnesses. Several uncertain halves were also transcribed with Audar using 0.70 s of leading and 0.75 s of following context.
+
+- **1.1, 1.2, 3.2, 11.2, 12.1–2, 18.2, 19.2, 21.1, 22.1 and 25.1.** The isolated model divides connected speech into other words, including تراقت للقلوب for ترى قتل القلوب, بابي لا for بابل, and ما راياه for مرايا له. Audar recovers the first sadr and the name بابل with the wider cut. The clearly set studio captions and the author supply the word boundaries throughout.
+- **2.1, 5.2, 9.1–2, 14.1 and 17.1.** A connected ta marbuta or an extended vowel prompts spurious plurals such as همسات، فصيحات، مساعات، وجيفات. Conversely the isolated recogniser reduces the genuine plural العربيات in 9.2. At 14.1 the singular مُساعاةٍ already sounds like *musāʿātin* in connected speech. The continuous transcript and the two clip recognisers spell a plural there and vary between حامدات and حميدات in the next word. Both the poet and the studio print مُساعاةٍ حَميدةَ صاحبٍ. The studio also glosses the feminine singular واجفة underneath 17.
+- **4.1, 13.1, 18.1, 23.2, 26.1 and 28.1.** The clips substitute بغربة for بغربتي, واسايي for وسائدي, خيارها for خيالها, تيماً for تتيّما, شبابه for شبابي, and ضوب for ظُبا. The padded Audar recognises وسائدي and reproduces the ambiguity at «خيالها». At 205.52–207.84 s the MMS scores for خيالها and خيارها are −33.14 and −33.47. This small gap leaves the reading to the author and studio, who agree on the shadow of her image. At 28 the studio specifies the blade edge.
+- **30.2 twice.** Both hearings have the same words as far as مأتما, with different divisions in كلانا and بدا الدهر. The original full track catches the final line twice and the captions give one written bayt. Possible edge words at 7.2 «يا» and 25.2 «إني» find no support in either printed text or the full performance.

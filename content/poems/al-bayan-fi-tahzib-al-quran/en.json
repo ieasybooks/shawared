@@ -1,0 +1,42 @@
+{
+  "lang": "en",
+  "source": {"name": "Shawared"},
+  "title": "How the Quran Is Divided for Recitation",
+  "intro": "Muhammad ibn Muhsin Abu Raqaba begins with a teacher’s question about the number of suras in the Quran. The count leads to the marks a reader finds in a printed copy and then to a lesson in how much to read in a day. The poem ends with a prayer in which the book that has just been counted becomes springtime in the heart.",
+  "abyat": {
+    "1": {"translation": ["If someone says, “Tell me, young man of faith,", "how many suras does the unerring Quran contain?”"], "sharh": "The question is addressed to a pupil. A listener has the space of a verse to think of the answer."},
+    "2": {"translation": ["There are a hundred, and four, and ten.", "Their names are familiar and widely known."], "sharh": "The units add up to 114. A sura is a named division of the Quran, and a single sura can be known by more than one name."},
+    "3": {"translation": ["They agree on six thousand", "and two hundred, with no dispute,"], "sharh": "The number belongs with the opening of the next couplet. The regional counting traditions all reach 6,200 verses and give different totals beyond it."},
+    "4": {"translation": ["in counting its verses. For the number beyond that", "they differ over an established stopping place."], "sharh": "A difference in numbering can arise at an identical phrase. Al-Dani gives an example in sura 17 where the Kufan count marks a verse ending and another count carries on."},
+    "5": {"translation": ["Al-Hajjaj divided the book", "into sixty portions, each a crown."], "sharh": "The poet gives al-Hajjaj credit for the division. There are accounts of his commissioning counts from reciters, though the familiar sixty-part arrangement developed in stages. Calling each portion a crown sets a value on reading it."},
+    "6": {"translation": ["Each portion is divided into quarters.", "Learn it, and be the best of those who call to the truth."], "sharh": "The quarter marks divide a larger reading into manageable lengths. The pupil who learns a passage can in turn teach or invite someone else to read."},
+    "7": {"translation": ["Two such portions make one juz'.", "There are thirty, without a doubt."], "sharh": "A reader following one juz' a day covers the Quran in thirty days. Each juz' contains two of the units just called hizbs."},
+    "8": {"translation": ["Keep up your reading of the Quran", "by reciting it often, and do not wrangle."], "sharh": "The verb asks the reader to return to the text again and again, as one cares for something entrusted to one’s keeping. The rhyme turns into an injunction against idle dispute."},
+    "9": {"translation": ["Read it through in a month, as the report comes down", "from the chosen Prophet, the best of humankind."], "sharh": "The instruction comes from a particular conversation. The Prophet first advised Abd Allah ibn Amr to complete his reading in a month."},
+    "10": {"translation": ["Read it through in seven days if you are a youth", "like Ibn Amr. What a fine young man he was."], "sharh": "Ibn Amr said he had the strength to read more. In the report in al-Bukhari, the Prophet then tells him to read through in seven days."},
+    "11": {"translation": ["The honoured Companions likewise", "divided their readings, right to the end."], "sharh": "The Companions described a weekly reading by groups of whole suras. Their word hizb meant a reader’s appointed portion, which could differ in size from the hizb marked in a modern copy."},
+    "12": {"translation": ["The Quran was sent down in measured recitation,", "as the sure words of revelation tell us."], "sharh": "The lesson turns from how much to read to how to give the words their due. It draws first on the description of revelation in sura 25, verse 32."},
+    "13": {"translation": ["Recite the Quran distinctly, at a measured pace,", "as it came to us, measured, from heaven."], "sharh": "The opening takes up the command in sura 73, verse 4. The repeated forms of the same Arabic verb link the way the Quran came down with the way the pupil should read it."},
+    "14": {"translation": ["Lord, let it intercede for us.", "Make it springtime in our hearts."], "sharh": "One saying in Sahih Muslim pictures the Quran interceding for its readers on Judgement Day. In a prayer related by Ibn Masud, someone weighed down by sorrow asks for the Quran to be springtime in the heart, like rain bringing bare ground into leaf."}
+  },
+  "words": {
+    "1.2.2": {"word": "سورَةً", "head": "سورَة", "meaning": "Sura, a chapter of the Quran."},
+    "1.2.4": {"word": "مُحكَمِ", "head": "مُحكَم", "root": "ح ك م", "meaning": "Firmly established, sure."},
+    "3.1.1": {"word": "وَاتَّفَقوا", "head": "اِتَّفَقَ", "root": "و ف ق", "meaning": "‘They agree’ refers to the authorities who handed down the regional verse counts."},
+    "4.1.3": {"word": "آيِهِ", "head": "آي", "meaning": "Ay, verses, the plural of aya."},
+    "4.2.3": {"word": "لِوَقفٍ", "head": "وَقف", "root": "و ق ف", "meaning": "A stopping place. Here it is a boundary recognised by a particular counting tradition."},
+    "5.1.3": {"word": "حَزَّبَهُ", "head": "حَزَّبَ", "root": "ح ز ب", "meaning": "To divide a text into regular reading portions."},
+    "5.1.4": {"word": "الحَجّاجُ", "head": "الحَجّاج", "meaning": "Al-Hajjaj ibn Yusuf, the Umayyad governor of Iraq."},
+    "6.1.2": {"word": "الحِزبُ", "head": "الحِزب", "root": "ح ز ب", "meaning": "Hizb, one sixtieth of the Quran in this system."},
+    "7.1.1": {"word": "وَالجُزءُ", "head": "الجُزء", "root": "ج ز ء", "meaning": "Juz', one thirtieth of the Quran."},
+    "7.2.4": {"word": "مَينِ", "head": "مَين", "root": "م ي ن", "meaning": "Falsehood. ‘Without falsehood’ is a verse formula for certainty."},
+    "8.1.1": {"word": "تَعاهَدِ", "head": "تَعاهَد", "root": "ع ه د", "meaning": "Keep up, revisit regularly."},
+    "8.2.4": {"word": "تُمارِ", "head": "مارى", "root": "م ر ي", "meaning": "To wrangle or argue for argument’s sake."},
+    "9.1.6": {"word": "الخَبَر", "head": "الخَبَر", "root": "خ ب ر", "meaning": "A transmitted report, here a saying of the Prophet."},
+    "10.2.2-3": {"word": "اِبنِ عَمرٍو", "head": "اِبن عَمرو", "meaning": "Ibn Amr, Abd Allah son of Amr ibn al-As, the Companion addressed in the hadith."},
+    "12.1.4": {"word": "بِالتَّرتيلِ", "head": "التَّرتيل", "root": "ر ت ل", "meaning": "Tartil, a measured recitation that gives words and sounds their due."},
+    "13.2.5": {"word": "السَّما", "head": "السَّماء", "root": "س م و", "meaning": "Heaven. The final glottal stop of sama' drops out in this verse."},
+    "14.1.5": {"word": "شَفيعاً", "head": "شَفيع", "root": "ش ف ع", "meaning": "An intercessor, one who pleads on another’s behalf."},
+    "14.2.5": {"word": "رَبيعاً", "head": "رَبيع", "root": "ر ب ع", "meaning": "Spring, the season of new growth, here an image of renewal within."}
+  }
+}

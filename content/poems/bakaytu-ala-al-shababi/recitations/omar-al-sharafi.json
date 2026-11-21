@@ -1,0 +1,16 @@
+{
+  "reciter": "omar-al-sharafi",
+  "audio": "bakaytu-ala-al-shababi/omar-al-sharafi.b6fe4d82f1c1.m4a",
+  "duration": 44.75,
+  "source": "https://www.youtube.com/watch?v=UHL6I3-jkZo",
+  "timeline": [
+    ["1.1", 0.56, 3.78],
+    ["1.2", 4.00, 9.02],
+    ["2.1", 10.40, 13.98],
+    ["2.2", 15.06, 19.94],
+    ["3.1", 21.30, 24.26],
+    ["3.2", 24.42, 27.80],
+    ["4.1", 28.84, 34.98],
+    ["4.2", 35.42, 40.98]
+  ]
+}

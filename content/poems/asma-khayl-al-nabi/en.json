@@ -1,0 +1,38 @@
+{
+  "lang": "en",
+  "source": {"name": "Shawared"},
+  "title": "The Names of the Prophet’s Horses",
+  "intro": "Muhammad ibn Muhsin Abu Raqaba sets the names of seven horses from the Prophet’s biographies to verse. Each name has something to hold it in the mind, from the rush of pouring water to a tail that almost sweeps the ground. One horse brings with it the story of a man who testified to its sale. Khalid al-Sharafi recites all ten couplets.",
+  "abyat": {
+    "1": {"translation": ["Here are the names of the Chosen One’s horses.", "Some have been the subject of dispute."], "sharh": "Different biographies give lists of different lengths. The opening prepares for the distinction the poet will draw when he has named his seven."},
+    "2": {"translation": ["First comes al-Sakb. He rode him into battle", "at Uhud, swift as pouring water."], "sharh": "Al-Sakb is a name for an easy, swift-running horse. The listener who pictures water pouring out also has the Arabic word for pouring, sakb, to remember its name by."},
+    "3": {"translation": ["The second is white, with a ringing neigh.", "His name is Murtajiz, his witness a man of standing."], "sharh": "Murtajiz can mean someone chanting rajaz verse. One explanation of the name hears just such a cadence in the horse’s neigh, aptly enough in a poem written in rajaz."},
+    "4": {"translation": ["I mean Khuzayma ibn Thabit,", "witness to a sale both valid and established."], "sharh": "The seller disputed the purchase. Khuzayma testified because he trusted the Prophet’s word, although he had been absent from the sale. Thabit, his father’s name, echoes the word for ‘established’ at the end of the line."},
+    "5": {"translation": ["Then al-Lahif, a name on the pattern fa'il.", "He had a tail you could see was long."], "sharh": "The pattern fa'il tells the listener how to say the name. One traditional explanation has the tail covering the ground like a blanket, so the image also helps fix the name."},
+    "6": {"translation": ["From Juhayna he bought a chestnut horse.", "It was named Sabha. What a fine purchase."], "sharh": "The old accounts describe Sabha as a chestnut mare. A horse that stretches out its forelegs in full stride is said in Arabic to ‘swim’, one explanation for her name."},
+    "7": {"translation": ["On most expeditions he rode al-Lizaz.", "Give the believer glad news of success."], "sharh": "The poet identifies al-Lizaz as a frequent mount. For a moment the list gives way to a blessing for the listener, with ‘success’ picking up the sound of the horse’s name."},
+    "8": {"translation": ["Next comes the noble al-Zarib.", "At al-Muraysi' he took first place."], "sharh": "The distinction was a win on the racecourse. Al-Waqidi places the race at al-Naqi' on the return from al-Muraysi' and names Abu Usayd as the rider who brought al-Zarib in first."},
+    "9": {"translation": ["Seventh is al-Ward, a gift", "Tamim al-Dari himself picked out."], "sharh": "The donor supplies the clue this time. Tamim al-Dari chose al-Ward as a gift. Ward is also a term for a reddish coat in a horse."},
+    "10": {"translation": ["These are the seven on which accounts agree.", "Other names are reported without such agreement."], "sharh": "The agreement concerns the names on the list. A reader can still find different accounts of a particular horse’s colour or of how it came into the Prophet’s possession."}
+  },
+  "words": {
+    "1.1.3": {"word": "المُصطَفى", "head": "المُصطَفى", "root": "ص ف و", "meaning": "Al-Mustafa, ‘the Chosen One’, a title of the Prophet Muhammad."},
+    "2.1.2": {"word": "السَّكبُ", "head": "السَّكب", "root": "س ك ب", "meaning": "Al-Sakb, the horse’s name. The word evokes both pouring water and an easy runner."},
+    "2.2.2": {"word": "أُحُدٍ", "head": "أُحُد", "meaning": "Uhud, the mountain north of Medina that gave the battle its name."},
+    "3.1.4": {"word": "صَهيلُ", "head": "صَهيل", "root": "ص ه ل", "meaning": "A horse’s neigh."},
+    "3.2.1": {"word": "مُرتَجِزٌ", "head": "مُرتَجِز", "root": "ر ج ز", "meaning": "Murtajiz, ‘one who recites rajaz’, the name of the white horse."},
+    "4.1.3-5": {"word": "خُزَيمَةَ بنَ ثابِتِ", "head": "خُزَيمَة بن ثابِت", "meaning": "Khuzayma ibn Thabit, a Companion from Medina known as ‘the man of two testimonies’ from the account of this sale."},
+    "5.1.2": {"word": "اللَّحيفُ", "head": "اللَّحيف", "root": "ل ح ف", "meaning": "Al-Lahif, a name traditionally explained by a tail long enough to cover the ground."},
+    "5.1.4": {"word": "فَعيلُ", "head": "فَعيل", "meaning": "Fa'il, a model word giving the pattern of consonants and vowels."},
+    "6.1.2": {"word": "جُهَينَةَ", "head": "جُهَينَة", "meaning": "Juhayna, the tribe of the man who sold the horse."},
+    "6.1.4": {"word": "أَشقَرا", "head": "أَشقَر", "root": "ش ق ر", "meaning": "Chestnut, a reddish coat."},
+    "6.2.2": {"word": "سَبحَةً", "head": "سَبحَة", "root": "س ب ح", "meaning": "Sabha, the mare’s name, associated with stretching the forelegs in a gallop."},
+    "7.1.4": {"word": "اللِّزازِ", "head": "اللِّزاز", "root": "ل ز ز", "meaning": "Al-Lizaz, a name associated with a compact build or with keeping close to another runner."},
+    "7.2.3": {"word": "بِالمَفازِ", "head": "المَفاز", "root": "ف و ز", "meaning": "Success, attaining what one hopes for."},
+    "8.1.3": {"word": "الظَّرِبُ", "head": "الظَّرِب", "root": "ظ ر ب", "meaning": "Al-Zarib, the name of a horse and a word for a small hill."},
+    "8.2.2": {"word": "المُرَيسيعِ", "head": "المُرَيسيع", "meaning": "Al-Muraysi', a watering place of Banu al-Mustaliq."},
+    "9.1.2": {"word": "الوَردُ", "head": "الوَرد", "root": "و ر د", "meaning": "Al-Ward, a colour name for a reddish horse."},
+    "9.2.1-2": {"word": "تَميمٌ الدّارِيُّ", "head": "تَميم الدّارِيّ", "meaning": "Tamim al-Dari, the Companion credited with giving the horse to the Prophet."},
+    "10.2.4": {"word": "وِفاقِ", "head": "وِفاق", "root": "و ف ق", "meaning": "Agreement among those who handed down an account."}
+  }
+}

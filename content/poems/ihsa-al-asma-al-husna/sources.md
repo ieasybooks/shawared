@@ -1,0 +1,31 @@
+# إحصاء الأسماء الحسنى
+
+## Recording and text
+
+- Hamza Muadh, Alqimmah Studio, 21 August 2024. The studio identifies the poet as Muhammad ibn Farhan al-Fayfi and links his approved copy. The intake transcript covers the opening count, all the groups and the final distinction between forms of prayer. [Recording](https://www.youtube.com/watch?v=7vbpkZ-b7OQ)
+- The approved vocalised booklet, printed pp. 1–3 (PDF pp. 2–4), has 30 numbered couplets. The edition was read from the page images. The red names and the intervening group headings distinguish the words being counted from the poet’s connecting phrases. In particular 7.2 has a divine name followed by a human profession of faith, and both الحق and المبين in 15.1 are separately highlighted names. All 30 couplets are recited in order, without a repeated verse. [Authorised booklet](https://drive.google.com/file/d/1SqJNpPeAPJC3WTgI3IhK5MCCxi_l9gnW/view)
+- This is a contemporary text. The second textual authority for the Qur’anic and prophetic allusions is the underlying Arabic source cited below. No independent edited copy of the modern poem was identified. The data for the text and sound are under `media/research/ihsa-al-asma-al-husna/` and `media/work/7vbpkZ-b7OQ/`.
+- Audio keep 1.70–190.55 s of the download, removing the opening and closing silence. The section labels are printed only. The metre is paired rajaz with a changing rhyme. In 1.1 the feet are – – ⏑ – / – – ⏑ – / – – –, allowing the connecting vowel of the pronoun in أسمائه. In 18.1 وَإِنَّهُ الْفَتَّاحُ وَالْعَلِيمُ gives ⏑ – ⏑ – / – – ⏑ – / ⏑ – – with the lengthened line ending.
+
+## Particular readings
+
+- The notes on printed p. 1 explain liaison in يا الله and أولٌ آخرٌ. The words retain their separate ordinary spellings, as does the written text. In 14.2 «في شِبْهٍ جلي» refers to the resemblance of paired names in meaning. It does not introduce a comparison between God and another being.
+- Printed p. 2, note 1 to 19, specifies سَتير on the pattern of كريم as the generally accepted vocalisation. It also discusses سِتِّير on the pattern of سِجِّيل. The text uses the booklet's principal form.
+- At 23.2 the booklet distinctly prints «لا تَحْسابُ», and the intake also hears تحساب. This unusual expression is retained. Its association with reckoning has a plausible place beside divine generosity, though the precise construction remains open. The word note and translation indicate the reading.
+- At 26.1 the booklet writes العَفُو without a final shadda to rhyme with يُعرَف. The card gives the full dictionary form العفوّ, the Pardoner.
+- In 30.1 the poet shortens دعاء to دُعا for the metre. In 30.2 he supplies دعاء المسألة to identify the preceding request. The classification helps distinguish the two senses of calling upon God in 29.
+
+## Scriptural and biographical sources
+
+- The promise associated with ninety-nine names comes from Abu Hurayra’s report. Neither of the two accounts cited here enumerates the names in al-Fayfi’s particular order. [Sahih al-Bukhari 2736](https://sunnah.com/bukhari:2736) and [Sahih Muslim 2677a](https://sunnah.com/muslim:2677a)
+- Qur’an 57.3 supplies the opening fourfold sequence at 6, 59.23–24 the names at 7–8, and 3.6 the image of formation in the womb. Qur’an 34.26 explains the judicial sense of الفتاح at 18. The final quotation is 7.180. Ibn al-Qayyim’s account of the levels of إحصاء in *Bada'i al-fawa'id* supplies the distinction between knowing the names, understanding them and using them in prayer. [Qur’an 59](https://quran.com/59/23-24) and [Ibn al-Qayyim, extract on the divine names](https://islamhouse.com/ar/books/2818135)
+- For 19, the report of Ya'la ibn Umayya gives حيي ستير. For 21 and 27 the report of Anas about prices connects the terms for restraining, expanding, providing and setting prices. [Abu Dawud 4012](https://sunnah.com/abudawud:4012) and [Abu Dawud 3451](https://sunnah.com/abudawud:3451)
+- The booklet identifies the author with the General Court in Medina. The Saudi Supreme Judicial Council’s notice of the order of 2 Dhu al-Qa'da 1443 AH names him among those promoted to appellate judge. [Judicial Council notice](https://scj.gov.sa/home/newsdetails/3472e1c1-7863-4468-95f0-0e0af723ae5b)
+
+## Audio verification
+
+- The 188.85-second edit has 60 halves. The short-clip pass marked six differences affecting eight of 252 words. All six were transcribed again with wider Audar clips. Longer clips joining both halves of 6 and 14, and the two-couplet groups 21–22 and 23–24, supplied a further check against the continuous intake transcript.
+- At 6.2 the short clip wrote أحقت. The same construction occurs in 6.1 with الزمان and in 6.2 with المكان. The full-bayt clip restores the root أحاط both times, and each of the four words in the written half aligns at confidence 0.63 or higher. أحطت scored −42.7 against −44.5 for أحقت. At 14.2 a clear wider clip recovers جلي (−25.3), compared with short-clip جليل (−29.3). The final adjective means that the resemblance between the paired names is evident.
+- At 21.2 the software fused the call يا ضابط into a single word. The two words have separate alignment at 129.38 and 129.60 seconds. The student has been directly addressed as يا نحرير in 19 as well. At 22.1 the consecutive phrases الأَسامي اِنفردا became several different word divisions in the short and wide clips. The printed words align individually at 131.84 and 132.68. The division into singly listed names is also the rubric on the page.
+- At 23.2 and 24.1 the short recogniser supplied initial articles absent from the booklet. The two-couplet Audar clip and the continuous intake both have جميل and حسيب without the article. For the first word, جميل and الجميل scored −32.7 and −44.2. For the second, حسيب and الحسيب scored −28.9 and −41.4.
+- At the end of 23.2 the intake and short recogniser give the printed تحساب, while the two-couplet Audar clip gives تحسب. The printed تَحسابُ and تَحسَبُ scored exactly alike at −32.7; حِسابُ and تَحسُبُ scored −37.9 and −39.6. Confidence for the written word was 0.73 at 141.92–142.72. The difference concerns the long vowel, which the forced aligner's romanisation cannot distinguish in these two candidates. The text follows the signed edition, and the note keeps the interpretation open.
