@@ -1,0 +1,32 @@
+# يا سُلامى طابَ لي مِنها سَلاما
+
+## Recording and witnesses
+
+Alqimmah Studio credits the words to Ihab al-Shabatat and the reading to Khalid al-Sharafi. The upload is dated 23 November 2023. The app keeps 3.55–168.45 seconds of the 171.179-second recording, with the opening voice at about 4.05 seconds in the original. In the app the last stressed vowel of «ملاما» carries through about 163.50 seconds. The highlight for 16.2 ends at 163.55. A much quieter reverberation persists to about 163.95, then fades towards the end of the 164.90-second file. All sixteen bayts follow in order, once each, with no spoken introduction, coda or internal cut. The complete-take transcripts mark the bounds and the numbered studio cards identify the halves. [Recording and verse cards](https://www.youtube.com/watch?v=xjoLXbKTwr4)
+
+The poet’s entry on al-Diwan, under the account @eehabodeh, gives all sixteen bayts. The studio prints the same words on its cards during the performance, beginning with the opening breath of lavender and ending with the imagined grave. The two publications constitute an authorial text and a credited performance of it. They have no printed pagination. The ten topic titles available under al-Shabatat’s Manabir Thaqafiyya account (user 10156) yielded no identifiable posting of this poem. [Poet’s text, 118514](https://www.aldiwan.net/poem118514.html) · [Poet’s al-Diwan profile](https://www.aldiwan.net/user/eehabodeh) · [Manabir author index](https://www.mnaabr.com/vb/search.php?do=finduser&u=10156&starteronly=1)
+
+The complete authorial page and a transcription divided at the half-lines are in `media/research/ya-sulama/`. All sixteen cards were read from the video in five-second samples. The collation against the al-Diwan entry found the same words at every address. The edition attaches separated conjunctions and restores the standard hamzat al-wasl in «اِسماً» and «اِنسِجاما». At 7.1 the unusual transitive «حَنَنتُ الشّايَ» is shared by the author, the card and both whole-take transcriptions. The ordinary construction is «حنّ إلى الشيء». The edition preserves the poet’s government and explains it on the word card. [Al-Diwan](https://www.aldiwan.net/poem118514.html) · [Ibn Manzur, *Lisan al-Arab*, حنن](https://www.islamweb.net/ar/library/content/122/1971/حنن)
+
+## Metre and reading
+
+The metre is ramal. The opening sadr divides «يا سُلامى | طابَ لي مِنـ | ها سَلاما» into *fa'ilatun* three times. At 8.1 «أَوثَقَتني | غُربَتي لا | قَسوَتي» gives *fa'ilatun, fa'ilatun, fa'ilun*. The mim carries the recurring *-ama* rhyme. The count of sixteen follows the poet’s publication.
+
+The opening address «سُلامى» echoes «سَلاما». The poem later names the mother «اعتدال» and makes the qualities associated with her name part of the address. The two witnesses supply no family name or separate identity for the addressee of the opening call. The introduction takes its occasion from the speaker’s «أوثقتني غربتي» and from the household details in the poem. In 9 the language of a damaged blade («فُلَّ») anticipates the iron edges, while «حدّ» can also suggest a frontier to someone writing from abroad.
+
+At 11.2 the card reads «فِطْرُها لَيْلِي وإنْ صَابَ صِيَامَا», agreeing with al-Diwan. Audar’s full take recovers both «فطرها» and «صاب»; the two terms are also supported by the fast/fast-breaking pairing. The subject of «صاب» is implicit. The Cairo Arabic Language Academy gives «أدركه» for «صاب الشيء». The translation takes «ليلي» as the nearest masculine antecedent, a night that coincides with a time of fasting. A return to the physician in the preceding bayt is also possible, meaning that he may recognise a fast. The Arabic and English notes distinguish these readings. No diagnosis of actual fasting is reported in the poem. [Cairo Arabic Language Academy, صوب](https://www.arabicacademy.gov.eg/ar/search_engine/roots/صوب) · [Ibn Manzur, *Lisan al-Arab*, صوب](https://www.islamweb.net/ar/library/content/122/4738/صوب)
+
+## Audio readings and verification
+
+Each of the 32 half-lines was cut from the app audio and independently transcribed with Cohere. Six were flagged. A second set of clips with 0.35 seconds of surrounding sound was transcribed with Audar. Overlapping thirteen-second source windows were also checked. The scores below are for the same stretch of audio, with the edition’s words first. A tie cannot distinguish vowel length.
+
+| Half | Readings and decision |
+| --- | --- |
+| 1.2 | Cohere’s whole take and the opening windows give «نافس الأم». Audar hears «نفس الأم». The two-word clip gives «نَفَسُ الأُمِّ» −19.84 and «نافَسَ الأُمَّ» −23.92. The studio and the poet have the noun. The breath answers the lavender’s «أنفاس» in the same half. |
+| 2.1 | The full transcriptions divide between «شاهقة» (Audar) and «شهيقة» (Cohere). The scores for «خافقي شاهقةً» and «خافقي شهيقةً» are −17.28 and −18.21. The small difference leaves the poet’s and the studio’s «شاهقة» in place. |
+| 3.1 | Cohere’s «واصلي ليلك بساجيده» runs «بي» into «ساجدة». Audar’s short clip has «وأصلي إليك بساجدة». Both «وَصِلي لَيلَكِ» and «واصِلي لَيلَكِ» score −26.28. The poet and card give the imperative of وصل, with «بي» as its complement and «ساجدةً» describing the mother. |
+| 9.2 | Cohere divides the last word as «تا ترام» and lengthens the vowel in «حدّ». The two candidates «ألف حدّ من» and «ألف حادّ من» tie at −24.03. Audar’s widened clip gives the whole half, «ألف حد من حديد تتراما», in agreement with both written witnesses. |
+| 11.1 | Cohere’s clip proposes «إن رابه» and Audar’s short clip merges the middle of the phrase. Audar’s whole take gives «لم يعلم النار به». The studio and the poet name the fire, which has a fast-breaking meal in the next half. «يَعلَمِ النّارَ بِهِ» scores −24.78 against −27.34 for «يَعلَم إِن رابَهُ». |
+| 11.2 | For Cohere’s «صيامه», compare Audar’s widened clip «وإن صاب صياما». The scores are −19.48 for «صابَ صِياما» and −30.50 for «صابَ صِيامَهُ». The recording and both texts support the first. |
+| 12.2 | The short clips write «ندامة». The longer source window at 117–130 seconds has «نداما». «هداياك ندامى» scores −16.10 against −21.47 for «هداياك ندامة». Both witnesses print the plural for drinking companions, the figure that joins the tears and gifts. |
+| 15.1 | Cohere separates «لهم» into «لا هم». Audar’s widened clip recovers «لم تكوني لهم أما ولو» in full. The ending of «لَهُمُ» sounds as a vowel before the next word. |
