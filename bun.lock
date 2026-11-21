@@ -23,7 +23,7 @@
     },
     "apps/app": {
       "name": "@shawared/app",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "dependencies": {
         "@expo-google-fonts/amiri": "^0.4.1",
         "@expo-google-fonts/newsreader": "^0.4.1",
