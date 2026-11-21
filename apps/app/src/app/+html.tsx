@@ -2,9 +2,10 @@ import { palettes } from "@shawared/design";
 import { useServerDocumentContext } from "expo-router/html";
 import type { ReactNode } from "react";
 import { t } from "../lib/i18n";
-import { langOfPath } from "../lib/routes";
+import { langOfPath, pathInLang, paths } from "../lib/routes";
 import { RESPONSIVE_CSS, WIDE_MIN } from "../lib/responsive";
 import { SETTINGS_KEY } from "../lib/settings";
+import { storeRedirect } from "../lib/stores";
 
 // The document around every web page, rendered ahead of time (web only).
 //
@@ -34,11 +35,15 @@ html[data-wait] #root { visibility: hidden; }
 export default function Root({ children, pathname }: { children: ReactNode; pathname: string }) {
   const { htmlAttributes, bodyAttributes, headNodes, bodyNodes } = useServerDocumentContext();
   const lang = langOfPath(pathname);
+  const appPage = pathname === paths.app || pathname === pathInLang(paths.app, "en");
   return (
     <html {...htmlAttributes} lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        {/* shawared.com/app sends a phone on to its store before the app's scripts run (React puts the
+            page's meta and preload tags ahead of every script). */}
+        {appPage && <script dangerouslySetInnerHTML={{ __html: storeRedirect }} />}
         <meta name="theme-color" content={palettes.day.bg} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="شوارد" />

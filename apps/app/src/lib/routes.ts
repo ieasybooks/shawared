@@ -40,4 +40,6 @@ export const paths = {
   privacy: "/privacy",
   terms: "/terms",
   support: "/support",
+  /** The apps in the stores: a phone goes on to its own (lib/stores). */
+  app: "/app",
 };

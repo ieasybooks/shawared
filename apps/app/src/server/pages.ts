@@ -135,6 +135,12 @@ export const pageMeta = {
     robots: { index: false },
   }),
   playlist: (lang: UiLang): Metadata => ({ title: titled(lang, t(lang, "playlists")), robots: { index: false } }),
+  // A phone leaves this page for its store as it loads (lib/stores): an address to share, not
+  // a page for search engines. Link previews still read its title and description.
+  app: (lang: UiLang): Metadata => ({
+    ...describe(lang, paths.app, titled(lang, t(lang, "appTitle")), t(lang, "metaApp")),
+    robots: { index: false },
+  }),
   person: (kind: PersonKind, id: string, lang: UiLang) => {
     const bundle = personBundle(kind, id, lang);
     if (!bundle) return notFound(lang);

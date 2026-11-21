@@ -148,6 +148,12 @@ for (const lang of ["ar", "en"] as const) {
         await expectNoOverlap(page, path, 3);
       });
 
+    test("/app", async ({ page }) => {
+      await page.goto(at(lang, "/app"));
+      // The badges are pictures: phones have the lead, wide windows the QR code's line too.
+      await expectNoOverlap(page, "/app", isPhone(page) ? 1 : 3);
+    });
+
     test("the library and a playlist, with what a reader keeps", async ({ page }) => {
       await page.addInitScript((saved) => localStorage.setItem("shawared.saved.v1", saved), JSON.stringify(SAVED));
       await page.goto(at(lang, "/library"));
