@@ -21,7 +21,8 @@
       },
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "associatedDomains": ["applinks:shawared.com"]
     },
     "android": {
       "package": "com.shawared.app",
@@ -36,6 +37,36 @@
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.VIBRATE"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            { "scheme": "https", "host": "shawared.com" },
+            { "path": "/" },
+            { "path": "/poets" },
+            { "path": "/reciters" },
+            { "path": "/meters" },
+            { "path": "/library" },
+            { "path": "/app" },
+            { "pathPrefix": "/poems/" },
+            { "pathPrefix": "/poets/" },
+            { "pathPrefix": "/reciters/" },
+            { "pathPrefix": "/meters/" },
+            { "path": "/en" },
+            { "path": "/en/poets" },
+            { "path": "/en/reciters" },
+            { "path": "/en/meters" },
+            { "path": "/en/library" },
+            { "path": "/en/app" },
+            { "pathPrefix": "/en/poems/" },
+            { "pathPrefix": "/en/poets/" },
+            { "pathPrefix": "/en/reciters/" },
+            { "pathPrefix": "/en/meters/" }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
       ]
     },
     "web": {

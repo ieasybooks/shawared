@@ -18,12 +18,13 @@
 // - _headers. Files whose names carry their content's hash (_expo/static,
 //   assets) are cached for a year as immutable, each by its own rule: a rule
 //   with * would also mark the 404 page served for a missing one immutable.
-//   Loaders (_expo/loaders) are JSON. Everything else (pages, loaders,
-//   content/, the sitemap) keeps Workers' default, public, max-age=0,
-//   must-revalidate, so a new deploy shows at once. Since a hashed file is
-//   cached under its name for a year, nothing here may change one: it fails if
-//   a step did, as new bytes under an old name would never reach a browser
-//   that has the old ones.
+//   Loaders (_expo/loaders) are JSON, and so is Apple's app-links file
+//   (/.well-known/apple-app-site-association), which has no extension.
+//   Everything else (pages, loaders, content/, the sitemap) keeps Workers'
+//   default, public, max-age=0, must-revalidate, so a new deploy shows at
+//   once. Since a hashed file is cached under its name for a year, nothing
+//   here may change one: it fails if a step did, as new bytes under an old
+//   name would never reach a browser that has the old ones.
 //
 // With --remote-audio, for release builds, it also checks that the export
 // holds no audio and that the pages' og:audio points at audio.shawared.com.
@@ -64,6 +65,7 @@ export function headersFor(dist: string): { text: string; hashed: number } {
   }
   const rules = [
     "/_expo/loaders/*\n  Content-Type: application/json; charset=utf-8",
+    "/.well-known/apple-app-site-association\n  Content-Type: application/json",
     ...hashed
       .map(urlPath.bind(null, dist))
       .sort()

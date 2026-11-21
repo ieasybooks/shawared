@@ -23,6 +23,8 @@ const FILES: Record<string, string> = {
   "en/poems/p.html": page("en", `<meta property="og:audio" content="${AUDIO}"/>`),
   "sitemap.xml": ["/", "/en", "/poems/p", "/en/poems/p"].map((p) => `<url><loc>${SITE}${p}</loc></url>`).join("\n"),
   "content/v1/catalog.json": '{"schema":1,"poems":[{"id":"p"}]}',
+  ".well-known/apple-app-site-association": '{"applinks":{}}',
+  ".well-known/assetlinks.json": "[]",
   "_expo/loaders/poems/p": '{"bundle":{"poem":{"id":"p"}}}',
   [SCRIPT.slice(1)]: "",
 };
@@ -67,6 +69,8 @@ function stand(replace: Record<string, Answer | Error> = {}) {
       return { status: 200, body: "", headers: { "content-type": "application/javascript", "cache-control": IMMUTABLE } };
     if (path === "/sitemap.xml")
       return { status: 200, body: FILES["sitemap.xml"], headers: { "content-type": "application/xml", "cache-control": REVALIDATE } };
+    if (path.startsWith("/.well-known/"))
+      return { status: 200, body: FILES[path.slice(1)], headers: { "content-type": "application/json", "cache-control": REVALIDATE } };
     if (path.startsWith("/content/") || path.startsWith("/_expo/loaders/")) {
       const type = path.startsWith("/content/") ? "application/json" : "application/json; charset=utf-8";
       return { status: 200, body: FILES[path.slice(1)], headers: { "content-type": type, "cache-control": REVALIDATE } };
@@ -140,6 +144,8 @@ describe("liveProblems", () => {
     for (const path of [
       "/sitemap.xml",
       "/content/v1/catalog.json",
+      "/.well-known/apple-app-site-association",
+      "/.well-known/assetlinks.json",
       "/",
       "/en",
       "/poems/p",
@@ -154,7 +160,7 @@ describe("liveProblems", () => {
     expect(asked.filter((a) => a.url !== AUDIO).every((a) => a.init?.redirect === "manual")).toBe(true);
   });
 
-  it("reports redirects, the wrong language, stale content and the wrong caching", async () => {
+  it("reports redirects, the wrong language, stale content, and the wrong type or caching", async () => {
     const html = { "content-type": "text/html; charset=utf-8", "cache-control": REVALIDATE };
     const { fetchFn } = stand({
       "/en": { status: 307, headers: { location: "/en/" } },
@@ -167,11 +173,19 @@ describe("liveProblems", () => {
       },
       [SCRIPT]: { status: 200, body: "", headers: { "content-type": "application/javascript", "cache-control": REVALIDATE } },
       "/sitemap.xml": { status: 200, body: FILES["sitemap.xml"], headers: { "content-type": "text/plain", "cache-control": REVALIDATE } },
+      "/.well-known/apple-app-site-association": {
+        status: 200,
+        body: FILES[".well-known/apple-app-site-association"],
+        headers: { "content-type": "application/octet-stream", "cache-control": REVALIDATE },
+      },
+      "/.well-known/assetlinks.json": { status: 301, headers: { location: "https://www.shawared.com/.well-known/assetlinks.json" } },
     });
     // Pages are asked for together, so in no fixed order.
     expect((await liveProblems(SITE, dist(), fetchFn)).problems.sort()).toEqual(
       [
         "/sitemap.xml: Content-Type text/plain",
+        "/.well-known/apple-app-site-association: Content-Type application/octet-stream",
+        "/.well-known/assetlinks.json: HTTP 301 to https://www.shawared.com/.well-known/assetlinks.json, not 200",
         "/content/v1/catalog.json: not this build's",
         "/poems/p: Cache-Control public, max-age=14400",
         "/en: HTTP 307 to /en/, not 200",

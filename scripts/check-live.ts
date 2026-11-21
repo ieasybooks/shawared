@@ -8,7 +8,9 @@
 //   reach every location, and one that changes no script looks the same until
 //   it has, so while the scripts and then anything below are off, it asks again
 //   every 10 seconds, for up to two minutes each.
-// - The sitemap and the published catalog are this build's, byte for byte.
+// - The sitemap and the published catalog are this build's, byte for byte, and
+//   so are the app-links files under /.well-known, which Apple and Google fetch
+//   without following a redirect.
 // - Every address in the sitemap answers with its page, without a redirect, in
 //   its language, revalidated on each visit.
 // - A poem's loader is JSON, a hashed script is cached as immutable, and an
@@ -65,6 +67,9 @@ export async function waitForBuild(site: string, dist: string, fetchFn: Fetch = 
 
 type Want = { status: number; type: string; cache: string; lang?: "ar" | "en"; body?: string };
 
+// The files that let the apps open shawared.com's links (apps/app/public/.well-known).
+export const APP_LINKS = [".well-known/apple-app-site-association", ".well-known/assetlinks.json"];
+
 // What's wrong with how the site serves the build, once it serves its scripts.
 export async function liveProblems(site: string, dist: string, fetchFn: Fetch = fetch): Promise<{ problems: string[]; pages: number }> {
   const problems: string[] = [];
@@ -103,6 +108,7 @@ export async function liveProblems(site: string, dist: string, fetchFn: Fetch = 
   const catalog = read("content/v1/catalog.json");
   await check("/sitemap.xml", { status: 200, type: "xml", cache: REVALIDATE, body: sitemap });
   await check("/content/v1/catalog.json", { status: 200, type: "json", cache: REVALIDATE, body: catalog });
+  for (const file of APP_LINKS) await check(`/${file}`, { status: 200, type: "application/json", cache: REVALIDATE, body: read(file) });
 
   const paths = sitemapPaths(sitemap);
   const html: Record<string, string | null> = {};
@@ -159,7 +165,7 @@ if (import.meta.main) {
   const dist = join(root(), "apps/app/dist");
   try {
     const pages = await checkLive(site, dist);
-    console.log(`${site} serves this build: its ${pages} pages, content, a poem's loader and recording, and the 404 page.`);
+    console.log(`${site} serves this build: its ${pages} pages, content, the app links, a poem's loader and recording, and the 404 page.`);
   } catch (error) {
     if (!(error instanceof LiveError)) throw error;
     console.error(error.message);

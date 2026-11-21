@@ -111,6 +111,8 @@ Done once, by hand, in each store's console, with the bundle ID and package name
 - **Google Play Console:** create the app, enrol it in Play App Signing with the shared upload key, and upload the first AAB by hand (Google takes later ones through the API). Fill in the data safety form (no data collected or shared), the content rating, the target audience, and the foreground service declaration for media playback, which the background recitation uses.
 - **AppGallery Connect:** create the app, sign it with the shared upload key as the APK is signed, and add its app ID to `apps/app/store/store.json` as `"appGallery": { "appId": "…" }`. AppGallery serves the APK as that key signed it, and Android installs an update only from the same signer, so the shared key (SHA-256 `9D:E6:FD…`) is Shawared's signature on AppGallery for good, as it is Faqieh's. It can't be replaced there, so keep a copy of it, with its password, outside the vault.
 
+- **Associated Domains:** the App ID `com.shawared.app` needs this capability for shawared.com's links to open the iOS app ([app links](web-deployment.md#app-links)). It was turned on on 21 November 2026; turning a capability on invalidates the App Store provisioning profile, which the build then makes again, or which can be made again with the same name and certificate.
+
 Then push a dry run tag (above) to check everything before the first release.
 
 ## The shared release tooling

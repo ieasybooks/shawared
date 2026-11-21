@@ -27,7 +27,7 @@ function dist(files: Record<string, string>): string {
 }
 
 describe("headersFor", () => {
-  it("caches each hashed file as immutable by its own rule, with its URL's encoding, and serves loaders as JSON", () => {
+  it("caches each hashed file as immutable by its own rule, with its URL's encoding, and serves loaders and Apple's app links as JSON", () => {
     const d = dist({
       [`_expo/static/js/web/[id]-${H}.js`]: "",
       [`_expo/static/js/web/+not-found-${H}.js`]: "",
@@ -40,6 +40,7 @@ describe("headersFor", () => {
       text:
         [
           "/_expo/loaders/*\n  Content-Type: application/json; charset=utf-8",
+          "/.well-known/apple-app-site-association\n  Content-Type: application/json",
           `/_expo/static/js/web/%2Bnot-found-${H}.js\n  Cache-Control: public, max-age=31536000, immutable`,
           `/_expo/static/js/web/%5Bid%5D-${H}.js\n  Cache-Control: public, max-age=31536000, immutable`,
           `/assets/x/close-icon.${H}%404x.png\n  Cache-Control: public, max-age=31536000, immutable`,
@@ -54,7 +55,7 @@ describe("headersFor", () => {
   });
 
   it("refuses more rules than Cloudflare reads", () => {
-    const files = Object.fromEntries(Array.from({ length: MAX_RULES }, (_, i) => [`assets/a${i}.${H}.png`, ""]));
+    const files = Object.fromEntries(Array.from({ length: MAX_RULES - 1 }, (_, i) => [`assets/a${i}.${H}.png`, ""]));
     expect(() => headersFor(dist(files))).toThrow(`${MAX_RULES + 1} header rules, over Cloudflare's ${MAX_RULES}`);
   });
 });
