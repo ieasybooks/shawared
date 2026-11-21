@@ -1,5 +1,5 @@
 {
-  "apps/app": "0.3.0",
+  "apps/app": "0.3.1",
   "packages/contracts": "0.2.0",
   "packages/design": "0.2.0",
   "packages/listening": "0.1.1"

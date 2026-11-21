@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/ieasybooks/shawared/compare/v0.3.0...v0.3.1) (2026-11-21)
+
+
+### Bug Fixes
+
+* give About, privacy and support the shared texts, and add the terms of use ([#25](https://github.com/ieasybooks/shawared/issues/25)) ([8d342b3](https://github.com/ieasybooks/shawared/commit/8d342b329016ab8b307710d2d819d2cf7e6be31f))
+
 ## [0.3.0](https://github.com/ieasybooks/shawared/compare/v0.2.0...v0.3.0) (2026-11-19)
 
 
