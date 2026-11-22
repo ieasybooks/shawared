@@ -157,9 +157,9 @@ for (const lang of ["ar", "en"] as const) {
 test("the app page stays out of search engines, and other pages send no one to a store", async ({ page }) => {
   await page.goto("/app");
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-  // Only this page carries the redirect.
+  // Only this page carries the redirect. (The others name the stores for the app bar's Open.)
   for (const path of ["/", "/about", "/en/about"]) {
     const html = await (await page.request.get(path)).text();
-    expect(html, path).not.toContain(STORES.googlePlay);
+    expect(html, path).not.toContain("location.replace");
   }
 });

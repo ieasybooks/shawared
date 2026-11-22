@@ -77,6 +77,8 @@ const ar = {
   appGalleryBadge: "تنزيل شوارد من HUAWEI AppGallery",
   appScan: "على حاسوبك؟ امسح الرمز بكاميرا هاتفك، يأخذك إلى متجر تطبيقاته.",
   appQr: "رمز QR لصفحة تطبيق شوارد",
+  appBannerText: "استمع في تطبيق شوارد",
+  openApp: "فتح",
   // Page descriptions, for search engines and link previews.
   siteTitle: "شوارد · الشعر العربي كما يُلقى",
   metaPoem: "{opening}. من شعر {poet} على بحر {meter}، {abyat}، بإلقاء {reciter}.",
@@ -218,6 +220,8 @@ const en: Record<StringKey, string> = {
   appGalleryBadge: "Get Shawared from HUAWEI AppGallery",
   appScan: "On a computer? Scan the code with your phone's camera to go to its app store.",
   appQr: "QR code for the Shawared app page",
+  appBannerText: "Listen in the Shawared app",
+  openApp: "Open",
   siteTitle: "Shawared · Arabic poetry as it is recited",
   metaPoem: "{opening}. A poem by {poet} in the {meter} meter, {abyat}, recited by {reciter}.",
   metaNotes: "With a translation, explanations and word meanings.",
