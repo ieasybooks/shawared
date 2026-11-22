@@ -20,10 +20,22 @@ Expo names the files of packages under `node_modules/.bun` by their folders, wit
 - Font preloads. Expo preloads every face the app loads, on every page. A page keeps the preloads of the faces its markup draws with, inline or through a class it uses; the others (English on an Arabic page) load when the app asks for them, out of the way of those it needs and of the scripts.
 - `404.html`, the not-found page, which Cloudflare serves with a 404 for any unknown address.
 - `en.html`, the English home page, moved from `en/index.html`. Cloudflare serves `/x` from `x.html` but redirects it to `/x/` when the page is `x/index.html`, and the sitemap and the pages' canonical links name `/en`.
-- `_headers`. Files whose names carry their content's hash (`_expo/static`, `assets`) are cached for a year as immutable, each by its own rule: a rule with `*` would also mark the 404 page served for a missing one immutable. It fails the build if a file there has no hash, or if the rules pass Cloudflare's 100. Loaders (`_expo/loaders`) are served as JSON. Everything else (pages, loaders, `content/`, the sitemap) keeps Cloudflare's `public, max-age=0, must-revalidate`, so a deploy shows at once.
+- `_headers`. Files whose names carry their content's hash (`_expo/static`, `assets`) are cached for a year as immutable, each by its own rule: a rule with `*` would also mark the 404 page served for a missing one immutable. It fails the build if a file there has no hash, or if the rules pass Cloudflare's 100. Loaders (`_expo/loaders`) are served as JSON, and so is Apple's app-links file, `/.well-known/apple-app-site-association`, which has no extension. Everything else (pages, loaders, `content/`, the sitemap) keeps Cloudflare's `public, max-age=0, must-revalidate`, so a deploy shows at once.
 - For the release build, a check that the export holds no audio and that every page's `og:audio` points at `audio.shawared.com`.
 
 `tests/hosting.spec.ts` checks each kind of file's status, type and caching, including names with `+`, `[id]` and `@`, a missing hashed file and an unknown page, and that every address in the sitemap and every file a page loads, its fonts included, answers without a redirect.
+
+## App links
+
+Links to shawared.com open the apps at the same page, as iOS universal links and Android's verified App Links. Expo Router routes an incoming `https://shawared.com/…` link by its path, and the apps have the same routes as the site, so a poem's link opens that poem, and with `?b=` that bayt.
+
+- `apps/app/public/.well-known/apple-app-site-association` and `assetlinks.json`, which the export copies as they are. `scripts/web-release.ts` serves Apple's, which has no extension, as JSON. Apple and Google fetch both from the apex without following redirects; `tests/hosting.spec.ts` and `check-live.ts` check that they answer that way.
+- `app.json` gives iOS the associated domain `applinks:shawared.com` and Android a verified filter (`autoVerify`) for the same paths.
+- The paths are the pages the apps have: home, the poets, reciters, meters and library tabs, poems, poets, reciters and meters, and `/app` (whose route in the apps goes home), each with its `/en` twin. About, privacy, terms and support stay on the web, as the stores link them, and so do playlists, which live on the device that made them. `scripts/app-links.test.ts` keeps both files' paths in step with the routes: a new route fails it until it's claimed or listed as web-only.
+- `assetlinks.json` names two keys: Google Play's app signing key (`2E:18:0E…`, in Play Console under App integrity, or the Play API's `generatedApks`), which signs what Play installs, and the upload key (`9D:E6:FD…`), which signs the APK AppGallery serves.
+- The App ID `com.shawared.app` has the Associated Domains capability, turned on on 21 November 2026 through the App Store Connect API. Turning it on invalidated the App Store provisioning profile, which was made again with the same name and certificate.
+
+Apple's CDN fetches the file again within a day or so of a change: `curl https://app-site-association.cdn-apple.com/a/v1/shawared.com` shows what devices get. Google's view is at `https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://shawared.com&relation=delegate_permission/common.handle_all_urls`. Links open the apps from other apps, such as Messages, WhatsApp or a search result, not from a page of the site or an address typed into the browser, and only in an app version with the links (0.4.0 on).
 
 ## Audio
 
@@ -67,7 +79,7 @@ The site only moves forward along main. Each deploy records its full commit SHA 
 
 Deploys wait for each other in one queue (`queue: max`, up to 100) from reading the live commit to checking the site, so none can go live in between. GitHub starts queued runs roughly in order but doesn't promise it, so a commit that waited behind a newer one is skipped instead of putting the site back.
 
-`check-live.ts` checks that the home page loads the new build's scripts, then that the sitemap and the published catalog are this build's, every address in the sitemap answers in its language without a redirect, a poem's loader is JSON, a hashed script is cached as immutable, an unknown address is a 404, and the recording a poem page links plays from `audio.shawared.com`. A deploy takes a few seconds to reach every location, and one that changes no script looks like the last until it has, so while the scripts and then anything else are off, it asks again every 10 seconds, for up to two minutes each.
+`check-live.ts` checks that the home page loads the new build's scripts, then that the sitemap, the published catalog and the app-links files are this build's, every address in the sitemap answers in its language without a redirect, a poem's loader is JSON, a hashed script is cached as immutable, an unknown address is a 404, and the recording a poem page links plays from `audio.shawared.com`. A deploy takes a few seconds to reach every location, and one that changes no script looks like the last until it has, so while the scripts and then anything else are off, it asks again every 10 seconds, for up to two minutes each.
 
 ### Who deploys
 

@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test, type APIResponse } from "@playwright/test";
 
@@ -25,6 +25,16 @@ test("files whose names carry their hash are cached as immutable, whatever chara
   const page = await (await request.get(POEM)).text();
   const script = /src="(\/_expo\/static\/js\/web\/[^"]+)"/.exec(page)![1]!;
   expect(header(await request.get(script), "cache-control")).toBe(IMMUTABLE);
+});
+
+test("the app-links files answer as JSON at the apex, without a redirect, as Apple and Google fetch them", async ({ request }) => {
+  for (const file of ["apple-app-site-association", "assetlinks.json"]) {
+    const r = await request.get(`/.well-known/${file}`, { maxRedirects: 0 });
+    expect(r.status(), file).toBe(200);
+    expect(header(r, "content-type"), file).toContain("application/json");
+    expect(header(r, "cache-control"), file).toBe(REVALIDATE);
+    expect(await r.json(), file).toEqual(JSON.parse(readFileSync(join(DIST, "../public/.well-known", file), "utf8")));
+  }
 });
 
 test("a missing hashed file is a 404 that isn't cached", async ({ request }) => {
