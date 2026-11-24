@@ -1,0 +1,46 @@
+# قطّعت منك حبائل الآمال
+
+## Recording and extent
+
+Abd al-Rahman al-Humayn recites all 47 bayts of Shukri Faisal’s poem 295 through «مثل حلّ عقال». The source interval 16.65–350.95 s removes the opening presentation and the material after the last rhyme. The first measured voice in the poem is at 17.18 s and the last voiced tail ends at 350.45 s. The recitation runs continuously, giving «نزلوا بأكرم سيّد» before «حيل ابن آدم». Each verse is performed once. [Recording](https://www.youtube.com/watch?v=deSfGFsrnFE)
+
+## Printed text and earlier testimony
+
+- Shukri Faisal, *Abu al-Atahiya, ash'aruhu wa-akhbaruhu*, Damascus University, 1965, poem 295, pp. 280–284. Page 280 prints the incipit and identifies distinct reports in *al-Aghani*. In one, Utba has refused the poet after the caliph al-Mahdi spoke to her. Another selects lines as examples in a dispute over his poetry. Faisal observes that transmitters of short extracts exchange the second halves of our 1 and 3. Page 281 gives 2–9, p. 282 has 10–22, p. 283 has 23–36 and p. 284 ends with 37–47. The editor says 45–47 are absent from his manuscript witnesses ت and ظ but present in *al-Aghani*. He also locates 45 in another poem. The recording includes all three. [Opening and reports](https://archive.org/details/0017pdf_202002/page/n320/mode/1up) · [Closing apparatus](https://archive.org/details/0017pdf_202002/page/n324/mode/1up)
+- *Al-Anwar al-zahiya fi Diwan Abi al-Atahiya*, Catholic Press, Beirut, 1888, pp. 194–197. The title leaf calls the compiler «أحد الآباء اليسوعيين». Faisal identifies him as Louis Cheikho and cites his edition as ل. The heading says the poet addresses the world about its deceit. All 47 bayts are present. In this print «حيل ابن آدم» comes before «نزلوا بأكرم سيد». It gives «فوجدت» at 3.1, «يئست» and «برقة آل» at 4, «خطب حوادث» at 13, «فيداه» at 16, «يبكي الجديد» at 21, «التنازل» at 29, «كل مخالف» at 30, «جرت بسؤال» at 39 and «عقود ضلال» at 43. Its footnote to 43 also gives «على قعود». [Title leaf](https://archive.org/download/in.ernet.dli.2015.361423/2015.361423.Diwan-E.pdf#page=4) · [Printed pp. 194–197](https://archive.org/download/in.ernet.dli.2015.361423/2015.361423.Diwan-E.pdf#page=211)
+- Al-Sharishi, *Sharh Maqamat al-Hariri*, III, p. 233, quotes our 1, 3, 6, 7, 22 and 36. His «من حطّي», «كلّ تنقّل», «فغدا وراح عليّ» and «البطل» supply early alternatives. Abd al-Aziz al-Salman, *Majmu'at al-qasa'id al-zuhdiyyat*, II, pp. 100–102, includes the whole poem. His modern anthology shares several readings with the Beirut printing, including «خطب حوادث», «يبكي الجديد» and «عقود ضلال». [Al-Sharishi](https://shamela.ws/book/760/1184) · [Al-Salman, opening](https://shamela.ws/book/38155/685) · [Closing lines, p. 102](https://shamela.ws/book/38155/687)
+
+The withheld name of the addressee gives the opening its double application. In 2 he explicitly calls her «يا دنيا». Three successive declarations of «الآن» prepare a set of things he can see for himself, including grey at his parting and nape and his heirs eyeing his property. The judgement scene recalls children turning grey, pregnancy ending in terror, the Day of Loss and Gain, and garments cut from fire, respectively Qur'an 73.17, 22.2, 64.9 and 22.19. The final advice concerns the cost of having to ask another person for help. A saddle set down in 1 and a camel’s hobble untied in 47 make renunciation and release bodily acts.
+
+## Metre and readings
+
+Kamil, with lam as rawiy. The halves of 1 scan – – ⏑ – | ⏑ ⏑ – ⏑ – | – – – and ⏑ ⏑ – ⏑ – | – – ⏑ – | ⏑ ⏑ – –. At 23.1 «حذف المنى عنه المشمّر في الهدى» gives ⏑ ⏑ – ⏑ – | – – ⏑ – | ⏑ ⏑ – ⏑ –. Its answering «وأرى مناك طويلة الأذيال» gives ⏑ ⏑ – ⏑ – | ⏑ ⏑ – ⏑ – | – – –. Three words cross the metrical caesura, «ممّا» in 2, «الحوامل» in 28 and «التوازن» in 29. The halves display the division and the translation conveys each whole word.
+
+Against the alternatives, acoustic comparisons favour «ووجدت» by 6.64, «طمعت» by 34.35, «ولمعة» by 30.62, «يعتلجن» by 8.18, «الآن» by 17.22, «تشتّت» by 25.20 and «عليّ وراح» by 35.65. Al-Sharishi’s «حطّي» leads «حلّي» by only 2.05. Both continuous passes give «حلّي», and camping and travelling are the matched pair in Faisal. At 16.2 «فتراه» leads «فيداه» by 14.35. At 19.2 the score favours «منه» by 0.49, but both full passes and Faisal give «منهم». At 21 «يبلى» leads «يبكي» by 15.50. At 22 «البطر» and «من غد» lead «البطل» and «في غد» by 10.57 and 17.08. The first word describes someone made complacent by prosperity.
+
+At 27 «تقشعر» leads the transcription «تخشعر» by 5.63. Faisal, the studio card and Audar support «مضلّل» at 30 against continuous Cohere’s «مضطرب» (gap 21.98). At 32 «عنده» leads «عندها» by 3.76. Both continuous passes give the masculine pronoun, which points back to the reckoning. In 39 «أتت» leads «جرت» by 19.12. In 42 «زينة» leads the apparatus reading «رتبة» by 28.02. At 43 «قعود» leads «عقود» by 17.15. The traveller is back on a riding camel as he chooses his route.
+
+## Decisions on the 94 recorded halves
+
+The per-half check flagged 16. The decisions below use the narrow Cohere cut, the independently widened Audar cut, continuous passes, aligned words, video cards and the editions. Scores compare readings on the same audio.
+
+| Half | Decision |
+| --- | --- |
+| 2.1 | Cohere ends «نلت منه». The wider clip recovers «نلت ممّا», and both full passes continue «فيك يا دنيا». Retain «مِم / ما» from p. 281. An extra pronoun at the pause would leave the following syllable unexplained. |
+| 4.1 | The narrow clip divides «خُلّبٍ» into «خل به», and Audar loses its beginning in the preceding «برقة». The full takes preserve rainless lightning and the mirage. Both give «ولئن» at the beginning, although scoring marginally favours «وأن» by 2.28. |
+| 8.2 | The narrow transcript attaches the first h of «هِمَمي» to «تفرّغت» and misdivides «عن الأشغال». The wider clip recovers all four words. His energies are free of their old preoccupations. |
+| 13.1 | The narrow clip gives «كبرت», which leads acoustically by 4.96. The wider clip and both continuous passes give «اعتبرت». The statement derives from reflection and belongs to a sequence beginning «وإذا». The wider clip’s «حقّ» is answered by full Cohere’s «حطّ» and by Faisal. «حطّ» leads Beirut’s «خطب» by 12.92. |
+| 17.2 | The boundary in «تاجانِ تاجُ» becomes «تاجا نتاج» in the narrow pass. The wider clip restores the dual and a repeated singular. Both pages preserve the crowns of composure and dignity. |
+| 23.2 | Cohere divides «مناك» as «منى ك». The wider clip and both prints join the possessive pronoun to the wishes whose hems the listener has let trail. |
+| 24.1 | Cohere divides «ما تلقى أغرّ» as «مات القاء غر». The wider clip recognises «لقلّما تلقى», though it loses the initial vowel of the comparative. The comparison with a merry idler continues into 24.2. |
+| 29.2 | The narrow clip drops «زُنِ» and the wide one begins «وأزني». The syllable aligns at 200.88–201.14 s of the master with confidence 0.735. Both full passes give «التوازن» and the video prints its two parts. The n leads Beirut’s l by 3.70. The scene is the weighing at judgement. |
+| 31.2 | The narrow clip adds a j to «علت». The wide one restores «علت الوجوه», as does full Cohere. «علت» leads «جعلت» by 10.58 and «عنت» by 7.24. The honour becomes visible on the guests’ faces. |
+| 36.1 | Narrow and full Cohere give «كبيرة». Wide and full Audar give «كثيرة». The score alone favours b by 9.36. Both diwans, al-Sharishi and the studio card give «كثيرة», supported by both Audar passes. Keep the many devices against the single outcome. The consonant is uncertain. |
+| 38.1 | The difference is «مالي» against «ما لي». Audar separates the interrogative from the preposition and pronoun. He asks why the listener is wearing his dignity away. |
+| 40.1 | Cohere substitutes «ضمامة», Audar «نامة». Continuous Cohere gives «ضنانة», and the next half answers it with «يضنّ». It leads «ضمامة» by 12.41 and the apparatus reading «صيانة» by 15.58. |
+| 41.1 | The narrow clip gives «غسل». The wide one gives «وصن» and misdivides the following «المحامد ما». Both full passes retain the imperative to guard one’s honour. |
+| 42.1 | Both clips separate «ما له». The continuous reading and both prints give «ماله», the wealth that the man is making grow. |
+| 44.1 | The narrow clip pluralises «دعوة» and writes «خداع». The wider one recovers «دعت خدع الحوادث دعوة», the call answered by the places where champions fell. «دعت» and «دعوة» lead Beirut’s «ادّعت» and «قسوة» by 10.95 and 17.51. |
+| 46.2 | Both isolated clips and continuous Audar write «بعادل». It leads by 4.05. Continuous Cohere, both prints and the studio text give «بعاجل الترحال», leaving without delay. The root of justice supplies no intelligible qualifier for this journey. The lexical card records the uncertain consonant. |
+
+The publisher al-Shankabutiyya credits Abd al-Rahman al-Humayn on nos. 10, 26 and 61 of its Abu al-Atahiya readings and on its recording of Malik ibn al-Rayb’s elegy for himself. The reciter profile links to the channel that supplied these credits. [No. 10](https://www.youtube.com/watch?v=deSfGFsrnFE) · [No. 26](https://www.youtube.com/watch?v=kIcZ34GYFBU) · [No. 61](https://www.youtube.com/watch?v=ZGeC00tudl4) · [Malik ibn al-Rayb](https://www.youtube.com/watch?v=7DIk9EyyajA)

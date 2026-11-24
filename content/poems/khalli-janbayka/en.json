@@ -1,0 +1,185 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Give the Archer Room",
+  "intro": "Abu Nuwas’s collected poems place these verses among his poems of renunciation. Al-Khatib al-Baghdadi tells of Sufyan ibn Uyayna quoting the opening when a young man in his audience got the better of him. What starts as advice about holding one’s tongue becomes a reckoning with grey hair and death. In six of the nine verses, a word carries the voice straight across the break between the two halves.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Give the archer a wide berth,",
+        "and go past him in peace."
+      ],
+      "sharh": "He lets the archer shoot and walks on unhurt. An early gloss takes the shot as a verbal provocation. Stopping to answer keeps one within range."
+    },
+    "2": {
+      "translation": [
+        "Better to die of the sickness of silence",
+        "than of the sickness of speech."
+      ],
+      "sharh": "He grants the talkative man his premise that silence is an illness. In the next lines a word really can bring about the death that first sounded like an exaggeration."
+    },
+    "3": {
+      "translation": [
+        "A joke may have opened for you",
+        "the heavy locks of death."
+      ],
+      "sharh": "A joke can undo several stout locks at a stroke. The effort one would expect it to take to reach death measures the carelessness of the one who lets it in."
+    },
+    "4": {
+      "translation": [
+        "A single utterance has brought the appointed end",
+        "of one great company after another."
+      ],
+      "sharh": "A single word can drive whole companies to their deaths. The verb usually describes driving things before one, and the repeated word for a crowd lets us hear the numbers grow."
+    },
+    "5": {
+      "translation": [
+        "The one who comes away safe",
+        "has put a bridle on his own mouth."
+      ],
+      "sharh": "The speaker must be both horse and rider. His mouth has the horse’s power to bolt and his hand can still draw it up."
+    },
+    "6": {
+      "translation": [
+        "Live with people as you find them,",
+        "in their soundness and their sickness."
+      ],
+      "sharh": "Company is something one wears close to the skin. To live among people is to take their sound qualities along with their afflictions."
+    },
+    "7": {
+      "translation": [
+        "Keep to moderation. Moderation",
+        "leaves you more strength in reserve."
+      ],
+      "sharh": "Restraint leaves some strength for tomorrow. The returning word for moderation comes just where an eager speaker might be tempted to spend the rest of his breath."
+    },
+    "8": {
+      "translation": [
+        "Your hair is grey, man, and still you",
+        "will not leave a boy’s habits behind."
+      ],
+      "sharh": "The finger turns towards a grey-haired man who could be the speaker himself. A whole lifetime separates his appearance from the age of his habits."
+    },
+    "9": {
+      "translation": [
+        "And deaths go on eating",
+        "and drinking up humankind."
+      ],
+      "sharh": "Death has an appetite, and human beings are its food and drink. The poem that asked a man to close his mouth ends with mouths that never close."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "خَلِّ",
+      "root": "خ ل و",
+      "meaning": "Make room, leave the way clear."
+    },
+    "1.1.3": {
+      "word": "لِرامٍ",
+      "head": "رامٍ",
+      "root": "ر م ي",
+      "meaning": "An archer. The image includes a person who takes verbal shots at others."
+    },
+    "1.2.3": {
+      "word": "بِسَلامِ",
+      "head": "سَلام",
+      "root": "س ل م",
+      "meaning": "Safety, getting past unharmed."
+    },
+    "2.1.2-3": {
+      "word": "بِداءِ الصَّمتِ",
+      "head": "داء الصَّمت",
+      "meaning": "“The sickness of silence”, the discomfort of leaving a remark unanswered."
+    },
+    "3.1.2": {
+      "word": "اِستَفتَحتَ",
+      "head": "اِستَفتَحَ",
+      "root": "ف ت ح",
+      "meaning": "Opened what had been shut."
+    },
+    "3.2.2": {
+      "word": "مَغاليقَ",
+      "head": "مِغلاق",
+      "root": "غ ل ق",
+      "meaning": "Heavy locks or bolts."
+    },
+    "3.2.3": {
+      "word": "الحِمامِ",
+      "head": "الحِمام",
+      "root": "ح م م",
+      "meaning": "The death appointed to a person."
+    },
+    "4.1.3": {
+      "word": "ساقَ",
+      "root": "س و ق",
+      "meaning": "Drove forward, here brought the time of death nearer."
+    },
+    "4.2.2": {
+      "word": "فِئامٍ",
+      "head": "فِئام",
+      "root": "ف أ م",
+      "meaning": "A great company of people. Repetition multiplies the casualties."
+    },
+    "5.2.1": {
+      "word": "جَمَ",
+      "head": "أَلجَمَ",
+      "root": "ل ج م",
+      "meaning": "Bridled. The verb begins in the first half and ends here."
+    },
+    "5.2.2": {
+      "word": "فاهُ",
+      "head": "فَم",
+      "root": "ف و ه",
+      "meaning": "His mouth, the object of the verb ‘bridled’."
+    },
+    "6.1.1": {
+      "word": "فَالبَسِ",
+      "head": "اِلبَس",
+      "root": "ل ب س",
+      "meaning": "Wear, here live on familiar terms with people."
+    },
+    "6.2.3": {
+      "word": "وَالسَّقامِ",
+      "head": "سَقام",
+      "root": "س ق م",
+      "meaning": "Illness, here a fault of character one must live with."
+    },
+    "7.1.2": {
+      "word": "القَصدَ",
+      "head": "قَصد",
+      "root": "ق ص د",
+      "meaning": "Moderation in effort and expenditure of strength."
+    },
+    "7.2.3": {
+      "word": "لِلجِمامِ",
+      "head": "جِمام",
+      "root": "ج م م",
+      "meaning": "Rest that restores strength, and the strength kept in reserve."
+    },
+    "8.1.1": {
+      "word": "شِبتَ",
+      "head": "شابَ",
+      "root": "ش ي ب",
+      "meaning": "Grew grey, showing the years in his hair."
+    },
+    "8.2.3": {
+      "word": "الغُلامِ",
+      "head": "غُلام",
+      "root": "غ ل م",
+      "meaning": "A boy or youth, the age associated here with rashness."
+    },
+    "9.1.1": {
+      "word": "وَالمَنايا",
+      "head": "مَنِيَّة",
+      "root": "م ن ي",
+      "meaning": "An appointed death. The plural gives death many mouths."
+    },
+    "9.2.2": {
+      "word": "لِلأَنامِ",
+      "head": "الأَنام",
+      "meaning": "Living creatures, here humankind."
+    }
+  }
+}

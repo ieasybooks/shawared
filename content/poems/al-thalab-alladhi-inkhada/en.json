@@ -1,0 +1,35 @@
+{
+  "lang": "en",
+  "source": {"name": "Shawared"},
+  "title": "The Fox Who Was Taken In",
+  "intro": "A fox overhears some villagers using his name for a trickster. Delighted with his fame, he imagines the festivities they might hold if he paid a visit in person. Shawqi gives him ample time to picture his reception and very little time to enjoy the real one. Osama Al-Waaedh repeats the closing couplet.",
+  "abyat": {
+    "1": {"translation": ["The fox heard the village folk", "call out to a swindler, “You fox.”"], "sharh": "An animal has the uncanny experience of overhearing its name used figuratively. The villagers mean a human swindler, and the fox is free to misjudge what they think of either of them."},
+    "2": {"translation": ["“Here indeed,” he said, “is the height of fame,", "a thing no one can give or go and seek."], "sharh": "He takes the unbidden mention of his name as the highest sort of fame, beyond patronage or deliberate pursuit. He has yet to consider the company his name is keeping."},
+    "3": {"translation": ["Who has wits to match mine, when humankind", "has made me a proverb?"], "sharh": "To be made a proverb is to pass into ordinary speech as an example. The fox cites his failure to understand such a saying as evidence of his exceptional wit."},
+    "4": {"translation": ["What harm in paying them a visit", "and showing them more than they marvelled at?"], "sharh": "His reasoning has carried him from a figure of speech to a personal appearance. What he supposes the villagers will admire is also what they have learned to guard against."},
+    "5": {"translation": ["Perhaps they’ll hold a fête for me,", "with the cock or the rabbit there.”"], "sharh": "The guest list has been chosen with a fox’s appetite. Even his fantasy of being honoured includes the prospect of a meal."},
+    "6": {"translation": ["He made for the villagers and greeted them,", "then took his stand among them for a speech."], "sharh": "The visitor supplies the greeting and the speech himself. The villagers have so far had no reason to depart from their original, unflattering opinion."},
+    "7": {"translation": ["They took their visitor by the ear", "and gave him to the dog to play with."], "sharh": "The Arabic suddenly uses two passives. The creature who arranged the entire fête in his head is now an object to be picked up and passed along."},
+    "8": {"translation": ["Never put your trust in a master of tricks.", "Even a fox sometimes gets taken in."], "sharh": "Cunning turns out to be an unreliable guarantee even for its owner. The creature whose name means a deceiver has managed, with very little help, to deceive himself."}
+  },
+  "words": {
+    "1.2.2": {"word": "مُحتالاً", "head": "مُحتال", "root": "ح و ل", "meaning": "A trickster or swindler, the person actually being addressed."},
+    "1.2.3-4": {"word": "بِيا ثَعلَبُ", "head": "يا ثَعلَب", "meaning": "“You fox”, a direct quotation used as a name for the trickster."},
+    "2.1.4": {"word": "غايَةٌ", "head": "غايَة", "root": "غ ي ي", "meaning": "The furthest limit or pinnacle of something."},
+    "2.2.2": {"word": "الفَخرِ", "head": "الفَخر", "root": "ف خ ر", "meaning": "Grounds for pride, which the fox believes the villagers have given him."},
+    "2.2.4": {"word": "تُؤتى", "head": "آتى", "root": "أ ت ي", "meaning": "Bestowed. In the passive, nobody can grant such fame as a favour."},
+    "3.1.3": {"word": "النُّهى", "root": "ن ه ي", "meaning": "Wits or understanding, the faculty that checks foolish impulses."},
+    "3.1.6": {"word": "الوَرى", "root": "و ر ي", "meaning": "Humankind, the people among whom the saying circulates."},
+    "3.2.3-4": {"word": "مَثَلاً يُضرَبُ", "head": "مَثَل يُضرَب", "meaning": "“A proverb that is struck”, an example invoked whenever a similar case arises."},
+    "4.1.4": {"word": "وافَيتُهُم", "head": "وافى", "root": "و ف ي", "meaning": "Came in person, arrived for a visit."},
+    "4.2.4": {"word": "اِستَغرَبوا", "head": "اِستَغرَبَ", "root": "غ ر ب", "meaning": "Found something remarkable. The fox takes their interest for admiration."},
+    "5.1.4": {"word": "زينَةً", "head": "زينَة", "root": "ز ي ن", "meaning": "A festive occasion with public display or decoration."},
+    "5.2.2": {"word": "الدّيكُ", "head": "الدّيك", "root": "د ي ك", "meaning": "The cock is the subject of “attend”. One printing gives the accusative ending where the construction calls for the nominative."},
+    "6.2.4": {"word": "يَخطُبُ", "head": "خَطَبَ", "root": "خ ط ب", "meaning": "Addressed a gathering as a formal speaker."},
+    "7.1.2": {"word": "الزّائِرُ", "head": "الزّائِر", "root": "ز و ر", "meaning": "The visitor, still described in the language of hospitality as he is seized."},
+    "7.2.1": {"word": "وَأُعطِيَ", "head": "أَعطى", "root": "ع ط و", "meaning": "Handed over, the moment the guest passes from the villagers into the dog’s power."},
+    "8.1.4-5": {"word": "بِذي حيلَةٍ", "head": "ذو حيلَة", "root": "ح و ل", "meaning": "Someone skilled in stratagems and in finding a way out."},
+    "8.2.3": {"word": "يَنخَدِعُ", "head": "اِنخَدَعَ", "root": "خ د ع", "meaning": "Was taken in, the answering form of the verb “to deceive”."}
+  }
+}

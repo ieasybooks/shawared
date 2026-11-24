@@ -4,6 +4,41 @@ The original queue was added on 16 November 2026. Intake notes come from each vi
 
 Status: **transcribed** (`scripts/intake.ts` done), then **drafted** (all files written), **reviewed** (second reader done), **published**.
 
+## Nineteen recordings and nine Shawqi fables, 24 November 2026
+
+Proposal 2 was replaced by the nine new fables in Al-Qimmah’s ten-poem compilation. Its seventh chapter, «حكاية الخفاش ومليكة الفراش», is already in the library. The chapter links open at the studio’s timestamps. Each duration below is the length of the poem-only track.
+
+| Selection | Source | Poem | Poet | Reciter | App audio | Status | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | https://www.youtube.com/watch?v=lJ3uAc78ulk | نونية عروة بن حزام | عروة بن حزام | أسامة النهاري | 12:33 | reviewed: `nuniyyat-urwa-ibn-hizam` | Bayt 44 has a variant in «المؤنسة», bayt 14. The full nuniya follows the recording through «جناح غراب دائم الخفقان». |
+| 2.1 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=9s | الأسد ووزيره الحمار | أحمد شوقي | أسامة الواعظ | 1:11 | reviewed: `al-asad-wa-waziruhu-al-himar` | The king takes a donkey for his minister. A monkey explains in private why the court now treats him with such familiarity. |
+| 2.2 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=83s | ولي عهد الأسد وخطبة الحمار | أحمد شوقي | أسامة الواعظ | 1:37 | reviewed: `wali-ahd-al-asad-wa-khutbat-al-himar` | A donkey makes a speech in honour of the lion cub. The fox later has to pronounce a funeral oration. |
+| 2.3 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=182s | الأسد والثعلب والعجل | أحمد شوقي | أسامة الواعظ | 2:31 | reviewed: `al-asad-wal-thalab-wal-ijl` | A fox brings the lion a calf by offering the calf an office at court. |
+| 2.4 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=335s | أمة الأرانب والفيل | أحمد شوقي | أسامة الواعظ | 2:33 | reviewed: `ummat-al-aranib-wal-fil` | The rabbits act together against the elephant. Their adviser declines the crown they offer him. |
+| 2.5 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=490s | الثعلب والديك | أحمد شوقي | أسامة الواعظ | 0:57 | reviewed: `al-thalab-wal-dik` | A fox dressed as a preacher sends for the cock. The cock replies with a saying handed down by his ancestors. |
+| 2.6 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=550s | الثعلب الذي انخدع | أحمد شوقي | أسامة الواعظ | 0:58 | reviewed: `al-thalab-alladhi-inkhada` | A fox hears villagers use his name as a byword for cunning and mistakes the comparison for an invitation. |
+| 2.8 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=752s | النعجتان | أحمد شوقي | أسامة الواعظ | 1:20 | reviewed: `al-najatan` | One ewe is fat and the other thin. The butcher’s arrival reverses the value the sisters had set on their looks. |
+| 2.9 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=833s | النملة والمقطم | أحمد شوقي | أسامة الواعظ | 0:55 | reviewed: `al-namla-wal-muqattam` | Fear of the Muqattam distracts the ant from the water underfoot. This is the compilation performance. |
+| 2.10 | https://www.youtube.com/watch?v=r6VpT0Lid0E&t=890s | القبرة وابنها | أحمد شوقي | أسامة الواعظ | 1:11 | reviewed: `al-qubbara-wabnuha` | A young lark leaves the branch before he has mastered flight. Al-Waaedh repeats the closing couplet. |
+| 3 | https://www.youtube.com/watch?v=zwdFI5fNB-w | ألا لا أري الأحداث مدحا ولا ذما | المتنبي | أسامة النهاري | 5:03 | reviewed: `ala-la-uri-al-ahdatha` | Al-Mutanabbi mourns the grandmother who raised him. The closing verses return from her death to his own conduct. |
+| 4 | https://www.youtube.com/watch?v=Cn8P7mYLzj0 | لا يحمل الحقد من تعلو به الرتب | عنترة بن شداد | خالد الشرفي | 3:37 | reviewed: `la-yahmilu-al-hiqda` | The Beirut diwan attributes these lines to Antarah. The closing verse echoes al-Mutanabbi, and the attribution remains uncertain. |
+| 5 | https://www.youtube.com/watch?v=eLboDE3bBlU | أيا أم الأسير سقاك غيث | أبو فراس الحمداني | أسامة النهاري | 3:04 | reviewed: `aya-umma-al-asir` | Abu Firas speaks as a captive mourning his mother. The verse about his ransom asks who can receive the messenger now. |
+| 6 | https://www.youtube.com/watch?v=deSfGFsrnFE | قطعت منك حبائل الآمال | أبو العتاهية | عبد الرحمن الحمين | 5:34 | reviewed: `qattatu-minki-habaila-al-amal` | No. 10 in al-Shankabutiyya’s series of readings by al-Humayn. The poem addresses the world and ends with patience in adversity. |
+| 7 | https://www.youtube.com/watch?v=Q-WzElzsG9U | صحا القلب عن سلمى وأقصر باطله | زهير بن أبي سلمى | أسامة النهاري | 7:15 | reviewed: `saha-al-qalbu` | Zuhayr moves from the memory of Salma to a hunt and to Hisn ibn Hudhayfa’s generosity. Al-Shantamari also transmits the two closing verses about a quarrel. |
+| 8 | https://www.youtube.com/watch?v=DH1TD_5kxj0 | لو كنت من مازن لم تستبح إبلي | قريط بن أنيف | عبد الرحمن السعيد | 0:53 | reviewed: `law-kuntu-min-mazin` | Abu Tammam put these eight verses first in the Hamasa. The reciter’s opening account of Qurayt’s camels precedes the cut. |
+| 9 | https://www.youtube.com/watch?v=GbRtKtnJnrs | وكم صاحب كالرمح زاغت كعوبه | الشريف الرضي | أسامة النهاري | 2:08 | reviewed: `wa-kam-sahibin` | Al-Radi first likens a difficult friend to a crooked spear, then weighs the pain of keeping an injured limb against the loss of cutting it off. |
+| 10 | https://www.youtube.com/watch?v=YKLXKyhUmMs | أجدك لا يصحو الفؤاد المعلل | جرير | أسامة الواعظ | 2:00 | reviewed: `ajiddaka-la-yashu` | Jarir’s opening on love and grey hair leads into a reply to al-Akhtal. The final appeal names the house of Marwan. |
+| 11 | https://www.youtube.com/watch?v=XLCN-oN68Xk | أغالب فيك الشوق والشوق أغلب | المتنبي | أسامة النهاري | 8:10 | reviewed: `ughalibu-fika-al-shawqa` | At Eid al-Fitr in 347 AH, al-Mutanabbi asks Kafur for an estate or a governorship and offers him verse that will travel from house to tent. |
+| 12 | https://www.youtube.com/watch?v=OvyvMBN5l9U | أنا ابن جلا وطلاع الثنايا | سحيم بن وثيل | عبد الرحمن السعيد | 1:15 | reviewed: `ana-ibnu-jala` | Suhaym answers two younger poets. Al-Hajjaj later quoted the opening in Kufa. The prose introduction to the reading is cut. |
+| 13 | https://www.youtube.com/watch?v=Z7bLRuPwHTk | يوم الفراق لقد خلقت طويلا | أبو تمام | أسامة النهاري | 5:07 | reviewed: `yawma-al-firaqi` | The diwan names Nuh ibn Amr al-Saksaki as the patron. A farewell and a camel journey precede the praise. |
+| 14 | https://www.youtube.com/watch?v=8Shrl5IiTUk | خل جنبيك لرام | أبو نواس | عبد الرحمن السعيد | 0:46 | reviewed: `khalli-janbayka` | A nine-bayt warning about speech. Several words run across the division between the two halves. |
+| 15 | https://www.youtube.com/watch?v=X6hEtzk9xUM | له الويل من ليل تطاول آخره | البحتري | أسامة النهاري | 6:11 | reviewed: `lahu-al-waylu` | The opening contrasts a long night with hurried preparations to depart. The final section names the men of Nabhan. |
+| 16 | https://www.youtube.com/watch?v=bOU1MV5Ny3g | يا عيد ما لك من شوق وإيراق | تأبط شرا | أسامة النهاري | 4:35 | reviewed: `ya-idu-ma-laka` | The source sheet maps al-Nahari’s opening about Asma and his account of the pursuit to the opening poem of the Mufaddaliyyat. |
+| 17 | https://www.youtube.com/watch?v=30Fpb7jwtr4 | لعمرك ما أدري وإني لأوجل | معن بن أوس | أسامة النهاري | 2:20 | reviewed: `laamruka-ma-adri` | Al-Ghundajani connects the verses with a friendship strained by a divorce. Ma'n opens by asking which of the two men death will reach first. |
+| 18 | https://www.youtube.com/watch?v=EHid_p0UqAc | أفاطم قبل بينك متعيني | المثقب العبدي | عبد الرحمن السعيد | 5:23 | reviewed: `afatim-qabla-baynik` | The poet addresses Fatima, describes the she-camel he rides and reaches Amr. The recording ends with his question about good and evil. |
+| 19 | https://www.youtube.com/watch?v=o9meWinky7A | صبرت ومثلي صبره ليس ينكر | علي بن الجهم | أسامة النهاري | 2:53 | reviewed: `sabartu-wa-mithli` | The source ends on the cadence of «وتفقر». The complete final word is retained. |
+| 20 | https://www.youtube.com/watch?v=FedzfiCBTZU | ألا في سبيل المجد ما أنا فاعل | أبو العلاء المعري | أسامة النهاري | 5:21 | reviewed: `ala-fi-sabili-al-majd` | Al-Ma'arri’s lamiyya opens with four virtues and closes with the full moon beginning to wane. |
+
 ## Twenty selected recordings, 24 November 2026
 
 | Shortlist # | Recording | Poem | Poet | Reciter | Length | Status | Notes |

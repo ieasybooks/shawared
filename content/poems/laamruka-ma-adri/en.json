@@ -1,0 +1,294 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "By Your Life, I Cannot Tell, and I Am Afraid",
+  "intro": "Al-Ghundajani says that Ma'n had divorced a friend’s sister and married again, and that the friend swore never to speak to him. Ma'n opens with a fear common to both men. Either might die before they make peace. He sets out what he would risk for his friend, then asks him to picture cutting off his own right hand. Abu Tammam included a selection in the Hamasa.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "By your life, I cannot tell, and I am afraid,",
+        "which of us death will visit first."
+      ],
+      "sharh": "He swears by the very life he fears may be cut short. Death makes an early call, and neither man knows whose door it will reach first."
+    },
+    "2": {
+      "translation": [
+        "I am still your brother, true to my word,",
+        "if a rival overcomes you or a home casts you out."
+      ],
+      "sharh": "Brotherhood here is a promise between friends. Its test is the day the other man loses a contest or is made unwelcome where he lives."
+    },
+    "3": {
+      "translation": [
+        "I fight whichever enemy you fight.",
+        "If you owe blood money, I set my wealth aside and pay."
+      ],
+      "sharh": "His loyalty can cost him his life in battle or his herd in compensation. The old word for paying blood money recalls the hobbles on the camels handed over in settlement."
+    },
+    "4": {
+      "translation": [
+        "If you hurt me today, I forgive until tomorrow,",
+        "hoping another day with you will follow."
+      ],
+      "sharh": "He gives the friend a whole day in which to act differently. Forgiveness has a modest time scale here, something one can actually practise."
+    },
+    "5": {
+      "translation": [
+        "You seem to cure some ailment by hurting me",
+        "and venting your anger on me. My conduct hardly warrants such haste."
+      ],
+      "sharh": "The friend seems to find medicine in the harm he does and the anger he directs at Ma'n. Ma'n asks what in his conduct could have called for such hasty suspicion."
+    },
+    "6": {
+      "translation": [
+        "God curse the man who sets brother and wife on equal terms",
+        "and deceives his brother. I would spare you that, if you do it."
+      ],
+      "sharh": "In the story of the divorce, the two men have allowed a marriage to determine the terms of their friendship. The little courtesy ‘I would spare you’ brings the accusation very close to home."
+    },
+    "7": {
+      "translation": [
+        "Much in you has long given me misgivings,",
+        "yet even so I know how to pardon graciously."
+      ],
+      "sharh": "He has had grounds for misgiving for years. His graciousness is a course he has chosen with his eyes open, which makes the friend’s haste harder to excuse."
+    },
+    "8": {
+      "translation": [
+        "If you cut me off in this world, you cut off",
+        "your right hand. Look what hand you would take in exchange."
+      ],
+      "sharh": "He lets ‘cut’ stand at the end of the first half before naming the limb in the second. The friend must imagine doing without his own working hand."
+    },
+    "9": {
+      "translation": [
+        "Deny your brother fair treatment and you will find him",
+        "on the verge of leaving, if he has any sense."
+      ],
+      "sharh": "The wronged man has reached the edge of estrangement. A step back from the edge is still possible if his friend deals fairly with him."
+    },
+    "10": {
+      "translation": [
+        "He would sooner ride the sword’s edge than suffer your injustice",
+        "if there were no moving clear of its blade."
+      ],
+      "sharh": "Riding along a blade makes pain almost palpable. The qualification matters to the argument: a man driven into a corner can value his dignity even above his skin."
+    },
+    "11": {
+      "translation": [
+        "Whenever a friend chose to suspect me",
+        "and gave me hurt in exchange for the good I did,"
+      ],
+      "sharh": "He offers his past friendships as evidence. The sentence leaves us waiting to learn how he answered someone who paid a kindness back in suspicion."
+    },
+    "12": {
+      "translation": [
+        "I turned the back of my shield towards him",
+        "and stayed only long enough to move away."
+      ],
+      "sharh": "A shield once held in the friend’s defence is turned the other way. This reversal lasts only as long as it takes Ma'n to leave: he has no wish to settle into a feud."
+    },
+    "13": {
+      "translation": [
+        "If your cords fray, others will keep a bond with me.",
+        "The earth has room to leave a house of hatred."
+      ],
+      "sharh": "A bond of affection frays like a cord. The two halves give him both things an estranged man needs, someone else to turn to and somewhere else to live."
+    },
+    "14": {
+      "translation": [
+        "Let go of your anger. A woman may be sought in marriage",
+        "and another sent away. Both things are done."
+      ],
+      "sharh": "The veiled reference to marriage and dismissal brings the divorced sister back into the argument. Calling both things customary is Ma'n’s plea to her brother, in the speaker’s own terms."
+    },
+    "15": {
+      "translation": [
+        "Once my heart has turned away from a thing,",
+        "it hardly turns back towards it for the rest of my days."
+      ],
+      "sharh": "He is still speaking to his friend, which shows that affection survives. After the inward turn he describes, there may be no second appeal."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "لَعَمرُكَ",
+      "head": "عَمر",
+      "root": "ع م ر",
+      "meaning": "“By your life”, an oath addressed to the listener."
+    },
+    "1.1.5": {
+      "word": "لَأَوجَلُ",
+      "head": "أَوجَل",
+      "root": "و ج ل",
+      "meaning": "Fearful or apprehensive."
+    },
+    "1.2.3": {
+      "word": "تَغدو",
+      "head": "غَدا",
+      "root": "غ د و",
+      "meaning": "Set out in the morning, here used of approaching death."
+    },
+    "2.1.6": {
+      "word": "أَحُل",
+      "head": "حالَ",
+      "root": "ح و ل",
+      "meaning": "Changed, here changed allegiance."
+    },
+    "2.2.2": {
+      "word": "أَبزاكَ",
+      "head": "أَبزى",
+      "root": "ب ز ي",
+      "meaning": "Overcame or got the better of an opponent."
+    },
+    "2.2.5-7": {
+      "word": "نَبا بِكَ مَنزِلُ",
+      "head": "نَبا بِهِ المَنزِل",
+      "meaning": "“The dwelling recoiled from him”, it proved inhospitable."
+    },
+    "3.2.4": {
+      "word": "غَرِمتَ",
+      "head": "غَرِمَ",
+      "root": "غ ر م",
+      "meaning": "Incurred a financial liability, here compensation."
+    },
+    "3.2.5": {
+      "word": "فَأَعقِلُ",
+      "head": "عَقَلَ",
+      "root": "ع ق ل",
+      "meaning": "Paid blood money for someone liable for it."
+    },
+    "4.1.4": {
+      "word": "صَفَحتُ",
+      "head": "صَفَحَ",
+      "root": "ص ف ح",
+      "meaning": "Forgave a hurt and refrained from retaliation."
+    },
+    "4.2.1": {
+      "word": "لِيُعقِبَ",
+      "head": "أَعقَبَ",
+      "root": "ع ق ب",
+      "meaning": "Followed upon something or supplied its successor."
+    },
+    "5.1.5": {
+      "word": "مَساءَتي",
+      "head": "مَساءَة",
+      "root": "س و أ",
+      "meaning": "Doing harm. The attached ‘me’ identifies its recipient."
+    },
+    "5.2.4": {
+      "word": "ريبَتي",
+      "head": "ريبَة",
+      "root": "ر ي ب",
+      "meaning": "Cause for suspicion. Another reading means ‘my deliberate pace’."
+    },
+    "6.1.1": {
+      "word": "لَحى",
+      "root": "ل ح ي",
+      "meaning": "Cursed or condemned, here in an imprecation."
+    },
+    "6.1.6": {
+      "word": "بِعِرسِهِ",
+      "head": "عِرس",
+      "root": "ع ر س",
+      "meaning": "A spouse, here the wife."
+    },
+    "6.2.2": {
+      "word": "حاشاكَ",
+      "head": "حاشا",
+      "meaning": "“Far be it from you”, a courteous exception to the curse."
+    },
+    "7.1.5": {
+      "word": "تَريبُني",
+      "head": "رابَ",
+      "root": "ر ي ب",
+      "meaning": "Gave cause for doubt or unease."
+    },
+    "7.2.6": {
+      "word": "مُجمِلُ",
+      "head": "مُجمِل",
+      "root": "ج م ل",
+      "meaning": "Gracious in one’s dealings, even in forgiving a wrong."
+    },
+    "8.2.5": {
+      "word": "تَبَدَّلُ",
+      "head": "تَبَدَّلَ",
+      "root": "ب د ل",
+      "meaning": "Took something in exchange for a loss."
+    },
+    "9.2.2-3": {
+      "word": "طَرَفِ الهِجرانِ",
+      "head": "طَرَف الهِجران",
+      "meaning": "“The edge of estrangement”, the point just short of a break."
+    },
+    "10.1.6": {
+      "word": "تَضيمَهُ",
+      "head": "ضامَ",
+      "root": "ض ي م",
+      "meaning": "Wronged someone or denied him his due."
+    },
+    "10.2.5": {
+      "word": "شَفرَةِ",
+      "head": "شَفرَة",
+      "root": "ش ف ر",
+      "meaning": "The sharp cutting edge of a blade."
+    },
+    "10.2.7": {
+      "word": "مَزحَلُ",
+      "head": "مَزحَل",
+      "root": "ز ح ل",
+      "meaning": "Room to move aside or a means of escape."
+    },
+    "11.1.6": {
+      "word": "ظِنَّتي",
+      "head": "ظِنَّة",
+      "root": "ظ ن ن",
+      "meaning": "Suspicion or mistrust directed at him."
+    },
+    "12.1.3-4": {
+      "word": "ظَهرَ المِجَنِّ",
+      "head": "ظَهر المِجَنّ",
+      "meaning": "“The back of the shield”, in an idiom for turning against a former ally."
+    },
+    "12.2.4": {
+      "word": "رَيثَما",
+      "root": "ر ي ث",
+      "meaning": "Just as long as it takes."
+    },
+    "13.1.4-5": {
+      "word": "رَثَّت حِبالُكَ",
+      "head": "رَثَّت حِبالُهُ",
+      "meaning": "“His cords wore out”, the ties of friendship frayed."
+    },
+    "13.2.5": {
+      "word": "القِلى",
+      "root": "ق ل ي",
+      "meaning": "Aversion or hatred."
+    },
+    "14.1.2": {
+      "head": "غَضِبَ",
+      "root": "غ ض ب",
+      "meaning": "A pointed “do not be angry”, to the one friend. The light emphatic ending can be pronounced as a long a at a pause.",
+      "word": "تَغضَبَن"
+    },
+    "14.1.5": {
+      "word": "ظَعينَةٌ",
+      "head": "ظَعينَة",
+      "root": "ظ ع ن",
+      "meaning": "A woman travelling in a litter, hence a woman or wife."
+    },
+    "14.2.1": {
+      "word": "وَتُرسَلُ",
+      "head": "أَرسَلَ",
+      "root": "ر س ل",
+      "meaning": "Let a woman go, here divorced her."
+    },
+    "15.2.3-4": {
+      "word": "آخِرَ الدَّهرِ",
+      "head": "آخِر الدَّهر",
+      "meaning": "“The rest of time”, here the rest of his life."
+    }
+  }
+}
