@@ -1,6 +1,7 @@
 // The library around the poems: tabs, search, poets, reciters, meters, the mini player,
 // links to one bayt, English addresses, and pages rendered ahead of time.
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import { scrollToRow } from "./scroll-to-row";
 
 const POEM = "/poems/taqulu-buthaynatu";
 const TITLE = "تَقولُ بُثَينَةُ لَمّا رَأَت";
@@ -29,34 +30,6 @@ async function expectCurrent(page: Page, name: string) {
   await expect
     .poll(async () => (await el.getAttribute("aria-selected")) === "true" || (await el.getAttribute("aria-current")) === "page")
     .toBe(true);
-}
-
-/** Scrolls a virtual list until a row is drawn and on screen. */
-async function scrollTo(page: Page, text: string) {
-  const row = shown(page, text, true);
-  const where = async (): Promise<"on" | "off" | "unsure"> => {
-    if (!(await row.count())) return "off";
-    // The list can draw the row again between the two looks: then look again, in place.
-    const box = await row.boundingBox({ timeout: 1000 }).catch(() => null);
-    if (!box) return "unsure";
-    return box.y >= 0 && box.y + box.height <= (page.viewportSize()?.height ?? 0) ? "on" : "off";
-  };
-  await page.waitForLoadState("networkidle");
-  for (let i = 0; i < 80; i++) {
-    const at = await where();
-    if (at === "on") break;
-    // Scroll the current screen's scrolling boxes (touch emulation ignores the mouse wheel).
-    if (at === "off") {
-      await page.evaluate(() => {
-        for (const el of document.querySelectorAll("div")) {
-          const o = getComputedStyle(el).overflowY;
-          if ((o === "auto" || o === "scroll") && el.scrollHeight > el.clientHeight && !el.closest("[inert]")) el.scrollBy(0, 400);
-        }
-      });
-    }
-    await page.waitForTimeout(150);
-  }
-  return row;
 }
 
 /** Leaves the poem inside the app: the header on wide windows, back on phones. */
@@ -101,7 +74,7 @@ test("the tabs lead to poets, reciters and meters", async ({ page }) => {
   await expect(page).toHaveURL(/\/poets$/);
   await expectCurrent(page, "الشعراء");
   // The library has many poets: scroll to this one.
-  await expect(await scrollTo(page, "جَميل بُثَينة")).toBeVisible();
+  await expect(await scrollToRow(page, "جَميل بُثَينة")).toBeVisible();
   await section(page, "المُلقون").click();
   await expect(page).toHaveURL(/\/reciters$/);
   await expect(shown(page, "أسامة الواعظ")).toBeVisible();
@@ -112,13 +85,13 @@ test("the tabs lead to poets, reciters and meters", async ({ page }) => {
   await section(page, "الرئيسية").click();
   await expect(page).toHaveURL(/\/$/);
   // The library lists many poems, newest first: scroll to this one.
-  await expect(await scrollTo(page, TITLE)).toBeVisible();
+  await expect(await scrollToRow(page, TITLE)).toBeVisible();
 });
 
 test("a card's opening bayt is set at the poem's measure", async ({ page }) => {
   await page.goto("/");
   // Cards are drawn as they come on screen.
-  await scrollTo(page, TITLE);
+  await scrollToRow(page, TITLE);
   const halves = () =>
     page.evaluate(() =>
       [...document.querySelectorAll<HTMLElement>("div")]
@@ -147,7 +120,7 @@ test("search finds a poem by title, opening bayt, poet or reciter, with or witho
     await search.fill(q);
     await expect(nothing, q).toHaveCount(0);
     // Other poems can match too, and come first.
-    await expect(await scrollTo(page, TITLE), q).toBeVisible();
+    await expect(await scrollToRow(page, TITLE), q).toBeVisible();
   }
   for (const q of ["لعينيك", "المتنبي", "al-Mutanabbi"]) {
     await search.fill(q);
@@ -158,7 +131,7 @@ test("search finds a poem by title, opening bayt, poet or reciter, with or witho
   await expect(nothing).toBeVisible();
   await page.getByRole("button", { name: "امسح البحث" }).click();
   await expect(search).toHaveValue("");
-  await expect(await scrollTo(page, TITLE)).toBeVisible();
+  await expect(await scrollToRow(page, TITLE)).toBeVisible();
 });
 
 test("search fields start where the language reads from", async ({ page }) => {
@@ -235,7 +208,7 @@ test("moving to another page never shows an empty screen", async ({ page }) => {
     const path = new URL(r.url()).pathname;
     if (path.startsWith("/_expo/")) fetched.push(path);
   });
-  await (await scrollTo(page, TITLE)).click();
+  await (await scrollToRow(page, TITLE)).click();
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
   await expect(live(page, page.getByRole("slider"))).toBeVisible();
   await live(page, page.getByRole("link", { name: /جَميل بُثَينة/ })).click();
@@ -247,7 +220,7 @@ test("moving to another page never shows an empty screen", async ({ page }) => {
 
 test("back retraces the reader's steps", async ({ page }) => {
   await page.goto("/");
-  await (await scrollTo(page, TITLE)).click();
+  await (await scrollToRow(page, TITLE)).click();
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
   await live(page, page.getByRole("link", { name: /جَميل بُثَينة/ })).click();
   await expect(page).toHaveURL(/\/poets\/jamil-buthayna$/);
@@ -259,7 +232,7 @@ test("back retraces the reader's steps", async ({ page }) => {
 
 test("a poet's page tells who they were and lists their poems", async ({ page }) => {
   await page.goto("/poets");
-  await (await scrollTo(page, "جَميل بُثَينة")).click();
+  await (await scrollToRow(page, "جَميل بُثَينة")).click();
   await expect(page).toHaveURL(/\/poets\/jamil-buthayna$/);
   await expect(page.getByText("جَميل بن عبد الله بن مَعمَر العُذْري")).toBeVisible();
   await page.getByText(TITLE).first().click();
@@ -270,19 +243,19 @@ test("a reciter's page links to their channel and lists their poems", async ({ p
   await page.goto("/reciters/osama-alwaaedh");
   await expect(page.getByText("أسامة مصطفى الواعظ")).toBeVisible();
   await expect(page.getByRole("button", { name: "يوتيوب" })).toBeVisible();
-  await (await scrollTo(page, TITLE)).click();
+  await (await scrollToRow(page, TITLE)).click();
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
 });
 
 test("a meter's page shows its feet and its poems", async ({ page }) => {
   await page.goto("/meters");
   // The fifteenth of sixteen: below the fold.
-  await (await scrollTo(page, "المتقارب")).click();
+  await (await scrollToRow(page, "المتقارب")).click();
   await expect(page).toHaveURL(/\/meters\/mutaqarib$/);
   await expect(shown(page, "فَعولُنْ فَعولُنْ فَعولُنْ فَعولُنْ")).toBeVisible();
   // How many poems the meter has, in the app's words: قصيدة واحدة, قصيدتان, ٣ قصائد, ١١ قصيدة.
   await expect(live(page, page.getByText(/^(قصيدة واحدة|قصيدتان|[٠-٩]+ قصائد|[٠-٩]+ قصيدة)$/))).toBeVisible();
-  await expect(await scrollTo(page, TITLE)).toBeVisible();
+  await expect(await scrollToRow(page, TITLE)).toBeVisible();
 });
 
 test("the mini player keeps the recitation going between pages", async ({ page }) => {
@@ -339,7 +312,7 @@ test("English pages live under /en, and switching language keeps the page", asyn
   await expect(page.locator("html")).toHaveAttribute("dir", "ltr");
   await section(page, "Poets").click();
   await expect(page).toHaveURL(/\/en\/poets$/);
-  await (await scrollTo(page, "Jamil Buthayna")).click();
+  await (await scrollToRow(page, "Jamil Buthayna")).click();
   await expect(page).toHaveURL(/\/en\/poets\/jamil-buthayna$/);
   await live(page, page.getByRole("button", { name: "Language" })).click();
   await page.getByRole("menuitem", { name: "العربية" }).click();

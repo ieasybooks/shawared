@@ -1,0 +1,31 @@
+import { expect, type Page } from "@playwright/test";
+
+/** Find a row even when the virtual list has not mounted it yet. */
+export async function scrollToRow(page: Page, text: string) {
+  const row = page.getByText(text, { exact: true }).and(page.locator(":not([inert]):not([inert] *)")).filter({ visible: true }).first();
+  await page.waitForLoadState("networkidle");
+
+  let fromStart = true;
+  while (!(await row.count())) {
+    const moved = await page.evaluate(async (reset) => {
+      let moved = false;
+      for (const el of document.querySelectorAll("div")) {
+        if (!el.clientHeight || el.scrollHeight <= el.clientHeight || el.closest("[inert]")) continue;
+        const overflow = getComputedStyle(el).overflowY;
+        if (overflow !== "auto" && overflow !== "scroll") continue;
+        const previous = el.scrollTop;
+        el.scrollTop = reset ? 0 : previous + el.clientHeight;
+        if (el.scrollTop !== previous) moved = true;
+      }
+      // Let the virtual list mount the rows exposed by this scroll.
+      await new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      return moved;
+    }, fromStart);
+    if (!fromStart && !moved) break;
+    fromStart = false;
+  }
+
+  await expect(row).toBeVisible();
+  await row.scrollIntoViewIfNeeded();
+  return row;
+}
