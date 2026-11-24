@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { scrollToRow } from "./scroll-to-row";
 
 const POEM = "/poems/taqulu-buthaynatu";
 const panelTitle = (page: Page) => page.getByText(/^البيت [٠-٩]+ · الشرح$/).first();
@@ -16,25 +17,9 @@ async function open(page: Page) {
   return errors;
 }
 
-/** Scrolls the home page's list until the poem's card is drawn: it lists many poems, newest first. */
-async function scrollToCard(page: Page, title: string) {
-  const card = page.getByText(title, { exact: true }).filter({ visible: true }).first();
-  await page.waitForLoadState("networkidle");
-  for (let i = 0; i < 80 && !(await card.count()); i++) {
-    await page.evaluate(() => {
-      for (const el of document.querySelectorAll("div")) {
-        const o = getComputedStyle(el).overflowY;
-        if ((o === "auto" || o === "scroll") && el.scrollHeight > el.clientHeight && !el.closest("[inert]")) el.scrollBy(0, 400);
-      }
-    });
-    await page.waitForTimeout(150);
-  }
-  return card;
-}
-
 test("home lists the poem and opens it", async ({ page }) => {
   await page.goto("/");
-  await (await scrollToCard(page, "تَقولُ بُثَينَةُ لَمّا رَأَت")).click();
+  await (await scrollToRow(page, "تَقولُ بُثَينَةُ لَمّا رَأَت")).click();
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
   await expect(slider(page)).toBeVisible();
 });

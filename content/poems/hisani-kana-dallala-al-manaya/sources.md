@@ -1,0 +1,32 @@
+# حصاني كان دلال المنايا
+
+## Recording and extent
+
+Osama Al-Waaedh performs six consecutive verses, each half once, from «حصاني كان دلال المنايا» through «ترى الأقطار باعاً أو ذراعا». The 73.387 s original has measured silence at 0–4.782 and 72.138–73.387 s. The edition keeps 4.28–72.65 s (68.37 s) to preserve the attack and the final sung vowel. [Recording](https://www.youtube.com/watch?v=prOyWRfGEvg)
+
+## Witnesses and attribution
+
+- Yaqut al-Hamawi, *Mu'jam al-buldan*, entry «المصانع», **5:136**. While describing a Yemeni district, Yaqut introduces five verses with «قال عنترة العبسي». The first locates the speaker's deeds at al-Masani'. The second sets up the market with spears and offers human lives as its wares. The next three correspond to recorded **1, 2 and 4**, including «فخاض غبارها وشرى وباعا». He reads «في البيدا» (in the open country) for «في الهيجا», and «ولو أرسلت سيفي» for «رمحي». His closing «من قصيدة» identifies the quotation as an extract. The medieval attribution thus covers three of the six recorded verses. [Entry and quotation](https://shamela.ws/book/23735/2169)
+- *Diwan Antar*, Beirut, Matba'at al-Adab, fourth edition, 1893, **p. 52**, «وقال في يوم المصانع». This page gives the sequence beginning «إذا كشف الزمان لك القناعا». Counting the fourteen printed verse lines places the recording at **9–14**, with 1–8 left out. The catalogue's 14 belongs specifically to this printing, and 1893 is its publication year. Directly before the horse becomes a broker, spears establish the market and lives become its wares. [Title page](https://archive.org/details/AAlexandrina-027929/page/n0/mode/1up) · [Printed p. 52](https://archive.org/details/AAlexandrina-027929/page/n55/mode/1up)
+- Majid Tarad, *Sharh Diwan Antara*, Dar al-Kitab al-Arabi, poem 75, **p. 90**. The six verses are consecutive here too. The last printed number jumps from 13 to 15 with no intervening verse. Tarad prints «غِمارها» (its depths or thick of battle) where the Beirut printing and Yaqut have «غُبارها» (its dust). Ahmad al-Hashimi, *Jawahir al-adab*, **2:262–263**, also gives the fourteen-line sequence, including «في الهيجا», «أنا العبد» and «رمحي». These witnesses establish circulation and order. They do not constitute separate early manuscript recensions. [Tarad, p. 90](https://archive.org/details/3926pdf/page/n89/mode/1up) · [al-Hashimi, p. 262](https://shamela.ws/book/21505/489) · [p. 263](https://shamela.ws/book/21505/490)
+- Muhammad Sa'id Mawlawi, *Diwan Antara, tahqiq wa-dirasa*, **pp. 54–55**, distinguishes early transmissions from the expanded printed collection associated with Abkarius and al-Khuri, which drew also on the popular *Sirat Antar*. Its diverse contents lack source identifications by piece. The rhyme index of Mawlawi's critical collection, **p. 365**, lists three poems under ʿayn. All have other incipits, and none is «إذا كشف الزمان». The six-line passage belongs to the expanded Antarah tradition. Yaqut attests part long before the Beirut print. No particular *Sira* episode or early diwan manuscript has been established as the source of all six. The poem and both introductions therefore leave the personal attribution provisional. [Discussion](https://archive.org/details/3562pdf/page/n61/mode/1up) · [Continuation](https://archive.org/details/3562pdf/page/n62/mode/1up) · [Rhyme index, p. 365](https://archive.org/details/3562pdf/page/n370/mode/1up)
+- Two other quotations show how individual verses varied in circulation. The third Beirut edition of Shakir Shuqayr al-Batluni's anthology (1886) gives the broker, the physician and the coward, with «ولو أرسلت **روحي** مع جبان» at recorded 4. The Egyptian journal *al-Zuhur* quotes the first three recorded lines with «أنا **البطل** الذي خُبّرت عنه» in 3. The recording follows the Beirut forms «رمحي» and «أنا العبد». [Al-Batluni, Nafh al-azhar, p. 67](https://shamela.ws/book/28175/65) · [Al-Zuhur, 1:51](https://shamela.ws/book/36534/64)
+
+## Recording audit
+
+| Half | Evidence and decision |
+| --- | --- |
+| 1.2 | Both clip recognisers hear a boundary like «فخاضوا بارها». The sung consonants cross the boundary in «فخاضَ غبارَها» (aligned confidences 0.81, 0.58). Beirut and Yaqut give precisely that phrase. On the aligned word «غُبارها» (dust) leads Tarad's «غِمارها» (depths) by 9.73. |
+| 4.1 | The clip outputs fuse «مع جبان». The words occupy separate aligned spans at 37.12–37.52 and 37.54–38.70 s of the edit. The two full transcriptions distinguish them. «رُمحي» leads Yaqut's «سيفي» by 15.96. The reading with closed ʿayn, «مَعْ جَبانٍ», leads «مَعَ جَبانٍ» by 5.53 and scans «وَلَو أَرسَلْ / تُ رُمحي مَعْ / جَبانِنْ». The word card explains the unvowelled ʿayn in the displayed text. Al-Ashmuni records this pronunciation before a consonant with a vowel. [Sharh al-Ashmuni, 2:163](https://shamela.ws/book/11742/690) |
+| 5.1 | The first clip decoder returned «ولا تقولوا ما إنهم». Audar recovers «الأرض خوفاً من حسام», the full recording gives «ملأت الأرض خوفاً من حسامي», and the aligned words for «ملأت» and «حسامي» score 0.81 and 0.87. |
+| 6.1 | The first clip decoder supplies «بأسهم», the second ends on «بأس». Both full-file transcripts preserve the first-person ending. «بأسي» has aligned confidence 0.94 and leads «بأسهم» by 10.88. The Beirut and Tarad readings also keep the boast in the first person. |
+
+At **2.1**, «الهيجا» (battle), as sung in the full recording, leads Yaqut's «البيدا» (open country) by 10.14. At **3.1** the two full transcriptions give «أنا العبد». «العبد» leads «البطل» by 4.09. This distinction matters to the speaker's challenge to someone who knows him only by report.
+
+Wafir with ʿayn as the rhyme consonant and a released alif. The first sadr divides «حِصاني كا | نَ دَلّالَلْ | مَنايا», and the third «أَنَلْعَبْدُلْ | لَذي خُبِّرْ | تَ عَنْهُو». Both give مفاعيلن مفاعيلن فعولن, with ʿasb in the first two feet. The closing image uses two actual body measures, the span of the outstretched arms and the cubit from elbow to fingertip.
+
+## Final timing check
+
+The final highlight for 6.2 ends at 67.67 s on the app master. The 5 half-lines whose end times changed were transcribed again. The final per-half check flags 3 halves.
+
+The revised 6.1 now gives «بأسي». In a continuous excerpt across 4.1 both systems still write «معجبان» as one word. The two words «مع جبان» give the companion to whom the speaker lends his spear. The separate word timings and the print variants are recorded above.

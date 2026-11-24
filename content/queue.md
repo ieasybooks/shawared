@@ -4,6 +4,31 @@ The original queue was added on 16 November 2026. Intake notes come from each vi
 
 Status: **transcribed** (`scripts/intake.ts` done), then **drafted** (all files written), **reviewed** (second reader done), **published**.
 
+## Twenty selected recordings, 24 November 2026
+
+| Shortlist # | Recording | Poem | Poet | Reciter | Length | Status | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | https://www.youtube.com/watch?v=mEgjxXIFu1A | اليوم عهدكم فأين الموعد | المتنبي | أسامة الواعظ | 1:54 | reviewed: `al-yawma-ahdukum` | Al-Waaedh recites the ten opening verses of a forty-verse ode for Shuja' ibn Muhammad of Manbij. |
+| 2 | https://www.youtube.com/watch?v=Cf4FQOeRJCU | ملومكما يجل عن الملام | المتنبي | أسامة النهاري | 6:17 | reviewed: `malumukuma-yajillu` | Al-Mutanabbi’s fever visits him at night. Al-Nahari omits one of the diwan’s 42 verses. |
+| 3 | https://www.youtube.com/watch?v=dH04Ce9WQgQ | يعاتبني في الدين قومي وإنما | المقنع الكندي | عبد الرحمن السعيد | 2:51 | reviewed: `yuatibuni-fi-al-dayn` | Al-Saeed’s corrected recording distinguishes «هَوُوا» (they loved) from «هَوَوا» (they fell). |
+| 4 | https://www.youtube.com/watch?v=prOyWRfGEvg | حصاني كان دلال المنايا | عنترة بن شداد | أسامة الواعظ | 1:13 | reviewed: `hisani-kana-dallala-al-manaya` | Six verses also found in the popular Beirut diwan. The attribution to Antarah is uncertain. |
+| 5 | https://www.youtube.com/watch?v=wJ68QFr6o-k | منظومة أسماء الله الحسنى | محمد تقي الدين الهلالي | خالد الشرفي | 18:42 | reviewed: `manzumat-asma-allah-al-husna` | Al-Hilali’s 111 verses invoke the divine names in a sequence of prayers. The author dates the poem to 10 Dhu al-Qa'da 1397 AH. |
+| 6 | https://www.youtube.com/watch?v=feT-tT6ZmJU | غير مجد في ملتي واعتقادي | أبو العلاء المعري | عبد الرحمن السعيد | 8:29 | reviewed: `ghayru-mujdin` | All 64 verses of the elegy for the Hanafi jurist Abu Hamza. Several words run across the division between halves. |
+| 7 | https://www.youtube.com/watch?v=SBGsgpvk-4k | يا ظبية البان ترعى في خمائله | الشريف الرضي | أسامة النهاري | 3:08 | reviewed: `ya-zabyata-al-ban` | The diwan dates this recollection of pilgrimage and a meeting at Mina to Muharram 395 AH. |
+| 8 | https://www.youtube.com/watch?v=gWDFXnt6BS4 | معلقة النابغة الذبياني | النابغة الذبياني | أسامة النهاري | 7:18 | reviewed: `muallaqat-al-nabigha` | Al-Nahari recites all 49 verses in Abu al-Fadl Ibrahim’s diwan. Al-Tibrizi gives a different sequence of 50. |
+| 9 | https://www.youtube.com/watch?v=crFBfuA-ksA | ذريني للغنى أسعى فإني | عروة بن الورد | عبد الرحمن السعيد | 1:08 | reviewed: `dharini-lil-ghina` | Five verses on how people treat the poor and the rich. Al-Jahiz also quotes them in his Book of Misers. |
+| 10 | https://www.youtube.com/watch?v=sc2ulpGbbZU | أبت عبراته إلا انسكابا | أبو فراس الحمداني | أسامة النهاري | 7:00 | reviewed: `abat-abaratuhu` | Al-Nahari reads all 55 verses, from the abandoned campsite to the Hamdanid campaign. |
+| 11 | https://www.youtube.com/watch?v=jgotHx9U5ns | بكى صاحبي لما رأى الدرب دونه | امرؤ القيس | أسامة الواعظ | 0:40 | reviewed: `baka-sahibi` | Two verses on the journey to Caesar. Al-Waaedh performs both verses twice. |
+| 12 | https://www.youtube.com/watch?v=l_7NlkEPTk0 | مغاني الشعب طيبا في المغاني | المتنبي | أسامة النهاري | 5:44 | reviewed: `maghani-al-shib` | The valley of Bawwan opens the ode in praise of Adud al-Dawla. Al-Nahari reads all 48 verses. |
+| 13 | https://www.youtube.com/watch?v=oBU-SoD13fo | طحا بك قلب في الحسان طروب | علقمة الفحل | عبد الرحمن السعيد | 6:31 | reviewed: `taha-bika-qalbun` | Alqama asks the Ghassanid king al-Harith to free Sha's. The performance and the Mufaddaliyyat arrange the verses differently. |
+| 14 | https://www.youtube.com/watch?v=E5MF0k9BLTc | من سره الموت صرفا لا مزاج له | حسان بن ثابت | أسامة النهاري | 1:53 | reviewed: `man-sarrahu-al-mawtu` | Ten verses on the killing of the caliph Uthman. Al-Tabari preserves a shorter text in a different order. |
+| 15 | https://www.youtube.com/watch?v=laxPHpIqjbY | معلقة عبيد بن الأبرص | عبيد بن الأبرص | أسامة النهاري | 4:49 | reviewed: `muallaqat-ubayd` | Al-Nahari recites 45 of the 50 verses in Adra’s diwan, changing the order of the eagle’s pursuit. The shortened basit varies from verse to verse. |
+| 16 | https://www.youtube.com/watch?v=0uIefFxtSRc | ذكرى المولد | أحمد شوقي | أسامة الواعظ | 2:02 | reviewed: `salu-qalbi` | Al-Waaedh reads the opening twelve verses of Shawqi’s 71-verse «ذكرى المولد», ending with the snake shedding its skin. |
+| 17 | https://www.youtube.com/watch?v=43wOvi5Stik | هواي مع الركب اليمانين مصعد | جعفر بن علبة الحارثي | عبد الرحمن السعيد | 1:50 | reviewed: `hawaya-maa-al-rakbi` | Eight verses on a prisoner’s longing in Mecca. Abu Tammam selected six for the Hamasa. |
+| 18 | https://www.youtube.com/watch?v=H4tyElRsIAk | يا دار ما فعلت بك الأيام | أبو نواس | أسامة النهاري | 2:50 | reviewed: `ya-daru-ma-faalat` | Twenty verses addressed to the Abbasid caliph al-Amin, son of Harun al-Rashid and Zubayda. |
+| 19 | https://www.youtube.com/watch?v=rwGCdziPYQw | نام الخلي وما أحس رقادي | الأسود بن يعفر | عبد الرحمن السعيد | 4:46 | reviewed: `nama-al-khaliyyu` | Al-Saeed reads 35 verses of al-Aswad’s ode on lost youth and the passing of kingdoms. |
+| 20 | https://www.youtube.com/watch?v=PB6AWYlqzwI | من رآنا فليحدث نفسه | عدي بن زيد العبادي | عبد الرحمن السعيد | 1:51 | reviewed: `man-raana` | Seven verses about the passage of time. The Book of Songs and al-Mubarrad give the speaking voice different settings. |
+
 ## Ten selected recordings, 19 November 2026
 
 | Shortlist # | Recording | Poem | Poet | Reciter | Length | Status | Notes |

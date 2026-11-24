@@ -1,0 +1,202 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Whoever Takes Pleasure in Death Undiluted",
+  "intro": "The diwan attributes this lament to Hassan ibn Thabit after the killing of the caliph Uthman ibn Affan in Medina in 35 AH (656 CE). It moves from men in armour at Uthman's house to the greying man who spent his nights in prayer, then turns towards supporters in Syria. Al-Tabari preserves seven verses and ends with the speaker longing to know what passed between Ali and Uthman. In the diwan order heard here, that wish comes before the portrait of Uthman.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Whoever takes pleasure in death undiluted, with nothing mixed in,",
+        "let him enter the lions' den in Uthman's house."
+      ],
+      "sharh": "Death is served like a drink taken neat. Calling the house a lions' den prepares for the figures in armour whom the speaker sees there."
+    },
+    "2": {
+      "translation": [
+        "On their backs they bear rings of mail that join",
+        "the helmets above their noses, a glory to their breastplates."
+      ],
+      "sharh": "The lions resolve into men wearing mail. The glosses preserved in the diwan explain how the rings meet the helmets above the nose. Even the last word, normally “bodies”, names part of the armour."
+    },
+    "3": {
+      "translation": [
+        "But if only I knew, if only the birds could tell me",
+        "what passed between Ali and Ibn Affan."
+      ],
+      "sharh": "He would accept even a bird as a messenger. What passed between the two men remains an open question. Ibn al-Athir records a tradition that Syrian transmitters added this verse."
+    },
+    "4": {
+      "translation": [
+        "They sacrificed a greying man marked by prostration,",
+        "who divided the night between glorifying God and reciting the Quran."
+      ],
+      "sharh": "The verb evokes the slaughter of a sacrificial victim. Seen first by the grey in his hair, the man is remembered by the mark of his nightly prayer. Ibn Abd al-Barr records that some attributed this verse to Imran ibn Hittan."
+    },
+    "5": {
+      "translation": [
+        "Soon in your own homes you will hear,",
+        "“God is greatest! Vengeance for Uthman!”"
+      ],
+      "sharh": "The speaker imagines the cry reaching his listeners in their own homes. Medieval lexicographers heard two possible audiences in it, people summoned to avenge Uthman or the killers confronted with what they had done."
+    },
+    "6": {
+      "translation": [
+        "I am content with the people of Syria as my support,",
+        "with the commander, and with these companions as brothers."
+      ],
+      "sharh": "The poem turns to the people on whom the speaker relies. Syria supplies his supporters, the commander has his allegiance, and the companions have the standing of brothers. The commander has no personal name here."
+    },
+    "7": {
+      "translation": [
+        "I am one of them, whether they are away or here,",
+        "until I die and for as long as I bear the name Hassan."
+      ],
+      "sharh": "His allegiance holds even when they cannot see one another. Bearing his own name becomes a second way of saying that the pledge lasts his whole life."
+    },
+    "8": {
+      "translation": [
+        "Take heart. My mother and her children would ransom you.",
+        "Patience in adversity sometimes avails."
+      ],
+      "sharh": "Offering his mother and all her children as a ransom expresses the depth of his attachment. The small word “sometimes” gives his appeal to patience a limit."
+    },
+    "9": {
+      "translation": [
+        "Fasten the swords in the folds of your belts",
+        "until, by them, the one whose hour has come meets death."
+      ],
+      "sharh": "The swords in the belts give a visible form to the summons. The Arabic returns to the same verb at the close, tying the prospect of death to the arrival of a person's appointed hour."
+    },
+    "10": {
+      "translation": [
+        "Perhaps one day you will see, to your joy,",
+        "a caliph of God among you like the one who was."
+      ],
+      "sharh": "The last word looks backwards. The speaker measures a hoped-for caliph against the man he mourns and leaves the successor unnamed."
+    }
+  },
+  "words": {
+    "1.1.4": {
+      "word": "صِرفاً",
+      "head": "صِرف",
+      "root": "ص ر ف",
+      "meaning": "Undiluted, as of a drink served neat."
+    },
+    "1.2.2": {
+      "word": "مَأسَدَةً",
+      "head": "مَأسَدَة",
+      "root": "أ س د",
+      "meaning": "A place frequented by lions, here an image for the house full of men."
+    },
+    "2.1.1": {
+      "word": "مُستَحقِبي",
+      "head": "مُستَحقِب",
+      "root": "ح ق ب",
+      "meaning": "Carrying something behind the back, like a load behind a rider."
+    },
+    "2.1.3": {
+      "word": "الماذِيِّ",
+      "head": "الماذِيّ",
+      "root": "م ذ ي",
+      "meaning": "Fine, supple mail made up of linked rings."
+    },
+    "2.1.5": {
+      "word": "شَفَعَت",
+      "head": "شَفَعَ",
+      "root": "ش ف ع",
+      "meaning": "The rings of mail joined the helmets above the noses. Some diwan manuscripts give safa'at with an s, meaning “left a mark”."
+    },
+    "2.2.2": {
+      "word": "المَخاطِمِ",
+      "head": "مَخطِم",
+      "root": "خ ط م",
+      "meaning": "Noses, literally the parts of the face on which a halter would rest."
+    },
+    "2.2.3": {
+      "word": "بيضاً",
+      "head": "بَيضَة",
+      "root": "ب ي ض",
+      "meaning": "Helmets. The singular also means an egg, which the curved helmet resembles."
+    },
+    "2.2.5": {
+      "word": "أَبدانا",
+      "head": "بَدَن",
+      "root": "ب د ن",
+      "meaning": "Breastplates or short coats of armour. Badan can mean the body itself. The diwan glosses explain the plural here as armour."
+    },
+    "3.1.2-3": {
+      "word": "لَيتَ شِعري",
+      "head": "لَيتَ شِعري",
+      "meaning": "“If only I knew”, a set expression introducing what the speaker longs to find out."
+    },
+    "3.2.4": {
+      "word": "عَلِيٍّ",
+      "head": "عَلِيّ",
+      "meaning": "Ali ibn Abi Talib, the Prophet's cousin and the caliph who succeeded Uthman."
+    },
+    "4.1.2": {
+      "word": "بِأَشمَطَ",
+      "head": "أَشمَط",
+      "root": "ش م ط",
+      "meaning": "A man whose hair is streaked with grey."
+    },
+    "4.1.3-4": {
+      "word": "عُنوانُ السُّجودِ",
+      "head": "عُنوان السُّجود",
+      "meaning": "“The mark of prostration”, a visible sign of repeated prayer."
+    },
+    "5.2.4": {
+      "word": "ثاراتِ",
+      "head": "ثَأر",
+      "root": "ث أ ر",
+      "meaning": "Claims of blood vengeance. The cry can summon the avengers or reproach the killers."
+    },
+    "6.1.3-4": {
+      "word": "بِأَهلِ الشّامِ",
+      "head": "أَهل الشّام",
+      "meaning": "Ahl al-Sham, the people of the wider Syrian region."
+    },
+    "6.1.5": {
+      "word": "زافِرَةً",
+      "head": "زافِرَة",
+      "root": "ز ف ر",
+      "meaning": "A body of supporters on whom someone can lean in distress."
+    },
+    "8.1.1": {
+      "word": "وَيهاً",
+      "head": "وَيهاً",
+      "meaning": "An exclamation of encouragement, calling on others to take heart."
+    },
+    "9.1.3": {
+      "word": "بِثِنيٍ",
+      "head": "ثِني",
+      "root": "ث ن ي",
+      "meaning": "A fold or doubled portion, here of the belt."
+    },
+    "9.1.5": {
+      "word": "مَناطِقِكُم",
+      "head": "مِنطَقَة",
+      "root": "ن ط ق",
+      "meaning": "Belts or girdles worn at the waist."
+    },
+    "9.2.2": {
+      "word": "يَحينَ",
+      "head": "حانَ",
+      "root": "ح ي ن",
+      "meaning": "To perish, to come to one's appointed end."
+    },
+    "10.1.5": {
+      "word": "بِمَغبَطَةٍ",
+      "head": "مَغبَطَة",
+      "root": "غ ب ط",
+      "meaning": "In a happy condition others might wish to share."
+    },
+    "1.2.5": {
+      "word": "عُثمانا",
+      "head": "عُثمان",
+      "meaning": "Uthman ibn Affan, the third caliph. The house named in the opening is his home in Medina, where he was killed in 35 AH (656 CE)."
+    }
+  }
+}

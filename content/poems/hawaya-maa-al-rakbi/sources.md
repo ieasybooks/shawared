@@ -1,0 +1,29 @@
+# هَوايَ مَعَ الرَّكبِ اليَمانينَ مُصعِدٌ
+
+## Recording and sequence
+
+Abd al-Rahman al-Saeed introduces the verses with «قال جعفر بن علبة الحارثي، وكان محبوسًا في مكة». The decoded source lasts 109.540 s. The retained interval is 26.56–101.65 s (75.09 s). The first bayt begins after the pause at 26.199–27.023 s and «مطلق» trails off before the terminal silence at 101.115 s. The eight numbered cards and the full recitation follow al-Jarrah's bayts **1, 2, 4, 5, 6, 7, 8, 9**, both halves once. His third bayt «عجبت لمسراها وسرب أنت به / تكاد له الأرض البسيطة تشرق» is omitted. The two adjacent printed lines beginning «عجبت لمسراها» are distinct. The recording moves from the locked door directly to «ألمت فحيت». The metre is *tawil*, the rawiy qaf. [Recording](https://www.youtube.com/watch?v=43wOvi5Stik)
+
+## Witnesses and attribution
+
+- Abbas Hani al-Jarrah, *Ja'far ibn Ulba al-Harithi, siratuhu wa-ma tabaqqa min shi'rihi*, first edition, 2016, no. 3. Printed p. 42 gives the occasion and witness list. Pages 43–44 print nine bayts with variants and a glossary. The spoken introduction agrees with the heading, including Mecca. The diwan supplies «ألمّت فحيّت» (app 3), «أشرق» in the sense of choking (app 4), «مذلّق» for a sharpened blade (app 7) and «صبابة» for tender longing (app 8). [Scan, p. 42 and following](https://archive.org/details/20260226_20260226_2338/page/n42/mode/2up)
+- Abu Tammam's *Hamasa*, in al-Marzuqi's commentary, pp. 40–44, and al-Tabrizi's, I, pp. 11–12, selects app **1, 2, 3, 5, 6, 8**. Al-Marzuqi explains why love poetry opens in the martial section here. The prisoner endures the threat of death and can still walk steadily in fetters. His explanation of «جنيب» gives the animal led at the rider's side. The distinction between the traveller's body and his «هوى» informs the translation. Al-Marzuqi's «أتتنا فحيّت» in app 3 and the variant «ضمانة» for «صبابة» in app 8 both have standing in the transmission. The latter would turn longing into a wasting sickness. The Tabrizi text on the linked pages reads «ألمّت» and «صبابة» as recited. Al-Jarrah's apparatus on p. 44 reports «ضمانة» from another Tabrizi witness. [Al-Marzuqi, p. 40](https://shamela.ws/book/26536/22) · [p. 44](https://shamela.ws/book/26536/26) · [Al-Tabrizi, I, p. 11](https://shamela.ws/book/6907/10) · [p. 12](https://shamela.ws/book/6907/11)
+- **App 4, «فما برحت حتى وددت».** This is al-Jarrah 5. Ibn Dawud places the bayt in an anonymous poem about a nocturnal meeting on p. 26 of *al-Zahra*. On p. 101 he includes the same line in a related set with the prison door, the woman's visit and «بمكة موثق». His heading there calls the poet a Bedouin imprisoned in Ta'if. The attribution in the recording and in al-Jarrah is retained with that reservation. Neither occurrence in *al-Zahra* names Ja'far. [P. 26](https://shamela.ws/book/738/26) · [p. 101](https://shamela.ws/book/738/101)
+- **App 7, «وكيف وفي نفسي حسام مذلق».** Al-Jarrah prints this as his eighth bayt on p. 44. The inventory on p. 42 specifically excludes his eighth from the *Hamasa* selection. The full recording and seventh card supply both halves. Abu al-Faraj al-Isfahani, *al-Aghani*, XIII, pp. 34–35, independently quotes it as Ja'far's. The sword is «في كفّي» on p. 35 and the ending is «ويعلق». In the recording and al-Jarrah it is «في نفسي … ويفلق», a sword within the captive. On the same page *al-Aghani* gives seven bayts corresponding to app **2, 3, 5, 7, 6, 8, 1**. It reads «بالقفل مغلق» at 2.2, «قلبي يزدهيه وعيدهم» at 6.1 and closes with «فأما الهوى والود مني فطامح / إليك وجثماني بمكة موثق». Page 34 locates the imprisonment in Mecca and records more than one account of the feud. [Al-Aghani, XIII, p. 34](https://archive.org/details/al-aghani-13/page/n32/mode/2up) · [p. 35](https://archive.org/details/al-aghani-13/page/n33/mode/2up)
+- Al-Zirikli, *al-A'lam*, II, p. 125, supplies the name, the kunya Abu Arim, Najran, the accusation relating to Khushayna of Uqayl, and the death in 145 AH (762 CE). The notice distinguishes accounts of who exacted retaliation. [II, p. 125](https://shamela.ws/book/12286/1300)
+
+## Candidate readings on the audio
+
+The aligned half 2.2 favours «دوني مغلق» over the *Aghani* reading «بالقفل مغلق» by 49.79 points. For 3.1 «ألمّت» leads al-Marzuqi's «أتتنا» by 17.94. The gaps for 7.1 «في نفسي» over «في كفّي» and 7.2 «ويفلق» over «ويعلق» are 11.21 and 13.24. In 8.1 the gap for «صبابة» over «ضمانة» is 20.81. The recorded variants preserve the sharper distinction between what prison holds and what travels with his beloved. [Al-Jarrah, pp. 43–44](https://archive.org/details/20260226_20260226_2338/page/n43/mode/2up) · [Al-Aghani, XIII, p. 35](https://archive.org/details/al-aghani-13/page/n33/mode/2up)
+
+## Half verification
+
+The first per-half verifier flagged 3 of 16 halves, affecting 4 of 83 words. In 4.2 it returned «لما في فؤادي». The independent clip begins «بما فيه فؤادي» and the full recitation's transcription has «بما في فؤادي». The candidate «بما» leads «لما» by 6.08 points. Al-Jarrah and the two passages of *al-Zahra* read «بما في فؤادي». In 5.2 the first clip gave «أفرغ». The independent clip gives «أفرق», the printed verb meaning “I fear”, which also supplies the qaf rhyme. The score gap over «أفرغ» is 4.48. In 8.1 the first model reported a generation loop and stopped at «من هــ». The independent clip transcribes the whole «ولكن عرتني من هواك صبابة», also on the final card. All sixteen addressed halves have continuous word alignment.
+
+## Metre check
+
+The opening sadr scans فعولُ مفاعيلن فعولن مفاعلن, and its ajuz فعولن مفاعيلن فعولُ مفاعلن. In bayt 5 both halves have فعولن مفاعيلن فعولن مفاعلن. The qaf is retained in «موثق، مغلق، أفرق، مطلق».
+
+## Final timing check
+
+The final highlight for 8.2 ends at 74.59 s on the app master. The 7 half-lines whose end times changed were transcribed again. The final per-half check flags 3 halves.

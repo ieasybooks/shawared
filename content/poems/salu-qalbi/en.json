@@ -1,0 +1,218 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Remembering the Prophet’s Birth",
+  "intro": "Shawqi’s collected poems title this work “Remembering the Prophet’s Birth”. Ibrahim al-Abyari dates it to the Mawlid of 1333 AH (1914–15 CE). Long before he reaches Muhammad’s birth and teaching, he questions a heart bereaved of friends and youth, asking what such losses have taught it about the world. In this outdoor reading from Salalah, Osama al-Waaedh stops at the image of a snake shedding its skin, one verse short of its fangs and well before Shawqi turns to wealth and charity.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Ask my heart, the morning it found solace and returned.",
+        "Perhaps it has a grievance against beauty."
+      ],
+      "sharh": "He sends his listeners to question his heart as though it were someone newly returned. A grievance would mean that beauty still matters to a heart which claims to have recovered."
+    },
+    "2": {
+      "translation": [
+        "In times of trouble one asks a person of sound judgement.",
+        "Has beauty left my heart any judgement at all?"
+      ],
+      "sharh": "People seek advice from the level-headed. The repeated word for sound judgement casts doubt on the speaker’s choice of counsellor, a heart once governed by beauty."
+    },
+    "3": {
+      "translation": [
+        "Whenever I questioned my heart,",
+        "tears answered in its place."
+      ],
+      "sharh": "He knows how such an interview ends. Tears answer on the heart’s behalf, making its feeling visible before it can put anything into words."
+    },
+    "4": {
+      "translation": [
+        "Between my ribs are blood and flesh.",
+        "Together they are the frail thing bereaved of youth."
+      ],
+      "sharh": "The two things he could name anatomically add up to one vulnerable mourner. The verb used for losing one’s child or loved one makes youth the object of a bereavement."
+    },
+    "5": {
+      "translation": [
+        "It slipped away in tears and I said, “It has gone.”",
+        "It beat against my ribs and I said, “It is back.”"
+      ],
+      "sharh": "He imagines the heart itself leaking out through his eyes. A beat against the ribs gives him physical proof of its return."
+    },
+    "6": {
+      "translation": [
+        "Even if hearts were made of iron,",
+        "they could never bear the torment mine has borne."
+      ],
+      "sharh": "He has just called his heart frail. Now iron, the usual test of strength, falls short when the burden to be measured is grief."
+    },
+    "7": {
+      "translation": [
+        "My friends’ company was the finest wine I drank,",
+        "and our time together was as brief as its bubbles."
+      ],
+      "sharh": "The friends’ company is the finest wine he has tasted. He keeps the cup in view to measure how little time they had, as brief as the bubbles on its surface."
+    },
+    "8": {
+      "translation": [
+        "We drank with youth upon a carpet",
+        "of delights, its drinks of many kinds."
+      ],
+      "sharh": "Youth itself sits down to drink with the friends. Their pleasures make up the carpet spread beneath them, and their variety becomes the different drinks served on it."
+    },
+    "9": {
+      "translation": [
+        "Every carpet life spreads will be rolled up,",
+        "however long and sweet the time upon it."
+      ],
+      "sharh": "The rolled-up carpet is what one sees after a gathering has emptied. He turns that small domestic act into a measure of every happy life’s duration."
+    },
+    "10": {
+      "translation": [
+        "After them the heart is like a stranger",
+        "who melts when memories of home come visiting."
+      ],
+      "sharh": "The heart is homesick for people it has lost. Memory becomes a visitor from home, and the supposed comfort of a visit makes the separation harder to bear."
+    },
+    "11": {
+      "translation": [
+        "No one can tell you the character of these nights",
+        "like someone who has lost loved ones and friends."
+      ],
+      "sharh": "The nights take on a character, as though a person’s habits could be learnt by living with them. Bereavement gives the speaker grounds to testify about time."
+    },
+    "12": {
+      "translation": [
+        "Companion of the world, I see your world as a snake",
+        "changing its skin time after time."
+      ],
+      "sharh": "He calls the listener the world’s intimate companion, then gives that companion a creature that keeps changing its appearance. The snake’s danger outlasts each new skin."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "غَداةَ",
+      "root": "غ د و",
+      "meaning": "Morning, also the time at which something happens.",
+      "head": "غَداة"
+    },
+    "1.1.4": {
+      "word": "سَلا",
+      "root": "س ل و",
+      "meaning": "To find consolation or cease to pine for someone."
+    },
+    "1.1.5": {
+      "word": "وَثابا",
+      "root": "ث و ب",
+      "meaning": "To return after an absence, a verb that recurs in bayt 5. Al-Abyari prints “and repented”, which he explains as renouncing a former passion.",
+      "head": "ثابَ"
+    },
+    "2.1.3": {
+      "word": "الحَوادِثِ",
+      "root": "ح د ث",
+      "meaning": "Events, especially troubles that call for a decision.",
+      "head": "الحَوادِث"
+    },
+    "2.1.4-5": {
+      "word": "ذو صَوابٍ",
+      "meaning": "Someone whose judgement can be relied on."
+    },
+    "3.2.1": {
+      "word": "تَوَلّى",
+      "root": "و ل ي",
+      "meaning": "To take charge of something, here of giving the reply."
+    },
+    "4.2.2": {
+      "word": "الواهي",
+      "root": "و ه ي",
+      "meaning": "Frail or enfeebled, referring to his heart."
+    },
+    "4.2.4": {
+      "word": "ثَكِلَ",
+      "root": "ث ك ل",
+      "meaning": "To be bereaved of someone dear, here of youth itself."
+    },
+    "5.1.1": {
+      "word": "تَسَرَّبَ",
+      "root": "س ر ب",
+      "meaning": "To seep or slip quietly away."
+    },
+    "5.2.1": {
+      "word": "وَصَفَّقَ",
+      "root": "ص ف ق",
+      "meaning": "To strike or beat, here the thump felt in the chest.",
+      "head": "صَفَّقَ"
+    },
+    "6.2.4": {
+      "word": "حَمَلَ",
+      "root": "ح م ل",
+      "meaning": "Bore or endured, as one bears a physical load."
+    },
+    "7.1.4": {
+      "word": "سُلافاً",
+      "root": "س ل ف",
+      "meaning": "The choice first pressing of wine.",
+      "head": "سُلاف"
+    },
+    "7.2.5": {
+      "word": "حَبابا",
+      "root": "ح ب ب",
+      "meaning": "The bubbles on the surface of a drink.",
+      "head": "حَباب"
+    },
+    "8.1.1": {
+      "word": "وَنادَمنا",
+      "root": "ن د م",
+      "meaning": "To keep someone company over drink.",
+      "head": "نادَمَ"
+    },
+    "8.1.4": {
+      "word": "بِساطٍ",
+      "root": "ب س ط",
+      "meaning": "A carpet spread for guests to sit upon.",
+      "head": "بِساط"
+    },
+    "9.1.5": {
+      "word": "يُطوى",
+      "root": "ط و ي",
+      "meaning": "To fold or roll up what had been spread out.",
+      "head": "طَوى"
+    },
+    "10.2.2": {
+      "word": "عادَتهُ",
+      "root": "ع و د",
+      "meaning": "To revisit or come back to someone.",
+      "head": "عادَ"
+    },
+    "11.1.2": {
+      "word": "يُنبيكَ",
+      "root": "ن ب أ",
+      "meaning": "To tell or inform. The final hamza of the usual verb is softened here.",
+      "head": "أَنبَأَ"
+    },
+    "11.1.4": {
+      "word": "خُلُقِ",
+      "root": "خ ل ق",
+      "meaning": "Character or disposition, attributed here to the passing nights.",
+      "head": "خُلُق"
+    },
+    "12.1.1-2": {
+      "word": "أَخا الدُّنيا",
+      "meaning": "“Brother of the world”, someone closely attached to worldly life."
+    },
+    "12.2.3": {
+      "word": "آوِنَةٍ",
+      "root": "أ و ن",
+      "meaning": "Times or intervals, plural of a time or season.",
+      "head": "آوِنَة"
+    },
+    "12.2.4": {
+      "word": "إِهابا",
+      "root": "أ ه ب",
+      "meaning": "An animal’s hide, here the skin a snake sheds.",
+      "head": "إِهاب"
+    }
+  }
+}

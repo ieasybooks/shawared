@@ -1,0 +1,933 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "The Mu'allaqa of Ubayd",
+  "intro": "Ubayd can still name each campsite, though he finds none of his people there. He follows the course of his tears as if they were water running through the valley, then asks what anyone can keep of wealth, friendship or youth. Memory gives him back his mounts, first a she-camel and then a mare whose speed becomes another chase altogether, an eagle in pursuit of a fox. Osama al-Nahari recites forty-five verses of the ode al-Tibrizi included among the ten.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Malhub lies empty of its people,",
+        "and so do al-Qutabiyyat and al-Dhanub."
+      ],
+      "sharh": "He remembers the names even though he finds the sites empty. A single verb of desertion carries on from Malhub to the two places that follow it."
+    },
+    "2": {
+      "translation": [
+        "Then Rakis and Thu'alibat,",
+        "then Dhat Firqayn and al-Qalib."
+      ],
+      "sharh": "The repeated “then” leads from site to site. The last name is also a word for a well, the sort of meeting place where he might once have expected company."
+    },
+    "3": {
+      "translation": [
+        "Then Arda and the far side of Hibirr.",
+        "Not one of them is left there."
+      ],
+      "sharh": "The place-names have filled nearly three verses. He can call every site to mind but cannot find a single one of the people who lived there."
+    },
+    "4": {
+      "translation": [
+        "Wild beasts have taken its people's place.",
+        "Misfortunes have changed its condition."
+      ],
+      "sharh": "Wild creatures occupy the former human settlement. The second half gives the change an agent, the reversals of fortune that have driven the people away."
+    },
+    "5": {
+      "translation": [
+        "Death inherits this land,",
+        "and all who settle there are stripped bare."
+      ],
+      "sharh": "Death takes possession like an heir each time the occupants disappear. Calling the settler a man who has been plundered brings that loss down to the individual."
+    },
+    "6": {
+      "translation": [
+        "Your two eyes stream tears,",
+        "as if their tear ducts were a waterskin"
+      ],
+      "sharh": "He turns from the land to his own eyes. Both channels of tears feed a single image, a waterskin whose failure to hold its contents is explained by the next word."
+    },
+    "7": {
+      "translation": [
+        "worn through, or water rushing",
+        "from a height with clefts below it,"
+      ],
+      "sharh": "The worn skin gives way to a second image on a larger scale. Water runs down from high ground through clefts, gathering speed as it descends."
+    },
+    "8": {
+      "translation": [
+        "or a channel in the bed of a valley,",
+        "water pouring from beneath it,"
+      ],
+      "sharh": "The eye follows the water to the valley floor. The stream now has a channel and keeps pouring, as the tears have found a course they cannot leave."
+    },
+    "9": {
+      "translation": [
+        "or a stream in the shade of palms,",
+        "the water sounding as it passes between them."
+      ],
+      "sharh": "At the palm grove he can hear the water as well as see it. The run of comparisons ends with its sound amid the trees."
+    },
+    "10": {
+      "translation": [
+        "You long as a young man does. How can you still do that?",
+        "How, when your grey hair has startled you?"
+      ],
+      "sharh": "He catches himself still capable of a young man's longing. The repeated “how” measures his surprise at finding the feeling intact after the shock of seeing his own grey hair."
+    },
+    "11": {
+      "translation": [
+        "If its people have been carried away,",
+        "this is nothing new or strange."
+      ],
+      "sharh": "He puts the departure in a wider history. What has astonished him at this particular camp has happened to other households before."
+    },
+    "12": {
+      "translation": [
+        "Or if its open ground lies deserted,",
+        "and dearth and drought have visited it again,"
+      ],
+      "sharh": "The open centre of the settlement has lost its people and its pasture. Drought pays it a return visit, preparing the shift from this one site to the fate of anyone who prospers."
+    },
+    "13": {
+      "translation": [
+        "everyone with a blessing has it snatched away,",
+        "and everyone who hopes is given the lie."
+      ],
+      "sharh": "One person loses something already in his hands. Another has trusted a promise made by hope itself. The two kinds of disappointment occupy matching halves."
+    },
+    "14": {
+      "translation": [
+        "Everyone who owns camels leaves an inheritance,",
+        "and whoever possesses spoils is despoiled."
+      ],
+      "sharh": "A camel herd outlasts its owner and passes to his heirs. Even the man who has taken his wealth as booty can himself become the one from whom it is taken."
+    },
+    "15": {
+      "translation": [
+        "Everyone who goes away comes back,",
+        "but the traveller taken by death does not return."
+      ],
+      "sharh": "He uses the same word for coming home at the end of each half. The small addition of a negative makes death an absence from which there can be no homecoming."
+    },
+    "16": {
+      "translation": [
+        "Is a barren woman like one who bears children,",
+        "or someone who wins like one who comes back empty?"
+      ],
+      "sharh": "The questions set unlike outcomes beside one another. The second pair moves from the household to a man who goes out seeking a gain and may return empty-handed."
+    },
+    "17": {
+      "translation": [
+        "Prosper as you will. An end may be reached",
+        "through weakness, and a clever man may be duped."
+      ],
+      "sharh": "A weak person may reach the goal that strength seemed to promise. A shrewd person may still be taken in. The word for “through weakness” straddles the verse's metrical division."
+    },
+    "18": {
+      "translation": [
+        "Sense acquired by teaching avails little",
+        "without the native dispositions of the heart."
+      ],
+      "sharh": "Al-Durra reads the verse as distinguishing taught intelligence from a disposition able to take that teaching in. The previous verse has already shown what can happen to a clever man."
+    },
+    "19": {
+      "translation": [
+        "An enemy may yet become a friend,",
+        "and a friend turn enemy."
+      ],
+      "sharh": "“Friend” and “enemy” change places within the verse. Their exchange enacts the change of feeling that can make a familiar person seem a stranger."
+    },
+    "20": {
+      "translation": [
+        "Lend a hand wherever you find yourself.",
+        "Never say, “I am a stranger.”"
+      ],
+      "sharh": "Having seen how relationships can change, he gives the newcomer something to do. Helping the people among whom one lives is a way to begin belonging there."
+    },
+    "21": {
+      "translation": [
+        "The stranger far away may be welcomed,",
+        "and the kinsman with a share be cut off."
+      ],
+      "sharh": "The distant man can be brought into a relationship, while someone with a kinsman's claim can be excluded. The verbs for joining and cutting make kinship something people can act upon."
+    },
+    "22": {
+      "translation": [
+        "Ask people and they will deny you.",
+        "One who asks God will not be disappointed."
+      ],
+      "sharh": "The maxim turns on the same act of asking and two different answers. It belongs to this performance, although al-Tibrizi records Ibn al-A'rabi's attribution of the verse to Yazid ibn Dabba al-Thaqafi."
+    },
+    "23": {
+      "translation": [
+        "A man lives on with his hopes belied.",
+        "Length of days is torment to him."
+      ],
+      "sharh": "Repeated disillusion and the pain of outliving what one cherished are joined by two words that sound close in Arabic. The next verse locates old age on the poet's own body."
+    },
+    "24": {
+      "translation": [
+        "Even if grey has crept over my brow,",
+        "and grey hair mars the man who grows it,"
+      ],
+      "sharh": "He can point to the first grey hairs at his own forehead. His concession leaves room for a reply from memory, in which he can still cross difficult country."
+    },
+    "25": {
+      "translation": [
+        "many a stagnant waterhole have I reached",
+        "by a track men dread, barren of pasture."
+      ],
+      "sharh": "The old man remembers the effort it took to reach even bad water. The road is called “fearful” because it is feared by those who must take it, as Ibn al-Anbari explains."
+    },
+    "26": {
+      "translation": [
+        "Pigeon feathers lay around its edges.",
+        "The heart pounds for fear of it."
+      ],
+      "sharh": "The feathers are the only sign of what has been happening at the water. He leaves their cause unexplained and gives us the sound of a traveller's heart instead."
+    },
+    "27": {
+      "translation": [
+        "At daybreak I descended to it in haste,",
+        "my companion a stout, fast-trotting mount,"
+      ],
+      "sharh": "The word “companion” briefly leaves room for another traveller. Its sturdy build and its trot lead into the next verse, which identifies the companion as his she-camel."
+    },
+    "28": {
+      "translation": [
+        "a she-camel built like a wild ass, her backbone firm,",
+        "her withers like a sand dune."
+      ],
+      "sharh": "The vertebrae account for the strength a rider can feel beneath him. From the outside the high smooth withers give the camel the outline of a dune."
+    },
+    "29": {
+      "translation": [
+        "Her last incisor has given way to the mature tooth.",
+        "She is neither a young riding camel nor an old one."
+      ],
+      "sharh": "A herdsman could read age from the succession of teeth. The poet places this mount past the age of a newly rideable camel and well short of the worn-out old one."
+    },
+    "30": {
+      "translation": [
+        "She might be one of the wild asses of Ghab,",
+        "a dark male with bite scars on his flank,"
+      ],
+      "sharh": "The she-camel's likeness is now a male wild ass. The bite scars on its flank carry a history of encounters that adds something to the impression of vigour."
+    },
+    "31": {
+      "translation": [
+        "or a full-grown bull digging up rukhama herbs,",
+        "wrapped about by a driving north wind."
+      ],
+      "sharh": "A second animal takes the ass's place in the comparison. The bull digs for a desert plant with the north wind on every side, giving the camel's hardiness another visible form."
+    },
+    "32": {
+      "translation": [
+        "That was another age. I see myself again",
+        "carried by a tall, swift mare,"
+      ],
+      "sharh": "A pause marks the change of mount. He can look back on the rider as someone he sees before him again, this time on a tall mare whose speed will lead into the eagle's flight."
+    },
+    "33": {
+      "translation": [
+        "her frame knit tightly together,",
+        "her forelock parting from her face."
+      ],
+      "sharh": "The first half draws her body together. The second lets the long hair part and brings her face into view, with nothing to screen her eyes."
+    },
+    "34": {
+      "translation": [
+        "oil-glossed, her veins lying quiet,",
+        "her build supple yet strong."
+      ],
+      "sharh": "Oil supplies the sheen of the coat. The quiet veins lie beneath it, while the pairing of suppleness and solidity explains how the mare can move freely with such a firm build."
+    },
+    "35": {
+      "translation": [
+        "She is like an eagle avid for prey.",
+        "Hearts dry out in its eyrie."
+      ],
+      "sharh": "The likeness begins with the hunting bird's eagerness. Al-Tibrizi understands the hearts as those of birds it has killed, the remains of earlier hunts in its nest."
+    },
+    "36": {
+      "translation": [
+        "She came into view hungry on a stone marker,",
+        "like an old woman bereaved of her children."
+      ],
+      "sharh": "High on the stone marker, the hungry eagle is easy to pick out. Her stillness recalls an old woman whose grief has taken away her appetite."
+    },
+    "37": {
+      "translation": [
+        "On a morning of bitter cold,",
+        "frost falls from her feathers."
+      ],
+      "sharh": "Frost clings to the feathers of the perched eagle. As it starts to fall, the still bird of the previous verse begins to stir."
+    },
+    "38": {
+      "translation": [
+        "She spots a fox far away.",
+        "A barren plain lies between them."
+      ],
+      "sharh": "Distance is the fox's first protection. The bare ground offers it little cover once the eagle has caught sight of it."
+    },
+    "39": {
+      "translation": [
+        "She spreads her feathers and shakes herself.",
+        "She is on the point of taking wing."
+      ],
+      "sharh": "Spreading the wings and giving them a shake frees the feathers for flight. The eagle is poised to launch, and the verse holds her briefly at that point."
+    },
+    "40": {
+      "translation": [
+        "At the sound of her he creeps along,",
+        "the white of his eye turned up."
+      ],
+      "sharh": "The fox hears her and edges along the ground. Al-Tibrizi records several senses for the part of the eye that turns. Its rolling movement gives away what the cautious gait tries to conceal."
+    },
+    "41": {
+      "translation": [
+        "She rises swiftly towards him,",
+        "gliding straight for her mark."
+      ],
+      "sharh": "The eagle's course has a precise object, the fox creeping below. The glide closes the distance without the broken, hesitant motion of its prey."
+    },
+    "42": {
+      "translation": [
+        "He lifts his tail and starts in fear of her.",
+        "He does what a terror-stricken creature does."
+      ],
+      "sharh": "The raised tail makes the fox's fright visible from a distance. The singer uses a word for a terror-stricken creature that al-Tibrizi records alongside the one printed on screen."
+    },
+    "43": {
+      "translation": [
+        "She catches him and snatches him up.",
+        "The quarry is in distress beneath her."
+      ],
+      "sharh": "The hunter now overtakes the animal whose eyes and tail we have been watching. Under the eagle it becomes simply “the quarry”, with no room left to escape."
+    },
+    "44": {
+      "translation": [
+        "She flings him down and hurls him aside.",
+        "The hard earth grazes his face."
+      ],
+      "sharh": "The eagle throws the fox, but the ground does the scraping. The shift of subject lets the reader feel the hardness of the spot on which the prey has landed."
+    },
+    "45": {
+      "translation": [
+        "He yelps with her talon in his side.",
+        "His breast is bound to be pierced."
+      ],
+      "sharh": "The long chase contracts to the place where claw meets flesh. The yelp comes first, then the certainty that the talon must pierce through to the chest."
+    }
+  },
+  "words": {
+    "1.1.4": {
+      "word": "مَلحوبُ",
+      "head": "مَلحوب",
+      "meaning": "Malhub, a watering place that gives its name to the first deserted site."
+    },
+    "1.2.1": {
+      "word": "فَالقُطَبِيّاتُ",
+      "head": "القُطَبِيّات",
+      "meaning": "Al-Qutabiyyat, a site identified as a mountain in the commentary on the nine odes."
+    },
+    "1.2.2": {
+      "word": "فَالذَّنوبُ",
+      "head": "الذَّنوب",
+      "meaning": "Al-Dhanub, the next site in the roll of deserted places."
+    },
+    "2.1.1": {
+      "word": "فَراكِسٌ",
+      "head": "راكِس",
+      "meaning": "Rakis, another of the former settlements."
+    },
+    "2.1.2": {
+      "word": "فَثُعالِباتٌ",
+      "head": "ثُعالِبات",
+      "meaning": "Thu'alibat, a place also transmitted in the diminutive form Thu'aylibat."
+    },
+    "2.2.1-2": {
+      "word": "فَذاتُ فِرقَينِ",
+      "head": "ذات فِرقَين",
+      "meaning": "Dhat Firqayn, the campsite named between Thu'alibat and al-Qalib."
+    },
+    "2.2.3": {
+      "word": "فَالقَليبُ",
+      "head": "القَليب",
+      "meaning": "Al-Qalib, a place-name that also means a well."
+    },
+    "3.1.1": {
+      "word": "فَعَردَةٌ",
+      "head": "عَردَة",
+      "meaning": "Arda, a site also transmitted as Farda."
+    },
+    "3.1.2-3": {
+      "word": "فَقَفا حِبِرٍّ",
+      "head": "قَفا حِبِرّ",
+      "meaning": "“The back of Hibirr”, the far side of a mountain named Hibirr."
+    },
+    "3.2.4": {
+      "word": "عَريبُ",
+      "head": "عَريب",
+      "root": "ع ر ب",
+      "meaning": "A single soul. This old expression is used with a negative."
+    },
+    "4.1.2": {
+      "word": "بُدِّلَت",
+      "head": "بُدِّلَ",
+      "root": "ب د ل",
+      "meaning": "Was given an exchange. The things exchanged here are the former inhabitants and the wild animals."
+    },
+    "4.2.3": {
+      "word": "الخُطوبُ",
+      "head": "الخُطوب",
+      "root": "خ ط ب",
+      "meaning": "Grave reversals of fortune, capable of scattering a settlement."
+    },
+    "5.1.3": {
+      "word": "شَعوبُ",
+      "head": "شَعوب",
+      "meaning": "Sha'ub, a name for Death, pictured as the heir to the land."
+    },
+    "5.2.4": {
+      "word": "مَحروبُ",
+      "head": "مَحروب",
+      "root": "ح ر ب",
+      "meaning": "Plundered, dispossessed of what had been one's own."
+    },
+    "6.1.3": {
+      "word": "سَروبُ",
+      "head": "سَروب",
+      "root": "س ر ب",
+      "meaning": "Streaming away freely, as water runs along its course."
+    },
+    "6.2.2": {
+      "word": "شَأنَيهِما",
+      "head": "شَأن",
+      "root": "ش أ ن",
+      "meaning": "The channel of tears. The dual refers to the two eyes."
+    },
+    "6.2.3": {
+      "word": "شَعيبُ",
+      "head": "شَعيب",
+      "root": "ش ع ب",
+      "meaning": "A leather waterskin, understood here as split and leaking."
+    },
+    "7.1.1": {
+      "word": "واهِيَةٌ",
+      "head": "واهِيَة",
+      "root": "و ه ي",
+      "meaning": "Worn through, describing the skin at the end of the preceding verse."
+    },
+    "7.1.3-4": {
+      "word": "مَعينٌ مُمعِنٌ",
+      "head": "مَعين مُمعِن",
+      "meaning": "“Running water pressing on”, a flow that meets little resistance."
+    },
+    "7.2.4": {
+      "word": "لُهوبُ",
+      "head": "لُهوب",
+      "root": "ل ه ب",
+      "meaning": "Clefts or narrow ravines in a mountain."
+    },
+    "8.1.2": {
+      "word": "فَلَجٌ",
+      "head": "فَلَج",
+      "root": "ف ل ج",
+      "meaning": "A watercourse, here a channel along the valley floor."
+    },
+    "8.2.4": {
+      "word": "سُكوبُ",
+      "head": "سُكوب",
+      "root": "س ك ب",
+      "meaning": "The pouring or spilling of water in a continuous flow."
+    },
+    "9.2.4": {
+      "word": "قَسيبُ",
+      "head": "قَسيب",
+      "root": "ق س ب",
+      "meaning": "The audible rush of running water."
+    },
+    "10.1.1": {
+      "word": "تَصبو",
+      "head": "صَبا",
+      "root": "ص ب و",
+      "meaning": "To long for love or pleasure as a young person does."
+    },
+    "10.2.3": {
+      "word": "راعَكَ",
+      "head": "راعَ",
+      "root": "ر و ع",
+      "meaning": "Startled, as a man may be by the unexpected sight of his own grey hair."
+    },
+    "11.1.3": {
+      "word": "حُوِّلَ",
+      "root": "ح و ل",
+      "meaning": "Were removed or made to move from their dwelling."
+    },
+    "11.2.2": {
+      "word": "بَديءٌ",
+      "head": "بَديء",
+      "root": "ب د أ",
+      "meaning": "A novelty, something happening for the first time."
+    },
+    "12.1.5": {
+      "word": "جَوُّها",
+      "head": "جَوّ",
+      "root": "ج و و",
+      "meaning": "The open centre of a place, here the interior of the campsite."
+    },
+    "12.2.1": {
+      "word": "وَعادَها",
+      "head": "عادَ",
+      "root": "ع و د",
+      "meaning": "Revisited or befell it again. Drought is the visitor."
+    },
+    "12.2.2": {
+      "word": "المَحلُ",
+      "head": "المَحل",
+      "root": "م ح ل",
+      "meaning": "Dearth from lack of rain and the loss of grazing."
+    },
+    "13.1.4": {
+      "word": "مَخلوسٌ",
+      "head": "مَخلوس",
+      "root": "خ ل س",
+      "meaning": "Having one's good fortune snatched away."
+    },
+    "13.2.4": {
+      "word": "مَكذوبُ",
+      "head": "مَكذوب",
+      "root": "ك ذ ب",
+      "meaning": "Belied or disappointed in what one has been led to hope for."
+    },
+    "14.1.4": {
+      "word": "مَوروثٌ",
+      "head": "مَوروث",
+      "root": "و ر ث",
+      "meaning": "One whose possessions, particularly the herd, pass to an heir."
+    },
+    "14.2.3": {
+      "word": "سَلَبٍ",
+      "head": "سَلَب",
+      "root": "س ل ب",
+      "meaning": "Spoils taken from a defeated opponent, themselves liable to be taken again."
+    },
+    "15.1.4": {
+      "word": "يَؤوبُ",
+      "head": "آبَ",
+      "root": "أ و ب",
+      "meaning": "To return home after an absence."
+    },
+    "15.2.1-2": {
+      "word": "وَغائِبُ المَوتِ",
+      "head": "غائِب المَوت",
+      "meaning": "“The absent one of death”, a traveller whose people cannot await a return."
+    },
+    "16.1.1": {
+      "word": "أَعاقِرٌ",
+      "head": "عاقِر",
+      "root": "ع ق ر",
+      "meaning": "A woman who bears no children, paired with one who does."
+    },
+    "16.2.2": {
+      "word": "غانِمٌ",
+      "head": "غانِم",
+      "root": "غ ن م",
+      "meaning": "Someone who comes away with the gain he sought."
+    },
+    "17.1.1": {
+      "word": "أَفلِح",
+      "root": "ف ل ح",
+      "meaning": "Prosper. Al-Tibrizi also allows the sense “live on”."
+    },
+    "17.2.1": {
+      "word": "بِالضَّعفِ",
+      "head": "الضَّعف",
+      "root": "ض ع ف",
+      "meaning": "Weakness. The word with its preposition crosses the metrical break."
+    },
+    "17.2.4": {
+      "word": "الأَريبُ",
+      "head": "الأَريب",
+      "root": "أ ر ب",
+      "meaning": "A shrewd, resourceful person, here someone who can still be deceived."
+    },
+    "18.1.3": {
+      "word": "اللُّبُّ",
+      "head": "اللُّبّ",
+      "root": "ل ب ب",
+      "meaning": "Understanding or good sense, here the kind learned through instruction."
+    },
+    "18.2.2": {
+      "word": "السَّجِيّاتُ",
+      "head": "السَّجِيّات",
+      "root": "س ج و",
+      "meaning": "Inborn or settled dispositions, the habits of character that receive instruction."
+    },
+    "19.1.4": {
+      "word": "شانِئٌ",
+      "head": "شانِئ",
+      "root": "ش ن أ",
+      "meaning": "One who hates. The order makes his transformation into a friend especially striking."
+    },
+    "19.2.1": {
+      "word": "وَيَرجِعَن",
+      "head": "رَجَعَ",
+      "root": "ر ج ع",
+      "meaning": "To turn into something else. The light emphatic ending reinforces the reversal."
+    },
+    "20.1.1": {
+      "word": "ساعِد",
+      "root": "س ع د",
+      "meaning": "Help the people among whom you find yourself, taking part in their affairs."
+    },
+    "21.1.3": {
+      "word": "النّازِحُ",
+      "head": "النّازِح",
+      "root": "ن ز ح",
+      "meaning": "Someone removed from home or kin."
+    },
+    "21.2.2-3": {
+      "word": "ذو السُّهمَةِ",
+      "head": "ذو السُّهمَة",
+      "meaning": "“One with a share”, a person with a recognised claim of kinship or common interest."
+    },
+    "22.1.4": {
+      "word": "يَحرِموهُ",
+      "head": "حَرَمَ",
+      "root": "ح ر م",
+      "meaning": "To deny the petitioner his request. Ibn al-A'rabi assigns this verse to Yazid ibn Dabba al-Thaqafi."
+    },
+    "23.1.5": {
+      "word": "تَكذيبٍ",
+      "head": "تَكذيب",
+      "root": "ك ذ ب",
+      "meaning": "Disillusion, the experience of having one's expectations proved false."
+    },
+    "24.1.6": {
+      "word": "ذُرأَةٌ",
+      "head": "ذُرأَة",
+      "root": "ذ ر أ",
+      "meaning": "Grey hair at the front of the head, the sense given by Ibn al-Anbari when he cites these verses."
+    },
+    "24.2.2": {
+      "word": "شَينٌ",
+      "head": "شَين",
+      "root": "ش ي ن",
+      "meaning": "A blemish in the speaker's own appraisal of grey hair."
+    },
+    "25.1.4": {
+      "word": "آجِنٍ",
+      "head": "آجِن",
+      "root": "أ ج ن",
+      "meaning": "Stale or stagnant water whose taste or smell has changed."
+    },
+    "25.2.2": {
+      "word": "خائِفٌ",
+      "head": "خائِف",
+      "root": "خ و ف",
+      "meaning": "“Fearful” in the sense of feared by the traveller."
+    },
+    "26.1.4": {
+      "word": "أَرجائِهِ",
+      "head": "أَرجاء",
+      "root": "ر ج و",
+      "meaning": "The edges of the waterhole where the feathers lie."
+    },
+    "26.2.4": {
+      "word": "وَجيبُ",
+      "head": "وَجيب",
+      "root": "و ج ب",
+      "meaning": "A pounding or racing of the heart."
+    },
+    "27.1.3": {
+      "word": "مُشيحاً",
+      "head": "مُشيح",
+      "root": "ش ي ح",
+      "meaning": "Pressing ahead in earnest and on the alert."
+    },
+    "27.2.2": {
+      "word": "بادِنٌ",
+      "head": "بادِن",
+      "root": "ب د ن",
+      "meaning": "Stoutly built, here describing the she-camel."
+    },
+    "27.2.3": {
+      "word": "خَبوبُ",
+      "head": "خَبوب",
+      "root": "خ ب ب",
+      "meaning": "A mount given to a quick, sustained trot."
+    },
+    "28.1.1": {
+      "word": "عَيرانَةٌ",
+      "head": "عَيرانَة",
+      "root": "ع ي ر",
+      "meaning": "A strong she-camel likened to a wild ass in toughness."
+    },
+    "28.1.2": {
+      "word": "مُؤجَدٌ",
+      "head": "مُؤجَد",
+      "root": "أ ج د",
+      "meaning": "Firmly knit, of the vertebrae fitting tightly together."
+    },
+    "28.2.2": {
+      "word": "حارِكَها",
+      "head": "حارِك",
+      "root": "ح ر ك",
+      "meaning": "The withers, the raised part of the back at the base of the neck."
+    },
+    "29.1.3": {
+      "word": "بازِلاً",
+      "head": "بازِل",
+      "root": "ب ز ل",
+      "meaning": "The mature canine whose emergence marks a camel's age."
+    },
+    "29.1.4": {
+      "word": "سَديسُها",
+      "head": "سَديس",
+      "root": "س د س",
+      "meaning": "The last of the camel's incisors to appear before the mature canine."
+    },
+    "29.2.2": {
+      "word": "حِقَّةٌ",
+      "head": "حِقَّة",
+      "root": "ح ق ق",
+      "meaning": "A young she-camel old enough for work or riding."
+    },
+    "29.2.5": {
+      "word": "نَيوبُ",
+      "head": "نَيوب",
+      "root": "ن ي ب",
+      "meaning": "An aged she-camel, past the prime just described."
+    },
+    "30.1.4": {
+      "word": "غابٍ",
+      "head": "غاب",
+      "meaning": "Ghab, the locality of the wild asses. Al-Tibrizi also gives Anat."
+    },
+    "30.2.1": {
+      "word": "جَونٌ",
+      "head": "جَون",
+      "root": "ج و ن",
+      "meaning": "A colour word that can mean dark or light, taken here of a dark ass."
+    },
+    "30.2.3": {
+      "word": "نُدوبُ",
+      "head": "نُدوب",
+      "root": "ن د ب",
+      "meaning": "Healed scars, explained as bite marks on the flank."
+    },
+    "31.1.2": {
+      "word": "شَبَبٌ",
+      "head": "شَبَب",
+      "root": "ش ب ب",
+      "meaning": "A wild bull come to full maturity."
+    },
+    "31.1.4": {
+      "word": "الرُّخامى",
+      "root": "ر خ م",
+      "meaning": "Rukhama, a desert plant the bull digs for or grazes."
+    },
+    "32.2.2": {
+      "word": "نَهدَةٌ",
+      "head": "نَهدَة",
+      "root": "ن ه د",
+      "meaning": "A tall, high-built mare."
+    },
+    "32.2.3": {
+      "word": "سُرحوبُ",
+      "head": "سُرحوب",
+      "root": "س ر ح ب",
+      "meaning": "A free-running, swift mare, also explained as long-backed."
+    },
+    "33.1.1": {
+      "word": "مُضَبَّرٌ",
+      "head": "مُضَبَّر",
+      "root": "ض ب ر",
+      "meaning": "Compactly and firmly put together."
+    },
+    "33.2.4": {
+      "word": "السَّبيبُ",
+      "head": "السَّبيب",
+      "root": "س ب ب",
+      "meaning": "The long hair of the mare's forelock."
+    },
+    "34.1.1": {
+      "word": "زَيتِيَّةٌ",
+      "head": "زَيتِيَّة",
+      "root": "ز ي ت",
+      "meaning": "Oil-glossed, of a coat with an oily sheen."
+    },
+    "34.1.2": {
+      "word": "نائِمٌ",
+      "head": "نائِم",
+      "root": "ن و م",
+      "meaning": "Quiet or lying low, of veins that do not stand out."
+    },
+    "34.2.2": {
+      "word": "أَسرُها",
+      "head": "أَسر",
+      "root": "أ س ر",
+      "meaning": "The binding of a body's parts, hence its build or constitution."
+    },
+    "34.2.3": {
+      "word": "صَليبُ",
+      "head": "صَليب",
+      "root": "ص ل ب",
+      "meaning": "Firm and strong. The variant ratib describes pliancy."
+    },
+    "35.1.2": {
+      "word": "لِقوَةٌ",
+      "head": "لِقوَة",
+      "root": "ل ق و",
+      "meaning": "A she-eagle, renowned for swiftly overtaking quarry."
+    },
+    "35.1.3": {
+      "word": "طَلوبٌ",
+      "head": "طَلوب",
+      "root": "ط ل ب",
+      "meaning": "An eager, persistent hunter."
+    },
+    "36.1.1": {
+      "word": "بانَت",
+      "head": "بانَ",
+      "root": "ب ي ن",
+      "meaning": "Came into view. Al-Nahari sings banat. The diwan and al-Tibrizi read batat, “she spent the night”, which leads into the cold dawn."
+    },
+    "36.1.3": {
+      "word": "إِرَمٍ",
+      "head": "إِرَم",
+      "root": "أ ر م",
+      "meaning": "A stone landmark or cairn on which the eagle perches."
+    },
+    "36.1.4": {
+      "word": "عَذوباً",
+      "head": "عَذوب",
+      "root": "ع ذ ب",
+      "meaning": "Abstaining from food and drink through the night."
+    },
+    "36.2.3": {
+      "word": "رَقوبُ",
+      "head": "رَقوب",
+      "root": "ر ق ب",
+      "meaning": "A bereaved woman whose children do not survive."
+    },
+    "37.1.4": {
+      "word": "قُرٍّ",
+      "head": "قُرّ",
+      "root": "ق ر ر",
+      "meaning": "Biting cold in the early morning."
+    },
+    "37.2.4": {
+      "word": "الضَّريبُ",
+      "head": "الضَّريب",
+      "root": "ض ر ب",
+      "meaning": "Frost that settles on the feathers overnight."
+    },
+    "38.2.2": {
+      "word": "سَبسَبٌ",
+      "head": "سَبسَب",
+      "root": "س ب س ب",
+      "meaning": "A wide open plain affording little cover."
+    },
+    "39.2.3": {
+      "word": "نَهضَةٍ",
+      "head": "نَهضَة",
+      "root": "ن ه ض",
+      "meaning": "The upward launch into flight after the wings have been shaken free."
+    },
+    "40.1.3": {
+      "word": "حِسِّها",
+      "head": "حِسّ",
+      "root": "ح س س",
+      "meaning": "A faint sound or movement betraying the eagle's presence."
+    },
+    "40.2.2": {
+      "word": "حِملاقُها",
+      "head": "حِملاق",
+      "root": "ح م ل ق",
+      "meaning": "The inner lid or the exposed white of the rolling eye."
+    },
+    "41.2.1-2": {
+      "word": "وَحَرَدَت حَردَهُ",
+      "head": "حَرَدَ حَردَه",
+      "root": "ح ر د",
+      "meaning": "“Took his direction”, made straight for him."
+    },
+    "41.2.3": {
+      "word": "تَسيبُ",
+      "head": "سابَ",
+      "root": "س ي ب",
+      "meaning": "To move freely or glide, here through the air."
+    },
+    "42.1.1": {
+      "word": "فَاشتالَ",
+      "head": "اِشتالَ",
+      "root": "ش و ل",
+      "meaning": "Raised his tail, a visible gesture of alarm."
+    },
+    "42.2.3": {
+      "word": "المَزؤودُ",
+      "head": "المَزؤود",
+      "root": "ز أ د",
+      "meaning": "A terror-stricken creature. The singer uses al-maz'ud. His video prints al-madh'ub, and al-Tibrizi records both forms."
+    },
+    "43.1.2": {
+      "word": "فَخَوَّتَتهُ",
+      "head": "خَوَّتَ",
+      "root": "خ و ت",
+      "meaning": "To snatch up prey, the sense al-Durra gives this reading. Al-Tibrizi's principal reading says she threw it down."
+    },
+    "43.2.4": {
+      "word": "مَكروبُ",
+      "head": "مَكروب",
+      "root": "ك ر ب",
+      "meaning": "In sore distress, pinned beneath the eagle."
+    },
+    "44.1.1": {
+      "word": "فَجَدَّلَتهُ",
+      "head": "جَدَّلَ",
+      "root": "ج د ل",
+      "meaning": "To cast down flat on the earth."
+    },
+    "44.2.1": {
+      "word": "فَكَدَّحَت",
+      "head": "كَدَّحَ",
+      "root": "ك د ح",
+      "meaning": "To scrape or score the skin."
+    },
+    "44.2.3": {
+      "word": "الجَبوبُ",
+      "head": "الجَبوب",
+      "root": "ج ب ب",
+      "meaning": "Hard earth, stones or hard clods against which the quarry falls."
+    },
+    "45.1.1": {
+      "word": "يَضغو",
+      "head": "ضَغا",
+      "root": "ض غ و",
+      "meaning": "To cry out or yelp, here the fox's last sound."
+    },
+    "45.1.2": {
+      "word": "وَمِخلَبُها",
+      "head": "مِخلَب",
+      "root": "خ ل ب",
+      "meaning": "The curved talon with which a bird of prey seizes its quarry."
+    },
+    "45.1.4": {
+      "word": "دَفِّهِ",
+      "head": "دَفّ",
+      "root": "د ف ف",
+      "meaning": "The flank or side of the body."
+    },
+    "45.2.3": {
+      "word": "حَيزومُهُ",
+      "head": "حَيزوم",
+      "root": "ح ز م",
+      "meaning": "The breast or chest into which the talon penetrates."
+    }
+  }
+}

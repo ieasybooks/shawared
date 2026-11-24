@@ -1,0 +1,150 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Whoever sees us should tell himself",
+  "intro": "In the account al-Mu'aybid quotes from the Book of Songs, Adi ibn Zayd and King al-Nu'man pass some graves. Adi asks the king what the graves are saying and gives them a voice. Al-Mubarrad tells the story with a tree speaking from the shade where the king has stopped. The voice recalls travellers who once drank there, then invites the listener to see himself in their place.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Whoever sees us should tell himself",
+        "that he too stands on the brink of passing away."
+      ],
+      "sharh": "The graves speak in the first person. The visitor is already poised at an edge like the tip of a spear, with very little distance left to travel."
+    },
+    "2": {
+      "translation": [
+        "Against time’s calamities nothing lasts,",
+        "even solid mountains give way to what it brings."
+      ],
+      "sharh": "The sentence holds back its subject, the solid mass of the mountains, until the end. Even that mass cannot outlast what time brings against it."
+    },
+    "3": {
+      "translation": [
+        "Many a band of riders made their camels kneel beside us",
+        "and drank wine mixed with clear, cool water."
+      ],
+      "sharh": "The verbs turn a graveyard into a stopping place again. Camels have been made to kneel and there is time to dilute the wine and sit together."
+    },
+    "4": {
+      "translation": [
+        "The pitchers had strainers over their mouths,",
+        "and thoroughbred horses trotted about in their cloths."
+      ],
+      "sharh": "A filter on each jug and coverings on the moving horses make the vanished party visible down to its equipment."
+    },
+    "5": {
+      "translation": [
+        "They spent their days in a good life,",
+        "secure in their time and in no hurry."
+      ],
+      "sharh": "The travellers felt they owned all the time ahead of them. Their unhurried pace leaves the sudden turn in the next line to do its work."
+    },
+    "6": {
+      "translation": [
+        "Then one day time had laid them low,",
+        "as time brings down even mountains."
+      ],
+      "sharh": "One morning is enough to change the whole scene. Mountains return from the second verse as a measure of how completely the riders have lost their strength."
+    },
+    "7": {
+      "translation": [
+        "So time tosses a man about",
+        "from state to state as he seeks his living."
+      ],
+      "sharh": "The man has a purpose of his own, the pursuit of a livelihood. Time is the other actor in the sentence and can throw him into circumstances he never sought."
+    }
+  },
+  "words": {
+    "1.2.2": {
+      "word": "موفٍ",
+      "head": "موفٍ",
+      "root": "و ف ي",
+      "meaning": "Poised above or overlooking something."
+    },
+    "1.2.4-5": {
+      "word": "قَرنِ زَوال",
+      "head": "قَرن زَوال",
+      "meaning": "“The point of passing away.” The editor compares it to the tip of a blade."
+    },
+    "2.1.1": {
+      "word": "وَخُطوبُ",
+      "head": "خَطب",
+      "root": "خ ط ب",
+      "meaning": "Grievous events, blows of misfortune."
+    },
+    "2.2.4": {
+      "word": "صُمُّ",
+      "head": "أَصَمّ",
+      "root": "ص م م",
+      "meaning": "Solid and compact, said here of mountains."
+    },
+    "3.1.4": {
+      "word": "أَناخوا",
+      "head": "أَناخَ",
+      "root": "ن و خ",
+      "meaning": "Made their camels kneel so that they could dismount."
+    },
+    "3.2.4": {
+      "word": "الزُّلال",
+      "head": "الزُّلال",
+      "root": "ز ل ل",
+      "meaning": "Fresh, limpid water that goes down easily."
+    },
+    "4.1.3": {
+      "word": "فُدُمٌ",
+      "head": "فِدام",
+      "root": "ف د م",
+      "meaning": "Fidam, a straining cloth laid over the mouth of a pitcher."
+    },
+    "4.2.1": {
+      "word": "وَعِتاقُ",
+      "head": "عَتيق",
+      "root": "ع ت ق",
+      "meaning": "Horses of fine breeding."
+    },
+    "4.2.3": {
+      "word": "تَردي",
+      "head": "رَدى",
+      "root": "ر د ي",
+      "meaning": "Trot or canter with a lifting movement."
+    },
+    "4.2.5": {
+      "word": "الجِلال",
+      "head": "جُلّ",
+      "root": "ج ل ل",
+      "meaning": "Horsecloths draped over the backs of the animals."
+    },
+    "5.1.1": {
+      "word": "عَمِروا",
+      "head": "عَمِرَ",
+      "root": "ع م ر",
+      "meaning": "Lived or passed their days. The diwan reads “for a time” and records the reciter’s definite form in its apparatus."
+    },
+    "5.2.1": {
+      "word": "آمِني",
+      "head": "آمِن",
+      "root": "ء م ن",
+      "meaning": "Feeling secure about the time they lived in."
+    },
+    "6.1.3": {
+      "word": "أَخنَعَ",
+      "head": "أَخنَعَ",
+      "root": "خ ن ع",
+      "meaning": "Brought them low, made them submit."
+    },
+    "6.2.3": {
+      "word": "يودي",
+      "head": "أَودى",
+      "root": "و د ي",
+      "meaning": "Destroys or carries away."
+    },
+    "7.2.2": {
+      "word": "طِلابِ",
+      "head": "طِلاب",
+      "root": "ط ل ب",
+      "meaning": "The pursuit of something, here the search for a living."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "reciter": "osama-alwaaedh",
+  "audio": "baka-sahibi/osama-alwaaedh.4e552277db67.m4a",
+  "duration": 39.76,
+  "source": "https://www.youtube.com/watch?v=jgotHx9U5ns",
+  "timeline": [
+    ["1.1", 0.42, 4.58],
+    ["1.2", 5.26, 9.81],
+    ["2.1", 10.16, 14.75],
+    ["2.2", 15.06, 19.60],
+    ["1.1", 19.94, 24.06],
+    ["1.2", 24.70, 29.28],
+    ["2.1", 29.74, 34.51],
+    ["2.2", 34.76, 39.61]
+  ]
+}

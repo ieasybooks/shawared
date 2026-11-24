@@ -1,0 +1,66 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "My Companion Wept When He Saw the Pass Ahead",
+  "intro": "These two verses come from the middle of Imru' al-Qays's ode beginning “Longing rose in you again”. The diwan commentary identifies his companion as the poet Amr ibn Qami'a, travelling with him to seek the Byzantine emperor's help in recovering his father's kingdom. At the frontier the companion thinks of home, and the prince tries to give him heart. Osama Al-Waaedh sings the exchange twice.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "My companion wept when he saw the pass ahead",
+        "and knew we were on our way to Caesar."
+      ],
+      "sharh": "The pass makes the distance from home real to the companion. The dual form of “bound for Caesar” holds the two travellers together just as their thoughts begin to diverge."
+    },
+    "2": {
+      "translation": [
+        "I told him, “Let your eyes shed no tears.",
+        "We seek a kingdom, or die blameless in the attempt.”"
+      ],
+      "sharh": "The prince measures their journey by what the two men can answer for. Even if death cuts it short, no one can say they gave up the attempt."
+    }
+  },
+  "words": {
+    "1.1.2": {
+      "word": "صاحِبي",
+      "head": "صاحِب",
+      "root": "ص ح ب",
+      "meaning": "Travelling companion. The diwan commentary identifies him as the poet Amr ibn Qami'a of Yashkur."
+    },
+    "1.1.5": {
+      "word": "الدَّربَ",
+      "head": "الدَّرب",
+      "root": "د ر ب",
+      "meaning": "A mountain pass, here the crossing into Byzantine territory."
+    },
+    "1.2.3": {
+      "word": "لاحِقانِ",
+      "head": "لاحِق",
+      "root": "ل ح ق",
+      "meaning": "Bound to reach someone. The dual ending includes both the speaker and his companion."
+    },
+    "1.2.4": {
+      "word": "بِقَيصَرا",
+      "head": "قَيصَر",
+      "meaning": "Qaysar, Caesar, the Arabic title for the Byzantine emperor."
+    },
+    "2.1.3-5": {
+      "word": "لا تَبكِ عَينُكَ",
+      "root": "ب ك ي",
+      "meaning": "“Let your eye not weep.” The eye itself is the subject of the Arabic verb."
+    },
+    "2.2.2": {
+      "word": "مُلكاً",
+      "head": "مُلك",
+      "root": "م ل ك",
+      "meaning": "Sovereignty, here the kingdom of his father Hujr."
+    },
+    "2.2.5": {
+      "word": "فَنُعذَرا",
+      "head": "عُذِرَ",
+      "root": "ع ذ ر",
+      "meaning": "Be held excused if death prevents us from achieving what we set out to do."
+    }
+  }
+}

@@ -1,0 +1,850 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "A Heart Still Quick to Stir at Beauty",
+  "intro": "Al-Mufaddal’s account brings Alqama to the Ghassanid king al-Harith after the battle of Ayn Ubagh to plead for the captive Sha's. The speaker starts with Layla and his own grey hair, then takes us across the desert on the camel that carried him to court. Only after describing the battle does he name the man he wants released. The diwan and the Mufaddaliyyat preserve different arrangements of the journey and the plea.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "A heart still quick to stir at beauty has swept you away,",
+        "just past your youth, as your hair begins to grey."
+      ],
+      "sharh": "He addresses himself as someone swept along by his own heart. Its readiness to fall in love has outlasted the youth of his body."
+    },
+    "2": {
+      "translation": [
+        "It burdens me with Layla, though her dwelling is far",
+        "and troubles and misfortunes have come between us."
+      ],
+      "sharh": "The same heart now sets its owner an impossible task. The distance to Layla has to be measured both in miles and in everything that has happened between them."
+    },
+    "3": {
+      "translation": [
+        "She lives in luxury. No one can speak with her.",
+        "At her door a guard keeps visitors away."
+      ],
+      "sharh": "The smallest intimacy, a conversation, is already out of reach. The guard at the door gives the obstacles in the previous line a human face."
+    },
+    "4": {
+      "translation": [
+        "When her husband is away she keeps his secret,",
+        "and when he comes back she makes his homecoming pleasant."
+      ],
+      "sharh": "He admires the discretion with which she keeps her husband’s confidence. Her welcome home completes a portrait of a household from which the speaker is excluded."
+    },
+    "5": {
+      "translation": [
+        "Do not put me on a level with an untried boy.",
+        "May the rain clouds pour their loads on you wherever they fall."
+      ],
+      "sharh": "He asks to be judged as a man of experience. His wish for rain turns the clouds into a train of water carriers arriving for her."
+    },
+    "6": {
+      "translation": [
+        "May towering clouds from Yemen water you, and a cloudbank",
+        "the south wind drives at dusk."
+      ],
+      "sharh": "He calls for rain twice, from clouds piled high in the south and from a bank spread across the horizon. The evening wind brings the second towards her."
+    },
+    "7": {
+      "translation": [
+        "What business have you remembering a woman of Rabi'a",
+        "who has a well dug for her in Tharmada?"
+      ],
+      "sharh": "He interrupts his own daydream. A well is being dug where she lives, a more lasting commitment to a place than a passing encampment."
+    },
+    "8": {
+      "translation": [
+        "Ask me about women, if you will.",
+        "I know their maladies as a physician does."
+      ],
+      "sharh": "Having called himself experienced, he claims a physician’s eye for what governs affection. The judgements that follow are this disappointed lover’s diagnosis."
+    },
+    "9": {
+      "translation": [
+        "Once a man’s head turns grey or his wealth runs low,",
+        "he has no portion of their love."
+      ],
+      "sharh": "The speaker describes love as something of which a man may be allotted a share. His generalisation quietly returns to the grey hair of his first line."
+    },
+    "10": {
+      "translation": [
+        "They want abundant wealth wherever they know it lies,",
+        "and youth in its first vigour delights them."
+      ],
+      "sharh": "Wealth and the first flush of youth answer lack of money and old age in the preceding verse. The symmetry makes the speaker’s own grievance audible."
+    },
+    "11": {
+      "translation": [
+        "Leave her. Ride off your cares on a sturdy she-camel",
+        "equal to your purpose, trotting even with a rider behind."
+      ],
+      "sharh": "The command sends the poem out onto the road. The animal’s strength is reckoned in passengers as well as speed."
+    },
+    "12": {
+      "translation": [
+        "A swift one, the flesh over her ribs and withers",
+        "worn away by noonday travel and unremitting work."
+      ],
+      "sharh": "He reads the journey on the animal’s back. The flesh has worn thin in precisely the places that carry the burden."
+    },
+    "13": {
+      "translation": [
+        "At dawn after a night’s march she is like",
+        "a streaked wild cow in her prime, alert to hunters."
+      ],
+      "sharh": "After a whole night on the road the camel has the liveliness of a mature oryx. The comparison gives us an instant to watch that other animal in its own surroundings."
+    },
+    "14": {
+      "translation": [
+        "Men took cover in the arta scrub to catch her,",
+        "but she outstripped their arrows and the hounds."
+      ],
+      "sharh": "The scrub gives the hunters cover and the dogs give chase. The escape supplies the point of comparing a travel-worn camel to a wild cow."
+    },
+    "15": {
+      "translation": [
+        "For Harith the giver I have driven my camel hard.",
+        "Her breast and short ribs throb."
+      ],
+      "sharh": "The patron’s name comes into view for the first time. The camel’s pounding chest is evidence of what it has taken the petitioner to reach him."
+    },
+    "16": {
+      "translation": [
+        "To bring me to the home of a man once far away,",
+        "Qarub has brought me close to your bounty."
+      ],
+      "sharh": "The distant man becomes “you” as the camel reaches him. One traditional reading takes Qarub as her name, which echoes the verb for bringing someone near."
+    },
+    "17": {
+      "translation": [
+        "Towards you, may you give no cause for a curse, she sped",
+        "through wastes alike in all their terrors."
+      ],
+      "sharh": "A courtly greeting breaks into the account of the ride. The wasteland’s danger lies partly in how alike its different stretches look."
+    },
+    "18": {
+      "translation": [
+        "At evening she follows the lengthening shade",
+        "along tracks like long strips of cloth."
+      ],
+      "sharh": "Late light stretches the shadows along the track. Seen from the saddle the roads look like strips of fabric laid across the ground."
+    },
+    "19": {
+      "translation": [
+        "The two northern stars guided me to you, and a clear track",
+        "with scars across the cairns of the hard uplands."
+      ],
+      "sharh": "Two northern stars supply the direction. At ground level, repeated passage has marked the hard ridges like scars on skin."
+    },
+    "20": {
+      "translation": [
+        "Along it lie the carcases of spent mounts, their bones",
+        "bleached white, their hides dried hard."
+      ],
+      "sharh": "He can read the length of exposure from the bones and the hide. The dead mounts make a grim comparison with the camel still carrying him."
+    },
+    "21": {
+      "translation": [
+        "I brought her to water whose pooled surface looked",
+        "from long stagnation like henna mixed with red dye."
+      ],
+      "sharh": "Reaching water carries no promise of clear water. The traveller sees the colour of two dyes where a drink should be."
+    },
+    "22": {
+      "translation": [
+        "She is urged to the fouled troughs. If she recoils,",
+        "her grazing break is the saddle, then the road."
+      ],
+      "sharh": "Ordinarily a camel can graze a little and return for another drink. Here the time usually given to that second chance is spent saddling up."
+    },
+    "23": {
+      "translation": [
+        "You are the man with whom my trust has come to rest.",
+        "Other masters took charge of me, and I was lost."
+      ],
+      "sharh": "He places his case in the king’s keeping. The language of trust gives the host a responsibility his predecessors failed to discharge."
+    },
+    "24": {
+      "translation": [
+        "Banu Ka'b ibn Awf brought their fosterling safely home.",
+        "Another fosterling was left among the troops."
+      ],
+      "sharh": "Repeating “fosterling” sets the two men's fortunes side by side. Al-Asma'i understood them as the victorious king and his dead opponent. Another commentary takes the one left behind to be Sha's."
+    },
+    "25": {
+      "translation": [
+        "By God, but for the rider of al-Jawn among them,",
+        "they would have come home disgraced, glad simply to return."
+      ],
+      "sharh": "The oath singles out the rider by the name of his horse. Without him even a shameful return would have been welcome."
+    },
+    "26": {
+      "translation": [
+        "You drive him on till his white stockings disappear,",
+        "striking the helmets of men in mail."
+      ],
+      "sharh": "White marks low on the horse’s legs vanish in the blood of battle. Helmets and mail show the strength of the opposition in this portrait of the king."
+    },
+    "27": {
+      "translation": [
+        "You wear two iron shirts, one over the other.",
+        "Over them lie two choice swords, Mikhdham and Rasub."
+      ],
+      "sharh": "The king’s “shirts” are mail coats. Both swords have names that suggest what an edge can do in the traditional portrait of a warrior."
+    },
+    "28": {
+      "translation": [
+        "You fought them till they shielded themselves with their champion,",
+        "when the day’s sun was about to set."
+      ],
+      "sharh": "The “ram” is the enemy’s champion put forward as a last defence. The setting sun gives the long engagement a visible end."
+    },
+    "29": {
+      "translation": [
+        "The honour-bound men of Ghassan fought,",
+        "and Hinb and Qas gave battle, and Shabib."
+      ],
+      "sharh": "The king is at the centre of the praise, but his allies are named in their own right. Each name places a contingent on the field."
+    },
+    "30": {
+      "translation": [
+        "Iron coats rattle on their bodies",
+        "as a south wind rattles the dry harvest."
+      ],
+      "sharh": "The comparison reaches the ear before the eye. The same rattling consonants carry the sound of armour and of dry stalks in the wind."
+    },
+    "31": {
+      "translation": [
+        "You give freely a life whose like no one would give,",
+        "and give it gladly on the day the armies meet."
+      ],
+      "sharh": "The language of gifts returns at the centre of the battle. A king willing to spend his own life may yet grant the smaller gift the speaker came for."
+    },
+    "32": {
+      "translation": [
+        "As though the men of Aws beneath his horse’s breast,",
+        "with all whom Jall and Atib mustered together,"
+      ],
+      "sharh": "The eye looks down from the king’s horse onto entire companies. The opening “as though” holds the listener in suspense until the next line."
+    },
+    "33": {
+      "translation": [
+        "had heard the sky’s camel calf cry over them. One kicks",
+        "in his armour, still unstripped, another lies plundered."
+      ],
+      "sharh": "A cry from above announces disaster. Commentators hear an echo of Thamud’s doomed camel, though the image can also suggest thunder. On the ground the men lie at different stages of defeat."
+    },
+    "34": {
+      "translation": [
+        "It was as though a cloud had burst over them,",
+        "its thunderbolts leaving its birds to creep."
+      ],
+      "sharh": "The cloud recalls the welcome rain of the love prelude. Here its bolts drive even birds to the ground, where they can only crawl."
+    },
+    "35": {
+      "translation": [
+        "Only a long-limbed mare escaped, bridle and all,",
+        "or a swift noble steed slender as a spear shaft,"
+      ],
+      "sharh": "The horses are still in their bridles as they break free. A straight spear shaft supplies the outline of the lean, well-bred mount."
+    },
+    "36": {
+      "translation": [
+        "or an armoured man who held his ground, looking",
+        "dyed with what had wetted the edges of blades."
+      ],
+      "sharh": "The list of survivors ends with a man. The liquid on the sword edges colours him so thoroughly that it looks like dye."
+    },
+    "37": {
+      "translation": [
+        "You have showered every tribe with favours.",
+        "Let Sha's have a bucketful of your bounty."
+      ],
+      "sharh": "At last the captive is named. A bucketful is one person’s share of the water at a common well, and the gift sought for Sha's is his liberty."
+    },
+    "38": {
+      "translation": [
+        "No one among men equals him save his own kin,",
+        "and none, however near, comes close to that."
+      ],
+      "sharh": "On the reading “his kin”, only his own house could furnish a possible equal, and even they fall short. A different recension turns the comparison towards his captive."
+    },
+    "39": {
+      "translation": [
+        "Do not withhold a gift because I come from afar.",
+        "I am a stranger among these great tents."
+      ],
+      "sharh": "He stands where the court lives, among its canopied tents, without a local claim of kinship. The last word leaves him there as a stranger awaiting an answer."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "طَحا",
+      "head": "طَحا",
+      "root": "ط ح و",
+      "meaning": "Carried you off or led you far afield."
+    },
+    "1.1.6": {
+      "word": "طَروبُ",
+      "head": "طَروب",
+      "root": "ط ر ب",
+      "meaning": "Readily stirred by pleasure or sorrow, here by beauty."
+    },
+    "1.2.1": {
+      "word": "بُعَيدَ",
+      "head": "بُعَيد",
+      "root": "ب ع د",
+      "meaning": "A diminutive of “after”, looking back on youth as grey hair comes."
+    },
+    "2.1.5": {
+      "word": "وَليُها",
+      "head": "وَلي",
+      "root": "و ل ي",
+      "meaning": "Her nearness or neighbourhood. Even the prospect of being near her is distant."
+    },
+    "2.2.2": {
+      "word": "عَوادٍ",
+      "head": "عادِيَة",
+      "root": "ع د و",
+      "meaning": "Intervening troubles that turn a person away from an aim."
+    },
+    "3.1.1": {
+      "word": "مُنَعَّمَةٌ",
+      "head": "مُنَعَّمَة",
+      "root": "ن ع م",
+      "meaning": "Raised in ease and sheltered from hardship."
+    },
+    "3.1.4": {
+      "word": "كِلامُها",
+      "head": "كِلام",
+      "root": "ك ل م",
+      "meaning": "Speaking with her. Kilam is the verbal noun for addressing someone in conversation."
+    },
+    "4.1.4": {
+      "word": "البَعلُ",
+      "head": "البَعل",
+      "root": "ب ع ل",
+      "meaning": "The husband, whose confidence she guards."
+    },
+    "4.2.2": {
+      "word": "إِيابَ",
+      "head": "إِياب",
+      "root": "ء و ب",
+      "meaning": "The return home of a traveller."
+    },
+    "5.1.5": {
+      "word": "مُغَمَّرٍ",
+      "head": "مُغَمَّر",
+      "root": "غ م ر",
+      "meaning": "An inexperienced youth, still untried in affairs."
+    },
+    "5.2.2-3": {
+      "word": "رَوايا المُزنِ",
+      "head": "رَوايا المُزن",
+      "meaning": "“The rain clouds’ water carriers.” The clouds carry water like laden camels."
+    },
+    "5.2.5": {
+      "word": "تَصوبُ",
+      "head": "صابَ",
+      "root": "ص و ب",
+      "meaning": "Pour down, said of rain clouds."
+    },
+    "6.1.2": {
+      "word": "يَمانٍ",
+      "head": "يَمانٍ",
+      "meaning": "Yamani, coming from the direction of Yemen, to the south."
+    },
+    "6.1.4": {
+      "word": "حَبِيٍّ",
+      "head": "حَبِيّ",
+      "root": "ح ب و",
+      "meaning": "A bank of clouds heaped one upon another."
+    },
+    "6.1.5": {
+      "word": "وَعارِضٌ",
+      "head": "عارِض",
+      "root": "ع ر ض",
+      "meaning": "A bank of cloud stretching across the skyline, the second cloud called upon to water her."
+    },
+    "6.2.3-4": {
+      "word": "جُنحَ العَشِيِّ",
+      "head": "جُنح العَشِيّ",
+      "meaning": "The approach of evening, as daylight inclines."
+    },
+    "7.1.6": {
+      "word": "رَبَعِيَّةً",
+      "head": "رَبَعِيَّة",
+      "meaning": "Raba'iyya, a woman belonging to a Rabi'a lineage of Tamim."
+    },
+    "7.2.4": {
+      "word": "ثَرمَداءَ",
+      "head": "ثَرمَداء",
+      "meaning": "Tharmada, the place where Layla lives, located by one tradition in al-Yamama."
+    },
+    "7.2.5": {
+      "word": "قَليبُ",
+      "head": "قَليب",
+      "root": "ق ل ب",
+      "meaning": "A well sunk into the earth."
+    },
+    "8.2.2": {
+      "word": "بِأَدواءِ",
+      "head": "داء",
+      "root": "د و ء",
+      "meaning": "Ailments. Here the word covers the causes of affection and aversion."
+    },
+    "9.2.4": {
+      "word": "وُدِّهِنَّ",
+      "head": "وُدّ",
+      "root": "و د د",
+      "meaning": "Their affection for him."
+    },
+    "10.2.1-2": {
+      "word": "وَشَرخُ الشَّبابِ",
+      "head": "شَرخ الشَّباب",
+      "meaning": "“Youth’s first vigour”, the freshness of early manhood."
+    },
+    "11.1.2": {
+      "word": "وَسَلِّ",
+      "head": "سَلِّ",
+      "root": "س ل و",
+      "meaning": "Put it out of mind, divert yourself from it."
+    },
+    "11.1.5": {
+      "word": "بِجَسرَةٍ",
+      "head": "جَسرَة",
+      "root": "ج س ر",
+      "meaning": "A powerful she-camel capable of a desert crossing."
+    },
+    "11.2.3": {
+      "word": "بِالرِّدافِ",
+      "head": "رِداف",
+      "root": "ر د ف",
+      "meaning": "With a second person or load riding behind the first."
+    },
+    "11.2.4": {
+      "word": "خَبيبُ",
+      "head": "خَبيب",
+      "root": "خ ب ب",
+      "meaning": "A quick, short-striding trot."
+    },
+    "12.1.1": {
+      "word": "وَناجِيَةٍ",
+      "head": "ناجِيَة",
+      "root": "ن ج و",
+      "meaning": "A fast she-camel that can carry its rider clear."
+    },
+    "12.1.3-4": {
+      "word": "رَكيبَ ضُلوعِها",
+      "head": "رَكيب الضُّلوع",
+      "meaning": "The flesh and fat laid over the ribs."
+    },
+    "12.2.1": {
+      "word": "وَحارِكَها",
+      "head": "حارِك",
+      "root": "ح ر ك",
+      "meaning": "The withers at the front of a camel’s hump."
+    },
+    "12.2.2": {
+      "word": "تَهَجُّرٌ",
+      "head": "تَهَجُّر",
+      "root": "ه ج ر",
+      "meaning": "Travelling in the noonday heat."
+    },
+    "13.1.3-4": {
+      "word": "غِبِّ السُّرى",
+      "head": "غِبّ السُّرى",
+      "meaning": "The aftermath of a night’s travel."
+    },
+    "13.2.1": {
+      "word": "مُوَلَّعَةٌ",
+      "head": "مُوَلَّعَة",
+      "root": "و ل ع",
+      "meaning": "A wild cow or oryx with streaks of contrasting colour."
+    },
+    "13.2.4": {
+      "word": "شَبوبُ",
+      "head": "شَبوب",
+      "root": "ش ب ب",
+      "meaning": "A wild cow in its mature strength."
+    },
+    "14.1.1": {
+      "word": "تَعَفَّقَ",
+      "head": "تَعَفَّقَ",
+      "root": "ع ف ق",
+      "meaning": "Kept to a place, here lurking there in wait for game."
+    },
+    "14.1.2": {
+      "word": "بِالأَرطى",
+      "head": "الأَرطى",
+      "meaning": "Arta, a desert shrub whose thickets give cover to game and hunters."
+    },
+    "14.2.2": {
+      "word": "فَبَذَّت",
+      "head": "بَذَّ",
+      "root": "ب ذ ذ",
+      "meaning": "Outstripped and left behind."
+    },
+    "14.2.4": {
+      "word": "وَكَليبُ",
+      "head": "كَليب",
+      "root": "ك ل ب",
+      "meaning": "A pack of hunting dogs."
+    },
+    "15.1.2-3": {
+      "word": "الحارِثِ الوَهّابِ",
+      "head": "الحارِث الوَهّاب",
+      "meaning": "Al-Harith the Giver, the Ghassanid king to whom Alqama brings his petition."
+    },
+    "15.2.1": {
+      "word": "لِكَلكَلِها",
+      "head": "كَلكَل",
+      "root": "ك ل ك ل",
+      "meaning": "Her breast or chest."
+    },
+    "15.2.2": {
+      "word": "وَالقُصرَيَينِ",
+      "head": "القُصرَيان",
+      "root": "ق ص ر",
+      "meaning": "The two short ribs. The commentators differ over their precise position."
+    },
+    "15.2.3": {
+      "word": "وَجيبُ",
+      "head": "وَجيب",
+      "root": "و ج ب",
+      "meaning": "Throbbing or pounding after exertion."
+    },
+    "16.2.5": {
+      "word": "قَروبُ",
+      "head": "قَروب",
+      "meaning": "Qarub, the camel’s name in Saqr’s commentary, also understood as a description of a mount that brings one near."
+    },
+    "17.1.2-3": {
+      "word": "أَبَيتَ اللَّعنَ",
+      "head": "أَبَيتَ اللَّعن",
+      "meaning": "“May you give no cause for a curse”, a conventional greeting to a king."
+    },
+    "17.1.5": {
+      "word": "وَجيفُها",
+      "head": "وَجيف",
+      "root": "و ج ف",
+      "meaning": "Her swift, pulsing pace."
+    },
+    "17.2.1": {
+      "word": "بِمُشتَبِهاتٍ",
+      "head": "مُشتَبِهات",
+      "root": "ش ب ه",
+      "meaning": "Through tracts so alike that a traveller can lose the way."
+    },
+    "18.1.2": {
+      "word": "أَفياءَ",
+      "head": "فَيء",
+      "root": "ف ي ء",
+      "meaning": "The shadows that lengthen again after midday."
+    },
+    "18.2.4": {
+      "word": "سُبوبُ",
+      "head": "سَبّ",
+      "root": "س ب ب",
+      "meaning": "Long strips or lengths of cloth."
+    },
+    "19.1.3": {
+      "word": "الفَرقَدانِ",
+      "head": "الفَرقَدان",
+      "meaning": "Al-Farqadan, the Two Calves. These stars, Kochab and Pherkad in the Little Bear, give the night traveller his bearings."
+    },
+    "19.1.4": {
+      "word": "وَلاحِبٌ",
+      "head": "لاحِب",
+      "root": "ل ح ب",
+      "meaning": "A clear, well-trodden track."
+    },
+    "19.2.3-4": {
+      "word": "أَصواءِ المِتانِ",
+      "head": "أَصواء المِتان",
+      "meaning": "Cairns or markers on ridges of hard ground."
+    },
+    "19.2.5": {
+      "word": "عُلوبُ",
+      "head": "عَلب",
+      "root": "ع ل ب",
+      "meaning": "Grooves or scars in the ground."
+    },
+    "20.1.3": {
+      "word": "الحَسرى",
+      "head": "حَسير",
+      "root": "ح س ر",
+      "meaning": "Mounts that have been worn out and left on the road."
+    },
+    "20.2.4": {
+      "word": "فَصَليبُ",
+      "head": "صَليب",
+      "root": "ص ل ب",
+      "meaning": "Hardened and dried, in Ibn al-Sikkit’s interpretation. Another gloss gives the fat that seeps from the hide."
+    },
+    "21.1.4": {
+      "word": "جِمامَهُ",
+      "head": "جِمام",
+      "root": "ج م م",
+      "meaning": "The water standing together in the pool."
+    },
+    "21.2.2": {
+      "word": "الأَجنِ",
+      "head": "الأَجن",
+      "root": "ء ج ن",
+      "meaning": "Staleness that comes from standing too long."
+    },
+    "21.2.5": {
+      "word": "وَصَبيبُ",
+      "head": "صَبيب",
+      "root": "ص ب ب",
+      "meaning": "A red dyestuff invoked for the colour of stagnant water."
+    },
+    "22.1.3-4": {
+      "word": "دِمنِ الحِياضِ",
+      "head": "دِمن الحِياض",
+      "meaning": "Dung and other refuse in the trough water, making the camel reluctant to drink."
+    },
+    "22.1.6": {
+      "word": "تَعَف",
+      "head": "عافَ",
+      "root": "ع ي ف",
+      "meaning": "Finds it distasteful and refuses it."
+    },
+    "22.2.2": {
+      "word": "المُنَدّى",
+      "head": "المُنَدّى",
+      "root": "ن د و",
+      "meaning": "The grazing or resting place between a camel’s first and second drinks."
+    },
+    "23.2.2": {
+      "word": "رَبَّتني",
+      "head": "رَبَّ",
+      "root": "ر ب ب",
+      "meaning": "Took charge of me as a master or protector."
+    },
+    "23.2.4": {
+      "word": "رُبوبُ",
+      "head": "رَبّ",
+      "root": "ر ب ب",
+      "meaning": "Lords or protectors who formerly had charge of him."
+    },
+    "24.1.2-5": {
+      "word": "بَنو كَعبِ بنِ عَوفٍ",
+      "head": "بَنو كَعب بن عَوف",
+      "meaning": "Banu Ka'b ibn Awf, the people named as fosterers in this battle tradition."
+    },
+    "24.1.6": {
+      "word": "رَبيبَها",
+      "head": "رَبيب",
+      "root": "ر ب ب",
+      "meaning": "A fosterling brought up under a household’s protection."
+    },
+    "25.1.3-4": {
+      "word": "فارِسُ الجَونِ",
+      "head": "فارِس الجَون",
+      "meaning": "“The rider of al-Jawn”, al-Harith on his black horse."
+    },
+    "25.2.1": {
+      "word": "لَآبوا",
+      "head": "آبَ",
+      "root": "ء و ب",
+      "meaning": "They would have returned home."
+    },
+    "26.1.4": {
+      "word": "حُجولُهُ",
+      "head": "حُجول",
+      "root": "ح ج ل",
+      "meaning": "White markings like anklets on the horse’s lower legs."
+    },
+    "26.2.2-3": {
+      "word": "لِبَيضِ الدّارِعينَ",
+      "head": "بَيض الدّارِعين",
+      "meaning": "The helmets of men wearing coats of mail."
+    },
+    "27.1.1": {
+      "word": "مُظاهِرُ",
+      "head": "مُظاهِر",
+      "root": "ظ ه ر",
+      "meaning": "Wearing one coat of armour over another."
+    },
+    "27.1.2": {
+      "word": "سِربالَي",
+      "head": "سِربال",
+      "root": "س ر ب ل",
+      "meaning": "Two garments, here shirts of mail."
+    },
+    "27.2.1": {
+      "word": "عَقيلا",
+      "head": "عَقيل",
+      "root": "ع ق ل",
+      "meaning": "The two prized examples, chosen from among swords."
+    },
+    "27.2.3-4": {
+      "word": "مِخذَمٌ وَرَسوبُ",
+      "head": "مِخذَم ورَسوب",
+      "meaning": "Mikhdham and Rasub, swords named for cutting and for sinking deep."
+    },
+    "28.1.1": {
+      "word": "فَجالَدتَهُم",
+      "head": "جالَدَ",
+      "root": "ج ل د",
+      "meaning": "Met them in close combat."
+    },
+    "28.1.4": {
+      "word": "بِكَبشِهِم",
+      "head": "كَبش",
+      "root": "ك ب ش",
+      "meaning": "Their foremost champion, literally the ram of the flock."
+    },
+    "29.1.3": {
+      "word": "غَسّانَ",
+      "head": "غَسّان",
+      "meaning": "Ghassan, the Arab people from whom al-Harith’s ruling house in Syria came."
+    },
+    "29.2.1-2": {
+      "word": "وَهِنبٌ وَقاسٌ",
+      "head": "هِنب وقاس",
+      "meaning": "Hinb and Qas, two fighting groups traced in the commentaries to Quda'a."
+    },
+    "29.2.4": {
+      "word": "وَشَبيبُ",
+      "head": "شَبيب",
+      "meaning": "Shabib, another allied group associated in the commentaries with Bahra."
+    },
+    "30.1.2-3": {
+      "word": "أَبدانُ الحَديدِ",
+      "head": "أَبدان الحَديد",
+      "meaning": "Coats of mail covering men’s bodies."
+    },
+    "30.2.3-4": {
+      "word": "يَبسَ الحَصادِ",
+      "head": "يَبس الحَصاد",
+      "meaning": "Dry crop stalks. The diwan commentary takes hasad as a plant that rattles in the wind once it dries."
+    },
+    "31.2.5": {
+      "word": "تَطيبُ",
+      "head": "طابَ",
+      "root": "ط ي ب",
+      "meaning": "Willingly parts with it, as one willingly makes a gift."
+    },
+    "32.1.3": {
+      "word": "الأَوسِ",
+      "head": "الأَوس",
+      "meaning": "Aws, the tribal name here, identified by some commentators with the Aws of Yathrib."
+    },
+    "32.1.5": {
+      "word": "لَبانِهِ",
+      "head": "لَبان",
+      "root": "ل ب ن",
+      "meaning": "The breast of his horse."
+    },
+    "32.2.3-5": {
+      "word": "جَلٌّ مَعاً وَعَتيبُ",
+      "head": "جَلّ وعَتيب",
+      "meaning": "Jall and Atib, the groups whose assembled men are pictured alongside Aws."
+    },
+    "33.1.3-4": {
+      "word": "سَقبُ السَّماءِ",
+      "head": "سَقب السَّماء",
+      "meaning": "“The sky’s camel calf”, whose cry portends collective disaster."
+    },
+    "33.1.5": {
+      "word": "فَداحِصٌ",
+      "head": "داحِص",
+      "root": "د ح ص",
+      "meaning": "A dying man kicking the ground. The Mufaddaliyyat describes the same movement under the spelling with final ض."
+    },
+    "33.2.1": {
+      "word": "بِشِكَّتِهِ",
+      "head": "شِكَّة",
+      "root": "ش ك ك",
+      "meaning": "With his full battle equipment still on him."
+    },
+    "34.2.3": {
+      "word": "دَبيبُ",
+      "head": "دَبيب",
+      "root": "د ب ب",
+      "meaning": "A creeping movement along the ground."
+    },
+    "35.1.4": {
+      "word": "شَطبَةٌ",
+      "head": "شَطبَة",
+      "root": "ش ط ب",
+      "meaning": "A long, slender mare. The recitation has shatba. The Mufaddaliyyat vowels it shitba."
+    },
+    "35.2.2": {
+      "word": "طِمِرٌّ",
+      "head": "طِمِرّ",
+      "root": "ط م ر",
+      "meaning": "A swift, springing horse."
+    },
+    "35.2.3": {
+      "word": "كَالقَناةِ",
+      "head": "قَناة",
+      "root": "ق ن و",
+      "meaning": "Like the straight wooden shaft of a spear."
+    },
+    "36.1.2": {
+      "word": "كَمِيٌّ",
+      "head": "كَمِيّ",
+      "root": "ك م ي",
+      "meaning": "A warrior protected by his armour."
+    },
+    "36.2.5": {
+      "word": "الظُّباتِ",
+      "head": "ظُبَة",
+      "root": "ظ ب و",
+      "meaning": "The keen edges or tips of blades."
+    },
+    "36.2.6": {
+      "word": "خَضيبُ",
+      "head": "خَضيب",
+      "root": "خ ض ب",
+      "meaning": "Stained as if dyed, here with blood."
+    },
+    "37.1.5-6": {
+      "word": "خَبَطتَ بِنِعمَةٍ",
+      "head": "خَبَطَ بِنِعمَة",
+      "meaning": "Bestowed a favour freely, whether or not there was an earlier claim."
+    },
+    "37.2.2": {
+      "word": "لِشَأسٍ",
+      "head": "شَأس",
+      "meaning": "Sha's, the captive for whom Alqama intercedes, his brother in the usual account."
+    },
+    "37.2.5": {
+      "word": "ذَنوبُ",
+      "head": "ذَنوب",
+      "root": "ذ ن ب",
+      "meaning": "A full bucket, hence one person’s share of a supply."
+    },
+    "38.1.6": {
+      "word": "قَبيلُهُ",
+      "head": "قَبيل",
+      "root": "ق ب ل",
+      "meaning": "His kin or clan. The Mufaddaliyyat instead reads “his captive”."
+    },
+    "39.1.3": {
+      "word": "نائِلاً",
+      "head": "نائِل",
+      "root": "ن ي ل",
+      "meaning": "A gift or favour, here the release of the captive."
+    },
+    "39.1.5": {
+      "word": "جَنابَةٍ",
+      "head": "جَنابَة",
+      "root": "ج ن ب",
+      "meaning": "Distance or the condition of being a stranger."
+    },
+    "39.2.4": {
+      "word": "القِبابِ",
+      "head": "قُبَّة",
+      "root": "ق ب ب",
+      "meaning": "Domed tents or pavilions of the royal camp."
+    }
+  }
+}

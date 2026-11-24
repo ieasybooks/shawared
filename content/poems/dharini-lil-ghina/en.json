@@ -1,0 +1,111 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Let Me Seek Wealth",
+  "intro": "Urwa ibn al-Ward asks a woman to let him go in search of wealth. He follows a poor man from the tribal gathering to his own household, then observes the effect a rich man has on someone standing beside him. Al-Jahiz included the verses in his discussion of poverty in The Misers. The last line gives wealth itself the power to pardon.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Let me go in search of wealth,",
+        "for I have seen people rank the poor man lowest of all."
+      ],
+      "sharh": "He offers something he has witnessed as his reason for going. The judgement on the poor man belongs to the people whose behaviour he is about to describe."
+    },
+    "2": {
+      "translation": [
+        "He counts for least and they look down on him,",
+        "even if he has both generosity and worth."
+      ],
+      "sharh": "The two superlatives measure how little weight the man carries with his neighbours. His generosity has survived poverty, but it earns him no standing with them."
+    },
+    "3": {
+      "translation": [
+        "He is pushed aside in the gathering, and despised",
+        "by his wife, and even a child scolds him."
+      ],
+      "sharh": "The gathering, the wife and the child bring the humiliation steadily closer to home. Even someone too young to command him feels entitled to tell him off."
+    },
+    "4": {
+      "translation": [
+        "You meet a rich man clothed in such majesty",
+        "that his companion’s heart all but takes flight."
+      ],
+      "sharh": "The trembling heart belongs to the rich man’s companion. The rich man need only be present to produce the deference the poor man cannot win by his character."
+    },
+    "5": {
+      "translation": [
+        "His fault counts for little, though the fault is great.",
+        "Wealth is a master quick to forgive."
+      ],
+      "sharh": "The offence changes size in the telling. In the final image wealth sits in judgement and grants its owner pardon for the very fault everyone can see."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "ذَريني",
+      "head": "ذَري",
+      "root": "و ذ ر",
+      "meaning": "Let me be, addressed to one woman."
+    },
+    "2.1.3": {
+      "word": "لَدَيهِم",
+      "head": "لَدى",
+      "meaning": "In their estimation. The diwan reads “most distant from them and least esteemed by them”."
+    },
+    "2.2.4": {
+      "word": "كَرَمٌ",
+      "head": "كَرَم",
+      "root": "ك ر م",
+      "meaning": "Nobility of character, including open-handedness. Al-Jahiz reads hasab, inherited distinction."
+    },
+    "2.2.5": {
+      "word": "وَخيرُ",
+      "head": "خير",
+      "root": "خ ي ر",
+      "meaning": "Worth or excellence. The long vowel fits the rhyme."
+    },
+    "3.1.1": {
+      "word": "وَيُقصى",
+      "head": "أَقصى",
+      "root": "ق ص و",
+      "meaning": "Is kept at a distance. Ibn Qutayba’s version makes the assembly itself the agent."
+    },
+    "3.1.3": {
+      "word": "النَّدِيِّ",
+      "head": "النَّدِيّ",
+      "root": "ن د و",
+      "meaning": "Nadi, the gathering where the men of the community meet and confer."
+    },
+    "3.2.1": {
+      "word": "حَليلَتُهُ",
+      "head": "حَليلَة",
+      "root": "ح ل ل",
+      "meaning": "His wife, the person who shares his household."
+    },
+    "3.2.2": {
+      "word": "وَيَنهَرُهُ",
+      "head": "نَهَرَ",
+      "root": "ن ه ر",
+      "meaning": "Rebukes him sharply."
+    },
+    "4.1.5": {
+      "word": "جَلالٌ",
+      "head": "جَلال",
+      "root": "ج ل ل",
+      "meaning": "An imposing presence that inspires awe."
+    },
+    "5.1.4": {
+      "word": "جَمٌّ",
+      "head": "جَمّ",
+      "root": "ج م م",
+      "meaning": "Great in quantity, abundant."
+    },
+    "5.2.3-4": {
+      "word": "رَبٌّ غَفورُ",
+      "head": "رَبّ غَفور",
+      "meaning": "“A forgiving master.” Money is given the power to excuse its owner."
+    }
+  }
+}
