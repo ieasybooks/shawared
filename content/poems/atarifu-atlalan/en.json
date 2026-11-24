@@ -1,0 +1,765 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Do You Recognise Ruins and a Broken Trench",
+  "intro": "Ibn al-Shajari's anthology gives this poem by Hatim al-Ta'i in the order heard here. At an abandoned campsite Hatim recalls a woman first by the gleam and then by the sound of her jewellery. Two reproachers wake to question his spending, and his answer grows into advice about property and kin. The last movement follows two men who have equally little and want quite different things from life.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Do you recognise ruins and a broken trench,",
+        "like fine writing you traced on parchment?"
+      ],
+      "sharh": "The trench once kept runoff away from the tent. Its broken outline now calls for the same close looking as intricate lettering on a sheet one has written oneself."
+    },
+    "2": {
+      "translation": [
+        "The winds scattered its remains after its people went,",
+        "for months and days and one full year."
+      ],
+      "sharh": "The wind has had the place to itself since its company left. Counting the days as well as the completed year makes the loss an accumulation of small changes."
+    },
+    "3": {
+      "translation": [
+        "They have changed the very surface of its soil.",
+        "The seasons' weather altered every landmark."
+      ],
+      "sharh": "What disappears is the surface on which recognition depends. The seasonal weather associated with the setting and rising stars erases even a mark once chosen for its visibility."
+    },
+    "4": {
+      "translation": [
+        "Length of time and decay have changed the place.",
+        "I recognise the ruins only by imagining them."
+      ],
+      "sharh": "The opening question receives its answer. Recognition is now partly an act of reconstruction, in which memory supplies what the ground no longer shows."
+    },
+    "5": {
+      "translation": [
+        "The home of her who stood and showed you, once it emptied",
+        "and no visitors remained, a hand and wrist,"
+      ],
+      "sharh": "The speaker remembers a different kind of emptiness, the privacy left when the visitors once withdrew. It let him see a hand and the bare place where a bracelet rests."
+    },
+    "6": {
+      "translation": [
+        "and a throat like a silver tray, adorned",
+        "by the fire of rubies, and gold beads on a string,"
+      ],
+      "sharh": "The silver tray supplies a smooth, luminous surface. Against it the red stones burn, while the separate pieces of gold make a line around her neck."
+    },
+    "7": {
+      "translation": [
+        "like embers of ghada wood, after a spell of sleep,",
+        "when east winds of the night blow on them and they flare."
+      ],
+      "sharh": "Ghada wood holds a live coal for a long time. The wind blowing on banked embers gives the flash of jewellery against the night both colour and movement."
+    },
+    "8": {
+      "translation": [
+        "For her the dark tent lights at its openings",
+        "when she so much as tries to smile at night."
+      ],
+      "sharh": "Her smile lights the tent at night. Ibn al-Shajari understands the tent cloth to be so tight that it lets no light in from outside. The light that shows through the weave comes from her."
+    },
+    "9": {
+      "translation": [
+        "Whichever way she turns upon the mattress,",
+        "the whisper of her ornaments begins to sing."
+      ],
+      "sharh": "Once the scene goes dark, her slightest movement remains audible. The almost whispered contact of metal on metal acquires a melody in the listener's ear."
+    },
+    "10": {
+      "translation": [
+        "Two women who reproach me woke after a stretch of sleep,",
+        "blaming a spender, an earner, a man much blamed."
+      ],
+      "sharh": "Two voices break into the night scene. The man they call wasteful can also bring wealth in, and the balanced descriptions open a dispute about what making money is for."
+    },
+    "11": {
+      "translation": [
+        "As the star sank, they took for a fool",
+        "a man who sees no loss in spending on what is right."
+      ],
+      "sharh": "The star is low when the argument begins. The women count what has left his hands, while he asks what it was spent on before deciding whether anything has been lost."
+    },
+    "12": {
+      "translation": [
+        "I spoke when their reproach had gone on long",
+        "and both had threatened to leave me and break with me."
+      ],
+      "sharh": "Their threat gives the argument a cost beyond property. He must answer knowing that his way of spending may also lose him the two people speaking."
+    },
+    "13": {
+      "translation": [
+        "“Do not blame me for what has gone before.",
+        "The turns of time are schooling enough for anyone."
+      ],
+      "sharh": "He asks them to leave past transactions alone. Time has already given him an education in reversals more searching than a further round of reproach."
+    },
+    "14": {
+      "translation": [
+        "Neither of you can bring back what has passed,",
+        "and I have no regrets for what I have let go.”"
+      ],
+      "sharh": "The women cannot reverse a gift, and its giver has no wish to undo it. Between the two halves he removes both the power and the motive for revisiting the past."
+    },
+    "15": {
+      "translation": [
+        "Practise forbearance with close kin and keep their love.",
+        "You will gain forbearance only by practising it."
+      ],
+      "sharh": "The advice begins with the people hardest to avoid, one's own relations. Arabic sets the settled quality beside the effort of acting as if one possessed it already."
+    },
+    "16": {
+      "translation": [
+        "Honour your own self. If it means little",
+        "to you, you will never find anyone to honour it."
+      ],
+      "sharh": "He addresses the listener as both the keeper and the object of honour. Outsiders cannot be counted on to supply a regard one has already given up oneself."
+    },
+    "17": {
+      "translation": [
+        "Hold old family wealth cheap for what you prize.",
+        "When you die it becomes plunder divided up."
+      ],
+      "sharh": "Having just told a man what to hold dear, he tells him what he can afford to hold cheap. At death even ancestral property passes out of its keeper's hands."
+    },
+    "18": {
+      "translation": [
+        "Do not toil over it to make an heir happy",
+        "when you are packed into a dark, dust-lined hollow."
+      ],
+      "sharh": "One man does the saving, another enjoys the proceeds. The grave is left unnamed so its dark earthen interior can stand opposite the heir's good fortune."
+    },
+    "19": {
+      "translation": [
+        "He parcels it out as gain and trades its finest things",
+        "when you are bones in a slit in the ground."
+      ],
+      "sharh": "An heir can sell what the owner once thought too precious to part with. All that remains under the former owner's control is the narrow line his bones occupy."
+    },
+    "20": {
+      "translation": [
+        "Little thanks will an heir give you for it",
+        "when he drives off a prize from what you gathered."
+      ],
+      "sharh": "Even posthumous gratitude is a doubtful return. The heir is pictured driving the property away like animals acquired on a raid, pleased with the acquisition."
+    },
+    "21": {
+      "translation": [
+        "Whenever you soothe the clan's grudges with patience",
+        "and withhold injury, you cut the disease off at its root."
+      ],
+      "sharh": "Resentment is an illness running through the kin group. The remedy calls for something the listener can do himself, forbear from adding fresh injury while old grievances subside."
+    },
+    "22": {
+      "translation": [
+        "You can always spring at a bad man as he springs",
+        "at you, and trade slaps with a well-slapped wretch."
+      ],
+      "sharh": "Matching every provocation is perfectly possible. The repeated slap makes the proposed contest sound tawdry and raises the question of what its winner gains."
+    },
+    "23": {
+      "translation": [
+        "Many an ugly word I passed over did no harm.",
+        "Many a crooked man I set straight, and he straightened."
+      ],
+      "sharh": "He can let an insult die without an answer and still intervene where a person can be helped. The repetition of “straight” lets us see the effect on the person corrected."
+    },
+    "24": {
+      "translation": [
+        "I cover a generous man's slip to keep him for the future.",
+        "I pass over a base man's abuse out of self-respect."
+      ],
+      "sharh": "The same silence has two motives. One offender is worth keeping as a friend, while the other is worth no further expenditure of one's dignity."
+    },
+    "25": {
+      "translation": [
+        "I never desert a kinsman even when he deserts me,",
+        "or abuse a cousin even when no answer comes to him."
+      ],
+      "sharh": "Kinship survives a failure of reciprocity. His cousin's inability to answer would make an insult easy, which is precisely when his restraint counts."
+    },
+    "26": {
+      "translation": [
+        "No stubborn fit has ever driven me after a desire",
+        "when I saw no way forward before me."
+      ],
+      "sharh": "Recklessness would be an easy misreading of his indifference to possessions. A wish alone cannot make him advance when he can see no opening."
+    },
+    "27": {
+      "translation": [
+        "Many a pitch-dark night I wore its terrors as a shirt,",
+        "when night scowled at the feeble coward."
+      ],
+      "sharh": "Night's terror fits him close as clothing. The same night has a face for the faint-hearted traveller, leaving human disposition to determine how darkness is met."
+    },
+    "28": {
+      "translation": [
+        "A man with nothing will gain neither praise nor wealth",
+        "if he never undertakes a weighty affair,"
+      ],
+      "sharh": "Poverty gives this traveller something to gain in two different currencies. The statement runs on into a particular kind of undertaking in the following verse."
+    },
+    "29": {
+      "translation": [
+        "or joins the raiding horses in the morning,",
+        "their hooves raising a cloud of dusky dust."
+      ],
+      "sharh": "The abstract “weighty affair” becomes a mounted raid. First the eye meets its dust cloud, then the poem lets the horsemen themselves come into focus."
+    },
+    "30": {
+      "translation": [
+        "Upon them are young men like the jinn of Abqar,",
+        "shaking straightened shafts in their hands."
+      ],
+      "sharh": "Abqar belonged to the imagined geography of the jinn. The comparison makes the riders uncanny, then their hands and moving lance shafts bring them sharply back into view."
+    },
+    "31": {
+      "translation": [
+        "God confound the pauper whose one wish and concern",
+        "in life is finding clothes and a meal."
+      ],
+      "sharh": "The curse singles out a scale of ambition. Food and clothes occupy the whole field of this man's desires, leaving no room for the praise or achievement just described."
+    },
+    "32": {
+      "translation": [
+        "He sleeps the morning through. When the day is at its height,",
+        "he stirs, numb at heart and puffy with sleep."
+      ],
+      "sharh": "Morning was the hour of the riders' raid. For this man it passes in sleep, and even his swollen, sluggish awakening fails to return him to activity."
+    },
+    "33": {
+      "translation": [
+        "He lodges with the rich and never moves away",
+        "if he gets a gift of food and somewhere to settle."
+      ],
+      "sharh": "His hosts need only provide a meal and space to lie down. The word for the spot where he settles can be used of a bird crouched on its roost."
+    },
+    "34": {
+      "translation": [
+        "God reward the poor man who grapples with his purpose",
+        "and strides forward through events and time."
+      ],
+      "sharh": "The second man is introduced with the same word for someone without means. His desire gives him something to grapple with, while the years and their accidents find him in motion."
+    },
+    "35": {
+      "translation": [
+        "A man of many quests, he sees no disaster in hunger",
+        "and counts no full meal, if it comes, a prize."
+      ],
+      "sharh": "He has enough purposes to keep an empty or a full stomach in proportion. A meal ceases to be the prize towards which all his activity is directed."
+    },
+    "36": {
+      "translation": [
+        "Whenever noble deeds come into view one day,",
+        "he heads for the greatest, then sets his mind to it."
+      ],
+      "sharh": "The opportunities appear as things he can see and move towards. Choosing the greatest is only the first act, followed by a decision that will hold."
+    },
+    "37": {
+      "translation": [
+        "He counts his spear, his arrows and his shield,",
+        "a grooved blade keen on impact, shearing clean through,"
+      ],
+      "sharh": "A sequence of possessions is governed by “he counts”. The last is a sword described through its grooves and its cutting edge. What the young man counts them as is still to come."
+    },
+    "38": {
+      "translation": [
+        "the curves of a well-fitting saddle, its bridle,",
+        "and a marked thoroughbred as a fighter's equipment."
+      ],
+      "sharh": "The saddle must fit the back that will carry it. Mount, tack and weapons complete the previous sentence and show what this poor man considers wealth worth possessing."
+    },
+    "39": {
+      "translation": [
+        "When a day of hardship comes, he advances",
+        "into the spearheads and comes away stained with blood."
+      ],
+      "sharh": "A “day of hardship” is a battle. The points face him as he enters, and the colour he bears records the encounter without telling whose blood it is."
+    },
+    "40": {
+      "translation": [
+        "When war bares its back teeth and girds itself,",
+        "and the slow fellow of the clan turns, he advances marked out."
+      ],
+      "sharh": "War has a mouth and a body braced for action. The conspicuous fighter and the man who turns away can now be distinguished at a glance."
+    },
+    "41": {
+      "translation": [
+        "If that man dies, his good name survives him.",
+        "If he lives, he will never sit weak and despised."
+      ],
+      "sharh": "His good name survives the worst possible outcome. If he lives, the final verb “sit” recalls the earlier man settled in comfort and gives the contrast a physical posture."
+    }
+  },
+  "words": {
+    "1.1.2": {
+      "word": "أَطلالاً",
+      "head": "طَلَل",
+      "root": "ط ل ل",
+      "meaning": "Traces of a dwelling still visible above the ground."
+    },
+    "1.1.3": {
+      "word": "وَنُؤياً",
+      "head": "نُؤي",
+      "root": "ن أ ي",
+      "meaning": "A trench around a tent to divert runoff."
+    },
+    "1.2.2-3": {
+      "word": "في رَقٍّ",
+      "head": "رَقّ",
+      "root": "ر ق ق",
+      "meaning": "Thin dressed skin used as parchment."
+    },
+    "1.2.5": {
+      "word": "مُنَمنَما",
+      "head": "مُنَمنَم",
+      "root": "ن م ن م",
+      "meaning": "Finely worked or patterned, here of script."
+    },
+    "2.1.1-2": {
+      "word": "أَذاعَت بِهِ",
+      "head": "أَذاعَ بِهِ",
+      "meaning": "Scattered what remained of its trace."
+    },
+    "2.2.4": {
+      "word": "مُجَرَّما",
+      "head": "مُجَرَّم",
+      "root": "ج ر م",
+      "meaning": "Completed and gone by, of a full year."
+    },
+    "3.2.2": {
+      "word": "الأَنواءُ",
+      "head": "نَوء",
+      "root": "ن و أ",
+      "meaning": "The seasonal settings and risings of stars associated with rain and changes of weather."
+    },
+    "3.2.5": {
+      "word": "مُعلَما",
+      "head": "مُعلَم",
+      "root": "ع ل م",
+      "meaning": "Distinguished by a recognisable landmark."
+    },
+    "4.2.5": {
+      "word": "تَوَهُّما",
+      "head": "تَوَهُّم",
+      "root": "و ه م",
+      "meaning": "Recognition by surmise and by picturing what used to be there."
+    },
+    "5.2.1": {
+      "word": "وَأَقوَت",
+      "head": "أَقوى",
+      "root": "ق و ي",
+      "meaning": "Stood empty of inhabitants or visitors."
+    },
+    "5.2.5": {
+      "word": "وَمِعصَما",
+      "head": "مِعصَم",
+      "root": "ع ص م",
+      "meaning": "The wrist where a bracelet rests."
+    },
+    "6.1.2-3": {
+      "word": "كَفاثورِ اللُّجَينِ",
+      "head": "فاثور اللُّجَين",
+      "meaning": "“Like a silver tray”, a small gleaming table or platter."
+    },
+    "6.2.3": {
+      "word": "وَشَذراً",
+      "head": "شَذر",
+      "root": "ش ذ ر",
+      "meaning": "Small pieces of gold strung amongst necklace beads."
+    },
+    "7.1.2": {
+      "word": "الغَضا",
+      "root": "غ ض ي",
+      "meaning": "Ghada, a desert shrub valued for its long-burning embers."
+    },
+    "7.2.4": {
+      "word": "الصَّبا",
+      "root": "ص ب و",
+      "meaning": "The east wind."
+    },
+    "8.1.5": {
+      "word": "خَصاصُهُ",
+      "head": "خَصاص",
+      "root": "خ ص ص",
+      "meaning": "Chinks in the tent covering. Ibn al-Shajari understands the covering to be close enough to keep out all outside light."
+    },
+    "9.1.4": {
+      "word": "الحَشِيَّةِ",
+      "head": "الحَشِيَّة",
+      "root": "ح ش و",
+      "meaning": "A stuffed mattress or cushion."
+    },
+    "9.2.2-3": {
+      "word": "وَسواسُ الحُلِيِّ",
+      "head": "وَسواس الحُلِيّ",
+      "meaning": "The low, continuous chime of ornaments in motion."
+    },
+    "10.1.1": {
+      "word": "وَعاذِلَتَينِ",
+      "head": "عاذِلَة",
+      "root": "ع ذ ل",
+      "meaning": "Two women who reproach him for his spending."
+    },
+    "10.2.2-3": {
+      "word": "مِتلافاً مُفيداً",
+      "head": "مِتلاف مُفيد",
+      "meaning": "One who spends freely and also acquires wealth."
+    },
+    "11.1.3-4": {
+      "word": "غَوَّرَ النَّجمُ",
+      "head": "غَوَّرَ النَّجم",
+      "meaning": "The star sank towards setting. “The Star” can also mean the Pleiades."
+    },
+    "11.2.7": {
+      "word": "مَغرَما",
+      "head": "مَغرَم",
+      "root": "غ ر م",
+      "meaning": "A liability or loss charged against someone."
+    },
+    "12.2.3": {
+      "word": "تَبينا",
+      "head": "بانَ",
+      "root": "ب ي ن",
+      "meaning": "Depart and leave him, said of the two women."
+    },
+    "12.2.4": {
+      "word": "فَتَصرِما",
+      "head": "صَرَمَ",
+      "root": "ص ر م",
+      "meaning": "Break off the relationship."
+    },
+    "13.2.2-3": {
+      "word": "بِصُروفِ الدَّهرِ",
+      "head": "صُروف الدَّهر",
+      "meaning": "“The turns of time”, reversals of circumstance."
+    },
+    "13.2.5": {
+      "word": "مُحكِما",
+      "head": "مُحكِم",
+      "root": "ح ك م",
+      "meaning": "Something that teaches sound judgement through experience."
+    },
+    "14.1.5": {
+      "word": "تُدرِكانِهِ",
+      "head": "أَدرَكَ",
+      "root": "د ر ك",
+      "meaning": "Catch up with and recover it, addressed to both reproachers."
+    },
+    "15.1.1-2": {
+      "word": "تَحَلَّم عَلى",
+      "head": "تَحَلَّم",
+      "root": "ح ل م",
+      "meaning": "Practise patience with someone who has given offence. The reciter says “with” (على). Ibn al-Shajari and the video caption use عن, “overlook the faults of”."
+    },
+    "15.1.3": {
+      "word": "الأَدنَينَ",
+      "head": "الأَدنَون",
+      "root": "د ن و",
+      "meaning": "The nearest relations."
+    },
+    "15.1.4": {
+      "word": "وَاستَبقِ",
+      "head": "اِستَبقِ",
+      "root": "ب ق ي",
+      "meaning": "Keep something in reserve, here the affection of one's relations."
+    },
+    "16.1.5": {
+      "word": "تَهُن",
+      "head": "هانَ",
+      "root": "ه و ن",
+      "meaning": "Sink in esteem, with one's own self as the subject."
+    },
+    "17.1.5": {
+      "word": "التِّلادَ",
+      "head": "التِّلاد",
+      "root": "و ل د",
+      "meaning": "Long-held or inherited property."
+    },
+    "17.2.5": {
+      "word": "نَهباً",
+      "head": "نَهب",
+      "root": "ن ه ب",
+      "meaning": "Spoil seized and divided up by others."
+    },
+    "18.1.2": {
+      "word": "تَشقَيَن",
+      "head": "شَقِيَ",
+      "root": "ش ق ي",
+      "meaning": "Toil or suffer. A short emphatic ending strengthens the warning against exhausting yourself for an heir. Ibn al-Shajari writes that ending with alif."
+    },
+    "18.2.3": {
+      "word": "تُحشى",
+      "head": "حُشِيَ",
+      "root": "ح ش و",
+      "meaning": "Be put into a hollow, an image for burial."
+    },
+    "18.2.4-5": {
+      "word": "أَغبَرَ الجَوفِ",
+      "head": "أَغبَر الجَوف",
+      "meaning": "“Dust-coloured within”, an unnamed grave."
+    },
+    "19.1.3": {
+      "word": "وَيَشري",
+      "head": "شَرى",
+      "root": "ش ر ي",
+      "meaning": "Sells or trades away. The same verb can also mean to buy."
+    },
+    "19.2.4": {
+      "word": "خَطٍّ",
+      "head": "خَطّ",
+      "root": "خ ط ط",
+      "meaning": "A slit or trench in the earth, here the grave."
+    },
+    "20.2.6": {
+      "word": "مَغنَما",
+      "head": "مَغنَم",
+      "root": "غ ن م",
+      "meaning": "A gain obtained without the labour of accumulating it."
+    },
+    "21.1.2": {
+      "word": "تَرقِ",
+      "head": "رَقى",
+      "root": "ر ق ي",
+      "meaning": "Treat as a healer might treat an illness with an incantation."
+    },
+    "21.1.3": {
+      "word": "أَضغانَ",
+      "head": "ضِغن",
+      "root": "ض غ ن",
+      "meaning": "Grudges harboured over time."
+    },
+    "21.1.5": {
+      "word": "بِالأَنى",
+      "head": "الأَنى",
+      "root": "أ ن ي",
+      "meaning": "With patience and deliberation."
+    },
+    "22.1.3": {
+      "word": "نازَيتَ",
+      "head": "نازى",
+      "root": "ن ز و",
+      "meaning": "Sprang at an opponent who sprang at you."
+    },
+    "22.2.4": {
+      "word": "المُلطَّما",
+      "head": "المُلَطَّم",
+      "root": "ل ط م",
+      "meaning": "One often slapped in the face, hence accustomed to humiliation."
+    },
+    "23.1.1": {
+      "word": "وَعَوراءَ",
+      "head": "عَوراء",
+      "root": "ع و ر",
+      "meaning": "An ugly utterance or insulting slip."
+    },
+    "23.2.2": {
+      "word": "أَوَدٍ",
+      "head": "أَوَد",
+      "root": "أ و د",
+      "meaning": "Crookedness, applied to conduct."
+    },
+    "24.1.4": {
+      "word": "اِدِّخارَهُ",
+      "head": "اِدِّخار",
+      "root": "ذ خ ر",
+      "meaning": "Keeping the person and his friendship in reserve."
+    },
+    "25.1.3": {
+      "word": "المَولى",
+      "root": "و ل ي",
+      "meaning": "A kinsman or ally with a claim on one's help."
+    },
+    "25.2.7": {
+      "word": "مُفحَما",
+      "head": "مُفحَم",
+      "root": "ف ح م",
+      "meaning": "Silenced or unable to find a reply."
+    },
+    "26.1.5": {
+      "word": "لَجاجَةٌ",
+      "head": "لَجاجَة",
+      "root": "ل ج ج",
+      "meaning": "Obstinate persistence after a course proves ill-judged."
+    },
+    "26.2.6": {
+      "word": "مُقَدَّما",
+      "head": "مُقَدَّم",
+      "root": "ق د م",
+      "meaning": "An opening for moving ahead."
+    },
+    "27.1.4": {
+      "word": "تَسَربَلتُ",
+      "head": "تَسَربَلَ",
+      "root": "س ر ب ل",
+      "meaning": "Clothed oneself as in a shirt."
+    },
+    "27.2.3": {
+      "word": "بِالنِّكسِ",
+      "head": "النِّكس",
+      "root": "ن ك س",
+      "meaning": "A feeble man unequal to difficulty."
+    },
+    "28.1.3": {
+      "word": "الصُّعلوكُ",
+      "head": "الصُّعلوك",
+      "root": "ص ع ل ك",
+      "meaning": "A man with no property, a condition shared by the two figures compared here."
+    },
+    "29.2.3": {
+      "word": "بِالسَّنابِكِ",
+      "head": "السَّنابِك",
+      "root": "س ن ب ك",
+      "meaning": "The tips of horses' hooves."
+    },
+    "29.2.4": {
+      "word": "أَقتَما",
+      "head": "أَقتَم",
+      "root": "ق ت م",
+      "meaning": "Dusky or dark with dust."
+    },
+    "30.1.3-4": {
+      "word": "كَجِنَّةِ عَبقَرٍ",
+      "head": "جِنَّة عَبقَر",
+      "meaning": "“The jinn of Abqar”, a legendary place associated with extraordinary powers."
+    },
+    "30.2.3": {
+      "word": "وَشيجاً",
+      "head": "وَشيج",
+      "root": "و ش ج",
+      "meaning": "Cane used for straight lance shafts."
+    },
+    "31.1.1-2": {
+      "word": "لَحى اللَّهُ",
+      "head": "لَحى اللَّه",
+      "meaning": "“God confound”, a formula of censure."
+    },
+    "31.2.5": {
+      "word": "لَبوساً",
+      "head": "لَبوس",
+      "root": "ل ب س",
+      "meaning": "Something to wear, clothing."
+    },
+    "32.2.2-3": {
+      "word": "مَثلوجَ الفُؤادِ",
+      "head": "مَثلوج الفُؤاد",
+      "meaning": "“Chilled at heart”, dull or numb in spirit."
+    },
+    "32.2.4": {
+      "word": "مُوَرَّما",
+      "head": "مُوَرَّم",
+      "root": "و ر م",
+      "meaning": "Swollen or puffy from long inactivity."
+    },
+    "33.2.3": {
+      "word": "جَدوى",
+      "root": "ج د ي",
+      "meaning": "A gift or benefit obtained from someone else."
+    },
+    "33.2.6": {
+      "word": "وَمَجثَما",
+      "head": "مَجثَم",
+      "root": "ج ث م",
+      "meaning": "A roosting place, transferred to a man's settled lodging."
+    },
+    "34.1.3": {
+      "word": "يُساوِرُ",
+      "head": "ساوَرَ",
+      "root": "س و ر",
+      "meaning": "Grapples with, as if his own purpose were a living opponent."
+    },
+    "35.1.5": {
+      "word": "الخَمصَ",
+      "head": "الخَمص",
+      "root": "خ م ص",
+      "meaning": "An empty belly, hunger."
+    },
+    "35.1.6": {
+      "word": "تَرحَةً",
+      "head": "تَرحَة",
+      "root": "ت ر ح",
+      "meaning": "A cause of grief or distress."
+    },
+    "36.1.6": {
+      "word": "أَعرَضَت",
+      "head": "أَعرَضَ",
+      "root": "ع ر ض",
+      "meaning": "Presented themselves to view."
+    },
+    "36.2.1": {
+      "word": "تَيَمَّمَ",
+      "root": "ي م م",
+      "meaning": "Made for or set one's course towards."
+    },
+    "36.2.3-4": {
+      "word": "ثُمَّتَ صَمَّما",
+      "meaning": "“Then he carried on resolutely.” The anthology attaches the t to an older form of “then”. The caption puts it at the beginning of the verb. The words run together with the same sound either way."
+    },
+    "37.1.4": {
+      "word": "وَمِجَنَّهُ",
+      "head": "مِجَنّ",
+      "root": "ج ن ن",
+      "meaning": "A shield that covers its bearer."
+    },
+    "37.2.1-2": {
+      "word": "وَذا شُطَبٍ",
+      "head": "ذو شُطَب",
+      "meaning": "“One with grooves”, a sword with long channels in its blade."
+    },
+    "37.2.5": {
+      "word": "مِخذَما",
+      "head": "مِخذَم",
+      "root": "خ ذ م",
+      "meaning": "A blade that shears clean through."
+    },
+    "38.1.1-2": {
+      "word": "وَأَحناءَ سَرجٍ",
+      "head": "أَحناء السَّرج",
+      "meaning": "The curved parts of the saddle tree."
+    },
+    "38.1.3": {
+      "word": "قاتِرٍ",
+      "head": "قاتِر",
+      "root": "ق ت ر",
+      "meaning": "A saddle of the right fit for its horse, in Ibn al-Shajari's gloss."
+    },
+    "38.2.4": {
+      "word": "وَطِرفاً",
+      "head": "طِرف",
+      "root": "ط ر ف",
+      "meaning": "A high-bred horse."
+    },
+    "39.2.1-2": {
+      "word": "صُدورَ العَوالي",
+      "head": "صُدور العَوالي",
+      "meaning": "“The fronts of the lances”, the points that face an opponent."
+    },
+    "40.1.4": {
+      "word": "ناجِذَيها",
+      "head": "ناجِذ",
+      "root": "ن ج ذ",
+      "meaning": "Two back teeth, bared here by personified war."
+    },
+    "40.2.2": {
+      "word": "هَدانُ",
+      "head": "هَدان",
+      "root": "ه د ن",
+      "meaning": "The sluggish or passive man of the group."
+    },
+    "40.2.5": {
+      "word": "مُعلَما",
+      "head": "مُعلَم",
+      "root": "ع ل م",
+      "meaning": "Wearing an identifying mark that makes him conspicuous."
+    },
+    "41.1.5": {
+      "word": "ثَناؤُهُ",
+      "head": "ثَناء",
+      "root": "ث ن ي",
+      "meaning": "The good spoken of him after his death."
+    }
+  }
+}

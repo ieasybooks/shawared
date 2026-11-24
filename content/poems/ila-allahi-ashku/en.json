@@ -1,0 +1,161 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "To God I Complain, for He Is Where Complaints Belong",
+  "intro": "Al-Murtada attributes seven of these prison verses to Salih ibn Abd al-Quddus. Ibn Qutayba quotes some anonymously, and other accounts assign shorter passages to Abd Allah ibn Mu'awiya or to a son of Salih. Al-Mas'udi has al-Fadl ibn Yahya say three of the verses in prison, while Ibn al-Imad says he was reciting Abu al-Atahiya's words. Abd Allah al-Khatib gathers the nine heard here in his edition of Salih's poetry. To these prisoners, even a visit from the gaoler brings news of another world.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "To God I complain, for He is where complaints belong.",
+        "In His hand is relief from harm and affliction."
+      ],
+      "sharh": "The single voice begins by choosing a listener. God's hand gives a concrete shape to the power the prisoner needs, the power to lift what has befallen him."
+    },
+    "2": {
+      "translation": [
+        "We have left the world while we still belong to it.",
+        "Here we are neither among the living nor the dead."
+      ],
+      "sharh": "The “I” of prayer becomes the “we” of the cell. The prisoners still belong to the living, yet no longer share in the transactions that usually prove one is alive."
+    },
+    "3": {
+      "translation": [
+        "When the gaoler comes in one day on an errand,",
+        "we marvel and say, “This man comes from the world.”"
+      ],
+      "sharh": "For the gaoler it is an errand. To the men watching him enter, he might have travelled from another country. Their name for wherever he has just been is simply “the world”."
+    },
+    "4": {
+      "translation": [
+        "We delight in dreams. Most of our talk,",
+        "when morning comes, is talk about our dreams."
+      ],
+      "sharh": "A dream brings the variety the prison lacks. The line ends with the same dream it began with, as their conversation each morning comes back to what happened in their sleep."
+    },
+    "5": {
+      "translation": [
+        "If a dream is good, it takes its time coming true.",
+        "If it is bad, nothing holds it back. It comes at once."
+      ],
+      "sharh": "The delay is between dreaming and fulfilment. The same word for haste occurs twice, first withheld from good news and then granted in full to bad."
+    },
+    "6": {
+      "translation": [
+        "A fortified prison has folded all news away from us.",
+        "It has a guard. Eyes fall asleep, but he does not."
+      ],
+      "sharh": "The building itself seems able to fold the news up and put it out of reach. One human detail completes the enclosure, the watchman's eyes still open when everyone else's close."
+    },
+    "7": {
+      "translation": [
+        "Entombed without burial, we live apart",
+        "from people. None fears us enough to call. Nor can we call."
+      ],
+      "sharh": "“Visited” and “visit” differ here by a vowel. On the reading followed here nobody has cause to court the prisoners, and they cannot go out. Al-Murtada also takes the middle phrase independently, allowing visitors to come."
+    },
+    "8": {
+      "translation": [
+        "Is there anyone to pity the people of a dwelling",
+        "who live in the world and have parted from the world?"
+      ],
+      "sharh": "He steps outside the prison's “we” and asks someone to see its inhabitants as neighbours. Both uses of “world” are needed, one for where they live and one for the life they have lost."
+    },
+    "9": {
+      "translation": [
+        "As though they had never known another home,",
+        "had known nothing but cramped quarters and ordeal."
+      ],
+      "sharh": "The confinement has lasted long enough to seem like a whole upbringing. The repetition of “known” measures how much the cell has crowded out of the prisoners' experience."
+    }
+  },
+  "words": {
+    "1.2.3-4": {
+      "word": "كَشفُ المَضَرَّةِ",
+      "head": "كَشف المَضَرَّة",
+      "meaning": "“Lifting harm”, taking away the injury or distress already suffered."
+    },
+    "1.2.5": {
+      "word": "وَالبَلوى",
+      "head": "البَلوى",
+      "root": "ب ل و",
+      "meaning": "A trial or affliction that tests endurance."
+    },
+    "2.1.1-3": {
+      "word": "خَرَجنا مِنَ الدُّنيا",
+      "meaning": "“We left the world”, losing all contact with ordinary life."
+    },
+    "3.1.3": {
+      "word": "السَّجّانُ",
+      "head": "السَّجّان",
+      "root": "س ج ن",
+      "meaning": "The keeper of the prison, who can cross the threshold at will."
+    },
+    "4.1.2": {
+      "word": "بِالرُّؤيا",
+      "head": "الرُّؤيا",
+      "root": "ر أ ي",
+      "meaning": "A dream, here one examined for what it might foretell."
+    },
+    "4.1.3": {
+      "word": "فَجُلُّ",
+      "head": "جُلّ",
+      "root": "ج ل ل",
+      "meaning": "The greater part or bulk."
+    },
+    "5.1.5": {
+      "word": "عَجلى",
+      "root": "ع ج ل",
+      "meaning": "Swift, said of a dream coming to fulfilment."
+    },
+    "5.2.4": {
+      "word": "تَحتَبِس",
+      "head": "اِحتَبَسَ",
+      "root": "ح ب س",
+      "meaning": "Linger or be held back, here from coming true."
+    },
+    "6.1.5": {
+      "word": "مُمَنَّعٌ",
+      "head": "مُمَنَّع",
+      "root": "م ن ع",
+      "meaning": "Fortified or difficult to penetrate."
+    },
+    "6.2.3": {
+      "word": "تَهدا",
+      "head": "هَدَأَ",
+      "root": "ه د أ",
+      "meaning": "Grow still or sleep. The final consonant of the ordinary verb is eased to a long vowel."
+    },
+    "7.2.5": {
+      "word": "فَنُغشى",
+      "head": "غُشِيَ",
+      "root": "غ ش ي",
+      "meaning": "Receive a visit. Its dependence on the preceding negative is disputed in the commentary."
+    },
+    "7.2.6-7": {
+      "word": "وَلا نَغشى",
+      "head": "غَشِيَ",
+      "root": "غ ش ي",
+      "meaning": "Nor do we visit others. The verb has now turned active."
+    },
+    "8.1.3": {
+      "word": "يَأوي",
+      "head": "أَوى",
+      "root": "أ و ي",
+      "meaning": "Feels tender concern or pity for them."
+    },
+    "8.1.5": {
+      "word": "مَحَلَّةٍ",
+      "head": "مَحَلَّة",
+      "root": "ح ل ل",
+      "meaning": "A place where people lodge together, here their prison."
+    },
+    "9.2.4": {
+      "word": "التَّضايُقِ",
+      "head": "التَّضايُق",
+      "root": "ض ي ق",
+      "meaning": "The press of people in too little space and the distress it brings."
+    }
+  }
+}
