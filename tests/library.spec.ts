@@ -1,6 +1,8 @@
 // The library around the poems: tabs, search, poets, reciters, meters, the mini player,
 // links to one bayt, English addresses, and pages rendered ahead of time.
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import type { Catalog } from "@shawared/contracts";
+import { poemsCount } from "../apps/app/src/lib/i18n";
 import { scrollToRow } from "./scroll-to-row";
 
 const POEM = "/poems/taqulu-buthaynatu";
@@ -239,6 +241,16 @@ test("a poet's page tells who they were and lists their poems", async ({ page })
   await expect(page).toHaveURL(new RegExp(`${POEM}$`));
 });
 
+test("Back restores a poet's row in a scrolled list", async ({ page }) => {
+  await page.goto("/en/poets");
+  const poet = await scrollToRow(page, "Zuhayr ibn Abi Sulma");
+  await poet.click();
+  await expect(page).toHaveURL(/\/en\/poets\/zuhayr-ibn-abi-sulma$/);
+  await live(page, page.getByRole("button", { name: "Back", exact: true })).click();
+  await expect(page).toHaveURL(/\/en\/poets$/);
+  await expect(poet).toBeInViewport();
+});
+
 test("a reciter's page links to their channel and lists their poems", async ({ page }) => {
   await page.goto("/reciters/osama-alwaaedh");
   await expect(page.getByText("أسامة مصطفى الواعظ")).toBeVisible();
@@ -253,8 +265,9 @@ test("a meter's page shows its feet and its poems", async ({ page }) => {
   await (await scrollToRow(page, "المتقارب")).click();
   await expect(page).toHaveURL(/\/meters\/mutaqarib$/);
   await expect(shown(page, "فَعولُنْ فَعولُنْ فَعولُنْ فَعولُنْ")).toBeVisible();
-  // How many poems the meter has, in the app's words: قصيدة واحدة, قصيدتان, ٣ قصائد, ١١ قصيدة.
-  await expect(live(page, page.getByText(/^(قصيدة واحدة|قصيدتان|[٠-٩]+ قصائد|[٠-٩]+ قصيدة)$/))).toBeVisible();
+  const catalog: Catalog = await (await page.request.get("/content/v1/catalog.json")).json();
+  const count = catalog.poems.filter((poem) => poem.meter === "mutaqarib").length;
+  await expect(shown(page, poemsCount(count, "ar"), true)).toBeVisible();
   await expect(await scrollToRow(page, TITLE)).toBeVisible();
 });
 
