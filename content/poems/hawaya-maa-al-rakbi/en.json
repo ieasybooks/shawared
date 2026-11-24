@@ -1,0 +1,181 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "My Longing Travels with the Yemeni Riders",
+  "intro": "The Hamasa tradition places Ja'far ibn Ulba in prison in Mecca when he made these verses. His love rides away with the caravan, but the image of the woman travels the other way and reaches him behind a locked door. Abu Tammam chose six verses for the martial opening section of his Hamasa. Al-Marzuqi explains their place there by the prisoner’s composure in the face of death.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "My longing travels far with the Yemeni riders,",
+        "led alongside them, while my body lies bound in Mecca."
+      ],
+      "sharh": "The caravan has a spare mount led beside its riders, and he imagines his longing travelling in just that fashion. His body is tethered in a different place."
+    },
+    "2": {
+      "translation": [
+        "I marvel at her night journey, at how she found her way",
+        "to me, with the prison door locked against me."
+      ],
+      "sharh": "Her dream-image has accomplished the journey in a single night. He speaks of the visitor as flesh and blood, which makes the locked door a genuine puzzle to him."
+    },
+    "3": {
+      "translation": [
+        "She called and greeted me, then rose and said goodbye.",
+        "As she turned away, my life almost went out with her."
+      ],
+      "sharh": "Four quick actions give them scarcely a moment together. The near escape of his own life answers the spectre’s easy passage out of prison."
+    },
+    "4": {
+      "translation": [
+        "Before she left, I had come to wish",
+        "the blood inside my heart would choke me."
+      ],
+      "sharh": "The blood that sustains him becomes the thing on which he wishes to choke. Ibn Dawud also gives this line in a different poem about a night visit, without naming its poet."
+    },
+    "5": {
+      "translation": [
+        "Do not think that since you left I have bowed",
+        "to anything, or that death frightens me."
+      ],
+      "sharh": "He addresses the woman directly for the first time. She might take his earlier words for despair at his sentence, so he tells her how he bears captivity."
+    },
+    "6": {
+      "translation": [
+        "Or that your threats can shake me,",
+        "or that I am awkward walking in fetters."
+      ],
+      "sharh": "The address broadens into a plural. His answer to intimidation comes down to an observable detail, the steadiness of his steps even when his ankles are fettered."
+    },
+    "7": {
+      "translation": [
+        "How could I, with a keen-edged sword inside me",
+        "that bites into men’s heads and splits them?"
+      ],
+      "sharh": "He can still picture the sword in action though it exists now within him. Its bite gives a physical form to the courage he claims."
+    },
+    "8": {
+      "translation": [
+        "But a longing for you came over me,",
+        "just as it used to when I was free."
+      ],
+      "sharh": "The feeling follows him across the prison threshold. The final word, “free”, returns to the opening picture of the body in bonds."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "الرَّكبِ",
+      "head": "الرَّكب",
+      "root": "ر ك ب",
+      "meaning": "Riders travelling together, especially on camels."
+    },
+    "1.1.4": {
+      "word": "اليَمانينَ",
+      "head": "يَمانٍ",
+      "meaning": "Yamanin, Yemenis or people travelling from their country."
+    },
+    "1.1.5": {
+      "word": "مُصعِدٌ",
+      "head": "مُصعِد",
+      "root": "ص ع د",
+      "meaning": "Travelling away into the interior. The subject is his love."
+    },
+    "1.2.1": {
+      "word": "جَنيبٌ",
+      "head": "جَنيب",
+      "root": "ج ن ب",
+      "meaning": "An animal led alongside a ridden mount."
+    },
+    "1.2.2": {
+      "word": "وَجُثماني",
+      "head": "جُثمان",
+      "root": "ج ث م",
+      "meaning": "His bodily person, left behind in Mecca."
+    },
+    "2.1.2": {
+      "word": "لِمَسراها",
+      "head": "مَسرى",
+      "root": "س ر ي",
+      "meaning": "Her journey by night, here the passage of her image in a dream."
+    },
+    "3.1.1": {
+      "word": "أَلَمَّت",
+      "head": "أَلَمَّ",
+      "root": "ل م م",
+      "meaning": "Paid a brief visit."
+    },
+    "3.2.5": {
+      "word": "تَزهَقُ",
+      "head": "زَهَقَ",
+      "root": "ز ه ق",
+      "meaning": "Departs, said of a life leaving the body."
+    },
+    "4.2.7": {
+      "word": "أَشرَقُ",
+      "head": "شَرِقَ",
+      "root": "ش ر ق",
+      "meaning": "Choke on a liquid that catches in the throat."
+    },
+    "5.1.4": {
+      "word": "تَخَشَّعتُ",
+      "head": "تَخَشَّعَ",
+      "root": "خ ش ع",
+      "meaning": "Showed a humbled bearing, bowed my head."
+    },
+    "5.2.6": {
+      "word": "أَفرَقُ",
+      "head": "فَرِقَ",
+      "root": "ف ر ق",
+      "meaning": "Feel fear or alarm."
+    },
+    "6.1.4": {
+      "word": "يَزدَهيها",
+      "head": "اِزدَهى",
+      "root": "ز ه و",
+      "meaning": "Unsettles it, robs it of its composure."
+    },
+    "6.2.6": {
+      "word": "أَخرَقُ",
+      "head": "أَخرَق",
+      "root": "خ ر ق",
+      "meaning": "Clumsy or lacking the skill to manage something."
+    },
+    "7.1.3": {
+      "word": "نَفسي",
+      "head": "نَفس",
+      "root": "ن ف س",
+      "meaning": "Here the sword is within him, an image of courage. The Book of Songs places it in his hand."
+    },
+    "7.1.4": {
+      "word": "حُسامٌ",
+      "head": "حُسام",
+      "root": "ح س م",
+      "meaning": "Husam, a cutting sword."
+    },
+    "7.1.5": {
+      "word": "مُذَلَّقٌ",
+      "head": "مُذَلَّق",
+      "root": "ذ ل ق",
+      "meaning": "Honed to a fine point."
+    },
+    "7.2.2": {
+      "word": "بِهاماتِ",
+      "head": "هامَة",
+      "root": "ه و م",
+      "meaning": "At the crowns of their heads."
+    },
+    "8.1.2": {
+      "word": "عَرَتني",
+      "head": "عَرا",
+      "root": "ع ر و",
+      "meaning": "Came upon me, as a feeling overtakes someone."
+    },
+    "8.1.5": {
+      "word": "صَبابَةٌ",
+      "head": "صَبابَة",
+      "root": "ص ب ب",
+      "meaning": "The tender, aching longing of a lover."
+    }
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "House, What Have the Days Done to You?",
+  "intro": "Abu Nuwas praises Muhammad al-Amin, son of Harun al-Rashid and Zubayda. An account printed in Ewald Wagner’s edition relates that al-Amin heard the poem in person and awarded the poet a thousand dinars. The poet goes from a house emptied by time, through the deserts of the camel journey, to a hall lit by the young ruler. The days that wrong the house in the opening line return in the last, where the poet asks them to stand back from al-Amin’s appointed day.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "House, what have the days done to you?",
+        "They wronged you, and the days suffer no wrong."
+      ],
+      "sharh": "He gives the abandoned house someone to speak for it. The same verb changes from active to passive, as time can inflict an injury which nobody can inflict on time."
+    },
+    "2": {
+      "translation": [
+        "Time vented its fury on those I knew",
+        "when they lived in you. Time has its fits of rage."
+      ],
+      "sharh": "The loss of familiar residents gives the ruined house a human history. He echoes the verb for turning fierce in a noun that makes fierceness part of time’s nature."
+    },
+    "3": {
+      "translation": [
+        "In those days I would never visit one of your people’s homes",
+        "except warily, with darkness over me."
+      ],
+      "sharh": "He recalls the caution of a young man making a private visit. The darkness once sheltered him when the house still held people worth coming to see."
+    },
+    "4": {
+      "translation": [
+        "I drew with the revellers at their well",
+        "and grazed my herd of pleasures where they grazed theirs."
+      ],
+      "sharh": "He describes getting into the same mischief as his companions through two kinds of shared work. They haul one bucket and pasture their pleasures like animals in the same field."
+    },
+    "5": {
+      "translation": [
+        "I reached all a man can reach in youth.",
+        "What was pressed from it all was sin."
+      ],
+      "sharh": "He speaks first of reaching the limit of a young man’s pleasures, then imagines pressing them like fruit. What runs out of the press is a moral reckoning."
+    },
+    "6": {
+      "translation": [
+        "She bore me through the terror of every desert,",
+        "a headlong she-camel, all daring and resolve."
+      ],
+      "sharh": "The new subject only arrives in the second half. The alarming stretch of country is already before us when the headlong animal that carries him comes into view."
+    },
+    "7": {
+      "translation": [
+        "She leaves the riding camels behind, as though they were",
+        "a row she leads in prayer."
+      ],
+      "sharh": "The animals’ positions on the road become the arrangement for communal prayer. It is the swift she-camel that stands in the leader’s place ahead of the row."
+    },
+    "8": {
+      "translation": [
+        "Once our camels have brought us to Muhammad,",
+        "no man may ride them again."
+      ],
+      "sharh": "This Muhammad is the Abbasid caliph al-Amin. The camels’ service earns them retirement, since their riders have reached the man beyond whom no further journey need be made."
+    },
+    "9": {
+      "translation": [
+        "They brought us near the best who ever trod the gravel.",
+        "We owe them honour and protection."
+      ],
+      "sharh": "Walking the gravel is a way of including everyone who steps upon the earth in the comparison. The praise of the caliph creates an obligation to the animals that made the meeting possible."
+    },
+    "10": {
+      "translation": [
+        "The curtain rose for us. There came into view",
+        "a moon before which imagination falls short."
+      ],
+      "sharh": "The court curtain opens on an actual audience. The face is a moon whose splendour exceeds even what the visitor could imagine before being admitted."
+    },
+    "11": {
+      "translation": [
+        "A king whose rope, once your hands grasp it,",
+        "keeps wretchedness and destitution from you."
+      ],
+      "sharh": "Patronage becomes a rope solid enough to lay hold of with both hands. Its immediate benefit is as concrete as the metaphor, freedom from want."
+    },
+    "12": {
+      "translation": [
+        "A king alone in noble deeds and high rank,",
+        "unique, without a peer in this, a man of great resolve."
+      ],
+      "sharh": "The same claim is heard three times, in a verb, an adjective and a phrase that does away with any rival. The final word adds the energy to act on those qualities."
+    },
+    "13": {
+      "translation": [
+        "A radiant king. Even drinking in his presence,",
+        "you never lose your reverence and awe."
+      ],
+      "sharh": "Even the familiarity of drinking together leaves the guest conscious of the ruler’s dignity. An old gloss reads the last half as the guest’s continuing reverence for his host."
+    },
+    "14": {
+      "translation": [
+        "The hall enfolds a full moon of the caliphate.",
+        "By its light Islam has put on youth."
+      ],
+      "sharh": "The moon first seen through the curtain now lights an entire hall. The caliph’s youth is something the faith itself can put on like a garment."
+    },
+    "15": {
+      "translation": [
+        "Long-fingered, seated with his sword-belt round his knees,",
+        "he overtops the heads of courtiers standing in line."
+      ],
+      "sharh": "Long fingers suggest an open, generous hand. Even with his knees drawn up and bound by his sword-belt, the seated figure towers over the standing court."
+    },
+    "16": {
+      "translation": [
+        "He whose conduct pleases God",
+        "is a king who put on kingship as a boy."
+      ],
+      "sharh": "The ruler’s conduct is presented as meeting with divine approval. The clothing image returns with its terms reversed, as the young man now puts on royal power."
+    },
+    "17": {
+      "translation": [
+        "A king who, grappling with stubborn affairs, goes forward",
+        "on a judgement that blunts even a keen sword."
+      ],
+      "sharh": "His judgement carries him through a matter that resists other men. Its edge is measured against a sword which it can nick even when that sword is at its sharpest."
+    },
+    "18": {
+      "translation": [
+        "Through him God cured hearts of blindness",
+        "until they came to, with no sickness left in them."
+      ],
+      "sharh": "Blindness, a failure of inward sight, becomes an illness of which the hearts can be cured. God is the healer, the praised ruler the means of the cure."
+    },
+    "19": {
+      "translation": [
+        "Son of Zubayda, daughter of Ja'far, you have become",
+        "a hope whose knotted cords hold fast."
+      ],
+      "sharh": "Invoking his mother identifies the ruler by his Abbasid descent on that side too. The firm knots recall the rope of patronage the supplicant grasped earlier."
+    },
+    "20": {
+      "translation": [
+        "May you live safe for the task for which men look to you.",
+        "May the days hang back from your appointed day."
+      ],
+      "sharh": "He closes with a wish for the ruler’s life to last as long as his task requires. The days that ravaged the house in the first verse are now asked to delay their approach to the caliph’s own last day."
+    }
+  },
+  "words": {
+    "1.2.1": {
+      "word": "ضامَتكِ",
+      "root": "ض ي م",
+      "meaning": "To wrong or oppress. Another transmitted opening asks what trace of cheer survives in the house.",
+      "head": "ضامَ"
+    },
+    "1.2.4": {
+      "word": "تُضامُ",
+      "root": "ض ي م",
+      "meaning": "To be wronged, here answering the active form earlier in the line.",
+      "head": "ضامَ"
+    },
+    "2.1.1": {
+      "word": "عَرَمَ",
+      "root": "ع ر م",
+      "meaning": "To rage or act with destructive violence."
+    },
+    "2.2.2": {
+      "word": "قاطِنينَ",
+      "root": "ق ط ن",
+      "meaning": "Resident, settled in a place.",
+      "head": "قاطِن"
+    },
+    "2.2.4": {
+      "word": "عُرامُ",
+      "root": "ع ر م",
+      "meaning": "Fury or violent unruliness.",
+      "head": "عُرام"
+    },
+    "3.1.3": {
+      "word": "أَغشى",
+      "root": "غ ش ي",
+      "meaning": "To frequent a place or visit its people.",
+      "head": "غَشِيَ"
+    },
+    "3.2.2": {
+      "word": "مُراقَبَةً",
+      "root": "ر ق ب",
+      "meaning": "Wariness, keeping an eye out for anyone watching.",
+      "head": "مُراقَبَة"
+    },
+    "4.1.2": {
+      "word": "نَهَزتُ",
+      "root": "ن ه ز",
+      "meaning": "To work a bucket in the well so it fills, then draw it up.",
+      "head": "نَهَزَ"
+    },
+    "4.2.1": {
+      "word": "وَأَسَمتُ",
+      "root": "س و م",
+      "meaning": "To turn livestock out to graze.",
+      "head": "أَسامَ"
+    },
+    "4.2.2-3": {
+      "word": "سَرحَ اللَّهوِ",
+      "meaning": "“The herd of pleasure”, the amusements he pursued with his friends.",
+      "head": "سَرح اللَّهو"
+    },
+    "5.2.2": {
+      "word": "عُصارَةُ",
+      "root": "ع ص ر",
+      "meaning": "The liquid pressed out, hence the concentrated result.",
+      "head": "عُصارَة"
+    },
+    "5.2.5": {
+      "word": "أَثامُ",
+      "root": "أ ث م",
+      "meaning": "Sin or the burden incurred by it.",
+      "head": "أَثام"
+    },
+    "6.1.1": {
+      "word": "وَتَجَشَّمَت",
+      "root": "ج ش م",
+      "meaning": "To undertake or endure a difficult task.",
+      "head": "تَجَشَّمَ"
+    },
+    "6.1.5": {
+      "word": "تَنوفَةٍ",
+      "root": "ت ن ف",
+      "meaning": "A great stretch of desert wilderness.",
+      "head": "تَنوفَة"
+    },
+    "6.2.1": {
+      "word": "هَوجاءُ",
+      "root": "ه و ج",
+      "meaning": "A she-camel that goes at a headlong pace.",
+      "head": "هَوجاء"
+    },
+    "7.1.2": {
+      "word": "المَطِيَّ",
+      "root": "م ط و",
+      "meaning": "Riding beasts, here the caravan’s camels.",
+      "head": "المَطِيّ"
+    },
+    "7.2.2": {
+      "word": "تَقَدَّمُهُنَّ",
+      "root": "ق د م",
+      "meaning": "She moves ahead of them. The recording sounds closer to taqaddamahunna. The vowelled quotations read taqaddamuhunna, a present-tense verb whose subject is the she-camel.",
+      "head": "تَقَدَّمَ"
+    },
+    "8.1.5": {
+      "word": "مُحَمَّداً",
+      "meaning": "Muhammad al-Amin, the Abbasid caliph and son of Harun al-Rashid.",
+      "head": "مُحَمَّد"
+    },
+    "8.2.1": {
+      "word": "فَظُهورُهُنَّ",
+      "root": "ظ ه ر",
+      "meaning": "Backs, standing for the labour of carrying riders.",
+      "head": "ظُهور"
+    },
+    "9.1.1": {
+      "word": "قَرَّبنَنا",
+      "root": "ق ر ب",
+      "meaning": "Brought near or delivered to a destination.",
+      "head": "قَرَّبَ"
+    },
+    "9.2.4": {
+      "word": "وَذِمامُ",
+      "root": "ذ م م",
+      "meaning": "A binding claim to protection or faithful treatment.",
+      "head": "ذِمام"
+    },
+    "10.1.2": {
+      "word": "الحِجابُ",
+      "root": "ح ج ب",
+      "meaning": "The curtain screening a ruler from those waiting to be admitted.",
+      "head": "الحِجاب"
+    },
+    "10.2.2": {
+      "word": "تَقَطَّعُ",
+      "root": "ق ط ع",
+      "meaning": "To break off or fail before reaching the object.",
+      "head": "تَقَطَّعَ"
+    },
+    "11.2.2": {
+      "word": "يَعتَريكَ",
+      "root": "ع ر و",
+      "meaning": "To befall or come upon someone.",
+      "head": "اِعتَرى"
+    },
+    "11.2.4": {
+      "word": "وَالإِعدامُ",
+      "root": "ع د م",
+      "meaning": "Destitution, the lack of means.",
+      "head": "الإِعدام"
+    },
+    "12.2.2-3": {
+      "word": "فَقيدُ النِّدِّ",
+      "meaning": "“Lacking a peer”, having no equal.",
+      "head": "فَقيد النِّدّ"
+    },
+    "12.2.5": {
+      "word": "هُمامُ",
+      "root": "ه م م",
+      "meaning": "A person of great energy and resolution.",
+      "head": "هُمام"
+    },
+    "13.1.2": {
+      "word": "أَغَرُّ",
+      "root": "غ ر ر",
+      "meaning": "Radiant or bright of face, also illustrious.",
+      "head": "أَغَرّ"
+    },
+    "13.2.2": {
+      "word": "يَعدُكَ",
+      "root": "ع د و",
+      "meaning": "To pass by or go beyond someone.",
+      "head": "عَدا"
+    },
+    "14.1.1": {
+      "word": "فَالبَهوُ",
+      "root": "ب ه و",
+      "meaning": "A spacious reception hall.",
+      "head": "البَهو"
+    },
+    "14.1.3-4": {
+      "word": "بِبَدرِ خِلافَةٍ",
+      "meaning": "“A full moon of the caliphate”, its ruler giving the court light.",
+      "head": "بَدر خِلافَة"
+    },
+    "15.1.1-2": {
+      "word": "سَبطُ البَنانِ",
+      "meaning": "“Long of finger”, a traditional sign of generosity.",
+      "head": "سَبط البَنان"
+    },
+    "15.1.4-5": {
+      "word": "اِحتَبى بِنِجادِهِ",
+      "meaning": "To sit with the knees drawn up, using the sword-belt to hold them."
+    },
+    "15.2.3": {
+      "word": "وَالسِّماطُ",
+      "root": "س م ط",
+      "meaning": "The row or rank of courtiers.",
+      "head": "السِّماط"
+    },
+    "16.1.5": {
+      "word": "بِهَديِهِ",
+      "root": "ه د ي",
+      "meaning": "Conduct, the course someone follows in life.",
+      "head": "هَدي"
+    },
+    "16.2.2": {
+      "word": "تَرَدّى",
+      "root": "ر د ي",
+      "meaning": "To put on an outer garment or wrap oneself in it."
+    },
+    "17.1.3": {
+      "word": "اِعتَسَرَ",
+      "root": "ع س ر",
+      "meaning": "To tackle a difficult matter by force of will."
+    },
+    "17.2.2": {
+      "word": "يَفُلُّ",
+      "root": "ف ل ل",
+      "meaning": "To notch or blunt a cutting edge.",
+      "head": "فَلَّ"
+    },
+    "17.2.5": {
+      "word": "حُسامُ",
+      "root": "ح س م",
+      "meaning": "A keen-edged sword.",
+      "head": "حُسام"
+    },
+    "18.2.2": {
+      "word": "أَفَقنَ",
+      "root": "ف و ق",
+      "meaning": "To regain consciousness or recover from an illness.",
+      "head": "أَفاقَ"
+    },
+    "18.2.5": {
+      "word": "سَقامُ",
+      "root": "س ق م",
+      "meaning": "Sickness or infirmity.",
+      "head": "سَقام"
+    },
+    "19.1.4-6": {
+      "word": "زُبَيدَةَ اِبنَةِ جَعفَرٍ",
+      "meaning": "Zubayda bint Ja'far, al-Amin’s mother, wife of Harun al-Rashid and granddaughter of al-Mansur. The longer word for “daughter” loses its opening vowel after her name.",
+      "head": "زُبَيدَة بِنت جَعفَر"
+    },
+    "19.2.4": {
+      "word": "اِستِحكامُ",
+      "root": "ح ك م",
+      "meaning": "Firmness, the quality of knots that hold fast.",
+      "head": "اِستِحكام"
+    },
+    "20.1.4": {
+      "word": "تُرجى",
+      "root": "ر ج و",
+      "meaning": "To be looked to or counted on for a task.",
+      "head": "رَجا"
+    },
+    "20.2.1": {
+      "word": "وَتَقاعَسَت",
+      "root": "ق ع س",
+      "meaning": "To hang back or be slow to advance.",
+      "head": "تَقاعَسَ"
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "My Horse Was Death’s Broker",
+  "intro": "These six verses circulate in Antarah's name in a poem beginning “When time lifts its veil for you”. Yaqut quotes three of them under al-Masani' in his geographical dictionary. All six close a fourteen-verse poem in the Beirut diwan, a collection that draws on the hero's popular romance as well as his transmitted poetry. Their attribution remains provisional. The boast moves from a horse trading on a battlefield to a whole country shrinking around a fleeing opponent.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "My horse was death’s broker.",
+        "He plunged into its dust, buying and selling."
+      ],
+      "sharh": "In the preceding verse of the printed poem the spears set up a market and lives are its merchandise. The horse rides into its dust and does business on both sides of the bargain."
+    },
+    "2": {
+      "translation": [
+        "My sword was a physician in the mêlée,",
+        "treating the head of anyone who complained of a headache."
+      ],
+      "sharh": "The verse sounds almost solicitous, down to naming the patient's complaint. The listener has to supply the dreadful sense in which a sword can put an end to a headache."
+    },
+    "3": {
+      "translation": [
+        "I am the slave you have heard about.",
+        "Now you have seen me. Set hearsay aside."
+      ],
+      "sharh": "The speaker takes up the very name an opponent might use to belittle him. Seeing what the man can do will settle what talk of “the slave” is worth."
+    },
+    "4": {
+      "translation": [
+        "If I sent my spear out with a coward,",
+        "he would face wild beasts on the strength of my name."
+      ],
+      "sharh": "Even with a different man carrying the spear, the fear its owner inspires would travel with it. The boast depends on the new bearer being a coward."
+    },
+    "5": {
+      "translation": [
+        "I filled the earth with dread of my blade.",
+        "My opponent found no room in it."
+      ],
+      "sharh": "What fills the earth is fear. Seen from the enemy's side, that same expanse offers nowhere to go, a thought the next verse turns into a physical measurement."
+    },
+    "6": {
+      "translation": [
+        "When champions flee for fear of my might,",
+        "they see whole lands as a fathom or a cubit."
+      ],
+      "sharh": "The dimensions keep shrinking. First a whole region seems only the span of two outstretched arms, then only the length from elbow to fingertip."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "دَلّالَ",
+      "head": "دَلّال",
+      "root": "د ل ل",
+      "meaning": "A broker who brings buyer and seller together and calls out the wares."
+    },
+    "1.1.4": {
+      "word": "المَنايا",
+      "root": "م ن ي",
+      "meaning": "Deaths, pictured here as the fates awaiting individual riders."
+    },
+    "1.2.3": {
+      "word": "وَشَرى",
+      "head": "شَرى",
+      "root": "ش ر ي",
+      "meaning": "Bought. The word can also mean “sold”, but the next verb supplies that side of the transaction."
+    },
+    "2.1.4": {
+      "word": "الهَيجا",
+      "root": "ه ي ج",
+      "meaning": "Battle at its height. Yaqut's quotation places the sword “in the open desert”."
+    },
+    "2.2.5": {
+      "word": "الصُّداعا",
+      "head": "الصُّداع",
+      "root": "ص د ع",
+      "meaning": "A headache, the complaint on which the grim joke about a doctor turns."
+    },
+    "3.1.4": {
+      "word": "خُبِّرتَ",
+      "head": "خُبِّرَ",
+      "root": "خ ب ر",
+      "meaning": "Were told, as one hears news of somebody absent."
+    },
+    "3.2.2": {
+      "word": "عايَنتَني",
+      "head": "عايَنَ",
+      "root": "ع ي ن",
+      "meaning": "Saw with your own eyes, with the force of an eyewitness confronting hearsay."
+    },
+    "4.1.3": {
+      "word": "رُمحي",
+      "head": "رُمح",
+      "root": "ر م ح",
+      "meaning": "A spear. In the passage quoted by Yaqut the coward carries a sword."
+    },
+    "4.1.4": {
+      "word": "مَع",
+      "head": "مَعَ",
+      "meaning": "With. The singer pronounces this as one closed syllable before “a coward”. Classical grammarians also record this pronunciation."
+    },
+    "4.2.4": {
+      "word": "السِّباعا",
+      "head": "السِّباع",
+      "root": "س ب ع",
+      "meaning": "Beasts of prey, including lions."
+    },
+    "5.1.5": {
+      "word": "حُسامي",
+      "head": "حُسام",
+      "root": "ح س م",
+      "meaning": "A keen cutting sword."
+    },
+    "5.2.5": {
+      "word": "اِتِّساعا",
+      "head": "اِتِّساع",
+      "root": "و س ع",
+      "meaning": "Room to move or get away."
+    },
+    "6.2.2": {
+      "word": "الأَقطارَ",
+      "head": "الأَقطار",
+      "root": "ق ط ر",
+      "meaning": "Far reaches or regions of the earth."
+    },
+    "6.2.3": {
+      "word": "باعاً",
+      "head": "باع",
+      "root": "ب و ع",
+      "meaning": "A fathom, the span from fingertip to fingertip with both arms outstretched."
+    },
+    "6.2.5": {
+      "word": "ذِراعا",
+      "head": "ذِراع",
+      "root": "ذ ر ع",
+      "meaning": "A cubit, measured from elbow to the tip of the middle finger."
+    }
+  }
+}

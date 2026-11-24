@@ -1,0 +1,354 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Gazelle of the Ban Trees, Grazing in Their Thickets",
+  "intro": "The Diwan dates this Hijazi love poem to Muharram 395 AH (1004 CE). A man in Iraq recognises a woman's scent on the wind from the Hijaz and remembers meeting her among the pilgrims. The gathering at Mina brought lovers within speaking distance, though someone was watching. By the end the man who felt struck by her arrow wishes he still had the dark hair that might once have caught her.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Gazelle of the ban trees, grazing in their thickets,",
+        "may it please you that today my heart is your pasture."
+      ],
+      "sharh": "He lets the gazelle graze wherever she pleases, then gives her one more place to roam. His congratulation to the woman acknowledges how entirely the heart is hers."
+    },
+    "2": {
+      "translation": [
+        "Water is there for anyone who wants to drink,",
+        "yet only my weeping eye can quench your thirst."
+      ],
+      "sharh": "A gazelle ought to be satisfied with the water before her. This one demands the costlier water his longing supplies."
+    },
+    "3": {
+      "translation": [
+        "A scent reached us on the winds from the lowlands.",
+        "Waking from sleep, we knew it for your fragrance."
+      ],
+      "sharh": "The wind brings a sign of her before anyone sees her. He recognises the lowlands by something more intimate than a landmark."
+    },
+    "4": {
+      "translation": [
+        "When longing stirred us, we leaned back",
+        "in our saddles and took comfort in remembering you."
+      ],
+      "sharh": "The riders shift in their saddles as the scent catches them. Its passing leaves them with the memory they turn to for the rest of the ride."
+    },
+    "5": {
+      "translation": [
+        "An arrow shot from Dhu Salam strikes",
+        "someone in Iraq. How far you have aimed."
+      ],
+      "sharh": "The archer is still in the Hijaz when her arrow reaches him in Iraq. The listener crosses the break between halves before finding out who has been hit."
+    },
+    "6": {
+      "translation": [
+        "Your eyes made me a promise you never kept.",
+        "How soon your eyes proved false to mine."
+      ],
+      "sharh": "The promise passed between two pairs of eyes. He calls her eyes liars, though his evidence for a promise was only a look."
+    },
+    "7": {
+      "translation": [
+        "Your glances copied the white gazelle's graces.",
+        "The day we met, the copy had the advantage."
+      ],
+      "sharh": "The gazelle usually sets the standard for beautiful eyes. Once he has seen hers, the supposed imitator wins the comparison."
+    },
+    "8": {
+      "translation": [
+        "Your glance that day at al-Jiz' seemed to tell us",
+        "the names of those it killed and kept from you."
+      ],
+      "sharh": "Her look has claimed other victims before him. He imagines it confiding their names to him while keeping them from the woman whose look it is."
+    },
+    "9": {
+      "translation": [
+        "You are bliss to my heart and its torment.",
+        "How bitter you are to my heart, how sweet."
+      ],
+      "sharh": "Bliss and torment have the same source. His heart can taste both at once, as the shift from feeling to flavour makes plain."
+    },
+    "10": {
+      "translation": [
+        "I have messages of longing I leave unspoken.",
+        "Without the watcher I would deliver them to your lips."
+      ],
+      "sharh": "The watcher keeps him from speaking his messages. He imagines delivering them to her lips, which lets a kiss do the work of words."
+    },
+    "11": {
+      "translation": [
+        "May the clouds give Mina and the nights at al-Khayf drink,",
+        "and may they greet those nights and you,"
+      ],
+      "sharh": "The familiar wish for rain on a beloved place takes in the nights spent there as well. The next line recalls what made those nights worth blessing."
+    },
+    "12": {
+      "translation": [
+        "when every creditor met the one who kept them waiting,",
+        "and the accused and the complainant came together."
+      ],
+      "sharh": "The promised meeting has become a debt of love. At the pilgrimage gathering even a debtor who has put off payment must come face to face with the creditor."
+    },
+    "13": {
+      "translation": [
+        "When the herd browsed among our saddles that morning,",
+        "you alone among them were in my heart's debt."
+      ],
+      "sharh": "A whole herd moves through the baggage, but only one has dealings with his heart. The word for the party to a debt carries the previous line's claim into the scene."
+    },
+    "14": {
+      "translation": [
+        "My eye fell for you and followed no other love.",
+        "Who told parting that my heart loves you?"
+      ],
+      "sharh": "With no second love to fall back on, he is easy to hurt. Parting seems to have received inside information about where to strike."
+    },
+    "15": {
+      "translation": [
+        "Even when the herd drew near, you brought none",
+        "of love's dead back to life or ransomed your captives."
+      ],
+      "sharh": "Physical nearness might have revived a lover or won a captive his freedom. Neither release follows the approach of the women."
+    },
+    "16": {
+      "translation": [
+        "How dear a breath that passed your lips and reached us,",
+        "a drop of water in which your front teeth dipped."
+      ],
+      "sharh": "He cherishes things that have actually touched her mouth. The water he imagines drinking answers the tears she was invited to drink at the opening."
+    },
+    "17": {
+      "translation": [
+        "How dear a halt while the riders were off their guard,",
+        "on ground your mounts had crossed at their quick pace."
+      ],
+      "sharh": "A chance moment while the company looks elsewhere gives him the ground to himself. Even her mount's track can stand in for her presence."
+    },
+    "18": {
+      "translation": [
+        "Had I still counted black locks among my hunting gear",
+        "that day at al-Ghamim, you would never have escaped my snares."
+      ],
+      "sharh": "He inventories the dark hair of youth as a hunter might count his nets. The close returns to the gazelle of the opening, and lets the hunter admit his age."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "البانِ",
+      "head": "البان",
+      "root": "ب و ن",
+      "meaning": "Ban trees have slender branches. Poets liken a woman's figure to them."
+    },
+    "1.1.6": {
+      "word": "خَمائِلِهِ",
+      "head": "خَميلَة",
+      "root": "خ م ل",
+      "meaning": "A thicket of trees whose branches grow together."
+    },
+    "1.2.1": {
+      "word": "لِيَهنَكِ",
+      "head": "هَنَأَ",
+      "root": "ه ن أ",
+      "meaning": "May you enjoy it. The verb loses its hamza here."
+    },
+    "2.2.4": {
+      "word": "مَدمَعيَ",
+      "head": "مَدمَع",
+      "root": "د م ع",
+      "meaning": "The place the tears flow from, here his own eye. Both the Diwan and the anthology preserve “my”."
+    },
+    "3.1.5": {
+      "word": "الغَورِ",
+      "head": "الغَور",
+      "root": "غ و ر",
+      "meaning": "Al-Ghawr, the lowlands of the Hijaz from which the wind blows."
+    },
+    "3.2.4": {
+      "word": "بِرَيّاكِ",
+      "head": "رَيّا",
+      "root": "ر و ي",
+      "meaning": "The fragrance by which he recognises her."
+    },
+    "4.2.2": {
+      "word": "الرِّحالِ",
+      "head": "رَحل",
+      "root": "ر ح ل",
+      "meaning": "A camel saddle, the rider's seat on the journey."
+    },
+    "4.2.3": {
+      "word": "تَعَلَّلنا",
+      "head": "تَعَلَّلَ",
+      "root": "ع ل ل",
+      "meaning": "To find something to occupy or comfort oneself."
+    },
+    "5.1.4-5": {
+      "word": "بِذي سَلَمٍ",
+      "head": "ذو سَلَم",
+      "meaning": "Dhu Salam, the Hijazi place from which her arrow reaches Iraq."
+    },
+    "6.2.2-3": {
+      "word": "قُربَ ما",
+      "root": "ق ر ب",
+      "meaning": "“How soon.” The two words run together in recitation."
+    },
+    "6.2.4": {
+      "word": "كَذَبَت",
+      "head": "كَذَبَ",
+      "root": "ك ذ ب",
+      "meaning": "To lie to someone. Her eyes have broken their promise to his. The single and doubled consonant score alike in the clip. The single consonant here gives the old expression for eyes deceiving their owner."
+    },
+    "7.1.2": {
+      "word": "لِحاظُكِ",
+      "head": "لِحاظ",
+      "root": "ل ح ظ",
+      "meaning": "Glances, especially looks from the corner of the eye."
+    },
+    "7.1.5": {
+      "word": "الرّيمِ",
+      "head": "الرّيم",
+      "root": "ر ي م",
+      "meaning": "A white gazelle, especially admired for its eyes."
+    },
+    "7.1.7": {
+      "word": "مُلَحٍ",
+      "head": "مُلحَة",
+      "root": "م ل ح",
+      "meaning": "A pleasing feature or grace."
+    },
+    "7.2.5": {
+      "word": "لِلحاكي",
+      "head": "الحاكي",
+      "root": "ح ك ي",
+      "meaning": "The imitator. Her eyes first copy the gazelle's and then surpass them."
+    },
+    "8.1.4": {
+      "word": "الجِزعِ",
+      "head": "الجِزع",
+      "meaning": "Al-Jiz', the meeting place. The common noun means a bend in a valley."
+    },
+    "10.2.2": {
+      "word": "الرَّقيبُ",
+      "head": "الرَّقيب",
+      "root": "ر ق ب",
+      "meaning": "Someone watching the lovers and keeping track of what they do."
+    },
+    "10.2.5": {
+      "word": "فاكِ",
+      "head": "فَم",
+      "root": "ف و ه",
+      "meaning": "Your mouth or lips. The unusual form marks the object and the female addressee."
+    },
+    "11.1.2": {
+      "word": "مِنىً",
+      "head": "مِنى",
+      "meaning": "Mina, a valley near Mecca where pilgrims stay during the Hajj."
+    },
+    "11.1.4": {
+      "word": "الخَيفِ",
+      "head": "الخَيف",
+      "meaning": "Al-Khayf, a place at Mina. The common noun denotes ground above a watercourse at the foot of a mountain."
+    },
+    "12.1.3-4": {
+      "word": "كُلُّ ذي",
+      "head": "ذو دَين",
+      "root": "د ي ن",
+      "meaning": "“One owed a debt.” A lover has a promise to collect. Ibn Aydamur has “the creditor”."
+    },
+    "12.1.5": {
+      "word": "دَينٍ",
+      "head": "ماطِل",
+      "root": "م ط ل",
+      "meaning": "A debtor who puts off payment."
+    },
+    "12.2.3": {
+      "word": "المَشكُوُّ",
+      "head": "المَشكُوّ",
+      "root": "ش ك و",
+      "meaning": "The person complained against, opposite the one bringing the complaint."
+    },
+    "13.1.3": {
+      "word": "السِّربُ",
+      "head": "السِّرب",
+      "root": "س ر ب",
+      "meaning": "A herd of gazelles, here the group of women."
+    },
+    "13.1.4": {
+      "word": "يَعطو",
+      "head": "عَطا",
+      "root": "ع ط و",
+      "meaning": "To stretch up to browse, as a gazelle reaches for leaves."
+    },
+    "13.2.4": {
+      "word": "غَريمُ",
+      "head": "غَريم",
+      "root": "غ ر م",
+      "meaning": "A party to a debt, either creditor or debtor. Here she owes him the meeting she promised."
+    },
+    "14.2.3": {
+      "word": "البَينَ",
+      "head": "البَين",
+      "root": "ب ي ن",
+      "meaning": "Parting, imagined as someone who has learnt the lover's secret."
+    },
+    "15.1.7": {
+      "word": "كَمَدٍ",
+      "head": "كَمَد",
+      "root": "ك م د",
+      "meaning": "Grief that eats away at someone inwardly."
+    },
+    "15.2.4": {
+      "word": "فادَيتِ",
+      "head": "فادى",
+      "root": "ف د ي",
+      "meaning": "To ransom a captive or secure release by exchange."
+    },
+    "16.2.1": {
+      "word": "وَنُطفَةٌ",
+      "head": "نُطفَة",
+      "root": "ن ط ف",
+      "meaning": "A small quantity of water, here the sip that touches her teeth."
+    },
+    "16.2.4": {
+      "word": "ثَناياكِ",
+      "head": "ثَنِيَّة",
+      "root": "ث ن ي",
+      "meaning": "One of the front teeth that show when the lips part."
+    },
+    "17.1.4": {
+      "word": "مُغتَفِلٌ",
+      "head": "مُغتَفِل",
+      "root": "غ ف ل",
+      "meaning": "Off guard. The travelling party has momentarily stopped watching."
+    },
+    "17.2.3": {
+      "word": "وَخَدَت",
+      "head": "وَخَدَ",
+      "root": "و خ د",
+      "meaning": "To travel with a swift, lengthened stride, especially of camels."
+    },
+    "18.1.3": {
+      "word": "اللِّمَّةُ",
+      "head": "اللِّمَّة",
+      "root": "ل م م",
+      "meaning": "Locks that hang to the earlobes or lower."
+    },
+    "18.2.2": {
+      "word": "الغَميمِ",
+      "head": "الغَميم",
+      "meaning": "Al-Ghamim, the Hijazi meeting place. Al-Jirawi vocalises the name as the diminutive al-Ghumaym."
+    },
+    "18.2.4": {
+      "word": "أَفلَتِّ",
+      "head": "أَفلَتَ",
+      "root": "ف ل ت",
+      "meaning": "You escaped. The verb's final t and the feminine “you” ending sound as a doubled t."
+    },
+    "18.2.5": {
+      "word": "أَشراكي",
+      "head": "شَرَك",
+      "root": "ش ر ك",
+      "meaning": "A hunter's snare. His dark hair once counted among his means of catching her eye."
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "My People Reproach Me for My Debts",
+  "intro": "Abu Ali al-Qali records these verses under al-Muqanna' al-Kindi’s name and says he read them to his teacher Ibn Durayd. A man in debt invites his kinsmen to look inside his house and see what his borrowing bought them. When he turns from money to family loyalty, he keeps the same unequal accounts, right down to the guest he waits on himself.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "My people reproach me for my debts, yet",
+        "what I owe was spent on things that earn them praise."
+      ],
+      "sharh": "The burden of repayment falls on one man, while the good name his spending buys belongs to his whole clan. That is the imbalance behind his reply."
+    },
+    "2": {
+      "translation": [
+        "Have my people never seen how I prosper for a time,",
+        "then fall on hard times till want reaches its limit?"
+      ],
+      "sharh": "He appeals to people who have known him both comfortably off and in real hardship. They can judge his conduct over the whole change of fortune."
+    },
+    "3": {
+      "translation": [
+        "Want has never sent me courting their favour,",
+        "nor has wealth to spare put me further from them."
+      ],
+      "sharh": "He has neither hung about his relatives for a handout nor made himself hard to find once he was rich. Nearness and distance measure his independence both ways."
+    },
+    "4": {
+      "translation": [
+        "With that money I make good what they neglect and let go,",
+        "the breaches in obligations they had no power to close."
+      ],
+      "sharh": "“With it” takes up the money he borrowed. Unmet obligations open like gaps in a line of defence, and he pays to close them."
+    },
+    "5": {
+      "translation": [
+        "It goes on a serving bowl behind no closed door,",
+        "crowned with meat, heaped with bread soaked in broth,"
+      ],
+      "sharh": "The door stays open to anyone who comes for a meal. Meat rings the top of the great bowl like a crown, with broken bread steeped in broth underneath."
+    },
+    "6": {
+      "translation": [
+        "and on a sturdy, well-bred horse I keep",
+        "as a shield for my house, with a servant of its own."
+      ],
+      "sharh": "Keeping a fine horse in readiness costs him both the animal and its upkeep. Al-Bakri explains its place at the doorway as the mark of a horse its owner wants constantly in sight."
+    },
+    "7": {
+      "translation": [
+        "What passes between me and my brothers,",
+        "between me and my cousins, could hardly be more unequal."
+      ],
+      "sharh": "He names his brothers and his cousins on his father's side, moving outwards through the family. The next lines give the particulars of this unequal relationship."
+    },
+    "8": {
+      "translation": [
+        "I see them slow when it is I who need support,",
+        "yet let them call for help and I come running."
+      ],
+      "sharh": "Loyalty has a visible speed. His relatives drag their feet on his account and his answer to their call is a run."
+    },
+    "9": {
+      "translation": [
+        "If they eat my flesh, I leave theirs untouched,",
+        "and if they tear down my honour, I build them honour."
+      ],
+      "sharh": "Eating a person's flesh is the image of backbiting. He leaves their flesh untouched, then changes the picture to building work, restoring the very thing they pull down."
+    },
+    "10": {
+      "translation": [
+        "If they fail me in my absence, I keep faith in theirs,",
+        "and if they wish me to lose my way, I wish them sound judgement."
+      ],
+      "sharh": "First he protects their interests where they cannot see him. Then he reaches inside both parties' wishes, where his good will meets their desire to see him go astray."
+    },
+    "11": {
+      "translation": [
+        "If they start birds to send ill luck across my path,",
+        "the birds I start for them fly by with good fortune."
+      ],
+      "sharh": "This plays on the old practice of putting a bird to flight and reading an omen in its course. Even the imaginary birds carry different wishes in the two directions."
+    },
+    "12": {
+      "translation": [
+        "I carry no old grudge against them.",
+        "No one fit to lead a people carries grudges."
+      ],
+      "sharh": "He turns a personal decision into a test of leadership. The head of an extended family has to keep together the very people who have injured him."
+    },
+    "13": {
+      "translation": [
+        "The greater part of my wealth is theirs when riches keep coming,",
+        "and if my wealth runs low, I lay no claim on them for aid."
+      ],
+      "sharh": "He says precisely what changes with his fortune. Plenty increases what he gives them, but scarcity creates no corresponding debt for them to repay."
+    },
+    "14": {
+      "translation": [
+        "I am my guest's servant for as long as he stays,",
+        "and no other trait of mine resembles a slave's."
+      ],
+      "sharh": "His guest's arrival creates a temporary obligation that the freest man can choose to honour. The striking word “slave” returns at the end, where he draws the limit of the comparison."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "الدَّينِ",
+      "head": "الدَّين",
+      "root": "د ي ن",
+      "meaning": "A debt owed to another person. Dayn shares its written consonants with din, meaning religion."
+    },
+    "2.1.5": {
+      "word": "أوسِرُ",
+      "head": "أَيسَرَ",
+      "root": "ي س ر",
+      "meaning": "To come into means, the opposite of falling into hardship in the next half."
+    },
+    "3.1.3": {
+      "word": "الإِقتارُ",
+      "head": "الإِقتار",
+      "root": "ق ت ر",
+      "meaning": "Straitened means, having little at one's disposal."
+    },
+    "4.2.1-2": {
+      "word": "ثُغورَ حُقوقٍ",
+      "head": "ثُغور حُقوق",
+      "meaning": "“Breaches in obligations” pictures neglected duties as openings left undefended."
+    },
+    "5.1.2": {
+      "word": "جَفنَةٍ",
+      "head": "جَفنَة",
+      "root": "ج ف ن",
+      "meaning": "A great serving bowl from which a company can eat together."
+    },
+    "5.2.4": {
+      "word": "ثُردا",
+      "head": "ثُرد",
+      "root": "ث ر د",
+      "meaning": "Tharid, bread broken into pieces and soaked in broth, served here with meat."
+    },
+    "6.1.3": {
+      "word": "نَهدٍ",
+      "head": "نَهد",
+      "root": "ن ه د",
+      "meaning": "Tall and powerfully built, of a horse."
+    },
+    "6.2.4": {
+      "word": "أَخدَمتُهُ",
+      "head": "أَخدَمَ",
+      "root": "خ د م",
+      "meaning": "I assigned it a servant. The horse receives the service."
+    },
+    "8.2.5": {
+      "word": "شَدّا",
+      "head": "شَدّ",
+      "root": "ش د د",
+      "meaning": "A vigorous run. It describes the speed of his response."
+    },
+    "9.1.4": {
+      "word": "وَفَرتُ",
+      "head": "وَفَرَ",
+      "root": "و ف ر",
+      "meaning": "I left intact, undiminished. Here he spares their reputations."
+    },
+    "10.2.3": {
+      "word": "هَووا",
+      "head": "هَوِيَ",
+      "root": "ه و ي",
+      "meaning": "They wished for it. Hawu comes from the verb for loving or desiring."
+    },
+    "11.1.2-3": {
+      "word": "زَجَروا طَيراً",
+      "head": "زَجَرَ طَيراً",
+      "meaning": "“They start birds” refers to sending birds into the air to read the direction of their flight as an omen."
+    },
+    "13.2.6": {
+      "word": "رِفدا",
+      "head": "رِفد",
+      "root": "ر ف د",
+      "meaning": "A contribution or gift in support of someone who needs help."
+    },
+    "14.1.6": {
+      "word": "ثاوِياً",
+      "head": "ثاوٍ",
+      "root": "ث و ي",
+      "meaning": "Staying in the house as a guest. Al-Qali's text reads nazilan, lodging there."
+    },
+    "1.2.4": {
+      "word": "تُكسِبُهُم",
+      "head": "أَكسَبَ",
+      "root": "ك س ب",
+      "meaning": "To earn something for someone else. Al-Qali singles out this verb after the poem. The poet incurs the debt, his relatives earn the praise."
+    },
+    "9.1.2-3": {
+      "word": "يَأكُلوا لَحمي",
+      "head": "أَكَلَ لَحمَهُ",
+      "meaning": "“Eat my flesh.” To speak ill of someone behind his back. He pictures their reputations as the flesh he refuses to touch."
+    },
+    "10.1.3": {
+      "word": "غَيبي",
+      "head": "غَيب",
+      "root": "غ ي ب",
+      "meaning": "My absence, including what my kinsmen should safeguard while I am away. The similar-sounding ghayy in the second half means going astray."
+    }
+  }
+}

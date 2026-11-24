@@ -1,0 +1,212 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Today We Meet. Where Shall We Meet Again?",
+  "intro": "Al-Wahidi places these verses at the head of a poem for Shuja' ibn Muhammad al-Ta'i of Manbij. At the moment of parting the lover recalls an exchange in which his pallor gave away his love and her face in turn changed colour. Al-Waaedh stops after ten bayts, just before the poet names the family whose patronage he seeks.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Today we meet. Where shall we meet again?",
+        "Far off indeed. The day we meet has no tomorrow."
+      ],
+      "sharh": "He asks them to name a meeting place, then realises he can set no date. If parting kills him, the day of their last meeting has no tomorrow for him."
+    },
+    "2": {
+      "translation": [
+        "Death’s claw is nearer than your parting.",
+        "Life is further from me than you are. May you live long."
+      ],
+      "sharh": "He fears death will seize him before his loved ones leave. They will still be alive far away, while he expects parting to end his life. His last words ask that theirs be spared."
+    },
+    "3": {
+      "translation": [
+        "She who shed my blood with her eyelids",
+        "never knew it was my blood she wore around her neck."
+      ],
+      "sharh": "Her glance has killed him without her knowledge. To carry someone’s blood around one’s neck is to bear responsibility for their death, which lets him picture guilt as a necklace."
+    },
+    "4": {
+      "translation": [
+        "She saw my pallor and asked, “Who did this to him?”",
+        "She sighed. I answered, “The one who sighed.”"
+      ],
+      "sharh": "She speaks of him in the third person though he is there to answer. He identifies the culprit by the single thing she has just done, a sigh of concern for her own victim."
+    },
+    "5": {
+      "translation": [
+        "She walked away, embarrassment staining her fair skin",
+        "my colour, as gold stains silver."
+      ],
+      "sharh": "Her face takes on his pallor. Al-Wahidi understands fear of discovery to mingle with embarrassment, which explains the yellow of gold on pale silver where one might expect a blush."
+    },
+    "6": {
+      "translation": [
+        "I saw the sun’s rim in the moon of night,",
+        "swaying as a branch swayed with it."
+      ],
+      "sharh": "The first gold edge of sunrise appears on the moon-white face. Its swaying gets a cause in the second half, where her slender figure becomes the branch on which that face moves."
+    },
+    "7": {
+      "translation": [
+        "A Bedouin woman of Adi. Between us stand",
+        "the taking of lives and the kindling of war."
+      ],
+      "sharh": "He names her people and the protection they afford her. Violence appears as something the would-be lover must physically pass through to reach her."
+    },
+    "8": {
+      "translation": [
+        "And wastes, and whinnying horses, and blades,",
+        "and spears, and threats, and menacing words."
+      ],
+      "sharh": "The list continues across the verse boundary. A landscape, the audible presence of horses, their riders’ weapons and finally their voices all stand between him and the woman."
+    },
+    "9": {
+      "translation": [
+        "The nights wore out her love after we left.",
+        "Time walked on it in fetters."
+      ],
+      "sharh": "Separation wears affection out like cloth. Al-Wahidi imagines the shackled feet bearing down heavily, while Ibn Jinni hears in their short steps the gradual loss of love."
+    },
+    "10": {
+      "translation": [
+        "Languid eyes, how you torment a sick man.",
+        "His doctor fell ill for him. Even his visitors had to be visited."
+      ],
+      "sharh": "The slight languor that makes her eyes attractive produces a much graver illness in him. Ibn Furraja takes the patient to be the lover, whose suffering even reverses the roles at his bedside."
+    }
+  },
+  "words": {
+    "1.1.2": {
+      "word": "عَهدُكُمُ",
+      "root": "ع ه د",
+      "meaning": "A meeting or time spent together, here their last encounter.",
+      "head": "عَهد"
+    },
+    "1.2.1": {
+      "word": "هَيهاتَ",
+      "meaning": "An expression of remoteness or hopelessness.",
+      "head": "هَيهات"
+    },
+    "2.1.3": {
+      "word": "مِخلَباً",
+      "root": "خ ل ب",
+      "meaning": "The claw or talon with which a predator seizes its prey.",
+      "head": "مِخلَب"
+    },
+    "2.1.5": {
+      "word": "بَينِكُم",
+      "root": "ب ي ن",
+      "meaning": "Parting, the breaking up of a company.",
+      "head": "بَين"
+    },
+    "3.1.5": {
+      "word": "بِجُفونِها",
+      "root": "ج ف ن",
+      "meaning": "Eyelids, standing here for the glance cast from beneath them.",
+      "head": "جُفون"
+    },
+    "3.2.6": {
+      "word": "تَتَقَلَّدُ",
+      "root": "ق ل د",
+      "meaning": "To put something around one’s neck, also to take on a responsibility.",
+      "head": "تَقَلَّدَ"
+    },
+    "4.1.5-6": {
+      "word": "مَن بِهِ",
+      "meaning": "“Who is responsible for him?” The rest of the question is left understood."
+    },
+    "4.2.3": {
+      "word": "المُتَنَهِّدُ",
+      "root": "ن ه د",
+      "meaning": "The person who has just let out a sigh.",
+      "head": "المُتَنَهِّد"
+    },
+    "5.2.4": {
+      "word": "اللُّجَينَ",
+      "root": "ل ج ن",
+      "meaning": "Silver, the original pale colour of her face in the comparison.",
+      "head": "اللُّجَين"
+    },
+    "5.2.5": {
+      "word": "العَسجَدُ",
+      "meaning": "Gold, the metal that tints the silver in this image.",
+      "head": "العَسجَد"
+    },
+    "6.1.2-3": {
+      "word": "قَرنَ الشَّمسِ",
+      "meaning": "“The sun’s horn”, the first rim of the rising disc."
+    },
+    "6.2.1": {
+      "word": "مُتَأَوِّداً",
+      "root": "أ و د",
+      "meaning": "Bending or swaying gently.",
+      "head": "مُتَأَوِّد"
+    },
+    "7.1.1": {
+      "word": "عَدَوِيَّةٌ",
+      "meaning": "Adawiyya, a woman belonging to Banu Adi.",
+      "head": "عَدَوِيَّة"
+    },
+    "7.1.4": {
+      "word": "دونِها",
+      "meaning": "“Short of her”, on the near side of what bars access to her.",
+      "head": "دون"
+    },
+    "8.1.1": {
+      "word": "وَهَواجِلٌ",
+      "root": "ه ج ل",
+      "meaning": "Wide expanses of open desert.",
+      "head": "هَواجِل"
+    },
+    "8.1.3": {
+      "word": "وَمَناصِلٌ",
+      "root": "ن ص ل",
+      "meaning": "Swords or blades.",
+      "head": "مَناصِل"
+    },
+    "8.2.1": {
+      "word": "وَذَوابِلٌ",
+      "root": "ذ ب ل",
+      "meaning": "Slender spear shafts, literally things grown lean or dry.",
+      "head": "ذَوابِل"
+    },
+    "9.1.1": {
+      "word": "أَبلَت",
+      "root": "ب ل ي",
+      "meaning": "To wear something threadbare through use or age.",
+      "head": "أَبلى"
+    },
+    "9.2.5": {
+      "word": "مُقَيَّدُ",
+      "root": "ق ي د",
+      "meaning": "Fettered at the feet, so each step is short and heavy.",
+      "head": "مُقَيَّد"
+    },
+    "10.1.1": {
+      "word": "بَرَّحتَ",
+      "root": "ب ر ح",
+      "meaning": "To deal severely with someone. The reciter uses barrahta, where the editions print abrahta. Al-Wahidi explains both verbs in the same sense.",
+      "head": "بَرَّحَ"
+    },
+    "10.2.4": {
+      "word": "وَعيدَ",
+      "root": "ع و د",
+      "meaning": "Was visited in sickness, the passive of the same verb that names the visitors.",
+      "head": "عادَ"
+    },
+    "10.2.5": {
+      "word": "العُوَّدُ",
+      "root": "ع و د",
+      "meaning": "The people who come to see a sick person.",
+      "head": "العُوَّد"
+    },
+    "2.2.5": {
+      "word": "تَبعَدوا",
+      "head": "بَعِدَ",
+      "root": "ب ع د",
+      "meaning": "To perish. With a different vowel the verb means to go far away, turning the prayer into a wish that those he loves will stay."
+    }
+  }
+}

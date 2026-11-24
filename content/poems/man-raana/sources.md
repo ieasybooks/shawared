@@ -1,0 +1,27 @@
+# مَن رَآنا فَليُحَدِّث نَفسَهُ
+
+## Recording and sequence
+
+Abd al-Rahman al-Saeed begins «خرج النعمان بن المنذر ومعه عدي بن زيد العبادي، فمرّوا على مقابر، فقال عديّ: أبيت اللعن، أتدري ما تقول هذه المقابر؟ قال: لا. قال: فإنها تقول». The source lasts 110.666 s. The edit begins at 35.71 s, between the last «تقول» and «من رآنا», and ends at 96.08 s (60.37 s). The seven bayts correspond to al-Mu'aybid 1–7 in order, with one performance of each half. The final «حالاً بعد حال» is internal to bayt 7. The full-file recognisers split the held last syllables across a segment boundary. The per-half clip agrees with the text, «حال» finishes in one vocal decay, and terminal silence begins at 95.610 s. [Recording](https://www.youtube.com/watch?v=PB6AWYlqzwI)
+
+## Text, setting and metre
+
+- Muhammad Jabbar al-Mu'aybid, *Diwan Adi ibn Zayd al-Ibadi*, Baghdad, 1965, no. 15, pp. 82–83. Page 82 gives bayts 1–4 and the graveyard occasion quoted from *al-Aghani*. Page 83 gives 5–7. His apparatus identifies «عمروا الدهر» at 5.1 in *al-Kamil* and *Siraj al-muluk*. His main text has «عمروا دهراً». The reader hears definite «الدهر», which both full transcribers and the fifth card preserve. «قرن» is the projecting point or tip, «فُدُم» the cloth strainers laid over the pitchers, and «الجِلال» the horses' cloths. All three are glossed on p. 82. [Scanned pp. 82–83](https://archive.org/details/diwan-adi-ibn-zayd/page/n82/mode/2up)
+- Al-Mubarrad, *al-Kamil*, II, p. 70, records al-Riyashi's story with the king in the shade of a tree. Adi gives the tree a voice. Six bayts appear in this text. The editor marks expansions from witness ر, including both first lines and «عمروا الدهر … قطعوا دهرهم غير عجال». The last bayt combines «ثم أضحوا عصف الدهر بهم» with «وكذاك الدهر حالاً بعد حال». This explains why one cannot derive the seventh bayt of the recording from that version. Ibn Abi al-Dunya, *al-Qubur*, report 150, pp. 133–134, also narrates visits to graves near al-Hira, with only part of the poem. [Al-Kamil, II, p. 70](https://shamela.ws/book/8505/534) · [Al-Qubur, report 150](https://shamela.ws/book/10628/151)
+- Sadr al-Din al-Basri's *al-Hamasa al-basriyya*, II, pp. 407–408, also sets the stop by graves but asks what the nearby trees say. Its seven bayts match the recorded sequence. In app 1 it has «قرب الزوال» for «قرن زوال». In 2 it has «وصروف الدهر» for «وخطوب الدهر». In 3 it reads «حولنا / يمزجون» for «عندنا / يشربون». In 4 it gives «وجياد الخيل تعدو» for «وعتاق الخيل تردي». In 5 it has «عمّروا دهراً بعيش نضر» for «عَمِروا الدهر بعيش حسن». In 6 «عصف الدهر بهم … يودي بالرجال» replaces «أخنع الدهر بهم … يودي بالجبال». The recording brings back the mountains of 2.2. Bayt 7 is present in full in both witnesses. [II, p. 407](https://shamela.ws/book/6901/690) · [p. 408](https://shamela.ws/book/6901/691)
+- Mahmud Mustafa, *Ahda sabil ila ilmay al-Khalil*, p. 54, scans this very opening under full *ramal*. The first half ends in فاعلن. The second has the maqsur ending, with khabn in «ـرِنِ زوالْ» (فَعِلانْ). The same three-foot arrangement returns at 3 in «رُبَّ ركبٍ / قد أناخوا / عندنا» and «يشربونَ الـ / خمرَ بالما / ءِ الزُّلالْ», with a closed lam here too. The rawiy is the closed lam after long alif. This accounts for the bare final consonant of «زوال، الجبال، الزلال، الجلال، عجال، حال», including the house-style query on «حال» in 7.2. [P. 54](https://shamela.ws/book/10860/82) · [p. 55](https://shamela.ws/book/10860/83)
+- Al-Zirikli, *al-A'lam*, IV, p. 220, gives Adi's life at al-Hira, his bilingual service at the Sasanian court, the mission under Hormizd, marriage and death in captivity. His note discusses the divergent forms of the grandfather's name and supports Hammad. The death date is approximate, 35 before the Hijra / 590 CE. [IV, p. 220](https://shamela.ws/book/12286/3627)
+
+## Candidate readings on the audio
+
+The figures are score differences between readings of the same half, in favour of the wording in the edition. For 1.2 «قرن زوال» leads «قرب الزوال» by 23.65. In 2.1 «خطوب» leads «صروف» by 16.86. In 3.1 «عندنا» leads «حولنا» by 17.27, and in 3.2 «يشربون» leads «يمزجون» by 26.07. The two differences in 4.2 were tested separately. The gaps are 12.67 for «عتاق» over «جياد» and 12.78 for «تردي» over «تعدو».
+
+At 5.1 «الدهر» leads «دهراً» by only 1.68. The two full-file transcripts and the card at 75 s give the article, a reading independently transmitted in al-Mu'aybid's apparatus. On the same half «حسن» leads «نضر» by 19.47. At 5.2 «آمني» leads «قطعوا» by 29.09. In 6.1 «أخنع» leads «عصف» by 6.87, and in 6.2 «بالجبال» leads «بالرجال» by 13.32. [Diwan, p. 83](https://archive.org/details/diwan-adi-ibn-zayd/page/n83/mode/2up) · [Al-Hamasa al-basriyya, II, p. 408](https://shamela.ws/book/6901/691)
+
+## Half verification
+
+The verifier flagged 2 of 14 halves (2 of 63 words). At 4.1 it appended an r to «فُدُم». The independent clip gives «والأباريق عليها فدم». At 7.1 it printed «بالفتاوات» for «بالفتى». The second model segments the beginning as «وكذا كالدهر» but recovers the entire ending «يرمي بالفتى». The vocalised cards, the independent clips and al-Mu'aybid agree on both disputed words. Every half aligns in sequence, including the final 7.2 at 55.18–59.60 s on the edited clock.
+
+## Final timing check
+
+The final highlight for 7.2 ends at 59.85 s on the app master. That half-line was transcribed again. The final per-half check flags 2 halves.

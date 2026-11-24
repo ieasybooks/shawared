@@ -1,0 +1,805 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "The Man You Both Blame Is Above Reproach",
+  "intro": "Al-Wahidi dates this poem to Dhu al-Hijja 348 AH (960 CE) in Egypt, when al-Mutanabbi was suffering attacks of fever. The traveller who opens by scorning a settled life is gradually revealed as a man confined to bed. Fever arrives as a woman too shy to visit by daylight, and a doctor who blames the patient’s diet hears a diagnosis of a very different kind. This reading omits one bayt about the sweat left by the departing visitor.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "The man you both blame is above reproach.",
+        "The impact of his deeds is beyond words."
+      ],
+      "sharh": "He calls himself “the man you blame” and makes two companions answer for their criticism. Its force is set against the actual impact of a man’s deeds."
+    },
+    "2": {
+      "translation": [
+        "Leave me the desert without a guide,",
+        "my face and the noonday heat without a veil."
+      ],
+      "sharh": "The desert and the glare at noon are the company he chooses. Guide and face covering, two ordinary protections for a traveller, are precisely what he can do without."
+    },
+    "3": {
+      "translation": [
+        "In both of these I find my rest.",
+        "Making the camels kneel and staying put exhaust me."
+      ],
+      "sharh": "“Both of these” points separately to the desert and the heat. Rest comes in motion, while the familiar sign of making camp brings on fatigue."
+    },
+    "4": {
+      "translation": [
+        "If I lose my bearings, my camels’ eyes are mine,",
+        "and each exhausted camel’s grunt is my own."
+      ],
+      "sharh": "Ibn Jinni hears a challenge in the conditional. If he lost the trail, his sight and eloquence would be worth no more than a beast’s. Another reading makes the camels’ senses a last resource for a lost rider."
+    },
+    "5": {
+      "translation": [
+        "I can reach water with no guide",
+        "but my count of the lightning in its clouds."
+      ],
+      "sharh": "His guide is the number of flashes he sees. The commentators describe a desert practice of judging whether a cloud had shed enough rain to make it worth following."
+    },
+    "6": {
+      "translation": [
+        "My Lord and my sword pledge safety to my life",
+        "when the solitary traveller needs protection."
+      ],
+      "sharh": "A lone traveller might seek a pledge of safe conduct from the people whose land he crossed. The poet names two guarantors on whom he relies in their place."
+    },
+    "7": {
+      "translation": [
+        "I will never lodge with misers,",
+        "even if my only fare is ostrich marrow."
+      ],
+      "sharh": "He would go without supper before submitting to a miser’s welcome. Ostrich marrow was proverbial for an unattainable meal, since ostriches were said to have none."
+    },
+    "8": {
+      "translation": [
+        "When people’s love became deceit,",
+        "I repaid a smile with a smile."
+      ],
+      "sharh": "A smile now buys the return of precisely one smile. He has learnt to match the outward gesture without pledging any affection behind it."
+    },
+    "9": {
+      "translation": [
+        "I have come to doubt even those I choose,",
+        "knowing they too belong to humankind."
+      ],
+      "sharh": "Choice usually marks a friend off from the crowd. Here the one unquestionable fact about the chosen friend, being human, is enough to renew suspicion."
+    },
+    "10": {
+      "translation": [
+        "The wise love where there is mutual sincerity.",
+        "The ignorant love a handsome exterior."
+      ],
+      "sharh": "For the wise, affection requires something each person can give the other. Good looks require only one person to look and tell them nothing about loyalty."
+    },
+    "11": {
+      "translation": [
+        "I would disdain my brother, born of my father and mother,",
+        "if I did not find him generous of spirit."
+      ],
+      "sharh": "He specifies both parents to give the claim of kinship its greatest possible force. Even that claim yields when an actual character falls short."
+    },
+    "12": {
+      "translation": [
+        "I have seen a whole line of ancestors outweighed",
+        "by the base habits of their children."
+      ],
+      "sharh": "An entire line of ancestors can be outweighed by the conduct of one descendant. The grammatical subject, the base traits themselves, is withheld until the end."
+    },
+    "13": {
+      "translation": [
+        "Of all excellence, I will never be content",
+        "merely to be traced to an illustrious forebear."
+      ],
+      "sharh": "He applies his own test to himself. A genealogist might give him an eminent ancestor, but no genealogy can supply the personal achievement he wants."
+    },
+    "14": {
+      "translation": [
+        "I marvel at a man with stature and an edge",
+        "who glances off like a chipped, blunt sword."
+      ],
+      "sharh": "The man has a body fit for action and the edge to carry it through. Yet he behaves like a blade that strikes its object and simply bounces off."
+    },
+    "15": {
+      "translation": [
+        "And a man who finds the road to high achievement",
+        "yet will not leave his mounts without their humps."
+      ],
+      "sharh": "The syntax carries forward the preceding “I marvel”. Finding the road is only the beginning. The wasted humps are the tangible price of riding it to its end."
+    },
+    "16": {
+      "translation": [
+        "Of all the faults I have seen in people,",
+        "none compares with falling short when you could excel."
+      ],
+      "sharh": "The sting lies in the unused ability. By ending on fulfilment, he leaves the reader holding the very possibility which the person at fault has let go."
+    },
+    "17": {
+      "translation": [
+        "I stayed in Egypt. Neither behind me",
+        "nor ahead do the riding camels trot with me."
+      ],
+      "sharh": "After all that talk of travelling, he locates himself at a standstill. Egypt is the point from which neither a return journey nor a new departure is taking place."
+    },
+    "18": {
+      "translation": [
+        "My bed has tired of me, though my side once tired",
+        "of meeting it even once a year."
+      ],
+      "sharh": "Bed and traveller change places in the sentence. The bed is now weary of the same body whose side once begrudged it even an annual encounter."
+    },
+    "19": {
+      "translation": [
+        "Few visit me. My heart is sick.",
+        "Many envy me. My goal is hard to reach."
+      ],
+      "sharh": "Four clipped statements sound like a reckoning taken at the bedside. His ambition survives in the same breath as his illness, his isolation and the envy he attracts."
+    },
+    "20": {
+      "translation": [
+        "Sick in body, unable to rise,",
+        "deep in a drunkenness untouched by wine."
+      ],
+      "sharh": "He supplies the bodily symptoms of the sickroom. A sober man has acquired the unsteadiness of a heavy drinker, which makes the symptom all the more disorientating."
+    },
+    "21": {
+      "translation": [
+        "My visitor seems a modest woman.",
+        "She visits only in the dark."
+      ],
+      "sharh": "The fever is grammatically feminine and can enter the room as a female visitor without being named. Its night-time schedule supplies her with a seemingly human motive, modesty."
+    },
+    "22": {
+      "translation": [
+        "I offered her fine cloaks and stuffed bedding.",
+        "She spurned them and spent the night in my bones."
+      ],
+      "sharh": "The host offers the choicest bedding at his disposal. Bone-deep pain gives the unwelcome guest a bed of her own choosing, inside the host."
+    },
+    "23": {
+      "translation": [
+        "My skin is too tight for my life and hers.",
+        "With sickness upon sickness she stretches it wide."
+      ],
+      "sharh": "His skin is the lodging in which two occupants have been crowded together. Al-Wahidi sees a grim accuracy in the fever’s solution, since wasting away leaves his skin hanging loose."
+    },
+    "24": {
+      "translation": [
+        "As though morning were driving her away, there flow",
+        "her tears from four streaming corners."
+      ],
+      "sharh": "The sweat of a fever breaking becomes the visitor’s farewell tears. Al-Wahidi counts the inner and outer corners of each eye to explain how the streams can be four."
+    },
+    "25": {
+      "translation": [
+        "Without longing I watch for her hour",
+        "as intently as a lover beside himself with longing."
+      ],
+      "sharh": "A regular appointment makes the patient watch the hour as closely as a lover would. All the outward signs of longing can be produced by dread."
+    },
+    "26": {
+      "translation": [
+        "She keeps her word. Truth is an evil",
+        "when it delivers you to great distress."
+      ],
+      "sharh": "The visitor is painfully reliable. Keeping a promise, ordinarily a merit, has exactly the effect of carrying out a threat when the visitor is a fever."
+    },
+    "27": {
+      "translation": [
+        "Daughter of time, every one of its daughters is here with me.",
+        "How did you get through the crowd?"
+      ],
+      "sharh": "“The daughters of time” is an old name for misfortunes. Taking the kinship literally puts a whole family in the sickroom, already so full that this last arrival scarcely seems possible."
+    },
+    "28": {
+      "translation": [
+        "You have wounded a man already covered in wounds.",
+        "There is no room left for swords or arrows."
+      ],
+      "sharh": "The overcrowded room gives way to an overcrowded body. The fever has somehow found a place to strike where even a blade or arrow could hardly find untouched skin."
+    },
+    "29": {
+      "translation": [
+        "If only my hand knew whether by evening",
+        "it might once more manage reins or a camel’s lead."
+      ],
+      "sharh": "He lends his idle hand the ability to wonder about its own future. One rein would take him back to horseback, the other to the camel journey."
+    },
+    "30": {
+      "translation": [
+        "Shall I aim once more at what I desire with dancing mounts,",
+        "their leads adorned with foam?"
+      ],
+      "sharh": "The camels’ quick, lifting gait supplies the dance. Their decoration is the foam that effort has thrown from their mouths onto the reins."
+    },
+    "31": {
+      "translation": [
+        "How often I cooled the burning in my breast",
+        "with a journey, a lance or a sword."
+      ],
+      "sharh": "The burning is anger or pent-up desire rather than the heat of his present illness. In earlier days travel or decisive action could treat that different kind of fever."
+    },
+    "32": {
+      "translation": [
+        "When a predicament closed tight, I got clear",
+        "as wine runs clear of a strainer’s weave."
+      ],
+      "sharh": "He does more than break free. Like wine poured through woven cloth, he threads his way out through an opening that seems almost too small to be there."
+    },
+    "33": {
+      "translation": [
+        "I parted from the one I loved without farewell",
+        "and took leave of whole countries without a greeting."
+      ],
+      "sharh": "The language performs a farewell which circumstances once denied him. The word for taking leave immediately follows his admission that he had none to give."
+    },
+    "34": {
+      "translation": [
+        "The doctor tells me, “You ate something.",
+        "Your illness is in your drink and food.”"
+      ],
+      "sharh": "The doctor gets one line of direct speech. His perfectly ordinary dietary explanation sets up the patient’s answer, which depends on the kind of life he has been made to lead."
+    },
+    "35": {
+      "translation": [
+        "His medicine overlooks the fact that I am a thoroughbred",
+        "whose body prolonged rest has harmed."
+      ],
+      "sharh": "For a horse bred to run, the stable itself can become unhealthy. The metaphor lets the patient challenge a diagnosis that has no place for frustration or frustrated strength."
+    },
+    "36": {
+      "translation": [
+        "It is used to raising dust on expeditions",
+        "and passing from one dust cloud into another."
+      ],
+      "sharh": "The horse is pictured in motion by the cloud its own hooves produce. One expedition opens straight into the dust of the next."
+    },
+    "37": {
+      "translation": [
+        "Now it is held. No one lengthens its tether to graze,",
+        "nor does it have its fodder or its bridle."
+      ],
+      "sharh": "A loose tether would let the horse graze, while feed and bridle belong to a horse being readied for use. It has the advantages of neither condition."
+    },
+    "38": {
+      "translation": [
+        "If I fall ill, my patience does not sicken.",
+        "If fever seizes me, it never burns my resolve."
+      ],
+      "sharh": "Each statement gives illness a bodily subject and then tries it on a mental one. The same verbs that fit his body fail when applied to patience and resolve."
+    },
+    "39": {
+      "translation": [
+        "If I recover, I still cannot stay for ever.",
+        "I have escaped one death only to face another."
+      ],
+      "sharh": "Recovery only moves him from one possible death towards the next. The word for death stands on both sides of the journey’s single preposition."
+    },
+    "40": {
+      "translation": [
+        "Enjoy your wakeful hours or your sleep.",
+        "Do not hope for slumber beneath the grave stones."
+      ],
+      "sharh": "Even a sleepless night now counts as a part of life worth having. The grave offers no prospect of making up for lost sleep."
+    },
+    "41": {
+      "translation": [
+        "For the third state beside those two has a meaning",
+        "quite other than your waking or your sleep."
+      ],
+      "sharh": "Death is left unnamed in the final verse. Calling it a third state makes the familiar likeness between sleep and death give way to the difference on which his argument rests."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "مَلومُكُما",
+      "root": "ل و م",
+      "meaning": "The object of blame, here a third-person name for the speaker himself.",
+      "head": "مَلوم"
+    },
+    "1.2.2": {
+      "word": "فَعالِهِ",
+      "root": "ف ع ل",
+      "meaning": "Deeds or performance, the things a person actually does.",
+      "head": "فَعال"
+    },
+    "2.1.1": {
+      "word": "ذَراني",
+      "root": "و ذ ر",
+      "meaning": "“Leave me”, addressed to two people together.",
+      "head": "ذَرا"
+    },
+    "2.1.2": {
+      "word": "وَالفَلاةَ",
+      "root": "ف ل و",
+      "meaning": "Open, waterless wilderness.",
+      "head": "الفَلاة"
+    },
+    "2.2.2": {
+      "word": "وَالهَجيرَ",
+      "root": "ه ج ر",
+      "meaning": "The fierce heat around midday.",
+      "head": "الهَجير"
+    },
+    "3.1.3-4": {
+      "word": "بِذي وَهَذا",
+      "meaning": "“This and this”, the wilderness and the midday heat respectively."
+    },
+    "3.2.2": {
+      "word": "بِالإِناخَةِ",
+      "root": "ن و خ",
+      "meaning": "Making a camel kneel at a halt.",
+      "head": "الإِناخَة"
+    },
+    "4.1.2": {
+      "word": "رَواحِلي",
+      "root": "ر ح ل",
+      "meaning": "Camels trained to carry riders on a journey.",
+      "head": "رَواحِل"
+    },
+    "4.2.2": {
+      "word": "بُغامِ",
+      "root": "ب غ م",
+      "meaning": "A camel’s low, inarticulate cry.",
+      "head": "بُغام"
+    },
+    "4.2.3": {
+      "word": "رازِحَةٍ",
+      "root": "ر ز ح",
+      "meaning": "A she-camel brought low by exhaustion.",
+      "head": "رازِحَة"
+    },
+    "5.1.2": {
+      "word": "أَرِدُ",
+      "root": "و ر د",
+      "meaning": "To come to water or a watering place.",
+      "head": "وَرَدَ"
+    },
+    "5.2.2": {
+      "word": "عَدّي",
+      "root": "ع د د",
+      "meaning": "Counting, here keeping tally of flashes.",
+      "head": "عَدّ"
+    },
+    "6.1.1": {
+      "word": "يُذِمُّ",
+      "root": "ذ م م",
+      "meaning": "To grant a pledge of protection.",
+      "head": "أَذَمَّ"
+    },
+    "6.1.2": {
+      "word": "لِمُهجَتي",
+      "root": "م ه ج",
+      "meaning": "The heart’s blood, hence life itself.",
+      "head": "مُهجَة"
+    },
+    "6.2.5": {
+      "word": "الذِّمامِ",
+      "root": "ذ م م",
+      "meaning": "A pledge of safe conduct or protection.",
+      "head": "الذِّمام"
+    },
+    "7.2.2": {
+      "word": "قِرىً",
+      "root": "ق ر ي",
+      "meaning": "The food a host sets before a guest.",
+      "head": "قِرى"
+    },
+    "7.2.4-5": {
+      "word": "مُخِّ النَّعامِ",
+      "meaning": "“Ostrich marrow”, a proverbial meal that cannot be obtained. Al-Wahidi also records muh, the yolk of an ostrich egg.",
+      "head": "مُخّ النَّعام"
+    },
+    "8.1.5": {
+      "word": "خِبّاً",
+      "root": "خ ب ب",
+      "meaning": "Guile or deceit concealed by an appearance of friendship.",
+      "head": "خِبّ"
+    },
+    "8.2.1": {
+      "word": "جَزَيتُ",
+      "root": "ج ز ي",
+      "meaning": "To repay in kind.",
+      "head": "جَزى"
+    },
+    "9.1.4": {
+      "word": "أَصطَفيهِ",
+      "root": "ص ف و",
+      "meaning": "To pick someone out for oneself.",
+      "head": "اِصطَفى"
+    },
+    "9.2.4": {
+      "word": "الأَنامِ",
+      "root": "أ ن م",
+      "meaning": "Created beings, here humankind.",
+      "head": "الأَنام"
+    },
+    "10.1.4": {
+      "word": "التَّصافي",
+      "root": "ص ف و",
+      "meaning": "Mutual honesty and purity of affection."
+    },
+    "10.2.4": {
+      "word": "الوَسامِ",
+      "root": "و س م",
+      "meaning": "Beauty or good looks.",
+      "head": "الوَسام"
+    },
+    "11.1.1": {
+      "word": "وَآنَفُ",
+      "root": "أ ن ف",
+      "meaning": "To disdain or feel too proud to countenance something.",
+      "head": "أَنِفَ"
+    },
+    "11.2.6": {
+      "word": "الكِرامِ",
+      "root": "ك ر م",
+      "meaning": "People of noble conduct or generosity of spirit.",
+      "head": "الكِرام"
+    },
+    "12.1.3": {
+      "word": "تَغلِبُها",
+      "root": "غ ل ب",
+      "meaning": "To prevail over, here to outweigh an inherited distinction.",
+      "head": "غَلَبَ"
+    },
+    "12.2.4": {
+      "word": "اللِّئامِ",
+      "root": "ل أ م",
+      "meaning": "People of base or mean character.",
+      "head": "اللِّئام"
+    },
+    "13.2.2": {
+      "word": "أُعزى",
+      "root": "ع ز و",
+      "meaning": "To trace a person’s descent or ascribe something to them.",
+      "head": "عَزا"
+    },
+    "13.2.5": {
+      "word": "هُمامِ",
+      "root": "ه م م",
+      "meaning": "A person of high purpose and distinction.",
+      "head": "هُمام"
+    },
+    "14.1.4": {
+      "word": "قَدٌّ",
+      "root": "ق د د",
+      "meaning": "A person’s stature or build.",
+      "head": "قَدّ"
+    },
+    "14.2.1": {
+      "word": "وَيَنبو",
+      "root": "ن ب و",
+      "meaning": "To glance off without cutting.",
+      "head": "نَبا"
+    },
+    "14.2.3-4": {
+      "word": "القَضِمِ الكَهامِ",
+      "meaning": "A sword whose chipped, dull edge will not bite.",
+      "head": "القَضِم الكَهام"
+    },
+    "15.2.2": {
+      "word": "يَذَرُ",
+      "root": "و ذ ر",
+      "meaning": "To leave or allow to remain.",
+      "head": "وَذَرَ"
+    },
+    "15.2.5": {
+      "word": "سَنامِ",
+      "root": "س ن م",
+      "meaning": "The fatty hump on a camel’s back, worn down by hard travel.",
+      "head": "سَنام"
+    },
+    "16.2.1": {
+      "word": "كَنَقصِ",
+      "root": "ن ق ص",
+      "meaning": "Falling short of a capacity one actually has.",
+      "head": "نَقص"
+    },
+    "16.2.4": {
+      "word": "التَّمامِ",
+      "root": "ت م م",
+      "meaning": "Fulfilment, bringing something to its full extent.",
+      "head": "التَّمام"
+    },
+    "17.2.1": {
+      "word": "تَخِبُّ",
+      "root": "خ ب ب",
+      "meaning": "To trot at a brisk, short-stepped pace.",
+      "head": "خَبَّ"
+    },
+    "17.2.3": {
+      "word": "الرِّكابُ",
+      "root": "ر ك ب",
+      "meaning": "Camels used as travelling mounts.",
+      "head": "الرِّكاب"
+    },
+    "18.1.1": {
+      "word": "وَمَلَّنِيَ",
+      "root": "م ل ل",
+      "meaning": "To tire of a companion or situation through long familiarity.",
+      "head": "مَلَّ"
+    },
+    "18.2.2": {
+      "word": "لِقاءَهُ",
+      "root": "ل ق ي",
+      "meaning": "Meeting, here the physical contact of his side with the bed.",
+      "head": "لِقاء"
+    },
+    "19.1.2": {
+      "word": "عائِدي",
+      "root": "ع و د",
+      "meaning": "Someone visiting a sick person.",
+      "head": "عائِد"
+    },
+    "19.2.4": {
+      "word": "مَرامي",
+      "root": "ر و م",
+      "meaning": "An objective or aspiration.",
+      "head": "مَرام"
+    },
+    "20.1.3": {
+      "word": "مُمتَنِعُ",
+      "root": "م ن ع",
+      "meaning": "Impossible or beyond one’s power, here of standing up.",
+      "head": "مُمتَنِع"
+    },
+    "20.2.5": {
+      "word": "المُدامِ",
+      "root": "د و م",
+      "meaning": "Wine.",
+      "head": "المُدام"
+    },
+    "21.1.1": {
+      "word": "وَزائِرَتي",
+      "root": "ز و ر",
+      "meaning": "A woman caller, the guise assumed here by a bout of fever.",
+      "head": "زائِرَة"
+    },
+    "21.2.4-5": {
+      "word": "في الظَّلامِ",
+      "meaning": "“In the dark”, the time at which the fever returns."
+    },
+    "22.1.3": {
+      "word": "المَطارِفَ",
+      "root": "ط ر ف",
+      "meaning": "Fine, often striped or bordered, outer wraps.",
+      "head": "المَطارِف"
+    },
+    "22.1.4": {
+      "word": "وَالحَشايا",
+      "root": "ح ش و",
+      "meaning": "Mattresses or cushions filled with soft stuffing.",
+      "head": "الحَشايا"
+    },
+    "22.2.1": {
+      "word": "فَعافَتها",
+      "root": "ع ي ف",
+      "meaning": "To reject something with distaste.",
+      "head": "عافَ"
+    },
+    "23.1.4": {
+      "word": "نَفسي",
+      "root": "ن ف س",
+      "meaning": "A person’s own life or self, here one of the two occupants.",
+      "head": "نَفس"
+    },
+    "23.2.1": {
+      "word": "فَتوسِعُهُ",
+      "root": "و س ع",
+      "meaning": "To make room or widen something.",
+      "head": "أَوسَعَ"
+    },
+    "24.2.1": {
+      "word": "مَدامِعُها",
+      "root": "د م ع",
+      "meaning": "The outlets of tears, or the tears themselves.",
+      "head": "مَدامِع"
+    },
+    "24.2.3": {
+      "word": "سِجامِ",
+      "root": "س ج م",
+      "meaning": "Streaming or pouring freely, here of tears.",
+      "head": "سِجام"
+    },
+    "25.2.2": {
+      "word": "المَشوقِ",
+      "root": "ش و ق",
+      "meaning": "Someone consumed by longing for an absent person.",
+      "head": "المَشوق"
+    },
+    "25.2.3": {
+      "word": "المُستَهامِ",
+      "root": "ه ي م",
+      "meaning": "Distraught or beside oneself with love.",
+      "head": "المُستَهام"
+    },
+    "26.2.4": {
+      "word": "الكُرَبِ",
+      "root": "ك ر ب",
+      "meaning": "Acute distresses or overwhelming troubles.",
+      "head": "الكُرَب"
+    },
+    "27.1.1-2": {
+      "word": "أَبِنتَ الدَّهرِ",
+      "meaning": "“Daughter of time”, one of the troubles time brings.",
+      "head": "بِنت الدَّهر"
+    },
+    "27.2.5": {
+      "word": "الزِّحامِ",
+      "root": "ز ح م",
+      "meaning": "The press of a crowd in a confined space.",
+      "head": "الزِّحام"
+    },
+    "28.1.2": {
+      "word": "مُجَرَّحاً",
+      "root": "ج ر ح",
+      "meaning": "Wounded over and over, already covered in wounds.",
+      "head": "مُجَرَّح"
+    },
+    "29.1.4": {
+      "word": "شِعرَ",
+      "root": "ش ع ر",
+      "meaning": "Knowledge, as in the idiom “if only I knew”.",
+      "head": "شِعر"
+    },
+    "29.2.3": {
+      "word": "عِنانٍ",
+      "root": "ع ن ن",
+      "meaning": "A horse’s rein.",
+      "head": "عِنان"
+    },
+    "29.2.5": {
+      "word": "زِمامِ",
+      "root": "ز م م",
+      "meaning": "A camel’s nose-rein or lead.",
+      "head": "زِمام"
+    },
+    "30.1.4": {
+      "word": "بِراقِصاتٍ",
+      "root": "ر ق ص",
+      "meaning": "Camels moving at a lively, bouncing trot.",
+      "head": "راقِصات"
+    },
+    "30.2.3": {
+      "word": "بِاللُّغامِ",
+      "root": "ل غ م",
+      "meaning": "The froth at a camel’s mouth.",
+      "head": "اللُّغام"
+    },
+    "31.1.3": {
+      "word": "غَليلَ",
+      "root": "غ ل ل",
+      "meaning": "Thirst or burning in the breast, figuratively pent-up anger or longing.",
+      "head": "غَليل"
+    },
+    "31.2.3": {
+      "word": "قَناةٍ",
+      "root": "ق ن و",
+      "meaning": "A lance shaft, hence the lance itself.",
+      "head": "قَناة"
+    },
+    "32.1.2": {
+      "word": "خُطَّةٌ",
+      "root": "خ ط ط",
+      "meaning": "A course of affairs, here a tight predicament.",
+      "head": "خُطَّة"
+    },
+    "32.2.5": {
+      "word": "الفِدامِ",
+      "root": "ف د م",
+      "meaning": "A woven strainer laid over the mouth of a wine vessel.",
+      "head": "الفِدام"
+    },
+    "33.2.1": {
+      "word": "وَوَدَّعتُ",
+      "root": "و د ع",
+      "meaning": "To take leave of someone or somewhere.",
+      "head": "وَدَّعَ"
+    },
+    "34.2.1": {
+      "word": "وَداؤُكَ",
+      "root": "د و ء",
+      "meaning": "An illness or underlying ailment.",
+      "head": "داء"
+    },
+    "35.1.5": {
+      "word": "جَوادٌ",
+      "root": "ج و د",
+      "meaning": "A fine, swift horse.",
+      "head": "جَواد"
+    },
+    "35.2.4": {
+      "word": "الجَمامِ",
+      "root": "ج م م",
+      "meaning": "Rest from work or riding, here enforced inactivity.",
+      "head": "الجَمام"
+    },
+    "36.1.3": {
+      "word": "يُغَبِّرَ",
+      "root": "غ ب ر",
+      "meaning": "To raise dust in motion.",
+      "head": "غَبَّرَ"
+    },
+    "36.1.5": {
+      "word": "السَّرايا",
+      "root": "س ر ي",
+      "meaning": "Detachments sent out from a larger army."
+    },
+    "36.2.3": {
+      "word": "قَتامٍ",
+      "root": "ق ت م",
+      "meaning": "A thick, dark cloud of dust.",
+      "head": "قَتام"
+    },
+    "37.1.3": {
+      "word": "يُطالُ",
+      "root": "ط و ل",
+      "meaning": "To lengthen a horse’s tether and give it room to graze.",
+      "head": "أَطالَ"
+    },
+    "37.2.4": {
+      "word": "العَليقِ",
+      "root": "ع ل ق",
+      "meaning": "Fodder set before a mount, sometimes in a hanging feedbag.",
+      "head": "العَليق"
+    },
+    "38.1.5": {
+      "word": "اِصطِباري",
+      "root": "ص ب ر",
+      "meaning": "Deliberate endurance or steadfastness.",
+      "head": "اِصطِبار"
+    },
+    "38.2.2": {
+      "word": "أُحمَم",
+      "root": "ح م م",
+      "meaning": "To be taken with fever.",
+      "head": "حُمَّ"
+    },
+    "39.1.2": {
+      "word": "أَسلَم",
+      "root": "س ل م",
+      "meaning": "To emerge safe from danger or illness.",
+      "head": "سَلِمَ"
+    },
+    "39.2.3": {
+      "word": "الحِمامِ",
+      "root": "ح م م",
+      "meaning": "Death or the appointed end of life.",
+      "head": "الحِمام"
+    },
+    "40.1.3": {
+      "word": "سُهادٍ",
+      "root": "س ه د",
+      "meaning": "Sleeplessness or a wakeful night.",
+      "head": "سُهاد"
+    },
+    "40.2.3": {
+      "word": "كَرىً",
+      "root": "ك ر ي",
+      "meaning": "Drowsiness or sleep.",
+      "head": "كَرى"
+    },
+    "40.2.5": {
+      "word": "الرِّجامِ",
+      "root": "ر ج م",
+      "meaning": "Stones heaped over a grave.",
+      "head": "الرِّجام"
+    },
+    "41.1.2-3": {
+      "word": "لِثالِثِ الحالَينِ",
+      "meaning": "“The third beside the two states”, death alongside waking and sleeping.",
+      "head": "ثالِث الحالَين"
+    },
+    "30.2.1": {
+      "word": "مُحَلّاةِ",
+      "head": "مُحَلّاة",
+      "root": "ح ل ي",
+      "meaning": "Adorned. The singular feminine adjective describes the camels collectively. Al-Wahidi prints a plural form. The ornament on their leads is foam."
+    }
+  }
+}

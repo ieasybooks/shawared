@@ -1,0 +1,18 @@
+{
+  "reciter": "abd-al-rahman-al-saeed",
+  "audio": "dharini-lil-ghina/abd-al-rahman-al-saeed.m4a",
+  "duration": 31.48,
+  "source": "https://www.youtube.com/watch?v=crFBfuA-ksA",
+  "timeline": [
+    ["1.1", 0.48, 3.08],
+    ["1.2", 3.42, 6.18],
+    ["2.1", 6.52, 9.24],
+    ["2.2", 9.42, 12.20],
+    ["3.1", 12.52, 15.20],
+    ["3.2", 15.48, 18.28],
+    ["4.1", 18.62, 21.22],
+    ["4.2", 21.60, 24.42],
+    ["5.1", 24.76, 27.34],
+    ["5.2", 27.74, 31.06]
+  ]
+}
