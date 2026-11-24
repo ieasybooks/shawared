@@ -1,0 +1,41 @@
+# أيا أم الأسير سقاك غيث
+
+## Recording and witnesses
+
+Osama al-Nahari recites all nineteen bayts once, in the order of Sami al-Dahhan’s edition. The three identical opening halves belong to three different verses. Their answers change from the mother’s distress to rain that cannot move on, then to a messenger who has nobody to tell. The source interval is 2.65–186.55 s. The lead’s source measurements place the first and last voiced sounds at 3.16 and 186.09 s. [Recording](https://www.youtube.com/watch?v=eLboDE3bBlU)
+
+- *Diwan Abi Firas al-Hamdani*, recension of Ibn Khalawayh, ed. Sami al-Dahhan, poem 163, pp. 215–218. The prose heading on p. 215 says she died while her son was a prisoner. The editor explains why he retains the elegy despite the apparent ambiguity of Ibn Khallikan’s account of a mother who grieved at Abu Firas’s death. He traces that ambiguity through the biographers and identifies two families of manuscript witnesses for the poem. The text starts on p. 216, gives 2–14 on p. 217 and ends on p. 218. The apparatus to 7 expressly records the reversal «الرزايا والمنايا». [Scanned edition](https://archive.org/details/0453_20191224)
+- Ibn Khalawayh, *Sharh Diwan Abi Firas al-Hamdani hasaba al-makhtuta al-tunisiyya*, ed. Muhammad Bencherifa, pp. 367–369. Its heading independently says «يرثي أمه وتوفيت وهو أسير». The Tunis text opens with our 2, 1, 3. Later it gives 10 before 9 and 12 before 11. All nineteen are present. Its «أبيت … بي», «له حضور», «إلى أن بين», «أعنتيه», «فيه نصير», «بات», «المرجّى» and closing «يسلّي … في الدنيا» make this a distinct textual witness. Bencherifa’s numbered footnotes give the other edition’s readings separately. [Printed pp. 367–369](https://archive.org/details/20240327_20240327_1433/page/n368/mode/1up)
+
+At 3.2 the recording and al-Dahhan have «بالفدا يأتي» against Tunis «بالفداء يجي». At 6 the son still speaks of himself in the third person, following «ابنك» in 5. At 7.1 and 11.2 the performance crosses over to the Tunis text, «الرزايا والمنايا» and «عزّ المجير». Al-Dahhan’s main text has «المنايا والرزايا» and «قلّ المجير». Both verbs in 11.2 describe how difficult it was for the fugitive to find a protector. At 18 the direction of the verbs matters. The mother’s prayer might ward off a fate already allotted to her son, and might open the way through a difficulty still ahead. The ending «في الأخرى نصير» gives an actual destination to the consolation. The camera shows the full ending and the beginning of 15, even where an isolated transcription hallucinates unrelated speech.
+
+## Metre and interpretation
+
+Wafir with ra as rawiy. Both halves of 1 scan ⏑ – – – | ⏑ – ⏑ ⏑ – | ⏑ – –. At 9.1 «ليبكك كلّ يوم صمت فيه» scans ⏑ – ⏑ ⏑ – | ⏑ – – – | ⏑ – –, and 9.2 scans ⏑ – ⏑ ⏑ – | ⏑ – ⏑ ⏑ – | ⏑ – –. The contracted first or second foot accommodates the change in pace when the poem turns from addressing the dead to calling witnesses. The separate Arabic and English explanations read the fasting day and the night of prayer as mourners in their own right, then distinguish them from the living people who can testify to her hospitality. The final plural extends the imagined journey beyond the solitary prisoner.
+
+## What the recording settles
+
+The two continuous transcriptions follow the same sequence from the first wish for rain to «في الأخرى نصير». The per-half check covers all 38 halves. The following decisions use the initial narrow Cohere clips, independent Audar clips with a wider margin, word alignment, the reciter’s written cards and the two diwan texts. The acoustic numbers are differences between scores for the same stretch of sound with one reading changed.
+
+| Half | Evidence and decision |
+| --- | --- |
+| 1.1, 2.1, 3.1 | The three narrow clips produce three unrelated phrases beginning «والإنسان», «والقومة» and «واللهم». Each wider clip gives the whole «أيا أم الأسير سقاك غيث». Both continuous passes also give it three times, followed in turn by «بكره», «تحيّر» and «إلى من». Keep three verses. |
+| 3.2 | Cohere joins «إلى من» as «المن». Audar preserves the question and joins «بالفدا يأتي». The latter verb leads Tunis «يجي» by 5.74. The short form «الفِدا» sits before it in al-Dahhan. |
+| 9.2 | Both isolated clips substitute «الهدير», a roaring sound. The full passes recover «الهجير», the midday heat that makes fasting arduous. Both diwan texts have it. The gap of 0.33 supplies almost no consonant evidence. |
+| 12.2 | The narrow pass adds «أن» at the start and drops the last r. The wider pass mixes the order but recovers the r sound. Both continuous passes have the verb of bringing help. «أغثتيه» leads Tunis «أعنتيه» by 6.69 and shorter «أغثتِه» by only 1.10. Al-Dahhan prints the lengthened feminine ending, also present in «أجرتيه» one verse earlier. Both editions give «رير», the marrow that hunger has exhausted, which leads «ري» by 6.54. |
+| 15.1 | The narrow decoder produces the name of an Islamic encyclopaedia. The wider one repeats «يا أم المؤمنين». The full takes both contain «أيا أمّاه كم بشرى بقربي» with the following «أتتك». The camera and both printed pages give the same message. The five words have aligned confidences 0.87, 0.75, 0.56, 0.75 and 0.65. |
+| 17.1 | The widened clip has «أوقى» and the narrow one «أوقر». Both full passes and both prints support the passive verb of protection. «أوقّى» leads by 18.13. His mother’s prayers kept harm from him. |
+| 18.1 | The wide clip restores «الموفّى» where the narrow one has «الموفّق». The adopted word leads «الموفّق» by 19.35 and Tunis «المرجّى» by 21.31. Al-Dahhan prints «الموفّى». |
+| 19.1, 19.2 | The narrow clips give unrelated speech. The wider pair restores «نسلّى عنك أنّا عن قليل» and «إلى ما صرت في الأخرى نصير», with an extra initial conjunction in the first. Both continuous passes recover the plural consolation. «نسلّى» leads Tunis «يسلّي» by 12.81, «الأخرى» leads «الدنيا» by 29.02. |
+
+At 6.1 «يبيت» leads «أبيت» by 6.66. At 6.2 the short pronoun «به» aligns weakly and «بي» actually leads by 2.42. Both full transcriptions give «به», in agreement with al-Dahhan and the third-person subject of 6.1. At 7.1 the performed order «الرزايا والمنايا» leads the reverse by 22.24. At 8.2 «به» leads «له» by 16.65, at 11.2 «عزّ» leads «قلّ» by 12.32, at 13.2 «منه» leads «فيه» by 15.45, and at 14.2 «مات» leads «بات» by 7.71. In 10.2 both full takes give the beginning of dawn as «يبتدي», whereas the Tunis page prints «بيّن». No verse is omitted and there is no internal cut.
+
+## Final cadence check
+
+The 38 final clips include the reciter’s held rhyme vowels. Nine still differed from the text in the isolated Cohere pass.
+
+- At 1.1 the narrow clip now has «فيا أم الأسير». The wider clip gives «أيا أم الأسير» and the final 2.1 has it as well. Al-Dahhan prints the same call in each of the first three verses. The final 15.1 and 19.2 also recover the printed text, including «في الأخرى نصير».
+- At 5.2, 7.2 and 17.2 the narrow clips write an added pronoun after the held rhyme in «يستجيرُ», «عشيرُ» and «أستنيرُ». The independent wider clip gives the unsuffixed form at each address. The first asks who will seek protection, the second speaks of an absent kinsman, and the third asks whose face will light the son’s way. At 17.1 and 18.1 the final clips recover «أوقّى» and «الموفّى».
+- At the joins before 11.2 and 12.2 the isolated clips insert «إن». The continuous recording gives «مخوفٍ أجرتيه» and «فقيرٍ أغثتيه», each describing someone the mother helped. Before 13.1 the isolated decoder inserts «والقومة». Both continuous passes go straight from the starving man in 12 to «أيا أمّاه». The first aligned words of the three halves begin at 100.82, 109.86 and 114.88 seconds on the poem track.
+
+The wider final clip at 3.1 restores «أيا أم الأسير». At 3.2 it separates «إلى من» and retains the verb «يأتي». At 9.2 both isolated clips still give «الهدير», while both continuous readings and the two diwans preserve the midday heat, «الهجير». At 12.2 the wider ending joins words around the final r. Continuous Cohere gives «وما في العظم رير» and Audar runs «العظمير» together. At 19.1 the final narrow clip gives unrelated speech. The wider clip restores the plural consolation with an extra opening w, and both continuous passes preserve «نسلّى عنك أنّا عن قليل». The final highlight for 19.2 ends at 183.47 s on the master.

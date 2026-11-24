@@ -1,0 +1,275 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Many a Friend Is a Spear with Crooked Joints",
+  "intro": "Al-Sharif al-Radi describes a friend whose smile gives no hint of what he harbours. He begins with a spear that resists straightening and ends up considering whether he could bear to part with his own hand. Usama ibn Munqidh included a selection in his anthology Lubab al-adab alongside other poems on difficult friendships. The full poem follows the cost of keeping the friend all the way to the cost of losing him.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Many a friend is a spear with crooked joints",
+        "that will not straighten, however long I press it."
+      ],
+      "sharh": "A spear shaft has joints that must line up. The time spent pressing it straight stands for the years of trying to bring a friend round."
+    },
+    "2": {
+      "translation": [
+        "I accepted the bright face he showed me.",
+        "Behind my back he folded away a scowl."
+      ],
+      "sharh": "His own part is to accept the welcome he is offered. His friend does something much more deliberate, folding away the feelings that might give him away."
+    },
+    "3": {
+      "translation": [
+        "He showed me a meadow on high ground, all tender shoots,",
+        "and kept a darkness like the black of night inside."
+      ],
+      "sharh": "Fresh growth makes the outward aspect almost inviting to touch. The darkness inside it offers nothing the eye can investigate."
+    },
+    "4": {
+      "translation": [
+        "Had I laid his secret heart bare,",
+        "I would be holding a wake today for our friendship."
+      ],
+      "sharh": "Finding out the whole truth would give him the office of mourner. What dies in that imagined scene is the bond between two people who are still alive."
+    },
+    "5": {
+      "translation": [
+        "No hand of mine goes out to hurt him if he hurts me,",
+        "no mouth opens to revile him if he gives me cause."
+      ],
+      "sharh": "The two restraints have different occasions, an actual injury and grounds for suspicion. Hand and open mouth make visible the replies he withholds."
+    },
+    "6": {
+      "translation": [
+        "He is a limb on which the nights have laid an affliction.",
+        "Whoever carries an aching limb must feel its pain."
+      ],
+      "sharh": "The crooked spear could at least be laid aside. With a limb the person who chooses to keep it must carry its pain in his own body."
+    },
+    "7": {
+      "translation": [
+        "When the wise physician orders it cut off,",
+        "I treasure it and say, “Perhaps”, and “Maybe yet”."
+      ],
+      "sharh": "The physician can make a definite recommendation. The patient cannot finish either of his hopeful phrases, but their hesitation is enough to put off the operation."
+    },
+    "8": {
+      "translation": [
+        "I endure its pain for fear of the loss.",
+        "Whoever blames someone past heeding deserves more blame."
+      ],
+      "sharh": "An ache can still be borne tomorrow. A missing limb cannot be restored. The recurring sound of “blame” turns the charge back on the person who keeps reproaching."
+    },
+    "9": {
+      "translation": [
+        "It is my hand. To keep it diseased is agony.",
+        "Cut off, it disfigures the forearm and the wrist."
+      ],
+      "sharh": "Only now do we see which limb he has in mind. Removing the source of pain would alter the shape even of the sound arm attached to it."
+    },
+    "10": {
+      "translation": [
+        "Though you defy me, I hold you dearer",
+        "than my own obedient heart, and in higher honour."
+      ],
+      "sharh": "He finally turns to “you”. The heart that does the valuing is itself put in the balance against its troublesome friend and comes off second best."
+    },
+    "11": {
+      "translation": [
+        "I bear you as an eye bears a stubborn speck,",
+        "never clearing for a day, never quite going blind."
+      ],
+      "sharh": "A speck can command all one's attention without destroying sight. That middle condition, short of cure and short of blindness, is what makes endurance possible."
+    },
+    "12": {
+      "translation": [
+        "Leave a man folded round the fault you found in him.",
+        "Do not lay the deep-seated illness open and regret it."
+      ],
+      "sharh": "The friend can be left folded like a cloth. To spread the fault for inspection also spreads the illness, a danger that disclosure itself brings about."
+    },
+    "13": {
+      "translation": [
+        "Cut off each limb the moment it hurts you,",
+        "however ruefully, and you will leave no flesh or blood."
+      ],
+      "sharh": "Even a reluctant amputation is final. Applied to every fresh hurt, a rule meant to preserve the body would gradually do away with it."
+    },
+    "14": {
+      "translation": [
+        "Whoever fails to brace himself for a little hurt",
+        "lays himself open to meeting something graver and greater."
+      ],
+      "sharh": "The ending asks what a person can train himself to bear. Losing someone altogether may turn out to be the greater injury a quick remedy invites."
+    }
+  },
+  "words": {
+    "1.1.4": {
+      "word": "زاغَت",
+      "head": "زاغَ",
+      "root": "ز ي غ",
+      "meaning": "Swerved or fell out of line, here at the joints of the shaft."
+    },
+    "1.1.5": {
+      "word": "كُعوبُهُ",
+      "head": "كَعب",
+      "root": "ك ع ب",
+      "meaning": "A raised joint in the cane from which a spear shaft is made."
+    },
+    "1.2.4": {
+      "word": "الغَمزِ",
+      "head": "غَمز",
+      "root": "غ م ز",
+      "meaning": "Pressure applied by hand to straighten something bent."
+    },
+    "2.1.4": {
+      "word": "مُتَبَلِّجاً",
+      "head": "مُتَبَلِّج",
+      "root": "ب ل ج",
+      "meaning": "Bright and open in expression."
+    },
+    "2.2.1": {
+      "word": "وَأَدمَجَ",
+      "head": "أَدمَجَ",
+      "root": "د م ج",
+      "meaning": "Folded up and concealed, here his ill will."
+    },
+    "3.1.3": {
+      "word": "الحَزنِ",
+      "head": "الحَزن",
+      "root": "ح ز ن",
+      "meaning": "Rough upland. The diwan also identifies al-Hazn as a tract of meadows and hollows belonging to Banu Yarbu'."
+    },
+    "3.2.3": {
+      "word": "الخُدارِيِّ",
+      "head": "الخُدارِيّ",
+      "root": "خ د ر",
+      "meaning": "Intensely black, here of impenetrable night."
+    },
+    "4.1.5": {
+      "word": "ضَميرِهِ",
+      "head": "ضَمير",
+      "root": "ض م ر",
+      "meaning": "A person's private thoughts and feelings."
+    },
+    "4.2.6": {
+      "word": "مَأتَما",
+      "head": "مَأتَم",
+      "root": "أ ت م",
+      "meaning": "A gathering for mourning, held here for a friendship."
+    },
+    "5.2.2": {
+      "word": "فاغِراً",
+      "head": "فاغِر",
+      "root": "ف غ ر",
+      "meaning": "With mouth open wide, ready to speak ill of someone."
+    },
+    "5.2.5": {
+      "word": "رابَني",
+      "head": "رابَ",
+      "root": "ر ي ب",
+      "meaning": "Gave me grounds for suspicion."
+    },
+    "6.1.5": {
+      "word": "بِفادِحٍ",
+      "head": "فادِح",
+      "root": "ف د ح",
+      "meaning": "A crushing burden or affliction."
+    },
+    "6.1.4": {
+      "word": "اللَّيالي",
+      "root": "ل ي ل",
+      "meaning": "The passing nights, representing the blows that time can deal."
+    },
+    "7.1.3": {
+      "word": "الطِّبُّ",
+      "head": "الطِّبّ",
+      "root": "ط ب ب",
+      "meaning": "A skilled physician, the person whose judgement the patient evades."
+    },
+    "7.2.3": {
+      "word": "ضَنّاً",
+      "head": "ضَنّ",
+      "root": "ض ن ن",
+      "meaning": "Reluctance to part with something dearly held."
+    },
+    "7.2.5": {
+      "word": "وَلَعَلَّما",
+      "head": "لَعَلَّما",
+      "meaning": "“And perhaps.” The hoped-for recovery never has to be said aloud."
+    },
+    "8.2.5": {
+      "word": "يَرعَوي",
+      "head": "اِرعَوى",
+      "root": "ر ع و",
+      "meaning": "To desist or take a rebuke to heart."
+    },
+    "8.2.7": {
+      "word": "أَلوَما",
+      "head": "أَلوَم",
+      "root": "ل و م",
+      "meaning": "More deserving of blame."
+    },
+    "9.1.3": {
+      "word": "مَضٌّ",
+      "head": "مَضّ",
+      "root": "م ض ض",
+      "meaning": "Acute, wearing pain, here the cost of keeping the hand."
+    },
+    "9.2.5": {
+      "word": "وَمِعصَما",
+      "head": "مِعصَم",
+      "root": "ع ص م",
+      "meaning": "The wrist, where a bracelet encircles the arm."
+    },
+    "10.1.6": {
+      "word": "عاصِياً",
+      "head": "عاصٍ",
+      "root": "ع ص ي",
+      "meaning": "Defiant or ungovernable, set against his own obedient heart."
+    },
+    "11.1.4": {
+      "word": "لَجَّ",
+      "root": "ل ج ج",
+      "meaning": "Persisted, here of a speck that will not shift."
+    },
+    "11.1.6": {
+      "word": "القَذى",
+      "head": "قَذى",
+      "root": "ق ذ ي",
+      "meaning": "A speck of dust or chaff caught in the eye."
+    },
+    "12.1.3": {
+      "word": "مَطوِيّاً",
+      "head": "مَطوِيّ",
+      "root": "ط و ي",
+      "meaning": "Folded up, with what lies inside left private."
+    },
+    "12.2.4": {
+      "word": "العُضالَ",
+      "head": "عُضال",
+      "root": "ع ض ل",
+      "meaning": "Intractable, of a disease or a deeply rooted fault."
+    },
+    "13.2.1-2": {
+      "word": "عَلى مَضَضٍ",
+      "head": "عَلى مَضَض",
+      "root": "م ض ض",
+      "meaning": "“In pain.” The decision to amputate is taken with real distress."
+    },
+    "14.1.3": {
+      "word": "يُوَطِّن",
+      "head": "وَطَّنَ",
+      "root": "و ط ن",
+      "meaning": "To school oneself to endure something. The object “oneself” is implicit."
+    },
+    "14.2.4": {
+      "word": "أَجَلَّ",
+      "head": "أَجَلّ",
+      "root": "ج ل ل",
+      "meaning": "Graver in consequence, here of an injury."
+    }
+  }
+}

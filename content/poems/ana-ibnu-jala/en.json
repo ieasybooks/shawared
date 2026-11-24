@@ -1,0 +1,233 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "I Am the Son of One Who Stands Revealed, a Climber of Passes",
+  "intro": "Al-Asma'i tells how al-Akhwas and al-Ubayrid sent Suhaym a challenge in verse. Staff in hand, the older poet walked up and down the valley composing his reply. He makes experience tangible in a camel’s teeth, a second yield of milk and the splinters of a spear shaft. Al-Hajjaj later took the opening of his address in Kufa from this poem.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "I am the son of one who stands revealed, a climber of passes.",
+        "When I lay my turban down, you will know me."
+      ],
+      "sharh": "His standing is plain and he has made his way up difficult passes. The gesture with the turban turns an abstract claim about reputation into a moment when everyone can see his face."
+    },
+    "2": {
+      "translation": [
+        "Our place among Himyari’s people",
+        "is the lion’s place in the heart of the thicket."
+      ],
+      "sharh": "Himyari is the ancestor of his own branch of Riyah. A lion in the very middle of its cover seems as secure in its place as Suhaym feels among his people."
+    },
+    "3": {
+      "translation": [
+        "My match never comes back to face me",
+        "on the return day without a companion,"
+      ],
+      "sharh": "One encounter teaches his opponent to bring help. Two near-identical words distinguish the man who takes him on from the companion that man must bring next time."
+    },
+    "4": {
+      "translation": [
+        "a maned lion the riders turn aside from,",
+        "whose kill none approaches for a long while."
+      ],
+      "sharh": "Even the ally his opponent needs is lion-like. Travellers give him room on the road and leave his kill alone, two measures of the fear his presence inspires."
+    },
+    "5": {
+      "translation": [
+        "I would excuse full-grown camels for challenging me.",
+        "What have I to do with a pair of yearlings?"
+      ],
+      "sharh": "Older camels with their mature teeth make worthy competitors. Giving the two challengers the name for calves in their second year tells them exactly where he ranks them."
+    },
+    "6": {
+      "translation": [
+        "What advantage can the poets steal over me",
+        "now I have passed the far end of forty?"
+      ],
+      "sharh": "The poets would have to stalk him as a hunter stalks game. Experience, he implies, lets him recognise their manoeuvre while they still think themselves unseen."
+    },
+    "7": {
+      "translation": [
+        "Fifty years old, with all my strength gathered,",
+        "I have cut my teeth on the handling of affairs."
+      ],
+      "sharh": "Fifty is the point at which his powers have come together. The word for being seasoned by experience also evokes molars, recalling the mature camels of his challenge."
+    },
+    "8": {
+      "translation": [
+        "Even my second yield, my running through a year,",
+        "would tax a youngster of doubtful promise."
+      ],
+      "sharh": "His rivals had boasted of their first burst of speed. He answers with what he has left in reserve, like milk still to be drawn at a second milking."
+    },
+    "9": {
+      "translation": [
+        "I shall live as long as life is mine, my back",
+        "resting against a support I can trust."
+      ],
+      "sharh": "He can spend the rest of his life upright because his back is supported. Behind the figure of stacked household goods is the dependable weight of his kin."
+    },
+    "10": {
+      "translation": [
+        "Noble on my mother’s side, of Riyah on either side,",
+        "I have a brow bright as a sword blade."
+      ],
+      "sharh": "He gives his maternal kin a share in the honour just claimed. A visible brightness, like polished steel catching the light, carries the boast back to the uncovered face of the opening."
+    },
+    "11": {
+      "translation": [
+        "Our spear shaft bristles with splinters.",
+        "It pulls hard at the neck of anyone who grapples with it."
+      ],
+      "sharh": "A man who lays hold of the shaft gets splinters in his hand and feels a pull on his own neck. Suhaym ends with what challenging his family feels like on the challenger’s side."
+    }
+  },
+  "words": {
+    "1.1.2-3": {
+      "word": "اِبنُ جَلا",
+      "meaning": "“Son of one who stands revealed”, a man whose distinction is plain to see."
+    },
+    "1.1.4-5": {
+      "word": "وَطَلّاعُ الثَّنايا",
+      "head": "طَلّاعُ الثَّنايا",
+      "root": "ط ل ع",
+      "meaning": "“Climber of passes”, someone tried on steep ground and in difficult undertakings."
+    },
+    "1.2.3": {
+      "word": "العِمامَةَ",
+      "head": "عِمامَة",
+      "root": "ع م م",
+      "meaning": "A turban, the headwrap he lays aside as he promises recognition."
+    },
+    "2.1.4": {
+      "word": "حِميَرِيٍّ",
+      "head": "حِميَرِيّ",
+      "meaning": "Himyari ibn Riyah ibn Yarbu', the Tamimi ancestor of Suhaym’s clan."
+    },
+    "2.2.5": {
+      "word": "العَرينِ",
+      "head": "عَرين",
+      "root": "ع ر ن",
+      "meaning": "A lion’s lair in dense cover."
+    },
+    "3.1.5": {
+      "word": "قِرني",
+      "head": "قِرن",
+      "root": "ق ر ن",
+      "meaning": "An opponent matched with a man in contest."
+    },
+    "3.2.2": {
+      "word": "الغِبِّ",
+      "head": "غِبّ",
+      "root": "غ ب ب",
+      "meaning": "Watering on alternate days, here a return after an interval."
+    },
+    "3.2.5": {
+      "word": "قَرينِ",
+      "head": "قَرين",
+      "root": "ق ر ن",
+      "meaning": "A companion, the opponent’s reinforcement."
+    },
+    "4.1.1-2": {
+      "word": "بِذي لِبَدٍ",
+      "head": "ذو لِبَد",
+      "root": "ل ب د",
+      "meaning": "“The maned one”, a lion with thick hair round its neck."
+    },
+    "4.2.3": {
+      "word": "فَريسَتُهُ",
+      "head": "فَريسَة",
+      "root": "ف ر س",
+      "meaning": "An animal killed and claimed by a predator."
+    },
+    "5.1.2": {
+      "word": "البُزلَ",
+      "head": "بازِل",
+      "root": "ب ز ل",
+      "meaning": "A fully mature camel whose canine tooth has come through."
+    },
+    "5.1.5": {
+      "word": "خاطَرَتني",
+      "head": "خاطَرَ",
+      "root": "خ ط ر",
+      "meaning": "Challenged or competed against someone with stakes at risk."
+    },
+    "5.2.4-5": {
+      "word": "اِبنَي لَبونِ",
+      "head": "اِبنا لَبون",
+      "meaning": "“Two calves of milk-giving mothers”, males in their second year whose dams have calved again."
+    },
+    "6.1.2": {
+      "word": "يَدَّري",
+      "head": "اِدَّرى",
+      "root": "د ر ي",
+      "meaning": "Stalked game so as to take it unawares."
+    },
+    "7.1.4": {
+      "word": "أَشُدّي",
+      "head": "أَشُدّ",
+      "root": "ش د د",
+      "meaning": "The full strength of maturity."
+    },
+    "7.2.1": {
+      "word": "وَنَجَّذَني",
+      "head": "نَجَّذَ",
+      "root": "ن ج ذ",
+      "meaning": "Seasoned someone through experience. The word suggests cutting one’s back teeth."
+    },
+    "8.1.2": {
+      "word": "عُلالَتي",
+      "head": "عُلالَة",
+      "root": "ع ل ل",
+      "meaning": "A second yield of milk, hence energy left over after a first effort."
+    },
+    "8.1.3": {
+      "word": "وَجِراءَ",
+      "head": "جِراء",
+      "root": "ج ر ي",
+      "meaning": "A trial of speed, echoing the challengers’ own word."
+    },
+    "8.2.4-5": {
+      "word": "الضَّرَعِ الظَّنونِ",
+      "head": "الضَّرَع الظَّنون",
+      "meaning": "“The untried weakling”, a young competitor whose powers remain doubtful."
+    },
+    "9.2.3": {
+      "word": "نَضَدٍ",
+      "head": "نَضَد",
+      "root": "ن ض د",
+      "meaning": "A stand on which goods are piled, here the backing his family gives him."
+    },
+    "10.1.4": {
+      "word": "سَلَفَي",
+      "head": "سَلَف",
+      "root": "س ل ف",
+      "meaning": "A forebear. The dual reaches back along two lines of descent."
+    },
+    "10.1.5": {
+      "word": "رِياحٍ",
+      "head": "رِياح",
+      "meaning": "Riyah, Suhaym’s people, a branch of Yarbu' within Tamim."
+    },
+    "11.1.2": {
+      "word": "قَناتَنا",
+      "head": "قَناة",
+      "root": "ق ن و",
+      "meaning": "The wooden shaft of a spear, here standing for the clan."
+    },
+    "11.1.3": {
+      "word": "مَشِظٌ",
+      "head": "مَشِظ",
+      "root": "م ش ظ",
+      "meaning": "Rough with splinters that stick in the hand."
+    },
+    "11.1.4": {
+      "word": "شَظاها",
+      "head": "شَظاً",
+      "root": "ش ظ ي",
+      "meaning": "Slivers that break from the shaft."
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "lang": "en",
+  "source": {"name": "Shawared"},
+  "title": "The Ant and the Muqattam Hills",
+  "intro": "An ant looks up at the Muqattam hills on the edge of Cairo and imagines the whole mountain falling on her. She keeps her eyes on it as she runs. The reader looking up with her can just as easily miss the water at her feet, a mere span to us and a sea to her.",
+  "abyat": {
+    "1": {"translation": ["Once an ant was walking", "under the Muqattam hills."], "sharh": "The opening puts a tiny moving creature beneath a great, apparently immovable landmark. Their difference in scale does most of the descriptive work."},
+    "2": {"translation": ["Her joints went slack", "in awe of the mighty height."], "sharh": "The mountain’s only action so far is to stand there. The ant supplies the movement herself, and fear works first on the legs she needs for walking."},
+    "3": {"translation": ["She turned to stare until", "fear called things into being and wiped them out."], "sharh": "Fear takes the two active verbs, creating and annihilating. The world seems to change under the ant’s gaze while the hillside stays still."},
+    "4": {"translation": ["“This day is my undoing,” she said.", "“My day has come. It is fixed."], "sharh": "She gives her own death a date. “Today” comes back as “my day”, the appointed end of a life, all before the mountain has stirred."},
+    "5": {"translation": ["If only I knew how to escape", "and come away safe if that mountain falls.”"], "sharh": "The little word “if” sits inside her certainty that she is doomed. All her ingenuity is being spent on a possible fall that has yet to happen."},
+    "6": {"translation": ["Away she ran, her eyes", "still on the height, to her regret."], "sharh": "Her legs travel one way while her gaze stays fixed elsewhere. Regret reaches the rhyme a moment before we learn what she has run into."},
+    "7": {"translation": ["She fell into a span of water,", "an open sea to an ant."], "sharh": "The spectacular catastrophe would have involved the mountain falling. The fall that actually takes place is the ant’s, and a hand’s breadth of water is ocean enough."},
+    "8": {"translation": ["She wept in despair and cried aloud", "before the water ran into her mouth."], "sharh": "The ant has just enough time to cry out before the water reaches her mouth. A moment ago she could talk at length about what the mountain might do."},
+    "9": {"translation": ["Then she spoke, knowing best herself", "what it was she meant to say."], "sharh": "The narrator momentarily leaves her the best authority on her own words. The courtesy makes room for the two apparently incompatible wishes that follow."},
+    "10": {"translation": ["“If only I hadn’t held back.", "If only I hadn’t gone ahead."], "sharh": "Exactly the same opening introduces opposite directions. The ant can now find fault with staying behind and with the one move she actually made."},
+    "11": {"translation": ["If only I had yielded. The wise one", "feels fear, then yields.”"], "sharh": "The earlier question asked how she might come through safe. The same Arabic root now gives her another response to danger, the willingness to relinquish control."},
+    "12": {"translation": ["Friend, never fear a thing for its greatness.", "What lies unseen is greater still."], "sharh": "The narrator’s “friend” draws the listener down to the ant’s level. The danger that proved greater was nearby, small enough to escape her eye."}
+  },
+  "words": {
+    "1.2.3": {"word": "المُقَطَّم", "meaning": "The Muqattam, the limestone heights along the eastern side of Cairo."},
+    "2.1.1": {"word": "فَارتَخى", "head": "اِرتَخى", "root": "ر خ و", "meaning": "Went slack, lost its power to hold the body steady."},
+    "2.1.2": {"word": "مَفصِلُها", "head": "مَفصِل", "root": "ف ص ل", "meaning": "A joint, the point at which fear makes the ant feel unsteady."},
+    "2.2.2": {"word": "الطَّودِ", "head": "الطَّود", "root": "ط و د", "meaning": "A towering mass of mountain."},
+    "3.1.1": {"word": "وَانثَنَت", "head": "اِنثَنى", "root": "ث ن ي", "meaning": "Turned aside or looked back."},
+    "3.2.1-3": {"word": "أَوجَدَ الخَوفُ وَأَعدَم", "head": "أَوجَدَ وَأَعدَمَ", "meaning": "“Fear brought into being and blotted out.” Fear is the subject of both verbs. It conjures up danger in the heights and hides the water at her feet."},
+    "4.2.1-2": {"word": "حَلَّ يَومي", "meaning": "“My day has come”, the hour of death has arrived."},
+    "4.2.3": {"word": "وَتَحَتَّم", "head": "تَحَتَّمَ", "root": "ح ت م", "meaning": "Became inevitable or irrevocably fixed."},
+    "5.1.1-2": {"word": "لَيتَ شِعري", "root": "ش ع ر", "meaning": "“If only I knew”, a traditional expression introducing a question."},
+    "5.2.2": {"word": "هَوى", "root": "ه و ي", "meaning": "Fell from a height. The ant means the entire mountain."},
+    "6.1.3": {"word": "وَعَينا", "head": "عَينان", "root": "ع ي ن", "meaning": "Both eyes of the ant. The first syllable of the next half completes “her eyes”. They stay on the mountain as she runs."},
+    "7.1.3": {"word": "شِبرِ", "head": "شِبر", "root": "ش ب ر", "meaning": "A span, from thumb tip to little fingertip on a spread hand."},
+    "7.2.4": {"word": "كَاليَمِّ", "head": "اليَمّ", "root": "ي م م", "meaning": "The sea or a vast body of water, as the little pool appears to the ant."},
+    "8.2.2": {"word": "جَريِ", "head": "جَري", "root": "ج ر ي", "meaning": "Flowing or running, here the rush of water into the ant’s mouth."},
+    "9.1.4": {"word": "أَدرى", "root": "د ر ي", "meaning": "Better acquainted with a thing than other people are."},
+    "10.1.3": {"word": "أَتَأَخَّر", "head": "تَأَخَّرَ", "root": "أ خ ر", "meaning": "Hung back or delayed, the opposite of going forward in the other half."},
+    "11.1.2": {"word": "سَلَّمتُ", "head": "سَلَّمَ", "root": "س ل م", "meaning": "Yielded or resigned oneself to what comes. The related salima means to come through safe."},
+    "11.1.3": {"word": "فَالعا", "head": "العاقِل", "root": "ع ق ل", "meaning": "A person of sound judgement. The following syllables complete the word for “the wise one” before the ant says what such a person does."},
+    "11.2.4": {"word": "فَسَلَّم", "head": "سَلَّمَ", "root": "س ل م", "meaning": "Yielded, entrusted the outcome to another. The ant repeats her own “if only I had yielded” as a rule for any wise person."},
+    "12.1.1": {"word": "صاحِ", "root": "ص ح ب", "meaning": "Friend, a shortened form of address that turns the final counsel outwards."},
+    "12.2.3": {"word": "الغَيبِ", "head": "الغَيب", "root": "غ ي ب", "meaning": "The unseen, including what lies ahead beyond the reach of present knowledge."}
+  }
+}

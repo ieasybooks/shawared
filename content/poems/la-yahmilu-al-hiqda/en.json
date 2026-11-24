@@ -1,0 +1,369 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Those Who Rise in Rank Bear No Grudge",
+  "intro": "A Beirut printing of Antarah’s Diwan gives this poem to the warrior of Abs and sets it in a challenge to al-Nu'man. The man once sent to tend camels now defends their owners and claims his black skin as a lineage of his own. The poem is absent from the rhyme index of Muhammad Sa'id Mawlawi’s edition, based on six manuscripts. Mishil Salim Kumayd also pointed out in Lughat al-Arab how closely the last verse echoes al-Mutanabbi. The attribution remains uncertain.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Those who rise in rank bear no grudge.",
+        "A quick temper never wins high standing."
+      ],
+      "sharh": "The first half looks at people already held in honour and the second at those who aspire to it. It is a striking rule of restraint for a speaker about to issue a challenge."
+    },
+    "2": {
+      "translation": [
+        "A man enslaved to a people cannot oppose them",
+        "when they slight him. He courts their favour when they blame him."
+      ],
+      "sharh": "He describes an unequal bargain. His masters may give offence, yet it falls to the enslaved man to conciliate them when they in turn complain."
+    },
+    "3": {
+      "translation": [
+        "Once I tended their camels.",
+        "Today I guard their lands whenever disaster strikes."
+      ],
+      "sharh": "The same men who once assigned him the herd now depend on him for the safety of the whole pasture. The change in scale measures his changed place among them."
+    },
+    "4": {
+      "translation": [
+        "God bless the sons of Abs. They have sired",
+        "as noble men as any Arab people has borne."
+      ],
+      "sharh": "He praises Abs for the people it breeds. Since he has just identified himself as its defender, the compliment also lays a claim to membership."
+    },
+    "5": {
+      "translation": [
+        "If they shame me for my black skin, it is my lineage",
+        "in battle, when lineage fails me."
+      ],
+      "sharh": "Lineage is repeated with a changed meaning. The colour others use to exclude him makes the man who fought for them unmistakable."
+    },
+    "6": {
+      "translation": [
+        "If you think, Nu'man, that my hand",
+        "cannot reach you, the days turn."
+      ],
+      "sharh": "A short hand is a limit on a man’s power to reach another. The threat allows the king his present advantage and quietly gives it an expiry date."
+    },
+    "7": {
+      "translation": [
+        "Today, Nu'man, you will learn what manner of man",
+        "your brother meets, so sure of his bands of men."
+      ],
+      "sharh": "He holds back the description of the fighter. First comes the prince’s brother, whose confidence has been inflated by the number of men at his back."
+    },
+    "8": {
+      "translation": [
+        "Snakes may feel soft to the touch.",
+        "When they turn, destruction lies in their fangs."
+      ],
+      "sharh": "The danger is disclosed by a movement. The very hand that registered only softness may be within reach of the fangs when the snake turns."
+    },
+    "9": {
+      "translation": [
+        "A man who wades smiling into the thick of battle",
+        "comes back with his spearhead dyed."
+      ],
+      "sharh": "The young man promised two verses earlier now has a smile on his face. The colour on his spearpoint supplies the other side of that picture."
+    },
+    "10": {
+      "translation": [
+        "When he draws his blade, its striking edges run,",
+        "the air lights up and its veils split open."
+      ],
+      "sharh": "The flowing edge suggests blood, the sudden light the flash of steel. In Arabic the verb for drawing the blade almost runs into the sound of the verb for flowing."
+    },
+    "11": {
+      "translation": [
+        "The horses bear witness that I hold them in check",
+        "while the thrusting flares like sparks of fire."
+      ],
+      "sharh": "The horses themselves can testify to the hand on the reins. Amid an exchange of thrusts like flying sparks, checking their rush is as much a feat as charging."
+    },
+    "12": {
+      "translation": [
+        "When I meet enemies on a field of battle,",
+        "I leave their overconfident host to be plundered."
+      ],
+      "sharh": "The host begins as a body confident of its strength and ends as plunder at other people’s disposal. The passive verb leaves open who takes what."
+    },
+    "13": {
+      "translation": [
+        "Mine are the lives, the flesh belongs to the birds,",
+        "the bones to the beasts, the spoils to the horsemen."
+      ],
+      "sharh": "The verse is a distribution of spoils extending beyond the human victors. The speaker reserves the taking of lives, a more chilling claim than a share of the equipment."
+    },
+    "14": {
+      "translation": [
+        "May God keep those noblemen in my sight,",
+        "human on foot, jinn when mounted."
+      ],
+      "sharh": "Dismounted, the riders are men one could meet. In the saddle they acquire the extraordinary speed and powers associated with jinn."
+    },
+    "15": {
+      "translation": [
+        "Lions of the thicket, yet their only fangs",
+        "are spearpoints and keen Indian swords."
+      ],
+      "sharh": "The description carries the lion comparison through to its teeth. Spears and swords supply what the mounted men’s human mouths lack."
+    },
+    "16": {
+      "translation": [
+        "Lean horses of A'waj’s stock carry them along,",
+        "wolf-like, with the fine taper of their necks."
+      ],
+      "sharh": "The riders’ mounts have been conditioned for speed. Their lean outlines bring wolves to mind, following the lions the riders have just been called."
+    },
+    "17": {
+      "translation": [
+        "I keep facing the horses’ breasts, pouring forward",
+        "with thrusts till saddle and breast strap cry out."
+      ],
+      "sharh": "Horses’ chests tell us he meets a charge head-on. Strain makes even the tack seem to find a voice."
+    },
+    "18": {
+      "translation": [
+        "If the blind had me within their eyelids, they would see.",
+        "If the mute had me in their mouths, they would speak."
+      ],
+      "sharh": "He imagines his presence restoring sight and speech. The Arabic leaves the thing present in eye or mouth unnamed, as though his person and his fame were interchangeable."
+    },
+    "19": {
+      "translation": [
+        "The dust on the day the horsemen give chase bears me witness,",
+        "as do blows, thrusts, pens and books."
+      ],
+      "sharh": "Dust and weapons can testify to what happened in the field. Pens and books carry that testimony elsewhere, in a catalogue especially close to the famous boast of al-Mutanabbi."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "الحِقدَ",
+      "head": "حِقد",
+      "root": "ح ق د",
+      "meaning": "A grudge deliberately nursed after an injury."
+    },
+    "1.1.7": {
+      "word": "الرُّتَبُ",
+      "head": "رُتبَة",
+      "root": "ر ت ب",
+      "meaning": "A rank of honour or authority."
+    },
+    "2.1.3-4": {
+      "word": "عَبدَ قَومٍ",
+      "head": "عَبد قَوم",
+      "meaning": "“A people’s slave”, a man subject to their power."
+    },
+    "2.2.3": {
+      "word": "وَيَستَرضي",
+      "head": "اِستَرضى",
+      "root": "ر ض ي",
+      "meaning": "Sought to conciliate an offended person."
+    },
+    "3.2.3": {
+      "word": "حِماهُم",
+      "head": "حِمى",
+      "root": "ح م ي",
+      "meaning": "A protected territory, especially a reserved pasture."
+    },
+    "3.2.5": {
+      "word": "نُكِبوا",
+      "head": "نُكِبَ",
+      "root": "ن ك ب",
+      "meaning": "Was overtaken by calamity."
+    },
+    "4.1.1-2": {
+      "word": "لِلَّهِ دَرُّ",
+      "head": "لِلَّهِ دَرُّهُ",
+      "meaning": "“To God belongs their yield”, a formula of admiration."
+    },
+    "4.1.3-4": {
+      "word": "بَني عَبسٍ",
+      "head": "بَنو عَبس",
+      "meaning": "Banu Abs, the tribe to which the heroic tradition attaches Antarah."
+    },
+    "4.1.6": {
+      "word": "نَسَلوا",
+      "head": "نَسَلَ",
+      "root": "ن س ل",
+      "meaning": "Begot or brought forth offspring."
+    },
+    "5.2.2": {
+      "word": "النِّزالِ",
+      "head": "نِزال",
+      "root": "ن ز ل",
+      "meaning": "An encounter with an opponent at close quarters."
+    },
+    "5.2.6": {
+      "word": "النَّسَبُ",
+      "head": "نَسَب",
+      "root": "ن س ب",
+      "meaning": "Descent by a recognised line of ancestors."
+    },
+    "6.1.5": {
+      "word": "نُعمانُ",
+      "head": "النُّعمان",
+      "meaning": "Al-Nu'man ibn al-Mundhir, king of al-Hira according to the printed heading."
+    },
+    "6.2.1-2": {
+      "word": "قَصيرَةٌ عَنكَ",
+      "head": "قَصيرَة عَنكَ",
+      "meaning": "“Short of reaching you”, beyond the reach of my power."
+    },
+    "7.1.5-6": {
+      "word": "أَيَّ فَتىً",
+      "head": "أَيّ فَتى",
+      "meaning": "“What a young man”, a challenge to discover his calibre."
+    },
+    "7.2.6": {
+      "word": "العُصَبُ",
+      "head": "عُصبَة",
+      "root": "ع ص ب",
+      "meaning": "Bands of men bound together for support."
+    },
+    "8.1.5": {
+      "word": "مَلامِسُها",
+      "head": "مَلمَس",
+      "root": "ل م س",
+      "meaning": "The surface as it feels to the hand."
+    },
+    "8.2.5": {
+      "word": "العَطَبُ",
+      "head": "عَطَب",
+      "root": "ع ط ب",
+      "meaning": "Ruin, a fatal injury."
+    },
+    "9.1.3": {
+      "word": "غِمارَ",
+      "head": "غِمار",
+      "root": "غ م ر",
+      "meaning": "The engulfing depths, here the thick of battle. The Beirut Diwan and Jawahir al-adab have “the dust of battle”. Abd Allah al-Tayyib also gives “the depths”."
+    },
+    "9.2.2": {
+      "word": "وَسِنانُ",
+      "head": "سِنان",
+      "root": "س ن ن",
+      "meaning": "A spear’s pointed metal head."
+    },
+    "9.2.4": {
+      "word": "مُختَضِبُ",
+      "head": "اِختَضَبَ",
+      "root": "خ ض ب",
+      "meaning": "Took a dye, here a coating of blood."
+    },
+    "10.1.3": {
+      "word": "صارِمَهُ",
+      "head": "صارِم",
+      "root": "ص ر م",
+      "meaning": "A keen cutting sword."
+    },
+    "10.1.5": {
+      "word": "مَضارِبُهُ",
+      "head": "مَضرِب",
+      "root": "ض ر ب",
+      "meaning": "The part of the sword edge that strikes."
+    },
+    "11.1.5": {
+      "word": "أُكَفكِفُها",
+      "head": "كَفكَفَ",
+      "root": "ك ف ف",
+      "meaning": "Checked a rush, holding the horses back."
+    },
+    "11.2.3": {
+      "word": "شَرارِ",
+      "head": "شَرار",
+      "root": "ش ر ر",
+      "meaning": "Sparks scattered from a fire."
+    },
+    "12.1.3": {
+      "word": "الأَعادي",
+      "root": "ع د و",
+      "meaning": "Foes met on the battlefield."
+    },
+    "12.2.4": {
+      "word": "يُنتَهَبُ",
+      "head": "اُنتُهِبَ",
+      "root": "ن ه ب",
+      "meaning": "Was given over to plunder."
+    },
+    "13.2.4": {
+      "word": "السَّلَبُ",
+      "head": "سَلَب",
+      "root": "س ل ب",
+      "meaning": "Equipment and clothing taken from a defeated fighter."
+    },
+    "14.1.6": {
+      "word": "غَطارِفَةً",
+      "head": "غِطريف",
+      "root": "غ ط ر ف",
+      "meaning": "A noble chief, here one of the speaker’s companions."
+    },
+    "14.2.4": {
+      "word": "جِنّاً",
+      "head": "جِنّ",
+      "meaning": "Jinn, beings whose extraordinary powers suggest the riders’ uncanny speed."
+    },
+    "15.2.2": {
+      "word": "الأَسِنَّةُ",
+      "head": "سِنان",
+      "root": "س ن ن",
+      "meaning": "Spearheads, the fangs of these human lions."
+    },
+    "15.2.3-4": {
+      "word": "وَالهِندِيَّةُ القُضُبُ",
+      "head": "الهِندِيَّة القُضُب",
+      "meaning": "“Indian cutters”, keen swords associated with India."
+    },
+    "16.1.1": {
+      "head": "حَدا",
+      "root": "ح د و",
+      "meaning": "Urged onward. The Beirut Diwan and Jawahir al-adab give “gallop” here.",
+      "word": "تَحدو"
+    },
+    "16.1.3": {
+      "word": "أَعوَجِيّاتٌ",
+      "head": "أَعوَجِيَّة",
+      "meaning": "A'waji horses, traced to the celebrated stallion A'waj. The verse card prints the plural. The sung vowel leaves the number hard to distinguish."
+    },
+    "16.2.2": {
+      "word": "السَّراحينِ",
+      "head": "سِرحان",
+      "root": "س ر ح",
+      "meaning": "A wolf, used as a comparison for a lean mount."
+    },
+    "16.2.5": {
+      "word": "القَبَبُ",
+      "head": "قَبَب",
+      "root": "ق ب ب",
+      "meaning": "Leanness or fineness of build."
+    },
+    "17.2.5": {
+      "word": "وَاللَّبَبُ",
+      "head": "لَبَب",
+      "root": "ل ب ب",
+      "meaning": "A breast strap that holds the saddle in place."
+    },
+    "18.2.6": {
+      "word": "خَطَبوا",
+      "head": "خَطَبَ",
+      "root": "خ ط ب",
+      "meaning": "Spoke publicly, delivered an address."
+    },
+    "19.1.1": {
+      "word": "وَالنَّقعُ",
+      "head": "نَقع",
+      "root": "ن ق ع",
+      "meaning": "Dust thrown up by hooves."
+    },
+    "19.1.3": {
+      "word": "طِرادِ",
+      "head": "طِراد",
+      "root": "ط ر د",
+      "meaning": "Mounted pursuit and counter-pursuit."
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "lang": "en",
+  "source": {"name": "Shawared"},
+  "title": "The Lark and Her Chick",
+  "intro": "In the 1898 preface to his Diwan, Shawqi recalls reading his fables to young Egyptians and taking heart when they understood them at once and laughed. Here a mother lark gives her chick a flying lesson, choosing a branch beside hers and giving him time to rest between flights. Shakib Arslan quotes all ten couplets as an example of Shawqi’s plain language. Al-Waaedh repeats the last couplet, in which the narrator weighs seizing a moment against missing it.",
+  "abyat": {
+    "1": {"translation": ["In one of the gardens I saw a lark", "teaching her chick to fly in a treetop."], "sharh": "This teller claims to have seen the lesson himself. The verb for flying has been turned into a verb for making another fly, so the mother is a teacher from the first line."},
+    "2": {"translation": ["She was saying, “Beauty of the nest,", "don’t put your trust in a tender wing."], "sharh": "“Beauty of the nest” is what the chick means to her. “Tender” is a separate, practical judgement on the wing he is about to put to work."},
+    "3": {"translation": ["Perch on a twig beside another.", "Do as I do when you climb.”"], "sharh": "A twig beside hers gives him both a landing place and a close view of the next move. She teaches by example before she lets him attempt open air."},
+    "4": {"translation": ["She moved from branch to branch,", "giving every move its time,"], "sharh": "The same word for a bough sounds twice, like two successive perches of much the same height. Time, as carefully allotted as distance, is part of the lesson."},
+    "5": {"translation": ["so the chick could rest between flights", "and not grow weary of the weight of air."], "sharh": "The phrase gives air an unexpected weight. A learner’s wing feels the labour of staying aloft in something that seems weightless to a watcher on the ground."},
+    "6": {"translation": ["But he disregarded her signal,", "wanting to show how clever he was."], "sharh": "The chick’s purpose has shifted from learning to giving a display. What he imagines as cleverness looks rather different to the witness who tells the story."},
+    "7": {"translation": ["He flew into the open, climbing high.", "His wing let him down, and down he fell."], "sharh": "The wing itself seems to break faith with him. The verbs that carry him up and let him fall end on the same open vowel, a quick rise and an equally quick reversal."},
+    "8": {"translation": ["Both knees broke on the spot.", "Of all the heights he hoped for, none was his."], "sharh": "The strangely precise tally of injuries makes the little body visible. “The heights” can also mean distinction, exactly what the bird hoped his exploit would win."},
+    "9": {"translation": ["Had he taken his time he’d have won his wish", "and lived at ease all his days."], "sharh": "The poem briefly allows the chick the future his mother could see for him. The long life she was preparing for throws the single disastrous jump into relief."},
+    "10": {"translation": ["Everything in life has its time.", "Those who rush only end up missing it."], "sharh": "Waqtuhu, its time, answers fawtuhu, its being missed. The two closely related sounds leave the listener with the small interval between using a moment and losing it."}
+  },
+  "words": {
+    "1.1.4": {"word": "الرِّياضِ", "head": "الرِّياض", "root": "ر و ض", "meaning": "Gardens or green meadows, the setting in which the speaker saw the birds."},
+    "1.1.5": {"word": "قُبَّرَةً", "head": "قُبَّرَة", "root": "ق ب ر", "meaning": "A lark, a small songbird. The related Arabic name qunbura also occurs."},
+    "1.2.1": {"word": "تُطَيِّرُ", "head": "طَيَّرَ", "root": "ط ي ر", "meaning": "Made another fly or taught it to take wing."},
+    "2.1.4-5": {"word": "جَمالَ العُشِّ", "head": "جَمال العُشّ", "meaning": "“Beauty of the nest”, the mother’s pet name for her chick."},
+    "2.2.2": {"word": "تَعتَمِد", "head": "اِعتَمَدَ", "root": "ع م د", "meaning": "Relied on something to bear one’s weight, a literal possibility for the fledgling’s wing."},
+    "2.2.5": {"word": "الهَشِّ", "head": "الهَشّ", "root": "ه ش ش", "meaning": "Frail or tender, here a wing too weak for sustained flight."},
+    "3.1.5": {"word": "عودِ", "head": "عود", "root": "ع و د", "meaning": "A twig used as a perch. Both diwans print “twig” without a final y. Sustaining the rhyme can also make it sound like “my twig”, the mother’s own perch."},
+    "4.1.3": {"word": "فَنَنٍ", "head": "فَنَن", "root": "ف ن ن", "meaning": "A bough or branching limb of a tree."},
+    "4.2.3": {"word": "نَقلَةٍ", "head": "نَقلَة", "root": "ن ق ل", "meaning": "One move or transfer from perch to perch."},
+    "4.2.4": {"word": "زَمَن", "root": "ز م ن", "meaning": "An interval deliberately allowed between movements. Arslan quotes thaman, a price or cost."},
+    "5.1.3": {"word": "الفَرخُ", "head": "الفَرخ", "root": "ف ر خ", "meaning": "A chick or fledgling that has yet to master flight."},
+    "5.2.3-4": {"word": "ثِقَلَ الهَواءِ", "head": "ثِقَل الهَواء", "meaning": "“The weight of air”, the strain of keeping a young body aloft."},
+    "6.1.4": {"word": "الإِشارَةَ", "head": "الإِشارَة", "root": "ش و ر", "meaning": "The mother’s direction, given both in words and by the example of her movement."},
+    "6.2.4": {"word": "الشَّطارَةَ", "head": "الشَّطارَة", "root": "ش ط ر", "meaning": "Cleverness or dash, here something the chick is eager to show off."},
+    "7.1.5": {"word": "اِرتَفَعا", "head": "اِرتَفَعَ", "root": "ر ف ع", "meaning": "Rose into the air. The final a is drawn out in rhyme, as it is in “fell” in the next half. Both verbs describe the one chick."},
+    "7.2.1": {"word": "فَخانَهُ", "head": "خانَ", "root": "خ و ن", "meaning": "Failed someone at the crucial moment, as though the wing were a companion who had broken faith."},
+    "8.2.4": {"word": "العُلا", "root": "ع ل و", "meaning": "The heights of achievement, with the literal height above the ground still in view."},
+    "8.2.5": {"word": "مُناهُ", "head": "مُنى", "root": "م ن ي", "meaning": "Hopes or cherished desires."},
+    "9.1.2": {"word": "تَأَنّى", "root": "أ ن ي", "meaning": "Took time, waited for the right moment."},
+    "9.2.4": {"word": "مُهَنّا", "root": "ه ن أ", "meaning": "At ease or blessed with a pleasant life. The ending of muhanna’ is eased in rhyme."},
+    "10.2.1": {"word": "وَغايَةُ", "head": "غايَة", "root": "غ ي ي", "meaning": "The end one reaches, here the ironic outcome of losing what one set out to gain."},
+    "10.2.3": {"word": "فَوتُهُ", "head": "فَوت", "root": "ف و ت", "meaning": "The loss of an opportunity before one can grasp the thing desired."}
+  }
+}

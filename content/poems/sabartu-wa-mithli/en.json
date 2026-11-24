@@ -1,0 +1,358 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "I Stood My Ground, as One Like Me Is Known to Do",
+  "intro": "Abu al-Faraj al-Isfahani relates that raiders intercepted Ali ibn al-Jahm's caravan at Khusaf on the road to Syria. Its fighting men fled, then rallied to him when he stood his ground. The poem makes that interval felt through what one rider sees from the saddle. Only after he has held his own does he claim the courage of generations of Quraysh.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "I stood my ground, as one like me is known to do.",
+        "A man like me has no excuse for holding back from the fray."
+      ],
+      "sharh": "His opening verb can mean enduring a misfortune. The second half gives it a more exact sense here. Staying where he is will mean going forward when the danger comes."
+    },
+    "2": {
+      "translation": [
+        "It comes naturally to a free man, without pretence,",
+        "when the man who puts on courage hangs back in battle."
+      ],
+      "sharh": "Both men might look brave beforehand. The word for the second man means someone making an effort to appear steadfast. The noise of battle is the test that separates them."
+    },
+    "3": {
+      "translation": [
+        "When I saw death's banners flying",
+        "and marks of his coming past all doubt,"
+      ],
+      "sharh": "Death arrives at the head of an army and flies its own standards. The opening “when” holds the reader in suspense until he tells us, four verses later, how he responded."
+    },
+    "4": {
+      "translation": [
+        "and Bedouin closed in from every side,",
+        "and a murky black dust cloud rose,"
+      ],
+      "sharh": "The account in the Book of Songs has the caravan surprised on the road. Dust can conceal the size of the attackers' force while their approach from every direction makes it seem larger."
+    },
+    "5": {
+      "translation": [
+        "each rider pressing on, ready to die, all energy,",
+        "wheeling on a thoroughbred, lean-flanked and trim,"
+      ],
+      "sharh": "The two halves end with almost the same word. A tiny change of vowel shifts the picture from a man braced for action to the tucked-up body of the horse carrying him."
+    },
+    "6": {
+      "translation": [
+        "on the ground at Khusaf, with no defence,",
+        "no guard except the broad blade of hard steel,"
+      ],
+      "sharh": "After the panorama he gives the place a name and narrows his field of vision to the metal that can still protect him. The two words for protection prepare for a single answer."
+    },
+    "7": {
+      "translation": [
+        "what made their great gathering small in my eyes",
+        "was a resolute heart in which great things grow small."
+      ],
+      "sharh": "The long sentence finally delivers its main verb. The size of the force has already been established. The change happens first in the rider's heart and then in the way his eyes see it."
+    },
+    "8": {
+      "translation": [
+        "In a mêlée where deaths went bareheaded,",
+        "the fire of battle was fed with Mashraf swords."
+      ],
+      "sharh": "He pictures deaths moving bareheaded among armoured men. A sword's flash supplies the flame in the second image. The encounters themselves keep the fire burning."
+    },
+    "9": {
+      "translation": [
+        "I never shielded my face from their sword edges",
+        "or drew away as the spear shafts splintered."
+      ],
+      "sharh": "Leaving his face exposed gives the claim a bodily cost. Shattering shafts give a measure of how close he has stayed to the men he faced."
+    },
+    "10": {
+      "translation": [
+        "I never flinched in the heat of the fight,",
+        "even where one who went to water could not return."
+      ],
+      "sharh": "The usual round trip to a watering place supplies the image. A fighter can enter this watering place without any assurance of coming out alive."
+    },
+    "11": {
+      "translation": [
+        "When a young man's horse and heart serve him well,",
+        "with a brown Khatt spear and a white cutting blade,"
+      ],
+      "sharh": "The horse and the heart appear as two kinds of help. The list goes on after the break, with the traditional brown of a spear shaft and pale gleam of a blade."
+    },
+    "12": {
+      "translation": [
+        "then that man, though he stands alone in his nobility,",
+        "is an army when champions clash in dust."
+      ],
+      "sharh": "“An army” is the word he holds to the very end. What could sound like a general maxim also describes his brief solitude before the other guards rallied."
+    },
+    "13": {
+      "translation": [
+        "I kept them from gaining so much as a nail clipping.",
+        "I stuck in their throats while the spearheads dripped."
+      ],
+      "sharh": "The claim concerns how little the raiders carried off. In the next half the lone defender becomes a choking obstruction, painfully close even amid the dripping spearheads."
+    },
+    "14": {
+      "translation": [
+        "Such have been our ways, long ago and now.",
+        "They made our forebears known and their successors mighty."
+      ],
+      "sharh": "This is where “I” gives way to “our”. The deeds of the living can reveal what the ancestors were like, while inherited standing lends authority to the rider's account."
+    },
+    "15": {
+      "translation": [
+        "The great men who begot me forbid anyone to see me,",
+        "however grave the blow, bowed down and complaining."
+      ],
+      "sharh": "The forebears act as if they could still forbid an action. His point is about what anyone will see in his bearing even when the misfortune itself lies beyond his control."
+    },
+    "16": {
+      "translation": [
+        "Those are God's people, Fihr ibn Malik's line.",
+        "Through them the broken bone is set, and bone is broken."
+      ],
+      "sharh": "The designation associates Quraysh with the sanctuary at Mecca. The bone-setter's hands can heal a fracture and inflict one. The balanced verbs make both powers belong to the same people."
+    },
+    "17": {
+      "translation": [
+        "Their shoulder rises above every shoulder.",
+        "Their swords destroy, enrich and impoverish."
+      ],
+      "sharh": "He gives the entire clan one towering shoulder. The last three verbs share a sound and divide the spoils of power between the defeated and those who profit."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "صَبَرتُ",
+      "head": "صَبَرَ",
+      "root": "ص ب ر",
+      "meaning": "Held his ground. In this setting endurance means staying at one's post."
+    },
+    "1.2.4": {
+      "word": "التَّقَحُّمِ",
+      "head": "التَّقَحُّم",
+      "root": "ق ح م",
+      "meaning": "Plunging into danger, committing oneself to the encounter."
+    },
+    "2.1.1": {
+      "word": "غَريزَةُ",
+      "head": "غَريزَة",
+      "root": "غ ر ز",
+      "meaning": "An inborn disposition, the source to which he traces his steadiness."
+    },
+    "2.2.2": {
+      "word": "خامَ",
+      "root": "خ ي م",
+      "meaning": "Lost his nerve and drew back."
+    },
+    "2.2.5": {
+      "word": "الوَغى",
+      "root": "و غ ي",
+      "meaning": "The din of fighting and, by extension, the battle itself."
+    },
+    "2.2.6": {
+      "word": "المُتَصَبِّرُ",
+      "head": "المُتَصَبِّر",
+      "root": "ص ب ر",
+      "meaning": "Someone trying to make a show of endurance."
+    },
+    "3.1.4": {
+      "word": "تَهفو",
+      "head": "هَفا",
+      "root": "ه ف و",
+      "meaning": "Flutters or streams in the wind, as a standard does."
+    },
+    "3.1.5": {
+      "word": "بُنودُهُ",
+      "head": "بَند",
+      "meaning": "Band, a military standard. Here death flies its own colours."
+    },
+    "4.1.2": {
+      "word": "الأَعرابُ",
+      "head": "الأَعراب",
+      "root": "ع ر ب",
+      "meaning": "Bedouin, here specifically the raiders who fell upon the caravan."
+    },
+    "4.2.2": {
+      "word": "عَجاجٌ",
+      "head": "عَجاج",
+      "root": "ع ج ج",
+      "meaning": "A thick cloud of dust raised by the horses' hooves."
+    },
+    "4.2.5": {
+      "word": "أَكدَرُ",
+      "head": "أَكدَر",
+      "root": "ك د ر",
+      "meaning": "Murky, discoloured by dust so that one can scarcely see through it."
+    },
+    "5.1.2": {
+      "word": "مُشيحٍ",
+      "head": "مُشيح",
+      "root": "ش ي ح",
+      "meaning": "Intent on the encounter, pressing forward in earnest."
+    },
+    "5.1.3": {
+      "word": "مُستَميتٍ",
+      "head": "مُستَميت",
+      "root": "م و ت",
+      "meaning": "Prepared to die in the attempt."
+    },
+    "5.2.3": {
+      "word": "طِرفٌ",
+      "head": "طِرف",
+      "root": "ط ر ف",
+      "meaning": "A high-bred horse, prized for its quality."
+    },
+    "5.2.4-5": {
+      "word": "أَقَبُّ مُشَمَّرُ",
+      "head": "أَقَبّ مُشَمَّر",
+      "meaning": "Lean at the waist with its belly drawn up, the build of a horse fit to run."
+    },
+    "6.1.2": {
+      "word": "خُسافٍ",
+      "head": "خُساف",
+      "meaning": "Khusaf, a tract of open country between Balis and Aleppo."
+    },
+    "6.2.4-5": {
+      "word": "الصَّفيحُ المُذَكَّرُ",
+      "head": "الصَّفيح المُذَكَّر",
+      "meaning": "A broad blade of hard steel."
+    },
+    "7.1.4": {
+      "word": "عُظمَ",
+      "head": "عُظم",
+      "root": "ع ظ م",
+      "meaning": "The great size of the host as it appears to him."
+    },
+    "7.2.5": {
+      "word": "جَلَّ",
+      "root": "ج ل ل",
+      "meaning": "Loomed large, seemed formidable."
+    },
+    "8.1.4": {
+      "word": "حَواسِرٌ",
+      "head": "حاسِر",
+      "root": "ح س ر",
+      "meaning": "Bareheaded fighters, without helmets. The word gives deaths a human shape."
+    },
+    "8.2.3": {
+      "word": "بِالمَشرَفِيَّةِ",
+      "head": "المَشرَفِيَّة",
+      "meaning": "Mashraf blades, associated with the borderlands of Syria. The singular names a whole class of swords. The reciter sustains its short vowel before the t."
+    },
+    "9.1.5": {
+      "word": "ظُباتِ",
+      "head": "ظُبَة",
+      "root": "ظ ب و",
+      "meaning": "The cutting edges of blades."
+    },
+    "9.2.4": {
+      "word": "وَالقَنا",
+      "head": "القَنا",
+      "root": "ق ن و",
+      "meaning": "Spears, named for their cane shafts."
+    },
+    "10.1.5": {
+      "word": "الكَريهَةِ",
+      "head": "الكَريهَة",
+      "root": "ك ر ه",
+      "meaning": "The ordeal of battle, literally something one would recoil from."
+    },
+    "10.2.6-7": {
+      "word": "لِلوِردِ مَصدَرُ",
+      "head": "لِلوِردِ مَصدَر",
+      "meaning": "“For the approach to water, a return.” The two stages of watering a herd stand for entering battle and getting out."
+    },
+    "11.1.5": {
+      "word": "وَجَنانُهُ",
+      "head": "الجَنان",
+      "root": "ج ن ن",
+      "meaning": "The heart, understood as the seat of courage."
+    },
+    "11.2.1-2": {
+      "word": "وَأَسمَرُ خَطِّيٌّ",
+      "head": "أَسمَر خَطِّيّ",
+      "meaning": "A brown-shafted spear of al-Khatt, on the eastern Arabian coast where spear shafts were traded."
+    },
+    "11.2.3-4": {
+      "word": "وَأَبيَضُ مِبتَرُ",
+      "head": "أَبيَض مِبتَر",
+      "meaning": "A gleaming sword that cuts clean through. Its colour and quality supply the missing noun."
+    },
+    "12.2.2": {
+      "word": "اِصطَكَّتِ",
+      "head": "اِصطَكَّ",
+      "root": "ص ك ك",
+      "meaning": "Clashed with one another at close quarters."
+    },
+    "12.2.5": {
+      "word": "النَّقعِ",
+      "head": "النَّقع",
+      "root": "ن ق ع",
+      "meaning": "Dust thrown up in the fighting."
+    },
+    "13.1.5": {
+      "word": "قُلامَةً",
+      "head": "قُلامَة",
+      "root": "ق ل م",
+      "meaning": "A nail clipping, the smallest imaginable piece of plunder."
+    },
+    "13.2.2": {
+      "word": "شَجاهُم",
+      "head": "شَجاً",
+      "root": "ش ج و",
+      "meaning": "An obstruction lodged in the throat that can neither be swallowed nor easily dislodged."
+    },
+    "13.2.3": {
+      "word": "وَالأَسِنَّةُ",
+      "head": "الأَسِنَّة",
+      "root": "س ن ن",
+      "meaning": "The metal heads of spears. What drips from them is left unnamed."
+    },
+    "14.1.2": {
+      "word": "سَجايانا",
+      "head": "سَجِيَّة",
+      "root": "س ج و",
+      "meaning": "Settled traits of character, here shared across generations."
+    },
+    "15.1.3": {
+      "word": "قُرومٌ",
+      "head": "قَرم",
+      "root": "ق ر م",
+      "meaning": "Men of high standing. The original word denotes a prized breeding camel."
+    },
+    "15.2.3": {
+      "word": "خَطبٌ",
+      "head": "خَطب",
+      "root": "خ ط ب",
+      "meaning": "A grave misfortune or crisis."
+    },
+    "16.1.2-3": {
+      "word": "آلُ اللَّهِ",
+      "head": "آلُ اللَّه",
+      "meaning": "“God's people”, a designation for Quraysh through its association with the sanctuary at Mecca."
+    },
+    "16.1.4-6": {
+      "word": "فِهرُ بنُ مالِكٍ",
+      "head": "فِهر بن مالِك",
+      "meaning": "Fihr ibn Malik, an ancestor to whom Quraysh traced its descent. The name stands for his descendants."
+    },
+    "16.2.2": {
+      "word": "يُجبَرُ",
+      "head": "جَبَرَ",
+      "root": "ج ب ر",
+      "meaning": "Sets a broken bone. The clan can restore someone whose fortunes have collapsed."
+    },
+    "17.1.2": {
+      "word": "المَنكِبُ",
+      "head": "المَنكِب",
+      "root": "ن ك ب",
+      "meaning": "The shoulder, whose height gives a visible measure of social standing."
+    }
+  }
+}

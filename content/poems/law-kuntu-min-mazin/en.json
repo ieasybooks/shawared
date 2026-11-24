@@ -1,0 +1,166 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Had I Belonged to Mazin, My Camels Would Have Been Safe",
+  "intro": "Abu Ubayda relates that men of Shayban drove off thirty of Qurayt’s camels. When his own people, the Anbar, failed to help, men of Mazin raided Shayban and handed him a hundred camels. Qurayt imagines belonging to Mazin, then describes his own people in terms so complimentary that it takes a moment to hear the sting. Abu Tammam placed these verses first in his Hamasa.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Had I belonged to Mazin, my camels would have been safe",
+        "from the sons of al-Shaqiqa, of Dhuhl ibn Shayban."
+      ],
+      "sharh": "He imagines a different ancestry. The mere knowledge that the camels belonged to a man of Mazin would have made the raiders think twice."
+    },
+    "2": {
+      "translation": [
+        "Then hard men would have stood up for me",
+        "when honour was touched and a weak man gave way."
+      ],
+      "sharh": "He pictures the moment someone must decide whether to stand beside him. The men’s roughness is the quality he wants when attachment to a kinsman begins to cost something."
+    },
+    "3": {
+      "translation": [
+        "Men who, when trouble bares its back teeth at them,",
+        "fly towards it in bands or alone."
+      ],
+      "sharh": "Trouble shows its teeth like an animal. Each man moves towards it at once, whether he has companions at hand or has to go alone."
+    },
+    "4": {
+      "translation": [
+        "They ask their brother, when he calls them out,",
+        "for no proof of his claim in a time of trouble."
+      ],
+      "sharh": "His word as a kinsman gets them moving. Asking him to prove his story would leave him waiting at the very moment he needs them."
+    },
+    "5": {
+      "translation": [
+        "My people, though they are many,",
+        "will have no part in trouble, however slight."
+      ],
+      "sharh": "He turns to the men who actually share his descent. By conceding how numerous they are, he takes away the excuse that they could never have helped."
+    },
+    "6": {
+      "translation": [
+        "For the injustice of unjust men they give forgiveness,",
+        "and for the harm wrongdoers do them, kindness."
+      ],
+      "sharh": "The repeated exchange sounds like an account being settled. Someone else supplies the injury, his people supply the pardon, and the man who lost the camels is still out of pocket."
+    },
+    "7": {
+      "translation": [
+        "As though your Lord had created, to fear Him,",
+        "no human being among all mankind except them."
+      ],
+      "sharh": "He carries their apparent piety to an impossible extreme. The listener can now hear what this lavish praise of restraint has been costing the speaker."
+    },
+    "8": {
+      "translation": [
+        "I wish I had in their place men who, once mounted,",
+        "swept out on raids, on horses and on camels."
+      ],
+      "sharh": "At last he asks outright for other kinsmen. Both sorts of rider are in motion in the closing words, bringing back the help his own people failed to give."
+    }
+  },
+  "words": {
+    "1.1.4": {
+      "word": "مازِنٍ",
+      "head": "مازِن",
+      "meaning": "Mazin, a branch of Tamim related to Banu al-Anbar."
+    },
+    "1.1.6": {
+      "word": "تَستَبِح",
+      "head": "اِستَباح",
+      "root": "ب ي ح",
+      "meaning": "Took something as if entitled to it, here driving away the herd."
+    },
+    "1.2.1-2": {
+      "word": "بَنو الشَّقيقَةِ",
+      "head": "بَنو الشَّقيقَة",
+      "meaning": "Banu al-Shaqiqa, the raiders named for al-Shaqiqa bint Abbad. Abu al-Nada transmits this reading. The Hamasa also has al-Laqita."
+    },
+    "1.2.4-6": {
+      "word": "ذُهلِ اِبنِ شَيبانا",
+      "head": "ذُهل بن شَيبان",
+      "meaning": "Dhuhl ibn Shayban, the Shaybani lineage of the raiders."
+    },
+    "2.1.5": {
+      "word": "خُشُنٌ",
+      "head": "خَشِن",
+      "root": "خ ش ن",
+      "meaning": "Tough and unyielding. The plural describes the men he wants at his side."
+    },
+    "2.2.2": {
+      "word": "الحَفيظَةِ",
+      "head": "الحَفيظَة",
+      "root": "ح ف ظ",
+      "meaning": "Indignation when something in one’s keeping is violated."
+    },
+    "2.2.4-5": {
+      "word": "ذو لَوثَةٍ",
+      "head": "ذو لَوثَة",
+      "root": "ل و ث",
+      "meaning": "“A man with a weakness”, someone who falters when called on."
+    },
+    "3.1.5": {
+      "word": "ناجِذَيهِ",
+      "head": "ناجِذ",
+      "root": "ن ج ذ",
+      "meaning": "A back tooth. Baring even the back teeth makes the threat visible."
+    },
+    "3.2.3": {
+      "word": "زَرافاتٍ",
+      "head": "زَرافَة",
+      "root": "ز ر ف",
+      "meaning": "A band of people, here the groups hurrying to help."
+    },
+    "3.2.4": {
+      "word": "وَوُحدانا",
+      "head": "وُحدان",
+      "root": "و ح د",
+      "meaning": "Singly, each on his own."
+    },
+    "4.1.5": {
+      "word": "يَندُبُهُم",
+      "head": "نَدَبَ",
+      "root": "ن د ب",
+      "meaning": "Called them out to take up his cause."
+    },
+    "4.2.2": {
+      "word": "النّائِباتِ",
+      "head": "نائِبَة",
+      "root": "ن و ب",
+      "meaning": "A calamity that befalls someone."
+    },
+    "5.1.5-6": {
+      "word": "ذَوي عَدَدٍ",
+      "head": "ذَوو عَدَد",
+      "root": "ع د د",
+      "meaning": "“Men of numbers”, a people strong enough in numbers to act."
+    },
+    "6.1.1": {
+      "word": "يَجزونَ",
+      "head": "جَزى",
+      "root": "ج ز ي",
+      "meaning": "Repaid someone for an act. Forgiveness is the unexpected payment here."
+    },
+    "8.1.3": {
+      "word": "بِهِمُ",
+      "head": "بِهِم",
+      "meaning": "“In their place”, introducing the people he wishes he could exchange for his own."
+    },
+    "8.2.1-2": {
+      "word": "شَنّوا الإِغارَةَ",
+      "head": "شَنَّ الإِغارَة",
+      "root": "ش ن ن",
+      "meaning": "“Spread the raid”, of riders fanning out on an incursion."
+    },
+    "8.2.4": {
+      "word": "وَرُكبانا",
+      "head": "راكِب",
+      "root": "ر ك ب",
+      "meaning": "A camel rider, paired here with the horseman."
+    }
+  }
+}
