@@ -1,0 +1,146 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Ask Our People About Us",
+  "intro": "Atika bint Abd al-Muttalib calls on Qays to tell how Quraysh and Kinana fared against them at Ukaz in the Fijar war. Abu Tammam gives the verses to Atika, while Ibn Tayfur also records an attribution to her sister Safiyya. The boast invites the enemy to testify, then follows the glint of a commander's helmet down to the bodies left on the plain.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Ask about us among our people.",
+        "With such an evil, hearing of it should suffice."
+      ],
+      "sharh": "She wants the listener to ask people who were there. A warning interrupts the invitation. To hear what happened on that field should be experience enough."
+    },
+    "2": {
+      "translation": [
+        "Ask Qays and the forces they massed against us",
+        "at a gathering whose horror endures."
+      ],
+      "sharh": "The object of “ask” arrives a line late. Qays and the forces they brought are the witnesses she chooses. The gathering broke up long ago, but people still tell what made it dreadful."
+    },
+    "3": {
+      "translation": [
+        "There were coats of mail and spears,",
+        "and the ram of the host, his helmet flashing"
+      ],
+      "sharh": "Among all the armour and spear shafts one figure stands out. Calling the commander the ram brings him to the head of the flock, where the flash from his helmet singles him out."
+    },
+    "4": {
+      "translation": [
+        "at Ukaz, dazzling those who looked",
+        "whenever they caught a glimpse of its rays."
+      ],
+      "sharh": "The location comes into focus with the glare. Even a passing glimpse of the metal hurts the eyes trying to make out its wearer."
+    },
+    "5": {
+      "translation": [
+        "There we killed Malik by force,",
+        "and his rabble abandoned him."
+      ],
+      "sharh": "The massed forces shrink to one man. Malik is overpowered and the followers on whom his safety depended leave him to his opponents."
+    },
+    "6": {
+      "translation": [
+        "And many a man the horses left thrown down",
+        "on the open plain, its hyenas tearing at him."
+      ],
+      "sharh": "Al-Marzuqi takes the horses as the subject. They have galloped on, leaving fallen men to the hyenas. The plain at the end shows what the flash of armour at the beginning concealed."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "سائِل",
+      "root": "س أ ل",
+      "meaning": "Ask around, seek a full account."
+    },
+    "1.2.1": {
+      "word": "وَليَكفِ",
+      "head": "كَفى",
+      "root": "ك ف ي",
+      "meaning": "Let it suffice. What suffices here is hearing the report."
+    },
+    "2.1.1": {
+      "word": "قَيساً",
+      "head": "قَيس",
+      "meaning": "Qays Aylan, the tribal grouping that mustered against Kinana and Quraysh."
+    },
+    "2.2.4": {
+      "word": "شَناعُه",
+      "head": "شَناع",
+      "root": "ش ن ع",
+      "meaning": "The horror for which an event becomes notorious."
+    },
+    "3.1.2": {
+      "word": "السَّنَوَّرُ",
+      "head": "السَّنَوَّر",
+      "root": "س ن ر",
+      "meaning": "A coat of mail. The word can also cover a whole array of arms."
+    },
+    "3.1.3": {
+      "word": "وَالقَنا",
+      "head": "القَنا",
+      "root": "ق ن و",
+      "meaning": "Spears, named for their shafts."
+    },
+    "3.2.1": {
+      "word": "وَالكَبشُ",
+      "head": "الكَبش",
+      "root": "ك ب ش",
+      "meaning": "“The ram”, the chief who leads his men into battle."
+    },
+    "3.2.3": {
+      "word": "قِناعُه",
+      "head": "قِناع",
+      "root": "ق ن ع",
+      "meaning": "A head covering, here the warrior's helmet."
+    },
+    "4.1.1": {
+      "word": "بِعُكاظَ",
+      "head": "عُكاظ",
+      "meaning": "Ukaz, the seasonal market near Taif and the scene of fighting in the Fijar war."
+    },
+    "4.1.2": {
+      "word": "يُعشي",
+      "head": "أَعشى",
+      "root": "ع ش و",
+      "meaning": "Dazzles, temporarily dims the sight."
+    },
+    "5.1.3": {
+      "word": "مالِكاً",
+      "head": "مالِك",
+      "meaning": "Malik, an opponent killed in the encounter. The verse gives only his personal name."
+    },
+    "5.2.1": {
+      "word": "قَسراً",
+      "head": "قَسر",
+      "root": "ق س ر",
+      "meaning": "By force, overpowering him."
+    },
+    "5.2.3": {
+      "word": "رَعاعُه",
+      "head": "رَعاع",
+      "root": "ر ع ع",
+      "meaning": "His rabble, followers who scatter in a crisis."
+    },
+    "6.1.1": {
+      "word": "وَمُجَدَّلاً",
+      "head": "مُجَدَّل",
+      "root": "ج د ل",
+      "meaning": "Flung to the ground, lying there slain."
+    },
+    "6.2.1": {
+      "word": "بِالقاعِ",
+      "head": "القاع",
+      "root": "ق و ع",
+      "meaning": "Open, level ground."
+    },
+    "6.2.2": {
+      "word": "تَنهَشُهُ",
+      "head": "نَهَشَ",
+      "root": "ن ه ش",
+      "meaning": "Tear pieces of flesh away with their teeth."
+    }
+  }
+}

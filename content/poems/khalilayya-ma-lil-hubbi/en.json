@@ -1,0 +1,186 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "My two friends, why does love grow fresh again?",
+  "intro": "Khalil Mardam places these ten verses among the poems Ali ibn al-Jahm wrote in prison. Layla finds her way past guards who scarcely sleep, and answers the prisoner in her own voice. The iron on his ankles draws from him first a joke meant to comfort her, then an expression of hope in the caliph.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "My two friends, why does love grow fresh again",
+        "with time, when days wear out all that is new?"
+      ],
+      "sharh": "He appeals to the traditional pair of travelling companions. Love grows newer by the very process that wears everything else away."
+    },
+    "2": {
+      "translation": [
+        "Why do beautiful women’s promises earn reproach,",
+        "when no one may reproach Layla’s?"
+      ],
+      "sharh": "Behind the question lies the familiar accusation that beautiful women break their promises. Layla is the one woman he will hear no word against."
+    },
+    "3": {
+      "translation": [
+        "She came as night let down its curtains,",
+        "while the prison guards took little sleep."
+      ],
+      "sharh": "The curtain seems to promise the lovers a room of their own. The second half reveals where they really are and how little protection darkness affords."
+    },
+    "4": {
+      "translation": [
+        "I said, “How did you dare come this way?",
+        "Even a breath of wind can scarcely get in.”"
+      ],
+      "sharh": "His first words are for the danger she ran. If the way constricts even the wind’s breath, her getting through is an extraordinary act of will."
+    },
+    "5": {
+      "translation": [
+        "She said, “I held out, then did as longing bade.",
+        "The worst heart a lover can have is a stout one.”"
+      ],
+      "sharh": "She claims the visit as her choice. A quality usually admired, the strength to hold out, would have kept her away from the person she loves."
+    },
+    "6": {
+      "translation": [
+        "She spoke her grief aloud. Her tears ran",
+        "down her cheek as her neck twined round mine."
+      ],
+      "sharh": "She has finished justifying the visit and can finally give way to distress. The repeated Arabic word for neck brings their two bodies together."
+    },
+    "7": {
+      "translation": [
+        "I told her, as tears ran their several ways",
+        "and longing fed the fire of love,"
+      ],
+      "sharh": "The sentence hangs on “I told her”. Before we hear his words, we see tears taking different paths and the same longing burning beneath them."
+    },
+    "8": {
+      "translation": [
+        "“While the one you love is safe, they are alike,",
+        "the turns of fortune, easy and hard."
+      ],
+      "sharh": "The man in chains offers comfort to his visitor. What looks like disaster loses its force once she sees that the person she came for is alive."
+    },
+    "9": {
+      "translation": [
+        "Don’t be distressed at the sight of his fetters.",
+        "A man’s fetters are his anklets."
+      ],
+      "sharh": "An anklet and a fetter circle the same part of the body. The prisoner makes that small resemblance carry a brave joke for Layla’s sake."
+    },
+    "10": {
+      "translation": [
+        "Don’t be dismayed that my days of ease are gone.",
+        "The Commander of the Faithful will bring them back.”"
+      ],
+      "sharh": "The last assurance to Layla also serves as a discreet appeal. The caliph, named by his title, has the power to make the prediction come true."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "خَليلَيَّ",
+      "head": "خَليل",
+      "root": "خ ل ل",
+      "meaning": "A close friend. The speaker addresses two."
+    },
+    "1.1.5": {
+      "word": "جِدَّةً",
+      "head": "جِدَّة",
+      "root": "ج د د",
+      "meaning": "Freshness, the quality of being new."
+    },
+    "2.1.3": {
+      "word": "الغانِياتِ",
+      "head": "غانِيَة",
+      "root": "غ ن ي",
+      "meaning": "A beautiful woman whose gifts of nature suffice for adornment."
+    },
+    "2.1.4": {
+      "word": "ذَميمَةٌ",
+      "head": "ذَميمَة",
+      "root": "ذ م م",
+      "meaning": "Blameworthy, here said of a promise held to be unreliable."
+    },
+    "3.1.1": {
+      "word": "أَلَمَّت",
+      "head": "أَلَمَّ",
+      "root": "ل م م",
+      "meaning": "Called on someone, paid a brief visit."
+    },
+    "3.1.2": {
+      "word": "وَجُنحُ",
+      "head": "جُنح",
+      "root": "ج ن ح",
+      "meaning": "A stretch of the night under gathering darkness."
+    },
+    "3.1.5": {
+      "word": "سُدولَهُ",
+      "head": "سُدول",
+      "root": "س د ل",
+      "meaning": "Hanging curtains."
+    },
+    "3.2.4": {
+      "word": "هُجودُها",
+      "head": "هُجود",
+      "root": "ه ج د",
+      "meaning": "Sleep at night."
+    },
+    "4.1.3": {
+      "word": "أَنّى",
+      "meaning": "How, by what means."
+    },
+    "4.1.4": {
+      "word": "تَجَشَّمتِ",
+      "head": "تَجَشَّمَ",
+      "root": "ج ش م",
+      "meaning": "Undertook something arduous."
+    },
+    "4.2.1": {
+      "word": "يُحَرِّجُ",
+      "head": "حَرَّجَ",
+      "root": "ح ر ج",
+      "meaning": "To hem in or restrict passage."
+    },
+    "5.2.4": {
+      "word": "جَليدُها",
+      "head": "جَليد",
+      "root": "ج ل د",
+      "meaning": "Stout-hearted, capable of enduring hardship."
+    },
+    "6.2.5": {
+      "word": "بِالجيدِ",
+      "head": "جيد",
+      "root": "ج ي د",
+      "meaning": "The neck, particularly when its grace is in view."
+    },
+    "7.1.4": {
+      "word": "شَتّى",
+      "root": "ش ت ت",
+      "meaning": "Diverse, branching in several directions."
+    },
+    "7.2.4": {
+      "word": "يُذكى",
+      "head": "أَذكى",
+      "root": "ذ ك و",
+      "meaning": "To kindle or feed a flame."
+    },
+    "8.2.1": {
+      "word": "صُروفُ",
+      "head": "صُروف",
+      "root": "ص ر ف",
+      "meaning": "The changes of fortune."
+    },
+    "9.2.2": {
+      "word": "خَلاخيلَ",
+      "head": "خَلخال",
+      "root": "خ ل خ ل",
+      "meaning": "An anklet worn as jewellery."
+    },
+    "10.2.2-3": {
+      "word": "أَميرَ المُؤمِنينَ",
+      "head": "أَمير المُؤمِنين",
+      "meaning": "Amir al-mu'minin, the caliph’s title, literally “Commander of the Faithful”."
+    }
+  }
+}

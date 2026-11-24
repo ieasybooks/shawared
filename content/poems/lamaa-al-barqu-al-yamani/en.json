@@ -1,0 +1,277 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "The Southern Lightning Flashed",
+  "intro": "A flash in the direction of Yemen recalls the days Husam al-Din al-Hajiri spent with his companions in the Hima. His editors connect the fortress of Haftayan, named near the close, with his imprisonment there. The earlier vision of open country and love with a free rein changes once we know where the watcher stands. Osama Al-Waaedh recites sixteen of the critical edition’s nineteen verses.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Southern lightning flashed,",
+        "and what stirred my grief stirred it again."
+      ],
+      "sharh": "A distant flash brings back a familiar grief. The doubled verb leaves a moment of suspense before he tells us what has come back to him."
+    },
+    "2": {
+      "translation": [
+        "The memory of my days, of my time",
+        "in the Hima, what a time it was."
+      ],
+      "sharh": "The remembered place gives his former life an address. He has already said “my time” when he stops to marvel at what a time it was."
+    },
+    "3": {
+      "translation": [
+        "Flash of lightning, do the days",
+        "of closeness ever come back?"
+      ],
+      "sharh": "Lightning can cover the distance between him and those he misses. For a moment he asks it whether time can travel back as readily."
+    },
+    "4": {
+      "translation": [
+        "Do you see us coming together again,",
+        "and me winning what I long for?"
+      ],
+      "sharh": "He asks the flash to look ahead for him. A reunion would restore a whole company and fulfil one man’s private hope."
+    },
+    "5": {
+      "translation": [
+        "What an arrow parting fitted to the string,",
+        "taking true aim and shooting me."
+      ],
+      "sharh": "Parting takes an archer’s place. The arrow appears first, so the listener meets the instrument of pain before learning whose hand holds it."
+    },
+    "6": {
+      "translation": [
+        "And bitter cups",
+        "it gave me to drink in its cruelty."
+      ],
+      "sharh": "The same figure who shot him now pours his drink. Each fresh injury has to be swallowed, and the plural makes the drinking last."
+    },
+    "7": {
+      "translation": [
+        "It put my loved ones far from me",
+        "and showed me what it showed me."
+      ],
+      "sharh": "He can name the separation. What he saw afterwards he leaves inside the repeated verb, just as he left the cause of grief unnamed at first."
+    },
+    "8": {
+      "translation": [
+        "My two friends, if you will not",
+        "share my grief, leave me be."
+      ],
+      "sharh": "The two companions belong to the old scene of stopping at an abandoned camp. He asks them to join him in grieving or leave him the solitude to do it."
+    },
+    "9": {
+      "translation": [
+        "These are the ruins of Su'da’s camp,",
+        "the Hima and the two landmarks."
+      ],
+      "sharh": "A demonstrative brings the old camping ground within pointing distance. The two landmarks can still be found, although Su'da herself is gone."
+    },
+    "10": {
+      "translation": [
+        "Where are the days of youthful play",
+        "and youth in its first full vigour?"
+      ],
+      "sharh": "One expression describes playing the young lover, the other the vigour that once made such play natural. Neither can be located as readily as the camp."
+    },
+    "11": {
+      "translation": [
+        "There was room for pleasure to run,",
+        "and love had a free rein."
+      ],
+      "sharh": "Pleasure gets an open course and desire the reins of a horse. The two images let us feel the freedom of those days as room to move."
+    },
+    "12": {
+      "translation": [
+        "Desires themselves were safe",
+        "from the reversals of time."
+      ],
+      "sharh": "The words for wishes and safety almost chime. He remembers a time when merely wanting something did not already mean fearing its loss."
+    },
+    "13": {
+      "translation": [
+        "That gladness went away",
+        "with the graceful, beautiful women."
+      ],
+      "sharh": "The women take a whole way of greeting and being greeted with them. The plain past tense at last answers his questions about where his happiness went."
+    },
+    "14": {
+      "translation": [
+        "The bitterest life is one",
+        "ebbing, perishing through separation."
+      ],
+      "sharh": "Bitterness, once the taste of particular cups, now describes his whole life. Its passing away makes separation feel like a death already in progress."
+    },
+    "15": {
+      "translation": [
+        "Who will help a frightened man whose tears run",
+        "free but whose heart is captive,"
+      ],
+      "sharh": "His tears alone have freedom of movement. The language of captivity begins in the heart before the next line names an actual fortress."
+    },
+    "16": {
+      "translation": [
+        "always grieving, alone",
+        "in the heights of Haftayan?"
+      ],
+      "sharh": "The place name changes the vantage point of the entire lyric. The man remembering an open country and a loose rein is alone high in a fortress."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "اليَماني",
+      "root": "ي م ن",
+      "meaning": "Yamani, from Yemen or from the direction of Yemen."
+    },
+    "1.2.1": {
+      "word": "فَشَجاني",
+      "head": "شَجا",
+      "root": "ش ج و",
+      "meaning": "Stirred grief or painful longing in him."
+    },
+    "2.2.1": {
+      "word": "بِالحِمى",
+      "head": "الحِمى",
+      "root": "ح م ي",
+      "meaning": "The Hima, protected pastureland. Here it is the place of remembered companionship."
+    },
+    "3.1.2": {
+      "word": "وَميضَ",
+      "head": "وَميض",
+      "root": "و م ض",
+      "meaning": "A brief flash of lightning."
+    },
+    "3.2.3": {
+      "word": "التَّداني",
+      "root": "د ن و",
+      "meaning": "Drawing near to one another, here the time the lovers spent together."
+    },
+    "4.1.3": {
+      "word": "الشَّم",
+      "head": "الشَّمل",
+      "root": "ش م ل",
+      "meaning": "“The gathering”: the company reunited. The final l crosses into the next half."
+    },
+    "5.1.3": {
+      "word": "فَوَّقَ",
+      "root": "ف و ق",
+      "meaning": "Set the nock of an arrow against the bowstring."
+    },
+    "5.1.4": {
+      "word": "البَي",
+      "head": "البَين",
+      "root": "ب ي ن",
+      "meaning": "Parting, the archer in this verse. Its final n opens the second half."
+    },
+    "6.2.2": {
+      "word": "تَجَنّيهِ",
+      "head": "تَجَنٍّ",
+      "root": "ج ن ي",
+      "meaning": "Unjust treatment or an unfounded accusation. Parting acts like someone who forces another to drink a bitter draught."
+    },
+    "6.2.3": {
+      "word": "سَقاني",
+      "head": "سَقى",
+      "root": "س ق ي",
+      "meaning": "Gave me the cup to drink. The diwan has saqani. Its n is faint in the recording and can sound like l. The one pouring the drink is the parting that shot the arrow."
+    },
+    "8.1.2": {
+      "word": "خَليلَيَّ",
+      "head": "خَليل",
+      "root": "خ ل ل",
+      "meaning": "An intimate friend. The form addresses two companions, an old convention of the Arabic ode."
+    },
+    "8.2.1": {
+      "word": "تُسعِداني",
+      "head": "أَسعَدَ",
+      "root": "س ع د",
+      "meaning": "To help or console someone, including by weeping with them."
+    },
+    "8.2.2": {
+      "word": "فَذَراني",
+      "head": "ذَرا",
+      "root": "و ذ ر",
+      "meaning": "“Leave me”: an imperative addressed to two people."
+    },
+    "9.1.2": {
+      "word": "أَطلالُ",
+      "head": "طَلَل",
+      "root": "ط ل ل",
+      "meaning": "The standing remains of an abandoned dwelling or camp."
+    },
+    "9.1.3": {
+      "word": "سُعدى",
+      "meaning": "Su'da, the woman whose abandoned camp he points out."
+    },
+    "9.2.2": {
+      "word": "وَالعَلَمانِ",
+      "head": "العَلَمان",
+      "root": "ع ل م",
+      "meaning": "Two conspicuous landmarks used for finding one’s way, often hills."
+    },
+    "10.1.3": {
+      "word": "التَّصابي",
+      "root": "ص ب و",
+      "meaning": "Playing the young lover, indulging again in the pursuits of youth."
+    },
+    "10.2.2": {
+      "word": "العُنفُوانِ",
+      "head": "العُنفُوان",
+      "root": "ع ن ف",
+      "meaning": "The first strength or full vigour of youth."
+    },
+    "11.2.2-3": {
+      "word": "طَلقُ العِنانِ",
+      "head": "طَلقُ العِنان",
+      "meaning": "“With a free rein”: able to range at will."
+    },
+    "12.2.2-3": {
+      "word": "صُروفِ الحَدَثانِ",
+      "head": "صُروفُ الحَدَثان",
+      "meaning": "“The turns of time”: its reversals and misfortunes."
+    },
+    "13.1.3": {
+      "word": "البَشاشا",
+      "head": "البَشاشَة",
+      "root": "ب ش ش",
+      "meaning": "Brightness of face, gladness. The plural ending continues into the next half."
+    },
+    "13.2.3": {
+      "word": "الغيدِ",
+      "head": "الغيد",
+      "root": "غ ي د",
+      "meaning": "Graceful women, with a suggestion of supple movement."
+    },
+    "14.2.3": {
+      "word": "فانِ",
+      "head": "فانٍ",
+      "root": "ف ن ي",
+      "meaning": "Passing away, said of a life consumed by separation."
+    },
+    "15.1.3": {
+      "word": "طَليقِ",
+      "head": "طَليق",
+      "root": "ط ل ق",
+      "meaning": "Unconfined. It describes the running tears, paired with the captive heart."
+    },
+    "15.1.4": {
+      "word": "ال",
+      "head": "الدَّمع",
+      "root": "د م ع",
+      "meaning": "“The tears”. The article ends this half. Its l takes the sound of the d that opens the next."
+    },
+    "15.2.3": {
+      "word": "الجَنانِ",
+      "head": "الجَنان",
+      "root": "ج ن ن",
+      "meaning": "The heart, distinguished by its vowel from the word for gardens."
+    },
+    "16.2.3": {
+      "word": "حَفتَيانِ",
+      "head": "حَفتَيان",
+      "meaning": "Haftayan, a fortress in the Erbil region. The editor associates this closing scene with the poet’s confinement there."
+    }
+  }
+}

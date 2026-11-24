@@ -1,0 +1,613 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "The Gilded Ode of Qays ibn al-Khatim",
+  "intro": "Ibn Sallam associates the opening with the day of Bu'ath, fought between Aws and Khazraj, and names the woman who lived here as Amra bint Rawaha. The diwan places the ode in the war of Hatib. From a glimpse of Amra at Mina, Qays turns to the people of Awf and the peace they refused. His account of courage comes down to small visible movements, a cheek turning aside and feet that hold their ground.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Do you know the traces, like lines of gilding,",
+        "Amra's, deserted save where one rider stops?"
+      ],
+      "sharh": "The lines left by the camp catch his eye like gilt stripes on leather. Ibn al-Sikkit takes the solitary rider who breaks the emptiness to be the speaker himself."
+    },
+    "2": {
+      "translation": [
+        "The home of her who, when we were at Mina,",
+        "would have made us halt, but for our swift mounts."
+      ],
+      "sharh": "Recognition takes him back to Mina. Her presence exerted a pull strong enough to stop a caravan, but its mounts carried the travellers past."
+    },
+    "3": {
+      "translation": [
+        "She came into view like the sun under a cloud.",
+        "One brow showed. She kept the other from us."
+      ],
+      "sharh": "One edge of the sun escapes the cloud. Arabic can call that edge a brow, so a glimpse of sunlight becomes a glimpse of Amra's face."
+    },
+    "4": {
+      "translation": [
+        "I saw her only three times at Mina.",
+        "I remember her a maiden with her hair in braids."
+      ],
+      "sharh": "Three glimpses have to stand for the meeting. Behind them he still sees the younger girl he remembers by her braids."
+    },
+    "5": {
+      "translation": [
+        "I've won the heart of a woman like you, no kinswoman by marriage,",
+        "no neighbour, no wife of a friend."
+      ],
+      "sharh": "He claims experience in love, then marks out the relationships to which that boast cannot extend. Marriage into the household, proximity and friendship each carry obligations."
+    },
+    "6": {
+      "translation": [
+        "I called on the sons of Awf to spare their blood.",
+        "When they refused, I joined in Hatib's war."
+      ],
+      "sharh": "He presents peace as something he offered the other side. The diwan names Hatib as an ally whose killing gave the conflict its name."
+    },
+    "7": {
+      "translation": [
+        "I was never one to start a war unjustly.",
+        "Once they refused, I set it alight on every side."
+      ],
+      "sharh": "The sequence matters to his defence of himself. Having first offered restraint, he now claims responsibility for spreading the fire in every direction."
+    },
+    "8": {
+      "translation": [
+        "I set my heart on keeping war away, until I saw",
+        "that every effort to hold it off brought it closer."
+      ],
+      "sharh": "The harder he presses against war, the nearer it seems to come. The turn in the sentence lets us hear the moment his hopes change."
+    },
+    "9": {
+      "translation": [
+        "If there is no warding off what war brings,",
+        "then welcome to her while there is room to welcome her."
+      ],
+      "sharh": "He uses a host's greeting to welcome war. The underlying word for roomy quarters gives the greeting a second sense, the space still open before things close in."
+    },
+    "10": {
+      "translation": [
+        "When I saw war stripped down to war itself,",
+        "over my two cloaks I put the warrior's garment."
+      ],
+      "sharh": "War sheds its covering just as he adds another garment to his own. The warrior's garment will take shape in the next verse as a particular coat of mail."
+    },
+    "11": {
+      "translation": [
+        "Double-linked mail, its length covering my fingertips,",
+        "its rivets like the eyes of locusts."
+      ],
+      "sharh": "The sleeves reach beyond his fingers. A locust's small, protruding eye gives the rivet heads of the mail their shape."
+    },
+    "12": {
+      "translation": [
+        "Bands of Aws came striding with their spears,",
+        "like lions walking in the spray of heavy rain."
+      ],
+      "sharh": "He sees groups of Aws moving like lions through rain. A version in the Jamhara has this image, while the corresponding verse in the diwan's main text names particular contingents."
+    },
+    "13": {
+      "translation": [
+        "Men who, when called to death, hurry",
+        "toward it with the high trot of unbroken camels."
+      ],
+      "sharh": "They respond even when the summons calls its destination death. The unbroken male camels lift and toss their heads as they go."
+    },
+    "14": {
+      "translation": [
+        "Roused to alarm, they send a cry into the night,",
+        "like waves of a flash flood, foaming, climbing one another."
+      ],
+      "sharh": "A shout sent into the dark swells like floodwater arriving from rain that fell elsewhere. The successive crests give the sound both height and force."
+    },
+    "15": {
+      "translation": [
+        "You see splinters of spearwood fall like",
+        "strips measured off in the hands of women splitting fronds."
+      ],
+      "sharh": "To describe the falling lengths of broken wood he remembers women preparing palm strips for mats. Their forearms supply a familiar measure for the pieces."
+    },
+    "16": {
+      "translation": [
+        "At dawn we came to the forts around Muzahim.",
+        "The crests of the first helmets shone like stars."
+      ],
+      "sharh": "Muzahim is itself a stronghold. From the defenders' viewpoint the leading rank first comes into sight as points of light."
+    },
+    "17": {
+      "translation": [
+        "If you dropped a bitter gourd on those helmets,",
+        "it would roll over their close-set streaks of gold."
+      ],
+      "sharh": "The imagined round gourd makes the crowding visible. It could roll from one gilt-streaked helmet to the next without finding the ground."
+    },
+    "18": {
+      "translation": [
+        "When we took flight, the worst our flight amounted to",
+        "was turned cheeks and shoulders angled aside."
+      ],
+      "sharh": "He grants his enemies the word “flight,” then measures it. It extends as far as a cheek and a shoulder moving out of the path of a blow."
+    },
+    "19": {
+      "translation": [
+        "Cheeks turn aside while spears are locked together.",
+        "Our feet stay planted as the blows fall."
+      ],
+      "sharh": "The first words take up the preceding line almost like a second look at the same instant. Below the turning faces the feet are still where they were."
+    },
+    "20": {
+      "translation": [
+        "When our swords fell short, what lengthened them",
+        "was our stride toward the enemy to exchange blows."
+      ],
+      "sharh": "The blade's length seems to change. What supplies the missing reach is the movement of the person holding it."
+    },
+    "21": {
+      "translation": [
+        "At al-Hadiqa I struck them bareheaded,",
+        "my sword hand like a child's twisted-cloth toy."
+      ],
+      "sharh": "At al-Hadiqa he recalls going without a helmet. His hand moves with the ease of a child swinging a strip of twisted cloth."
+    },
+    "22": {
+      "translation": [
+        "On the day of Bu'ath our swords delivered us",
+        "to a shining lineage at the root of Ghassan."
+      ],
+      "sharh": "He already has a place in Ghassan's descent. In his account of Bu'ath, deeds make that pedigree shine out where others can see it."
+    },
+    "23": {
+      "translation": [
+        "Drawn white when we meet our enemy,",
+        "they return red to their sheaths, their edges worn thin."
+      ],
+      "sharh": "The blades register two different timescales. A fight turns them red in a day, while repeated use has thinned the striking edges."
+    },
+    "24": {
+      "translation": [
+        "The sons of Awf obeyed a leader who forbade them",
+        "to make peace, until he was the first to fall."
+      ],
+      "sharh": "The chief who ruled out peace is its first lost beneficiary. His fall recalls the offer made to his people earlier in the ode."
+    },
+    "25": {
+      "translation": [
+        "I pitied Awf when their women cried,",
+        "hurling things in their defence, “If only we had never fought.”"
+      ],
+      "sharh": "He places the wish for peace in the mouths of women defending themselves from above. His profession of pity sits uneasily beside the victory he celebrates."
+    },
+    "26": {
+      "translation": [
+        "At dawn we brought them a grey host of flashing helmets,",
+        "laying bare the anklets of the women in flight."
+      ],
+      "sharh": "The host takes its grey colour from armour. The answering flash comes from anklets exposed as the fleeing women lift their garments."
+    },
+    "27": {
+      "translation": [
+        "Our swords struck down chiefs of al-Agharr's line.",
+        "The wood-gathering bondwomen's sons were left alive."
+      ],
+      "sharh": "He insists the defeated included the clan's leading men. His contempt for the sons of enslaved women who gathered fuel belongs to the hierarchy on which his boast depends."
+    },
+    "28": {
+      "translation": [
+        "One of our men took an oath for thirty nights",
+        "to forswear wine until he came to you with his battalions."
+      ],
+      "sharh": "The visit that ends the abstinence is an army's arrival. The old gloss names Abu Qays ibn al-Aslat. Al-Asad argues that Hudayr al-Kata'ib made the vow."
+    },
+    "29": {
+      "translation": [
+        "I am content to leave them there. They never stir from its depths",
+        "to their outlying herds without a companion."
+      ],
+      "sharh": "Even an errand to distant pasture now requires an escort. Al-Asad suggests that “its depths” anticipates the forts about to be named, and questions the transmitted position of the verse."
+    },
+    "30": {
+      "translation": [
+        "Without your hilltop forts, as you well know,",
+        "and your leaving the open ground, others would claim your young women."
+      ],
+      "sharh": "He makes the safety of the young women depend on the walls. The threat is of capture and possession viewed through the victor's assumptions."
+    },
+    "31": {
+      "translation": [
+        "You held no ground we wanted against us,",
+        "no refuge save the rooftops of your upper rooms."
+      ],
+      "sharh": "He reduces their territory to the part of a house that raises a man beyond reach. It is a taunt about how little space is left under their control."
+    },
+    "32": {
+      "translation": [
+        "Why didn't you stand fast in that recurring war",
+        "against our onslaught, when battle is so hard a mount to ride?"
+      ],
+      "sharh": "The war has returned often enough for both sides to know it. He pictures the ordeal as a mount that continually threatens to throw its rider."
+    },
+    "33": {
+      "translation": [
+        "Our bright blades turned you to our will until you were",
+        "more docile than bull calves among the milch camels."
+      ],
+      "sharh": "The verb comes from making a she-camel accept another's calf. The calm of the milking herd at the close of the line has been imposed by force."
+    },
+    "34": {
+      "translation": [
+        "When we went down to al-Harth, our chief said,",
+        "“Wine is forbidden us until we have fought.”"
+      ],
+      "sharh": "We now hear the vow as the chief pronounces it at al-Harth. Speaking in the plural invites his men to bind themselves too."
+    },
+    "35": {
+      "translation": [
+        "Men of standing among us pledged themselves with him.",
+        "They stayed until a drinker might lawfully drink."
+      ],
+      "sharh": "The men assent and remain. A drink becoming lawful again tells us that the condition of the vow was met."
+    },
+    "36": {
+      "translation": [
+        "If only Suwayd could see which of them fell",
+        "and which fled, driven along like a herd brought to market."
+      ],
+      "sharh": "Suwayd, an Aws man who had been killed, is the witness the speaker most wants. Those fleeing are driven together like animals brought in from elsewhere."
+    },
+    "37": {
+      "translation": [
+        "We came back to our children and our wives.",
+        "Those we left at Bu'ath did not come home."
+      ],
+      "sharh": "One side of the verse has children and wives waiting at home. The other measures loss by exactly the same journey, the one that will never be made."
+    },
+    "38": {
+      "translation": [
+        "Had I been absent, my own clan would have sufficed for me.",
+        "The day of Bu'ath was a day of contending for mastery."
+      ],
+      "sharh": "In this version his absence is hypothetical and his clan could answer for him. The main diwan text led its commentator to a different conclusion, that Qays actually missed the battle."
+    }
+  },
+  "words": {
+    "1.1.3-4": {
+      "word": "كَاطِّرادِ المَذاهِبِ",
+      "head": "اِطِّراد المَذاهِب",
+      "meaning": "The succession of gilded lines on ornamented leather. Another gloss stresses how straight they run."
+    },
+    "1.2.1": {
+      "word": "لِعَمرَةَ",
+      "head": "عَمرَة",
+      "meaning": "Amra bint Rawaha, identified by Ibn Sallam as the woman whose deserted camp opens the poem."
+    },
+    "1.2.2": {
+      "word": "وَحشاً",
+      "head": "وَحش",
+      "root": "و ح ش",
+      "meaning": "Deserted, without inhabitants."
+    },
+    "2.1.6": {
+      "word": "مِنىً",
+      "meaning": "Mina, outside Mecca, where he saw Amra."
+    },
+    "2.2.4-5": {
+      "word": "نَجاءُ الرَّكائِبِ",
+      "head": "نَجاء الرَّكائِب",
+      "meaning": "The speed of the riding camels."
+    },
+    "3.2.2": {
+      "word": "حاجِبٌ",
+      "head": "حاجِب",
+      "root": "ح ج ب",
+      "meaning": "A brow or the first visible rim of the sun. Both senses are active."
+    },
+    "4.2.5": {
+      "word": "ذَوائِبِ",
+      "head": "ذُؤابَة",
+      "root": "ذ أ ب",
+      "meaning": "Long hanging braids."
+    },
+    "5.1.3": {
+      "word": "أَصبَيتُ",
+      "head": "أَصبى",
+      "root": "ص ب و",
+      "meaning": "Drew someone into youthful love."
+    },
+    "5.1.5": {
+      "word": "بِكَنَّةٍ",
+      "head": "كَنَّة",
+      "root": "ك ن ن",
+      "meaning": "A daughter-in-law or a brother's wife, protected here as kin by marriage."
+    },
+    "6.1.2-3": {
+      "word": "بَني عَوفٍ",
+      "head": "بَنو عَوف",
+      "meaning": "Banu Awf, identified by the editor from the context as a group of Khazraj."
+    },
+    "6.2.6": {
+      "word": "حاطِبِ",
+      "head": "حاطِب",
+      "meaning": "Hatib, the slain ally after whom the war was named."
+    },
+    "8.1.1": {
+      "word": "أَرِبتُ",
+      "head": "أَرِبَ",
+      "root": "أ ر ب",
+      "meaning": "I had set my desire on keeping the war away."
+    },
+    "9.2.7": {
+      "word": "المَراحِبِ",
+      "head": "مَرحَب",
+      "root": "ر ح ب",
+      "meaning": "Roomy places, the idea behind the Arabic greeting of welcome."
+    },
+    "10.2.3": {
+      "word": "البُردَينِ",
+      "head": "بُرد",
+      "root": "ب ر د",
+      "meaning": "Two outer wraps over which he puts the mail."
+    },
+    "11.1.1": {
+      "word": "مُضاعَفَةً",
+      "head": "مُضاعَفَة",
+      "root": "ض ع ف",
+      "meaning": "Mail made with the rings doubled."
+    },
+    "11.2.2": {
+      "word": "قَتيرَيها",
+      "head": "قَتير",
+      "root": "ق ت ر",
+      "meaning": "The rivet heads on the rings of mail, taken on its two sides."
+    },
+    "11.2.4": {
+      "word": "الجَنادِبِ",
+      "head": "جُندُب",
+      "root": "ج ن د ب",
+      "meaning": "Locust-like insects. Here it is their eyes that resemble the rivets."
+    },
+    "12.1.2": {
+      "word": "عُصَبٌ",
+      "head": "عُصبَة",
+      "root": "ع ص ب",
+      "meaning": "Bands or groups. Al-Bijawi prints “a band of Aws” in the Jamhara and records the plural heard here in two manuscripts."
+    },
+    "12.2.5": {
+      "word": "الأَهاضِبِ",
+      "head": "هَضبَة",
+      "root": "ه ض ب",
+      "meaning": "Heavy bursts of rain."
+    },
+    "13.1.6": {
+      "word": "يُرقِلوا",
+      "head": "أَرقَلَ",
+      "root": "ر ق ل",
+      "meaning": "Move at a rapid, head-tossing camel trot."
+    },
+    "13.2.4": {
+      "word": "المَصاعِبِ",
+      "head": "مُصعَب",
+      "root": "ص ع ب",
+      "meaning": "Unbroken male camels."
+    },
+    "14.2.2": {
+      "word": "الأَتِيِّ",
+      "head": "الأَتِيّ",
+      "root": "أ ت ي",
+      "meaning": "Floodwater arriving from rain that fell at a distance."
+    },
+    "15.1.2-3": {
+      "word": "قِصَدَ المُرّانِ",
+      "head": "قِصَد المُرّان",
+      "meaning": "Broken lengths of shafts made from murran wood."
+    },
+    "15.2.1-2": {
+      "word": "تَذَرُّعُ خِرصانٍ",
+      "head": "تَذَرُّع خِرصان",
+      "meaning": "Measuring strips by the forearm as rods or fronds are split."
+    },
+    "15.2.4": {
+      "word": "الشَّواطِبِ",
+      "head": "شاطِبَة",
+      "root": "ش ط ب",
+      "meaning": "Women splitting and peeling palm fronds for mat making."
+    },
+    "16.1.3": {
+      "word": "الآطامَ",
+      "head": "أُطُم",
+      "root": "أ ط م",
+      "meaning": "The tall fortified buildings characteristic of Yathrib, later Medina."
+    },
+    "16.1.5": {
+      "word": "مُزاحِمٍ",
+      "head": "مُزاحِم",
+      "meaning": "Muzahim, a stronghold around which the other forts stood."
+    },
+    "16.2.1": {
+      "word": "قَوانِسُ",
+      "head": "قَونَس",
+      "root": "ق ن س",
+      "meaning": "Crests projecting from the tops of helmets."
+    },
+    "17.1.4": {
+      "word": "حَنظَلاً",
+      "head": "حَنظَل",
+      "root": "ح ن ظ ل",
+      "meaning": "The round fruit of the bitter gourd."
+    },
+    "17.1.6": {
+      "word": "بَيضِها",
+      "head": "بَيض",
+      "root": "ب ي ض",
+      "meaning": "The company’s helmets, already mentioned in the preceding verse. Both the diwan and the Jamhara here read “our helmets.”"
+    },
+    "17.2.4": {
+      "word": "سامِهِ",
+      "head": "سام",
+      "root": "س و م",
+      "meaning": "Streaks of gold on the helmets, according to the diwan commentary."
+    },
+    "18.2.3-4": {
+      "word": "وَازوِرارُ المَناكِبِ",
+      "head": "اِزوِرار المَناكِب",
+      "meaning": "The slanting of shoulders to one side."
+    },
+    "19.1.4": {
+      "word": "مُتَشاجِرٌ",
+      "head": "مُتَشاجِر",
+      "root": "ش ج ر",
+      "meaning": "Interlocked, as branches cross each other."
+    },
+    "21.1.2-3": {
+      "word": "يَومَ الحَديقَةِ",
+      "head": "يَوم الحَديقَة",
+      "meaning": "An encounter named after a village near Medina. The Jamhara's version names the Day of the Trenches."
+    },
+    "21.1.4": {
+      "word": "حاسِراً",
+      "head": "حاسِر",
+      "root": "ح س ر",
+      "meaning": "Bareheaded, without a helmet."
+    },
+    "21.1.1": {
+      "word": "وَأَضرِبُهُم",
+      "head": "ضَرَبَ",
+      "root": "ض ر ب",
+      "meaning": "He strikes them with his sword. The diwan has “I traded blows with them.” The Jamhara reads “I met them on the Day of the Trenches”. The Amiri printing addresses the enemy directly, “I met you”."
+    },
+    "21.2.4": {
+      "word": "مِخراقُ",
+      "head": "مِخراق",
+      "root": "خ ر ق",
+      "meaning": "A twisted strip of cloth swung by children at play."
+    },
+    "22.1.2": {
+      "word": "بُعاثٍ",
+      "head": "بُعاث",
+      "meaning": "Bu'ath, near Yathrib, gave its name to a pre-Islamic battle between Aws and Khazraj."
+    },
+    "22.2.4-5": {
+      "word": "جِذمِ غَسّانَ",
+      "head": "جِذم غَسّان",
+      "meaning": "The ancestral stock of Ghassan to which the speaker lays claim."
+    },
+    "23.2.3-4": {
+      "word": "ناحِلاتِ المَضارِبِ",
+      "head": "ناحِلات المَضارِب",
+      "meaning": "Swords whose striking edges have worn thin with use."
+    },
+    "24.2.6": {
+      "word": "واجِبِ",
+      "head": "واجِب",
+      "root": "و ج ب",
+      "meaning": "One who falls dead. The old sense of the verb is “fall.”"
+    },
+    "25.1.1": {
+      "word": "أَوَيتُ",
+      "head": "أَوى",
+      "root": "أ و ي",
+      "meaning": "I felt pity for him or them."
+    },
+    "26.1.2": {
+      "word": "شَهباءَ",
+      "head": "شَهباء",
+      "root": "ش ه ب",
+      "meaning": "A body of troops grey with the glint of iron."
+    },
+    "27.1.3-4": {
+      "word": "مِ الأَغَرِّ",
+      "head": "الأَغَرّ",
+      "meaning": "The shortened preposition means “from.” Al-Agharr is Malik ibn Thalaba in the Khazraj genealogy."
+    },
+    "27.2.4": {
+      "word": "الحَواطِبِ",
+      "head": "حاطِبَة",
+      "root": "ح ط ب",
+      "meaning": "Women who gather firewood. The speaker uses the occupation of the men's mothers as a slur."
+    },
+    "28.1.3": {
+      "word": "آلى",
+      "root": "أ ل ي",
+      "meaning": "Swore an oath. The diwan commentary and its editor differ on who swore it."
+    },
+    "29.1.4-5": {
+      "word": "لا يَريمونَ",
+      "head": "رامَ",
+      "root": "ر ي م",
+      "meaning": "They do not leave the place where they are staying."
+    },
+    "29.2.2-3": {
+      "word": "عازِبِ الأَموالِ",
+      "head": "عازِب الأَموال",
+      "meaning": "Livestock grazing far from its owners."
+    },
+    "30.2.5": {
+      "word": "الكَواعِبِ",
+      "head": "كاعِب",
+      "root": "ك ع ب",
+      "meaning": "Young women. The threatened consequence of defeat is their capture."
+    },
+    "31.2.4-5": {
+      "word": "ظُهورَ المَشارِبِ",
+      "head": "ظُهور المَشارِب",
+      "meaning": "The roofs of elevated chambers used for refuge."
+    },
+    "32.1.3-4": {
+      "word": "الحَربِ العَوانِ",
+      "head": "الحَرب العَوان",
+      "meaning": "A war fought repeatedly."
+    },
+    "33.1.1": {
+      "word": "ظَأَرناكُمُ",
+      "head": "ظَأَرَ",
+      "root": "ظ أ ر",
+      "meaning": "Bent you to our will, from making a she-camel foster another's young."
+    },
+    "33.2.3": {
+      "word": "السُّقبانِ",
+      "head": "سَقب",
+      "root": "س ق ب",
+      "meaning": "Male camel calves."
+    },
+    "33.2.5": {
+      "word": "الحَلائِبِ",
+      "head": "حَلوب",
+      "root": "ح ل ب",
+      "meaning": "Milch camels."
+    },
+    "34.1.3": {
+      "word": "الحَرثَ",
+      "head": "الحَرث",
+      "meaning": "Al-Harth, a place in the vicinity of Medina."
+    },
+    "36.1.2": {
+      "word": "سُوَيداً",
+      "head": "سُوَيد",
+      "meaning": "Suwayd ibn al-Samit of Aws, remembered here among the dead."
+    },
+    "36.1.3": {
+      "word": "راءَ",
+      "root": "ر أ ي",
+      "meaning": "A form of the verb “to see” with the vowel and glottal stop in a different order."
+    },
+    "36.2.5": {
+      "word": "كَالجَلائِبِ",
+      "head": "جَليبَة",
+      "root": "ج ل ب",
+      "meaning": "Droves of animals brought in from elsewhere, here an image for the defeated."
+    },
+    "37.2.1-3": {
+      "word": "وَما إِن تَرَكنا",
+      "meaning": "Those left at Bu'ath never came back. The voice and studio text give ma in. The diwan has ma man, literally “those whom we left.”"
+    },
+    "38.1.1-2": {
+      "word": "وَلَو غِبتُ",
+      "head": "غابَ",
+      "root": "غ ي ب",
+      "meaning": "“Had I been absent,” the reading cited from Muntaha al-talab. The main text has a statement of absence."
+    }
+  }
+}

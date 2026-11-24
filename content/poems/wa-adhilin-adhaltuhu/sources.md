@@ -1,0 +1,32 @@
+# وعاذل عذلته في عذله
+
+## Performance and division
+
+Osama al-Nahari recites all eighteen numbered bayts of al-Tibrizi’s no. 470. Each short member of this urjuza has the same rhyme. The diwan pairs them, and these pairs govern the numbering. The eighteenth pair, «ما أضيع الغمد بغير نصله / والشعر ما لم يك عند أهله», is performed twice. The original-clock interval 0.52–138.65 s keeps the voice from about 1.03 through 138.21 s and yields a 138.13 s master. The final pair begins again after the first occurrence of «أهله». In the continuous Audar transcript the repetition drops out. The source waveform, the continuous Cohere transcript, the 38 aligned half-lines and the separate final-edge transcription all preserve it. No diwan verse is omitted. [Recording](https://www.youtube.com/watch?v=K1GHeiG2vBU)
+
+The metre is rajaz. «وَعاذِلٍ | عَذَلتُهُ | في عَذلِهِ» has two shortened مستفعلن feet followed by a full one. The last vowel of each pronoun is lengthened in scansion. The middle half «مِثلي سَرى | في مِثلِهِ | بِمِثلِهِ» has two full feet and a shortened third. The recurring lam is the rawiy. The possessive ha and its terminal vowel carry the rhyme beyond the lam.
+
+## Editions and use in the reader
+
+- Al-Khatib al-Tibrizi, *Sharh Diwan Abi Tammam*, ed. Muhammad Abduh Azzam, Dar al-Ma'arif, IV, no. 470, pp. 530–532. The heading names Salih ibn Abd Allah ibn Salih al-Qurashi. P. 530 identifies the question about finding one’s brother entirely to one’s liking as an old proverb and glosses ريعان. P. 531 explains the ancestry of the mature camel and the three instances of مثل in 11. P. 532 identifies the captive’s fetter and preserves «فلا تمله» at 17.2. Azzam’s note proposes understanding the last word through الإملاء, granting time or respite. This remains a difficult imperative. [IV, p. 530](https://archive.org/details/3901pdf/page/n1846/mode/1up) · [P. 531](https://archive.org/details/3901pdf/page/n1847/mode/1up) · [P. 532](https://archive.org/details/3901pdf/page/n1848/mode/1up)
+- Abu Bakr al-Suli, *Sharh al-Suli li-Diwan Abi Tammam*, ed. Khalaf Rashid Nu'man, Iraqi Ministry of Culture and Arts, III, no. 460, pp. 573–575. The heading independently identifies the addressee. P. 573 records a copy lacking the first half of 6 and explains the camel-driver’s chant and the bitter plant. P. 574 prints «أوفى سبله» and «فجذّ», giving «فحذّ» as a variant. P. 575 prints «يعجب من تعجبي بخله», with «وبخله» as an alternative. Its gloss on «فلا تمله» takes the addition to the man’s wealth as a reprieve granted by degrees. Both diwans close with the poet’s scabbard and sword blade. [III, pp. 573–575](https://archive.org/download/diwan-abo-tamam-shareh-alsouly/Diwan%20Abo%20Tamam%20Shareh%20Alsouly%203.pdf#page=574)
+- Ibn Abd Rabbih, *al-Iqd al-farid*, II, p. 90, attributes the opening two bayts to Habib, Abu Tammam’s given name, in the passage on an ignorant critic reproaching a learned man. Al-Amidi identifies the opening hemistich and quotes its whole bayt in the dispute over Ibn al-A'rabi’s judgement. These are witnesses for the opening. The account of the journey and the failed petition follows the complete diwans. [Ibn Abd Rabbih](https://shamela.ws/book/23789/449) · [Al-Amidi, I, pp. 22–23](https://shamela.ws/book/26183/21)
+
+The performance has «أدنى» at 9.1, the nearer route for wealth to find a petitioner, «فحذّ» at 13.1, cutting off the rope of hope, and «وبخله» at 15.1. Both continuous passes support these distinctions. The original-clock phone windows give a-d-n for أدنى, ḥ followed by a dental for فحذّ, and w-a-b at the beginning of وبخله. On equally long candidate strings, «أدنى» leads «أوفى» by 6.79 and «فحذّ» leads «فجذّ» by 7.95. At 15.1 «بخله» leads «وبخله» by just 1.68. The initial w in the original and al-Suli’s apparatus support the conjunction. At 17.2 «تمله» leads «تبله» by 6.37 and both commentaries explain the verb through the respite granted to the rich man.
+
+The other comparisons help locate uncertainties. At 1.1 the forced model favours «عدَلته» over «عذلته» by 4.61 even though the free pass registers an interdental in the verb. At 3.2 it favours «يا» over «رأي» by 6.95, and at 5.1 «مطّلعاً» over «مضطلعاً» by 3.74. The full phrases and the independent evidence for each reading are given below. At 16.1 «كبره» leads «كبله» by 1.00, too close for this score to decide the consonant.
+
+## Final clip decisions
+
+The narrow recogniser flags six of the 38 performed halves. Its separate edge warning at 15.1 adds «والإنسان». The preceding half ends «لم يحله», the whole transcript continues «يعجب من تعجبي», and the cue and wide original material leave no additional spoken address there.
+
+| Half | Narrow Cohere | Widened Audar | Editorial decision |
+| --- | --- | --- | --- |
+| 1.1 | عدلته في عدله | عذلته في عدله | The first two forms in the original produce an interdental in free recognition. The final occurrence is closer to d in the same pass. Both diwans and Ibn Abd Rabbih repeat the root for blame three times. The card records the ambiguous final consonant. |
+| 3.2 | يا بن دهر | هير يبني دهر | The original gives r-a-y-a before ابن, and the full Cohere pass recovers «رأي ابن دهر». The listener is being asked to leave this experienced man his judgement. The evidence favours «رأيَ» over the proposed vocative. |
+| 5.1 | مطلعا | مطلعا | The two clips simplify the cluster in «مضطلعاً». The free recogniser also fails to separate its first two emphatic consonants. The charge he can shoulder, «بحمله», supports the word for being capable of a burden in both diwans. The precise articulation of the cluster is uncertain. |
+| 9.2 | ناء المحل | النائي المحل | «نائي المحل» is in construct, with its final y retained. The free phones give n-a-i before the next word. The extra article in Audar would disturb the syntax, and the unextended spelling in Cohere loses the construct ending. |
+| 10.1 | من السراب نبله | من السراب نبله | In continuous speech the b immediately after «السُّرى» belongs to «بنبله». Both editions give the arrow image. The full Cohere pass also recognises the night journey, and the next half supplies its mount. |
+| 16.1 | كبره | كبره | Both full passes and both clips hear r, and the independent original-clock phones give k-a-b-u-r-i. Both diwans give «كَبْله» and explicitly describe the links of the captive’s fetter. Pride or age would give the captive no links to look at. The text retains the noun in the editions, and the paired card records the likely substitution. |
+
+Editorial review complete.

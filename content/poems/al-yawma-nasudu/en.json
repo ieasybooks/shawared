@@ -1,0 +1,199 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Today We Rule in Our Valley",
+  "intro": "At the end of Shawqi’s “The Sphinx”, the statue’s breast opens and a young man and woman step out to sing. After a poet’s conversation with an ancient monument, the valley’s children speak in the first person about the country they want to build. The watching temple and pyramid give way to a call for work and a last line sung twice, exactly as printed. Osama Al-Waaedh recites the entire closing song.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Today we rule in our valley",
+        "and bring back the glories of our past."
+      ],
+      "sharh": "The boy and girl speak as “we”, taking in everyone in the valley. Their first word is “today”, and the past enters as something their generation can bring back."
+    },
+    "2": {
+      "translation": [
+        "And through our hands glory is raised",
+        "by a homeland we would ransom, and which ransoms us."
+      ],
+      "sharh": "Only in the second half do we hear the subject that raises glory through their hands. People and country then exchange the roles of rescuer and rescued."
+    },
+    "3": {
+      "translation": [
+        "A homeland we uphold with justice",
+        "and build under God’s eye."
+      ],
+      "sharh": "The singers pick up “a homeland” from the previous line. Upholding it has a moral condition, and building it takes place under a watchful eye."
+    },
+    "4": {
+      "translation": [
+        "We make it fair and give it adornment",
+        "through our noble deeds and our efforts."
+      ],
+      "sharh": "The ornaments promised in the first half turn out to be actions. A deed worth remembering and the effort of doing it are both ways of making the country beautiful."
+    },
+    "5": {
+      "translation": [
+        "The secret of history and its very substance,",
+        "the throne of time and its pulpit,"
+      ],
+      "sharh": "The sequence gives history a secret and a substance, then gives time two public seats. One belongs to a ruler, the other to someone addressing an assembly."
+    },
+    "6": {
+      "translation": [
+        "the gardens of eternity and its river Kawthar,",
+        "our forebears suffice us for fragrant herbs."
+      ],
+      "sharh": "Gardens and the river of Paradise lend their colours to the valley. For the fragrance of the garden, the singers have the memory of their ancestors."
+    },
+    "7": {
+      "translation": [
+        "We take the sun for its crown",
+        "and its morning light for a dazzling throne,"
+      ],
+      "sharh": "The sun becomes regalia that can be set on the country’s head. Its light furnishes the throne as well, so the whole royal figure shines."
+    },
+    "8": {
+      "translation": [
+        "and the sky of high honour for its towers.",
+        "So it was with our forebears."
+      ],
+      "sharh": "The towers complete a palace built out of light and honour. The ancestors now give the singers a precedent for imagining Egypt on this scale."
+    },
+    "9": {
+      "translation": [
+        "Your age sees you, and so do the nations.",
+        "Karnak looks on, and the Pyramid."
+      ],
+      "sharh": "The singers turn to address their listeners. Living nations watch from the present, while the temple and the pyramid acquire eyes with which the past can watch."
+    },
+    "10": {
+      "translation": [
+        "Children of these lands, have you no ambitions",
+        "to build us up as the ancients built?"
+      ],
+      "sharh": "The monuments suggest a building project for the living. What ambition can build now is the people themselves."
+    },
+    "11": {
+      "translation": [
+        "Always strive, strive and strive,",
+        "for deep-rooted glory and the heights."
+      ],
+      "sharh": "The repeated noun for striving works like a command that can be sung in time. The object of effort has both deep roots and a height still to be reached."
+    },
+    "12": {
+      "translation": [
+        "And let us make Egypt our whole world.",
+        "And let us make Egypt our whole world."
+      ],
+      "sharh": "The two halves are identical on the printed page. The singers leave their audience with a complete sentence it can immediately sing back."
+    }
+  },
+  "words": {
+    "1.1.2": {
+      "word": "نَسودُ",
+      "head": "سادَ",
+      "root": "س و د",
+      "meaning": "To exercise sovereignty, here over one’s own country."
+    },
+    "1.1.3": {
+      "word": "بِوادينا",
+      "head": "الوادي",
+      "meaning": "The valley of the Nile, the Egypt named in the last line."
+    },
+    "2.1.1": {
+      "word": "وَيُشيدُ",
+      "head": "أَشادَ",
+      "root": "ش ي د",
+      "meaning": "Raises or builds high. Its subject, “a homeland”, comes in the next half."
+    },
+    "2.2.2": {
+      "word": "نَفديهِ",
+      "head": "فَدى",
+      "root": "ف د ي",
+      "meaning": "To ransom, to surrender something precious so that another may be safe."
+    },
+    "3.2.1-2": {
+      "word": "وَبِعَينِ اللَّهِ",
+      "head": "عَينُ اللَّه",
+      "meaning": "“Under God’s eye”: in God’s care."
+    },
+    "4.2.1": {
+      "word": "بِمَآثِرِنا",
+      "head": "مَأثُرَة",
+      "root": "أ ث ر",
+      "meaning": "A noble deed that people remember and recount."
+    },
+    "5.2.1": {
+      "word": "وَسَريرُ",
+      "head": "سَرير",
+      "root": "س ر ر",
+      "meaning": "A throne, the seat of sovereignty."
+    },
+    "6.1.3": {
+      "word": "وَكَوثَرُهُ",
+      "head": "الكَوثَر",
+      "root": "ك ث ر",
+      "meaning": "Kawthar, the river of Paradise, evoked through the image of water in Egypt."
+    },
+    "6.2.3": {
+      "word": "رَياحينا",
+      "head": "رَيحان",
+      "root": "ر و ح",
+      "meaning": "Fragrant plants. The forebears supply the perfume of the imagined gardens."
+    },
+    "7.2.1": {
+      "word": "وَضُحاها",
+      "head": "الضُّحى",
+      "root": "ض ح و",
+      "meaning": "Morning at its brightness, when the light has spread."
+    },
+    "7.2.3": {
+      "word": "وَهّاجا",
+      "head": "وَهّاج",
+      "root": "و ه ج",
+      "meaning": "Glowing intensely, radiant."
+    },
+    "8.1.2": {
+      "word": "السُّؤدُدِ",
+      "head": "السُّؤدُد",
+      "root": "س و د",
+      "meaning": "Eminence or high distinction."
+    },
+    "8.2.3": {
+      "word": "أَوالينا",
+      "head": "أَوالٍ",
+      "root": "أ و ل",
+      "meaning": "Our predecessors or ancestors."
+    },
+    "9.2.1": {
+      "word": "وَالكَرنَكُ",
+      "head": "الكَرنَك",
+      "meaning": "Karnak, the ancient temple complex at Luxor, here a watching presence."
+    },
+    "9.2.3": {
+      "word": "وَالهَرَمُ",
+      "head": "الهَرَم",
+      "meaning": "The Pyramid, a monument of Egypt’s ancient kings standing witness to a new generation."
+    },
+    "10.1.1-2": {
+      "word": "أَبَني الأَوطانِ",
+      "head": "بَنو الأَوطان",
+      "meaning": "“Children of the lands”: a direct address introduced by a short vocative particle."
+    },
+    "11.2.1": {
+      "word": "لِأَثيلِ",
+      "head": "أَثيل",
+      "root": "أ ث ل",
+      "meaning": "Deep-rooted or of long standing, here describing glory."
+    },
+    "11.2.3": {
+      "word": "وَلِلعَليا",
+      "head": "العُليا",
+      "root": "ع ل و",
+      "meaning": "The highest station one can aspire to."
+    }
+  }
+}
