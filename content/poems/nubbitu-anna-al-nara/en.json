@@ -1,0 +1,183 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "I Hear That After You a Fire Was Lit",
+  "intro": "Al-Muhalhil mourns his brother Kulayb, killed by Jassas ibn Murra. He discovers how much the dead man held together by listening to his people quarrel and to a poor man looking for help. Tha'lab preserves the passage about the mourners and the brother’s revenge with a different first half-line.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "I hear that after you a fire was lit,",
+        "that after you, Kulayb, the gathering traded insults."
+      ],
+      "sharh": "Others can now light a fire where Kulayb’s guest-fire once fed everyone, one explanation preserved by al-Bakri. Another takes it for the fire of war. The repeated “after you” measures the disturbance in an ordinary meeting."
+    },
+    "2": {
+      "translation": [
+        "They quarrel over every grave affair.",
+        "Had you been there, they would not have uttered a word."
+      ],
+      "sharh": "His imagined presence silences them before he has had to say anything. The noisy disputes disclose both the force and the severity of the authority that has gone."
+    },
+    "3": {
+      "translation": [
+        "You two sons of Rabi'a, who will take his place?",
+        "Who will provide for the destitute and hold harm back?"
+      ],
+      "sharh": "Rabi'a’s two sons are the dead Kulayb and the man mourning him. Calling them together to mind leaves one place empty. A successor will be judged by what he can give the poorest person and what harm he can keep from him."
+    },
+    "4": {
+      "translation": [
+        "After you, the poor man cries out for his mother",
+        "when others depend on him. “Where is the gathering?” he asks."
+      ],
+      "sharh": "The needy man has just been spoken of. Now we hear the voice of someone with others of his own to support. A meeting place once recognizable by the help it offered has effectively disappeared with its patron."
+    },
+    "5": {
+      "translation": [
+        "Look where you will, you see a tender face,",
+        "a weeping woman’s arm with a hooded cloak upon it,"
+      ],
+      "sharh": "Face, forearm and cloak give brief glimpses of individual mourners. Tha'lab connects the hooded garments with the Christian women of the tribe."
+    },
+    "6": {
+      "translation": [
+        "in anguish for you. I cannot blame a freeborn woman",
+        "who weeps for you and draws an aching breath."
+      ],
+      "sharh": "The opening words reach back across the verse break to the weeping woman. Her breath makes grief audible even when there is no longer anything she can say to the dead."
+    },
+    "7": {
+      "translation": [
+        "I have eased my heart against their chiefs",
+        "while horses stumble in blood and grimace."
+      ],
+      "sharh": "His remedy for grief lies in retaliation against the other side’s leading men. The stumbling, grimacing horses leave the listener with a physical cost quite different from the relief he claims."
+    },
+    "8": {
+      "translation": [
+        "I left Jassas struggling under a spear,",
+        "a brown shaft with a thrusting point out in front."
+      ],
+      "sharh": "He finally names his brother’s killer. The construction lets us see the spear before its bearer, and Jassas is the man weighed down by it in the avenger’s telling."
+    },
+    "9": {
+      "translation": [
+        "Kulayb, if word had reached you of my retaliation,",
+        "your very bones beneath the grave-soil would know"
+      ],
+      "sharh": "The opening “I hear” is now turned back towards the dead. He imagines a report so powerful that the buried bones themselves could grasp what the next verse will tell them."
+    },
+    "10": {
+      "translation": [
+        "that I was no man for dallying when the fuel caught,",
+        "in a war whose reins would yield to no one."
+      ],
+      "sharh": "Kulayb had called his brother a frequent companion of women. The two figures of burning fuel and unyielding reins convey how far the speaker now stands from the life for which he was teased."
+    }
+  },
+  "words": {
+    "1.2.1": {
+      "word": "وَاستَبَّ",
+      "head": "اِستَبَّ",
+      "root": "س ب ب",
+      "meaning": "To trade insults. The people are named by their place of assembly."
+    },
+    "1.2.4": {
+      "word": "كُلَيبُ",
+      "head": "كُلَيب",
+      "meaning": "Kulayb ibn Rabi'a, the Taghlib chief whose killing occasioned the lament."
+    },
+    "2.2.6": {
+      "word": "يَنبِسوا",
+      "head": "نَبَسَ",
+      "root": "ن ب س",
+      "meaning": "To utter so much as a word."
+    },
+    "3.1.1-2": {
+      "word": "اِبنَي رَبيعَةَ",
+      "head": "اِبنا رَبيعَة",
+      "meaning": "The two sons of Rabi'a ibn Murra of Taghlib, Kulayb and al-Muhalhil. Another reading addresses the sons of the tribe collectively."
+    },
+    "3.2.5": {
+      "word": "الضَّريكِ",
+      "head": "الضَّريك",
+      "root": "ض ر ك",
+      "meaning": "A destitute person with scant means of finding relief."
+    },
+    "4.1.2": {
+      "word": "الصُّعلوكُ",
+      "head": "الصُّعلوك",
+      "root": "ص ع ل ك",
+      "meaning": "A man without resources, here one of Kulayb’s dependants."
+    },
+    "4.2.2": {
+      "word": "اِستَعالَ",
+      "root": "ع و ل",
+      "meaning": "To become responsible for the maintenance of others."
+    },
+    "5.2.4": {
+      "word": "بُرنُسُ",
+      "head": "بُرنُس",
+      "meaning": "Burnus, a cloak with an attached hood."
+    },
+    "7.1.5": {
+      "word": "سَرَواتِهِم",
+      "head": "سَرَوات",
+      "root": "س ر و",
+      "meaning": "The leading men of their people."
+    },
+    "7.2.5": {
+      "word": "وَتَعبِسُ",
+      "head": "عَبَسَ",
+      "root": "ع ب س",
+      "meaning": "To frown or grimace, a human expression given to the struggling horses."
+    },
+    "8.1.2": {
+      "word": "جَسّاساً",
+      "head": "جَسّاس",
+      "meaning": "Jassas ibn Murra of Bakr ibn Wa’il, remembered as Kulayb’s killer in the Basus war."
+    },
+    "8.1.4": {
+      "word": "بِصَعدَةٍ",
+      "head": "صَعدَة",
+      "root": "ص ع د",
+      "meaning": "A straight spear shaft, here brown like its wood."
+    },
+    "8.2.4": {
+      "word": "مِدعَسُ",
+      "head": "مِدعَس",
+      "root": "د ع س",
+      "meaning": "Made for thrusting or piercing deeply."
+    },
+    "9.2.5": {
+      "word": "المَرمَسُ",
+      "head": "المَرمَس",
+      "root": "ر م س",
+      "meaning": "The grave or the earth that covers the body."
+    },
+    "10.1.3": {
+      "word": "زيراً",
+      "head": "زير",
+      "root": "ز و ر",
+      "meaning": "Zir, one who keeps women’s company, a nickname Kulayb gave his brother."
+    },
+    "10.2.6": {
+      "word": "يَسلُسُ",
+      "head": "سَلِسَ",
+      "root": "س ل س",
+      "meaning": "To yield readily, as the rein of a tractable mount."
+    },
+    "4.2.4": {
+      "word": "أَنّى",
+      "meaning": "Where, or by what way. The needy man is trying to find the assembly that once offered him help."
+    },
+    "6.2.4": {
+      "word": "وَتَنَفَّسُ",
+      "head": "تَنَفَّسَ",
+      "root": "ن ف س",
+      "meaning": "To draw breath under distress. The recited verb is a shortened form of the feminine “she draws breath”."
+    }
+  }
+}

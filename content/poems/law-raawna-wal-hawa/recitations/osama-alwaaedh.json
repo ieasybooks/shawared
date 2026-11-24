@@ -1,0 +1,16 @@
+{
+  "reciter": "osama-alwaaedh",
+  "audio": "law-raawna-wal-hawa/osama-alwaaedh.83a6a796a9ce.m4a",
+  "duration": 51.6,
+  "source": "https://www.youtube.com/watch?v=ipkW5yDwuqM",
+  "timeline": [
+    ["1.1", 0.64, 6.26],
+    ["1.2", 6.88, 12.68],
+    ["2.1", 13.16, 19.13],
+    ["2.2", 19.60, 25.49],
+    ["3.1", 26.00, 31.60],
+    ["3.2", 32.26, 38.10],
+    ["4.1", 38.68, 44.54],
+    ["4.2", 45.02, 50.93]
+  ]
+}

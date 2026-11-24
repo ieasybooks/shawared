@@ -1,0 +1,91 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "If They Could See Us, with Love for a Third",
+  "intro": "At the opening of Shawqi’s poem, people startle a gazelle and it turns away. By the fourth verse they have become the fault-finders who talk his beloved into believing their stories. This recording takes up the next four verses, when the speaker imagines what those people would see if they surprised the two together.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "If they could see us, with love for a third,",
+        "and the dark letting down its curtains over us."
+      ],
+      "sharh": "“They” are the people who have been telling tales. The imagined witnesses arrive just as darkness draws the curtains. The speaker leaves his “if” hanging while he shows what goes on behind them."
+    },
+    "2": {
+      "translation": [
+        "Under the night’s protection, pledged to its care,",
+        "we speak of dawn only to wish it would stay away."
+      ],
+      "sharh": "In the language of hospitality, giving someone protection binds the host to keep them safe. Night has taken the lovers in, and the thought of dawn brings them to the limits of its hospitality."
+    },
+    "3": {
+      "translation": [
+        "Our two cloaks are full of chastity and desire.",
+        "He guarded his beauty, and I kept my manners."
+      ],
+      "sharh": "Each wears a separate cloak. What fills them is both desire and restraint. The second half gives the two people different parts in keeping that restraint, the beloved first and the speaker second."
+    },
+    "4": {
+      "translation": [
+        "Gazelle, you have made a home in my heart.",
+        "My heart is your hillside, a gentler place to play."
+      ],
+      "sharh": "The gazelle startled at the opening now has somewhere to go. Its presence makes the heart inhabited, and the heart offers something a real slope cannot give the animal, tenderness."
+    }
+  },
+  "words": {
+    "1.1.4": {
+      "word": "ثالِثُنا",
+      "head": "ثالِث",
+      "root": "ث ل ث",
+      "meaning": "The third member of a company. Love takes the place of a person sitting with the couple."
+    },
+    "1.2.1": {
+      "word": "وَالدُّجى",
+      "head": "الدُّجى",
+      "root": "د ج و",
+      "meaning": "The darkness of night, given the gesture of someone drawing a curtain."
+    },
+    "2.1.2": {
+      "word": "جِوارِ",
+      "head": "جِوار",
+      "root": "ج و ر",
+      "meaning": "Protection pledged by a host to someone who seeks refuge."
+    },
+    "2.1.5": {
+      "word": "ذِمَّتِهِ",
+      "head": "ذِمَّة",
+      "root": "ذ م م",
+      "meaning": "A pledge that binds its giver. Here the night guarantees the lovers’ safety."
+    },
+    "2.2.3": {
+      "word": "بِأَلّا",
+      "meaning": "“That it should stay away.” The lovers wish for dawn to delay. The two printed editions write the particles an and la separately. Here the spelling shows how the n runs into the following l."
+    },
+    "3.1.2": {
+      "word": "بُردَينا",
+      "head": "بُرد",
+      "root": "ب ر د",
+      "meaning": "Burd, a cloak worn around the body. The dual gives each lover one."
+    },
+    "4.1.3": {
+      "word": "أَهِلَ",
+      "root": "أ ه ل",
+      "meaning": "To become inhabited. The gazelle’s arrival gives the heart an occupant."
+    },
+    "4.2.2": {
+      "word": "السَّفحُ",
+      "head": "السَّفح",
+      "root": "س ف ح",
+      "meaning": "The lower slope of a hill, the gazelle’s familiar ground."
+    },
+    "4.2.3": {
+      "word": "وَأَحنى",
+      "head": "أَحنى",
+      "root": "ح ن و",
+      "meaning": "More tender or solicitous. The feeling of the lover passes into the place he offers."
+    }
+  }
+}

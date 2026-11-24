@@ -1,0 +1,569 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Umayma, Leave Me to the Grief That Wears Me Down",
+  "intro": "Al-Nabigha praises the Ghassanid prince Amr ibn al-Harith. In Abu Ubayda’s account he had sought refuge in Syria after an informer turned al-Nu'man of al-Hira against him. A man alone with his wakeful night gives way to an army whose progress the carrion birds know by heart. The poet follows the inherited swords as far as the battlefield, then takes us home to see how their owners dress and greet one another on a Christian feast day.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Umayma, leave me to the grief that wears me down",
+        "and the night I endure, whose stars move so slowly."
+      ],
+      "sharh": "He asks for solitude in the form of a direct appeal to someone beside him. The slow stars are his only means of telling how much of the night remains."
+    },
+    "2": {
+      "translation": [
+        "It stretches on until I say it will never end.",
+        "The man herding the stars never comes home."
+      ],
+      "sharh": "A herdsman’s return marks the end of the working day. Giving the stars a herdsman who stays out makes the whole sky share the sleepless man’s vigil."
+    },
+    "3": {
+      "translation": [
+        "And this breast, where night brings wandering cares home",
+        "and grief mounts on every side."
+      ],
+      "sharh": "The verb for bringing the herds in at evening answers the star-herdsman of the previous line. His cares do come home, all to the same narrow enclosure."
+    },
+    "4": {
+      "translation": [
+        "Amr has done me a kindness, after another",
+        "his father did me. It bears no scorpion’s sting."
+      ],
+      "sharh": "The father’s gift precedes the son’s. The sting stands for the reproach a benefactor might later address to the person who once needed him."
+    },
+    "5": {
+      "translation": [
+        "I have sworn an oath with no reserve,",
+        "with nothing to go on but trust in my friend."
+      ],
+      "sharh": "He binds himself by an oath about what somebody else will do. The only evidence he claims is the character of the man whose conduct he predicts."
+    },
+    "6": {
+      "translation": [
+        "If he belongs to those two graves, one at Jilliq",
+        "and one at Sayda, the one by Harib,"
+      ],
+      "sharh": "Being “of the two graves” means being descended from their occupants. The places stand in for two royal predecessors while the listener waits to hear what that ancestry commits Amr to."
+    },
+    "7": {
+      "translation": [
+        "and to al-Harith of Jafna, his people’s lord,",
+        "he will seek his enemy’s home with his army."
+      ],
+      "sharh": "The conditional begun at the graves finally reaches its verb. He expects Amr to go to his enemy’s own country on the strength of the family names he has just invoked."
+    },
+    "8": {
+      "translation": [
+        "I knew he would win when word came",
+        "that Ghassan’s companies had marched, with no outsiders mixed in."
+      ],
+      "sharh": "The news concerns the army’s departure. The poet needs no news of its return to judge the outcome, since the composition of the companies already tells him how they will hold together."
+    },
+    "9": {
+      "translation": [
+        "His nearest cousins, and the house of Amr ibn Amir,",
+        "are men whose valour never gives the lie to its name."
+      ],
+      "sharh": "Amr ibn Amir stands for his descendants. The speaker moves outward from immediate cousins to a common ancestry and says their fighting bears out what people say of them."
+    },
+    "10": {
+      "translation": [
+        "When they march to war, above them wheel",
+        "flocks of birds, one flock guiding another."
+      ],
+      "sharh": "The birds assemble before there is anything to eat. Their formation has its own order, with a following flock able to take its cue from the one ahead."
+    },
+    "11": {
+      "translation": [
+        "They keep the troops company and raid where they raid,",
+        "birds long accustomed to blood and practised in finding it."
+      ],
+      "sharh": "He gives the scavengers the same verb of raiding as the horsemen. They appear to know the route because previous battles with these men have fed them."
+    },
+    "12": {
+      "translation": [
+        "Behind the men you see their eyes turned sidelong,",
+        "like old men seated in their dark wraps."
+      ],
+      "sharh": "The seated elders enter through posture and clothing. Seen from behind the army, the watchful birds seem to have pulled the dark plumage round their shoulders."
+    },
+    "13": {
+      "translation": [
+        "They bank their wings, quite sure that his clan,",
+        "when the two hosts meet, will be first to prevail."
+      ],
+      "sharh": "A carrion bird might follow either side. Its certainty about which men will be left on the field turns an indifferent appetite into a compliment to Amr."
+    },
+    "14": {
+      "translation": [
+        "The birds have learnt what to expect of these men",
+        "when Khatt spears lie crosswise over the horses’ withers."
+      ],
+      "sharh": "The birds recognise the fight at its preparatory stage. An object seen across the saddle, before the first blow, tells them what will follow."
+    },
+    "15": {
+      "translation": [
+        "On grim mares seasoned to the thrust,",
+        "with wounds still bleeding and wounds already scabbed."
+      ],
+      "sharh": "The two conditions of the wounds let us see more than one engagement at once. The horses have experience written into their bodies as plainly as the birds have it in their habits."
+    },
+    "16": {
+      "translation": [
+        "When made to dismount for close fighting, they hurry",
+        "to death at the trot of unbroken camel stallions."
+      ],
+      "sharh": "A change from mounted to foot combat might bring an army to a halt. These men take on a new gait, the fast, powerful trot of a full-grown camel unused to the halter."
+    },
+    "17": {
+      "translation": [
+        "They pass draughts of death round among themselves,",
+        "white swords in their hands, fine at the striking edge."
+      ],
+      "sharh": "The drinking party is implicit in the reciprocal verb. Only in the second half, when we see what they have in their hands, does the exchange come fully into view."
+    },
+    "18": {
+      "translation": [
+        "Under them each helmet crest flies into fragments.",
+        "Slivers of brow bone follow it."
+      ],
+      "sharh": "The crest is the highest point of the helmet. What flies after the metal shows that the protection and the bone beneath it have given way in the same stroke."
+    },
+    "19": {
+      "translation": [
+        "They have no fault, except that their swords",
+        "are notched from striking against companies of men."
+      ],
+      "sharh": "The brief suspense after “except” matters. Each nick really is a flaw in the blade, and the reason it is there turns it into evidence for the swordsman."
+    },
+    "20": {
+      "translation": [
+        "Handed down since the day of Halima,",
+        "they have been put to every test up to today."
+      ],
+      "sharh": "The “they” still means the swords. A marked piece of steel can connect its present bearer physically to men who fought on the celebrated day bearing Halima’s name."
+    },
+    "21": {
+      "translation": [
+        "They cut through Saluq mail with its doubled weave",
+        "and kindle Habahib’s fire on slabs of stone."
+      ],
+      "sharh": "The first test is the closely doubled links of armour. The fleeting light in the second can come from steel striking stone, though one early explanation gives the sparks to the horses’ hooves."
+    },
+    "22": {
+      "translation": [
+        "A stroke unseats heads from their resting places,",
+        "a thrust draws spurts like those of pregnant camels kicking back."
+      ],
+      "sharh": "The two halves distinguish the marks left by sword and spear. The comparison is to a she-camel that kicks away a male and passes urine in short jets."
+    },
+    "23": {
+      "translation": [
+        "They have a quality God gave no other",
+        "people, and their good judgement never strays."
+      ],
+      "sharh": "The word for straying recalls the cares that wandered away in daylight. These men can count on having their judgement with them even in the heat of action."
+    },
+    "24": {
+      "translation": [
+        "They dwell in God’s own land, their faith",
+        "is upright. They look to the outcome of their deeds."
+      ],
+      "sharh": "Ibn Qutayba takes their dwelling to be the sacred land of Syria. The Arabic can suggest either hope of recompense or fear of reckoning, both apt to a Christian court."
+    },
+    "25": {
+      "translation": [
+        "Thin-soled sandals, clean waistbands.",
+        "They are greeted with fragrant sprigs on Palm Sunday."
+      ],
+      "sharh": "A thin sole signals a life spared rough walking. What is clean at the waist is the wearer’s conduct, and the greenery carried on the feast brings that life into public view."
+    },
+    "26": {
+      "translation": [
+        "Fair young serving women greet them in their midst,",
+        "and robes of red silk hang on the pegs."
+      ],
+      "sharh": "We can now see the people who offer the greeting and the garments kept ready in the house. The red cloth adds a new colour after the white steel and dark birds."
+    },
+    "27": {
+      "translation": [
+        "They guard bodies long accustomed to ease",
+        "in robes with pure white cuffs and green shoulders."
+      ],
+      "sharh": "The cuffs and shoulders allow a garment to be pictured piece by piece. The diwan commentary also records an explanation that reads the darkening of the shoulders as a mark left by arms."
+    },
+    "28": {
+      "translation": [
+        "They do not suppose that good can bring no ill,",
+        "nor think misfortune something that must always stick."
+      ],
+      "sharh": "Their judgement has a consequence in bad times as well as good. “A blow that sticks” is what they refuse to call a reverse while circumstances can still change."
+    },
+    "29": {
+      "translation": [
+        "I gave this poem to Ghassan as I made",
+        "my way to my people, when every road defeated me."
+      ],
+      "sharh": "The pronoun “this” points to the ode the audience has just heard. Amr’s gift early in the poem now has an answering gift from the man who needed somewhere to turn."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "كِليني",
+      "head": "كِلي",
+      "root": "و ك ل",
+      "meaning": "Leave me to it. The imperative is addressed to one woman."
+    },
+    "1.1.4": {
+      "word": "أُمَيمَةَ",
+      "head": "أُمَيمة",
+      "meaning": "Umayma, the woman addressed at the opening. The unusual vowel on her name attracted the attention of grammarians."
+    },
+    "1.1.5": {
+      "word": "ناصِبِ",
+      "head": "ناصِب",
+      "root": "ن ص ب",
+      "meaning": "Wearing, a care that brings fatigue and gives its bearer no respite."
+    },
+    "2.2.3-4": {
+      "word": "يَرعى النُّجومَ",
+      "head": "رَعى النُّجوم",
+      "root": "ر ع ي",
+      "meaning": "“He herds the stars.” He stays awake watching them move across the sky."
+    },
+    "2.2.5": {
+      "word": "بِآئِبِ",
+      "head": "آئِب",
+      "root": "أ و ب",
+      "meaning": "Returning home after an absence."
+    },
+    "3.1.2": {
+      "word": "أَراحَ",
+      "root": "ر و ح",
+      "meaning": "Brought livestock home in the evening. Night does this to the cares that wandered during the day."
+    },
+    "3.1.4-5": {
+      "word": "عازِبَ هَمِّهِ",
+      "head": "عازِب الهَمّ",
+      "root": "ع ز ب",
+      "meaning": "“The strayed part of his care.” What had wandered off while the day occupied him."
+    },
+    "4.1.2": {
+      "word": "لِعَمرٍو",
+      "head": "عَمرو",
+      "meaning": "Amr ibn al-Harith, the Ghassanid prince addressed. The diwan preserves differing accounts of the precise genealogy."
+    },
+    "4.2.3-4": {
+      "word": "بِذاتِ عَقارِبِ",
+      "head": "ذات عَقارِب",
+      "meaning": "“With scorpions in it.” A gift may sting afterwards if the giver holds it over the recipient."
+    },
+    "5.1.5": {
+      "word": "مَثنَوِيَّةٍ",
+      "head": "مَثنَوِيَّة",
+      "root": "ث ن ي",
+      "meaning": "A reservation in an oath that leaves the speaker a way out."
+    },
+    "6.1.5": {
+      "word": "بِجِلَّقٍ",
+      "head": "جِلَّق",
+      "meaning": "Jilliq, a name for Damascus or its vicinity, the location given for the first grave."
+    },
+    "6.2.2": {
+      "word": "بِصَيداءَ",
+      "head": "صَيداء",
+      "meaning": "Sayda, the Syrian place identified here by its proximity to Harib."
+    },
+    "6.2.5": {
+      "word": "حارِبِ",
+      "head": "حارِب",
+      "meaning": "Harib, used to locate the grave. The diwan records both a place name and a man’s name."
+    },
+    "7.1.2": {
+      "word": "الجَفنِيِّ",
+      "head": "الجَفنِيّ",
+      "meaning": "Jafni, of the house of Jafna, the Ghassanid royal line."
+    },
+    "8.2.3": {
+      "word": "غَسّانَ",
+      "head": "غَسّان",
+      "meaning": "Ghassan, the Azdi people whose royal house was established in Syria."
+    },
+    "8.2.5": {
+      "word": "أَشائِبِ",
+      "head": "أَشائِب",
+      "root": "ش و ب",
+      "meaning": "Men gathered from different stocks or outside contingents."
+    },
+    "9.1.3": {
+      "word": "دُنيا",
+      "head": "دِنيا",
+      "root": "د ن و",
+      "meaning": "Closely, by immediate kinship. The diwan also allows a rounded first vowel."
+    },
+    "9.1.4-6": {
+      "word": "وَعَمرو اِبنُ عامِرٍ",
+      "head": "عَمرو بن عامِر",
+      "meaning": "Amr ibn Amir, the Azdi ancestor called Muzayqiya. His name includes his descendants."
+    },
+    "10.1.4": {
+      "word": "بِالجَيشِ",
+      "head": "الجَيش",
+      "root": "ج ي ش",
+      "meaning": "With the army they have taken to war. Both texts give “in the army”, placing the men within its ranks."
+    },
+    "10.2.1": {
+      "word": "عَصائِبُ",
+      "head": "عِصابَة",
+      "root": "ع ص ب",
+      "meaning": "Bands or companies, here flocks flying together."
+    },
+    "11.1.4": {
+      "word": "مُغارَهُم",
+      "head": "مُغار",
+      "root": "غ و ر",
+      "meaning": "The place or course of a raid. The birds follow the troops to that same ground."
+    },
+    "11.2.4": {
+      "word": "الدَّوارِبِ",
+      "head": "دارِبَة",
+      "root": "د ر ب",
+      "meaning": "Practised through repetition. The birds have learnt where an army will leave food."
+    },
+    "12.1.4": {
+      "word": "خُزراً",
+      "head": "أَخزَر",
+      "root": "خ ز ر",
+      "meaning": "Squinting or casting a sidelong look."
+    },
+    "12.2.5": {
+      "word": "المَرانِبِ",
+      "head": "مَرانِب",
+      "root": "ر ن ب",
+      "meaning": "Dark wraps, explained also as garments of hare skin. Their folds suggest the vultures’ plumage."
+    },
+    "13.1.1": {
+      "word": "جَوانِحَ",
+      "head": "جانِحَة",
+      "root": "ج ن ح",
+      "meaning": "Banking or leaning their wings towards the ground before settling."
+    },
+    "13.1.5": {
+      "word": "قَبيلَهُ",
+      "head": "قَبيل",
+      "root": "ق ب ل",
+      "meaning": "A man’s own people, the fighting body to which he belongs."
+    },
+    "14.2.3": {
+      "word": "الخَطِّيُّ",
+      "head": "الخَطِّيّ",
+      "meaning": "Khatti, a spear named for al-Khatt, a port region of historical Bahrayn."
+    },
+    "14.2.5": {
+      "word": "الكَواثِبِ",
+      "head": "كاثِبَة",
+      "root": "ك ث ب",
+      "meaning": "Withers, where a horse’s neck meets its back in front of the saddle."
+    },
+    "15.1.2": {
+      "word": "عارِفاتٍ",
+      "head": "عارِفَة",
+      "root": "ع ر ف",
+      "meaning": "Mares accustomed to taking a thrust and standing their ground."
+    },
+    "15.2.5": {
+      "word": "وَجالِبِ",
+      "head": "جالِب",
+      "root": "ج ل ب",
+      "meaning": "A wound on which a dry scab has formed."
+    },
+    "16.1.5": {
+      "word": "أَرقَلوا",
+      "head": "أَرقَلَ",
+      "root": "ر ق ل",
+      "meaning": "Moved at a swift, bounding trot, originally said of camels."
+    },
+    "16.2.5": {
+      "word": "المَصاعِبِ",
+      "head": "مُصعَب",
+      "root": "ص ع ب",
+      "meaning": "Stallion camels left unbroken and unridden."
+    },
+    "17.1.3": {
+      "word": "المَنِيّاتِ",
+      "head": "مَنِيَّة",
+      "root": "م ن ي",
+      "meaning": "Death, imagined as a drink passed round. Both editions give the singular. The transcriptions hear the plural, “deaths”."
+    },
+    "17.2.2": {
+      "word": "بيضٌ",
+      "head": "أَبيَض",
+      "root": "ب ي ض",
+      "meaning": "“White ones,” blades of bright steel."
+    },
+    "17.2.4": {
+      "word": "المَضارِبِ",
+      "head": "مَضرِب",
+      "root": "ض ر ب",
+      "meaning": "The cutting portions of sword blades."
+    },
+    "18.1.2": {
+      "word": "فُضاضاً",
+      "head": "فُضاض",
+      "root": "ف ض ض",
+      "meaning": "Fragments scattered from something shattered."
+    },
+    "18.1.5": {
+      "word": "قَونَسٍ",
+      "head": "قَونَس",
+      "root": "ق ن س",
+      "meaning": "The crown of the head or crest of a helmet, where the descending blow lands."
+    },
+    "18.2.3-4": {
+      "word": "فَراشُ الحَواجِبِ",
+      "head": "فَراش الحَواجِب",
+      "root": "ف ر ش",
+      "meaning": "The thin pieces of bone by the eyebrows and bridge of the nose."
+    },
+    "19.2.2": {
+      "word": "فُلولٌ",
+      "head": "فَلّ",
+      "root": "ف ل ل",
+      "meaning": "Nicks left in a sword’s edge by repeated blows."
+    },
+    "19.2.4": {
+      "word": "قِراعِ",
+      "head": "قِراع",
+      "root": "ق ر ع",
+      "meaning": "The clash of repeated blows in close combat."
+    },
+    "20.1.4-5": {
+      "word": "يَومِ حَليمَةٍ",
+      "head": "يَوم حَليمَة",
+      "meaning": "Yawm Halima, a celebrated battle associated with Ghassan. The diwan’s accounts differ on the enemy fought there."
+    },
+    "21.1.2": {
+      "word": "السَّلوقِيَّ",
+      "head": "السَّلوقِيّ",
+      "meaning": "Saluqi, mail armour associated with the place Saluq."
+    },
+    "21.2.2": {
+      "word": "بِالصِّفاحِ",
+      "head": "صَفحَة",
+      "root": "ص ف ح",
+      "meaning": "Broad surfaces of rock that give off sparks when struck."
+    },
+    "21.2.3-4": {
+      "word": "نارَ الحُباحِبِ",
+      "head": "نار الحُباحِب",
+      "meaning": "“Habahib’s fire,” the brief sparks struck from rock by iron or a hoof."
+    },
+    "22.1.5": {
+      "word": "سَكِناتِهِ",
+      "head": "سَكِنَة",
+      "root": "س ك ن",
+      "meaning": "The resting places of the heads, their necks. A drawn-out vowel also admits another hearing. The card and the diwan give sakanat."
+    },
+    "22.2.2-3": {
+      "word": "كَإيزاغِ المَخاضِ",
+      "head": "إيزاغ المَخاض",
+      "root": "و ز غ",
+      "meaning": "The spurting of urine in separate jets from a pregnant she-camel."
+    },
+    "22.2.4": {
+      "word": "الضَّوارِبِ",
+      "head": "ضارِبَة",
+      "root": "ض ر ب",
+      "meaning": "She-camels that kick back at the approaching male."
+    },
+    "23.2.1-2": {
+      "word": "مِنَ النّاسِ",
+      "head": "مِنَ النّاس",
+      "meaning": "“Among people.” The diwan has “of generosity”, which identifies their particular virtue as giving."
+    },
+    "23.2.3": {
+      "word": "وَالأَحلامُ",
+      "head": "حِلم",
+      "root": "ح ل م",
+      "meaning": "Good sense and self-command under provocation."
+    },
+    "23.2.5": {
+      "word": "عَوازِبِ",
+      "head": "عازِبَة",
+      "root": "ع ز ب",
+      "meaning": "Absent or far afield, said here of judgement that stays near to hand."
+    },
+    "24.1.1": {
+      "word": "مَحَلَّتُهُم",
+      "head": "مَحَلَّة",
+      "root": "ح ل ل",
+      "meaning": "A people’s dwelling place. The books give the singular. The prolonged vowel can also sound like the plural, “their dwellings”."
+    },
+    "24.1.2-3": {
+      "word": "ذاتُ الإِلَهِ",
+      "head": "ذات الإِلَه",
+      "meaning": "“God’s own,” a description Ibn Qutayba associates with the sacred land of Syria, or specifically Jerusalem."
+    },
+    "25.1.1-2": {
+      "word": "رِقاقُ النِّعالِ",
+      "head": "رِقاق النِّعال",
+      "meaning": "“Thin of sandal,” a sign of people spared long, rough journeys on foot."
+    },
+    "25.1.4": {
+      "word": "حُجُزاتُهُم",
+      "head": "حُجزَة",
+      "root": "ح ج ز",
+      "meaning": "The waistband or place where a wrapper is tied. Its purity stands for chastity."
+    },
+    "25.2.3-4": {
+      "word": "يَومَ السَّباسِبِ",
+      "head": "يَوم السَّباسِب",
+      "meaning": "Yawm al-Sabasib, the Arab Christian name here for Palm Sunday, the Sunday before Easter."
+    },
+    "26.1.3": {
+      "word": "الوَلائِدِ",
+      "head": "وَليدَة",
+      "root": "و ل د",
+      "meaning": "Young enslaved women in domestic service."
+    },
+    "26.2.2": {
+      "word": "الإِضريجِ",
+      "head": "الإِضريج",
+      "root": "ض ر ج",
+      "meaning": "Red silk or silk-blend cloth used for fine robes."
+    },
+    "26.2.4": {
+      "word": "المَشاجِبِ",
+      "head": "مِشجَب",
+      "root": "ش ج ب",
+      "meaning": "Wooden pegs or stands on which clothes are hung."
+    },
+    "27.2.2": {
+      "word": "الأَردانِ",
+      "head": "رُدن",
+      "root": "ر د ن",
+      "meaning": "Cuffs or sleeve ends, here taken as pure white."
+    },
+    "28.2.4-5": {
+      "word": "ضَربَةَ لازِبِ",
+      "head": "ضَربَة لازِب",
+      "root": "ل ز ب",
+      "meaning": "“A blow that sticks,” a condition fixed beyond change."
+    },
+    "29.1.1": {
+      "word": "حَبَوتُ",
+      "head": "حَبا",
+      "root": "ح ب و",
+      "meaning": "Bestowed as a gift or mark of favour, here the ode itself."
+    },
+    "29.2.3": {
+      "word": "أَعيَت",
+      "head": "أَعيا",
+      "root": "ع ي ي",
+      "meaning": "Defeated or baffled him, said of avenues of escape that no longer offer a way through."
+    }
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "The Vision Came by Night. What a Night for a Traveller",
+  "intro": "A woman’s image reaches the travellers by night after a crossing that exhausted their camels. Al-Harith then recalls a hunt and the welcome his people offer when milk runs short. Charles Lyall reads this short poem preserved in the Mufaddaliyyat as three passages placed together, moving from a night visit to a hunter’s memories and a tribe’s boasts.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "The vision came by night. What a night for a traveller,",
+        "drawn to our saddles, yet unwilling to stay."
+      ],
+      "sharh": "The saddles stand for a camp which will itself move on. The visitor’s attachment lasts just long enough to bring her there. The last verb takes away the hope that she will pause."
+    },
+    "2": {
+      "translation": [
+        "How did you find the way, so little used to walking,",
+        "when our party had crossed the hard ridges of Sajsaj?"
+      ],
+      "sharh": "He speaks to the image as if the woman herself had made the journey. Someone he remembers as a poor walker has overtaken a mounted party across hard, raised ground."
+    },
+    "3": {
+      "translation": [
+        "The travellers had slowed, their mounts were spent,",
+        "save one still swift beneath the litter."
+      ],
+      "sharh": "The exhausted mounts give a measure of what the apparition has travelled. The exception is a working animal still carrying the weight of a passenger’s litter."
+    },
+    "4": {
+      "translation": [
+        "Many a draught of wine I have followed with another,",
+        "many a gazelle at a valley bend I have startled on a long-backed horse."
+      ],
+      "sharh": "An Arabic construction meaning “many a” carries across both halves. He pairs two pleasures of a past life, cups taken in succession and a horse long in the back for hunting."
+    },
+    "5": {
+      "translation": [
+        "They looked like pearls, and he",
+        "like a hawk whose doves seek refuge in boxthorn."
+      ],
+      "sharh": "The plural points to the gazelles, the singular to his horse. The change of pronoun begins a second picture in which frightened doves take their chances among thorns."
+    },
+    "6": {
+      "translation": [
+        "A hawk that hunts with talon and wing.",
+        "Once he strikes a dove, she takes no further step."
+      ],
+      "sharh": "The hawk from the preceding comparison now has a whole verse to itself. After the sweep of wings, the smallest movement a bird might make on the ground is enough to mark the end of the hunt."
+    },
+    "7": {
+      "translation": [
+        "If you ask when the battalion shrinks back",
+        "and the rash coward’s fear shows through,"
+      ],
+      "sharh": "The woman may inquire at the moment when bluster ceases to pass for courage. The conditional opens here and holds its answer back until she has seen the tribe in another kind of trial."
+    },
+    "8": {
+      "translation": [
+        "and you take the strokes of our swords on their heads",
+        "for rain beating on a laced leather tent,"
+      ],
+      "sharh": "The comparison depends on hearing. Rain on a stretched hide is louder and more distinct than rain on sand. The lacing explains the taut surface that produces that sound."
+    },
+    "9": {
+      "translation": [
+        "and when the milk camels come home at dusk,",
+        "trotting like ostriches to the arfaj-brush shelter,"
+      ],
+      "sharh": "The animals hurry to a brushwood windbreak on short, quick steps. Their being milk camels matters to the next line, since the cold season brings them home with little to offer."
+    },
+    "10": {
+      "translation": [
+        "you will find no clan better to a guest.",
+        "If there is no milk, we turn to the polished lot-arrow."
+      ],
+      "sharh": "The polished arrow belongs to the drawing of lots over a slaughter animal. The fellowship takes on the cost of meat when even the usual bowl of milk is unavailable."
+    }
+  },
+  "words": {
+    "1.1.5": {
+      "word": "مُدلِجِ",
+      "head": "مُدلِج",
+      "root": "د ل ج",
+      "meaning": "Mudlij, someone travelling by night."
+    },
+    "1.2.1": {
+      "word": "سَدِكاً",
+      "head": "سَدِك",
+      "root": "س د ك",
+      "meaning": "Drawn persistently to someone or something."
+    },
+    "2.1.5": {
+      "word": "رَجيلَةٍ",
+      "head": "رَجيلَة",
+      "root": "ر ج ل",
+      "meaning": "Sturdy on foot, able to walk a distance."
+    },
+    "2.2.4": {
+      "word": "مِتانَ",
+      "head": "مِتان",
+      "root": "م ت ن",
+      "meaning": "Hard rises or ridges of ground."
+    },
+    "2.2.5": {
+      "word": "السَّجسَجِ",
+      "head": "السَّجسَج",
+      "meaning": "Sajsaj, a place reached by crossing ridges. Lyall distinguishes it from a similarly named well on the Mecca–Medina route."
+    },
+    "3.1.3": {
+      "word": "آنَوا",
+      "head": "آنى",
+      "root": "ا ن ي",
+      "meaning": "They slowed or fell behind as the journey wore on."
+    },
+    "3.2.2-3": {
+      "word": "مُواشِكَةَ النَّجا",
+      "head": "مُواشِكَة النَّجا",
+      "meaning": "A she-camel quick in her going even under a load."
+    },
+    "4.1.2": {
+      "word": "قَرَّعتُها",
+      "head": "قَرَّعَ",
+      "root": "ق ر ع",
+      "meaning": "To follow one draught of wine with another."
+    },
+    "4.2.2": {
+      "word": "مَحنِيَةٍ",
+      "head": "مَحنِيَة",
+      "root": "ح ن ي",
+      "meaning": "A bend in a valley or track, here holding a herd of gazelles."
+    },
+    "4.2.4": {
+      "word": "بِسَمحَجِ",
+      "head": "سَمحَج",
+      "root": "س م ح ج",
+      "meaning": "Samhaj, a long-bodied horse."
+    },
+    "5.1.2": {
+      "word": "لَآلِئٌ",
+      "head": "لَآلِئ",
+      "root": "ل أ ل أ",
+      "meaning": "Pearls, a comparison for the white gazelles. The studio writes a shorter plural with the same meaning."
+    },
+    "5.2.1": {
+      "word": "صَقرٌ",
+      "head": "صَقر",
+      "root": "ص ق ر",
+      "meaning": "A hawk, the counterpart of the hunting horse. The middle consonant is easily heard as kh, which yields “rock”. Doves taking cover and a hunter with talons and wings identify the bird."
+    },
+    "5.2.4": {
+      "word": "بِالعَوسَجِ",
+      "head": "العَوسَج",
+      "root": "ع س ج",
+      "meaning": "Boxthorn, a thorny shrub in which small birds can shelter."
+    },
+    "6.2.5": {
+      "word": "تَدرُجِ",
+      "head": "دَرَجَ",
+      "root": "د ر ج",
+      "meaning": "To take small steps, here of a bird on the ground."
+    },
+    "7.1.5": {
+      "word": "أَجحَمَت",
+      "head": "أَجحَمَ",
+      "root": "ج ح م",
+      "meaning": "To recoil or hang back before an engagement."
+    },
+    "7.2.2": {
+      "word": "رِعَةُ",
+      "head": "رِعَة",
+      "root": "و ر ع",
+      "meaning": "Restraint that here betrays fear."
+    },
+    "8.2.4-5": {
+      "word": "الطِّرافِ المُشرَجِ",
+      "head": "الطِّراف المُشرَج",
+      "meaning": "A leather tent fastened together with laces."
+    },
+    "9.1.2": {
+      "word": "اللِّقاحُ",
+      "head": "اللِّقاح",
+      "root": "ل ق ح",
+      "meaning": "Milk camels, whose evening return would normally promise a drink for guests."
+    },
+    "9.2.1": {
+      "word": "رَتكَ",
+      "head": "رَتك",
+      "root": "ر ت ك",
+      "meaning": "A quick, short-stepping gait associated with ostriches."
+    },
+    "9.2.4-5": {
+      "word": "كَنيفِ العَرفَجِ",
+      "head": "كَنيف العَرفَج",
+      "meaning": "A windbreak or enclosure made of arfaj brush."
+    },
+    "10.1.4": {
+      "word": "عِمارَةٍ",
+      "head": "عِمارَة",
+      "root": "ع م ر",
+      "meaning": "A substantial tribal group able to maintain itself."
+    },
+    "10.2.6": {
+      "word": "المُدمَجِ",
+      "head": "المُدمَج",
+      "root": "د م ج",
+      "meaning": "A smoothly finished lot-arrow used in sharing out a slaughter animal."
+    }
+  }
+}

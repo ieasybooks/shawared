@@ -1,0 +1,167 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Know That the Best of Men Lies Dead",
+  "intro": "Qays of Abs mourns Hamal ibn Badr of Fazara, an enemy killed at the water of al-Haba'a in the war of Dahis and al-Ghabra. He calls Hamal the best of men and still holds him answerable for the wrong that brought them there. The speaker then considers how his own restraint looks to an opponent, and finds a lesson in the time it takes to straighten a stick over a fire.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Know that the best of men lies dead",
+        "beside the well of al-Haba'a. He never stirs."
+      ],
+      "sharh": "Qays makes us see a particular man at a particular waterhole before he gives his name. To anyone who knew the battle, the place already carried news of who had won."
+    },
+    "2": {
+      "translation": [
+        "Had he done no wrong, I would weep for him",
+        "all my life, as long as the stars rise."
+      ],
+      "sharh": "Hamal’s claim upon his grief survives the quarrel. Qays measures what the quarrel costs him in all the nights he might have spent freely mourning."
+    },
+    "3": {
+      "translation": [
+        "But that young man, Hamal ibn Badr,",
+        "overstepped the mark. Oppression makes sickening pasture."
+      ],
+      "sharh": "The name comes just as the praise becomes hardest to sustain. A grazing ground can look inviting while the food it offers makes an animal ill."
+    },
+    "4": {
+      "translation": [
+        "I think my forbearance emboldened my people against me.",
+        "Even a patient man can be goaded into folly."
+      ],
+      "sharh": "Qays looks back at the part his own reputation played. Al-Marzuqi understands the passive verb as being driven to act against one’s habitual good judgement."
+    },
+    "5": {
+      "translation": [
+        "Do not take to wrongdoing because you see",
+        "a man who wrongs others enjoying wealth."
+      ],
+      "sharh": "Wealth is the part of another man’s conduct that an onlooker can see. Qays leaves the word that judges its possessor until the verse’s final beat."
+    },
+    "6": {
+      "translation": [
+        "Take your time with a matter and stay with it.",
+        "No one straightens your stick like a patient hand."
+      ],
+      "sharh": "The craft takes both heat and time. Abu Ubayda explains that the worker turns the wood over the fire until it yields, giving patience an action of its own."
+    },
+    "7": {
+      "translation": [
+        "I meet with things in men that I condemn.",
+        "I speak against them, without trampling anyone down."
+      ],
+      "sharh": "The same Arabic root names the objectionable acts and his act of objecting. He reserves a different word for the man who strikes out regardless of whom he hurts."
+    },
+    "8": {
+      "translation": [
+        "Let a way round the difficulty stay within your reach",
+        "when an opponent refuses you your due."
+      ],
+      "sharh": "The first half offers a way round an obstruction. Only in the second do we learn when Qays thinks that ingenuity fair, namely when the other party has already denied him justice."
+    },
+    "9": {
+      "translation": [
+        "I have tested men, and they have tested me.",
+        "Some deal crookedly with me and some stand straight."
+      ],
+      "sharh": "The two verbs exchange subject and object. The last two adjectives recall the shape of the stick, but in a lifetime of dealing with men Qays has encountered both outcomes."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "تَعَلَّم",
+      "root": "ع ل م",
+      "meaning": "Know for certain. An imperative used to introduce news."
+    },
+    "1.2.2-3": {
+      "word": "جَفرِ الهَباءَةِ",
+      "head": "جَفر الهَباءَة",
+      "meaning": "Jafr al-Haba'a, the waterhole where the two sides met. Al-Marzuqi describes a shallow well with ample water."
+    },
+    "1.2.4-5": {
+      "word": "ما يَريمُ",
+      "head": "رامَ",
+      "root": "ر ي م",
+      "meaning": "“He never stirs.” The verb means to move away from a place."
+    },
+    "2.2.3-5": {
+      "word": "ما طَلَعَ النُّجومُ",
+      "head": "ما طَلَعَ النُّجوم",
+      "meaning": "“As long as the stars rise.” A measure of time with no last night in sight."
+    },
+    "3.1.3-5": {
+      "word": "حَمَلَ اِبنَ بَدرٍ",
+      "head": "حَمَل بن بَدر",
+      "meaning": "Hamal ibn Badr, a chief of Fazara and brother of Hudhayfa ibn Badr, killed at al-Haba'a."
+    },
+    "3.2.3": {
+      "word": "مَرتَعُهُ",
+      "head": "مَرتَع",
+      "root": "ر ت ع",
+      "meaning": "Pasture where animals graze at ease, here the apparent advantages open to a wrongdoer."
+    },
+    "3.2.4": {
+      "word": "وَخيمُ",
+      "head": "وَخيم",
+      "root": "و خ م",
+      "meaning": "Unwholesome, originally of food or pasture that is hard to digest."
+    },
+    "4.2.2": {
+      "word": "يُستَجهَلُ",
+      "head": "اُستُجهِلَ",
+      "root": "ج ه ل",
+      "meaning": "Provoked to rash conduct, or, in another reading of the verb’s sense, taken for a fool."
+    },
+    "5.1.2": {
+      "word": "تَغشَ",
+      "head": "غَشِيَ",
+      "root": "غ ش ي",
+      "meaning": "Approach or become involved in something, here to practise injustice."
+    },
+    "6.1.4": {
+      "word": "وَاستَدِمهُ",
+      "head": "اِستَدِم",
+      "root": "د و م",
+      "meaning": "Give a matter time and see it through."
+    },
+    "6.2.2-3": {
+      "word": "صَلّى عَصاكَ",
+      "head": "صَلّى العَصا",
+      "root": "ص ل ي",
+      "meaning": "“He heated your stick.” Turning a stick over fire makes it supple enough to straighten."
+    },
+    "7.2.4": {
+      "word": "بِالغَشومِ",
+      "head": "غَشوم",
+      "root": "غ ش م",
+      "meaning": "Overbearing, indiscriminate in the harm he does."
+    },
+    "8.1.3": {
+      "word": "عُرقوبٌ",
+      "head": "عُرقوب",
+      "root": "ع ر ق ب",
+      "meaning": "A turn or stratagem in argument, a way past an unfair opponent’s case."
+    },
+    "8.1.4": {
+      "word": "لِلَأيٍ",
+      "head": "لَأي",
+      "root": "ل أ ي",
+      "meaning": "Difficulty or hard going. Ibn Qutayba connects it here with an opponent’s evasiveness."
+    },
+    "8.2.4": {
+      "word": "النَّصَفَ",
+      "head": "النَّصَف",
+      "root": "ن ص ف",
+      "meaning": "Fair treatment, giving the other party his due. Both nasaf and nisf are transmitted."
+    },
+    "9.1.1": {
+      "word": "وَمارَستُ",
+      "head": "مارَسَ",
+      "root": "م ر س",
+      "meaning": "Dealt with someone at close quarters and learnt his ways from experience."
+    }
+  }
+}
