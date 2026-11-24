@@ -15,12 +15,13 @@ const REPO = join(import.meta.dirname, "..");
 const scratch = mkdtempSync(join(tmpdir(), "shawared-audio-"));
 afterAll(() => rmSync(scratch, { recursive: true, force: true }));
 
-// A copy of the repository's content, as before its first recording's upload:
-// that recording's key back to its plain name, and a silent recording of its
-// length in its source's place.
+// Two real poems exercise both upload paths. The first has a local source and
+// the second has only its published key. Both preview builds use this catalogue.
 function copyOfContent(): string {
   const root = mkdtempSync(join(scratch, "root-"));
-  cpSync(join(REPO, "content"), join(root, "content"), { recursive: true });
+  for (const path of ["poets", "reciters", "poems/bakaytu-ala-al-shababi", "poems/taqulu-buthaynatu"]) {
+    cpSync(join(REPO, "content", path), join(root, "content", path), { recursive: true });
+  }
   const [r] = recordings(root);
   const source = sourcePath(root, r!.poem, r!.recitation);
   mkdirSync(join(source, ".."), { recursive: true });
