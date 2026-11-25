@@ -5,6 +5,7 @@ import { Icon } from "../../components/ui/Icon";
 import { TextLink } from "../../components/ui/TextLink";
 import { meterName, rhymeName, t } from "../../lib/i18n";
 import { Only, responsive, useLayout } from "../../lib/responsive";
+import { rhymeFor } from "../../lib/rhymes";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
@@ -44,6 +45,7 @@ export function Meta() {
   const layout = useLayout();
   const { poem } = bundle;
   const primary = poem.themes?.[0];
+  const rhyme = rhymeFor(poem.rawiy);
   const enTitle = lang === "en" ? sources.find((s) => s.title)?.title : undefined;
   const pill = hasTranslation ? <TogglePill label={t(lang, "translation")} on={trOn} onPress={() => setTrOn(!trOn)} /> : null;
   return (
@@ -81,7 +83,7 @@ export function Meta() {
             </Chip>
           )}
           <Chip href={href(paths.meter(poem.meter))}>{meterName(poem.meter, lang)}</Chip>
-          {poem.rawiy && <Chip>{rhymeName(poem.rawiy, lang)}</Chip>}
+          {poem.rawiy && <Chip {...(rhyme ? { href: href(paths.rhyme(rhyme.id)) } : {})}>{rhymeName(poem.rawiy, lang)}</Chip>}
         </View>
         <View style={[styles.facts, styles.tools]}>
           {hasAbout && (

@@ -54,6 +54,8 @@ test("every kind of page wakes up without errors", async ({ page }) => {
     "/reciters",
     "/themes",
     "/themes/ritha",
+    "/rhymes",
+    "/rhymes/ra",
     "/meters",
     "/poets/jamil-buthayna",
     "/reciters/osama-alwaaedh",
@@ -263,7 +265,7 @@ test("a reciter's page links to their channel and lists their poems", async ({ p
 
 test("a meter's page shows its feet and its poems", async ({ page }) => {
   await page.goto("/meters");
-  // The fifteenth of sixteen: below the fold.
+  // The list is sorted by poem count.
   await (await scrollToRow(page, "المتقارب")).click();
   await expect(page).toHaveURL(/\/meters\/mutaqarib$/);
   await expect(shown(page, "فَعولُنْ فَعولُنْ فَعولُنْ فَعولُنْ")).toBeVisible();

@@ -137,6 +137,8 @@ for (const lang of ["ar", "en"] as const) {
       "/meters",
       "/themes",
       "/themes/ritha",
+      "/rhymes",
+      "/rhymes/ra",
       "/meters/mutaqarib",
       "/meters/kamil",
       "/library",

@@ -11,6 +11,8 @@ const PAGES = [
   "/meters/mutaqarib",
   "/themes",
   "/themes/ritha",
+  "/rhymes",
+  "/rhymes/ra",
   "/library",
   "/poems/taqulu-buthaynatu",
   "/en/poems/taqulu-buthaynatu",

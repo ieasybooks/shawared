@@ -1,12 +1,13 @@
 import type { Catalog } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { Link } from "expo-router";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
 import { TextLink } from "../../components/ui/TextLink";
 import { useCatalog } from "../../lib/content";
-import { METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
+import { SortBar } from "../library/DirectoryControls";
+import { directoryCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { ARABIC } from "../../lib/align";
 import { useSettings } from "../../lib/settings";
@@ -14,11 +15,20 @@ import { useType } from "../../lib/type";
 import { DetailFacts, ListPage, PageFrame, SectionHead } from "../library/Page";
 import { PoemRow } from "../library/PoemCard";
 
-/** The sixteen meters of classical Arabic poetry, in their traditional order. */
+/** The sixteen meters of classical Arabic poetry, sorted by poem count or name. */
 export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { lang } = useSettings();
   const title = t(lang, "meters");
+  const [order, setOrder] = useState<"byPoemCount" | "alphabetical">("byPoemCount");
+  const meters = useMemo(() => {
+    const counts = data?.meters ?? {};
+    const collator = new Intl.Collator(lang, { sensitivity: "base" });
+    return [...METER_IDS].sort(
+      (a, b) =>
+        (order === "byPoemCount" ? (counts[b] ?? 0) - (counts[a] ?? 0) : 0) || collator.compare(meterName(a, lang), meterName(b, lang)),
+    );
+  }, [data, lang, order]);
   if (!data)
     return (
       <PageFrame back title={title}>
@@ -29,7 +39,16 @@ export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | und
     <ListPage
       back
       title={title}
-      data={METER_IDS}
+      header={
+        <SortBar
+          count={directoryCount("meters", meters.length, lang)}
+          label={t(lang, "sortMeters")}
+          options={["byPoemCount", "alphabetical"]}
+          value={order}
+          onChange={setOrder}
+        />
+      }
+      data={meters}
       keyOf={(m) => m}
       renderItem={(m, i) => <MeterRow id={m} count={data.meters[m] ?? 0} first={i === 0} />}
       estimatedItemSize={96}

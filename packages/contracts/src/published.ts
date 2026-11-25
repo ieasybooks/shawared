@@ -65,6 +65,7 @@ export type CatalogPoem = z.infer<typeof CatalogPoem>;
 
 export const CatalogPerson = z.object({
   id: z.string(),
+  era: z.string().optional(),
   name: z.string(),
   names: z.record(z.string(), z.string()).default({}),
   died: Died.optional(),

@@ -6,7 +6,7 @@ import { expect, test, type Page, type Route } from "@playwright/test";
 // take over and check that nothing moves, and that resizing switches the layout.
 const WIDE_MIN = 960;
 const POEM = "/poems/taqulu-buthaynatu";
-const PAGES = ["/", POEM, "/poets/jamil-buthayna", "/themes", "/themes/ritha"];
+const PAGES = ["/", POEM, "/poets/jamil-buthayna", "/themes", "/themes/ritha", "/poets", "/reciters", "/rhymes", "/rhymes/ra"];
 
 type Box = { text: string; x: number; y: number; w: number; h: number };
 
@@ -72,7 +72,9 @@ async function expectLayout(page: Page, layout: "phone" | "wide", path: string) 
     await expect(nav).toBeHidden();
     // The tab pages show the tabs; a poem or a poet has back in the top bar.
     await expect(
-      path === "/" || path === "/themes" ? page.getByRole("tablist") : page.getByRole("button", { name: "رجوع" }).first(),
+      ["/", "/poets", "/reciters", "/themes", "/library"].includes(path)
+        ? page.getByRole("tablist")
+        : page.getByRole("button", { name: "رجوع" }).first(),
     ).toBeVisible();
   }
 }

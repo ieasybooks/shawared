@@ -32,6 +32,8 @@ export const paths = {
   reciter: (id: string) => `/reciters/${id}`,
   themes: "/themes",
   theme: (id: string) => `/themes/${id}`,
+  rhymes: "/rhymes",
+  rhyme: (id: string) => "/rhymes/" + id,
   meters: "/meters",
   meter: (id: string) => `/meters/${id}`,
   poem: (id: string, bayt?: number) => (bayt ? `/poems/${id}?b=${bayt}` : `/poems/${id}`),

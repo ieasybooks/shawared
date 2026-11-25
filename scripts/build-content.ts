@@ -69,7 +69,14 @@ const langFiles = (dir: string, main: string) =>
     .sort((a, b) => a.length - b.length || a.localeCompare(b));
 
 type Person = {
-  main: { id: string; name: string; full_name?: string; died?: { hijri: number; ce: number }; links?: Record<string, string> };
+  main: {
+    id: string;
+    name: string;
+    era?: string;
+    full_name?: string;
+    died?: { hijri: number; ce: number };
+    links?: Record<string, string>;
+  };
   langs: Record<string, { name?: string; bio?: string }>;
 };
 function people(kind: "poets" | "reciters"): Map<string, Person> {
@@ -94,7 +101,11 @@ const personBasics = (p: Person) => ({
   names: Object.fromEntries(Object.entries(p.langs).flatMap(([l, v]) => (v.name ? [[l, v.name]] : []))),
   ...(p.main.died ? { died: p.main.died } : {}),
 });
-const catalogPerson = (p: Person, poems: number): CatalogPerson => ({ ...personBasics(p), poems });
+const catalogPerson = (p: Person, poems: number): CatalogPerson => ({
+  ...personBasics(p),
+  ...(p.main.era ? { era: p.main.era } : {}),
+  poems,
+});
 const nameIn = (p: Person, lang: string) => p.langs[lang]?.name ?? p.main.name;
 
 const poets = people("poets");

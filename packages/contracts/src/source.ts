@@ -1,5 +1,6 @@
 // The files editors write under content/. Strict: an unknown field is a mistake.
 import { z } from "zod";
+import { ERA_IDS } from "./eras.ts";
 import { LINE_RE, WORD_RE } from "./address.ts";
 
 export const METERS = [
@@ -119,6 +120,7 @@ export const Recitation = z.strictObject({
 
 export const Poet = z.strictObject({
   id: Slug,
+  era: z.enum(ERA_IDS).optional(),
   name: Text,
   full_name: Text.optional(),
   died: z.strictObject({ hijri: z.int(), ce: z.int() }).optional(),

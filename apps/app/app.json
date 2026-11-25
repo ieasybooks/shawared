@@ -49,6 +49,7 @@
             { "path": "/reciters" },
             { "path": "/themes" },
             { "path": "/meters" },
+            { "path": "/rhymes" },
             { "path": "/library" },
             { "path": "/app" },
             { "pathPrefix": "/poems/" },
@@ -56,18 +57,21 @@
             { "pathPrefix": "/reciters/" },
             { "pathPrefix": "/themes/" },
             { "pathPrefix": "/meters/" },
+            { "pathPrefix": "/rhymes/" },
             { "path": "/en" },
             { "path": "/en/poets" },
             { "path": "/en/reciters" },
             { "path": "/en/themes" },
             { "path": "/en/meters" },
+            { "path": "/en/rhymes" },
             { "path": "/en/library" },
             { "path": "/en/app" },
             { "pathPrefix": "/en/poems/" },
             { "pathPrefix": "/en/poets/" },
             { "pathPrefix": "/en/reciters/" },
             { "pathPrefix": "/en/themes/" },
-            { "pathPrefix": "/en/meters/" }
+            { "pathPrefix": "/en/meters/" },
+            { "pathPrefix": "/en/rhymes/" }
           ],
           "category": ["BROWSABLE", "DEFAULT"]
         }
