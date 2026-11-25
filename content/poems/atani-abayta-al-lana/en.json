@@ -1,0 +1,207 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Word has reached me, may you be above reproach, that you blame me",
+  "intro": "Al-Nabigha addresses al-Nu'man ibn al-Mundhir, king of al-Hira, after word reaches him that the king resents his ties with the rulers of Syria. He asks the king to judge a visiting poet by his own hospitality to strangers. A tarred camel and the sun among the stars show what one man's displeasure can do to everyone around him. Al-Suyuti records these twelve lines as a complete poem in al-Asma'i's transmission and describes a longer version beginning at Su'ad's deserted camp.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Word has reached me, may you be above reproach, that you blame me",
+        "and that is what troubles and wearies me."
+      ],
+      "sharh": "The report reaches him at a distance. He interrupts it with the salutation due a king, keeping his courtesy even as he tells al-Nu'man what the news has cost him."
+    },
+    "2": {
+      "translation": [
+        "I spent the night as though the women visiting my sickbed",
+        "had spread it with thorns, strewn and mixed into the bedding."
+      ],
+      "sharh": "The sick normally look to their visitors for comfort. Here even the women making up his bed seem to work thorns into it. Every turn in the night renews the pain."
+    },
+    "3": {
+      "translation": [
+        "I swore, leaving you no room for doubt.",
+        "Beyond God a man has nowhere to turn."
+      ],
+      "sharh": "God was witness to his oath. If the king asks for a stronger guarantee of loyalty, the poet has exhausted the means open to him."
+    },
+    "4": {
+      "translation": [
+        "If treachery on my part has been reported to you,",
+        "the informer who brought it is more deceitful, more false."
+      ],
+      "sharh": "He separates the fact that the king heard a report from the truth of the report. The comparative turns the charge back on the very man whose word supports it."
+    },
+    "5": {
+      "translation": [
+        "But I was a man with another corner",
+        "of the earth where I was free to come and go."
+      ],
+      "sharh": "Another part of the world was open to him. The freedom of coming and going prepares his defence of a poet's right to visit another court."
+    },
+    "6": {
+      "translation": [
+        "Kings and brothers, whenever I came to them,",
+        "let me dispose of their wealth and drew me close."
+      ],
+      "sharh": "The Syrian rulers received him like a brother and let him name his reward. Such generosity puts the guest under an obligation to acknowledge it."
+    },
+    "7": {
+      "translation": [
+        "You do the same for men you have singled out,",
+        "and see no sin in their thanking you for it."
+      ],
+      "sharh": "The king's own guests come from other countries and thank him for his patronage. To condemn the poet for returning the same courtesy would put those guests in the wrong as well."
+    },
+    "8": {
+      "translation": [
+        "Do not leave me under threat, as though in people's eyes",
+        "I were a mangy camel smeared with tar."
+      ],
+      "sharh": "Tar was applied to a camel's diseased skin, making its condition visible to anyone keeping a herd. The king need only threaten him for others to keep their distance."
+    },
+    "9": {
+      "translation": [
+        "See the rank that God has given you.",
+        "Every king below it seems to sway."
+      ],
+      "sharh": "The king's rank stands firm while other rulers seem to hang unsteadily below it. A hierarchy of earthly courts is about to become something visible in the sky."
+    },
+    "10": {
+      "translation": [
+        "You are the sun, and the kings are stars.",
+        "When it rises, no star among them shows."
+      ],
+      "sharh": "Stars shine in their own right and can be admired while the sun is absent. That detail makes the compliment an answer to the charge of praising other men."
+    },
+    "11": {
+      "translation": [
+        "You will keep no brother unless you help him mend",
+        "what is amiss. What man is free of faults?"
+      ],
+      "sharh": "The word for mending also means gathering up what has come apart. A friend needs someone willing to put his affairs in order. The question at the end asks the king to name a single man who could meet a demand for perfection."
+    },
+    "12": {
+      "translation": [
+        "If I am wronged, I am a servant you have wronged.",
+        "If you incline to reconciliation, one like you makes amends."
+      ],
+      "sharh": "Calling himself the king's servant makes the charge of injustice quiet but unmistakable. The final word offers the ruler a dignified way to restore their relationship."
+    }
+  },
+  "words": {
+    "1.1.2-3": {
+      "word": "أَبَيتَ اللَّعنَ",
+      "head": "أَبَيتَ اللَّعن",
+      "meaning": "“May you refuse a curse.” A royal salutation wishing the king above conduct that earns a curse."
+    },
+    "1.2.5": {
+      "word": "وَأَنصَبُ",
+      "head": "نَصِبَ",
+      "root": "ن ص ب",
+      "meaning": "Grow weary or worn out by distress."
+    },
+    "2.1.3": {
+      "word": "العائِداتِ",
+      "head": "العائِدَة",
+      "root": "ع و د",
+      "meaning": "Women calling on someone who is ill."
+    },
+    "2.2.1": {
+      "word": "هَراساً",
+      "head": "هَراس",
+      "root": "ه ر س",
+      "meaning": "Prickly growth or thorns strewn where a man must lie."
+    },
+    "2.2.5": {
+      "word": "وَيُقشَبُ",
+      "head": "قُشِبَ",
+      "root": "ق ش ب",
+      "meaning": "To be mixed with something, or freshly dressed with it. Both senses suit the thorny bedding."
+    },
+    "3.1.5": {
+      "word": "ريبَةً",
+      "head": "ريبَة",
+      "root": "ر ي ب",
+      "meaning": "A lingering suspicion about the truth of his oath."
+    },
+    "3.2.5": {
+      "word": "مَذهَبُ",
+      "head": "مَذهَب",
+      "root": "ذ ه ب",
+      "meaning": "A way left open to a person, here a higher appeal after swearing."
+    },
+    "4.2.2": {
+      "word": "الواشي",
+      "root": "و ش ي",
+      "meaning": "An informer who carries a tale to poison a relationship."
+    },
+    "5.2.4": {
+      "word": "مُستَرادٌ",
+      "head": "مُستَراد",
+      "root": "ر و د",
+      "meaning": "Room to range about in search of a livelihood."
+    },
+    "6.2.1": {
+      "word": "أُحَكَّمُ",
+      "head": "حُكِّمَ",
+      "root": "ح ك م",
+      "meaning": "To be given a say in what is bestowed, as a specially honoured guest."
+    },
+    "7.1.5": {
+      "word": "اِصطَنَعتَهُم",
+      "head": "اِصطَنَعَ",
+      "root": "ص ن ع",
+      "meaning": "Singled them out as recipients of patronage."
+    },
+    "8.2.5": {
+      "word": "القارُ",
+      "head": "القار",
+      "root": "ق ي ر",
+      "meaning": "Dark pitch or tar applied to the skin of a mangy camel."
+    },
+    "8.2.6": {
+      "word": "أَجرَبُ",
+      "head": "أَجرَب",
+      "root": "ج ر ب",
+      "meaning": "Suffering from mange. The animal was kept away from the herd."
+    },
+    "9.1.6": {
+      "word": "سورَةً",
+      "head": "سورَة",
+      "root": "س و ر",
+      "meaning": "A high degree of honour or authority."
+    },
+    "10.2.4": {
+      "word": "يَبدُ",
+      "head": "بَدا",
+      "root": "ب د و",
+      "meaning": "Come into view. The stars lose their visibility at sunrise."
+    },
+    "11.1.5": {
+      "word": "تَلُمُّهُ",
+      "head": "لَمَّ",
+      "root": "ل م م",
+      "meaning": "Gather up or mend what is disordered in a friend's affairs."
+    },
+    "11.2.2": {
+      "word": "شَعَثٍ",
+      "head": "شَعَث",
+      "root": "ش ع ث",
+      "meaning": "Disarray or imperfection, applied to the flaws of a friend."
+    },
+    "12.2.4": {
+      "word": "عُتبى",
+      "root": "ع ت ب",
+      "meaning": "A return to goodwill after estrangement."
+    },
+    "12.2.6": {
+      "word": "يُعتِبُ",
+      "head": "أَعتَبَ",
+      "root": "ع ت ب",
+      "meaning": "Give satisfaction to someone who seeks reconciliation."
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Parting Has Taught Our Eyelids to Part",
+  "intro": "Al-Wahidi identifies Abu Sahl Sa'id ibn Abd Allah as the man praised in the full poem. As the caravan leaves, the poet hopes one glimpse of a wrist might bring everyone to a halt and buy him a little more time. The heart that stands by him in danger deserts him when he tries to forget. Al-Waaedh ends with what the poet himself would wish to be praised for, before the patron is named.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Parting has taught our eyelids to part",
+        "and bleed, and gathered sorrows in this heart."
+      ],
+      "sharh": "The same Arabic word names the lovers’ separation and the gap between eyelids that can no longer close in sleep. Parting can also bring things together. It gathers every sorrow in one heart."
+    },
+    "2": {
+      "translation": [
+        "When they set off, I hoped she would bare her wrist,",
+        "so the whole tribe would stand bewildered instead of leaving."
+      ],
+      "sharh": "What he hopes to gain is time. If even her wrist can stop an entire caravan, their astonishment might keep her beside him a little longer."
+    },
+    "3": {
+      "translation": [
+        "Had she appeared, she would have left them at a loss.",
+        "Seclusion veiled her and saved their reason from her glance."
+      ],
+      "sharh": "From the wrist he imagines the whole woman coming into view. The reserve that keeps her veiled does double duty, protecting those who might otherwise lose their wits."
+    },
+    "4": {
+      "translation": [
+        "The swift camels, their driver and I would ransom a moon,",
+        "left breathless in her curtained litter by their pace."
+      ],
+      "sharh": "The opening names the price he would give for her. Camels admired for their speed become a source of distress to the woman swaying inside the litter."
+    },
+    "5": {
+      "translation": [
+        "Her clothes are stripped of all her beauty",
+        "when she sheds them. Naked, she is clothed in beauty."
+      ],
+      "sharh": "The grammatical subject changes at the midpoint. It is the clothes that go bare when she undresses, while beauty itself still clothes the woman."
+    },
+    "6": {
+      "translation": [
+        "Musk clasps her as one beside himself with love",
+        "until it lies in folds upon her folds."
+      ],
+      "sharh": "The perfume first behaves like a lover. Clinging along the soft folds of her belly, it seems to acquire folds of its own."
+    },
+    "7": {
+      "translation": [
+        "I used to fear what my tears might do to my sight.",
+        "Today, with you gone, every precious thing is cheap."
+      ],
+      "sharh": "He once held his tears back to save his sight. The loss of the people he wanted to see has changed what his eyesight itself is worth to him."
+    },
+    "8": {
+      "translation": [
+        "The lightning clouds offer you udders full of water,",
+        "and the lover fires kindled by remembering."
+      ],
+      "sharh": "One storm reaches two places. At the distant camp its clouds give rain like milk from an udder. Where he stands, their flashes kindle longing."
+    },
+    "9": {
+      "translation": [
+        "Whenever I face terrors, there comes with me",
+        "a heart that betrays me when I would forget you."
+      ],
+      "sharh": "His heart makes a dependable escort into danger. Asked for the quieter service of letting someone go, the same companion breaks faith."
+    },
+    "10": {
+      "translation": [
+        "I appear, and the man who maligns me bows down.",
+        "I spare him reproach, in pardon and contempt."
+      ],
+      "sharh": "The detractor’s courage lasts only as long as the poet is out of sight. Silence can be both a pardon and a judgement on how little the offender matters."
+    },
+    "11": {
+      "translation": [
+        "So I lived among my family, in my own land.",
+        "A thing of rare worth is a stranger wherever it is."
+      ],
+      "sharh": "Home is where he first knew this kind of estrangement. The word for something precious also suggests how few things can match it."
+    },
+    "12": {
+      "translation": [
+        "Envied for merit, lied about once my back is turned,",
+        "I meet the armoured champion when his hour comes."
+      ],
+      "sharh": "His enemies divide into those who talk behind his back and the champion who actually meets him. To meet the latter is, in his boast, to appoint the man’s hour of death."
+    },
+    "13": {
+      "translation": [
+        "I do not crane in greed towards what I might get,",
+        "or spend the night grieving for what has gone."
+      ],
+      "sharh": "The first temptation is still within reach, the second already lost. He gives each a bodily sign he refuses, the craned neck and the sleepless night."
+    },
+    "14": {
+      "translation": [
+        "I take no joy in what brings someone else the praise,",
+        "though you bring me all time laden with it."
+      ],
+      "sharh": "The gift can be immense and still put him on the wrong side of the transaction. What he prizes is the credit for giving."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "البَينُ",
+      "root": "ب ي ن",
+      "meaning": "Parting. Its second occurrence describes the eyelids staying apart."
+    },
+    "1.2.2": {
+      "word": "وَأَلَّفَ",
+      "head": "أَلَّفَ",
+      "root": "أ ل ف",
+      "meaning": "Gathered separate things together."
+    },
+    "2.1.5": {
+      "word": "مِعصَمِها",
+      "head": "مِعصَم",
+      "root": "ع ص م",
+      "meaning": "The wrist, where a bracelet sits."
+    },
+    "2.2.2": {
+      "word": "الحَيُّ",
+      "head": "الحَيّ",
+      "root": "ح ي ي",
+      "meaning": "The encamped community, here the woman’s people."
+    },
+    "3.1.3": {
+      "word": "لَأَتاهَتهُم",
+      "head": "أَتاهَ",
+      "root": "ت ي ه",
+      "meaning": "Would have bewildered them and put them off their course."
+    },
+    "3.2.1": {
+      "word": "صَونٌ",
+      "head": "صَون",
+      "root": "ص و ن",
+      "meaning": "Protective reserve. It is what keeps her veiled."
+    },
+    "4.1.1": {
+      "word": "بِالواخِداتِ",
+      "head": "الواخِدات",
+      "root": "و خ د",
+      "meaning": "Camels moving at a swift, wide-striding pace."
+    },
+    "4.2.5": {
+      "word": "الخِدرِ",
+      "head": "الخِدر",
+      "root": "خ د ر",
+      "meaning": "The curtained compartment in a camel litter."
+    },
+    "4.2.6": {
+      "word": "حَشيانا",
+      "head": "حَشيان",
+      "root": "ح ش ي",
+      "meaning": "Breathless from exertion or jolting. Al-Wahidi also records a reading with kh, meaning afraid."
+    },
+    "5.2.2": {
+      "word": "نَضاها",
+      "head": "نَضا",
+      "root": "ن ض و",
+      "meaning": "Shed a garment, slipped out of it."
+    },
+    "6.1.4": {
+      "word": "المُستَهامِ",
+      "head": "المُستَهام",
+      "root": "ه ي م",
+      "meaning": "Someone beside himself with love."
+    },
+    "6.2.4": {
+      "word": "الأَعكانِ",
+      "head": "الأَعكان",
+      "root": "ع ك ن",
+      "meaning": "Soft folds of flesh across the belly."
+    },
+    "8.1.3": {
+      "word": "أَخلافَ",
+      "head": "أَخلاف",
+      "root": "خ ل ف",
+      "meaning": "The teats of a she-camel, here imagined as the clouds’ outlets for rain."
+    },
+    "9.1.5": {
+      "word": "شَيَّعَني",
+      "head": "شَيَّعَ",
+      "root": "ش ي ع",
+      "meaning": "Accompanied a traveller at his departure."
+    },
+    "9.2.5": {
+      "word": "يَسلاكُمُ",
+      "head": "سَلا",
+      "root": "س ل و",
+      "meaning": "To recover from parting and lose one’s longing."
+    },
+    "10.2.4": {
+      "word": "وَإِهوانا",
+      "head": "إِهوان",
+      "root": "ه و ن",
+      "meaning": "Treating someone as beneath one’s notice."
+    },
+    "12.1.4-5": {
+      "word": "عَلى أَثَري",
+      "meaning": "“In my tracks”, once I have turned my back."
+    },
+    "12.2.2": {
+      "word": "الكَمِيَّ",
+      "head": "الكَمِيّ",
+      "root": "ك م ي",
+      "meaning": "A champion covered in armour."
+    },
+    "12.2.5": {
+      "word": "حانا",
+      "head": "حانَ",
+      "root": "ح ي ن",
+      "meaning": "His appointed hour of death has come."
+    },
+    "13.1.2": {
+      "word": "أَشرَئِبُّ",
+      "head": "اِشرَأَبَّ",
+      "root": "ش ر أ ب",
+      "meaning": "To crane one’s neck towards what one covets."
+    },
+    "14.1.5": {
+      "word": "الحَميدُ",
+      "head": "الحَميد",
+      "root": "ح م د",
+      "meaning": "The person who receives the praise, namely the giver."
+    }
+  }
+}

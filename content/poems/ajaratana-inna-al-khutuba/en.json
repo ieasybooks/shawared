@@ -1,0 +1,93 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Neighbour, Calamities Come Round",
+  "intro": "Al-Suyuti records a story from al-Ziyadi that the dying Imru' al-Qays saw a woman's grave in Ankara. Told that she too was far from home, he called her his neighbour. Accounts differ, and the historian Jawad Ali regarded the story as part of the legend of the poet’s death. Osama al-Nahari recites the five verses found in al-Mustawi’s edition, in which the distance separating a traveller from home gives way to the separation of death.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Neighbour, calamities come round,",
+        "and I shall stay as long as Mount Asib stands."
+      ],
+      "sharh": "He calls to the woman in the grave as though she could hear. Calamities come and go, yet his own stay will last as long as a mountain. That is how he tells his new neighbour he expects to be buried."
+    },
+    "2": {
+      "translation": [
+        "Neighbour, we are two strangers here,",
+        "and every stranger is kin to another."
+      ],
+      "sharh": "Far from their own people, the two have something that can stand in for descent from one family. Halfway through the verse he widens the claim from these two strangers to any two who meet away from home."
+    },
+    "3": {
+      "translation": [
+        "If you keep ties with us, we are kin.",
+        "If you break them, a stranger stays a stranger."
+      ],
+      "sharh": "He gives the dead woman the choice a living neighbour would have, to welcome him or turn him away. The second half repeats “stranger” where the previous verse offered “kin”. The silence of the grave leaves the offer unanswered."
+    },
+    "4": {
+      "translation": [
+        "Neighbour, what has passed does not return,",
+        "and whatever time will bring is near."
+      ],
+      "sharh": "What is past lies beyond his reach. Whatever has yet to happen is close in the sense that time keeps bringing it nearer. Here, at a grave, the event most immediately in prospect is his own death."
+    },
+    "5": {
+      "translation": [
+        "The stranger is hardly the one whose home is far away.",
+        "The stranger is the one the earth has covered."
+      ],
+      "sharh": "At first, being away from home made the speaker a stranger. A traveller can still go home. Earth closing over a body gives the word a harsher sense, separation from all the living."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "الخُطوبَ",
+      "head": "خَطب",
+      "root": "خ ط ب",
+      "meaning": "Grave misfortunes. The singular is khatb."
+    },
+    "1.1.4": {
+      "word": "تَنوبُ",
+      "head": "نابَ",
+      "root": "ن و ب",
+      "meaning": "Befall someone. The verb can also suggest troubles returning in their turn."
+    },
+    "1.2.5": {
+      "word": "عَسيبُ",
+      "head": "عَسيب",
+      "meaning": "Asib, a mountain named in a proverbial expression for lasting for ever. Its mention alone cannot locate the grave."
+    },
+    "2.2.4": {
+      "word": "نَسيبُ",
+      "head": "نَسيب",
+      "root": "ن س ب",
+      "meaning": "A blood relative. The two share the experience of exile in place of a common ancestry."
+    },
+    "3.2.2": {
+      "word": "تَصرِمينا",
+      "head": "صَرَمَ",
+      "root": "ص ر م",
+      "meaning": "Break off relations with us. The verb originally means to cut through something."
+    },
+    "4.1.5": {
+      "word": "يَؤوبُ",
+      "head": "آبَ",
+      "root": "أ و ب",
+      "meaning": "Returns. The past is spoken of like a traveller who will never come back."
+    },
+    "5.1.4": {
+      "word": "تَناءَت",
+      "head": "تَناءى",
+      "root": "ن أ ي",
+      "meaning": "Lie far away. It is still distance alone that separates the living traveller from home."
+    },
+    "5.2.3": {
+      "word": "وارى",
+      "root": "و ر ي",
+      "meaning": "Covered or concealed. Here the earth does the covering and the dead person is covered."
+    }
+  }
+}

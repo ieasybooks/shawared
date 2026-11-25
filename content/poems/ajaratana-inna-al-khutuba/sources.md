@@ -1,0 +1,23 @@
+# أجارتنا إن الخطوب تنوب
+
+## Recording and witnesses
+
+Osama al-Nahari sings five consecutive bayts once, in ten halves. The source runs 59.768 s. The first voiced onset follows the opening silence at about 2.86 s and the last rhyme fades at about 59.33 s. The master keeps 2.36–59.76 s on the original clock. The early frames contain the title and studio credits. The soundtrack goes directly into the poem. [Recording](https://www.youtube.com/watch?v=hKnvAnL8Y2Q)
+
+- Abd al-Rahman al-Mustawi, ed., *Diwan Imri' al-Qays*, p. 83, prints the five bayts in the performed order under «أجارتنا إنا غريبان». This is the witness used for the full count. At 4.1 the two words «ما فات» are separate. At 5.1 the verb is written «تناءت» in modern spelling. [Diwan, p. 83](https://shamela.ws/book/27112/73)
+- Al-Himyari, *al-Rawd al-mi'tar*, ed. Ihsan Abbas, p. 421, entry «عسيب», preserves all five in the same order. At 3.1 it gives «فالمودة» and at 3.2 «وإن تهجرينا». Its final half is «ولكنّ من زار الترابَ غريب». The recording, al-Nahari’s written cards and al-Mustawi agree on «فالقرابة», «وإن تصرمينا» and «من وارى الترابُ». The last reading makes the earth the subject of the verb and the dead person its object. [Al-Rawd, p. 421](https://shamela.ws/book/1043/437)
+- Muhammad Abu al-Fadl Ibrahim, ed., *Diwan Imri' al-Qays*, Dar al-Ma'arif, p. 357, no. 97. The photographed page prints just the opening two bayts under «وقال عند موته», with «إنّ المزار قريب» in the first half. No. 98 on the same page is a separate poem. The corresponding report in al-Dinawari preserves this shorter opening too. [Printed page](https://archive.org/details/20200722_20200722_1101/page/n356/mode/1up) · [Al-Mujalasa, vol. 5, p. 56](https://shamela.ws/book/9948/1970)
+
+## Occasion, geography and language
+
+Al-Suyuti, *Sharh shawahid al-Mughni*, vol. 2, pp. 715–716, transmits al-Ziyadi’s account of a stranger’s grave at Ankara. He also records comparable lines attributed to Sakhr, the brother of al-Khansa'. Al-Baghdadi, *Sharh abyat Mughni al-labib*, vol. 5, pp. 240–241, points out that «ما أقام عسيب» was a proverbial measure of duration. It cannot by itself locate a grave in Anatolia. The introduction attributes the story and the note on Asib keeps the proverb distinct from competing geographical identifications. Jawad Ali discusses the contradictory narratives and questions the historical basis of the deathbed verses. [Al-Suyuti](https://shamela.ws/book/17724/714) · [Al-Baghdadi](https://shamela.ws/book/150966/1838) · [Jawad Ali, vol. 18, pp. 86–88](https://shamela.ws/book/7299/6434)
+
+The first sadr scans in tawil as «أَجا رَ | تَنا إِنْ نَلْ | خُطو بَ | تَنو بو», with the first and third feet shortened and the opening half rhyming with its partner. At 3.1 «فَإِن تَ | صِلي نا فَلْ | قَرا بَ | تُ بَيْنَنا» gives فعولُ مفاعيلن فعولُ مفاعلن. Ba is the recurring rhyme consonant. In the second bayt «نسيب» offers kinship to any stranger. The negative condition in the third withdraws that offer, and the fifth reserves its sharpest sense for the dead.
+
+## Audio verification
+
+The two full-recording transcripts independently recover the five-bayt sequence and the readings at 3.1, 3.2 and 5.2. Audar writes «نصيب» in the continuous pass at 2.2. Cohere gives «نسيب», supported by the two complete witnesses, the photographed shorter edition, the reciter’s card and the opposition between stranger and kinsman. The card at 15–18 s and al-Mustawi print «هَهُنا». The older printed witness has «هاهُنا», and the sound of a sustained syllable alone cannot establish this spelling.
+
+Targeted alignment on the edited master measures how well the transmitted variants fit the recording. At 1.1 «الخطوب تنوب» leads «المزار قريب» by 54.61 points. «فالقرابة» leads «فالمودة» by 21.73 at 3.1 and «تصرمينا» leads «تهجرينا» by 22.40 at 3.2. At 5.2 the lead for «وارى التراب» over «زار التراب» is 5.44. The two candidates «نسيب» and «نصيب» at 2.2 score identically. The aligner’s Romanisation represents both consonants as s. The kinship reading is supported by the sources and by «فالقرابة» in the following half-line.
+
+The final individual check transcribed ten clips. Cohere flagged three. The widened Audar clip gives «أجارتنا» at 1.1, where the narrow clip writes «أزارتنا». The same vocative returns in the next bayt. At 1.2 the short clips render the prolonged final vowel of the proper name «عسيبُ» as «عسيبه» or «عسيبو». The two transcriptions of the original opening give the name without an added pronoun. At 2.1 both spellings «ها هنا» and «هاهنا» capture the stretched syllable already discussed above. The wider clip also picks up part of the previous cadence. The final recording retains the voiced releases of 5.1 through 50.50 s and 5.2 through 57.05 s.

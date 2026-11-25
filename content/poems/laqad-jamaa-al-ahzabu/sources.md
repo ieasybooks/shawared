@@ -1,0 +1,20 @@
+# Khubayb at the place of execution
+
+## Performance
+
+Osama al-Nahari begins with the gathering of the factions and ends with the captive's return to God. The selected interval on the original clock is 0.32–97.94 seconds, leaving the onset after 0.83 and the release near 97.28 inside the cut. Ten bayts, twenty halves, in order, with no repeated or omitted bayt from the long sira recension. The opening and «وما بي حذار الموت» both scan in tawil, with the familiar alternation of فعولن and مفاعيلن. The recurring consonant is ʿayn, including مصرعي and مرجعي where the following ya belongs to the speaker. [Recording](https://www.youtube.com/watch?v=8BD-R00a9QM)
+
+## Two transmissions
+
+- Ibn Ishaq, as edited by Ibn Hisham, *al-Sira al-nabawiyya*, ed. Mustafa al-Saqqa, Ibrahim al-Abyari and Abd al-Hafiz Shalabi, II, pp. 176–177, supplies the ten-bayt sequence. Ibn Hisham prefaces it with the express reservation «وبعض أهل العلم بالشعر ينكرها له». The following poem on p. 177 has a separate heading and a different speaker, Hassan ibn Thabit. [Opening and apparatus](https://shamela.ws/book/23833/913) · [Conclusion and next poem](https://shamela.ws/book/23833/914)
+- Al-Bukhari, *Sahih*, Sultaniyya text, IV, p. 67, and V, p. 103, report Abu Hurayra's account of the capture, the two units of prayer, and two lines of poetry. They correspond to **9 then 6** in this edition. The report has «على أي شق كان لله مصرعي» and «وذلك في ذات الإله وإن يشأ». The recording combines the «حين أقتل مسلماً» reading with the sira's «جنب» and «في الله». Ibn Kathir explicitly distinguishes these two bayts after quoting the longer sequence, *al-Bidaya wa-l-nihaya*, ed. Abd Allah al-Turki, V, pp. 512–513. [Al-Bukhari, no. 3045](https://shamela.ws/book/1681/4825) · [Maghazi account](https://shamela.ws/book/1681/6108) · [Ibn Kathir](https://shamela.ws/book/4445/2807)
+- Ibn Abd al-Barr, *al-Istiʿab*, ed. Abd Allah al-Turki, II, pp. 561–565, entry 671, gives the family affiliation, Badr and the circumstances of capture. He distinguishes the two-verse report from Ibn Ishaq's longer poem and transposes the gathering of the families and the declaration of hostility. His dating on p. 561 and its apparatus differ by a year, so the profile gives the event without a numerical date of death. [Entry](https://shamela.ws/book/1499/1102) · [The two texts side by side](https://shamela.ws/book/1499/1104)
+- Abu Dharr al-Khushani, *al-Imlaʾ al-mukhtasar fi sharh gharib al-siyar*, pp. 278–279, explains ألبوا, أرصد, بضّعوا, ياس, شلو, هملت, جحم, ملفع and تخشع. These explanations and the apparatus to Ibn Hisham inform the two commentaries. [P. 278](https://shamela.ws/book/9222/278) · [P. 279](https://shamela.ws/book/9222/279)
+
+## Readings
+
+At 2.2 both full-file transcripts support the consonant ض in «بمضيع». Ibn Abd al-Barr prints that reading. Al-Saqqa prints «بمصيع» and records «مضيع» in witness أ. On the aligned word with a 0.30-second margin on each side the scores are −11.56 for بمضيع and −16.60 for بمصيع. The stronger evidence is their agreement on ض together with the manuscript variant. At 4.2 the recitation and Ibn Hisham have «الأحزاب» (−20.30) against Ibn Kathir's «الأعداء» (−39.52). At 5.2 both full transcriptions support the old verb «ياس» (−8.73 against −18.22 for Ibn Abd al-Barr's «ضلّ»). Ibn Hisham's 9.1 «فوالله ما أرجو إذا متّ مسلماً» gives way to the recognisable hadith wording. The word-window scores at 9.2 are −7.73 for جنب and −19.73 for شق. The recording ends «ولست بمبد» where Ibn Hisham has «فلست».
+
+## Clip verification
+
+The first pass flagged **7.1**, joining a final m to «دونه» and producing «دونهم». The lead’s re-cut Cohere clip gives «والموت دونه», as do both complete transcriptions and the published witnesses. The archive retains that re-cut and the final zero-flag marker. The two candidates scored −15.28 and −19.16 respectively. After the lead adjusted the boundary, the final log reports **20 clips, zero differences out of 107 words**. Editorial review complete.
