@@ -1,0 +1,829 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "A Night Cloud Scouts for Land to Water",
+  "intro": "Ali ibn al-Jahm mourns the caliph al-Mutawakkil, killed at Samarra in 247 AH (861 CE). For nearly a third of the poem the eye follows a cloud that brings water to Iraq and dresses Baghdad in blossom. A glimpse of its departure brings back the standards of the troops that deserted the caliph. The poet names the man who stayed, reproaches those who fled and eventually addresses his former patron about the advice he chose to hear.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Many a cloud has travelled by night seeking land to water.",
+        "I have watched it with an eye that seldom sleeps."
+      ],
+      "sharh": "The indefinite opening can evoke many such nights before the poet follows one cloud in particular. It already has two attributes that will matter in a court elegy, the ability to choose its ground and a gift to bestow."
+    },
+    "2": {
+      "translation": [
+        "The east wind brought it to us, as though",
+        "a young girl were being ushered along by an old woman."
+      ],
+      "sharh": "The two moving figures let an invisible wind appear beside a visible cloud. The cloud has the youth and pace of the girl, and the wind the older woman’s hand at her side."
+    },
+    "3": {
+      "translation": [
+        "She sways along with her. If the girl flags,",
+        "she never scolds. If she hurries, she never calls her back."
+      ],
+      "sharh": "The guide keeps contact through a change of speed. Her two acts of restraint give the reader a precise sense of the breeze, strong enough to carry the cloud and gentle enough to leave it its own gait."
+    },
+    "4": {
+      "translation": [
+        "If parted from her for a moment, she pines for her",
+        "like a mother whose little boy is out of sight."
+      ],
+      "sharh": "The older woman has acquired a mother’s anxiety. A break in the motion of the sky becomes a brief experience of bereavement, well before the poem names the man whose loss occasions it."
+    },
+    "5": {
+      "translation": [
+        "Then its lightning began to hurt the eyes,",
+        "and its thunder nearly deafened those who heard it,"
+      ],
+      "sharh": "After the light touch of the guiding hand, the storm registers as a physical assault on two senses. The suspended “when” clause holds the listener inside it before any rain has reached the ground."
+    },
+    "6": {
+      "translation": [
+        "and the earth itself almost swayed, perhaps with longing,",
+        "perhaps for fear that its suitor might lose his way."
+      ],
+      "sharh": "The earth now sways like the cloud. The observer cannot decide whether to read its movement as desire for the visitor or anxiety that he might miss his destination. Weather has taken on the uncertainties of a meeting."
+    },
+    "7": {
+      "translation": [
+        "Then it saw the finest soil beginning to clump",
+        "with what slipped from it, while the hills asked for more."
+      ],
+      "sharh": "The spectator judges the first fall of water by what it does to grains of earth. The uplands have a different measure of sufficiency. The cloud has to respond to more than one kind of ground."
+    },
+    "8": {
+      "translation": [
+        "Seeing how badly the provinces of Iraq needed it,",
+        "it stayed in Iraq and gave them rain in plenty."
+      ],
+      "sharh": "The cloud has inspected the soil like someone assessing a petition. Iraq is named twice, first as a place of need and then as the place a giver elects to remain. The stay acquires a moral purpose."
+    },
+    "9": {
+      "translation": [
+        "It would not leave Baghdad until the city broke forth",
+        "in watercourses whose floods never got their breath back."
+      ],
+      "sharh": "The landlocked city appears to burst into rivers. A flood that never “comes to” has no interval of ordinary flow before the next surge arrives. The description measures abundance in successive crests."
+    },
+    "10": {
+      "translation": [
+        "And until we saw birds all around it",
+        "that young women could almost catch with their hands,"
+      ],
+      "sharh": "The scale changes abruptly from whole watercourses to a hand’s reach. No net or trained hunter is needed in this imagined scene. “We saw” puts the observers inside this wet, close world."
+    },
+    "11": {
+      "translation": [
+        "and until it wore every kind of blossom, like a bride",
+        "lit up by her embroidery and striped robes."
+      ],
+      "sharh": "Blossoms become pattern and colour on the city’s body. A second woman has joined the young cloud in the scene, a bride whose clothes have been made possible by the rain itself."
+    },
+    "12": {
+      "translation": [
+        "She called her to loosen her girdle. She hurried",
+        "to her, necklace and pearls trailing along."
+      ],
+      "sharh": "Cloud and city are both feminine in Arabic. Dressing the city as a bride allows the poet to leave their pronouns close together here. Its necklace is seen in motion, the pearls trailing as one woman hastens towards the other."
+    },
+    "13": {
+      "translation": [
+        "And the Tigris is like mail of double weave,",
+        "its rings now showing, now hiding their iron."
+      ],
+      "sharh": "The ripple supplies the ring, and the shifting light makes the iron appear and disappear. This is the first piece of armour to enter a scene dressed until now in silk and jewellery."
+    },
+    "14": {
+      "translation": [
+        "When it had discharged its debt to Iraq and its people,",
+        "a courier from the north wind came to it."
+      ],
+      "sharh": "The cloud’s generosity has grown into an obligation it can discharge. Another wind sends a courier after the first wind’s guiding woman. Court language is already at work before a court is named."
+    },
+    "15": {
+      "translation": [
+        "It sped away faster than sight, as though",
+        "Ubayd Allah’s troops had turned their standards in flight."
+      ],
+      "sharh": "The spectator’s eye loses the cloud and finds the standards of a retreating army in its place. Ibn Tabataba quotes the movement into this half-line. The comparison is the hinge on which a weather piece becomes a political elegy."
+    },
+    "16": {
+      "translation": [
+        "They left the Commander of the Faithful lying fallen,",
+        "a martyr. Among the best of kings are their martyrs."
+      ],
+      "sharh": "What looked like unencumbered speed now has a cost, a man left on the ground. The caliph receives his title and the name of martyr before he receives his personal name. The mourner is claiming how he should be remembered."
+    },
+    "17": {
+      "translation": [
+        "He had let good judgement slip and followed his desires,",
+        "putting a novice in charge of his armies."
+      ],
+      "sharh": "The speaker can call the dead man a martyr and still blame an appointment he made. This cause of the disaster is political and avoidable, a point the last movement will develop in personal terms."
+    },
+    "18": {
+      "translation": [
+        "As if they never knew that an oath of allegiance",
+        "had fastened its knots around men’s necks."
+      ],
+      "sharh": "An oath binds in ordinary language. Here it has knots that the soldiers would have had to feel at their throats as they ran. Feigned ignorance becomes another way of naming their failure of allegiance."
+    },
+    "19": {
+      "translation": [
+        "When he called in his due on the night of terror,",
+        "their leaders and followers ran past like gazelles, an ill omen."
+      ],
+      "sharh": "The oath falls due on the very night for which it was sworn. Mardam explains the passing gazelles as an ill omen. Leaders and men prove equally ready to desert."
+    },
+    "20": {
+      "translation": [
+        "His troops spent the night in hiding like prostitutes.",
+        "Their chief spent it in a fisherman’s skiff."
+      ],
+      "sharh": "The poet makes concealment a disgrace for soldiers who had sworn to stand by the caliph. He then singles out their commander. Mardam cites al-Tabari’s account of Ubayd Allah reaching the riverbank and finding a boat that night."
+    },
+    "21": {
+      "translation": [
+        "Yes, Fath ibn Khaqan took his stand.",
+        "Hashim’s own long-established retainer did all he could."
+      ],
+      "sharh": "“Yes” corrects the sweeping indictment. Fath stays by the caliph, turning a simple change of posture into proof that at least one member of the household understood his bond."
+    },
+    "22": {
+      "translation": [
+        "He gave a free man’s life, and its nobility made it easy",
+        "to enter death where its approach fills men with fear."
+      ],
+      "sharh": "The man just called a retainer has a “free” soul. Freedom is measured by his choice to stay. The familiar action of going down to water gives death an approach one man is willing to take."
+    },
+    "23": {
+      "translation": [
+        "Ubayd Allah fled with those who followed him",
+        "towards God’s Hell, whose fire is slow to go out."
+      ],
+      "sharh": "The parallel with Fath is exact. One goes willingly towards death, the other away from it. It is the poet who assigns the fugitive the more dreadful destination, making explicit the judgement behind the contrast."
+    },
+    "24": {
+      "translation": [
+        "The chiefs of the house of Mus'ab were absent,",
+        "so neither their promise nor their threat could avail him."
+      ],
+      "sharh": "The saving alternative belongs to a family that was absent. Their power would have meant both the ability to reassure allies and the ability to deter opponents. Neither was available to the fallen caliph."
+    },
+    "25": {
+      "translation": [
+        "Had a band of Tahirids been there beside him,",
+        "a band whose fathers and grandfathers stood in honour,"
+      ],
+      "sharh": "The hypothetical force acquires a family history before it takes any action. Its ancestors supply the grounds for an expectation about how the descendants would have behaved. The sentence runs on into the next verse."
+    },
+    "26": {
+      "translation": [
+        "it would have been hard for the hands of death to snatch him,",
+        "even though his going there was decreed."
+      ],
+      "sharh": "Death has hands able to seize someone before his defenders can intervene. The Tahirids could, in the poet’s claim, have made the seizure costly, even while he concedes the ultimate necessity of dying."
+    },
+    "27": {
+      "translation": [
+        "Those are the mainstays of the caliphate. Through that company alone",
+        "its tent ropes and centre pole have held firm."
+      ],
+      "sharh": "A caliphate housed in palaces is reduced to a tent whose supports one can count. The ropes as well as the pole have to hold. Authority rests on service performed away from its visible centre."
+    },
+    "28": {
+      "translation": [
+        "They delight in what they give, and their swords",
+        "are their strongholds. The Muslims can bear them witness."
+      ],
+      "sharh": "The Tahirids give for the pleasure of giving and trust their swords to shelter them. The repeated Arabic pronoun can also point to the caliphate they uphold. Either way the poet appeals to people who have seen such gifts and protection for themselves."
+    },
+    "29": {
+      "translation": [
+        "Alas for troops neglected by their kings,",
+        "and alas for kings abandoned by their troops."
+      ],
+      "sharh": "The groups exchange their places in the sentence. Each has been let down by the one that it in turn let down. The compact reversal gathers together the accusation against the soldiers and the earlier criticism of their ruler."
+    },
+    "30": {
+      "translation": [
+        "Is Ja'far to be killed in the seat of the caliphate,",
+        "helpless amid division, while you stand and witness it?"
+      ],
+      "sharh": "He names the dead man Ja'far at last and addresses the witnesses to his killing. The seat of authority ought to have afforded protection. Its prestige and all the eyes looking on only enlarge the scale of the failure."
+    },
+    "31": {
+      "translation": [
+        "Then no one will seek redress after his death,",
+        "nor ward off the man who comes for his own life."
+      ],
+      "sharh": "The complaint moves from an obligation to the dead into a calculation for the living. Letting an attack on the ruler pass sets the terms on which the survivors will have to look after themselves."
+    },
+    "32": {
+      "translation": [
+        "The sons of Hashim are stars. Among them",
+        "the kings of the Abbasids are the stars of good fortune."
+      ],
+      "sharh": "The Abbasids belong within the larger Hashimite family as one group of stars belongs within a sky. Astrological language picks out the auspicious lights within that constellation, adding a public consequence to a family loss."
+    },
+    "33": {
+      "translation": [
+        "Sons of Hashim, be patient. Every calamity",
+        "in time wears through its first newness."
+      ],
+      "sharh": "The family passes from being the subject of praise to the recipients of condolence. Grief has the newness of a garment. Time can wear that first terrible freshness down without undoing what has happened."
+    },
+    "34": {
+      "translation": [
+        "It grieves us to see your men of standing",
+        "have their skins torn by oath-breakers’ hands."
+      ],
+      "sharh": "The promise of eventual comfort is immediately put to a severe test by the image of torn skin. “Oath-breakers” reaches back to the pledges knotted around men’s necks on the night of the killing."
+    },
+    "35": {
+      "translation": [
+        "Yet your own hands spill your blood,",
+        "and a man plotting against your kin sits in judgement on them."
+      ],
+      "sharh": "The accusation comes home to the family just addressed. Mardam reads an oblique reference to al-Muntasir and his father. The repetition of “your” makes it impossible to place the blame entirely outside the dynasty."
+    },
+    "36": {
+      "translation": [
+        "Alas, what good is grieving now",
+        "that the lions of the waste were humbled before a hyena?"
+      ],
+      "sharh": "A single male hyena has the lions of the waste at its mercy. Both the reversal of strength and the imbalance in numbers make the court’s submission more humiliating."
+    },
+    "37": {
+      "translation": [
+        "The Commander of the Faithful’s own slaves killed him.",
+        "A king’s worst affliction is his own slaves."
+      ],
+      "sharh": "The possessive is the indictment, since the killers belonged to the very man they struck. Mardam draws attention to the feminine plural verb applied to the men, a deliberate insult of a piece with the earlier taunt at the soldiers."
+    },
+    "38": {
+      "translation": [
+        "By the fates of death, never with his like",
+        "have they filled the graves, nor have grave niches closed over his like."
+      ],
+      "sharh": "The agents that fill graves have the widest possible experience of the dead. The oath recruits them as witnesses to this man’s distinction, narrowing from a whole population of graves to the side niche that holds one body."
+    },
+    "39": {
+      "translation": [
+        "Rhymes came to us crying out for his loss,",
+        "their rajaz and their formal odes mutilated."
+      ],
+      "sharh": "Verse itself turns up as a body of mourners. Mardam links its mutilation to the bodily injury of women overwhelmed by grief. The damage has spread to the very forms in which the dead man could be lamented."
+    },
+    "40": {
+      "translation": [
+        "I said, “Go back whole. Do not linger",
+        "over meanings no seeker has managed to find.”"
+      ],
+      "sharh": "“Whole” answers the mutilation of the preceding verse. The poet sends his rhymes away from the search for words for this death. In the next verse he claims he could pursue those meanings if he chose."
+    },
+    "41": {
+      "translation": [
+        "Had I wished, their distance need not have put them beyond me,",
+        "nor would a single stray have escaped me."
+      ],
+      "sharh": "Meanings have a distance to be crossed and the elusive movement of an animal that strays. The poet claims he can recover them if he chooses. His own intention is the condition that still has to be met."
+    },
+    "42": {
+      "translation": [
+        "Had I wished, I could have set hearts alight with verses",
+        "that range abroad, the pieces of hearts their fuel."
+      ],
+      "sharh": "The straying figure turns into poems that circulate far from their maker. Once received by other people they can burn with the very stuff of their readers’ hearts. Holding words back has political as well as poetic significance."
+    },
+    "43": {
+      "translation": [
+        "Defender of Islam, a band deceived you,",
+        "men I used to drive away as heretics."
+      ],
+      "sharh": "The address is now intimate and partisan. “Heretics” is the poet’s charge against an opposing group, and the claim to have kept them at bay is his account of his own former place at court."
+    },
+    "44": {
+      "translation": [
+        "When you made them attend a gathering with me,",
+        "their aggressor bowed and their obstinate man yielded."
+      ],
+      "sharh": "His argument rests on a memory of who sat in the room. With both parties present before the caliph, he says, the most aggressive would lower himself. His own absence will therefore matter to his account of what followed."
+    },
+    "45": {
+      "translation": [
+        "When my home lay far off and desire drew you",
+        "to men whose wisest member put no trust in you,"
+      ],
+      "sharh": "The caliph leans towards this group as the poet’s home recedes. His favour goes one way. Even a man of sound judgement among his new companions feels no such confidence in him."
+    },
+    "46": {
+      "translation": [
+        "the evil minister spread strange stories about you,",
+        "and everywhere someone took them up and broadcast them."
+      ],
+      "sharh": "A story that began with one minister can acquire a new announcer in every province. Mardam reads the verb as making damaging news public. This is the darker counterpart to the poet’s own widely travelling verse."
+    },
+    "47": {
+      "translation": [
+        "He kept good counsellors away from you. Your retainers’",
+        "breasts burned, and their resentments went underground."
+      ],
+      "sharh": "Removing advisers has a second effect beyond the advice no longer given. The people still around the ruler learn to keep a heated grievance out of view, so proximity no longer offers a guarantee of loyalty."
+    },
+    "48": {
+      "translation": [
+        "So blood was spilled unavenged, blood without equal on earth.",
+        "And things were done that a man like me does not rehearse."
+      ],
+      "sharh": "The crucial verb means that the blood went without redress. After an elegy crowded with accusations the poet draws his own boundary at retelling certain events. It fulfils the earlier claim that he could say more if he chose."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "وَسارِيَةٍ",
+      "head": "سارِيَة",
+      "root": "س ر ي",
+      "meaning": "A rain cloud travelling at night."
+    },
+    "1.1.2": {
+      "word": "تَرتادُ",
+      "head": "اِرتادَ",
+      "root": "ر و د",
+      "meaning": "To scout for a suitable place, as a guide seeks good ground."
+    },
+    "1.1.4": {
+      "word": "تَجودُها",
+      "head": "جادَ",
+      "root": "ج و د",
+      "meaning": "To water land abundantly, the same verb used of human generosity."
+    },
+    "1.2.5": {
+      "word": "هُجودُها",
+      "head": "هُجود",
+      "root": "ه ج د",
+      "meaning": "Sleep at night."
+    },
+    "2.1.4": {
+      "word": "الصَّبا",
+      "root": "ص ب و",
+      "meaning": "Saba, the east wind."
+    },
+    "2.2.2": {
+      "word": "تُزَجّيها",
+      "head": "زَجّى",
+      "root": "ز ج و",
+      "meaning": "To urge something gently along."
+    },
+    "3.1.1": {
+      "word": "تَميسُ",
+      "head": "ماسَ",
+      "root": "م ي س",
+      "meaning": "To sway or move with a gentle, swinging gait."
+    },
+    "3.1.7": {
+      "word": "وَنَت",
+      "head": "وَنى",
+      "root": "و ن ي",
+      "meaning": "To flag or slacken one’s pace."
+    },
+    "3.2.5": {
+      "word": "تَستَعيدُها",
+      "head": "اِستَعادَ",
+      "root": "ع و د",
+      "meaning": "To call someone back."
+    },
+    "4.1.4": {
+      "word": "وَلِهَت",
+      "head": "وَلِهَ",
+      "root": "و ل ه",
+      "meaning": "To pine for someone in their absence."
+    },
+    "5.2.2": {
+      "word": "تُصِمُّ",
+      "head": "أَصَمَّ",
+      "root": "ص م م",
+      "meaning": "To deafen through the force of a sound."
+    },
+    "6.2.2": {
+      "word": "حِذاراً",
+      "head": "حِذار",
+      "root": "ح ذ ر",
+      "meaning": "Out of apprehension about something that may happen."
+    },
+    "7.1.3-4": {
+      "word": "حُرَّ الثَّرى",
+      "head": "حُرّ الثَّرى",
+      "meaning": "“The choice part of the earth”, fine soil beginning to hold moisture."
+    },
+    "7.2.4": {
+      "word": "وَالرُّبى",
+      "head": "رُبى",
+      "root": "ر ب و",
+      "meaning": "Uplands or small hills."
+    },
+    "8.1.2": {
+      "word": "أَقاليمَ",
+      "head": "إِقليم",
+      "meaning": "Regions or provinces within a larger country."
+    },
+    "9.1.3": {
+      "word": "بَغدادَ",
+      "head": "بَغداد",
+      "meaning": "Baghdad, on the Tigris. The cloud waters it before the poem turns to the court at Samarra."
+    },
+    "9.2.4": {
+      "word": "مُدودُها",
+      "head": "مَدّ",
+      "root": "م د د",
+      "meaning": "The successive rises or surges of a stream."
+    },
+    "10.1.5": {
+      "word": "جَنَباتِها",
+      "head": "جَنَبَة",
+      "root": "ج ن ب",
+      "meaning": "The sides and outlying parts of a place."
+    },
+    "10.2.3": {
+      "word": "الغانِياتِ",
+      "head": "غانِيَة",
+      "root": "غ ن ي",
+      "meaning": "Beautiful young women."
+    },
+    "11.1.5": {
+      "word": "نَورٍ",
+      "head": "نَور",
+      "root": "ن و ر",
+      "meaning": "Blossom, distinguished by its vowel from the word for light."
+    },
+    "11.2.3": {
+      "word": "وَشيُها",
+      "head": "وَشي",
+      "root": "و ش ي",
+      "meaning": "Coloured patterning woven into a fabric."
+    },
+    "11.2.4": {
+      "word": "وَبُرودُها",
+      "head": "بُرد",
+      "root": "ب ر د",
+      "meaning": "Patterned or striped outer garments."
+    },
+    "12.1.3-4": {
+      "word": "حَلِّ النِّطاقِ",
+      "head": "حَلّ النِّطاق",
+      "meaning": "“Loosening the girdle”, untying the sash that holds the wearer’s clothes."
+    },
+    "12.1.5": {
+      "word": "فَأَرعَشَت",
+      "head": "أَرعَشَ",
+      "root": "ر ع ش",
+      "meaning": "Hastened, the sense Mardam gives the verb here."
+    },
+    "12.2.3": {
+      "word": "سِمطُها",
+      "head": "سِمط",
+      "root": "س م ط",
+      "meaning": "A necklace string bearing beads or pearls."
+    },
+    "12.2.4": {
+      "word": "وَفَريدُها",
+      "head": "فَريد",
+      "root": "ف ر د",
+      "meaning": "Choice pearls singled out in a necklace."
+    },
+    "13.1.1": {
+      "word": "وَدِجلَةُ",
+      "head": "دِجلَة",
+      "meaning": "Dijla, the Tigris, running through Baghdad."
+    },
+    "13.1.2": {
+      "word": "كَالدِّرعِ",
+      "head": "دِرع",
+      "root": "د ر ع",
+      "meaning": "Mail made from interlocking iron rings."
+    },
+    "14.2.4": {
+      "word": "الشَّمالِ",
+      "head": "الشَّمال",
+      "root": "ش م ل",
+      "meaning": "The north wind."
+    },
+    "14.2.5": {
+      "word": "بَريدُها",
+      "head": "بَريد",
+      "meaning": "A mounted courier or messenger bringing instructions."
+    },
+    "15.1.3": {
+      "word": "الطَّرفَ",
+      "head": "طَرف",
+      "root": "ط ر ف",
+      "meaning": "Eyesight and its ability to follow a moving object."
+    },
+    "15.2.2-3": {
+      "word": "عُبَيدِ اللَّهِ",
+      "head": "عُبَيد اللَّه",
+      "meaning": "Ubayd Allah ibn Yahya ibn Khaqan, the caliph’s vizier, whom the poet accuses of flight."
+    },
+    "15.2.5": {
+      "word": "بُنودُها",
+      "head": "بَند",
+      "meaning": "Military standards, a plural of band."
+    },
+    "16.1.2-3": {
+      "word": "أَميرَ المُؤمِنينَ",
+      "head": "أَمير المُؤمِنين",
+      "meaning": "Amir al-mu'minin, Commander of the Faithful, here the Abbasid caliph Ja'far al-Mutawakkil."
+    },
+    "16.1.4": {
+      "word": "مُجَدَّلاً",
+      "head": "مُجَدَّل",
+      "root": "ج د ل",
+      "meaning": "Struck down and lying on the ground."
+    },
+    "17.1.3": {
+      "word": "الحَزمَ",
+      "head": "حَزم",
+      "root": "ح ز م",
+      "meaning": "Sound judgement that anticipates consequences."
+    },
+    "17.2.2": {
+      "word": "غِرّاً",
+      "head": "غِرّ",
+      "root": "غ ر ر",
+      "meaning": "A novice, inexperienced and readily deceived."
+    },
+    "18.1.5": {
+      "word": "بَيعَةً",
+      "head": "بَيعَة",
+      "root": "ب ي ع",
+      "meaning": "Bay'a, a pledge of obedience and support given to a ruler."
+    },
+    "19.1.2": {
+      "word": "اِقتَضاها",
+      "head": "اِقتَضى",
+      "root": "ق ض ي",
+      "meaning": "Called in a claim or demanded what was due."
+    },
+    "19.2.2": {
+      "word": "سُنُحاً",
+      "head": "سُنُح",
+      "root": "س ن ح",
+      "meaning": "Gazelles or other game crossing a traveller’s path. The direction of their movement was read as an omen. Mardam understands the omen here as unfortunate."
+    },
+    "19.2.4": {
+      "word": "وَمَسودُها",
+      "head": "مَسود",
+      "root": "س و د",
+      "meaning": "Those who are led, set against their leaders."
+    },
+    "20.1.2": {
+      "word": "خَبايا",
+      "root": "خ ب أ",
+      "meaning": "Persons or things concealed from sight."
+    },
+    "20.1.3": {
+      "word": "كَالبَغايا",
+      "head": "بَغِيّ",
+      "root": "ب غ ي",
+      "meaning": "Women who sell sex. The speaker uses the comparison to disgrace the soldiers who went into hiding. Mardam prints a nun in kal-banaya. The recording and its card give kal-baghaya."
+    },
+    "20.2.5": {
+      "word": "عَميدُها",
+      "head": "عَميد",
+      "root": "ع م د",
+      "meaning": "The leader or chief on whom the others rely."
+    },
+    "21.1.3-5": {
+      "word": "الفَتحُ اِبنُ خاقانَ",
+      "head": "الفَتح اِبن خاقان",
+      "meaning": "Fath ibn Khaqan, the caliph’s intimate companion, who was killed alongside him."
+    },
+    "21.2.1": {
+      "word": "فَأَعذَرَ",
+      "head": "أَعذَرَ",
+      "root": "ع ذ ر",
+      "meaning": "Did all that could reasonably be asked, leaving no occasion for reproach."
+    },
+    "21.2.4": {
+      "word": "وَتَليدُها",
+      "head": "تَليد",
+      "root": "ت ل د",
+      "meaning": "Someone of long standing in a house or household."
+    },
+    "22.2.1-2": {
+      "word": "وُرودَ المَنايا",
+      "head": "وُرود المَنايا",
+      "meaning": "“Going down to the deaths”, approaching a deadly encounter as one approaches water."
+    },
+    "23.2.2": {
+      "word": "سَقَرِ",
+      "head": "سَقَر",
+      "meaning": "Saqar, a name for Hell."
+    },
+    "24.1.5-6": {
+      "word": "آلِ مُصعَبٍ",
+      "head": "آل مُصعَب",
+      "meaning": "Al Mus'ab, the Tahirid house descended from Tahir ibn al-Husayn ibn Mus'ab, powerful in Khurasan and Iraq."
+    },
+    "25.1.4": {
+      "word": "طاهِرِيَّةٌ",
+      "head": "طاهِرِيَّة",
+      "meaning": "Tahirid, belonging to the house named through Mus'ab in the preceding verse."
+    },
+    "26.1.5": {
+      "word": "اِختِرامُهُ",
+      "head": "اِختِرام",
+      "root": "خ ر م",
+      "meaning": "Cutting a life short, snatching someone away."
+    },
+    "27.2.1": {
+      "word": "بِها",
+      "meaning": "“Through it”, referring back to the Tahirid company or the mainstays of the caliphate. The recording has biha. Mardam and the video card read bihim, “through them”, with the men as antecedent."
+    },
+    "27.2.3": {
+      "word": "أَطنابُها",
+      "head": "طُنُب",
+      "root": "ط ن ب",
+      "meaning": "The guy ropes holding a tent to its stakes."
+    },
+    "28.2.1": {
+      "word": "مَعاقِلُها",
+      "head": "مَعقِل",
+      "root": "ع ق ل",
+      "meaning": "Fortified refuges or strongholds."
+    },
+    "29.1.2": {
+      "word": "لِجُنودٍ",
+      "head": "جُند",
+      "root": "ج ن د",
+      "meaning": "Troops. The reciter uses the same li- in the lament for the kings in the next half. Soldiers and kings exchange places as the ones who abandon and the ones abandoned."
+    },
+    "30.1.5": {
+      "word": "جَعفَرٌ",
+      "head": "جَعفَر",
+      "meaning": "Ja'far, the personal name of the caliph al-Mutawakkil."
+    },
+    "30.2.3": {
+      "word": "صَبراً",
+      "root": "ص ب ر",
+      "meaning": "“Held for killing”, slain without an opportunity to defend oneself."
+    },
+    "31.1.2-3": {
+      "word": "طالِبٌ لِلثَّأرِ",
+      "head": "طَلَبُ الثَّأر",
+      "meaning": "Seeking redress for a killing. The poet looks for someone among the survivors to press the dead ruler’s claim."
+    },
+    "32.2.5": {
+      "word": "سُعودُها",
+      "head": "سُعود",
+      "root": "س ع د",
+      "meaning": "Stars or stellar stations associated with good fortune."
+    },
+    "33.2.1": {
+      "word": "سَيَبلى",
+      "head": "بَلِيَ",
+      "root": "ب ل ي",
+      "meaning": "To wear thin or shabby as a garment does."
+    },
+    "34.1.5": {
+      "word": "سَرَواتِكُم",
+      "head": "سَرَوات",
+      "root": "س ر و",
+      "meaning": "The leading people of a community."
+    },
+    "34.2.1": {
+      "word": "تُفَرّى",
+      "head": "فَرّى",
+      "root": "ف ر ي",
+      "meaning": "Slit or cut to pieces, originally said of cutting a hide."
+    },
+    "34.2.3": {
+      "word": "النّاكِثينَ",
+      "head": "ناكِث",
+      "root": "ن ك ث",
+      "meaning": "People who undo an oath or break faith."
+    },
+    "35.2.3": {
+      "word": "أَرحامِكُم",
+      "head": "رَحِم",
+      "root": "ر ح م",
+      "meaning": "Family ties or blood relations."
+    },
+    "36.2.2": {
+      "word": "لِضِبعانِ",
+      "head": "ضِبعان",
+      "root": "ض ب ع",
+      "meaning": "A male hyena. The Arabic noun is singular. The humiliation lies in the lions of a whole waste bowing to one hyena."
+    },
+    "36.2.3": {
+      "word": "الفَلاةِ",
+      "head": "فَلاة",
+      "root": "ف ل و",
+      "meaning": "An open, trackless desert."
+    },
+    "37.1.4": {
+      "word": "قَتَلنَهُ",
+      "head": "قَتَلَ",
+      "root": "ق ت ل",
+      "meaning": "The men “killed him”, expressed with a feminine plural verb as part of the invective."
+    },
+    "38.2.5": {
+      "word": "لُحودُها",
+      "head": "لَحد",
+      "root": "ل ح د",
+      "meaning": "Side niches cut into graves to receive the dead."
+    },
+    "39.2.1": {
+      "word": "مُصَلَّمَةٌ",
+      "head": "مُصَلَّمَة",
+      "root": "ص ل م",
+      "meaning": "Mutilated or shorn of extremities, an image for verse in mourning."
+    },
+    "39.2.2": {
+      "word": "أَرجازُها",
+      "head": "رَجَز",
+      "root": "ر ج ز",
+      "meaning": "Rajaz, verse in a rhythm traditionally associated with shorter or improvised pieces."
+    },
+    "40.1.3": {
+      "word": "مَوفورَةً",
+      "head": "مَوفورَة",
+      "root": "و ف ر",
+      "meaning": "Intact, with nothing taken away."
+    },
+    "41.1.6": {
+      "word": "مَرامُها",
+      "head": "مَرام",
+      "root": "ر و م",
+      "meaning": "The object of an undertaking or the attaining of it."
+    },
+    "42.1.5": {
+      "word": "بِشُرَّدٍ",
+      "head": "شُرَّد",
+      "root": "ش ر د",
+      "meaning": "Widely ranging verses, passing from one person or country to another."
+    },
+    "42.2.3": {
+      "word": "أَفلاذُ",
+      "head": "فِلذَة",
+      "root": "ف ل ذ",
+      "meaning": "Pieces cut from flesh, here pieces of living hearts."
+    },
+    "43.2.1": {
+      "word": "زَنادِقَةٌ",
+      "head": "زِنديق",
+      "meaning": "Zanadiqa, a polemical accusation of heresy made by the speaker against his opponents."
+    },
+    "43.2.5": {
+      "word": "أَذودُها",
+      "head": "ذادَ",
+      "root": "ذ و د",
+      "meaning": "Drive away or keep off."
+    },
+    "44.2.1": {
+      "word": "تَطَأمَنَ",
+      "root": "ط م ن",
+      "meaning": "Lowered himself or became subdued."
+    },
+    "44.2.2": {
+      "word": "عاديها",
+      "head": "عادٍ",
+      "root": "ع د و",
+      "meaning": "The aggressor or transgressor among them."
+    },
+    "45.2.3": {
+      "word": "يَسكُن",
+      "head": "سَكَنَ",
+      "root": "س ك ن",
+      "meaning": "To rest secure with a person or put one’s trust in them."
+    },
+    "46.2.1": {
+      "word": "يُشيدُ",
+      "head": "أَشادَ",
+      "root": "ش ي د",
+      "meaning": "Publicise or proclaim a report, including one injurious to its subject."
+    },
+    "47.1.5": {
+      "word": "وَأوغِرَت",
+      "head": "أَوغَرَ",
+      "root": "و غ ر",
+      "meaning": "Were inflamed with rancour, with heat standing for anger."
+    },
+    "47.2.3": {
+      "word": "وَاِستَسَرَّت",
+      "head": "اِستَسَرَّ",
+      "root": "س ر ر",
+      "meaning": "Became hidden or took root in secret."
+    },
+    "48.1.1": {
+      "word": "فَطُلَّ",
+      "head": "طَلَّ",
+      "root": "ط ل ل",
+      "meaning": "Blood went without redress, with no retribution exacted for it."
+    }
+  }
+}

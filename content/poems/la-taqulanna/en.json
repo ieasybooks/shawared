@@ -1,0 +1,245 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Never Say Yes Unless You Mean It",
+  "intro": "The Mufaddaliyyat transmits counsels on keeping one’s word together with verses for Khalid, who secured the release of the poet’s nephew Sha’s. Al-Marzuqi records a tradition assigning the opening to another poet of Abd al-Qays and the praise of Khalid to al-Muthaqqib. In this performance, ordinary exchanges of yes and no lead to the question of what a man will spend to keep faith.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Never say, when you have no intention",
+        "of keeping a promise in some matter, “Yes.”"
+      ],
+      "sharh": "The word being forbidden arrives last. By the time “yes” is heard, the speaker has made the listener consider everything that one syllable undertakes."
+    },
+    "2": {
+      "translation": [
+        "A “yes” spoken after “no” is gracious.",
+        "How ugly a “no” after “yes.”"
+      ],
+      "sharh": "The words exchange places across the caesura. A refusal can still be reopened, whereas withdrawing an assent deprives someone of what they have begun to count on."
+    },
+    "3": {
+      "translation": [
+        "To say “no” after “yes” is an outrage.",
+        "Begin with “no” if you fear regret."
+      ],
+      "sharh": "His test is practical. Someone who already foresees regret can spare the petitioner both a wait and a second, more painful answer."
+    },
+    "4": {
+      "translation": [
+        "Once you have said “yes,” stand by it",
+        "and make the word good. To break it is disgrace."
+      ],
+      "sharh": "Patience here is the work of carrying out an undertaking. The word only succeeds when something actually reaches the person to whom it was given."
+    },
+    "5": {
+      "translation": [
+        "Know that blame diminishes a man.",
+        "Whoever fails to guard against blame earns it."
+      ],
+      "sharh": "The same Arabic root supplies the risk and the verdict. A reputation rests partly in other people’s mouths, but his conduct gives them their grounds."
+    },
+    "6": {
+      "translation": [
+        "I honour the man under my protection and keep his rights.",
+        "For a man to recognize a rightful claim is nobility."
+      ],
+      "sharh": "The neighbour can be an outsider who has entered under a man’s protection. His host’s generosity begins in acknowledging an obligation the weaker party can already claim."
+    },
+    "7": {
+      "translation": [
+        "You will never see me feeding at ease in a gathering",
+        "on human flesh, like a ravenous beast."
+      ],
+      "sharh": "Backbiting becomes a meal. The ease with which a beast feeds makes the social ease of the gossiping circle particularly disturbing."
+    },
+    "8": {
+      "translation": [
+        "The worst of men bares his teeth in a smile",
+        "when he meets me, and reviles me when I leave."
+      ],
+      "sharh": "Bared teeth now pass for a friendly smile. The movement links this man to the feeding animal of the previous verse before the abuse behind the smile is disclosed."
+    },
+    "9": {
+      "translation": [
+        "Many an ugly word my ear has been deaf to,",
+        "though there is nothing wrong with my hearing."
+      ],
+      "sharh": "He distinguishes the ear’s physical ability from the listener’s response. Acting deaf stops an insult from gaining a second voice or a wider audience."
+    },
+    "10": {
+      "translation": [
+        "I held myself in, for fear a fool might think",
+        "I really was the man he claimed I was."
+      ],
+      "sharh": "An angry reply might supply the fool with the very likeness his slander invented. The speaker refuses to perform the character someone else has written for him."
+    },
+    "11": {
+      "translation": [
+        "Some things last better if one forgives and turns away",
+        "from a foul-mouthed man, even when he has done wrong."
+      ],
+      "sharh": "“Some” leaves room for judgment. A wrong can be real even when pursuing it would cost more of a relationship or a reputation than letting it go."
+    },
+    "12": {
+      "translation": [
+        "Khalid was generous indeed in the matter of Sha’s",
+        "after one of the dark calamities had closed around him,"
+      ],
+      "sharh": "Sha’s is the captive whose release Khalid obtained. The poem measures the gift from the captive’s position, when he could see no way to extricate himself."
+    },
+    "13": {
+      "translation": [
+        "one of the deaths that played odd and even with him,",
+        "each racing for this body of flesh and blood."
+      ],
+      "sharh": "The deaths gamble over him as children guess odd or even. The ordinary materials of a living body make the stake in their game uncomfortably tangible."
+    },
+    "14": {
+      "translation": [
+        "His serving bowl is brimful, his bounty strong as spring growth.",
+        "His gatherings are gracious, with no striking of faces."
+      ],
+      "sharh": "The spring image evokes a calf born while its dam still has abundant pasture. The generous host also attends to the weaker visitor’s dignity once he is seated."
+    },
+    "15": {
+      "translation": [
+        "He makes his gifts a great abundance.",
+        "Some wealth is a small price to pay for honour."
+      ],
+      "sharh": "The gifts look large from the recipient’s side of the exchange. Set against the honour secured by giving them, the same outlay falls within reasonable bounds."
+    },
+    "16": {
+      "translation": [
+        "His heart is easy. It costs him no concern",
+        "to lose his property when his honour is safe."
+      ],
+      "sharh": "At the close, the loss has actually taken place. Khalid’s contentment makes good the opening promise that the worth of a word is known when the bill comes due."
+    }
+  },
+  "words": {
+    "3.1.5": {
+      "word": "فاحِشَةٌ",
+      "head": "فاحِشَة",
+      "root": "ف ح ش",
+      "meaning": "An act of gross impropriety, here reneging after giving assent."
+    },
+    "4.2.1-2": {
+      "word": "بِنَجاحِ القَولِ",
+      "head": "نَجاح القَول",
+      "meaning": "Making a word succeed by delivering what it promised."
+    },
+    "4.2.4": {
+      "word": "الخُلفَ",
+      "head": "الخُلف",
+      "root": "خ ل ف",
+      "meaning": "Failure to keep one’s word."
+    },
+    "6.1.2": {
+      "word": "الجارَ",
+      "head": "الجار",
+      "root": "ج و ر",
+      "meaning": "A person sheltered by another’s pledge of protection."
+    },
+    "7.1.3": {
+      "word": "راتِعاً",
+      "head": "راتِع",
+      "root": "ر ت ع",
+      "meaning": "Feeding at liberty, originally of animals at pasture."
+    },
+    "7.2.5": {
+      "word": "الضَّرِم",
+      "root": "ض ر م",
+      "meaning": "Ravenous, burning with hunger."
+    },
+    "8.1.5": {
+      "word": "يَكشِرُ",
+      "head": "كَشَرَ",
+      "root": "ك ش ر",
+      "meaning": "To draw back the lips and show the teeth, here in a smile."
+    },
+    "9.1.4": {
+      "word": "وُقِرَت",
+      "root": "و ق ر",
+      "meaning": "To be stopped or made heavy of hearing."
+    },
+    "10.1.1": {
+      "word": "فَتَعَزَّيتُ",
+      "head": "تَعَزّى",
+      "root": "ع ز و",
+      "meaning": "To master oneself and bear a hurt."
+    },
+    "11.2.2": {
+      "word": "الخَنا",
+      "root": "خ ن و",
+      "meaning": "Obscenity or foul speech."
+    },
+    "12.1.3": {
+      "word": "بِشَأسٍ",
+      "head": "شَأس",
+      "meaning": "Sha’s ibn Nahar, al-Muthaqqib’s sister’s son, himself a poet known as al-Mumazzaq."
+    },
+    "12.1.4": {
+      "word": "خالِدٌ",
+      "head": "خالِد",
+      "meaning": "Khalid, identified in one account as Khalid ibn al-Harith, the captive’s intercessor."
+    },
+    "13.1.3": {
+      "word": "يَتَخاسَينَ",
+      "head": "تَخاسى",
+      "root": "خ س و",
+      "meaning": "To play at guessing odd and even, with odd called khasa."
+    },
+    "14.1.1-2": {
+      "word": "مُترَعُ الجَفنَةِ",
+      "head": "مُترَع الجَفنَة",
+      "meaning": "One whose large serving bowl is filled to the brim."
+    },
+    "14.1.3-4": {
+      "word": "رِبعِيُّ النَّدى",
+      "head": "رِبعِيّ النَّدى",
+      "meaning": "Bounteous like the early spring yield, originally of a calf born early in the season."
+    },
+    "14.2.4": {
+      "word": "لُطَم",
+      "root": "ل ط م",
+      "meaning": "Blows to the face, a humiliation absent from his gathering."
+    },
+    "15.1.2": {
+      "word": "الهَنءَ",
+      "head": "الهَنء",
+      "root": "ه ن أ",
+      "meaning": "A gift or the act of bestowing one."
+    },
+    "15.2.6": {
+      "word": "أَمَم",
+      "root": "أ م م",
+      "meaning": "A reasonable measure or a light cost, reckoned against honour."
+    },
+    "16.2.4": {
+      "word": "العِرضُ",
+      "head": "العِرض",
+      "root": "ع ر ض",
+      "meaning": "The honour and good name exposed to praise or blame."
+    },
+    "5.1.1": {
+      "word": "وَاعلَمَ",
+      "head": "اِعلَم",
+      "root": "ع ل م",
+      "meaning": "Know. In connected speech the vowel of the following particle can move back onto the final consonant of the imperative."
+    },
+    "12.2.3": {
+      "word": "حاقَت",
+      "head": "حاقَ",
+      "root": "ح ي ق",
+      "meaning": "To settle upon and encompass someone, here of an ordeal."
+    },
+    "16.1.3-4": {
+      "word": "طَيِّبُ النَّفسِ",
+      "head": "طَيِّب النَّفس",
+      "meaning": "“At ease in his mind” about the expenditure. The card gives a nominative description and also records the accusative, “being content”, printed by Shakir and Harun."
+    }
+  }
+}

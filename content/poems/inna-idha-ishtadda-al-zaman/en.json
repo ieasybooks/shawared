@@ -1,0 +1,183 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "When Times Press Hard on Us",
+  "intro": "The diwan introduces this as a letter to Abu Muhammad Ja'far ibn Warqa. Abu Firas wants him to arbitrate a quarrel with Ja'far’s uncle, Abu Ahmad Abd Allah ibn Warqa. The opening inventory of swords and camels gives way to a private grievance. The letter ends with the words Ja'far is to take to his uncle.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "When times press hard on us",
+        "and a calamity strikes and grows dark,"
+      ],
+      "sharh": "The opening “we” brings his whole household into the letter. The sentence waits for the next verse to disclose what a visitor would find there in a crisis."
+    },
+    "2": {
+      "translation": [
+        "you find around our houses",
+        "the equipment of courage and generosity."
+      ],
+      "sharh": "He makes two virtues visible as things stored outside the houses. The visitor can take an inventory before the poet tells him what each item is for."
+    },
+    "3": {
+      "translation": [
+        "For meeting enemies, bright swords,",
+        "for giving freely, red camels."
+      ],
+      "sharh": "The two colours inventory what the household owns. Camels were wealth that could actually be handed over, so their presence makes the claim about generosity concrete."
+    },
+    "4": {
+      "translation": [
+        "Both are our custom.",
+        "One blood-debt is paid, another life is taken."
+      ],
+      "sharh": "Blood is counted twice. A payment can settle a killing and avert retaliation, while combat spills fresh blood. The handling of a dispute already matters before the letter names one."
+    },
+    "5": {
+      "translation": [
+        "Tell Ja'far ibn Warqa,",
+        "so he may speak from what he knows,"
+      ],
+      "sharh": "The impersonal catalogue gives way to a named witness. Ja'far is asked to speak from first-hand knowledge of the people whose conduct he must judge."
+    },
+    "6": {
+      "translation": [
+        "that though the journey to visit is long",
+        "and my home is far from yours,"
+      ],
+      "sharh": "Distance delays the main verb as well as the visit. The English sentence, like the Arabic letter, must cross into the next verse to learn what persists."
+    },
+    "7": {
+      "translation": [
+        "I long for those qualities",
+        "and choose those traits above others."
+      ],
+      "sharh": "“Those” assumes that both men know the qualities in question. Longing is spontaneous, while his second verb describes a deliberate choice."
+    },
+    "8": {
+      "translation": [
+        "I blame the assault of separation,",
+        "with pain lodged deep inside me."
+      ],
+      "sharh": "Separation acts like an attacker. After opening with the equipment for repelling an enemy, he locates the wound inside himself."
+    },
+    "9": {
+      "translation": [
+        "Perhaps time will turn again.",
+        "Perhaps a scattered people will come together."
+      ],
+      "sharh": "Each “perhaps” gives reconciliation another chance. The verb for reunion can also describe a wound closing, answering the pain inside him in the previous verse."
+    },
+    "10": {
+      "translation": [
+        "Will you one day do me justice",
+        "against your uncle’s wrong, cousin?"
+      ],
+      "sharh": "Ja'far’s uncle is the other party. Calling the judge “cousin” makes the difficulty of judging one’s own circle audible in the appeal itself."
+    },
+    "11": {
+      "translation": [
+        "Tell him on my behalf what I say.",
+        "You are someone no one would suspect."
+      ],
+      "sharh": "The uncle is the person who must hear this. Ja'far can carry the message as well as arbitrate because his account will be trusted."
+    },
+    "12": {
+      "translation": [
+        "I have accepted, however much you dislike it,",
+        "Abu Muhammad as judge."
+      ],
+      "sharh": "Abu Muhammad is Ja'far’s own kunya. His uncle learns who Abu Firas has accepted as arbitrator from the very man named to judge the dispute."
+    }
+  },
+  "words": {
+    "1.2.2": {
+      "word": "وَنابَ",
+      "head": "نابَ",
+      "root": "ن و ب",
+      "meaning": "Said of a calamity that befalls someone."
+    },
+    "1.2.4": {
+      "word": "وَادلَهَمَّ",
+      "head": "اِدلَهَمَّ",
+      "root": "د ل ه م",
+      "meaning": "To grow dark. A crisis can “darken” until no way out is visible."
+    },
+    "2.2.1": {
+      "word": "عُدَدَ",
+      "head": "عُدَّة",
+      "root": "ع د د",
+      "meaning": "Equipment or provisions kept ready for an occasion. The poem uses the plural."
+    },
+    "3.1.1": {
+      "word": "لِلِقا",
+      "head": "لِقاء",
+      "root": "ل ق ي",
+      "meaning": "Meeting or confronting. The final hamza of liqa' is dropped here to fit the metre."
+    },
+    "3.2.2": {
+      "word": "وَلِلنَّدى",
+      "head": "النَّدى",
+      "root": "ن د و",
+      "meaning": "Open-handedness, the readiness to give."
+    },
+    "3.2.3-4": {
+      "word": "حُمرُ النَّعَم",
+      "head": "حُمر النَّعَم",
+      "root": "ن ع م",
+      "meaning": "Red camels, particularly prized livestock."
+    },
+    "4.2.1": {
+      "word": "يودى",
+      "head": "وَدى",
+      "root": "و د ي",
+      "meaning": "To pay compensation for a killing to the victim’s kin. The verb here is passive."
+    },
+    "5.1.3": {
+      "word": "وَرقا",
+      "head": "وَرقاء",
+      "meaning": "Warqa', the name of Ja'far’s father. The recited form drops the final hamza to fit the metre."
+    },
+    "6.1.3": {
+      "word": "شَطَّ",
+      "head": "شَطَّ",
+      "root": "ش ط ط",
+      "meaning": "To lie far off, here of the place one would like to visit."
+    },
+    "6.2.5": {
+      "word": "أَمَم",
+      "root": "أ م م",
+      "meaning": "Near at hand, within easy reach."
+    },
+    "7.2.4": {
+      "word": "الشِّيَم",
+      "head": "شيمَة",
+      "root": "ش ي م",
+      "meaning": "A settled trait of character. The verse uses the plural."
+    },
+    "8.1.2": {
+      "word": "عادِيَةَ",
+      "head": "عادِيَة",
+      "root": "ع د و",
+      "meaning": "An assault or hostile onslaught, here attributed to separation."
+    },
+    "9.2.2": {
+      "word": "شَعباً",
+      "head": "شَعب",
+      "root": "ش ع ب",
+      "meaning": "A body of people held together by kinship or a shared interest."
+    },
+    "9.2.3": {
+      "word": "يَلتَئِم",
+      "head": "اِلتَأَمَ",
+      "root": "ل أ م",
+      "meaning": "To join back together, as the edges of a wound do."
+    },
+    "12.2.2-3": {
+      "word": "أَبا مُحَمَّدٍ",
+      "head": "أَبو مُحَمَّد",
+      "meaning": "The kunya of Ja'far ibn Warqa, the arbitrator named in the letter."
+    }
+  }
+}

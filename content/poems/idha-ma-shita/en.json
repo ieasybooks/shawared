@@ -1,0 +1,103 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "If You Want to Make Something",
+  "intro": "Abbas asks a listener to draw him and Fawz a handspan apart. What the two portraits do once the artist leaves them alone is to settle how much either lover has suffered. Al-Zajjaji preserves a shorter telling in an anecdote about al-Asma'i. The six-line diwan version gives even the beloved a taste of desire.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "If you want to make",
+        "something that will astonish people,"
+      ],
+      "sharh": "He recruits the listener to make the marvel. Only after another line will he say what materials it takes or whose feelings the experiment is to test."
+    },
+    "2": {
+      "translation": [
+        "and learn how one who is loved",
+        "has sipped the cup of passion,"
+      ],
+      "sharh": "Even the one who is loved has tasted the cup. Using the passive “beloved” prepares for a test that will require movement from both figures."
+    },
+    "3": {
+      "translation": [
+        "draw Fawz here,",
+        "and draw Abbas over there."
+      ],
+      "sharh": "“Here” and “over there” give the listener two places on the drawing surface. He puts his own name in the third person, as though Abbas could be observed from outside."
+    },
+    "4": {
+      "translation": [
+        "Measure out a handspan between them.",
+        "A little more will do no harm."
+      ],
+      "sharh": "A handspan can be checked with the artist’s own hand. Abbas cheerfully allows a wider gap, raising the stakes of a test he expects the figures to pass."
+    },
+    "5": {
+      "translation": [
+        "If the two do not draw near",
+        "until you see their two heads as one,"
+      ],
+      "sharh": "The Arabic verb has a dual subject. Both figures leave the places assigned to them, until the eye that measured the gap can no longer distinguish their outlines."
+    },
+    "6": {
+      "translation": [
+        "then disbelieve what she has suffered,",
+        "and disbelieve what he has endured."
+      ],
+      "sharh": "If the portraits stay put, both lovers have lied about their pain. The two forms of “endure” also sound like the earlier command to measure, bringing the claim back to the handspan."
+    }
+  },
+  "words": {
+    "1.1.5": {
+      "word": "تَصنَ",
+      "head": "صَنَعَ",
+      "root": "ص ن ع",
+      "meaning": "The first word of the second half supplies the last consonant of “make.” The instruction answering “if” comes in verse 3."
+    },
+    "2.1.3": {
+      "word": "مَعشوقٌ",
+      "head": "مَعشوق",
+      "root": "ع ش ق",
+      "meaning": "The person loved by another. Here the beloved also feels desire."
+    },
+    "2.2.1": {
+      "word": "تَحَسّى",
+      "root": "ح س و",
+      "meaning": "To sip a drink a little at a time."
+    },
+    "3.1.3": {
+      "word": "فَوزاً",
+      "head": "فَوز",
+      "meaning": "Fawz, the woman repeatedly addressed by this name in Abbas’s love poems."
+    },
+    "3.2.2": {
+      "word": "ثَمَّ",
+      "meaning": "Over there, at the second spot on the page."
+    },
+    "4.1.3": {
+      "word": "شِبراً",
+      "head": "شِبر",
+      "root": "ش ب ر",
+      "meaning": "The distance between the tips of the outstretched thumb and little finger."
+    },
+    "5.1.3": {
+      "word": "يَدنوا",
+      "head": "دَنا",
+      "root": "د ن و",
+      "meaning": "The dual verb means “the two draw near.” Its final n drops after lam."
+    },
+    "6.1.3": {
+      "word": "قاسَت",
+      "head": "قاسى",
+      "root": "ق س و",
+      "meaning": "She endured hardship. The feminine verb belongs to Fawz and the masculine form in the next half to Abbas."
+    },
+    "6.2.3": {
+      "word": "قاسى",
+      "root": "ق س و",
+      "meaning": "He bore the pain. The sound recalls the command to measure, from a different root."
+    }
+  }
+}

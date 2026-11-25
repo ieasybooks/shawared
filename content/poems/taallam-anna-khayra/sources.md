@@ -1,0 +1,28 @@
+# تَعَلَّم أَنَّ خَيرَ النّاسِ مَيتٌ
+
+## Recording and extent
+
+Abd al-Rahman al-Saeed, 17 January 2014. The source runs 150.140 s. Keep **37.20–117.55 s** (80.35 s). Before the verse the speaker names Qays, Hamal, his killer in the account he follows, and the sword Dhu al-Nun. The last word of the ninth bayt is «مستقيم», whose aligned word ends at source 116.56 s. The following pause occupies 117.048–118.677 s. At 118.68 s the speaker begins «وفي القصيدة إقواء», an explanation of the rhyme, then quotes Abu Hatim. Those sentences, the heading and the initial and terminal silence lie outside the cut. The studio cards, both full-source transcriptions and the 18 aligned halves give **1–9 once each**. [Source recording](https://www.youtube.com/watch?v=joFRmoKPkQA)
+
+## Editions and explanation
+
+- Abu Ubayda, *Sharh naqa'id Jarir wa-l-Farazdaq*, I, pp. 263–264, in the account of Dahis. P. 263 identifies Hamal, his brother Hudhayfa and the recovered sword. P. 264 transmits the nine verses in recorded order and explains both the slow turning of a stick over the fire in 6 and the turn by which a disputant gets past his opponent’s argument in 8. In this electronic text خير drops out of 1 and the second ل of ولولا drops out of 2. The sound, the remaining witnesses and the syntax supply both. [Narrative](https://shamela.ws/book/13609/108) · [Complete nine](https://shamela.ws/book/13609/109)
+- Abu al-Faraj al-Isfahani, *al-Aghani*, Dar Ihya al-Turath al-Arabi, XVII, p. 134, in the account of the Day of al-Haba'a, gives the same nine in this order, with خير and لولا. Its 5 has لن تراه and its 8 بلأي in place of للأي. The recitation and Abu Ubayda have أن تراه and للأي. In 5 the pronoun anticipates «الرجل الظلوم» across the caesura. [Text and glosses](https://ablibrary.net/book_content/b/1697/134?lang=ar)
+- Al-Marzuqi, *Sharh Diwan al-Hamasa*, pp. 309–310, comments on the opening four. He describes the well, discusses three grammatical readings of the first sadr, relates the wrong in 2 to the broken wager, and reads the passive in 4 as provocation that drives even a forbearing man beyond his ordinary temper. Ibn Abd Rabbih, *al-Iqd al-farid*, VI, p. 23, quotes our 1–4 and 9, with يستضعف in 4 and a different account of who struck Hamal. The introduction names the battle and avoids making the disputed killer part of the poem. [Al-Marzuqi, p. 309](https://shamela.ws/book/26536/291) · [P. 310](https://shamela.ws/book/26536/292) · [Al-Iqd](https://shamela.ws/book/23789/1834)
+- Al-Azhari, *Tahdhib al-lugha*, under دل, quotes 4 and 8. He reports Muhammad ibn Habib’s explanation of دلّ as emboldening somebody. Ibn Qutayba, *al-Ma'ani al-kabir*, quotes 8 with يعيبك and explains the twisting course of an adversary’s argument. Al-Zirikli, *al-A'lam*, V, p. 206, supplies the genealogy, kunyah, sobriquet, succession to his father, retirement to Oman and date 10 AH (631 CE) for the poet profile. [Al-Azhari](https://ablibrary.net/book_content/b/14649/47?lang=ar) · [Ibn Qutayba, entry beginning ولا يعيبك](https://mizanalarab.com/bab/20900127) · [Al-Zirikli](https://shamela.ws/book/12286/4574)
+
+The eleven-bayt corpus entry inserts «لقد فجعت به قيس جميعا» and «وعم به لمقتله بعيد» after the opening and moves «ومارست الرجال» forward. Neither the two nine-bayt witnesses nor the recording includes those insertions. The full count is nine in Abu Ubayda’s narrative. The text opens with a proposition about a dead enemy before naming him in 3. Qays’s language of straightness returns in the closing judgement after the craft image of the heated stick.
+
+## Metre, readings and verification
+
+Wafir, with mim as rawiy. The first sadr falls into «تَعَلَّمْ أَنْ | نَ خَيْرَ النَّا | سِ مَيْتُنْ», two contracted feet (مفاعيلن) and فعولن. In 5.2 «يُمَتَّعُ بِلْـ | غِنَرْرَجُلُظْـ | ظَلُومُو» gives مفاعلتن مفاعلتن فعولن. The verse boundaries preserve the rhyme defect the speaker discusses afterwards. The prepositions in 6.2 «كمستديمِ» and 7.2 «بالغشومِ» give the mim a kasra for two consecutive rhymes. The surrounding endings have damma, including «الظلومُ» at 5 and «الخصيمُ» at 8. The note on p. 134 of al-Aghani draws attention to both verses.
+
+| Half | Decision |
+| --- | --- |
+| 1.1–2 | Al-Marzuqi prints «حياً ... لا يريم» and also transmits accusative ميتاً and nominative ميتٌ. Both independent full transcripts hear ميت and ما. The equal-length half comparison gives ما 7.03 points over لا. The standalone nominative proposition accounts for the pause. |
+| 4.2 | يستجهل in Abu Ubayda and al-Marzuqi scores 22.51 above يستضعف in al-Iqd. The latter would say that the patient man is taken for weak. |
+| 5.1 | The clipped recogniser adds a final pronoun in «تراهم». The independently widened half restores «أن تراه» exactly, in agreement with the whole take and the singular man named in 5.2. The aligned phrase gives أن 5.00 points over لن in al-Aghani. |
+| 8.1 | يعييك scores 16.51 above Ibn Qutayba’s يعيبك. The narrow half gives «للييم» and the widened one «للأيام». The whole-take Audar transcript retains «عرقوب للأي», and al-Azhari and Abu Ubayda quote and explain the phrase. The case and hamza follow the lexically attested noun. |
+| 8.2 | The studio gives النَّصَف, fair treatment. Abu Ubayda and a note in al-Aghani give النِّصْف. Both forms scan. The shorter clip gives the studio reading a modest 2.37 lead. The two vowels are explained on the word card. |
+
+The two clipped transcription flags concern 5.1 and 8.1. Numerical comparisons use one half at a time and equal word counts. The local research includes the nine-verse collation against al-Aghani and the scores. The review used the source cards, transcriptions and acoustic comparisons.
