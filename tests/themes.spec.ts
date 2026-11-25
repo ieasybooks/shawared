@@ -22,7 +22,15 @@ test("the theme index searches both languages, sorts, and opens the quoted verse
   await expect(cards).toHaveCount(entries.length);
   await expect(cards.first()).toHaveAttribute("href", `/en/themes/${byCount[0]![0]}`);
   const boxes = await cards.evaluateAll((links) => links.slice(0, 4).map((el) => el.getBoundingClientRect().top));
-  expect(boxes.filter((top) => top === boxes[0])).toHaveLength(info.project.name === "phone" ? 2 : 3);
+  const columns = info.project.name === "phone" ? 2 : 3;
+  expect(boxes.filter((top) => top === boxes[0])).toHaveLength(columns);
+  const blanks = cards.first().locator("..").locator(':scope > [aria-hidden="true"]').filter({ visible: true });
+  const emptyCells = (columns - (entries.length % columns)) % columns;
+  await expect(blanks).toHaveCount(emptyCells);
+  if (emptyCells) {
+    await expect(blanks.last()).toHaveCSS("border-top-width", entries.length >= columns ? "1px" : "0px");
+    await expect(blanks.last()).toHaveCSS("border-inline-start-width", "1px");
+  }
   await page.getByRole("button", { name: "By poem count" }).click();
   await page.getByRole("radio", { name: "Alphabetical" }).click();
   await expect(cards.first()).toHaveAttribute("href", `/en/themes/${byName[0]![0]}`);
@@ -31,6 +39,9 @@ test("the theme index searches both languages, sorts, and opens the quoted verse
   await expect(page.getByText("Nothing matches your search")).toBeVisible();
   await search.fill("الرِّثاء");
   await expect(cards).toHaveCount(1);
+  await expect(blanks).toHaveCount(columns - 1);
+  await expect(blanks.first()).toHaveCSS("border-inline-start-width", "1px");
+  await expect(blanks.first()).toHaveCSS("border-top-width", "0px");
   await cards.first().click();
   await expect(page).toHaveURL(/\/en\/themes\/ritha$/);
   await expect(page.getByText(elegy.definition.en)).toBeVisible();
@@ -40,6 +51,11 @@ test("the theme index searches both languages, sorts, and opens the quoted verse
   await page.locator('a[href="/en/poems/aya-umma-al-asir?b=15"]').click();
   await expect(page).toHaveURL(/\/en\/poems\/aya-umma-al-asir\?b=15$/);
   await expect(page.getByText("Verse 15 · Explanation", { exact: true }).filter({ visible: true }).first()).toBeVisible();
+  if (info.project.name === "desktop") {
+    const nav = page.getByRole("navigation");
+    await expect(nav.getByRole("link")).toHaveCount(5);
+    await expect(nav.getByRole("link", { name: /^(Meters|Rhymes)$/ })).toHaveCount(0);
+  }
   await page.getByRole("link", { name: "Theme: Elegy", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/themes\/ritha$/);
 });

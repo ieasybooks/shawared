@@ -24,9 +24,6 @@ function roles(lang: UiLang) {
     // Interface in Readex Pro, trimmed for the reader's script.
     caption: textBox("ui", 11, script),
     captionStrong: textBox("uiMedium", 11, script),
-    // Ink bounds measured across the three Arabic field labels and the catalogue's 67 theme, meter and rhyme names.
-    classificationLabel: en ? textBox("ui", 11, "latin") : textBox("ui", 11, "ar", 0, { top: 0.82, bottom: 0.25 }),
-    classificationValue: en ? textBox("uiMedium", 14, "latin") : textBox("verseBold", 21, "ar", 0, { top: 1.02, bottom: 0.65 }),
     label: textBox("ui", 12, script),
     labelStrong: textBox("uiMedium", 12, script),
     body: textBox("ui", 13, script),

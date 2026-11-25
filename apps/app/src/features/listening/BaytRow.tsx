@@ -19,6 +19,7 @@ import { hidePeek, peekHandlers } from "./WordPeek";
  * re-renders only the two numbers concerned (hover never comes from touch).
  */
 const hoveredBayt = createStore<{ n: number | null }>({ n: null });
+const NUMBER_SIZE = 28;
 
 type Props = {
   bayt: PublishedBayt;
@@ -217,7 +218,8 @@ function Words({
 
 const sized = {
   bayt: responsive(
-    { paddingTop: space.m, paddingBottom: space.m, paddingStart: 32, paddingEnd: 6 },
+    // Including the border, 8px inside the list's 8px inset gives the shared 16px text gutter.
+    { paddingTop: space.m, paddingBottom: space.m, paddingStart: NUMBER_SIZE + space.m - 1, paddingEnd: space.m - 1 },
     { paddingTop: 10, paddingBottom: 10, paddingStart: 44, paddingEnd: 14 },
   ),
   // The halves: stacked on phones (spaced like the rest of the bayt), side by side on wide windows.
@@ -239,7 +241,7 @@ const sized = {
   alignEnd: responsive({ justifyContent: "flex-end" as const }, { justifyContent: "center" as const }),
   insetEnd: responsive({ paddingEnd: "8%" }, { paddingEnd: 0 }),
   insetStart: responsive({ paddingStart: "8%" }, { paddingStart: 0 }),
-  num: responsive({ top: 14 }, { top: 19 }),
+  num: responsive({ top: 14, start: space.xs }, { top: 19, start: space.xxs }),
 };
 
 const styles = StyleSheet.create({
@@ -255,8 +257,8 @@ const styles = StyleSheet.create({
   gLine: { position: "absolute", left: 1, right: 1, height: 0, borderWidth: 1, borderStyle: "dotted" },
   tr: { textAlign: "center", writingDirection: "ltr" },
   trs: { paddingHorizontal: "6%" },
-  num: { position: "absolute", start: 2, width: 28, height: 28, borderRadius: 14, alignItems: "center", justifyContent: "center" },
+  num: { position: "absolute", width: NUMBER_SIZE, height: NUMBER_SIZE, borderRadius: 14, alignItems: "center", justifyContent: "center" },
   layer: { position: "absolute" },
   layerCenter: { position: "absolute" },
-  numInk: { width: 28, height: 28, borderRadius: 14, alignItems: "center", justifyContent: "center" },
+  numInk: { width: NUMBER_SIZE, height: NUMBER_SIZE, borderRadius: 14, alignItems: "center", justifyContent: "center" },
 });

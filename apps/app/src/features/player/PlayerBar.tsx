@@ -449,7 +449,7 @@ const styles = StyleSheet.create({
   titleRow: { flexDirection: "row", alignItems: "center", gap: space.m, minHeight: 30 },
   controlsRow: { flexDirection: "row", alignItems: "center", gap: space.xl },
   group: { flexDirection: "row", alignItems: "center", gap: space.xxs },
-  phone: { paddingTop: space.m, paddingBottom: space.s, paddingHorizontal: 16, gap: space.s, borderTopWidth: 1 },
+  phone: { paddingTop: space.m, paddingBottom: space.s, paddingHorizontal: space.xl, gap: space.s, borderTopWidth: 1 },
   phoneTop: { flexDirection: "row", alignItems: "center", gap: space.s, minHeight: 34 },
   transport: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: space.xs },
 });

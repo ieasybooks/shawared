@@ -58,7 +58,7 @@ export function useTip(enabled: boolean) {
   };
 }
 
-/** Player tips sit above their controls. A short title-side label opens below its icon. */
+/** Player tips sit above their controls. A short label opens below its icon. */
 export function Tip({ tip }: { tip: TipText }) {
   const { palette, start } = useSettings();
   const type = useType();

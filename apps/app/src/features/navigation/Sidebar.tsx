@@ -15,7 +15,7 @@ import { useType } from "../../lib/type";
 import { useHydrated } from "../../lib/viewport";
 import { playlistName } from "../saved/actions";
 import type { Saved } from "../saved/model";
-import { SECTIONS, tabOf } from "./tabs";
+import { SECTIONS, tabOf, TABS } from "./tabs";
 
 /** The sidebar's width on wide windows. */
 export const SIDEBAR_W = 352;
@@ -170,7 +170,7 @@ export function SidebarHead() {
         </View>
       </View>
       <View role="navigation" style={[styles.iconNav, { backgroundColor: palette.bg, borderColor: palette.line }]}>
-        {SECTIONS.map((tab) => (
+        {TABS.map((tab) => (
           <View key={tab.name} style={styles.iconNavItem}>
             <TextLink href={href(tab.path)} style={styles.iconNavLink}>
               <Icon name={tab.icon} size={20} color={palette.muted} />

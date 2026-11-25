@@ -14,7 +14,7 @@ import { useType } from "../../lib/type";
 import { SIDEBAR_W, SidebarHead } from "../navigation/Sidebar";
 import { TopBar, WideToolbar } from "../navigation/TopBar";
 import { Explanation, usePanel } from "./Explanation";
-import { Meta, VersesHint } from "./Meta";
+import { Meta } from "./Meta";
 import { PanelScroll } from "./PanelScroll";
 import { PhonePlayer, WidePlayer } from "./Player";
 import { Sheet } from "./Sheet";
@@ -70,9 +70,6 @@ export function ListeningLayout() {
               <WideToolbar back />
             </Only>
             <Meta />
-            <Only on="wide">
-              <VersesHint />
-            </Only>
             <Verses />
             <Only on="wide">
               <WidePlayer />
@@ -222,7 +219,7 @@ const panel = {
   ),
   grip: responsive({ display: "flex" as const }, { display: "none" as const }),
   body: responsive(
-    { paddingTop: 0, paddingStart: 20, paddingEnd: 20, paddingBottom: 22, gap: 0 },
+    { paddingTop: 0, paddingStart: space.xl, paddingEnd: space.xl, paddingBottom: 22, gap: 0 },
     { paddingTop: space.xl, paddingStart: 24, paddingEnd: 24, paddingBottom: 32, gap: space.xl },
   ),
 };
@@ -232,6 +229,6 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
   from: { alignItems: "center", gap: space.xxs },
   side: { width: SIDEBAR_W, borderEndWidth: 1 },
-  peek: { borderTopWidth: 1, paddingTop: space.m, paddingBottom: 10, paddingHorizontal: 18, gap: space.s },
+  peek: { borderTopWidth: 1, paddingTop: space.m, paddingBottom: 10, paddingHorizontal: space.xl, gap: space.s },
   peekHead: { flexDirection: "row", alignItems: "center", gap: space.m },
 });

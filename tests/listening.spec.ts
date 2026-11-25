@@ -119,6 +119,55 @@ test("the poem opens on its introduction; the recitation and the info button mov
   await expect(page.getByText(/قبيلة عذرة|بني عُذرة/)).toHaveCount(0);
 });
 
+test("the poem badges fit closely between the title and the first verse and keep a full tap target", async ({ page }, info) => {
+  await open(page);
+  await page.evaluate(() => document.fonts.ready.then(() => {}));
+  const theme = page.getByRole("link", { name: "الغرض: الغزل", exact: true });
+  const title = page.getByText("تَقولُ بُثَينَةُ لَمّا رَأَت", { exact: true }).filter({ visible: true }).first();
+  const [heading, target, badge, verse] = await Promise.all([
+    title.boundingBox(),
+    theme.boundingBox(),
+    theme.locator(":scope > :first-child").boundingBox(),
+    page.getByLabel("البيت ١", { exact: true }).boundingBox(),
+  ]);
+  expect(target!.height).toBeGreaterThanOrEqual(44);
+  const gapAbove = badge!.y - (heading!.y + heading!.height);
+  expect(gapAbove).toBeGreaterThanOrEqual(8);
+  expect(gapAbove).toBeLessThanOrEqual(12);
+  const gapBelow = verse!.y - (badge!.y + badge!.height);
+  expect(gapBelow).toBeGreaterThanOrEqual(0);
+  expect(gapBelow).toBeLessThanOrEqual(1);
+  if (info.project.name === "phone") {
+    const [back, appearance, playlist, language, favourite, number] = await Promise.all(
+      ["رجوع", "المظهر الليلي", "أضف إلى قائمة", "اللغة", "أضف إلى المفضّلة", "شغّل من البيت ١"].map((name) =>
+        page.getByRole("button", { name, exact: true }).boundingBox(),
+      ),
+    );
+    expect(heading!.x + heading!.width).toBeCloseTo(back!.x + back!.width, 0);
+    expect(playlist!.x + playlist!.width / 2).toBeCloseTo(appearance!.x + appearance!.width / 2, 0);
+    expect(favourite!.x + favourite!.width / 2).toBeCloseTo(language!.x + language!.width / 2, 0);
+    expect(number!.x + number!.width / 2).toBeCloseTo(back!.x + back!.width / 2, 0);
+    const poet = await page
+      .locator('a[href="/poets/jamil-buthayna"]')
+      .filter({ visible: true })
+      .locator(":scope > :last-child")
+      .boundingBox();
+    expect(heading!.y - (poet!.y + poet!.height)).toBeGreaterThanOrEqual(8);
+
+    const halves = await page
+      .getByLabel("البيت ١", { exact: true })
+      .evaluate((el) =>
+        [...el.querySelectorAll<HTMLElement>("div")]
+          .filter((d) => d.style.width && getComputedStyle(d).justifyContent === "space-between")
+          .map((d) => d.getBoundingClientRect().toJSON()),
+      );
+    const preview = await page.getByRole("button", { name: "افتح الشرح", exact: true }).locator(":scope > :last-child").boundingBox();
+    const playerEdge = await page.getByRole("button", { name: "تشغيل القصيدة التالية تلقائيًا", exact: true }).boundingBox();
+    expect(halves[1]!.x).toBeCloseTo(preview!.x, 0);
+    expect(preview!.x).toBeCloseTo(playerEdge!.x, 0);
+  }
+});
+
 test("a word opens its own bayt, its meaning brought forward", async ({ page }) => {
   await open(page);
   // Hold bayt 3, then tap a word of bayt 9.

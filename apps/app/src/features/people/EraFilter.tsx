@@ -39,6 +39,7 @@ export function EraFilter({
   const type = useType();
   const [expanded, setExpanded] = useState(false);
   if (!groups.length) return null;
+  const phoneCount = expanded ? groups.length : Math.min(4, groups.length);
   return (
     <View style={styles.group}>
       <View style={styles.heading}>
@@ -60,14 +61,14 @@ export function EraFilter({
           </Only>
         )}
       </View>
-      <DirectoryGrid>
+      <DirectoryGrid phoneCount={phoneCount}>
         {groups.map(({ id, count }, i) => (
           <DirectoryCell
             key={id}
             index={i}
             name={ERAS[id][lang]}
             count={directoryCount("poets", count, lang)}
-            hideOnPhone={!expanded && i >= 4}
+            hideOnPhone={i >= phoneCount}
             selected={selected === id}
             onPress={() => onChange(selected === id ? null : id)}
           />

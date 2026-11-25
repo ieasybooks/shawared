@@ -10,11 +10,13 @@ import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from "rea
 export function TextLink({
   href,
   children,
+  label,
   style,
   current,
 }: {
   href: string;
   children: ReactNode;
+  label?: string | undefined;
   /** For the link itself: how its texts sit (gap, alignment). */
   style?: StyleProp<ViewStyle>;
   /** The page it leads to is the one open. */
@@ -27,6 +29,7 @@ export function TextLink({
       <Link href={href} asChild>
         <Pressable
           accessibilityRole="link"
+          accessibilityLabel={label}
           {...prefetch}
           aria-current={current ? "page" : undefined}
           // Link asChild needs one flat style object.
