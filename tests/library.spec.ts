@@ -52,6 +52,8 @@ test("every kind of page wakes up without errors", async ({ page }) => {
     "/",
     "/poets",
     "/reciters",
+    "/themes",
+    "/themes/ritha",
     "/meters",
     "/poets/jamil-buthayna",
     "/reciters/osama-alwaaedh",
@@ -69,7 +71,7 @@ test("every kind of page wakes up without errors", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-test("the tabs lead to poets, reciters and meters", async ({ page }) => {
+test("the tabs lead to poets, reciters and themes", async ({ page }) => {
   await page.goto("/");
   await expectCurrent(page, "الرئيسية");
   await section(page, "الشعراء").click();
@@ -80,10 +82,10 @@ test("the tabs lead to poets, reciters and meters", async ({ page }) => {
   await section(page, "المُلقون").click();
   await expect(page).toHaveURL(/\/reciters$/);
   await expect(shown(page, "أسامة الواعظ")).toBeVisible();
-  await section(page, "البحور").click();
-  await expect(page).toHaveURL(/\/meters$/);
-  await expect(shown(page, "الطويل", true)).toBeVisible();
-  await expect(shown(page, "فَعولُنْ مَفاعيلُنْ فَعولُنْ مَفاعيلُنْ")).toBeVisible();
+  await section(page, "الأغراض").click();
+  await expect(page).toHaveURL(/\/themes$/);
+  await expectCurrent(page, "الأغراض");
+  await expect(shown(page, "الرثاء", true)).toBeVisible();
   await section(page, "الرئيسية").click();
   await expect(page).toHaveURL(/\/$/);
   // The library lists many poems, newest first: scroll to this one.

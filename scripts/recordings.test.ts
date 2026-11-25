@@ -22,6 +22,16 @@ function copyOfContent(): string {
   for (const path of ["poets", "reciters", "poems/bakaytu-ala-al-shababi", "poems/taqulu-buthaynatu"]) {
     cpSync(join(REPO, "content", path), join(root, "content", path), { recursive: true });
   }
+  // This two-poem catalogue needs examples from its own verses.
+  const { ghazal, shawq, itab } = JSON.parse(readFileSync(join(REPO, "content/themes.json"), "utf8"));
+  writeFileSync(
+    join(root, "content/themes.json"),
+    JSON.stringify({
+      ghazal: { ...ghazal, example: { poem: "taqulu-buthaynatu", bayt: 10 } },
+      shawq: { ...shawq, example: { poem: "bakaytu-ala-al-shababi", bayt: 1 } },
+      itab: { ...itab, example: undefined },
+    }),
+  );
   const [r] = recordings(root);
   const source = sourcePath(root, r!.poem, r!.recitation);
   mkdirSync(join(source, ".."), { recursive: true });

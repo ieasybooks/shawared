@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { useMemo } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
+import { TextLink } from "../../components/ui/TextLink";
 import { useCatalog } from "../../lib/content";
 import { METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
@@ -20,12 +21,13 @@ export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | und
   const title = t(lang, "meters");
   if (!data)
     return (
-      <PageFrame title={title}>
+      <PageFrame back title={title}>
         <StateView error={error} onRetry={retry} />
       </PageFrame>
     );
   return (
     <ListPage
+      back
       title={title}
       data={METER_IDS}
       keyOf={(m) => m}
@@ -67,7 +69,7 @@ function MeterRow({ id, count, first }: { id: string; count: number; first: bool
 /** One meter: its feet, and the poems written in it. */
 export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
-  const { palette, lang, start } = useSettings();
+  const { palette, lang, start, href } = useSettings();
   const type = useType();
   const poems = useMemo(() => data?.poems.filter((p) => p.meter === id) ?? [], [data, id]);
   const list = useMemo(() => poems.map((p) => p.id), [poems]);
@@ -81,6 +83,11 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
   const header = (
     <>
       <DetailFacts arabic={lang === "ar" ? null : meterName(id, "ar")}>
+        <TextLink href={href(paths.meters)}>
+          <Text style={[type.labelStrong, styles.link, { color: palette.muted, textDecorationColor: palette.line2 }]}>
+            {t(lang, "allMeters")}
+          </Text>
+        </TextLink>
         <View style={styles.feet}>
           <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "pattern")}</Text>
           <View style={[styles.feetCard, { backgroundColor: palette.fold, borderColor: palette.line }]}>
@@ -105,6 +112,7 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
 }
 
 const styles = StyleSheet.create({
+  link: { textDecorationLine: "underline" },
   row: { borderTopWidth: 1, paddingVertical: 16, gap: space.m },
   first: { borderTopWidth: 0 },
   rowHead: { flexDirection: "row", alignItems: "center", gap: space.l },

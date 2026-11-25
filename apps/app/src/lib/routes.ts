@@ -30,6 +30,8 @@ export const paths = {
   poet: (id: string) => `/poets/${id}`,
   reciters: "/reciters",
   reciter: (id: string) => `/reciters/${id}`,
+  themes: "/themes",
+  theme: (id: string) => `/themes/${id}`,
   meters: "/meters",
   meter: (id: string) => `/meters/${id}`,
   poem: (id: string, bayt?: number) => (bayt ? `/poems/${id}?b=${bayt}` : `/poems/${id}`),

@@ -29,7 +29,7 @@ function facts(poem: CatalogPoem, lang: UiLang) {
  * Opening a poem from a list remembers the list: when the poem ends, the next one in it plays.
  * `list` is the poems' ids as the list shows them.
  */
-function useOpen(href: string, poemId: string, list: readonly string[] | undefined) {
+export function useOpenPoem(href: string, poemId: string, list: readonly string[] | undefined) {
   const prefetch = usePrefetch(href);
   return {
     ...prefetch,
@@ -110,7 +110,7 @@ export function PoemEntry({ poem, catalog, list }: { poem: CatalogPoem; catalog:
   const rec = poem.recitations[0];
   const reciter = rec ? catalog.reciters[rec.reciter] : undefined;
   const to = href(paths.poem(poem.id));
-  const open = useOpen(to, poem.id, list);
+  const open = useOpenPoem(to, poem.id, list);
   return (
     <View style={[styles.entry, { borderTopColor: palette.line }]}>
       <Link href={to} asChild>
@@ -178,11 +178,13 @@ export function PoemRow({
   catalog,
   show,
   list,
+  disclosure,
 }: {
   poem: CatalogPoem;
   catalog: Catalog;
   show: "poet" | "reciter";
   list?: readonly string[];
+  disclosure?: boolean;
 }) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
@@ -194,12 +196,17 @@ export function PoemRow({
         ? t(lang, "recitedBy", { name: nameOf(catalog.reciters[rec.reciter], lang) })
         : "";
   const to = href(paths.poem(poem.id));
-  const open = useOpen(to, poem.id, list);
+  const open = useOpenPoem(to, poem.id, list);
   return (
     <Link href={to} asChild>
       <Pressable accessibilityRole="link" {...open} style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
-        <Text style={[type.listTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>{poem.title}</Text>
-        <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{[who, facts(poem, lang)].filter(Boolean).join(" · ")}</Text>
+        <View style={styles.rowBody}>
+          <View style={styles.rowText}>
+            <Text style={[type.listTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>{poem.title}</Text>
+            <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{[who, facts(poem, lang)].filter(Boolean).join(" · ")}</Text>
+          </View>
+          {disclosure && <Icon name="chevron" size={15} color={palette.muted} />}
+        </View>
       </Pressable>
     </Link>
   );
@@ -235,4 +242,6 @@ const styles = StyleSheet.create({
   byline: { flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: space.s },
   opening: { borderRadius: 12, borderWidth: 1, paddingVertical: space.m, justifyContent: "space-between", gap: space.xs },
   row: { borderTopWidth: 1, paddingVertical: 16, gap: space.s },
+  rowBody: { flexDirection: "row", alignItems: "center", gap: space.m },
+  rowText: { flex: 1, minWidth: 0, gap: space.s },
 });

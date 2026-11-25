@@ -1,4 +1,4 @@
-import type { Catalog, CatalogPerson, CatalogPoem, PersonKind, UiLang } from "@shawared/contracts";
+import { themeOf, type Catalog, type CatalogPerson, type CatalogPoem, type PersonKind, type UiLang } from "@shawared/contracts";
 import type { Metadata } from "expo-router/server";
 import { ABOUT, PRIVACY, SUPPORT, TERMS } from "../features/about/texts";
 import { abyatCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../lib/i18n";
@@ -35,6 +35,7 @@ export const staticParams = {
   poems: () => catalog().poems.map((p) => ({ id: p.id })),
   people: (kind: PersonKind) => Object.keys(catalog()[kind]).map((id) => ({ id })),
   meters: () => METER_IDS.map((id) => ({ id })),
+  themes: () => Object.keys(catalog().themes ?? {}).map((id) => ({ id })),
 };
 
 /** Each page's data (its loader's result). Null when there is no such page. */
@@ -50,6 +51,22 @@ export const pageData = {
   meters: () => {
     const c = catalog();
     return { catalog: slice(c, [], { meters: c.meters }) };
+  },
+  themes: () => {
+    const c = catalog();
+    return { catalog: slice(c, [], { themes: c.themes }) };
+  },
+  theme: (id: string) => {
+    const c = catalog();
+    const theme = themeOf(c, id);
+    if (!theme) return null;
+    return {
+      catalog: slice(
+        c,
+        c.poems.filter((p) => p.theme === id),
+        { themes: { [id]: theme } },
+      ),
+    };
   },
   person: (kind: PersonKind, id: string, lang: UiLang) => {
     const person = personBundle(kind, id, lang);
@@ -129,6 +146,13 @@ export const pageMeta = {
       t(lang, kind === "poets" ? "metaPoets" : "metaReciters"),
     ),
   meters: (lang: UiLang) => describe(lang, paths.meters, titled(lang, t(lang, "meters")), t(lang, "metaMeters")),
+  themes: (lang: UiLang) => describe(lang, paths.themes, titled(lang, t(lang, "themes")), t(lang, "metaThemes")),
+  theme: (id: string, lang: UiLang) => {
+    const theme = themeOf(catalog(), id);
+    return theme
+      ? describe(lang, paths.theme(id), titled(lang, theme.name[lang], t(lang, "themes")), theme.definition[lang])
+      : notFound(lang);
+  },
   // What the reader keeps lives on their device: nothing for search engines.
   library: (lang: UiLang): Metadata => ({
     ...describe(lang, paths.library, titled(lang, t(lang, "library")), t(lang, "metaLibrary")),

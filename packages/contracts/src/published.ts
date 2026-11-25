@@ -13,6 +13,20 @@ const Died = z.object({ hijri: z.number(), ce: z.number() });
 export const PublishedBayt = z.object({ n: z.number(), sadr: z.string(), ajuz: z.string() });
 export type PublishedBayt = z.infer<typeof PublishedBayt>;
 
+const BilingualText = z.object({ ar: z.string(), en: z.string() });
+export const CatalogTheme = z.object({
+  name: BilingualText,
+  definition: BilingualText,
+  poems: z.number(),
+  example: z.object({
+    poem: z.string(),
+    bayt: PublishedBayt,
+    measure: z.number(),
+    kashida: z.record(z.string(), z.array(z.tuple([z.number(), z.number()]))),
+  }),
+});
+export type CatalogTheme = z.infer<typeof CatalogTheme>;
+
 export const CatalogPoem = z.object({
   id: z.string(),
   title: z.string(),
@@ -20,6 +34,8 @@ export const CatalogPoem = z.object({
   titles: z.record(z.string(), z.string()).default({}),
   poet: z.string(),
   meter: z.string(),
+  /** The primary theme. Earlier v1 catalogs predate themes. */
+  theme: z.string().optional(),
   rawiy: z.string().optional(),
   abyat: z.number(),
   abyat_in_full: z.number(),
@@ -65,8 +81,15 @@ export const Catalog = z.object({
   reciters: z.record(z.string(), CatalogPerson),
   /** How many poems each meter has. */
   meters: z.record(z.string(), z.number()).default({}),
+  themes: z.record(z.string(), CatalogTheme).optional(),
 });
 export type Catalog = z.infer<typeof Catalog>;
+
+/** A theme reached by its route, including on a device with an older catalog. */
+export function themeOf(catalog: Catalog | undefined, id: string): CatalogTheme | undefined {
+  const themes = catalog?.themes;
+  return themes && Object.hasOwn(themes, id) ? themes[id] : undefined;
+}
 
 export const PublishedWordNote = z.object({
   word: z.string(),
@@ -114,6 +137,8 @@ export const PoemBundle = z.object({
     poet: z.string(),
     title: z.string(),
     meter: z.string(),
+    /** Primary first. The labels travel with a downloaded poem. */
+    themes: z.array(z.object({ id: z.string(), name: z.string() })).optional(),
     rawiy: z.string().optional(),
     abyat_in_full: z.number(),
     abyat: z.array(PublishedBayt),

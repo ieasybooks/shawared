@@ -8,6 +8,16 @@ const ar = {
   poets: "الشعراء",
   reciters: "المُلقون",
   meters: "البحور",
+  themes: "الأغراض",
+  searchThemes: "ابحث عن غرض شعري",
+  byPoemCount: "بحسب عدد القصائد",
+  alphabetical: "بحسب الترتيب الهجائي",
+  sortThemes: "ترتيب الأغراض",
+  otherSubjects: "موضوعات أخرى",
+  allMeters: "كل البحور",
+  themePoems: "قصائد {name}",
+  noThemes: "الأغراض غير متاحة في نسخة الفهرس هذه.",
+  metaThemes: "تصفّح القصائد بحسب أغراضها الشعرية، واقرأ تعريف كل غرض وبيتًا من شعره.",
   search: "ابحث بعنوان أو مطلع قصيدة أو شاعر أو مُلقٍ",
   searchPoets: "ابحث عن شاعر",
   searchReciters: "ابحث عن مُلقٍ",
@@ -151,6 +161,16 @@ const en: Record<StringKey, string> = {
   poets: "Poets",
   reciters: "Reciters",
   meters: "Meters",
+  themes: "Themes",
+  searchThemes: "Search poetic themes",
+  byPoemCount: "By poem count",
+  alphabetical: "Alphabetical",
+  sortThemes: "Sort themes",
+  otherSubjects: "Other subjects",
+  allMeters: "All meters",
+  themePoems: "Poems in this theme",
+  noThemes: "Themes are unavailable in this copy of the catalogue.",
+  metaThemes: "Browse poems by their poetic themes, with a definition and a verse from each collection.",
   search: "Search by title, opening verse, poet or reciter",
   searchPoets: "Search the poets",
   searchReciters: "Search the reciters",
@@ -327,6 +347,14 @@ export function poemsCount(n: number, lang: UiLang) {
   if (n === 2) return "قصيدتان";
   if (n <= 10) return `${digits(n, lang)} قصائد`;
   return `${digits(n, lang)} قصيدةً`;
+}
+
+export function themesCount(n: number, lang: UiLang) {
+  if (lang === "en") return `${n} theme${n === 1 ? "" : "s"}`;
+  if (n === 0) return "لا أغراض";
+  if (n === 1) return "غرض شعري واحد";
+  if (n === 2) return "غرضان شعريان";
+  return n <= 10 ? `${digits(n, lang)} أغراض شعرية` : `${digits(n, lang)} غرضًا شعريًا`;
 }
 
 const METERS: Record<string, [string, string]> = {

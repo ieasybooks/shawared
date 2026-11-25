@@ -28,6 +28,7 @@ type ListeningValue = {
   unpin: () => void;
   /** The poem's introduction in the reader's language, if it has one. */
   intro: string | undefined;
+  hasAbout: boolean;
   showIntro: () => void;
   /** A word whose meaning the explanation brings forward ("n.h.w"); its bayt is held. */
   focus: string | null;
@@ -65,10 +66,11 @@ export function ListeningProvider({
   const hasTranslation = useMemo(() => sources.some((s) => Object.values(s.abyat).some((a) => a.translation)), [sources]);
   const [trOn, setTrOn] = useState(true);
   const intro = source?.intro ?? sources.find((s) => s.intro)?.intro;
+  const hasAbout = Boolean(intro || (bundle.poem.themes?.length ?? 0) > 1);
   // A poem opens on its introduction, before the recitation; a link to one bayt, or a
   // recitation already under way, opens on the verses.
-  const [held, setHeld] = useState<Held>(initialBayt ?? (intro && !playback.active ? "intro" : null));
-  const pinned: Held = held === "intro" && !intro ? null : held;
+  const [held, setHeld] = useState<Held>(initialBayt ?? (hasAbout && !playback.active ? "intro" : null));
+  const pinned: Held = held === "intro" && !hasAbout ? null : held;
   const [focus, setFocus] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
   const followRef = useRef<(() => void) | null>(null);
@@ -136,6 +138,7 @@ export function ListeningProvider({
       pin: (n) => hold(n),
       unpin: () => hold(null),
       intro,
+      hasAbout,
       // Phones open the explanation's sheet; wide windows show it beside the verses.
       showIntro: () => {
         hold("intro");
@@ -164,6 +167,7 @@ export function ListeningProvider({
       trOn,
       pinned,
       intro,
+      hasAbout,
       focus,
       hold,
       jump,

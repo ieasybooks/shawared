@@ -33,16 +33,17 @@ function BigPlay() {
 
 /**
  * The poem's head: on wide windows the big play button, the poet and the title; on phones the
- * title (the poet is in the top bar, the player below). Then the chips: meter, rhyme and the
+ * title (the poet is in the top bar, the player below). Then the chips: primary theme, meter, rhyme and the
  * introduction (the length, the reciter and the time are the player's), and what the reader can
  * keep: the heart, a playlist, a download (the apps), and in English the translation switch.
  */
 export function Meta() {
-  const { bundle, recitation, hasTranslation, trOn, setTrOn, sources, intro, showIntro, pinned } = useListening();
+  const { bundle, recitation, hasTranslation, trOn, setTrOn, sources, hasAbout, showIntro, pinned } = useListening();
   const { palette, lang, href } = useSettings();
   const type = useType();
   const layout = useLayout();
   const { poem } = bundle;
+  const primary = poem.themes?.[0];
   const enTitle = lang === "en" ? sources.find((s) => s.title)?.title : undefined;
   const pill = hasTranslation ? <TogglePill label={t(lang, "translation")} on={trOn} onPress={() => setTrOn(!trOn)} /> : null;
   return (
@@ -73,27 +74,36 @@ export function Meta() {
         </View>
       </View>
       <View style={[styles.chips, layout.style(sized.chips)]}>
-        <Chip>{meterName(poem.meter, lang)}</Chip>
-        {poem.rawiy && <Chip>{rhymeName(poem.rawiy, lang)}</Chip>}
-        {intro && (
-          <Chip lead="notes" accent onPress={showIntro} active={pinned === "intro"}>
-            {t(lang, "about")}
-          </Chip>
-        )}
-        <View style={styles.actions}>
-          <FavouriteButton kind="poems" id={poem.id} size={36} iconSize={20} />
-          <PlaylistMenu poemId={poem.id} size={36} iconSize={20} />
-          <DownloadButton
-            poem={{
-              id: poem.id,
-              title: poem.title,
-              audio: recitation.audio,
-              langs: catalogNow()?.poems.find((p) => p.id === poem.id)?.langs ?? ["ar", "en"],
-            }}
-            size={36}
-            iconSize={20}
-          />
-          <Only on="wide">{pill}</Only>
+        <View style={styles.facts}>
+          {primary && (
+            <Chip href={href(paths.theme(primary.id))} lead="tag">
+              {primary.name}
+            </Chip>
+          )}
+          <Chip href={href(paths.meter(poem.meter))}>{meterName(poem.meter, lang)}</Chip>
+          {poem.rawiy && <Chip>{rhymeName(poem.rawiy, lang)}</Chip>}
+        </View>
+        <View style={[styles.facts, styles.tools]}>
+          {hasAbout && (
+            <Chip lead="notes" accent onPress={showIntro} active={pinned === "intro"}>
+              {t(lang, "about")}
+            </Chip>
+          )}
+          <View style={styles.actions}>
+            <FavouriteButton kind="poems" id={poem.id} size={36} iconSize={20} />
+            <PlaylistMenu poemId={poem.id} size={36} iconSize={20} />
+            <DownloadButton
+              poem={{
+                id: poem.id,
+                title: poem.title,
+                audio: recitation.audio,
+                langs: catalogNow()?.poems.find((p) => p.id === poem.id)?.langs ?? ["ar", "en"],
+              }}
+              size={36}
+              iconSize={20}
+            />
+            <Only on="wide">{pill}</Only>
+          </View>
         </View>
       </View>
     </View>
@@ -114,7 +124,7 @@ export function VersesHint() {
 const sized = {
   meta: responsive({ paddingTop: space.xs, paddingStart: 20, paddingEnd: 20 }, { paddingTop: space.xs, paddingStart: 40, paddingEnd: 40 }),
   // On wide windows the chips line up with the title, past the play button.
-  chips: responsive({ marginStart: 0 }, { marginStart: 92 }),
+  chips: responsive({ marginStart: 0, flexDirection: "column" as const }, { marginStart: 92, flexDirection: "row" as const }),
 };
 
 const styles = StyleSheet.create({
@@ -127,7 +137,9 @@ const styles = StyleSheet.create({
   hover: { opacity: 0.88 },
   titleRow: { flexDirection: "row", alignItems: "center", gap: 10 },
   title: { writingDirection: "rtl", flexShrink: 1 },
-  chips: { flexDirection: "row", gap: space.s, flexWrap: "wrap", alignItems: "center" },
+  chips: { gap: space.s, flexWrap: "wrap" },
+  facts: { flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: space.s, maxWidth: "100%" },
+  tools: { flexGrow: 1 },
   sp: { flex: 1 },
   // The end of the chips' line, or of the next where it is full.
   actions: { flexDirection: "row", alignItems: "center", gap: space.xxs, marginStart: "auto" },
