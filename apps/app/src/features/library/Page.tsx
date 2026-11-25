@@ -1,6 +1,7 @@
 import { space } from "@shawared/design";
 import { LegendList } from "@legendapp/list/react-native";
-import { Fragment, useMemo, type ReactElement, type ReactNode } from "react";
+import { useIsFocused } from "expo-router";
+import { Activity, Fragment, useMemo, type ReactElement, type ReactNode } from "react";
 import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Nuqta } from "../../components/ui/controls";
 import { useSettings } from "../../lib/settings";
@@ -59,6 +60,7 @@ export function ListPage<T>({
   const type = useType();
   const layout = useLayout();
   const hydrated = useHydrated();
+  const focused = useIsFocused();
   // Phones show one column. The web, which can't tell, groups the rows for wide windows at
   // every width and stacks each row's cells on phones (CSS).
   const perRow = layout.wide === false ? 1 : columns;
@@ -140,7 +142,9 @@ export function ListPage<T>({
   );
   return (
     <PageFrame title={title} back={back} lead={lead}>
-      {list}
+      {/* A hidden web route measures every row at zero. Pause the list's layout effects
+          until the route returns, preserving its rows and scroll position for Back. */}
+      {Platform.OS === "web" && hydrated ? <Activity mode={focused ? "visible" : "hidden"}>{list}</Activity> : list}
     </PageFrame>
   );
 }

@@ -1,0 +1,204 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "The Factions Have Gathered Around Me",
+  "intro": "Ibn Ishaq attributes these verses to Khubayb ibn Adi as his captors assembled to kill him near Mecca. Ibn Hisham records that some authorities on poetry disputed the attribution. Al-Bukhari transmits two verses in which Khubayb speaks of the side he will fall on and of God's power to bless his torn body. The longer poem brings the crowd and the solitary captive face to face, then lets him speak of a fear the crowd cannot see.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "The factions have gathered around me and rallied",
+        "their tribes, mustering every company."
+      ],
+      "sharh": "The crowd forms around a single point, the captive. The verbs keep adding people to it, from the factions already present to every company they can call out."
+    },
+    "2": {
+      "translation": [
+        "Each shows his enmity and strains",
+        "against me, bound and left without help."
+      ],
+      "sharh": "The hostile crowd breaks up into individuals, each eager to show his zeal. His bonds give them the courage to display it against him."
+    },
+    "3": {
+      "translation": [
+        "They have brought their sons and women together,",
+        "and I have been brought up to a tall, unscalable trunk."
+      ],
+      "sharh": "The families gather as spectators. The switch from “they have brought” to “I have been brought” registers how little command the prisoner has over his own movements."
+    },
+    "4": {
+      "translation": [
+        "To God I complain of my exile, then my anguish,",
+        "and what the factions have prepared where I shall fall."
+      ],
+      "sharh": "He turns away from his audience to name what it feels like to be alone among them. The place prepared for his death is close enough for him to point to it."
+    },
+    "5": {
+      "translation": [
+        "Lord of the Throne, give me patience for what they intend.",
+        "They have cut my flesh, and my last hope has failed."
+      ],
+      "sharh": "He asks for the endurance still open to him after bodily rescue has ceased to seem possible. “My hope has despaired” gives the failing hope a life of its own."
+    },
+    "6": {
+      "translation": [
+        "This is for God's sake, and if He wills,",
+        "He can bless the joints of a body torn apart."
+      ],
+      "sharh": "Even a body reduced to its separate parts remains within the reach of God's blessing. In al-Bukhari this verse follows the one about falling on either side, heard ninth here."
+    },
+    "7": {
+      "translation": [
+        "They offered me unbelief, with death as the alternative.",
+        "My eyes ran over, though no panic moved me."
+      ],
+      "sharh": "The choice imposed on him gives his tears an obvious interpretation to the onlookers. He acknowledges the tears and reserves their explanation for the next verse."
+    },
+    "8": {
+      "translation": [
+        "It is no dread of death in me. I must die.",
+        "What I dread is the blaze of a fire that wraps me round."
+      ],
+      "sharh": "Death will come whatever answer he gives his captors. He describes the other danger as a flame wrapping him like a garment, turning an image of covering into one of punishment."
+    },
+    "9": {
+      "translation": [
+        "I do not care, when I am killed a Muslim,",
+        "on which side I fall for God's sake."
+      ],
+      "sharh": "He leaves the position of his body to his captors while holding to his faith. Al-Bukhari transmits the same thought with another Arabic word for the side on which he falls."
+    },
+    "10": {
+      "translation": [
+        "I will show the enemy no abasement,",
+        "nor any panic. To God I return."
+      ],
+      "sharh": "The crowd can see his face and hold his body. His last words give the direction of a journey over which it has no say, returning to the God he addressed in his complaint."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "الأَحزابُ",
+      "head": "الحِزب",
+      "root": "ح ز ب",
+      "meaning": "Factions or groups that have joined together against him."
+    },
+    "1.1.5": {
+      "word": "وَأَلَّبوا",
+      "head": "أَلَّبَ",
+      "root": "أ ل ب",
+      "meaning": "Rallied others and incited them against someone."
+    },
+    "2.2.4": {
+      "word": "وَثاقٍ",
+      "head": "وَثاق",
+      "root": "و ث ق",
+      "meaning": "A bond or fetter holding a captive."
+    },
+    "2.2.5": {
+      "word": "بِمَضيَعِ",
+      "head": "مَضيَع",
+      "root": "ض ي ع",
+      "meaning": "A place where he is abandoned to his fate. Some manuscripts give a different consonant here."
+    },
+    "3.2.3": {
+      "word": "جِذعٍ",
+      "head": "جِذع",
+      "root": "ج ذ ع",
+      "meaning": "A tree trunk, here the timber used for the execution."
+    },
+    "3.2.5": {
+      "word": "مُمَنَّعِ",
+      "head": "مُمَنَّع",
+      "root": "م ن ع",
+      "meaning": "High and hard to scale."
+    },
+    "4.2.2": {
+      "word": "أَرصَدَ",
+      "root": "ر ص د",
+      "meaning": "Made ready in advance."
+    },
+    "4.2.6": {
+      "word": "مَصرَعي",
+      "head": "مَصرَع",
+      "root": "ص ر ع",
+      "meaning": "The spot where he falls to his death."
+    },
+    "5.1.1-2": {
+      "word": "فَذا العَرشِ",
+      "head": "ذو العَرش",
+      "meaning": "“Lord of the Throne”, an address to God with the word of invocation left understood."
+    },
+    "5.2.2": {
+      "word": "بَضَّعوا",
+      "head": "بَضَّعَ",
+      "root": "ب ض ع",
+      "meaning": "Cut flesh into pieces."
+    },
+    "5.2.5": {
+      "word": "ياسَ",
+      "root": "ي أ س",
+      "meaning": "An old form of “despaired”, said here of hope itself."
+    },
+    "6.1.2-4": {
+      "word": "في ذاتِ الإِلَهِ",
+      "head": "في ذاتِ الإِلَه",
+      "meaning": "“For God's sake”, in devotion to him."
+    },
+    "6.2.3": {
+      "word": "أَوصالِ",
+      "head": "وَصل",
+      "root": "و ص ل",
+      "meaning": "Joints or articulated parts of a body."
+    },
+    "6.2.4": {
+      "word": "شِلوٍ",
+      "head": "شِلو",
+      "root": "ش ل و",
+      "meaning": "A bodily remnant or severed limb."
+    },
+    "6.2.5": {
+      "word": "مُمَزَّعِ",
+      "head": "مُمَزَّع",
+      "root": "م ز ع",
+      "meaning": "Torn into separate pieces."
+    },
+    "7.2.2": {
+      "word": "هَمَلَت",
+      "head": "هَمَلَ",
+      "root": "ه م ل",
+      "meaning": "Flowed freely, of tears."
+    },
+    "7.2.6": {
+      "word": "مَجزَعِ",
+      "head": "مَجزَع",
+      "root": "ج ز ع",
+      "meaning": "Panic or loss of composure under suffering."
+    },
+    "8.2.3": {
+      "word": "جَحمُ",
+      "head": "جَحم",
+      "root": "ج ح م",
+      "meaning": "The fierce blaze of a fire."
+    },
+    "8.2.5": {
+      "word": "مُلَفَّعِ",
+      "head": "مُلَفَّع",
+      "root": "ل ف ع",
+      "meaning": "Wrapping all around, as a cloak might envelop a person."
+    },
+    "9.2.3": {
+      "word": "جَنبٍ",
+      "head": "جَنب",
+      "root": "ج ن ب",
+      "meaning": "Either side of the body. Al-Bukhari has the equivalent word shiqq."
+    },
+    "10.1.4": {
+      "word": "تَخَشُّعاً",
+      "head": "تَخَشُّع",
+      "root": "خ ش ع",
+      "meaning": "A visible show of abasement."
+    }
+  }
+}
