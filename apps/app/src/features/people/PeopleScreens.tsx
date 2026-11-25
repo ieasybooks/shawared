@@ -1,4 +1,4 @@
-import type { Catalog, CatalogPerson, PersonBundle, PersonKind } from "@shawared/contracts";
+import type { Catalog, CatalogPerson, Era, PersonBundle, PersonKind } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { Link } from "expo-router";
 import { useMemo, useState } from "react";
@@ -8,7 +8,10 @@ import { CoverTile } from "../../components/ui/Girih";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog, usePerson } from "../../lib/content";
 import { usePrefetch } from "../../lib/prefetch";
-import { poemsCount, t } from "../../lib/i18n";
+import { recordingsByReciter } from "../../lib/counts";
+import { SortBar } from "../library/DirectoryControls";
+import { EraFilter, eraOf, groupPoetsByEra } from "./EraFilter";
+import { directoryCount, poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { searchPeople } from "../../lib/search";
 import { useSettings } from "../../lib/settings";
@@ -18,17 +21,41 @@ import { nameOf, PoemRow } from "../library/PoemCard";
 import { SearchField } from "../library/SearchField";
 import { FavouriteChip } from "../saved/SavedButtons";
 
-/** Every poet, or every reciter, with how many poems they have, and a search by name. */
-export function PeopleScreen({ kind, initial }: { kind: PersonKind; initial?: { catalog: Catalog } | undefined }) {
-  const { data, error, retry } = useCatalog(initial?.catalog);
+type PeopleOrder = "alphabetical" | "byPoemCount" | "byRecordingCount";
+
+export function PeopleScreen({
+  kind,
+  initial,
+}: {
+  kind: PersonKind;
+  initial?: { catalog: Catalog; recordings?: Record<string, number> } | undefined;
+}) {
+  const { data: live, error, retry } = useCatalog();
+  const data = live ?? initial?.catalog;
   const { lang } = useSettings();
   const [query, setQuery] = useState("");
-  const sorted = useMemo(() => {
+  const [era, setEra] = useState<Era | null>(null);
+  const [order, setOrder] = useState<PeopleOrder>("alphabetical");
+  const groups = useMemo(() => (kind === "poets" && data ? groupPoetsByEra(data.poets) : []), [data, kind]);
+  const activeEra = groups.some((group) => group.id === era) ? era : null;
+  const recordings = useMemo(
+    () => (kind === "reciters" && live ? recordingsByReciter(live.poems) : initial?.recordings),
+    [kind, live, initial],
+  );
+  const people = useMemo(() => {
     if (!data) return [];
-    const all = Object.values(kind === "poets" ? data.poets : data.reciters);
-    return all.sort((a, b) => b.poems - a.poems || nameOf(a, lang).localeCompare(nameOf(b, lang), lang));
-  }, [data, kind, lang]);
-  const people = useMemo(() => searchPeople(sorted, query), [sorted, query]);
+    const all = Object.values(data[kind]);
+    const filtered = searchPeople(activeEra ? all.filter((p) => eraOf(p) === activeEra) : all, query);
+    const collator = new Intl.Collator(lang, { sensitivity: "base" });
+    return filtered.sort((a, b) => {
+      if (order === "byPoemCount" && a.poems !== b.poems) return b.poems - a.poems;
+      if (order === "byRecordingCount") {
+        const difference = (recordings?.[b.id] ?? 0) - (recordings?.[a.id] ?? 0);
+        if (difference) return difference;
+      }
+      return collator.compare(nameOf(a, lang), nameOf(b, lang)) || a.id.localeCompare(b.id);
+    });
+  }, [data, kind, lang, query, activeEra, order, recordings]);
   const title = t(lang, kind);
   if (!data)
     return (
@@ -40,13 +67,28 @@ export function PeopleScreen({ kind, initial }: { kind: PersonKind; initial?: { 
     <ListPage
       title={title}
       header={
-        <View style={styles.search}>
+        <>
+          {kind === "poets" && <EraFilter groups={groups} selected={activeEra} onChange={setEra} />}
           <SearchField value={query} onChange={setQuery} placeholder={t(lang, kind === "poets" ? "searchPoets" : "searchReciters")} />
-        </View>
+          <SortBar
+            count={directoryCount(kind, people.length, lang)}
+            label={t(lang, kind === "poets" ? "sortPoets" : "sortReciters")}
+            options={kind === "poets" ? ["alphabetical", "byPoemCount"] : ["alphabetical", "byRecordingCount"]}
+            value={order}
+            onChange={setOrder}
+          />
+        </>
       }
       data={people}
       keyOf={(p) => p.id}
-      renderItem={(person, i) => <PersonRow kind={kind} person={person} first={i === 0} />}
+      renderItem={(person, i) => (
+        <PersonRow
+          kind={kind}
+          person={person}
+          first={i === 0}
+          recordings={kind === "reciters" ? (recordings?.[person.id] ?? 0) : undefined}
+        />
+      )}
       estimatedItemSize={72}
       empty={t(lang, "noResults")}
     />
@@ -54,12 +96,21 @@ export function PeopleScreen({ kind, initial }: { kind: PersonKind; initial?: { 
 }
 
 /** A poet or a reciter in a list: the name, how many poems, and when they died. The `first` has no rule above it. */
-export function PersonRow({ kind, person, first }: { kind: PersonKind; person: CatalogPerson; first?: boolean }) {
+export function PersonRow({
+  kind,
+  person,
+  first,
+  recordings,
+}: {
+  kind: PersonKind;
+  person: CatalogPerson;
+  first?: boolean;
+  recordings?: number | undefined;
+}) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
-  const facts = [poemsCount(person.poems, lang), person.died ? t(lang, "died", { h: person.died.hijri, c: person.died.ce }) : null]
-    .filter(Boolean)
-    .join(" · ");
+  const count = recordings === undefined ? poemsCount(person.poems, lang) : directoryCount("recordings", recordings, lang);
+  const facts = [count, person.died ? t(lang, "died", { h: person.died.hijri, c: person.died.ce }) : null].filter(Boolean).join(" · ");
   const to = href(kind === "poets" ? paths.poet(person.id) : paths.reciter(person.id));
   const prefetch = usePrefetch(to);
   return (
@@ -150,7 +201,6 @@ export function PersonScreen({
 }
 
 const styles = StyleSheet.create({
-  search: { width: "100%" },
   row: { borderTopWidth: 1, paddingVertical: 16, gap: space.s },
   first: { borderTopWidth: 0 },
   name: { writingDirection: "auto" },

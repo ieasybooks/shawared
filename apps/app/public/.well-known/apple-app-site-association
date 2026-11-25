@@ -10,23 +10,31 @@
           },
           { "/": "/poets" },
           { "/": "/reciters" },
+          { "/": "/themes" },
           { "/": "/meters" },
+          { "/": "/rhymes" },
           { "/": "/library" },
           { "/": "/app" },
           { "/": "/poems/*" },
           { "/": "/poets/*" },
           { "/": "/reciters/*" },
+          { "/": "/themes/*" },
           { "/": "/meters/*" },
+          { "/": "/rhymes/*" },
           { "/": "/en" },
           { "/": "/en/poets" },
           { "/": "/en/reciters" },
+          { "/": "/en/themes" },
           { "/": "/en/meters" },
+          { "/": "/en/rhymes" },
           { "/": "/en/library" },
           { "/": "/en/app" },
           { "/": "/en/poems/*" },
           { "/": "/en/poets/*" },
           { "/": "/en/reciters/*" },
-          { "/": "/en/meters/*" }
+          { "/": "/en/themes/*" },
+          { "/": "/en/meters/*" },
+          { "/": "/en/rhymes/*" }
         ]
       }
     ]

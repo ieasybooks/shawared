@@ -5,6 +5,7 @@ import { Pressable, StyleSheet, Text, View, type PressableStateCallbackType, typ
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { Icon, type IconName } from "./Icon";
+import { TextLink } from "./TextLink";
 import { Tip, type TipText, useTip } from "./Tip";
 
 // React Native Web adds `hovered` and `focused` to the pressable state.
@@ -115,6 +116,7 @@ export function Nuqta({ size = 6, color, style }: { size?: number; color?: strin
 
 export function Chip({
   children,
+  href,
   onPress,
   active,
   ghost,
@@ -123,6 +125,7 @@ export function Chip({
   accent,
 }: {
   children: ReactNode;
+  href?: string;
   onPress?: () => void;
   active?: boolean;
   ghost?: boolean;
@@ -135,12 +138,12 @@ export function Chip({
 }) {
   const { palette } = useSettings();
   const type = useType();
-  const color = accent ? palette.accent : active ? palette.fg : palette.muted;
+  const color = accent ? palette.accent : active || href ? palette.fg : palette.muted;
   const text = <Text style={[type.label, { color }]}>{children}</Text>;
   const body =
     icon || lead ? (
       <View style={styles.chipRow}>
-        {lead && <Icon name={lead} size={14} color={accent ? palette.accent : palette.muted} />}
+        {lead && <Icon name={lead} size={14} color={color} />}
         {text}
         {icon && <Icon name={icon} size={12} color={color} />}
       </View>
@@ -151,12 +154,18 @@ export function Chip({
     styles.chip,
     {
       borderColor: ghost ? "transparent" : active || accent ? palette.accent : palette.line,
-      backgroundColor: ghost ? "transparent" : palette.fold,
+      backgroundColor: ghost ? "transparent" : href ? palette.raise : palette.fold,
     },
     ghost && { paddingHorizontal: space.xs },
     accent && !active && { backgroundColor: "transparent" },
     active && { borderWidth: 1.5 },
   ];
+  if (href)
+    return (
+      <TextLink href={href} style={frame}>
+        {body}
+      </TextLink>
+    );
   if (!onPress) return <View style={frame}>{body}</View>;
   return (
     <Pressable accessibilityRole="button" aria-selected={active} onPress={onPress} style={frame}>

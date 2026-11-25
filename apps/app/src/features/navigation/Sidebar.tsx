@@ -15,7 +15,7 @@ import { useType } from "../../lib/type";
 import { useHydrated } from "../../lib/viewport";
 import { playlistName } from "../saved/actions";
 import type { Saved } from "../saved/model";
-import { TABS, tabOf } from "./tabs";
+import { SECTIONS, tabOf } from "./tabs";
 
 /** The sidebar's width on wide windows. */
 export const SIDEBAR_W = 352;
@@ -33,7 +33,7 @@ function HomeTile({ size, tagline }: { size: number; tagline?: boolean }) {
 }
 
 /**
- * The left side of wide windows (the right in Arabic): the cover tile, the tagline, the five
+ * The left side of wide windows (the right in Arabic): the cover tile, the tagline, the
  * sections, what the reader keeps, and the library's counts. Every page but a poem's has it.
  */
 export function Sidebar() {
@@ -51,7 +51,7 @@ export function Sidebar() {
           <Text style={[type.proseLarge, { color: palette.muted, textAlign: start }]}>{t(lang, "tagline")}</Text>
         </View>
         <View role="navigation" style={styles.nav}>
-          {TABS.map((tab) => {
+          {SECTIONS.map((tab) => {
             const on = tab.name === current;
             return (
               <View key={tab.name} style={[styles.navItem, on && { backgroundColor: palette.bg, borderColor: palette.line }]}>
@@ -153,7 +153,7 @@ export function Counts() {
 
 /**
  * The top of a poem page's sidebar on wide windows, whose rest is the poem's explanation: the
- * tile and wordmark, and the five sections in a row.
+ * tile and wordmark, and the sections in a row.
  */
 export function SidebarHead() {
   const { palette, lang, start, href } = useSettings();
@@ -170,7 +170,7 @@ export function SidebarHead() {
         </View>
       </View>
       <View role="navigation" style={[styles.iconNav, { backgroundColor: palette.bg, borderColor: palette.line }]}>
-        {TABS.map((tab) => (
+        {SECTIONS.map((tab) => (
           <View key={tab.name} style={styles.iconNavItem}>
             <TextLink href={href(tab.path)} style={styles.iconNavLink}>
               <Icon name={tab.icon} size={20} color={palette.muted} />

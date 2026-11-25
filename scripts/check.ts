@@ -116,6 +116,18 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
   if (!poets.has(poem.poet)) error(pf, `no poet "${poem.poet}" in content/poets`, "poet");
 
   const byN = new Map(poem.abyat.map((b) => [b.n, b]));
+  if (themes) {
+    for (const theme of poem.themes) {
+      if (!Object.hasOwn(themes, theme)) error(pf, `unknown theme "${theme}"`, "themes");
+    }
+    const primary = poem.themes[0]!;
+    if (themes[primary] && !themes[primary].example) error(themesFile, "a primary theme needs a representative bayt", primary);
+    for (const [theme, { example }] of Object.entries(themes)) {
+      if (example?.poem !== id) continue;
+      if (primary !== theme) error(themesFile, `${id} belongs to "${primary}"`, theme);
+      if (!byN.has(example.bayt)) error(themesFile, `bayt ${example.bayt} is missing from ${id}`, theme);
+    }
+  }
   poem.abyat.forEach((b, i) => {
     const prev = poem.abyat[i - 1];
     if (prev && b.n === prev.n) error(pf, `bayt ${b.n} appears twice`, `abyat.${i}.n`);
@@ -294,6 +306,12 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
 // ----- run -------------------------------------------------------------------
 
 const only = process.argv[2];
+const themesFile = join(CONTENT, "themes.json");
+const themes = load(themesFile, source.Themes);
+for (const [theme, { example }] of Object.entries(themes ?? {})) {
+  if (example && !existsSync(join(CONTENT, "poems", example.poem, "poem.json")))
+    error(themesFile, `unknown example poem "${example.poem}"`, theme);
+}
 const poets = checkPeople("poets", "poet.json", Poet);
 const reciters = checkPeople("reciters", "reciter.json", Reciter);
 const poemIds = dirs(join(CONTENT, "poems")).filter((p) => !only || p === only);

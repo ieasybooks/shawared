@@ -32,6 +32,7 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
   const current = useCurrentBayt();
   const line = useCurrentLine(playback);
   const view = usePanel();
+  const subjects = bundle.poem.themes?.slice(1) ?? [];
   const n = view === "intro" ? current : view;
   const bayt = abyat.find((b) => b.n === n)!;
   const sharh = source?.abyat[n]?.sharh;
@@ -87,7 +88,19 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
 
       <Animated.View style={[styles.body, { opacity: fade }]}>
         {view === "intro" ? (
-          <Text style={[type.prose, { color: palette.fg, textAlign: start }]}>{intro}</Text>
+          <>
+            {intro && <Text style={[type.prose, { color: palette.fg, textAlign: start }]}>{intro}</Text>}
+            {subjects.length > 0 && (
+              <View style={styles.body}>
+                <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "otherSubjects")}</Text>
+                <View style={styles.sources}>
+                  {subjects.map((subject) => (
+                    <Chip key={subject.id}>{subject.name}</Chip>
+                  ))}
+                </View>
+              </View>
+            )}
+          </>
         ) : (
           <>
             {/* In the phone's sheet on the fold; in the sidebar, a card on it. */}

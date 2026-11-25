@@ -1,7 +1,9 @@
-import type { Catalog, CatalogPerson, CatalogPoem, PersonKind, UiLang } from "@shawared/contracts";
+import { themeOf, type Catalog, type CatalogPerson, type CatalogPoem, type PersonKind, type UiLang } from "@shawared/contracts";
 import type { Metadata } from "expo-router/server";
 import { ABOUT, PRIVACY, SUPPORT, TERMS } from "../features/about/texts";
-import { abyatCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../lib/i18n";
+import { abyatCount, METER_FEET, METER_IDS, meterName, poemsCount, rhymeName, t } from "../lib/i18n";
+import { recordingsByReciter } from "../lib/counts";
+import { rhymeById, rhymeCounts, rhymeFor } from "../lib/rhymes";
 import { AUDIO, pathInLang, paths, SITE } from "../lib/routes";
 import { catalog, personBundle, poemBundle } from "./content";
 
@@ -34,7 +36,9 @@ function slice(c: Catalog, poems: CatalogPoem[], extra: Partial<Catalog> = {}): 
 export const staticParams = {
   poems: () => catalog().poems.map((p) => ({ id: p.id })),
   people: (kind: PersonKind) => Object.keys(catalog()[kind]).map((id) => ({ id })),
+  rhymes: () => Object.keys(rhymeCounts(catalog().poems)).map((id) => ({ id })),
   meters: () => METER_IDS.map((id) => ({ id })),
+  themes: () => Object.keys(catalog().themes ?? {}).map((id) => ({ id })),
 };
 
 /** Each page's data (its loader's result). Null when there is no such page. */
@@ -45,11 +49,33 @@ export const pageData = {
   },
   people: (kind: PersonKind) => {
     const c = catalog();
-    return { catalog: slice(c, [], { [kind]: c[kind] }) };
+    return { catalog: slice(c, [], { [kind]: c[kind] }), ...(kind === "reciters" ? { recordings: recordingsByReciter(c.poems) } : {}) };
   },
   meters: () => {
     const c = catalog();
     return { catalog: slice(c, [], { meters: c.meters }) };
+  },
+  rhymes: () => ({ counts: rhymeCounts(catalog().poems) }),
+  rhyme: (id: string) => {
+    const c = catalog();
+    const poems = c.poems.filter((p) => rhymeFor(p.rawiy)?.id === id);
+    return poems.length ? { catalog: slice(c, poems) } : null;
+  },
+  themes: () => {
+    const c = catalog();
+    return { catalog: slice(c, [], { themes: c.themes }) };
+  },
+  theme: (id: string) => {
+    const c = catalog();
+    const theme = themeOf(c, id);
+    if (!theme) return null;
+    return {
+      catalog: slice(
+        c,
+        c.poems.filter((p) => p.theme === id),
+        { themes: { [id]: theme } },
+      ),
+    };
   },
   person: (kind: PersonKind, id: string, lang: UiLang) => {
     const person = personBundle(kind, id, lang);
@@ -129,6 +155,21 @@ export const pageMeta = {
       t(lang, kind === "poets" ? "metaPoets" : "metaReciters"),
     ),
   meters: (lang: UiLang) => describe(lang, paths.meters, titled(lang, t(lang, "meters")), t(lang, "metaMeters")),
+  rhymes: (lang: UiLang) => describe(lang, paths.rhymes, titled(lang, t(lang, "rhymes")), t(lang, "metaRhymes")),
+  rhyme: (id: string, lang: UiLang) => {
+    const rhyme = rhymeById(id);
+    const count = rhymeCounts(catalog().poems)[id];
+    if (!rhyme || !count) return notFound(lang);
+    const name = rhymeName(rhyme.letter, lang);
+    return describe(lang, paths.rhyme(id), titled(lang, name), t(lang, "metaRhyme", { name, count: poemsCount(count, lang) }));
+  },
+  themes: (lang: UiLang) => describe(lang, paths.themes, titled(lang, t(lang, "themes")), t(lang, "metaThemes")),
+  theme: (id: string, lang: UiLang) => {
+    const theme = themeOf(catalog(), id);
+    return theme
+      ? describe(lang, paths.theme(id), titled(lang, theme.name[lang], t(lang, "themes")), theme.definition[lang])
+      : notFound(lang);
+  },
   // What the reader keeps lives on their device: nothing for search engines.
   library: (lang: UiLang): Metadata => ({
     ...describe(lang, paths.library, titled(lang, t(lang, "library")), t(lang, "metaLibrary")),

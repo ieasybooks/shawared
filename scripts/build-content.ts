@@ -27,6 +27,7 @@ import {
   UI_LANGS,
   type CatalogPerson,
   type CatalogPoem,
+  type CatalogTheme,
   type PublishedSource,
 } from "@shawared/contracts";
 import { root, sourcePath } from "./recordings.ts";
@@ -68,7 +69,14 @@ const langFiles = (dir: string, main: string) =>
     .sort((a, b) => a.length - b.length || a.localeCompare(b));
 
 type Person = {
-  main: { id: string; name: string; full_name?: string; died?: { hijri: number; ce: number }; links?: Record<string, string> };
+  main: {
+    id: string;
+    name: string;
+    era?: string;
+    full_name?: string;
+    died?: { hijri: number; ce: number };
+    links?: Record<string, string>;
+  };
   langs: Record<string, { name?: string; bio?: string }>;
 };
 function people(kind: "poets" | "reciters"): Map<string, Person> {
@@ -93,7 +101,11 @@ const personBasics = (p: Person) => ({
   names: Object.fromEntries(Object.entries(p.langs).flatMap(([l, v]) => (v.name ? [[l, v.name]] : []))),
   ...(p.main.died ? { died: p.main.died } : {}),
 });
-const catalogPerson = (p: Person, poems: number): CatalogPerson => ({ ...personBasics(p), poems });
+const catalogPerson = (p: Person, poems: number): CatalogPerson => ({
+  ...personBasics(p),
+  ...(p.main.era ? { era: p.main.era } : {}),
+  poems,
+});
 const nameIn = (p: Person, lang: string) => p.langs[lang]?.name ?? p.main.name;
 
 const poets = people("poets");
@@ -113,6 +125,8 @@ const write = (rel: string, data: unknown) => {
 };
 
 const catalogPoems: CatalogPoem[] = [];
+const themes = source.Themes.parse(read(join(CONTENT, "themes.json")));
+const examples = new Map<string, CatalogTheme["example"]>();
 let audioCopied = 0;
 const audioMissing: string[] = [];
 const wideSpaces: string[] = [];
@@ -163,6 +177,17 @@ for (const id of dirs(join(CONTENT, "poems"))) {
   // Every half at the poem's measure (scripts/kashida.ts); halves that still lean on wide
   // spaces are listed for a look.
   const layout = planPoem(poem.abyat);
+  const primary = poem.themes[0]!;
+  const example = themes[primary]!.example!;
+  if (example.poem === id) {
+    const bayt = poem.abyat.find((b) => b.n === example.bayt)!;
+    examples.set(primary, {
+      poem: id,
+      bayt,
+      measure: layout.measure,
+      kashida: Object.fromEntries(Object.entries(layout.kashida).filter(([address]) => address.startsWith(`${bayt.n}.`))),
+    });
+  }
   for (const w of layout.wide) wideSpaces.push(`${id} ${w.address} (spaces ×${w.spaceScale.toFixed(1)})`);
 
   const langs = [...new Set([...UI_LANGS, ...byLang.keys()])];
@@ -176,6 +201,7 @@ for (const id of dirs(join(CONTENT, "poems"))) {
         poet: poem.poet,
         title: poem.title,
         meter: poem.meter,
+        ...(lang === "ar" || lang === "en" ? { themes: poem.themes.map((id) => ({ id, name: themes[id]!.name[lang] })) } : {}),
         ...(poem.rawiy ? { rawiy: poem.rawiy } : {}),
         abyat_in_full: poem.abyat_in_full,
         abyat: poem.abyat,
@@ -206,6 +232,7 @@ for (const id of dirs(join(CONTENT, "poems"))) {
     titles,
     poet: poem.poet,
     meter: poem.meter,
+    theme: primary,
     ...(poem.rawiy ? { rawiy: poem.rawiy } : {}),
     abyat: poem.abyat.length,
     abyat_in_full: poem.abyat_in_full,
@@ -234,6 +261,17 @@ const catalog = Catalog.parse({
   poets: Object.fromEntries([...poets].map(([id, p]) => [id, catalogPerson(p, poemsOf("poets", id).length)])),
   reciters: Object.fromEntries([...reciters].map(([id, p]) => [id, catalogPerson(p, poemsOf("reciters", id).length)])),
   meters,
+  themes: Object.fromEntries(
+    [...examples].map(([id, example]) => [
+      id,
+      {
+        name: themes[id]!.name,
+        definition: themes[id]!.definition,
+        poems: catalogPoems.filter((p) => p.theme === id).length,
+        example,
+      },
+    ]),
+  ),
 });
 write(catalogPath(), catalog);
 

@@ -1,5 +1,6 @@
 // The files editors write under content/. Strict: an unknown field is a mistake.
 import { z } from "zod";
+import { ERA_IDS } from "./eras.ts";
 import { LINE_RE, WORD_RE } from "./address.ts";
 
 export const METERS = [
@@ -25,6 +26,18 @@ export type Meter = (typeof METERS)[number];
 export const Slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "use lowercase latin letters, digits and dashes");
 export const Lang = z.string().regex(/^[a-z]{2}$/, "use a two-letter language code");
 const Text = z.string().trim().min(1, "empty text");
+const BilingualText = z.strictObject({ ar: Text, en: Text });
+
+/** content/themes.json. A theme used only as a secondary subject has no example. */
+export const Themes = z.record(
+  Slug,
+  z.strictObject({
+    name: BilingualText,
+    definition: BilingualText,
+    example: z.strictObject({ poem: Slug, bayt: z.int().positive() }).optional(),
+    references: z.array(z.url()).min(1),
+  }),
+);
 
 // A half-verse: Arabic letters, harakat and single spaces only.
 const ARABIC_WORD = "[\\u0621-\\u063A\\u0641-\\u0652\\u0670]+";
@@ -39,6 +52,11 @@ export const Poem = z.strictObject({
   poet: Slug,
   title: Text,
   meter: z.enum(METERS),
+  /** The primary poetic purpose first, followed by any substantial secondary subjects. */
+  themes: z
+    .array(Slug)
+    .min(1)
+    .refine((ids) => new Set(ids).size === ids.length, "each theme may appear only once"),
   /** The rhyme letter (الرَّوِيّ). */
   rawiy: z
     .string()
@@ -102,6 +120,7 @@ export const Recitation = z.strictObject({
 
 export const Poet = z.strictObject({
   id: Slug,
+  era: z.enum(ERA_IDS).optional(),
   name: Text,
   full_name: Text.optional(),
   died: z.strictObject({ hijri: z.int(), ce: z.int() }).optional(),

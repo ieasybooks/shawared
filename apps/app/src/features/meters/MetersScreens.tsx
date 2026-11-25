@@ -1,11 +1,13 @@
 import type { Catalog } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { Link } from "expo-router";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
+import { TextLink } from "../../components/ui/TextLink";
 import { useCatalog } from "../../lib/content";
-import { METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
+import { SortBar } from "../library/DirectoryControls";
+import { directoryCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { ARABIC } from "../../lib/align";
 import { useSettings } from "../../lib/settings";
@@ -13,21 +15,40 @@ import { useType } from "../../lib/type";
 import { DetailFacts, ListPage, PageFrame, SectionHead } from "../library/Page";
 import { PoemRow } from "../library/PoemCard";
 
-/** The sixteen meters of classical Arabic poetry, in their traditional order. */
+/** The sixteen meters of classical Arabic poetry, sorted by poem count or name. */
 export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { lang } = useSettings();
   const title = t(lang, "meters");
+  const [order, setOrder] = useState<"byPoemCount" | "alphabetical">("byPoemCount");
+  const meters = useMemo(() => {
+    const counts = data?.meters ?? {};
+    const collator = new Intl.Collator(lang, { sensitivity: "base" });
+    return [...METER_IDS].sort(
+      (a, b) =>
+        (order === "byPoemCount" ? (counts[b] ?? 0) - (counts[a] ?? 0) : 0) || collator.compare(meterName(a, lang), meterName(b, lang)),
+    );
+  }, [data, lang, order]);
   if (!data)
     return (
-      <PageFrame title={title}>
+      <PageFrame back title={title}>
         <StateView error={error} onRetry={retry} />
       </PageFrame>
     );
   return (
     <ListPage
+      back
       title={title}
-      data={METER_IDS}
+      header={
+        <SortBar
+          count={directoryCount("meters", meters.length, lang)}
+          label={t(lang, "sortMeters")}
+          options={["byPoemCount", "alphabetical"]}
+          value={order}
+          onChange={setOrder}
+        />
+      }
+      data={meters}
       keyOf={(m) => m}
       renderItem={(m, i) => <MeterRow id={m} count={data.meters[m] ?? 0} first={i === 0} />}
       estimatedItemSize={96}
@@ -67,7 +88,7 @@ function MeterRow({ id, count, first }: { id: string; count: number; first: bool
 /** One meter: its feet, and the poems written in it. */
 export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
-  const { palette, lang, start } = useSettings();
+  const { palette, lang, start, href } = useSettings();
   const type = useType();
   const poems = useMemo(() => data?.poems.filter((p) => p.meter === id) ?? [], [data, id]);
   const list = useMemo(() => poems.map((p) => p.id), [poems]);
@@ -81,6 +102,11 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
   const header = (
     <>
       <DetailFacts arabic={lang === "ar" ? null : meterName(id, "ar")}>
+        <TextLink href={href(paths.meters)}>
+          <Text style={[type.labelStrong, styles.link, { color: palette.muted, textDecorationColor: palette.line2 }]}>
+            {t(lang, "allMeters")}
+          </Text>
+        </TextLink>
         <View style={styles.feet}>
           <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "pattern")}</Text>
           <View style={[styles.feetCard, { backgroundColor: palette.fold, borderColor: palette.line }]}>
@@ -105,6 +131,7 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
 }
 
 const styles = StyleSheet.create({
+  link: { textDecorationLine: "underline" },
   row: { borderTopWidth: 1, paddingVertical: 16, gap: space.m },
   first: { borderTopWidth: 0 },
   rowHead: { flexDirection: "row", alignItems: "center", gap: space.l },

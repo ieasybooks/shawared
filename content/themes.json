@@ -1,0 +1,399 @@
+{
+  "ritha": {
+    "name": {
+      "ar": "الرثاء",
+      "en": "Elegy"
+    },
+    "definition": {
+      "ar": "يبكي الراحل، أو يستعيد مناقبه، أو يرثي مدينةً أو مُلكًا زال.",
+      "en": "The poet mourns someone who has died, remembers their virtues, or grieves for a lost city or kingdom."
+    },
+    "example": {
+      "poem": "aya-umma-al-asir",
+      "bayt": 15
+    },
+    "references": [
+      "https://qawafi.org/themes/ritha",
+      "https://www.aldiwan.net/Poems-Topics-%D8%B1%D8%AB%D8%A7%D8%A1.html"
+    ]
+  },
+  "madh": {
+    "name": {
+      "ar": "المدح",
+      "en": "Praise"
+    },
+    "definition": {
+      "ar": "يمدح شخصًا أو جماعة أو صاحب مهنة بما صنعوا أو بما عرف لهم من الخصال.",
+      "en": "The poet praises a person, a community or the members of a profession for their deeds or character."
+    },
+    "example": {
+      "poem": "hadha-alladhi-tarifu-al-bathau",
+      "bayt": 1
+    },
+    "references": [
+      "https://qawafi.org/themes/madh",
+      "https://www.aldiwan.net/Poems-Topics-%D9%85%D8%AF%D8%AD.html"
+    ]
+  },
+  "ghazal": {
+    "name": {
+      "ar": "الغزل",
+      "en": "Love poetry"
+    },
+    "definition": {
+      "ar": "يتخذ من المحبوب أو اللقاء أو أحوال العشاق مدارًا للقول.",
+      "en": "The beloved, a meeting or the experiences of lovers give the poem its subject."
+    },
+    "example": {
+      "poem": "al-muinisa",
+      "bayt": 1
+    },
+    "references": [
+      "https://qawafi.org/themes/ghazal",
+      "https://www.aldiwan.net/Poems-Topics-%D8%BA%D8%B2%D9%84.html"
+    ]
+  },
+  "fakhr": {
+    "name": {
+      "ar": "الفخر",
+      "en": "Boasting"
+    },
+    "definition": {
+      "ar": "يحتجّ الشاعر لفضله أو لفضل قومه بمآثر يُسمّيها أو يرويها.",
+      "en": "The poet recounts deeds that attest to personal merit or bring honour to a people."
+    },
+    "example": {
+      "poem": "ana-ibnu-jala",
+      "bayt": 1
+    },
+    "references": [
+      "https://qawafi.org/themes/fakhr",
+      "https://www.aldiwan.net/Poems-Topics-%D9%81%D8%AE%D8%B1.html"
+    ]
+  },
+  "shawq": {
+    "name": {
+      "ar": "الشوق والحنين",
+      "en": "Longing and homesickness"
+    },
+    "definition": {
+      "ar": "يستعيد غائبًا أو مكانًا أو زمنًا ويتمنّى الرجوع إليه.",
+      "en": "The poet remembers someone absent, a place left behind or a time gone by, and longs for a return."
+    },
+    "example": {
+      "poem": "nuniyyat-ibn-zaydun",
+      "bayt": 1
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%B4%D9%88%D9%82.html"
+    ]
+  },
+  "hikma": {
+    "name": {
+      "ar": "الحكمة",
+      "en": "Wisdom"
+    },
+    "definition": {
+      "ar": "يستخلص من التجربة أو من تقلّب الزمن معنى يتجاوز الحادثة التي أنشأته.",
+      "en": "From experience or a turn of fortune, the poet draws an insight that holds beyond the occasion."
+    },
+    "example": {
+      "poem": "nuniyyat-al-busti",
+      "bayt": 1
+    },
+    "references": [
+      "https://qawafi.org/themes/hikma",
+      "https://www.aldiwan.net/Poems-Topics-%D8%AD%D9%83%D9%85%D8%A9.html"
+    ]
+  },
+  "fables": {
+    "name": {
+      "ar": "الحكايات الشعرية",
+      "en": "Verse fables"
+    },
+    "definition": {
+      "ar": "تجري الحكاية على ألسنة شخصيات تتكشّف العبرة في أقوالها أو في عاقبة فعلها.",
+      "en": "Characters tell a story through their words and actions. Its lesson emerges from what they say or how they fare."
+    },
+    "example": {
+      "poem": "al-thalab-wal-dik",
+      "bayt": 1
+    },
+    "references": [
+      "https://www.safahat.org/books/70706142/143/"
+    ]
+  },
+  "didactic": {
+    "name": {
+      "ar": "الشعر التعليمي",
+      "en": "Didactic verse"
+    },
+    "definition": {
+      "ar": "يُنظَم فيه علم أو متن أو جملة من المعارف للتفهيم أو تيسير الحفظ.",
+      "en": "A poet sets a field of knowledge, a teaching text or a set of rules to verse to help readers understand and remember it."
+    },
+    "example": {
+      "poem": "muthallath-qutrub",
+      "bayt": 5
+    },
+    "references": [
+      "https://uomustansiriyah.edu.iq/media/lectures/9/9_2020_04_06%2107_20_13_AM.pdf"
+    ]
+  },
+  "zuhd": {
+    "name": {
+      "ar": "الزهد",
+      "en": "Ascetic verse"
+    },
+    "definition": {
+      "ar": "يذكّر بفناء الدنيا ويزهد في متاعها أو يحثّ على الاستعداد للآخرة.",
+      "en": "The poet reflects on the passing of worldly pleasures, renounces them or urges the listener to prepare for the life to come."
+    },
+    "example": {
+      "poem": "qattatu-minki-habaila-al-amal",
+      "bayt": 1
+    },
+    "references": [
+      "https://qawafi.org/themes/zuhd",
+      "https://www.aldiwan.net/Poems-Topics-%D8%B2%D9%87%D8%AF.html"
+    ]
+  },
+  "shakwa": {
+    "name": {
+      "ar": "الشكوى",
+      "en": "Complaint"
+    },
+    "definition": {
+      "ar": "يبثّ ما يلقاه من قيد أو فاقة أو جور أو تقلّب في حظه.",
+      "en": "The poet gives voice to hardships such as captivity, poverty, injustice or a reversal of fortune."
+    },
+    "example": {
+      "poem": "ila-allahi-ashku",
+      "bayt": 1
+    },
+    "references": [
+      "https://repository.qu.edu.iq/wp-content/uploads/sites/31/2018/06/%D8%A7%D9%84%D8%B4%D9%83%D9%88%D9%89-%D9%81%D9%8A-%D8%B4%D8%B9%D8%B1.pdf"
+    ]
+  },
+  "wasf": {
+    "name": {
+      "ar": "الوصف",
+      "en": "Descriptive verse"
+    },
+    "definition": {
+      "ar": "يفصّل هيئة مرئيّ أو مشهد وحركته حتى يصير التصوير غرضًا قائمًا بذاته.",
+      "en": "The appearance and movement of a creature, an object or a scene become the subject of the poem."
+    },
+    "example": {
+      "poem": "muallaqat-imri-al-qays",
+      "bayt": 44
+    },
+    "references": [
+      "https://qawafi.org/themes/wasf",
+      "https://www.aldiwan.net/Poems-Topics-%D9%88%D8%B5%D9%81.html"
+    ]
+  },
+  "watani": {
+    "name": {
+      "ar": "الوطنيات",
+      "en": "Patriotic verse"
+    },
+    "definition": {
+      "ar": "يتخذ الوطن وأهله وحريتهم أو مصابهم موضوعًا للقصيدة.",
+      "en": "The poet speaks of a homeland and its people, their freedom or the losses they have suffered."
+    },
+    "example": {
+      "poem": "al-yawma-nasudu",
+      "bayt": 2
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D9%88%D8%B7%D9%86%D9%8A%D8%A9.html"
+    ]
+  },
+  "hamasa": {
+    "name": {
+      "ar": "الحماسة",
+      "en": "Valour and exhortation"
+    },
+    "definition": {
+      "ar": "يُعلي الشجاعة أو يستنهض العزائم، وقد يتتبّع وقائع القتال.",
+      "en": "The poem celebrates courage or rallies its listeners, sometimes by recounting the course of a battle."
+    },
+    "example": {
+      "poem": "fadat-nafsi",
+      "bayt": 4
+    },
+    "references": [
+      "https://qawafi.org/themes/hamasa",
+      "https://www.aldiwan.net/Poems-Topics-%D8%AD%D9%85%D8%A7%D8%B3%D8%A9.html"
+    ]
+  },
+  "religion": {
+    "name": {
+      "ar": "الشعر الديني",
+      "en": "Religious verse"
+    },
+    "definition": {
+      "ar": "يتناول العقيدة أو العبادة أو السيرة أو معنى من المعاني الدينية.",
+      "en": "The poet explores belief, worship, the life of the Prophet or another aspect of religious life."
+    },
+    "example": {
+      "poem": "haiyyat-ibn-abi-dawud",
+      "bayt": 2
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%AF%D9%8A%D9%86%D9%8A%D8%A9.html"
+    ]
+  },
+  "apology": {
+    "name": {
+      "ar": "الاعتذار",
+      "en": "Apology and self-defence"
+    },
+    "definition": {
+      "ar": "يدفع تهمة أو يسترضي من سخط عليه أو يطلب العفو عنه.",
+      "en": "The poet answers an accusation, seeks to appease someone or asks for pardon."
+    },
+    "example": {
+      "poem": "atani-abayta-al-lana",
+      "bayt": 4
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%A7%D8%B9%D8%AA%D8%B0%D8%A7%D8%B1.html"
+    ]
+  },
+  "itab": {
+    "name": {
+      "ar": "العتاب",
+      "en": "Reproach"
+    },
+    "definition": {
+      "ar": "يواجه المخاطَب بما أخلف من عهد أو قصّر فيه من حق الصحبة.",
+      "en": "The poet confronts someone who has broken a promise or fallen short of the obligations of friendship."
+    },
+    "example": {
+      "poem": "law-kuntu-min-mazin",
+      "bayt": 1
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%B9%D8%AA%D8%A7%D8%A8.html"
+    ]
+  },
+  "advice": {
+    "name": {
+      "ar": "النصيحة",
+      "en": "Counsel"
+    },
+    "definition": {
+      "ar": "يوجّه المخاطَب إلى سلوك بعينه ويبيّن له عاقبة الأخذ به أو تركه.",
+      "en": "The poet urges a course of action and shows what may follow from taking or ignoring the advice."
+    },
+    "example": {
+      "poem": "la-taqulanna",
+      "bayt": 1
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D9%86%D8%B5%D9%8A%D8%AD%D8%A9.html"
+    ]
+  },
+  "karam": {
+    "name": {
+      "ar": "الجود والكرم",
+      "en": "Generosity and hospitality"
+    },
+    "definition": {
+      "ar": "يتناول البذل للضيف أو السائل، أو كلفة السخاء على صاحبه.",
+      "en": "The poet describes giving to a guest or a petitioner, or considers what generosity costs the giver."
+    },
+    "example": {
+      "poem": "yuatibuni-fi-al-dayn",
+      "bayt": 5
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%AC%D9%88%D8%AF%20%D9%88%D9%83%D8%B1%D9%85.html"
+    ]
+  },
+  "hija": {
+    "name": {
+      "ar": "الهجاء",
+      "en": "Invective"
+    },
+    "definition": {
+      "ar": "يُعرّض بخصم أو يسمّيه ويطعن في ادعائه أو خُلُقه أو مآثره.",
+      "en": "The poet attacks an adversary, named or implied, by challenging their claims, character or deeds."
+    },
+    "example": {
+      "poem": "ajiddaka-la-yashu",
+      "bayt": 15
+    },
+    "references": [
+      "https://qawafi.org/themes/hija",
+      "https://www.aldiwan.net/Poems-Topics-%D9%87%D8%AC%D8%A7%D8%A1.html"
+    ]
+  },
+  "prophetic": {
+    "name": {
+      "ar": "المديح النبوي",
+      "en": "Praise of the Prophet"
+    },
+    "definition": {
+      "ar": "يخصّ النبي محمدًا ﷺ بالثناء على شمائله أو سيرته.",
+      "en": "The poet praises the Prophet Muhammad for his character or for deeds from his life."
+    },
+    "example": {
+      "poem": "alam-taghtamid-aynaka",
+      "bayt": 14
+    },
+    "references": [
+      "https://qawafi.org/themes/madh",
+      "https://www.safahat.org/books/51519061/1/"
+    ]
+  },
+  "prayer": {
+    "name": {
+      "ar": "الابتهال",
+      "en": "Supplication"
+    },
+    "definition": {
+      "ar": "يتوجّه إلى الله بالسؤال أو التضرّع أو طلب المغفرة.",
+      "en": "The poet addresses God directly to ask for help, mercy or forgiveness."
+    },
+    "example": {
+      "poem": "manzumat-asma-allah-al-husna",
+      "bayt": 8
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%A7%D8%A8%D8%AA%D9%87%D8%A7%D9%84.html"
+    ]
+  },
+  "politics": {
+    "name": {
+      "ar": "الشعر السياسي",
+      "en": "Political verse"
+    },
+    "definition": {
+      "ar": "يناقش السلطان أو أحوال الحكم أو يتخذ موقفًا من صراع سياسي.",
+      "en": "The poet weighs the use of power, questions how a ruler governs or takes sides in a political dispute."
+    },
+    "example": {
+      "poem": "ala-qul-li-sinhaja",
+      "bayt": 2
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%B3%D9%8A%D8%A7%D8%B3%D9%8A%D8%A9.html"
+    ]
+  },
+  "sabr": {
+    "name": {
+      "ar": "الصبر",
+      "en": "Patience"
+    },
+    "definition": {
+      "ar": "يتأمّل احتمال الشدائد أو يوصي بالثبات عند وقوعها.",
+      "en": "The poet reflects on endurance or urges steadfastness in the face of hardship."
+    },
+    "references": [
+      "https://www.aldiwan.net/Poems-Topics-%D8%B5%D8%A8%D8%B1.html"
+    ]
+  }
+}

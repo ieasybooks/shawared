@@ -9,6 +9,10 @@ const PAGES = [
   "/reciters/osama-alwaaedh",
   "/meters",
   "/meters/mutaqarib",
+  "/themes",
+  "/themes/ritha",
+  "/rhymes",
+  "/rhymes/ra",
   "/library",
   "/poems/taqulu-buthaynatu",
   "/en/poems/taqulu-buthaynatu",
@@ -35,7 +39,8 @@ test("text links span only their text", async ({ page }) => {
         .map((a) => {
           // The texts inside, outermost only; a text link has one.
           const texts = [...a.querySelectorAll("[dir='auto']")].filter((t) => !t.parentElement?.closest("[dir='auto']"));
-          const runs: DOMRect[] = [];
+          // Inline icons are part of a badge's label, too.
+          const runs: DOMRect[] = [...a.querySelectorAll("svg")].map((icon) => icon.getBoundingClientRect());
           const walker = document.createTreeWalker(a, NodeFilter.SHOW_TEXT);
           for (let n = walker.nextNode(); n; n = walker.nextNode()) {
             if (!n.textContent?.trim()) continue;

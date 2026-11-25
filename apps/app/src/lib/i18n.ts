@@ -1,3 +1,4 @@
+import { rhymeFor } from "./rhymes";
 import type { UiLang } from "@shawared/contracts";
 
 const ar = {
@@ -8,6 +9,30 @@ const ar = {
   poets: "الشعراء",
   reciters: "المُلقون",
   meters: "البحور",
+  themes: "الأغراض",
+  eras: "العصور",
+  showEras: "عرض كل العصور",
+  fewerEras: "عرض أقل",
+  clearEra: "كل الشعراء",
+  rhymes: "القوافي",
+  allRhymes: "كل القوافي",
+  byRhymeLetter: "بحسب حرف الرويّ",
+  byRecordingCount: "بحسب عدد التسجيلات",
+  sortPoets: "ترتيب الشعراء",
+  sortReciters: "ترتيب المُلقين",
+  sortMeters: "ترتيب البحور",
+  sortRhymes: "ترتيب القوافي",
+  metaRhymes: "تصفّح قصائد شوارد بحسب حرف الرويّ.",
+  metaRhyme: "قصائد {name} في شوارد. تضمّ المجموعة {count}.",
+  searchThemes: "ابحث عن غرض شعري",
+  byPoemCount: "بحسب عدد القصائد",
+  alphabetical: "بحسب الترتيب الهجائي",
+  sortThemes: "ترتيب الأغراض",
+  otherSubjects: "موضوعات أخرى",
+  allMeters: "كل البحور",
+  themePoems: "قصائد {name}",
+  noThemes: "الأغراض غير متاحة في نسخة الفهرس هذه.",
+  metaThemes: "تصفّح القصائد بحسب أغراضها الشعرية، واقرأ تعريف كل غرض وبيتًا من شعره.",
   search: "ابحث بعنوان أو مطلع قصيدة أو شاعر أو مُلقٍ",
   searchPoets: "ابحث عن شاعر",
   searchReciters: "ابحث عن مُلقٍ",
@@ -151,6 +176,30 @@ const en: Record<StringKey, string> = {
   poets: "Poets",
   reciters: "Reciters",
   meters: "Meters",
+  themes: "Themes",
+  eras: "Eras",
+  showEras: "Show all eras",
+  fewerEras: "Show fewer",
+  clearEra: "All poets",
+  rhymes: "Rhymes",
+  allRhymes: "All rhymes",
+  byRhymeLetter: "By rhyme letter",
+  byRecordingCount: "By recording count",
+  sortPoets: "Sort poets",
+  sortReciters: "Sort reciters",
+  sortMeters: "Sort meters",
+  sortRhymes: "Sort rhymes",
+  metaRhymes: "Browse the poems on Shawared by their Arabic rhyme letter.",
+  metaRhyme: "{name} on Shawared. Browse the collection of {count}.",
+  searchThemes: "Search poetic themes",
+  byPoemCount: "By poem count",
+  alphabetical: "Alphabetical",
+  sortThemes: "Sort themes",
+  otherSubjects: "Other subjects",
+  allMeters: "All meters",
+  themePoems: "Poems in this theme",
+  noThemes: "Themes are unavailable in this copy of the catalogue.",
+  metaThemes: "Browse poems by their poetic themes, with a definition and a verse from each collection.",
   search: "Search by title, opening verse, poet or reciter",
   searchPoets: "Search the poets",
   searchReciters: "Search the reciters",
@@ -329,6 +378,31 @@ export function poemsCount(n: number, lang: UiLang) {
   return `${digits(n, lang)} قصيدةً`;
 }
 
+export function themesCount(n: number, lang: UiLang) {
+  if (lang === "en") return `${n} theme${n === 1 ? "" : "s"}`;
+  if (n === 0) return "لا أغراض";
+  if (n === 1) return "غرض شعري واحد";
+  if (n === 2) return "غرضان شعريان";
+  return n <= 10 ? `${digits(n, lang)} أغراض شعرية` : `${digits(n, lang)} غرضًا شعريًا`;
+}
+
+const directoryNouns = {
+  poets: ["poet", "شاعر واحد", "شاعران", "شعراء", "شاعرًا"],
+  reciters: ["reciter", "مُلقٍ واحد", "مُلقيان", "مُلقين", "مُلقيًا"],
+  recordings: ["recording", "تسجيل واحد", "تسجيلان", "تسجيلات", "تسجيلًا"],
+  meters: ["meter", "بحر واحد", "بحران", "بحور", "بحرًا"],
+  rhymes: ["rhyme", "قافية واحدة", "قافيتان", "قوافٍ", "قافيةً"],
+} as const;
+
+export function directoryCount(kind: keyof typeof directoryNouns, n: number, lang: UiLang) {
+  const [name, one, two, few, many] = directoryNouns[kind];
+  if (lang === "en") return String(n) + " " + name + (n === 1 ? "" : "s");
+  if (n === 1) return one;
+  if (n === 2) return two;
+  const last = n % 100;
+  return digits(n, lang) + " " + (n === 0 || (last >= 3 && last <= 10) ? few : many);
+}
+
 const METERS: Record<string, [string, string]> = {
   tawil: ["الطويل", "al-Ṭawīl"],
   madid: ["المديد", "al-Madīd"],
@@ -370,35 +444,4 @@ export const METER_FEET: Record<string, string> = {
   mutadarik: "فاعِلُنْ فاعِلُنْ فاعِلُنْ فاعِلُنْ",
 };
 
-const LETTERS: Record<string, [string, string]> = {
-  ء: ["الهمزة", "hamza"],
-  ا: ["الألف", "alif"],
-  ب: ["الباء", "bāʾ"],
-  ت: ["التاء", "tāʾ"],
-  ث: ["الثاء", "thāʾ"],
-  ج: ["الجيم", "jīm"],
-  ح: ["الحاء", "ḥāʾ"],
-  خ: ["الخاء", "khāʾ"],
-  د: ["الدال", "dāl"],
-  ذ: ["الذال", "dhāl"],
-  ر: ["الراء", "rāʾ"],
-  ز: ["الزاي", "zāy"],
-  س: ["السين", "sīn"],
-  ش: ["الشين", "shīn"],
-  ص: ["الصاد", "ṣād"],
-  ض: ["الضاد", "ḍād"],
-  ط: ["الطاء", "ṭāʾ"],
-  ظ: ["الظاء", "ẓāʾ"],
-  ع: ["العين", "ʿayn"],
-  غ: ["الغين", "ghayn"],
-  ف: ["الفاء", "fāʾ"],
-  ق: ["القاف", "qāf"],
-  ك: ["الكاف", "kāf"],
-  ل: ["اللام", "lām"],
-  م: ["الميم", "mīm"],
-  ن: ["النون", "nūn"],
-  ه: ["الهاء", "hāʾ"],
-  و: ["الواو", "wāw"],
-  ي: ["الياء", "yāʾ"],
-};
-export const rhymeName = (letter: string, lang: UiLang) => t(lang, "rhyme", { l: LETTERS[letter]?.[lang === "ar" ? 0 : 1] ?? letter });
+export const rhymeName = (letter: string, lang: UiLang) => t(lang, "rhyme", { l: rhymeFor(letter)?.[lang] ?? letter });

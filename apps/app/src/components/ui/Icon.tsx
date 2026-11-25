@@ -21,6 +21,8 @@ export type IconName =
   | "quill"
   | "mic"
   | "waves"
+  | "rhymes"
+  | "tag"
   | "search"
   | "link"
   | "info"
@@ -115,6 +117,19 @@ export function Icon({ name, size = 22, color }: { name: IconName; size?: number
         </G>
       )}
       {name === "waves" && <Path {...stroke} strokeWidth={1.8} d="M4 10.5v3M8 7.5v9M12 4.5v15M16 8v8M20 10.5v3" />}
+      {name === "rhymes" && (
+        <G {...stroke} strokeWidth={1.8}>
+          <Path d="M4 8h9M7 16h6" />
+          <Circle cx={17.5} cy={8} r={2} />
+          <Circle cx={17.5} cy={16} r={2} />
+        </G>
+      )}
+      {name === "tag" && (
+        <G {...stroke} strokeWidth={1.8}>
+          <Path d="M4 3.5h7.2l9 9a2 2 0 0 1 0 2.8l-5 5a2 2 0 0 1-2.8 0l-9-9V5a1.5 1.5 0 0 1 1.5-1.5Z" />
+          <Circle cx={7.5} cy={7.6} r={0.8} fill={color} />
+        </G>
+      )}
       {name === "search" && (
         <G {...stroke} strokeWidth={1.9}>
           <Circle cx={11} cy={11} r={6.5} />
@@ -221,7 +236,7 @@ export function Icon({ name, size = 22, color }: { name: IconName; size?: number
           <Path {...stroke} strokeWidth={1.6} d="M15.25 9h-6.5M15.25 13h-6.5" />
         </G>
       )}
-      {name === "chevron" && <Path {...stroke} strokeWidth={1.8} d="M14.5 6.75 9.25 12l5.25 5.25" />}
+      {name === "chevron" && <Path {...stroke} strokeWidth={1.8} d="m9.5 6.75 5.25 5.25-5.25 5.25" />}
     </Svg>
   );
 }
