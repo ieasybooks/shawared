@@ -93,20 +93,20 @@ test("tapping a bayt holds the explanation until Now playing", async ({ page }) 
   await expect(panelTitle(page)).not.toHaveText("البيت ٧ · الشرح");
 });
 
-test("the poem opens on its introduction; the recitation and the chip move between it and the verses", async ({ page }) => {
+test("the poem opens on its introduction; the recitation and the info button move between it and the verses", async ({ page }) => {
   await open(page);
   const intro = page
     .getByText(/^رأت بثينة الشيب/)
     .filter({ visible: true })
     .first();
-  const chip = page.getByRole("button", { name: "عن القصيدة" });
+  const about = page.getByRole("button", { name: "عن القصيدة" });
   await expect(intro).toBeVisible();
-  await expect(chip).toHaveAttribute("aria-selected", "true");
+  await expect(about).toHaveAttribute("aria-pressed", "true");
   await playButton(page).click();
   await expect(panelTitle(page)).toHaveText("البيت ١ · الشرح");
-  await expect(chip).toHaveAttribute("aria-selected", "false");
-  // The chip brings the introduction back, and it stays while the recitation goes on.
-  await chip.click();
+  await expect(about).toHaveAttribute("aria-pressed", "false");
+  // The info button brings the introduction back, and it stays while the recitation goes on.
+  await about.click();
   await expect(
     page
       .getByText(/^رأت بثينة الشيب/)

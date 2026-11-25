@@ -95,7 +95,7 @@ test("the poem opens its rhyme and meter, and both indexes sort", async ({ page,
   const c: Catalog = await (await request.get("/content/v1/catalog.json")).json();
   await page.goto("/en/poems/aya-umma-al-asir");
   await page.waitForLoadState("networkidle");
-  await page.getByRole("link", { name: "Rhymes on rāʾ", exact: true }).click();
+  await page.getByRole("link", { name: "Rhyme: rāʾ", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/rhymes\/ra$/);
   await expect(
     page
@@ -116,7 +116,7 @@ test("the poem opens its rhyme and meter, and both indexes sort", async ({ page,
     await expect(page.getByRole("navigation").getByRole("link", { name: "Rhymes", exact: true })).toHaveAttribute("aria-current", "page");
   }
   await page.goto("/en/poems/aya-umma-al-asir");
-  await page.getByRole("link", { name: "al-Wāfir", exact: true }).click();
+  await page.getByRole("link", { name: "Meter: al-Wāfir", exact: true }).click();
   await page.getByRole("link", { name: "All meters" }).click();
   const meters = page.locator('a[href^="/en/meters/"]').filter({ visible: true });
   await expect(meters.first()).toContainText(Math.max(...Object.values(c.meters)) + " poems");

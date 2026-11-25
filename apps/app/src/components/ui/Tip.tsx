@@ -6,7 +6,7 @@ import { useType } from "../../lib/type";
 /** What a control's tip says: its name, whether it is on, and what it does. */
 export type TipText = {
   title: string;
-  body: string;
+  body?: string;
   /** For toggles: on or off, after the title. */
   state?: string;
   /** Which edge of the control the tip lines up with, so it stays inside the window. */
@@ -17,8 +17,7 @@ export type TipText = {
 const WAIT = 350;
 
 /**
- * Shows a tip while a mouse rests on a control. Touch never shows it, and pressing the control
- * hides it. Spread `handlers` on the control's Pressable.
+ * Shows a tip on mouse hover or web keyboard focus. Pressing the control hides it.
  */
 export function useTip(enabled: boolean) {
   const [shown, setShown] = useState(false);
@@ -29,6 +28,10 @@ export function useTip(enabled: boolean) {
   };
   useEffect(() => clear, []);
   if (!enabled) return { shown: false, handlers: {} };
+  const hide = () => {
+    clear();
+    setShown(false);
+  };
   return {
     shown,
     handlers: {
@@ -38,19 +41,24 @@ export function useTip(enabled: boolean) {
         clear();
         timer.current = setTimeout(() => setShown(true), WAIT);
       },
-      onHoverOut: () => {
-        clear();
-        setShown(false);
+      onFocus: (e: { currentTarget: unknown }) => {
+        const target = e.currentTarget as { matches?: (selector: string) => boolean };
+        if (target.matches?.(":focus-visible")) {
+          clear();
+          setShown(true);
+        }
       },
-      onPressIn: () => {
-        clear();
-        setShown(false);
+      onBlur: hide,
+      onHoverOut: hide,
+      onPressIn: hide,
+      onKeyDown: (e: { nativeEvent: unknown }) => {
+        if ((e.nativeEvent as { key?: string }).key === "Escape") hide();
       },
     },
   };
 }
 
-/** The tip: an ink card above the control. */
+/** Player tips sit above their controls. A short title-side label opens below its icon. */
 export function Tip({ tip }: { tip: TipText }) {
   const { palette, start } = useSettings();
   const type = useType();
@@ -58,13 +66,18 @@ export function Tip({ tip }: { tip: TipText }) {
     <View
       pointerEvents="none"
       role="tooltip"
-      style={[styles.tip, tip.align === "start" ? styles.atStart : styles.atEnd, { backgroundColor: palette.fg }]}
+      style={[
+        styles.tip,
+        tip.align === "start" ? styles.atStart : styles.atEnd,
+        !tip.body && styles.compact,
+        { backgroundColor: palette.fg },
+      ]}
     >
       <View style={styles.head}>
         <Text style={[type.labelStrong, styles.shrink, { color: palette.bg, textAlign: start }]}>{tip.title}</Text>
         {tip.state ? <Text style={[type.label, styles.soft, { color: palette.bg }]}>{tip.state}</Text> : null}
       </View>
-      <Text style={[type.label, styles.body, { color: palette.bg, textAlign: start }]}>{tip.body}</Text>
+      {tip.body && <Text style={[type.label, styles.body, { color: palette.bg, textAlign: start }]}>{tip.body}</Text>}
     </View>
   );
 }
@@ -88,6 +101,16 @@ const styles = StyleSheet.create({
   },
   atStart: { start: 0 },
   atEnd: { end: 0 },
+  compact: {
+    top: "100%",
+    bottom: "auto",
+    marginBottom: 0,
+    width: 116,
+    paddingHorizontal: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
+    alignItems: "center",
+  },
   head: { flexDirection: "row", alignItems: "center", gap: 10 },
   shrink: { flexShrink: 1 },
   soft: { opacity: 0.7 },

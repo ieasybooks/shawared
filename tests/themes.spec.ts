@@ -40,21 +40,21 @@ test("the theme index searches both languages, sorts, and opens the quoted verse
   await page.locator('a[href="/en/poems/aya-umma-al-asir?b=15"]').click();
   await expect(page).toHaveURL(/\/en\/poems\/aya-umma-al-asir\?b=15$/);
   await expect(page.getByText("Verse 15 · Explanation", { exact: true }).filter({ visible: true }).first()).toBeVisible();
-  await page.getByRole("link", { name: "Elegy", exact: true }).click();
+  await page.getByRole("link", { name: "Theme: Elegy", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/themes\/ritha$/);
 });
 
 test("only the primary theme gets a badge, and the meter badge opens the original meter index", async ({ page }) => {
   await page.goto("/en/poems/taqulu-buthaynatu");
   await page.waitForLoadState("networkidle");
-  await expect(page.getByRole("link", { name: "Love poetry", exact: true })).toHaveAttribute("href", "/en/themes/ghazal");
-  await expect(page.getByRole("link", { name: "Reproach", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Theme: Love poetry", exact: true })).toHaveAttribute("href", "/en/themes/ghazal");
+  await expect(page.locator('a[href="/en/themes/itab"]')).toHaveCount(0);
   await page.getByRole("button", { name: "About the poem", exact: true }).click();
   await expect(page.getByText("Other subjects", { exact: true }).filter({ visible: true })).toBeVisible();
   await expect(page.getByText("Reproach", { exact: true }).filter({ visible: true })).toBeVisible();
   const collapse = page.getByRole("button", { name: "Close the explanation" });
   if (await collapse.isVisible()) await collapse.click();
-  await page.getByRole("link", { name: "al-Mutaqārib", exact: true }).click();
+  await page.getByRole("link", { name: "Meter: al-Mutaqārib", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/meters\/mutaqarib$/);
   await page.getByRole("link", { name: "All meters" }).click();
   await expect(page).toHaveURL(/\/en\/meters$/);
@@ -84,6 +84,6 @@ test("older v1 content still opens its poems and meters", async ({ page }) => {
   await page.locator(`a[href="${poemPath}"]`).first().click();
   await expect(page).toHaveURL(new RegExp(poemPath + "$"));
   await expect(page.locator('a[href="/en/themes/ghazal"]')).toHaveCount(0);
-  await page.getByRole("link", { name: "al-Mutaqārib", exact: true }).click();
+  await page.getByRole("link", { name: "Meter: al-Mutaqārib", exact: true }).click();
   await expect(page.getByRole("link", { name: "All meters" })).toBeVisible();
 });
