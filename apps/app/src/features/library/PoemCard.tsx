@@ -16,6 +16,7 @@ import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { catalogEntry, rememberList } from "../player/queue";
+import { listEdges, type ListEdges } from "./ListEdges";
 
 /** A person's name in the reader's language. */
 export const nameOf = (p: CatalogPerson | undefined, lang: UiLang) => (p ? (lang === "ar" ? p.name : (p.names[lang] ?? p.name)) : "");
@@ -107,13 +108,13 @@ export function PoemEntry({
   poem,
   catalog,
   list,
-  firstSearchResult,
+  first,
+  last,
 }: {
   poem: CatalogPoem;
   catalog: Catalog;
   list?: readonly string[];
-  firstSearchResult: boolean;
-}) {
+} & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const layout = useLayout();
@@ -122,11 +123,15 @@ export function PoemEntry({
   const to = href(paths.poem(poem.id));
   const open = useOpenPoem(to, poem.id, list);
   // The header supplies the gap after search. Keep the listen button aligned with its place in the link.
-  const top = firstSearchResult ? 0 : 22;
+  const top = first ? 0 : space.xxl;
   return (
-    <View style={[styles.entry, { borderTopWidth: firstSearchResult ? 0 : 1, borderTopColor: palette.line }]}>
+    <View style={[styles.entry, { borderTopWidth: first ? 0 : 1, borderTopColor: palette.line }]}>
       <Link href={to} asChild>
-        <Pressable accessibilityRole="link" {...open} style={StyleSheet.flatten([styles.entryLink, { paddingTop: top }])}>
+        <Pressable
+          accessibilityRole="link"
+          {...open}
+          style={StyleSheet.flatten([styles.entryLink, { paddingTop: top }, last && listEdges.last])}
+        >
           <View style={styles.actions}>
             {rec?.audio ? (
               <>
@@ -191,13 +196,15 @@ export function PoemRow({
   show,
   list,
   disclosure,
+  first,
+  last,
 }: {
   poem: CatalogPoem;
   catalog: Catalog;
   show: "poet" | "reciter";
   list?: readonly string[];
   disclosure?: boolean;
-}) {
+} & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const rec = poem.recitations[0];
@@ -211,7 +218,11 @@ export function PoemRow({
   const open = useOpenPoem(to, poem.id, list);
   return (
     <Link href={to} asChild>
-      <Pressable accessibilityRole="link" {...open} style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }])}>
+      <Pressable
+        accessibilityRole="link"
+        {...open}
+        style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && listEdges.first, last && listEdges.last])}
+      >
         <View style={styles.rowBody}>
           <View style={styles.rowText}>
             <Text style={[type.listTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>{poem.title}</Text>
@@ -236,7 +247,7 @@ const sized = {
 
 const styles = StyleSheet.create({
   entry: { position: "relative" },
-  entryLink: { paddingBottom: 26, gap: space.l },
+  entryLink: { paddingBottom: space.xxl, gap: space.l },
   actions: { flexDirection: "row", alignItems: "center", gap: space.m, minHeight: 28 },
   listenAt: { position: "absolute", start: 0 },
   listen: {
@@ -255,7 +266,7 @@ const styles = StyleSheet.create({
   rtl: { writingDirection: "rtl" },
   byline: { flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: space.s },
   opening: { borderRadius: 12, borderWidth: 1, paddingVertical: space.m, justifyContent: "space-between", gap: space.xs },
-  row: { borderTopWidth: 1, paddingVertical: 16, gap: space.s },
+  row: { borderTopWidth: 1, paddingVertical: space.xl, gap: space.s, minHeight: 44, justifyContent: "center" },
   rowBody: { flexDirection: "row", alignItems: "center", gap: space.m },
   rowText: { flex: 1, minWidth: 0, gap: space.s },
 });

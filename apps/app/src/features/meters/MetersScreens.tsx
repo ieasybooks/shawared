@@ -4,9 +4,10 @@ import { Link } from "expo-router";
 import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
-import { TextLink } from "../../components/ui/TextLink";
 import { useCatalog } from "../../lib/content";
-import { SortBar } from "../library/DirectoryControls";
+import { DirectoryIndexLink, SortBar } from "../library/DirectoryControls";
+import { listEdges, type ListEdges } from "../library/ListEdges";
+import { Only } from "../../lib/responsive";
 import { directoryCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { ARABIC } from "../../lib/align";
@@ -39,6 +40,7 @@ export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | und
     <ListPage
       back
       title={title}
+      headerGap={0}
       header={
         <SortBar
           count={directoryCount("meters", meters.length, lang)}
@@ -50,19 +52,22 @@ export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | und
       }
       data={meters}
       keyOf={(m) => m}
-      renderItem={(m, i) => <MeterRow id={m} count={data.meters[m] ?? 0} first={i === 0} />}
+      renderItem={(m, i) => <MeterRow id={m} count={data.meters[m] ?? 0} first={i === 0} last={i === meters.length - 1} />}
       estimatedItemSize={96}
     />
   );
 }
 
 /** A meter in the list: its name, how many poems, and its feet. The `first` has no rule above it. */
-function MeterRow({ id, count, first }: { id: string; count: number; first: boolean }) {
+function MeterRow({ id, count, first, last }: { id: string; count: number } & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   return (
     <Link href={href(paths.meter(id))} asChild>
-      <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && styles.first])}>
+      <Pressable
+        accessibilityRole="link"
+        style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && listEdges.first, last && listEdges.last])}
+      >
         <View style={styles.rowHead}>
           <Text
             style={[
@@ -102,13 +107,13 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
   const header = (
     <>
       <DetailFacts arabic={lang === "ar" ? null : meterName(id, "ar")}>
-        <TextLink href={href(paths.meters)}>
-          <Text style={[type.labelStrong, styles.link, { color: palette.muted, textDecorationColor: palette.line2 }]}>
-            {t(lang, "allMeters")}
-          </Text>
-        </TextLink>
         <View style={styles.feet}>
-          <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "pattern")}</Text>
+          <View style={styles.rowHead}>
+            <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "pattern")}</Text>
+            <Only on="phone">
+              <DirectoryIndexLink href={href(paths.meters)} label={t(lang, "allMeters")} />
+            </Only>
+          </View>
           <View style={[styles.feetCard, { backgroundColor: palette.fold, borderColor: palette.line }]}>
             <Text style={[type.verse, styles.rtl, { color: palette.fg, textAlign: ARABIC.start }]}>{METER_FEET[id]}</Text>
           </View>
@@ -124,16 +129,14 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
       header={header}
       data={poems}
       keyOf={(p) => p.id}
-      renderItem={(p) => <PoemRow poem={p} catalog={data} show="poet" list={list} />}
+      renderItem={(p, i) => <PoemRow poem={p} catalog={data} show="poet" list={list} first={i === 0} last={i === poems.length - 1} />}
       estimatedItemSize={86}
     />
   );
 }
 
 const styles = StyleSheet.create({
-  link: { textDecorationLine: "underline" },
-  row: { borderTopWidth: 1, paddingVertical: 16, gap: space.m },
-  first: { borderTopWidth: 0 },
+  row: { borderTopWidth: 1, paddingVertical: space.xl, gap: space.m },
   rowHead: { flexDirection: "row", alignItems: "center", gap: space.l },
   flex: { flex: 1 },
   rtl: { writingDirection: "rtl" },

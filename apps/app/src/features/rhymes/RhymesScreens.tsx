@@ -5,14 +5,15 @@ import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Icon } from "../../components/ui/Icon";
 import { StateView } from "../../components/ui/StateView";
-import { TextLink } from "../../components/ui/TextLink";
 import { useCatalog } from "../../lib/content";
 import { directoryCount, poemsCount, rhymeName, t } from "../../lib/i18n";
 import { RHYMES, rhymeById, rhymeCounts, rhymeFor, type Rhyme } from "../../lib/rhymes";
 import { paths } from "../../lib/routes";
+import { Only } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
-import { SortBar } from "../library/DirectoryControls";
+import { DirectoryIndexLink, SortBar } from "../library/DirectoryControls";
+import { listEdges, type ListEdges } from "../library/ListEdges";
 import { DetailFacts, ListPage, PageFrame, SectionHead } from "../library/Page";
 import { PoemRow } from "../library/PoemCard";
 
@@ -37,6 +38,7 @@ export function RhymesScreen({ initial }: { initial?: { counts: Record<string, n
     <ListPage
       back
       title={title}
+      headerGap={0}
       data={rhymes}
       keyOf={(r) => r.id}
       estimatedItemSize={81}
@@ -50,17 +52,20 @@ export function RhymesScreen({ initial }: { initial?: { counts: Record<string, n
           onChange={setOrder}
         />
       }
-      renderItem={(rhyme, i) => <RhymeRow rhyme={rhyme} count={counts[rhyme.id]!} first={i === 0} />}
+      renderItem={(rhyme, i) => <RhymeRow rhyme={rhyme} count={counts[rhyme.id]!} first={i === 0} last={i === rhymes.length - 1} />}
     />
   );
 }
 
-function RhymeRow({ rhyme, count, first }: { rhyme: Rhyme; count: number; first: boolean }) {
+function RhymeRow({ rhyme, count, first, last }: { rhyme: Rhyme; count: number } & ListEdges) {
   const { lang, href, palette, start } = useSettings();
   const type = useType();
   return (
     <Link href={href(paths.rhyme(rhyme.id))} asChild>
-      <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && styles.first])}>
+      <Pressable
+        accessibilityRole="link"
+        style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && listEdges.first, last && listEdges.last])}
+      >
         <View accessible={false} aria-hidden style={[styles.letter, { backgroundColor: palette.fold, borderColor: palette.line }]}>
           <Text style={[type.nameAr, { color: palette.fg }]}>{rhyme.letter}</Text>
         </View>
@@ -76,8 +81,7 @@ function RhymeRow({ rhyme, count, first }: { rhyme: Rhyme; count: number; first:
 
 export function RhymeScreen({ id, initial }: { id: string; initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
-  const { lang, href, palette } = useSettings();
-  const type = useType();
+  const { lang, href } = useSettings();
   const rhyme = rhymeById(id);
   const poems = useMemo(() => data?.poems.filter((p) => rhymeFor(p.rawiy)?.id === id) ?? [], [data, id]);
   const list = useMemo(() => poems.map((p) => p.id), [poems]);
@@ -96,25 +100,25 @@ export function RhymeScreen({ id, initial }: { id: string; initial?: { catalog: 
       estimatedItemSize={86}
       header={
         <>
-          <DetailFacts arabic={lang === "ar" ? null : rhymeName(rhyme.letter, "ar")}>
-            <TextLink href={href(paths.rhymes)}>
-              <Text style={[type.labelStrong, styles.link, { color: palette.muted, textDecorationColor: palette.line2 }]}>
-                {t(lang, "allRhymes")}
-              </Text>
-            </TextLink>
-          </DetailFacts>
-          <SectionHead title={t(lang, "poems")} count={poemsCount(poems.length, lang)} />
+          {lang === "en" && <DetailFacts arabic={rhymeName(rhyme.letter, "ar")} />}
+          <SectionHead
+            title={t(lang, "poems")}
+            count={poemsCount(poems.length, lang)}
+            action={
+              <Only on="phone">
+                <DirectoryIndexLink href={href(paths.rhymes)} label={t(lang, "allRhymes")} />
+              </Only>
+            }
+          />
         </>
       }
-      renderItem={(poem) => <PoemRow poem={poem} catalog={data} show="poet" list={list} />}
+      renderItem={(poem, i) => <PoemRow poem={poem} catalog={data} show="poet" list={list} first={i === 0} last={i === poems.length - 1} />}
     />
   );
 }
 
 const styles = StyleSheet.create({
   row: { flexDirection: "row", alignItems: "center", gap: space.l, borderTopWidth: 1, paddingVertical: space.l },
-  first: { borderTopWidth: 0 },
   grow: { flex: 1, minWidth: 0 },
   letter: { width: 48, height: 48, borderWidth: 1, borderRadius: 10, alignItems: "center", justifyContent: "center" },
-  link: { textDecorationLine: "underline" },
 });

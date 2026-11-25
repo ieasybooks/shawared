@@ -91,14 +91,13 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
           <>
             {intro && <Text style={[type.prose, { color: palette.fg, textAlign: start }]}>{intro}</Text>}
             {subjects.length > 0 && (
-              <View style={styles.body}>
-                <Text style={[type.labelStrong, { color: palette.muted, textAlign: start }]}>{t(lang, "otherSubjects")}</Text>
-                <View style={styles.sources}>
-                  {subjects.map((subject) => (
-                    <Chip key={subject.id}>{subject.name}</Chip>
-                  ))}
-                </View>
-              </View>
+              <Text style={[type.prose, { color: palette.muted, textAlign: start }]}>
+                {t(lang, "alsoTouchesOn", {
+                  subjects: subjects
+                    .map((subject) => (lang === "en" ? subject.name.toLowerCase() : subject.name))
+                    .join(lang === "ar" ? "، " : ", "),
+                })}
+              </Text>
             )}
           </>
         ) : (

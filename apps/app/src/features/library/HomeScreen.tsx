@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
-import { t } from "../../lib/i18n";
+import { poemsCount, t } from "../../lib/i18n";
 import { Only } from "../../lib/responsive";
 import { fold, indexCatalog, search } from "../../lib/search";
 import { useSettings } from "../../lib/settings";
@@ -38,6 +38,11 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
       </Only>
       <View style={styles.search}>
         <SearchField value={query} onChange={setQuery} />
+        <View style={styles.announcement} pointerEvents="none">
+          <Text accessibilityLiveRegion="polite" style={type.label}>
+            {searching ? (poems.length ? poemsCount(poems.length, lang) : t(lang, "noResults")) : ""}
+          </Text>
+        </View>
       </View>
       {!searching && <SectionHead title={t(lang, "latest")} />}
     </>
@@ -48,7 +53,7 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
       header={header}
       data={poems}
       keyOf={(p) => p.id}
-      renderItem={(p, index) => <PoemEntry poem={p} catalog={data} list={ids} firstSearchResult={searching && index === 0} />}
+      renderItem={(p, index) => <PoemEntry poem={p} catalog={data} list={ids} first={index === 0} last={index === poems.length - 1} />}
       maxWidth={760}
       estimatedItemSize={250}
       empty={t(lang, "noResults")}
@@ -59,4 +64,6 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
 const styles = StyleSheet.create({
   tagline: { maxWidth: 620 },
   search: { width: "100%" },
+  // Announce search results without putting another visible row between search and the poem.
+  announcement: { position: "absolute", width: 1, height: 1, overflow: "hidden", opacity: 0 },
 });

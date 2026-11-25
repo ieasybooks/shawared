@@ -18,6 +18,7 @@ import { useStore } from "../../lib/store";
 import { useType } from "../../lib/type";
 import { ListPage, PageFrame, SectionHead } from "../library/Page";
 import { PoemRow } from "../library/PoemCard";
+import { listEdges, type ListEdges } from "../library/ListEdges";
 import { PersonRow } from "../people/PeopleScreens";
 import { newPlaylist, playList, playlistName } from "./actions";
 import { useDownload } from "./DownloadButton";
@@ -71,7 +72,15 @@ export function LibraryScreen() {
         title={title}
         data={items}
         keyOf={keyOf}
-        renderItem={(item) => <Row item={item} catalog={catalog.data!} onNew={() => setNaming(true)} />}
+        renderItem={(item, i) => (
+          <Row
+            item={item}
+            catalog={catalog.data!}
+            onNew={() => setNaming(true)}
+            first={i === 0 || items[i - 1]?.k === "head"}
+            last={i === items.length - 1 || items[i + 1]?.k === "head" || items[i + 1]?.k === "text"}
+          />
+        )}
         estimatedItemSize={72}
       />
       <Dialog
@@ -142,7 +151,7 @@ function itemsOf(catalog: Catalog, saved: Saved, done: Record<string, number>, l
   return items;
 }
 
-function Row({ item, catalog, onNew }: { item: Item; catalog: Catalog; onNew: () => void }) {
+function Row({ item, catalog, onNew, ...edges }: { item: Item; catalog: Catalog; onNew: () => void } & ListEdges) {
   const { palette, start } = useSettings();
   const type = useType();
   switch (item.k) {
@@ -156,17 +165,21 @@ function Row({ item, catalog, onNew }: { item: Item; catalog: Catalog; onNew: ()
         </View>
       );
     case "text":
-      return <Text style={[type.body, styles.text, { color: palette.muted, textAlign: start }]}>{item.text}</Text>;
+      return (
+        <View style={[styles.text, edges.first && listEdges.first, edges.last && listEdges.last]}>
+          <Text style={[type.body, { color: palette.muted, textAlign: start }]}>{item.text}</Text>
+        </View>
+      );
     case "new":
-      return <NewPlaylistRow onPress={onNew} />;
+      return <NewPlaylistRow onPress={onNew} {...edges} />;
     case "playlist":
-      return <PlaylistRow playlist={item.playlist} catalog={catalog} />;
+      return <PlaylistRow playlist={item.playlist} catalog={catalog} {...edges} />;
     case "poem":
-      return <PoemRow poem={item.poem} catalog={catalog} show="poet" list={item.list} />;
+      return <PoemRow poem={item.poem} catalog={catalog} show="poet" list={item.list} {...edges} />;
     case "person":
-      return <PersonRow kind={item.kind} person={item.person} />;
+      return <PersonRow kind={item.kind} person={item.person} {...edges} />;
     case "download":
-      return <DownloadRow poem={item.poem} catalog={catalog} list={item.list} />;
+      return <DownloadRow poem={item.poem} catalog={catalog} list={item.list} {...edges} />;
   }
 }
 
@@ -180,11 +193,15 @@ export function PlayAll({ ids }: { ids: readonly string[] }) {
   );
 }
 
-function NewPlaylistRow({ onPress }: { onPress: () => void }) {
+function NewPlaylistRow({ onPress, first, last }: { onPress: () => void } & ListEdges) {
   const { palette, lang } = useSettings();
   const type = useType();
   return (
-    <Pressable accessibilityRole="button" onPress={onPress} style={[styles.row, styles.inline, { borderTopColor: palette.line }]}>
+    <Pressable
+      accessibilityRole="button"
+      onPress={onPress}
+      style={[styles.row, styles.inline, { borderTopColor: palette.line }, first && listEdges.first, last && listEdges.last]}
+    >
       <View style={[styles.badge, styles.dashed, { borderColor: palette.line2 }]}>
         <Icon name="plus" size={20} color={palette.fg} />
       </View>
@@ -194,7 +211,7 @@ function NewPlaylistRow({ onPress }: { onPress: () => void }) {
 }
 
 /** A playlist: its name, and how many poems and minutes. */
-function PlaylistRow({ playlist, catalog }: { playlist: Playlist; catalog: Catalog }) {
+function PlaylistRow({ playlist, catalog, first, last }: { playlist: Playlist; catalog: Catalog } & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const poems = playlist.poems.map((id) => catalog.poems.find((p) => p.id === id)).filter((p): p is CatalogPoem => !!p);
@@ -204,9 +221,12 @@ function PlaylistRow({ playlist, catalog }: { playlist: Playlist; catalog: Catal
     .join(" · ");
   const ids = poems.map((p) => p.id);
   return (
-    <View style={[styles.inline, styles.playlist, { borderTopColor: palette.line }]}>
+    <View style={[styles.inline, styles.playlist, { borderTopColor: palette.line }, first && listEdges.first]}>
       <Link href={href(paths.playlist(playlist.id))} asChild>
-        <Pressable accessibilityRole="link" style={StyleSheet.flatten([styles.inline, styles.flex, styles.playlistLink])}>
+        <Pressable
+          accessibilityRole="link"
+          style={StyleSheet.flatten([styles.inline, styles.flex, styles.playlistLink, first && listEdges.first, last && listEdges.last])}
+        >
           <CoverTile size={56} name={playlistName(playlist, lang)} radius={12} />
           <View style={styles.flex}>
             {/* The reader's own name for it, in whatever language: the interface's type, not a verse's. */}
@@ -232,7 +252,7 @@ function PlaylistRow({ playlist, catalog }: { playlist: Playlist; catalog: Catal
 }
 
 /** A downloaded poem, with a button that removes its download. */
-function DownloadRow({ poem, catalog, list }: { poem: CatalogPoem; catalog: Catalog; list: string[] }) {
+function DownloadRow({ poem, catalog, list, ...edges }: { poem: CatalogPoem; catalog: Catalog; list: string[] } & ListEdges) {
   const { lang } = useSettings();
   const key = poem.recitations[0]?.audio;
   const { done } = useDownload(key);
@@ -240,7 +260,7 @@ function DownloadRow({ poem, catalog, list }: { poem: CatalogPoem; catalog: Cata
   return (
     <View style={styles.inline}>
       <View style={styles.flex}>
-        <PoemRow poem={poem} catalog={catalog} show="poet" list={list} />
+        <PoemRow poem={poem} catalog={catalog} show="poet" list={list} {...edges} />
       </View>
       {done && key && (
         <>
@@ -261,9 +281,9 @@ function DownloadRow({ poem, catalog, list }: { poem: CatalogPoem; catalog: Cata
 
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },
-  head: { flexDirection: "row", alignItems: "center", gap: space.m, paddingBottom: space.s },
+  head: { flexDirection: "row", alignItems: "center", gap: space.m, paddingBottom: space.l },
   text: { paddingVertical: space.l },
-  row: { borderTopWidth: 1, paddingVertical: 14, gap: space.s },
+  row: { borderTopWidth: 1, paddingVertical: space.l, gap: space.s },
   inline: { flexDirection: "row", alignItems: "center", gap: space.l },
   badge: { width: 56, height: 56, borderRadius: 12, borderWidth: 1, alignItems: "center", justifyContent: "center" },
   dashed: { borderStyle: "dashed", borderWidth: 1.5 },

@@ -3,6 +3,9 @@ import { Link } from "expo-router";
 import { Children, useRef, useState, type ReactNode, type RefObject } from "react";
 import {
   Modal,
+  AccessibilityInfo,
+  Platform,
+  findNodeHandle,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -14,6 +17,7 @@ import {
 } from "react-native";
 import { Dir } from "../../components/ui/Dir";
 import { Icon } from "../../components/ui/Icon";
+import { TextLink } from "../../components/ui/TextLink";
 import { t } from "../../lib/i18n";
 import { responsive, useLayout } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
@@ -28,16 +32,54 @@ type SortOptions<T extends DirectoryOrder> = {
   onChange: (order: T) => void;
 };
 
-export function SortBar<T extends DirectoryOrder>({ count, ...sort }: SortOptions<T> & { count: string }) {
+export function SortBar<T extends DirectoryOrder>({
+  count,
+  filter,
+  ...sort
+}: SortOptions<T> & {
+  count: string;
+  filter?: { label: string; onClear: () => void } | undefined;
+}) {
   const { lang, palette, start } = useSettings();
   const type = useType();
   const trigger = useRef<HostInstance>(null);
+  const countRef = useRef<HostInstance>(null);
   const [open, setOpen] = useState(false);
   return (
     <View style={styles.bar}>
-      <Text accessibilityLiveRegion="polite" style={[type.controlStrong, styles.grow, { color: palette.fg, textAlign: start }]}>
-        {count}
-      </Text>
+      <View style={styles.summary}>
+        <Text
+          ref={countRef}
+          accessible
+          {...(Platform.OS === "web" ? { tabIndex: -1 } : {})}
+          accessibilityLiveRegion="polite"
+          accessibilityLabel={filter ? `${count} · ${filter.label}` : count}
+          style={[type.controlStrong, { color: palette.fg, textAlign: start }]}
+        >
+          {count}
+        </Text>
+        {filter && (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t(lang, "clearFilter", { name: filter.label })}
+            onPress={() => {
+              filter.onClear();
+              // The dismissed control must not leave keyboard or screen-reader focus behind.
+              if (Platform.OS === "web") countRef.current?.focus();
+              else {
+                const node = findNodeHandle(countRef.current);
+                if (node != null) AccessibilityInfo.setAccessibilityFocus(node);
+              }
+            }}
+            style={styles.filterTarget}
+          >
+            <View style={[styles.filter, { borderColor: palette.accent, backgroundColor: palette.fold }]}>
+              <Text style={[type.label, styles.filterText, { color: palette.fg, textAlign: start }]}>{filter.label}</Text>
+              <Icon name="close" size={12} color={palette.muted} />
+            </View>
+          </Pressable>
+        )}
+      </View>
       <Pressable
         ref={trigger}
         collapsable={false}
@@ -51,6 +93,20 @@ export function SortBar<T extends DirectoryOrder>({ count, ...sort }: SortOption
         <Icon name={open ? "up" : "down"} size={14} color={palette.muted} />
       </Pressable>
       {open && <SortMenu {...sort} trigger={trigger} close={() => setOpen(false)} />}
+    </View>
+  );
+}
+
+/** A compact way back to a collection on phones, beside the detail page's heading. */
+export function DirectoryIndexLink({ href, label }: { href: string; label: string }) {
+  const { palette } = useSettings();
+  const type = useType();
+  return (
+    <View style={styles.indexLink}>
+      <TextLink href={href} style={styles.sort}>
+        <Text style={[type.labelStrong, { color: palette.muted }]}>{label}</Text>
+        <Icon name="chevron" size={14} color={palette.muted} />
+      </TextLink>
     </View>
   );
 }
@@ -214,7 +270,20 @@ const cellSize = responsive(
 const wideOnly = responsive({ display: "none" as const }, { display: "flex" as const });
 const styles = StyleSheet.create({
   grow: { flex: 1, minWidth: 0 },
-  bar: { flexDirection: "row", alignItems: "center", gap: space.m, minHeight: 40 },
+  bar: { flexDirection: "row", alignItems: "center", gap: space.m, minHeight: 44 },
+  summary: { flex: 1, minWidth: 0, flexDirection: "row", flexWrap: "wrap", alignItems: "center", columnGap: space.m },
+  filterTarget: { minHeight: 44, maxWidth: "100%", justifyContent: "center" },
+  filter: {
+    minHeight: 28,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: space.s,
+    paddingHorizontal: space.m,
+    borderWidth: 1,
+    borderRadius: 999,
+  },
+  filterText: { flexShrink: 1 },
+  indexLink: { marginStart: "auto" },
   sort: { flexDirection: "row", alignItems: "center", gap: space.s, minHeight: 44 },
   overlay: { flex: 1 },
   choices: {

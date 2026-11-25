@@ -57,8 +57,19 @@ test("era, name search and sort work together and survive a visit to the poet", 
   const columns = isPhone ? 2 : 3;
   expect(tops.filter((top) => top === tops[0])).toHaveLength(columns);
   await expect(blanks).toHaveCount((columns - (tops.length % columns)) % columns);
-  const abbasid = page.getByRole("button", { name: /^Abbasid/ });
+  const abbasid = page.getByRole("button", { name: /^Abbasid/, includeHidden: true });
   await abbasid.click();
+  const clearEra = page.getByRole("button", { name: "Clear filter: Abbasid", exact: true });
+  const eraSearch = page.getByRole("textbox", { name: "Search the poets" });
+  await expect(clearEra).toBeVisible();
+  const field = (await eraSearch.boundingBox())!;
+  expect((await clearEra.boundingBox())!.y).toBeGreaterThan(field.y + field.height);
+  await expect(clearEra).toHaveCSS("min-height", "44px");
+  if (isPhone) {
+    await page.getByRole("button", { name: "Show fewer", exact: true }).click();
+    await expect(abbasid).toBeHidden();
+    await expect(clearEra).toBeVisible();
+  }
   await page.getByRole("button", { name: "Alphabetical", exact: true }).click();
   await page.getByRole("radio", { name: "By poem count" }).click();
   const search = page.getByRole("textbox", { name: "Search the poets" });
@@ -72,7 +83,9 @@ test("era, name search and sort work together and survive a visit to the poet", 
   await expect(page.getByRole("button", { name: "By poem count", exact: true })).toBeVisible();
   await search.fill("Jamil");
   await expect(page.getByText("Nothing matches your search")).toBeVisible();
-  await page.getByRole("button", { name: "All poets", exact: true }).click();
+  await clearEra.click();
+  await expect(clearEra).toHaveCount(0);
+  await expect(page.locator('[aria-live="polite"]').filter({ visible: true }).first()).toBeFocused();
   await expect(page.getByRole("link", { name: /Jamil Buthayna/ })).toBeVisible();
 });
 
@@ -107,7 +120,10 @@ test("the poem opens its rhyme and meter, and both indexes sort", async ({ page,
       .filter({ visible: true })
       .first(),
   ).toBeVisible();
-  await page.getByRole("link", { name: "All rhymes" }).click();
+  if (info.project.name === "desktop") {
+    await expect(page.getByRole("link", { name: "All rhymes" })).toBeHidden();
+    await page.getByRole("navigation").getByRole("link", { name: "Rhymes", exact: true }).click();
+  } else await page.getByRole("link", { name: "All rhymes" }).click();
   await expect(page).toHaveURL(/\/en\/rhymes$/);
   const rhymes = page.locator('a[href^="/en/rhymes/"]').filter({ visible: true });
   await expect(rhymes.first()).toHaveAttribute("href", "/en/rhymes/hamza");
@@ -121,7 +137,10 @@ test("the poem opens its rhyme and meter, and both indexes sort", async ({ page,
   }
   await page.goto("/en/poems/aya-umma-al-asir");
   await page.getByRole("link", { name: "Meter: al-Wāfir", exact: true }).click();
-  await page.getByRole("link", { name: "All meters" }).click();
+  if (info.project.name === "desktop") {
+    await expect(page.getByRole("link", { name: "All meters" })).toBeHidden();
+    await page.getByRole("navigation").getByRole("link", { name: "Meters", exact: true }).click();
+  } else await page.getByRole("link", { name: "All meters" }).click();
   const meters = page.locator('a[href^="/en/meters/"]').filter({ visible: true });
   await expect(meters.first()).toContainText(Math.max(...Object.values(c.meters)) + " poems");
   await page.getByRole("button", { name: "By poem count" }).click();
