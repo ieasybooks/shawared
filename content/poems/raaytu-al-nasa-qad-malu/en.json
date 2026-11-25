@@ -1,0 +1,496 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "I Saw People Lean",
+  "intro": "Osama al-Waaedh opens with three pairs of verses that he credits to al-Shafi'i. Some of the lines also appear without an author’s name in al-Shirwani’s anthology. Al-Waaedh adds seventeen pairs of his own, making the crowd change direction with a preposition or a turn of sound. What begins with people gravitating to money ends with a crowd taking photographs.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "I saw people lean",
+        "towards the man with money."
+      ],
+      "sharh": "The crowd leans towards a rich man. The sound of malu, “they leaned”, already contains mal, the money drawing them to him."
+    },
+    "2": {
+      "translation": [
+        "And from the man with no money",
+        "I saw them lean away."
+      ],
+      "sharh": "The verb for leaning returns unchanged. The little word for “away from” turns the whole crowd in the opposite direction."
+    },
+    "3": {
+      "translation": [
+        "I saw people go",
+        "to the man with gold."
+      ],
+      "sharh": "Gold supplies another pair of sounds. Dhahabu tells of people going, while dhahab names what they went for."
+    },
+    "4": {
+      "translation": [
+        "And from the man with no gold",
+        "away they went."
+      ],
+      "sharh": "They do just as much going in this verse as in the last. The man without gold sees only their departure."
+    },
+    "5": {
+      "translation": [
+        "I saw people break away",
+        "towards the man with silver."
+      ],
+      "sharh": "People usually scatter in different directions. Here they break away only to converge on one man. The sound of fidda, silver, runs through munfadda, breaking away."
+    },
+    "6": {
+      "translation": [
+        "And from the man with no silver",
+        "the crowd scatters."
+      ],
+      "sharh": "At the poor man’s side, “scatter” recovers its ordinary force. The company that silver drew together melts away."
+    },
+    "7": {
+      "translation": [
+        "I saw the crowd grow",
+        "around the man with provisions."
+      ],
+      "sharh": "The gathering grows where food is stocked. Zadu, “they increased”, leads into zad, the store of food a traveller carries."
+    },
+    "8": {
+      "translation": [
+        "For the man with no provisions",
+        "they add nothing and give nothing."
+      ],
+      "sharh": "There were more mouths where provisions were plentiful. When provisions run out, the visitors bring nothing of their own."
+    },
+    "9": {
+      "translation": [
+        "I saw people circle",
+        "round the man who owns a house."
+      ],
+      "sharh": "A house becomes the fixed point in a ring of visitors. Daru, “they went round”, finds its echo in dar, a house."
+    },
+    "10": {
+      "translation": [
+        "And from the man without a house",
+        "they turn away."
+      ],
+      "sharh": "Once the house drops out of the picture, the visitors turn too. Their attachment appears to have been to the property."
+    },
+    "11": {
+      "translation": [
+        "I saw people hurry",
+        "towards the man whom fortune favours."
+      ],
+      "sharh": "Their eagerness is their own, the good fortune somebody else’s. Jaddu, “they pressed on”, plays against jadd, a person’s fortune."
+    },
+    "12": {
+      "translation": [
+        "And from the man whom fortune passes by",
+        "they hurry away."
+      ],
+      "sharh": "They lose none of their energy when someone’s luck runs out. They put it all into getting away."
+    },
+    "13": {
+      "translation": [
+        "I saw people turn their backs",
+        "on the poor and retrace their steps."
+      ],
+      "sharh": "For the first time he names the people being shunned as the poor. The crowd first turns its face, then goes back the way it came."
+    },
+    "14": {
+      "translation": [
+        "But the man with wealth in abundance",
+        "they never turned away from."
+      ],
+      "sharh": "They turn their backs on the poor and stay beside someone with plenty. The echo between the word for the man’s abundance and the verb for turning away binds the two scenes together."
+    },
+    "15": {
+      "translation": [
+        "I saw people following meekly",
+        "where chiefs and leaders went."
+      ],
+      "sharh": "Office takes the place of wealth. The Arabic words for those who submit and those who lead come from the same root."
+    },
+    "16": {
+      "translation": [
+        "As for anyone outside the leaders’ ranks,",
+        "the current draws people away from him."
+      ],
+      "sharh": "Even in deserting someone, the crowd is still being led. It takes its cue from the standing he has among other people."
+    },
+    "17": {
+      "translation": [
+        "I saw people rush out",
+        "to the man with a band of followers."
+      ],
+      "sharh": "They hurry towards someone who already has men at his side. Nafaru, “they rushed out”, echoes nafar, a body of men."
+    },
+    "18": {
+      "translation": [
+        "From the man with no one at his side,",
+        "they recoil."
+      ],
+      "sharh": "The same verb that sent them rushing to one man now makes them recoil from another. Their absence leaves the solitary man more alone."
+    },
+    "19": {
+      "translation": [
+        "I saw people come calling",
+        "on the man who has numbers behind him."
+      ],
+      "sharh": "Followers have dwindled to a number, which is all the visitors need to know. A crowd already gathered draws another."
+    },
+    "20": {
+      "translation": [
+        "And the man with no numbers behind him",
+        "sees them go their way."
+      ],
+      "sharh": "Waradu normally describes an arrival. The unusual “away from him” makes the listener supply the opposite journey that the paired verses have taught them to expect."
+    },
+    "21": {
+      "translation": [
+        "I saw people take sides",
+        "with whoever has no need."
+      ],
+      "sharh": "The choice of sides falls in favour of the self-sufficient. The words for siding with someone and for need chime even as their meanings pull apart."
+    },
+    "22": {
+      "translation": [
+        "And from anyone in need",
+        "they stand apart."
+      ],
+      "sharh": "Need becomes a reason to withdraw. The move from “towards” to “away” gives their apparent solidarity an exact limit."
+    },
+    "23": {
+      "translation": [
+        "I saw people leap",
+        "towards a man with a clan behind him."
+      ],
+      "sharh": "With a clan behind someone, a mere inclination becomes a leap. Laba is used in Arabian speech for the people one can call on for support."
+    },
+    "24": {
+      "translation": [
+        "And from the man without a clan",
+        "they leap away."
+      ],
+      "sharh": "They are just as quick on their feet the second time. The man without anyone to back him can measure their agility by the speed of their departure."
+    },
+    "25": {
+      "translation": [
+        "I saw people show concern",
+        "for someone without a care."
+      ],
+      "sharh": "Their concern goes to someone with no worries. The word for showing concern, tahtammu, contains the very sound of hamm, a care or burden."
+    },
+    "26": {
+      "translation": [
+        "As for those worn down by worry,",
+        "not a soul takes an interest."
+      ],
+      "sharh": "Worry has become something that can wear a person down. At the point where concern might actually help, no one shows it."
+    },
+    "27": {
+      "translation": [
+        "I saw people gird themselves",
+        "with the man whose money comes in bundles."
+      ],
+      "sharh": "They treat the rich man as a support they can buckle round themselves. The verb for girding and the noun for bundles share the idea of tying something tight."
+    },
+    "28": {
+      "translation": [
+        "But where a man has no such bundles,",
+        "they never gird themselves for him."
+      ],
+      "sharh": "They drew strength from one man’s wealth. When another needs them to pull themselves together and act on his behalf, their resolve fails."
+    },
+    "29": {
+      "translation": [
+        "I saw people pay respect",
+        "to a rich man with stacks of money."
+      ],
+      "sharh": "His fortune can be seen in stacks. Putting the money so close beside the respect lets the reader judge what the respect is worth."
+    },
+    "30": {
+      "translation": [
+        "For those who have no money",
+        "there is no one to show respect."
+      ],
+      "sharh": "He turns from one conspicuously rich man to the people who have no money. The verb that honoured the first finds no one to perform it for them."
+    },
+    "31": {
+      "translation": [
+        "I saw people forever coming through the door",
+        "when they wanted something."
+      ],
+      "sharh": "The intensive form shows people going in and out again and again. Only in the second half do we learn what brings them to the door."
+    },
+    "32": {
+      "translation": [
+        "When others are worn out with need,",
+        "no one calls, no one needs a thing."
+      ],
+      "sharh": "Hajj can mean setting out to visit someone. The visitors’ own business brought them to the door. Another person’s need brings no footsteps."
+    },
+    "33": {
+      "translation": [
+        "I saw people take pride",
+        "in the man whose robes are silk."
+      ],
+      "sharh": "The wealth now shows on the body. People wear an acquaintance with the well-dressed man as if the distinction of his clothes could rub off on them."
+    },
+    "34": {
+      "translation": [
+        "And for the man who owns no silk",
+        "no one feels such pride."
+      ],
+      "sharh": "A single fabric decides whom they are proud to know. Nothing about either man’s character has entered into the decision."
+    },
+    "35": {
+      "translation": [
+        "I saw people gather close",
+        "around someone whose fortune grows."
+      ],
+      "sharh": "It is the prospect of more money that brings them close now. As the fortune grows, the gathering around its owner seems to grow with it."
+    },
+    "36": {
+      "translation": [
+        "For those without money",
+        "they neither gathered nor thought of it."
+      ],
+      "sharh": "He rules out even the intention to call. Staying away was no missed appointment. They never so much as thought of getting together."
+    },
+    "37": {
+      "translation": [
+        "I saw people drawn along",
+        "towards anyone free of want."
+      ],
+      "sharh": "They drift towards whoever is secure from poverty. The sound of the word for being drawn along runs into faqa, the want from which this man is safe."
+    },
+    "38": {
+      "translation": [
+        "But those whom want has worn thin",
+        "never saw a she-camel come to visit."
+      ],
+      "sharh": "The mount stands in for its rider. Outside the poor person’s home he leaves us looking for even a visitor’s camel."
+    },
+    "39": {
+      "translation": [
+        "I saw people packed together",
+        "for a famous man or woman."
+      ],
+      "sharh": "By the end, the attraction needs no house, silk or clan. A well-known name fills the space, whether it belongs to a man or a woman."
+    },
+    "40": {
+      "translation": [
+        "And the person with no claim to fame",
+        "never had a picture taken."
+      ],
+      "sharh": "The last word brings a camera into the scene. The old pattern of who gets company and who goes unseen ends in a gesture anyone watching the recording can recognise."
+    }
+  },
+  "words": {
+    "1.1.4": {
+      "word": "مالوا",
+      "head": "مالَ",
+      "root": "م ي ل",
+      "meaning": "Leaned or inclined. The direction changes with the preposition, towards the rich man and away from the poor one."
+    },
+    "1.2.4": {
+      "word": "مالُ",
+      "head": "مال",
+      "root": "م و ل",
+      "meaning": "Wealth or property. It sounds like the verb for leaning, although the two have different roots."
+    },
+    "3.1.4": {
+      "word": "ذَهَبوا",
+      "head": "ذَهَبَ",
+      "root": "ذ ه ب",
+      "meaning": "Went. The three consonants are also those of dhahab, gold."
+    },
+    "5.1.3": {
+      "word": "مُنفَضَّةً",
+      "head": "مُنفَضّ",
+      "root": "ف ض ض",
+      "meaning": "Dispersing, as a gathering breaks up. Its sound supplies the link with fidda, silver."
+    },
+    "7.2.4": {
+      "word": "زادُ",
+      "head": "زاد",
+      "root": "ز و د",
+      "meaning": "Provisions for a journey. Zad sounds like the preceding verb for increasing in number."
+    },
+    "8.2.4": {
+      "word": "جادوا",
+      "head": "جادَ",
+      "root": "ج و د",
+      "meaning": "Gave freely of their own. The word asks who among the well-fed visitors will provide for somebody else."
+    },
+    "9.2.4": {
+      "word": "دارُ",
+      "head": "دار",
+      "root": "د و ر",
+      "meaning": "A house. Its name echoes daru, the circling of the visitors who gather around it."
+    },
+    "11.1.4": {
+      "word": "جَدّوا",
+      "head": "جَدَّ",
+      "root": "ج د د",
+      "meaning": "They went with energy or determination, first towards the lucky man and then away from his opposite."
+    },
+    "11.2.4": {
+      "word": "جَدُّ",
+      "head": "جَدّ",
+      "root": "ج د د",
+      "meaning": "Good fortune, also prosperity. Its vowel distinguishes jadd, fortune, from jidd, earnest effort."
+    },
+    "13.2.3": {
+      "word": "وَارتَدّوا",
+      "head": "اِرتَدَّ",
+      "root": "ر د د",
+      "meaning": "Turned back, retracing their steps away from the poor."
+    },
+    "14.1.2-3": {
+      "word": "أَموالُهُ عَدُّ",
+      "meaning": "Most likely, “whose wealth is abundant”. The reciter gives the word for wealth a nominative ending. The next word sounds like add, while classical idd means abundance. Some listeners transcribe a verb instead, “whose money they counted”."
+    },
+    "15.1.3": {
+      "word": "مُنقادَةً",
+      "head": "مُنقاد",
+      "root": "ق و د",
+      "meaning": "Submissive or following another’s lead. The participle comes from the same root as qada, leaders."
+    },
+    "17.1.4": {
+      "word": "نَفَروا",
+      "head": "نَفَرَ",
+      "root": "ن ف ر",
+      "meaning": "Set out or hastened. Combined with “away from”, the verb can also express aversion."
+    },
+    "17.2.4": {
+      "word": "نَفَرُ",
+      "head": "نَفَر",
+      "root": "ن ف ر",
+      "meaning": "A band of people, here the following whose presence draws more people in."
+    },
+    "19.1.4": {
+      "word": "وَرَدوا",
+      "head": "وَرَدَ",
+      "root": "و ر د",
+      "meaning": "Arrived, originally at a watering place. The poet stretches its ordinary use in the matching verse."
+    },
+    "21.1.3": {
+      "word": "مُنحازَةً",
+      "head": "مُنحاز",
+      "root": "ح و ز",
+      "meaning": "Taking a side. The crowd is pictured as lining up with one party or the other."
+    },
+    "21.2.4-5": {
+      "word": "ذا عازَةٍ",
+      "meaning": "“One in need.” Aza is a regional word for want or need."
+    },
+    "23.1.3": {
+      "word": "وَثّابَةً",
+      "head": "وَثّاب",
+      "root": "و ث ب",
+      "meaning": "Given to leaping. The intensive form suggests the eagerness with which they rush at any opportunity."
+    },
+    "23.2.4": {
+      "word": "لابَةٌ",
+      "head": "لابَة",
+      "root": "ل و ب",
+      "meaning": "Laba can mean a person’s clan or backing in Arabian usage. Older dictionaries also give a herd of black camels, itself a sign of wealth."
+    },
+    "25.1.3": {
+      "word": "تَهتَمُّ",
+      "head": "اِهتَمَّ",
+      "root": "ه م م",
+      "meaning": "Pay attention, take an interest. The same root gives hamm, the worry that occupies someone’s thoughts."
+    },
+    "26.1.2": {
+      "word": "أَضناهُمُ",
+      "head": "أَضنى",
+      "root": "ض ن ي",
+      "meaning": "Wore them down as a wasting illness might. Worry has taken a bodily toll."
+    },
+    "27.1.3": {
+      "word": "تَحتَزِمُ",
+      "head": "اِحتَزَمَ",
+      "root": "ح ز م",
+      "meaning": "Gird oneself, as when tightening a belt before an undertaking. Here the wealthy acquaintance supplies the support."
+    },
+    "27.2.3": {
+      "word": "حُزَمُ",
+      "head": "حُزمَة",
+      "root": "ح ز م",
+      "meaning": "Bundles, things gathered and tied together. Money takes a form one can see and handle."
+    },
+    "29.2.3": {
+      "word": "رُزَمُ",
+      "head": "رُزمَة",
+      "root": "ر ز م",
+      "meaning": "Wrapped bundles or packets. The word takes up the bundles of wealth from the preceding pair."
+    },
+    "30.2.4": {
+      "word": "مُحتَرِمُ",
+      "head": "مُحتَرِم",
+      "root": "ح ر م",
+      "meaning": "Someone who shows respect. The participle is active."
+    },
+    "31.1.3": {
+      "word": "وَلّاجَةً",
+      "head": "وَلّاج",
+      "root": "و ل ج",
+      "meaning": "Forever going in. This intensive form pictures frequent callers."
+    },
+    "32.1.2": {
+      "word": "أَعيَتهُمُ",
+      "head": "أَعيا",
+      "root": "ع ي ي",
+      "meaning": "Exhausted or defeated them. The need exceeds what they can do to meet it."
+    },
+    "32.2.2": {
+      "word": "حَجٌّ",
+      "head": "حَجّ",
+      "root": "ح ج ج",
+      "meaning": "A purposeful visit, also the word for pilgrimage. The surrounding verses are about ordinary visits to someone’s door."
+    },
+    "33.2.3": {
+      "word": "خَزُّ",
+      "head": "خَزّ",
+      "root": "خ ز ز",
+      "meaning": "Khazz, a costly silk fabric, traditionally also woven with wool. It signals the wearer’s means."
+    },
+    "35.1.3": {
+      "word": "تَلتَمُّ",
+      "head": "اِلتَمَّ",
+      "root": "ل م م",
+      "meaning": "Come together in a close group. The gathering forms around a growing fortune."
+    },
+    "36.2.4": {
+      "word": "هَمّوا",
+      "head": "هَمَّ",
+      "root": "ه م م",
+      "meaning": "Intended to do it, or even considered doing it. Their inaction reaches back to the wish itself."
+    },
+    "37.2.5": {
+      "word": "فاقَةٍ",
+      "head": "فاقَة",
+      "root": "ف و ق",
+      "meaning": "Pressing poverty. At first the word describes what the fortunate man is free of."
+    },
+    "38.2.3": {
+      "word": "ناقَةٌ",
+      "head": "ناقَة",
+      "root": "ن و ق",
+      "meaning": "A she-camel, here the visitor’s mount. An empty approach to the house stands for the absence of callers."
+    },
+    "39.1.3": {
+      "word": "مَحشورَةً",
+      "head": "مَحشور",
+      "root": "ح ش ر",
+      "meaning": "Gathered together in a crush. The speaker now sees the visitors as a single crowd."
+    },
+    "40.2.2-4": {
+      "word": "أَخَذوا لَهُ صورَةً",
+      "meaning": "“Took a picture of him.” The photograph brings the series of older-sounding turns into the present."
+    }
+  }
+}

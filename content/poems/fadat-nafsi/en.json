@@ -1,0 +1,138 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "May My Life and All My Right Hand Owns Ransom Them",
+  "intro": "Abu Tammam placed these verses by Abu al-Ghul al-Tuhawi near the beginning of his Hamasa. The commentators connect them to al-Waqba, a watering place contested by Mazin and Shayban. The speaker offers his own life for the riders before giving their names any local setting. By the time he identifies the ground they held, he has already told us the terms on which they deal with others.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "May my life and all my right hand owns ransom",
+        "the horsemen who justified my faith in them."
+      ],
+      "sharh": "The past tense carries the force of a wish: he would give his life and possessions in exchange for theirs. They have already lived up to the confidence that makes the offer possible."
+    },
+    "2": {
+      "translation": [
+        "Horsemen who never weary of meeting death",
+        "when the mill of kicking war begins to turn."
+      ],
+      "sharh": "He names the horsemen a second time and puts them between two images. War grinds like a mill and kicks like a she-camel that will not let herself be milked."
+    },
+    "3": {
+      "translation": [
+        "They never repay a good turn with a bad one,",
+        "nor repay roughness with gentleness."
+      ],
+      "sharh": "Their conduct has a measure. The first half protects the person who has done them a kindness. The second warns anyone who might mistake that loyalty for weakness."
+    },
+    "4": {
+      "translation": [
+        "Their courage never wears thin, though",
+        "they have felt the heat of war time after time."
+      ],
+      "sharh": "Courage is like a garment that should wear out with use. Repeated exposure to the heat of fighting gives the image its force, since in their case the fabric holds."
+    },
+    "5": {
+      "translation": [
+        "They defended al-Waqba's pasture with blows",
+        "that brought scattered deaths together."
+      ],
+      "sharh": "A particular water and its grazing land give the praise a setting. Al-Marzuqi suggests that men whose deaths might otherwise have been far apart in time and place met them on the same ground."
+    },
+    "6": {
+      "translation": [
+        "Their blows turned the enemy's thrust aside.",
+        "They treated madness with madness."
+      ],
+      "sharh": "The turning force is the stroke named one verse earlier. Calling retaliation a cure gives the second half its sting, since the remedy bears exactly the name of the complaint."
+    },
+    "7": {
+      "translation": [
+        "They never graze the borders of an easy life",
+        "when they make camp, nor the meadows of repose."
+      ],
+      "sharh": "Grazing and camping bring back the actual pasture the riders defended. Ease now has borders and rest has meadows of its own, country in which these riders never settle."
+    }
+  },
+  "words": {
+    "1.1.4-5": {
+      "word": "مَلَكَت يَميني",
+      "meaning": "“My right hand owns”, all the property at the speaker's disposal."
+    },
+    "1.2.2": {
+      "word": "صَدَّقوا",
+      "head": "صَدَّقَ",
+      "root": "ص د ق",
+      "meaning": "Confirmed what he thought of them by the way they acted."
+    },
+    "2.2.3-4": {
+      "word": "رَحى الحَربِ",
+      "head": "رَحى الحَرب",
+      "meaning": "“War's millstone”, fighting that grinds those caught in it."
+    },
+    "2.2.5": {
+      "word": "الزَّبونِ",
+      "head": "الزَّبون",
+      "root": "ز ب ن",
+      "meaning": "A kicker, especially a she-camel that kicks away the hand milking her."
+    },
+    "3.1.5": {
+      "word": "بِسَيءٍ",
+      "head": "سَيء",
+      "root": "س و ء",
+      "meaning": "With a bad deed. The adjective has a shortened poetic form."
+    },
+    "3.2.4": {
+      "word": "غِلَظٍ",
+      "head": "غِلَظ",
+      "root": "غ ل ظ",
+      "meaning": "Rough or overbearing treatment."
+    },
+    "4.1.3": {
+      "word": "بَسالَتُهُم",
+      "head": "بَسالَة",
+      "root": "ب س ل",
+      "meaning": "Stout-hearted courage in an encounter."
+    },
+    "4.2.1": {
+      "word": "صَلوا",
+      "head": "صَلِيَ",
+      "root": "ص ل ي",
+      "meaning": "Were scorched or exposed to the heat, here of battle."
+    },
+    "5.1.3-4": {
+      "word": "حِمى الوَقبى",
+      "meaning": "Al-Waqba, the watering place and its reserved pasture, contested in the account by Mazin and Shayban."
+    },
+    "5.2.3-4": {
+      "word": "أَشتاتِ المَنونِ",
+      "head": "أَشتات المَنون",
+      "meaning": "“Scattered deaths”, the separate fates brought together by one encounter."
+    },
+    "6.1.1": {
+      "word": "فَنَكَّبَ",
+      "head": "نَكَّبَ",
+      "root": "ن ك ب",
+      "meaning": "Turned aside, with the preceding blows as the subject."
+    },
+    "6.1.3": {
+      "word": "دَرءَ",
+      "head": "دَرء",
+      "root": "د ر أ",
+      "meaning": "Hostile pressure, opposition or aggression."
+    },
+    "7.1.3-4": {
+      "word": "أَكنافَ الهُوَينى",
+      "head": "أَكناف الهُوَينى",
+      "meaning": "“The borders of ease”, imagined as land where animals graze."
+    },
+    "7.2.5": {
+      "word": "الهُدونِ",
+      "head": "الهُدون",
+      "root": "ه د ن",
+      "meaning": "Stillness or a state of peace, related to the word for a truce."
+    }
+  }
+}
