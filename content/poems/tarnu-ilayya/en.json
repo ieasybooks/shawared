@@ -1,0 +1,65 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "In the Depth of Night",
+  "intro": "Hamza al-Malik Tumbul called this meditation “In the Depth of Night” in his Diwan al-Tabi'a. Human eyes close in sleep, while the eyes of the stars remain open above a world of human strife. Osama Al-Waaedh takes verses three and four and repeats the fourth, lingering over a question that the longer poem pursues into the waking lives of people. In the recitation the watching stars look towards one person.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "They gaze at me, all unmindful",
+        "of the treacherous world."
+      ],
+      "sharh": "The eyes belong to the stars in the preceding, unrecited verse. They stay open while human eyes sleep, yet seem untouched by the world they look down on."
+    },
+    "2": {
+      "translation": [
+        "Is it the majesty",
+        "of God that holds them spellbound, or the passing of the centuries?"
+      ],
+      "sharh": "He wonders whether the stars are lost in the sight of divine majesty or in the sheer duration of what they have witnessed. The reciter gives the question a second hearing."
+    }
+  },
+  "words": {
+    "1.1.1": {
+      "word": "تَرنو",
+      "head": "رَنا",
+      "root": "ر ن و",
+      "meaning": "Gazes steadily. The eyes of the stars, named immediately before this excerpt, are the subject."
+    },
+    "1.1.2": {
+      "word": "إِلَيَّ",
+      "meaning": "“At me”, as recited. The printed collection has “at us”."
+    },
+    "1.1.4": {
+      "word": "سا",
+      "head": "سالِيَة",
+      "root": "س ل و",
+      "meaning": "Untroubled, having put something out of mind. The word continues in the next half. The print reads sahiya, heedless."
+    },
+    "1.2.4": {
+      "word": "الخَؤونِ",
+      "head": "الخَؤون",
+      "root": "خ و ن",
+      "meaning": "Habitually treacherous, said of a world that repeatedly betrays trust."
+    },
+    "2.1.2": {
+      "word": "أَذهَلَها",
+      "head": "أَذهَلَ",
+      "root": "ذ ه ل",
+      "meaning": "Left them absorbed or distracted. The pronoun refers back to the eyes."
+    },
+    "2.1.3": {
+      "word": "جَلا",
+      "head": "جَلال",
+      "root": "ج ل ل",
+      "meaning": "Majesty or awe-inspiring greatness. The l opening the next half completes the word."
+    },
+    "2.2.4-5": {
+      "word": "مَرُّ القُرونِ",
+      "head": "مَرُّ القُرون",
+      "meaning": "“The passage of the ages”: a second possible cause of the stars’ absorption."
+    }
+  }
+}

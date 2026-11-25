@@ -1,0 +1,188 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "He Roamed in Search of Safety",
+  "intro": "A mother tries to learn from her absent son's silence how he died. Al-Tabrizi favours the attribution to al-Sulaka, mother of the famous runner al-Sulayk, while al-Farisi records other names. She speaks of him at first, then addresses him directly until the questions give way to a wish that she had died before him.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "He roamed in search of safety",
+        "from destruction, and perished."
+      ],
+      "sharh": "He keeps moving in search of a way out. “Safety” can suggest ground high enough to escape a flood. Al-Tabrizi understands the danger that drove him out as poverty."
+    },
+    "2": {
+      "translation": [
+        "If only I knew, lost as I am,",
+        "what it was that killed you."
+      ],
+      "sharh": "She changes from “he” to “you”. His death is certain enough for lament, yet the circumstances are so obscure that she still addresses him as her best witness."
+    },
+    "3": {
+      "translation": [
+        "Were you ill, with no one to visit you,",
+        "or did an enemy take you unawares?"
+      ],
+      "sharh": "She imagines two kinds of loneliness. In one he sickens with no visitor at his bedside. In the other someone has watched for the chance to catch him off guard."
+    },
+    "4": {
+      "translation": [
+        "Or were you carried off by what",
+        "has snatched partridge chicks away down the years?"
+      ],
+      "sharh": "The bird's name, sulak, echoes Sulayk. The runner she knew for his speed becomes as vulnerable as the young bird swept away in an instant."
+    },
+    "5": {
+      "translation": [
+        "Deaths lie in wait",
+        "for a young man wherever he goes."
+      ],
+      "sharh": "Death waits along every route he might take. Her son's roaming in the opening now looks like movement between places where the same pursuer is already waiting."
+    },
+    "6": {
+      "translation": [
+        "What fine quality",
+        "could a young man have that you lacked?"
+      ],
+      "sharh": "She cannot think of an admirable quality in a young man that was missing in him. For a moment, naming what he was takes the place of guessing how he died."
+    },
+    "7": {
+      "translation": [
+        "Anything can kill you",
+        "when your time has come."
+      ],
+      "sharh": "She has been weighing one possible cause against another. Once his allotted time arrived even an ordinary thing could have been enough."
+    },
+    "8": {
+      "translation": [
+        "How often you won",
+        "your heart's desire without a struggle."
+      ],
+      "sharh": "He used to reach the thing he set his heart on with such ease. That memory makes his failure to come back from this journey harder for her to grasp."
+    },
+    "9": {
+      "translation": [
+        "Something terrible indeed",
+        "kept you from answering me."
+      ],
+      "sharh": "She treats his silence as an interruption, almost as if he might still speak once the terrible business is over. The understatement lets the listener hear the loss."
+    },
+    "10": {
+      "translation": [
+        "I will try to console myself, since",
+        "you give the one who asks no answer."
+      ],
+      "sharh": "She takes his failure to answer as her cue to attempt consolation. The future tense leaves room for the wishes that follow."
+    },
+    "11": {
+      "translation": [
+        "If only for one hour my heart",
+        "could command its patience at losing you."
+      ],
+      "sharh": "She asks for control of her grief for a single hour. Even that small interval of composure feels beyond her power."
+    },
+    "12": {
+      "translation": [
+        "If only my own life had been sent",
+        "to meet death ahead of you."
+      ],
+      "sharh": "Her last wish rewinds the order of their deaths. The reciter's “before you” makes the unbearable fact that she has survived her son the last thing we hear."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "نَجوَةً",
+      "head": "نَجوَة",
+      "root": "ن ج و",
+      "meaning": "Safety or escape. The concrete sense is high ground beyond a flood's reach."
+    },
+    "1.2.2": {
+      "word": "هَلاكٍ",
+      "head": "هَلاك",
+      "root": "ه ل ك",
+      "meaning": "Ruin or mortal danger, taken by al-Tabrizi as destitution."
+    },
+    "2.1.1-2": {
+      "word": "لَيتَ شِعري",
+      "meaning": "“If only I knew”, a formula for longing to know something out of reach."
+    },
+    "2.1.3": {
+      "word": "ضَلَّةً",
+      "head": "ضَلَّة",
+      "root": "ض ل ل",
+      "meaning": "Bewilderment, being at a loss for an explanation."
+    },
+    "3.1.3": {
+      "word": "تُعَد",
+      "head": "عادَ",
+      "root": "ع و د",
+      "meaning": "Be visited in sickness. She imagines an illness borne alone."
+    },
+    "3.2.3": {
+      "word": "خَتَلَك",
+      "head": "خَتَلَ",
+      "root": "خ ت ل",
+      "meaning": "Caught you unawares by stealth or deception."
+    },
+    "4.2.1": {
+      "word": "غالَ",
+      "root": "غ و ل",
+      "meaning": "Seized and destroyed without warning."
+    },
+    "4.2.4": {
+      "word": "السُّلَك",
+      "root": "س ل ك",
+      "meaning": "Sulak, a young partridge. Sulayk is the diminutive of the same word."
+    },
+    "5.1.2": {
+      "word": "رَصَدٌ",
+      "head": "رَصَد",
+      "root": "ر ص د",
+      "meaning": "Watchers lying in wait for a passer-by."
+    },
+    "6.2.3": {
+      "word": "يَكُ",
+      "head": "كانَ",
+      "root": "ك و ن",
+      "meaning": "A shortened form of “be” after a negative, here “did you not have”."
+    },
+    "8.2.2": {
+      "word": "كَدٍّ",
+      "head": "كَدّ",
+      "root": "ك د د",
+      "meaning": "Toil or strenuous effort."
+    },
+    "9.1.3": {
+      "word": "فادِحاً",
+      "head": "فادِح",
+      "root": "ف د ح",
+      "meaning": "Crushing, a burden too heavy to bear."
+    },
+    "10.1.1": {
+      "word": "سَأُعَزّي",
+      "head": "عَزّى",
+      "root": "ع ز ي",
+      "meaning": "I shall try to console, here to steady herself after loss."
+    },
+    "11.2.1": {
+      "word": "صَبرَهُ",
+      "head": "صَبر",
+      "root": "ص ب ر",
+      "meaning": "Its capacity to bear the loss and hold grief in check."
+    },
+    "12.2.1": {
+      "word": "لِلمَنايا",
+      "head": "المَنايا",
+      "root": "م ن ي",
+      "meaning": "The deaths allotted to human beings."
+    },
+    "12.2.2": {
+      "word": "قِبَلَك",
+      "head": "قِبَل",
+      "root": "ق ب ل",
+      "meaning": "Ahead of you. Usaylan prints the word recited here. His apparatus and al-Tabrizi also give badalak, “in your stead”."
+    }
+  }
+}

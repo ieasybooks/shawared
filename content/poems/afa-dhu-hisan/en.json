@@ -1,0 +1,709 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Dhu Husan, Where Fartana Lived, Has Faded, and So Have al-Fawari'",
+  "intro": "Al-Nabigha al-Dhubyani addresses al-Nu'man ibn al-Mundhir after word of the king's anger reaches him far from court. Faint traces of Fartana's camp give way to the sleeplessness of a snakebitten man, then to an oath sworn by the camels bearing pilgrims. Ibn Rashiq counts the odes in 'ayn and ba as two of al-Nabigha's apologies to the king. In Muhammad Abu al-Fadl Ibrahim's edition this ode has thirty-three verses, which Osama al-Nahari recites in order. The separate twelve-verse apology opens with words heard partway through this one, “Word reached me, may you be spared a curse.”",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Dhu Husan, where Fartana lived, has faded, and so have al-Fawari',",
+        "the two flanks of Arik and the channels that carry the floods."
+      ],
+      "sharh": "He follows Fartana's former dwelling places across a named landscape. The eye moves from the sides of a height into the channels that drain it, where water can erase what people leave behind."
+    },
+    "2": {
+      "translation": [
+        "And where the watercourses meet, the traces have been changed",
+        "by summers that passed after us, and springs."
+      ],
+      "sharh": "At the meeting of the channels he can name what happened in their absence. More than one summer and more than one spring have acted on the marks of occupation."
+    },
+    "3": {
+      "translation": [
+        "I searched out signs of her and recognised them",
+        "after six years, and this is the seventh."
+      ],
+      "sharh": "Recognition takes work. He counts six whole years apart and the one now under way, setting the length of his memory against the faintness of its evidence."
+    },
+    "4": {
+      "translation": [
+        "Ashes like eye kohl, just discernible,",
+        "and a trench like the broken, sunken base of a trough."
+      ],
+      "sharh": "A dark pinch of ash marks the old fire. The earthen barrier once dug around the tent is as low and chipped as the stump of a watering trough."
+    },
+    "5": {
+      "translation": [
+        "Where the burying winds dragged their skirts across it",
+        "lies a mat, it seems, patterned by women's hands,"
+      ],
+      "sharh": "Wind erases the human traces but makes patterns of its own. They are close and regular enough to look like the work of women weaving a mat."
+    },
+    "6": {
+      "translation": [
+        "on a leather spread with new straps,",
+        "which a merchant carries through the perfume market."
+      ],
+      "sharh": "The imagined mat gains a backing and a setting. A merchant shows it on fresh-strapped leather among dealers in fine goods, as if the patterns in the dust were valuable merchandise."
+    },
+    "7": {
+      "translation": [
+        "I checked a tear and turned it back",
+        "onto my breast, some streaming, some still welling."
+      ],
+      "sharh": "Trying to master the tears divides them into two kinds. Some glisten in his eyes while others are already running down onto his chest."
+    },
+    "8": {
+      "translation": [
+        "At the very time I reproached grey age for youthful longing",
+        "and said, “Have I still not come to my senses, with grey hair a curb?”"
+      ],
+      "sharh": "He talks to himself as someone old enough to know better. Grey hair ought to rein in his youthful yearning, just as a graver anxiety is about to displace it."
+    },
+    "9": {
+      "translation": [
+        "But a consuming worry had come between me and all that,",
+        "at the heart's covering, where searching fingers feel for it."
+      ],
+      "sharh": "Anxiety lodges so deep in his chest that he imagines the probing fingers of someone trying to locate the hurt. What follows gives the pain its name."
+    },
+    "10": {
+      "translation": [
+        "Abu Qabus's threat, out of all proportion,",
+        "reached me with Rakis and al-Dawaji' between us."
+      ],
+      "sharh": "Abu Qabus is the king. The poet has given him no grounds for so great a threat, and the valleys between them have done nothing to keep its news away."
+    },
+    "11": {
+      "translation": [
+        "I spent the night as if a slender snake had sprung at me,",
+        "a speckled one with deadly venom in its fangs."
+      ],
+      "sharh": "The threat has the bodily effect of a venomous bite. In the old explanation a lean snake can be an old one whose venom has grown particularly potent."
+    },
+    "12": {
+      "translation": [
+        "Through the longest night her bitten man is kept awake,",
+        "women's jewellery clattering on his hands."
+      ],
+      "sharh": "The “safe one” is the traditional hopeful name for a snakebite victim. An old custom described by the commentators put women's ornaments on him, their clatter helping keep him awake."
+    },
+    "13": {
+      "translation": [
+        "The charmers warn each other how evil her venom is.",
+        "One moment she releases him, the next she takes him back."
+      ],
+      "sharh": "Even those who treat bites warn one another about this snake. The ebb and return of the venom's pain give the poet's fear a rhythm through the night."
+    },
+    "14": {
+      "translation": [
+        "Word reached me, may you be spared a curse, that you blamed me,",
+        "and that is the news that stops the ears."
+      ],
+      "sharh": "The traditional royal greeting interrupts a frightening message. This line shares its opening with another apology, but here the news is so terrible that the very organs of hearing close up."
+    },
+    "15": {
+      "translation": [
+        "The report that you said, “I shall get at him”,",
+        "and such words from someone like you strike terror."
+      ],
+      "sharh": "He finally lets the king's reported words be heard. Their force lies in who uttered them. A king needs only promise to lay hands on a man."
+    },
+    "16": {
+      "translation": [
+        "By my life, and my life is no small thing to me,",
+        "the Aqari' have spoken falsely about me."
+      ],
+      "sharh": "He puts his own life behind his denial and insists it is a costly stake. The accusers, left unnamed while he described his fear, come into view."
+    },
+    "17": {
+      "translation": [
+        "The Aqari' of Awf, I mean no others,",
+        "monkey faces looking for someone to trade insults with."
+      ],
+      "sharh": "He limits the charge to a particular branch of Awf. The caricature then turns their accusations into a readiness to pick a quarrel with anyone."
+    },
+    "18": {
+      "translation": [
+        "A man came to you nursing hatred for me,",
+        "with another enemy like him to back him up."
+      ],
+      "sharh": "Two voices in agreement might sound like corroboration at court. The poet supplies the missing connection between them. Both men want to injure him."
+    },
+    "19": {
+      "translation": [
+        "He came with a lie of loosely woven cloth",
+        "and never brought the truth, bright and clear."
+      ],
+      "sharh": "A loose weave shows daylight through the cloth. He invites the king to examine the allegation closely enough to see how little holds it together."
+    },
+    "20": {
+      "translation": [
+        "He came with words I would never utter,",
+        "even with iron fetters locked on my forearms."
+      ],
+      "sharh": "The denial extends to a case where he would have every reason to give in. Even iron binding his forearms could not force those words out of him."
+    },
+    "21": {
+      "translation": [
+        "I swore to leave no doubt in your mind.",
+        "Would a man of faith sin of his own free will?"
+      ],
+      "sharh": "An oath places the truthfulness of the speaker at risk before a power above the king. The appeal depends on the idea that a man who acknowledges his duty would shrink from perjury."
+    },
+    "22": {
+      "translation": [
+        "By the camels travelling together from Lasaf and Thabra,",
+        "bound for Ilal, pressing on together,"
+      ],
+      "sharh": "The sentence reaches back to “I swore”. Its witnesses are pilgrimage camels streaming from two named places towards the hill at Arafat."
+    },
+    "23": {
+      "translation": [
+        "swift birds racing the wind, their eyes sunk deep,",
+        "worn-out mounts left like deposits along the road,"
+      ],
+      "sharh": "Speed has its cost. The camels that keep up seem like birds, but their eyes are hollow and other mounts have had to be left in the road's keeping."
+    },
+    "24": {
+      "translation": [
+        "bearing dishevelled men intent on their pilgrimage,",
+        "the camels bowed like the tips of bows."
+      ],
+      "sharh": "The rough-haired figures are pilgrims. The ones bending are their mounts, whose exhausted necks recall the curved ends of bows."
+    },
+    "25": {
+      "translation": [
+        "You have laid another man's sin on me and let him go,",
+        "like the mangy camel grazing while another is branded."
+      ],
+      "sharh": "He pictures responsibility landing on the wrong back. In the old comparison the animal with the disease grazes undisturbed while a sound one takes the branding iron."
+    },
+    "26": {
+      "translation": [
+        "If the man who bears me spite is still believed against me,",
+        "and my oath of innocence does me no good,"
+      ],
+      "sharh": "The conditional sentence begins to close off his ways out. His enemy's word carries weight with the king while his own sworn word carries none."
+    },
+    "27": {
+      "translation": [
+        "and nothing I say is trusted,",
+        "and you will inevitably carry out your purpose,"
+      ],
+      "sharh": "He has run through every argument he can make. Once the king is resolved and no statement wins his trust, the listener still has to wait one line for the result."
+    },
+    "28": {
+      "translation": [
+        "then you are like the night that overtakes me,",
+        "though I thought there was room to get far from you."
+      ],
+      "sharh": "Night does not need to pursue a traveller in order to reach him. The comparison makes the very extent of open country, his supposed escape route, part of the king's power."
+    },
+    "29": {
+      "translation": [
+        "Crooked hooks on strong ropes,",
+        "drawn towards you by hands that haul,"
+      ],
+      "sharh": "Imagine him down a well. The hooks and the hands winding in their ropes make the reach of royal power into something he can feel pulling on him."
+    },
+    "30": {
+      "translation": [
+        "Do you threaten a servant who kept your trust",
+        "and spare a wrongdoer who walks with a limp?"
+      ],
+      "sharh": "One servant has kept faith, while the man allowed to go free is guilty. Al-Nabigha makes his guilt as visible as a limp in his walk."
+    },
+    "31": {
+      "translation": [
+        "You are a spring whose bounty brings people back to life,",
+        "and a keen sword lent to Death."
+      ],
+      "sharh": "His gifts revive the needy as rain revives the land. The same king serves Death as a borrowed sword when the time comes for a life to end."
+    },
+    "32": {
+      "translation": [
+        "God wills only justice and good faith from him.",
+        "Wrong wins no approval, and a good deed is never lost."
+      ],
+      "sharh": "He bases his hope on a justice that recognises good service. The diwan's commentary also takes the pronouns as referring directly to God, whose justice the king is asked to honour."
+    },
+    "33": {
+      "translation": [
+        "May you drink whenever you wish, with no stint,",
+        "from a curved cup with musk clinging around its rim."
+      ],
+      "sharh": "The closing blessing gives the king a cup filled without stint and scented at the edges. The apologetic voice returns from sleepless terror to the ease of a royal gathering."
+    }
+  },
+  "words": {
+    "1.1.2-3": {
+      "word": "ذو حُسىً",
+      "head": "ذو حُسى",
+      "meaning": "Dhu Husan, a place in the territory of Banu Murra."
+    },
+    "1.1.5": {
+      "word": "فَرتَنى",
+      "meaning": "Fartana, the woman whose former dwelling places he recognises."
+    },
+    "1.1.6": {
+      "word": "فَالفَوارِعُ",
+      "head": "الفَوارِع",
+      "meaning": "Al-Fawari', uplands named among the abandoned sites."
+    },
+    "1.2.2": {
+      "word": "أَريكٍ",
+      "head": "أَريك",
+      "meaning": "Arik, a height or locality whose two sides overlook watercourses."
+    },
+    "1.2.3-4": {
+      "word": "فَالتِّلاعُ الدَّوافِعُ",
+      "head": "التِّلاعُ الدَّوافِع",
+      "meaning": "Channels that carry runoff down into the valleys."
+    },
+    "2.1.2": {
+      "word": "الأَشراجِ",
+      "head": "الأَشراج",
+      "root": "ش ر ج",
+      "meaning": "Water channels that run down towards a valley."
+    },
+    "2.2.1": {
+      "word": "مَصايِفُ",
+      "head": "مَصايِف",
+      "root": "ص ي ف",
+      "meaning": "Summers, or the winds that come with them."
+    },
+    "2.2.4": {
+      "word": "وَمَرابِعُ",
+      "head": "مَرابِع",
+      "root": "ر ب ع",
+      "meaning": "Spring seasons or their rains."
+    },
+    "3.1.1": {
+      "word": "تَوَهَّمتُ",
+      "head": "تَوَهَّمَ",
+      "root": "و ه م",
+      "meaning": "Scrutinised faint traces until they could be made out."
+    },
+    "3.1.2": {
+      "word": "آياتٍ",
+      "head": "آيات",
+      "root": "أ ي ي",
+      "meaning": "Recognisable marks of the old dwelling."
+    },
+    "4.1.4": {
+      "word": "لَأياً",
+      "head": "لَأي",
+      "root": "ل أ ي",
+      "meaning": "Only with difficulty, after looking closely."
+    },
+    "4.2.1": {
+      "word": "وَنُؤيٌ",
+      "head": "نُؤي",
+      "root": "ن أ ي",
+      "meaning": "An earthen bank or trench protecting a tent against runoff."
+    },
+    "4.2.2": {
+      "word": "كَجِذمِ",
+      "head": "جِذم",
+      "root": "ج ذ م",
+      "meaning": "The stump or base left when the rest has fallen away."
+    },
+    "4.2.4": {
+      "word": "أَثلَمُ",
+      "head": "أَثلَم",
+      "root": "ث ل م",
+      "meaning": "Chipped or breached along the rim."
+    },
+    "5.1.2": {
+      "word": "مَجَرَّ",
+      "head": "مَجَرّ",
+      "root": "ج ر ر",
+      "meaning": "The track left by something dragged along."
+    },
+    "5.1.3": {
+      "word": "الرّامِساتِ",
+      "head": "الرّامِسات",
+      "root": "ر م س",
+      "meaning": "Winds that cover landmarks in dust."
+    },
+    "5.2.3": {
+      "word": "نَمَّقَتهُ",
+      "head": "نَمَّقَ",
+      "root": "ن م ق",
+      "meaning": "Patterned it with careful, decorative workmanship."
+    },
+    "6.1.3": {
+      "word": "مِبناةٍ",
+      "head": "مِبناة",
+      "root": "ب ن ي",
+      "meaning": "A leather spread on which wares can be displayed."
+    },
+    "6.1.5": {
+      "word": "سُيورُها",
+      "head": "سُيور",
+      "root": "س ي ر",
+      "meaning": "Straps cut from hide."
+    },
+    "6.2.4": {
+      "word": "اللَّطيمَةِ",
+      "head": "اللَّطيمَة",
+      "root": "ل ط م",
+      "meaning": "A market for cloth and perfume in Abu Amr's explanation. Abu Ubayda understands it as the caravan that carries perfume and other fine wares."
+    },
+    "7.1.1": {
+      "word": "فَكَفكَفتُ",
+      "head": "كَفكَفَ",
+      "root": "ك ف ك ف",
+      "meaning": "Tried to hold tears back."
+    },
+    "7.2.4": {
+      "word": "مُستَهِلٌّ",
+      "head": "مُستَهِلّ",
+      "root": "ه ل ل",
+      "meaning": "Tears that have broken out and are streaming."
+    },
+    "8.1.6": {
+      "word": "الصِّبا",
+      "root": "ص ب و",
+      "meaning": "The longings and impulses of youth."
+    },
+    "8.2.5": {
+      "word": "وازِعُ",
+      "head": "وازِع",
+      "root": "و ز ع",
+      "meaning": "A curb or restraint on one's impulses."
+    },
+    "9.2.2": {
+      "word": "الشِّغافِ",
+      "head": "الشِّغاف",
+      "root": "ش غ ف",
+      "meaning": "The membrane around the heart, here the seat of anxiety."
+    },
+    "10.1.2-3": {
+      "word": "أَبي قابوسَ",
+      "head": "أَبو قابوس",
+      "meaning": "Abu Qabus, the byname of al-Nu'man ibn al-Mundhir, king at al-Hira."
+    },
+    "10.1.6": {
+      "word": "كُنهِهِ",
+      "head": "كُنه",
+      "root": "ك ن ه",
+      "meaning": "The true nature or proper measure of a thing."
+    },
+    "10.2.3": {
+      "word": "راكِسٌ",
+      "head": "راكِس",
+      "meaning": "Rakis, a valley evoked to mark the distance from the court."
+    },
+    "10.2.4": {
+      "word": "فَالضَّواجِعُ",
+      "head": "الضَّواجِع",
+      "meaning": "Al-Dawaji', places or bends in a watercourse, named alongside Rakis."
+    },
+    "11.1.3": {
+      "word": "ساوَرَتني",
+      "head": "ساوَرَ",
+      "root": "س و ر",
+      "meaning": "Sprang at me, lunged."
+    },
+    "11.1.4": {
+      "word": "ضَئيلَةٌ",
+      "head": "ضَئيلَة",
+      "root": "ض أ ل",
+      "meaning": "A slender, wasted snake."
+    },
+    "11.2.2": {
+      "word": "الرُّقشِ",
+      "head": "الرُّقش",
+      "root": "ر ق ش",
+      "meaning": "Snakes with contrasting spots or markings."
+    },
+    "11.2.6": {
+      "word": "ناقِعُ",
+      "head": "ناقِع",
+      "root": "ن ق ع",
+      "meaning": "Deadly or virulent, of venom."
+    },
+    "12.1.3-4": {
+      "word": "لَيلِ التَّمامِ",
+      "head": "لَيلُ التَّمام",
+      "meaning": "“The full night”, the long midwinter night or a night prolonged by suffering."
+    },
+    "12.1.5": {
+      "word": "سَليمُها",
+      "head": "سَليم",
+      "root": "س ل م",
+      "meaning": "A snakebite victim, called “safe” in hope of recovery."
+    },
+    "12.2.5": {
+      "word": "قَعاقِعُ",
+      "head": "قَعاقِع",
+      "root": "ق ع ق ع",
+      "meaning": "Clatters made by pieces of jewellery knocking together."
+    },
+    "13.1.1": {
+      "word": "تَناذَرَها",
+      "head": "تَناذَرَ",
+      "root": "ن ذ ر",
+      "meaning": "Warned one another about her."
+    },
+    "13.1.2": {
+      "word": "الرّاقونَ",
+      "head": "الرّاقون",
+      "root": "ر ق ي",
+      "meaning": "Healers who recite charms over a snakebite."
+    },
+    "13.2.1": {
+      "word": "تُطَلِّقُهُ",
+      "head": "طَلَّقَ",
+      "root": "ط ل ق",
+      "meaning": "Lets him go for a time, as the effects of the bite abate."
+    },
+    "14.1.2-3": {
+      "word": "أَبَيتَ اللَّعنَ",
+      "head": "أَبَيتَ اللَّعن",
+      "meaning": "“May you refuse what earns a curse”, a traditional royal greeting."
+    },
+    "14.2.3": {
+      "word": "تَستَكُّ",
+      "head": "اِستَكَّ",
+      "root": "س ك ك",
+      "meaning": "Close up or grow deaf to a sound."
+    },
+    "15.1.6": {
+      "word": "أَنالُهُ",
+      "head": "نالَ",
+      "root": "ن ي ل",
+      "meaning": "I shall get at him, a threat of punishment."
+    },
+    "15.2.5": {
+      "word": "رائِعُ",
+      "head": "رائِع",
+      "root": "ر و ع",
+      "meaning": "Terrifying, causing a fright."
+    },
+    "16.2.3": {
+      "word": "بُطلاً",
+      "head": "بُطل",
+      "root": "ب ط ل",
+      "meaning": "A falsehood or baseless account."
+    },
+    "16.2.5": {
+      "word": "الأَقارِعُ",
+      "head": "الأَقارِع",
+      "meaning": "Al-Aqari', the branch of Tamim descended from Quray' ibn Awf whom he accuses."
+    },
+    "17.1.2": {
+      "word": "عَوفٍ",
+      "head": "عَوف",
+      "meaning": "Awf, an ancestor identifying the particular branch he attacks."
+    },
+    "17.2.5": {
+      "word": "تُجادِعُ",
+      "head": "جادَعَ",
+      "root": "ج د ع",
+      "meaning": "Trade abuse, from a verb associated with cutting off the nose."
+    },
+    "18.1.3": {
+      "word": "مُستَبطِنٌ",
+      "head": "مُستَبطِن",
+      "root": "ب ط ن",
+      "meaning": "Concealing something deep inside."
+    },
+    "18.2.6": {
+      "word": "شافِعُ",
+      "head": "شافِع",
+      "root": "ش ف ع",
+      "meaning": "A backer who adds his testimony to another's."
+    },
+    "19.1.3-4": {
+      "word": "هَلهَلِ النَّسجِ",
+      "head": "هَلهَلُ النَّسج",
+      "meaning": "“Loosely woven”, said of a report as flimsy as thin cloth."
+    },
+    "19.2.6": {
+      "word": "ناصِعُ",
+      "head": "ناصِع",
+      "root": "ن ص ع",
+      "meaning": "Clear and unmistakable, originally pure white."
+    },
+    "20.2.2": {
+      "word": "كُبِلَت",
+      "head": "كَبَلَ",
+      "root": "ك ب ل",
+      "meaning": "Were fastened tight, as with iron fetters."
+    },
+    "20.2.5": {
+      "word": "الجَوامِعُ",
+      "head": "الجَوامِع",
+      "root": "ج م ع",
+      "meaning": "Shackles that bind limbs together."
+    },
+    "21.1.5": {
+      "word": "ريبَةً",
+      "head": "ريبَة",
+      "root": "ر ي ب",
+      "meaning": "Doubt about the speaker's truthfulness."
+    },
+    "21.2.4": {
+      "word": "إِمَّةٍ",
+      "head": "إِمَّة",
+      "root": "أ م م",
+      "meaning": "A religious commitment or rule of life."
+    },
+    "22.1.1": {
+      "word": "بِمُصطَحِباتٍ",
+      "head": "مُصطَحِبات",
+      "root": "ص ح ب",
+      "meaning": "Camels travelling in company, invoked in the oath."
+    },
+    "22.1.3": {
+      "word": "لَصافٍ",
+      "head": "لَصاف",
+      "meaning": "Lasaf, a place in Tamim territory."
+    },
+    "22.1.4": {
+      "word": "وَثَبرَةٍ",
+      "head": "ثَبرَة",
+      "meaning": "Thabra, named alongside Lasaf on the pilgrims' route."
+    },
+    "22.2.2": {
+      "word": "إِلالاً",
+      "head": "إِلال",
+      "meaning": "Ilal, a hill at Arafat on the pilgrimage route."
+    },
+    "23.1.1": {
+      "word": "سَماماً",
+      "head": "سَمام",
+      "root": "س م م",
+      "meaning": "Swift-flying birds, to which the camels are likened."
+    },
+    "23.1.4": {
+      "word": "خوصاً",
+      "head": "خوص",
+      "root": "خ و ص",
+      "meaning": "Hollow-eyed or narrow-eyed from exertion."
+    },
+    "23.2.2": {
+      "word": "رَذايا",
+      "root": "ر ذ ي",
+      "meaning": "Mounts left behind from exhaustion."
+    },
+    "24.1.2": {
+      "word": "شُعثٌ",
+      "head": "شُعث",
+      "root": "ش ع ث",
+      "meaning": "Men rough-haired and dusty from travel, here the pilgrims."
+    },
+    "24.2.3": {
+      "word": "الحَنِيِّ",
+      "head": "الحَنِيّ",
+      "root": "ح ن ي",
+      "meaning": "Bows with curved ends."
+    },
+    "24.2.4": {
+      "word": "خَواضِعُ",
+      "head": "خَواضِع",
+      "root": "خ ض ع",
+      "meaning": "Holding their necks low after a long journey."
+    },
+    "25.2.2": {
+      "word": "العُرِّ",
+      "head": "العُرّ",
+      "root": "ع ر ر",
+      "meaning": "A mange-like disease of camels."
+    },
+    "25.2.6": {
+      "word": "راتِعُ",
+      "head": "راتِع",
+      "root": "ر ت ع",
+      "meaning": "Grazing at ease in good pasture."
+    },
+    "26.1.5": {
+      "word": "الضِّغنِ",
+      "head": "الضِّغن",
+      "root": "ض غ ن",
+      "meaning": "A concealed grudge."
+    },
+    "26.1.7": {
+      "word": "مُكَذَّبٌ",
+      "head": "مُكَذَّب",
+      "root": "ك ذ ب",
+      "meaning": "Disbelieved, having one's allegation rejected."
+    },
+    "27.2.4": {
+      "word": "مَحالَةَ",
+      "head": "مَحالَة",
+      "root": "ح و ل",
+      "meaning": "In the phrase la mahala, inevitably or without escape."
+    },
+    "28.2.4": {
+      "word": "المُنتَأى",
+      "root": "ن أ ي",
+      "meaning": "A place to which one can withdraw far away."
+    },
+    "29.1.1": {
+      "word": "خَطاطيفُ",
+      "head": "خَطاطيف",
+      "root": "خ ط ف",
+      "meaning": "Hooks used to draw things up from a well."
+    },
+    "29.1.2": {
+      "word": "حُجنٌ",
+      "head": "حُجن",
+      "root": "ح ج ن",
+      "meaning": "Curved or hooked at the tip."
+    },
+    "29.2.5": {
+      "word": "نَوازِعُ",
+      "head": "نَوازِع",
+      "root": "ن ز ع",
+      "meaning": "Hauling or drawing towards you."
+    },
+    "30.2.5": {
+      "word": "ظالِعُ",
+      "head": "ظالِع",
+      "root": "ظ ل ع",
+      "meaning": "Limping, a figure for a guilty man. Ibrahim prints ضالع, crooked or unjust, and also records ظالع, the form used here."
+    },
+    "31.1.5": {
+      "word": "سَيبُهُ",
+      "head": "سَيب",
+      "root": "س ي ب",
+      "meaning": "Bounty flowing freely to others."
+    },
+    "31.2.3": {
+      "word": "المَنِيَّةُ",
+      "head": "المَنِيَّة",
+      "root": "م ن ي",
+      "meaning": "Death, imagined borrowing a sword to take the lives due to it."
+    },
+    "32.2.5": {
+      "word": "العُرفُ",
+      "head": "العُرف",
+      "root": "ع ر ف",
+      "meaning": "Kindness or a good deed."
+    },
+    "33.1.6": {
+      "word": "مُصَرَّدٍ",
+      "head": "مُصَرَّد",
+      "root": "ص ر د",
+      "meaning": "One given less drink than would satisfy him."
+    },
+    "33.2.1": {
+      "word": "بِزَوراءَ",
+      "head": "زَوراء",
+      "root": "ز و ر",
+      "meaning": "Zawra', a curved or oblong drinking vessel, also explained as a royal residence in al-Hira."
+    },
+    "33.2.5": {
+      "word": "كانِعُ",
+      "head": "كانِع",
+      "root": "ك ن ع",
+      "meaning": "Close against the surface, clinging to the rim."
+    }
+  }
+}

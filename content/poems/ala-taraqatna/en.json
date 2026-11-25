@@ -1,0 +1,275 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Hind Came to Us After They Fell Asleep",
+  "intro": "Al-Mubarrad relates that al-Zibriqan ibn Badr offered al-Hutay’a shelter and that cousins from Banu Quray' then won the poet over with their own hospitality. Hind visits the travellers in a dream before the speaker turns to his new hosts, the house of Shammas. His challenge to their critics is one they can put to the test themselves. Let them take the family's place and see who comes to them in trouble.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Hind came to us after they fell asleep.",
+        "The camels had crossed the lowlands. Najd came into view."
+      ],
+      "sharh": "Hind reaches the sleeping camp as a dream can. The mounts have already crossed the low country and the travellers can make out the highlands ahead."
+    },
+    "2": {
+      "translation": [
+        "How dear are Hind and any land that holds her.",
+        "Between us and Hind lies all this distance."
+      ],
+      "sharh": "He says Hind's name three times in a single bayt. The country where she happens to live has become dear to him, though he can reach it now only in sleep."
+    },
+    "3": {
+      "translation": [
+        "What I turned aside from certain people,",
+        "angry I turned away as they had done,"
+      ],
+      "sharh": "The people who first turned him away resent his leaving. Abu Amr takes the thing he turns aside to be his she-camel. Al-Asma'i understands it as his ode, whose praise he can take elsewhere."
+    },
+    "4": {
+      "translation": [
+        "reached the house of Shammas ibn La'y.",
+        "Their judgement and enduring honour brought it there."
+      ],
+      "sharh": "The destination completes the sentence begun in the previous verse. Their judgement and standing drew him there. Their honour takes its epithet from a well whose water never gives out."
+    },
+    "5": {
+      "translation": [
+        "Unhappy the man their hearts turn against.",
+        "Fortunate the man they treat gently and love."
+      ],
+      "sharh": "His good fortune depends on more than their outward courtesy. The two halves take us from enmity in their hearts to the affection behind a gentle welcome."
+    },
+    "6": {
+      "translation": [
+        "They govern tempers slow to reach their limit.",
+        "When they are angered, honour and resolve come into play."
+      ],
+      "sharh": "Their patience runs so deep that provoking them takes time. Once a matter touches what they feel bound to defend, the same self-controlled men become formidable."
+    },
+    "7": {
+      "translation": [
+        "Go easy on them, you sons of fatherless men.",
+        "Lay off the blame, or fill the place they filled."
+      ],
+      "sharh": "He interrupts his challenge with a conventional rebuke. His critics have a practical way of proving their case, by taking on the responsibilities they find so easy to criticise."
+    },
+    "8": {
+      "translation": [
+        "Whatever these people build, they build well.",
+        "They keep a pledge and pull their knots tight."
+      ],
+      "sharh": "The well-built structure prepares for the knot drawn tight. Their agreement to protect someone has substance and will hold when he needs it."
+    },
+    "9": {
+      "translation": [
+        "A kindness done among them, they repay.",
+        "Their own gifts carry neither reproach nor demands."
+      ],
+      "sharh": "They remember a debt of gratitude when they owe it. When someone owes it to them, they spare him both the reminder and the effort of producing a return."
+    },
+    "10": {
+      "translation": [
+        "When their kinsman, facing some great calamity, says,",
+        "“Lend me your judgement,” they grant it."
+      ],
+      "sharh": "Their kinsman asks for a share in their steadiness when his own fails. The same verb closes both the request and the answer, making their help sound immediate."
+    },
+    "11": {
+      "translation": [
+        "How could you blame them? I have never known them fail you",
+        "in a crisis, or cut into your hide."
+      ],
+      "sharh": "He asks the critics to name a time when these men let them down. Cutting someone's hide is a vivid way of tearing into a family's good name."
+    },
+    "12": {
+      "translation": [
+        "Bold raiders and champions, they feed people in the dark.",
+        "Their fathers built for them, and their grandsire built."
+      ],
+      "sharh": "Night brings out a different kind of courage, generosity to a guest who arrives in the dark. The repeated verb of building gives their forebears a share in the family's present standing."
+    },
+    "13": {
+      "translation": [
+        "Who will tell the branches of Sa'd? Someone has striven",
+        "for your highest honour, a man of resolve and endurance."
+      ],
+      "sharh": "He sends word to all the branches of Sa'd. The commentary identifies the resolute man as Baghid, whose hospitality has raised the standing of people beyond his own household."
+    },
+    "14": {
+      "translation": [
+        "He saw a people's honour going to waste and urged them",
+        "to win it back, seeing the time for earnest work."
+      ],
+      "sharh": "Inherited honour can fall into disuse. What distinguishes Baghid here is recognising a loss the others have accepted and rousing them to repair it."
+    },
+    "15": {
+      "translation": [
+        "The branches of Sa'd reproach me over these men.",
+        "I have said only what Sa'd itself knows."
+      ],
+      "sharh": "The people who object to his praise are also the people best placed to verify it. He ends by calling on their own knowledge of their relatives."
+    }
+  },
+  "words": {
+    "1.1.2": {
+      "word": "طَرَقَتنا",
+      "head": "طَرَقَ",
+      "root": "ط ر ق",
+      "meaning": "Came at night. Hind's visitor here is her image in sleep."
+    },
+    "1.1.4": {
+      "word": "هَجَدوا",
+      "head": "هَجَدَ",
+      "root": "ه ج د",
+      "meaning": "Fell asleep after the journey."
+    },
+    "1.2.3": {
+      "word": "غَوراً",
+      "head": "غَور",
+      "root": "غ و ر",
+      "meaning": "Ghawr, the low country, identified here with the lowlands of Tihama."
+    },
+    "1.2.6": {
+      "word": "نَجدُ",
+      "head": "نَجد",
+      "meaning": "Najd, the high country of Arabia, paired with the lowlands below."
+    },
+    "1.2.2": {
+      "word": "سِرنَ",
+      "head": "سارَ",
+      "root": "س ي ر",
+      "meaning": "The camels travelled. The old gloss supplies the feminine plural subject. The held ending can also sound like sirna, “we travelled.”"
+    },
+    "2.2.5": {
+      "word": "النَّأيُ",
+      "head": "النَّأي",
+      "root": "ن أ ي",
+      "meaning": "Separation by distance."
+    },
+    "3.1.3": {
+      "word": "نَكَّبتُها",
+      "head": "نَكَّبَ",
+      "root": "ن ك ب",
+      "meaning": "Turned her away. The commentary transmits both the she-camel and the ode as the feminine object."
+    },
+    "3.2.4": {
+      "word": "صَدَدتُ",
+      "head": "صَدَّ",
+      "root": "ص د د",
+      "meaning": "Turned away or declined someone's company."
+    },
+    "4.1.2-5": {
+      "word": "آلَ شَمّاسِ بنِ لَأيٍ",
+      "head": "آل شَمّاسِ بنِ لَأي",
+      "meaning": "Al Shammas ibn La'y, the house praised here, from the Tamimi clan of Quray'. Baghid belonged to it."
+    },
+    "4.2.4-5": {
+      "word": "وَالحَسَبُ العِدُّ",
+      "head": "الحَسَب العِدّ",
+      "meaning": "“Honour like a perennial well.” A family's reputation that successive generations replenish."
+    },
+    "5.2.2": {
+      "word": "الجَدِّ",
+      "head": "الجَدّ",
+      "root": "ج د د",
+      "meaning": "Good fortune. The same consonants will refer to a grandfather at 12.2."
+    },
+    "6.1.4": {
+      "word": "أَناتُها",
+      "head": "أَناة",
+      "root": "أ ن ي",
+      "meaning": "Deliberation and patience before acting."
+    },
+    "6.2.4": {
+      "word": "الحَفيظَةُ",
+      "head": "الحَفيظَة",
+      "root": "ح ف ظ",
+      "meaning": "Indignation at a threat to one's honour or to someone in one's keeping."
+    },
+    "7.1.3-5": {
+      "word": "لا أَبا لِأَبيكُمُ",
+      "head": "لا أَبا لِأَبيكُم",
+      "meaning": "“No father to your father,” a sharp rebuke delivered in the middle of the challenge."
+    },
+    "7.2.6-7": {
+      "word": "الَّذي سَدّوا",
+      "head": "سَدَّ المَكان",
+      "meaning": "“Filled the place,” met the demands of the position. The held final vowel has a breathy release that can sound like an added h. The written rhyme ends in -du, as in the neighbouring verses."
+    },
+    "8.1.6": {
+      "word": "البُنى",
+      "root": "ب ن ي",
+      "meaning": "Structures, the things a people builds, including its standing."
+    },
+    "8.2.5": {
+      "word": "عَقَدوا",
+      "head": "عَقَدَ",
+      "root": "ع ق د",
+      "meaning": "Made a binding pact, particularly a pledge of protection."
+    },
+    "9.2.6": {
+      "word": "كَدّوا",
+      "head": "كَدَّ",
+      "root": "ك د د",
+      "meaning": "Pressed a recipient to repay a favour."
+    },
+    "10.1.3": {
+      "word": "مَولاهُم",
+      "head": "مَولى",
+      "root": "و ل ي",
+      "meaning": "A kinsman or ally who can call on the clan."
+    },
+    "10.1.5-6": {
+      "word": "جُلِّ حادِثٍ",
+      "head": "جُلّ حادِث",
+      "meaning": "A grave calamity or momentous affair."
+    },
+    "11.2.4-5": {
+      "word": "أَديمَكُمُ قَدّوا",
+      "head": "أَديم",
+      "meaning": "“Cut your hide,” a figure for injuring a family's honour."
+    },
+    "12.1.3": {
+      "word": "مَطاعيمُ",
+      "head": "مَطاعيم",
+      "root": "ط ع م",
+      "meaning": "People who feed others generously, especially in hard times."
+    },
+    "12.1.5": {
+      "word": "الدُّجى",
+      "root": "د ج و",
+      "meaning": "The darkness of night. Another gloss takes the darkness as an image of famine."
+    },
+    "13.1.3-4": {
+      "word": "أَفناءَ سَعدٍ",
+      "head": "أَفناء سَعد",
+      "meaning": "The several branches of Sa'd."
+    },
+    "13.2.2": {
+      "word": "السّورَةِ",
+      "head": "السّورَة",
+      "root": "س و ر",
+      "meaning": "Rank or station in the esteem of others."
+    },
+    "13.2.6": {
+      "word": "جَلدُ",
+      "head": "جَلد",
+      "root": "ج ل د",
+      "meaning": "Staunch and able to bear hardship."
+    },
+    "14.2.6": {
+      "word": "الجِدُّ",
+      "head": "الجِدّ",
+      "root": "ج د د",
+      "meaning": "Earnest effort. A variant gives hardship or exertion."
+    },
+    "15.1.1": {
+      "word": "وَتَعذُلُني",
+      "head": "عَذَلَ",
+      "root": "ع ذ ل",
+      "meaning": "Reproach me for the people I chose to praise."
+    }
+  }
+}

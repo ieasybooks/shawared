@@ -70,6 +70,36 @@ Proposal 2 was replaced by the nine new fables in Al-Qimmah’s ten-poem compila
 | 19 | https://www.youtube.com/watch?v=o9meWinky7A | صبرت ومثلي صبره ليس ينكر | علي بن الجهم | أسامة النهاري | 2:53 | reviewed: `sabartu-wa-mithli` | The source ends on the cadence of «وتفقر». The complete final word is retained. |
 | 20 | https://www.youtube.com/watch?v=FedzfiCBTZU | ألا في سبيل المجد ما أنا فاعل | أبو العلاء المعري | أسامة النهاري | 5:21 | reviewed: `ala-fi-sabili-al-majd` | Al-Ma'arri’s lamiyya opens with four virtues and closes with the full moon beginning to wane. |
 
+## Twenty-three selected recordings, 24 November 2026
+
+The selection numbers follow the proposal, with 5 and 23 omitted. Durations are for the poetry-only tracks.
+
+| Selection | Source | Poem | Poet | Reciter | App audio | Status | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | https://www.youtube.com/watch?v=9rn8KLl9EF8 | أطاعن خيلا من فوارسها الدهر | المتنبي | أسامة النهاري | 6:28 | reviewed: `utainu-khaylan` | Al-Mutanabbi crosses the waste to reach Ali ibn Ahmad of Antioch. The man he praises gives him reason to forgive the days he fought at the opening. |
+| 2 | https://www.youtube.com/watch?v=1o-IVi3FPuo | لمع البرق اليماني | حسام الدين الحاجري | أسامة الواعظ | 1:14 | reviewed: `lamaa-al-barqu-al-yamani` | The lightning calls back the Hima and the poet’s youth. Al-Waaedh sings sixteen verses from the nineteen in the diwan. |
+| 3 | https://www.youtube.com/watch?v=97I3oQmFT-0 | العلم والتعليم وواجب المعلم | أحمد شوقي | عبد الرحمن الحمين | 7:57 | reviewed: `qum-lil-muallimi` | Shawqi’s address to teachers traces the consequences of their work from the classroom to the public life of Egypt. |
+| 4 | https://www.youtube.com/watch?v=ddLW1aztDtw | ألا اعتزليني اليوم خولة أو غضي | طرفة بن العبد | أسامة النهاري | 8:48 | reviewed: `ala-itazilini` | The long recension gives these sixty verses to Tarafa. Al-Qali transmits part of the passage on generosity under al-Hakam ibn Abdal’s name. |
+| 6 | https://www.youtube.com/watch?v=nTXVGUYI0Vc | عفا ذو حسى من فرتنى فالفوارع | النابغة الذبياني | أسامة النهاري | 6:00 | reviewed: `afa-dhu-hisan` | Al-Nabigha answers the king’s informant and swears by the pilgrims’ camels. This is a separate apology from «أتاني أبيت اللعن». |
+| 7 | https://www.youtube.com/watch?v=WNsByEa-Kxs | في الشيب زجر له لو كان ينزجر | البحتري | أسامة النهاري | 7:25 | reviewed: `fi-al-shaybi-zajrun` | Grey hair and empty pockets lead al-Buhturi to twenty unrewarded months in Samarra and to the generosity of Ali ibn Murr. |
+| 8 | https://www.youtube.com/watch?v=9MABIZAnUTU | يا عين جودي بالدموع | الخنساء | أسامة النهاري | 2:18 | reviewed: `ya-ayni-judi` | Al-Khansa' mourns Sakhr, recalling his gifts and the people who depended on him. Several words run across the metrical break. |
+| 9 | https://www.youtube.com/watch?v=Vk0QaxrxMSU | خليلي عوجا منكما اليوم أو دعا | الصمة القشيري | أسامة النهاري | 9:12 | reviewed: `khalilayya-uja` | Al-Simma returns to Rayya and the Hima through an extended dialogue with his companions, the landscape and the birds. |
+| 10 | https://www.youtube.com/watch?v=FTRZsLHmJao | خليلي ما للحب يزداد جدة | علي بن الجهم | أسامة النهاري | 1:35 | reviewed: `khalilayya-ma-lil-hubbi` | Layla visits the imprisoned Ali ibn al-Jahm. The shackles on his ankles provide the answer he gives her about his condition. |
+| 11 | https://www.youtube.com/watch?v=9S5qWDJu1l0 | سائل بنا في قومنا | عاتكة بنت عبد المطلب | عبد الرحمن السعيد | 0:35 | reviewed: `sail-bina` | Al-Sa'eed’s account of the Fijar War precedes the six verses. The track begins with Atika’s challenge to ask the witnesses at Ukaz. |
+| 12 | https://www.youtube.com/watch?v=K1GHeiG2vBU | وعاذل عذلته في عذله | أبو تمام | أسامة النهاري | 2:18 | reviewed: `wa-adhilin-adhaltuhu` | Abu Tammam likens praise given to the wrong man to a scabbard without a blade. The closing bayt is performed twice. |
+| 13 | https://www.youtube.com/watch?v=dSuK7GcKtlk | اليوم نسود بوادينا | أحمد شوقي | أسامة الواعظ | 1:00 | reviewed: `al-yawma-nasudu` | The young man and woman who emerge from the statue in Shawqi’s «أبو الهول» sing this closing anthem. Its final two half-lines are identical in print and in the recitation. |
+| 14 | https://www.youtube.com/watch?v=9r4-iSQdfRA | مضى لسبيله معن وأبقى | مروان بن أبي حفصة | أسامة النهاري | 7:49 | reviewed: `mada-li-sabilihi-manun` | Marwan mourns Ma'n ibn Za'ida. Those who depended on his gifts measure their loss against the long night after his death. |
+| 15 | https://www.youtube.com/watch?v=wpEU4wH6bgM | مجمهرة عدي بن زيد | عدي بن زيد العبادي | أسامة النهاري | 7:01 | reviewed: `atarifu-rasma-al-dari` | Adi moves from Umm Ma'bad’s deserted dwelling to counsel on neighbours, speech and justice, then imagines the women mourning him. |
+| 16 | https://www.youtube.com/watch?v=yLpxol9v14w | ألا طرقتنا بعدما هجدوا هند | الحطيئة | أسامة النهاري | 2:42 | reviewed: `ala-taraqatna` | Hind’s night visit opens al-Hutay'a’s defence of the house of Shammas. The people who criticise his praise have seen that household’s conduct for themselves. |
+| 17 | https://www.youtube.com/watch?v=5hlXa9dD5Ek | طاف يبغي نجوة | السلكة أم السليك | عبد الرحمن السعيد | 1:02 | reviewed: `tafa-yabghi-najwatan` | A mother asks her dead son al-Sulayk what befell him. The introductions give the evidence for al-Sulaka and the other attributions. |
+| 18 | https://www.youtube.com/watch?v=7cnM_yCpQLc | مذهبة قيس بن الخطيم | قيس بن الخطيم | أسامة النهاري | 4:44 | reviewed: `atarifu-rasman` | The diwan names the war of Hatib and Ibn Sallam associates the opening with Bu'ath. Al-Nahari gives the opening half twice. |
+| 19 | https://www.youtube.com/watch?v=dUGMLPH1Av8 | خف القطين فراحوا منك أو بكروا | الأخطل | أسامة النهاري | 14:51 | reviewed: `khaffa-al-qatinu` | Al-Akhtal’s ode to Abd al-Malik moves from praise of the Umayyads to Taghlib’s alliances and a closing attack on the poet’s rivals. |
+| 20 | https://www.youtube.com/watch?v=jeEscBTuCDc | أبا الفضل طال الليل أم خانني صبري | أبو الحسن التهامي | أسامة النهاري | 8:24 | reviewed: `aba-al-fadli-tala-al-laylu` | Al-Tihami mourns his son. This is a second elegy, distinct from the ode beginning «حكم المنية». |
+| 21 | https://www.youtube.com/watch?v=SQ3BXJMO_oo | كل حي لاقي الحمام فمودي | ابن مناذر | أسامة النهاري | 5:41 | reviewed: `kullu-hayyin-laqi-al-himami` | Ibn Munadhir mourns Abd al-Majid. The world in the opening is a field in which the standing grain can see what has already been reaped. |
+| 22 | https://www.youtube.com/watch?v=pNTj5yk_TC4 | في جوف الليل | حمزة الملك طمبل | أسامة الواعظ | 0:33 | reviewed: `tarnu-ilayya` | Al-Waaedh sings two verses from «في جوف الليل» and repeats the second. The stars are watching the speaker. |
+| 24 | https://www.youtube.com/watch?v=MDlgQlAIFQ0 | أجاب دمعي وما الداعي سوى طلل | المتنبي | أسامة النهاري | 7:35 | reviewed: `ajaba-dami` | From a deserted camp al-Mutanabbi turns to Sayf al-Dawla and to reports carried against him. |
+| 25 | https://www.youtube.com/watch?v=eOn1sGRd3-o | قد قلت للنفس الشعاع أضمها | الشريف الرضي | أسامة النهاري | 3:46 | reviewed: `qad-qultu-lil-nafsi` | Al-Radi turns from the people who failed him to his own heart and then to Time itself. |
+
 ## Twenty selected recordings, 24 November 2026
 
 | Shortlist # | Recording | Poem | Poet | Reciter | Length | Status | Notes |

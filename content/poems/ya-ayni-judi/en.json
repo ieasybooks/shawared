@@ -1,0 +1,393 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Eye of Mine, Pour Out Your Tears",
+  "intro": "Al-Khansa' mourns her brother Sakhr. From the well buckets with which she measures her tears she turns to the earth over his grave, then to the burdens he used to lift from other people. The twenty verses of the Beirut diwan, sung here by Osama al-Nahari, end with a comparison to horses' teeth which brings his whole community into the loss.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Eye of mine, pour out the tears",
+        "that break forth and stream down."
+      ],
+      "sharh": "She asks her eye to give as generously as a person might. The tears break out like rain at its onset, then keep streaming."
+    },
+    "2": {
+      "translation": [
+        "Let them overflow as the buckets brim,",
+        "drawn up full by the water camels."
+      ],
+      "sharh": "A camel pulls a great leather bucket up from the well, full enough to spill. She wants that much water from a single eye."
+    },
+    "3": {
+      "translation": [
+        "Weep for Sakhr, now that he lies",
+        "between the grave pit and its slabs,"
+      ],
+      "sharh": "At last the lament names its object. The pit beneath him and the slabs closing it overhead locate Sakhr with a precision that counting tears could never give."
+    },
+    "4": {
+      "translation": [
+        "buried in a grave whose dust",
+        "the wild gusts scatter."
+      ],
+      "sharh": "He lies still beneath loose earth that the wind never leaves at rest. The grave is exposed to weather although its occupant has been shut away."
+    },
+    "5": {
+      "translation": [
+        "The great-hearted chief, son",
+        "of proud, great-hearted chiefs,"
+      ],
+      "sharh": "She turns from his burial to the name he had among the living. The same word for a generous chief rings out first for Sakhr alone and then in the plural for his forebears."
+    },
+    "6": {
+      "translation": [
+        "who bore the anxious load",
+        "of calamities that weighed men down,"
+      ],
+      "sharh": "Debts and disasters acquire a physical weight. What would have pressed on many shoulders was a load Sakhr would take onto his own."
+    },
+    "7": {
+      "translation": [
+        "who set the broken bone",
+        "of the grappler and the generous giver,"
+      ],
+      "sharh": "A man strong enough to wrestle and a man used to giving can both suffer a reverse. Sakhr gives them the support that a broken limb needs to grow sound."
+    },
+    "8": {
+      "translation": [
+        "who gave the hundred purebred camels",
+        "from the spoils his swimming stallions won,"
+      ],
+      "sharh": "The horses seem to swim in their speed. An early explanation attributed to Abu Yusuf makes them the means by which he won the hundred camels he can now give away."
+    },
+    "9": {
+      "translation": [
+        "who forgave a grave offence",
+        "by a kinsman or a man who shared his salt,"
+      ],
+      "sharh": "Blood and a shared meal each create an obligation. Even a serious wrong need not make him cast off someone joined to him by either bond."
+    },
+    "10": {
+      "translation": [
+        "deliberately, and with a forbearance",
+        "that carried weight when he chose restraint."
+      ],
+      "sharh": "He knows the gravity of the offence he has just pardoned. “Weighty” gives his restraint the substance of a considered judgement."
+    },
+    "11": {
+      "translation": [
+        "He was the one through whom",
+        "we healed the sickness under our ribs."
+      ],
+      "sharh": "Pain and anger lodge in the ribs as though that were where an injury needed treating. His family could take such hurts to Sakhr for redress."
+    },
+    "12": {
+      "translation": [
+        "He checked the enemy's first rush",
+        "and the bluster of the spiteful foe."
+      ],
+      "sharh": "He meets an opponent at the first flare of aggression. The family that relied on him for redress could also count on him to prevent the next hurt."
+    },
+    "13": {
+      "translation": [
+        "Then fortune turned on us",
+        "and struck us with a horn."
+      ],
+      "sharh": "The attack he cannot repel comes from time itself. Misfortune hits the family with the force of a horn driven into them."
+    },
+    "14": {
+      "translation": [
+        "It was as though time marked out",
+        "our throats for the slaughter knives."
+      ],
+      "sharh": "Time takes deliberate aim at their throats. Only one man has died, yet the plural makes the entire community feel under the knife."
+    },
+    "15": {
+      "translation": [
+        "Our women chant their laments",
+        "following the woman who leads the mourners."
+      ],
+      "sharh": "A lead mourner gives the cry and the others take it up. What began as a private appeal to an eye can now be heard throughout the community."
+    },
+    "16": {
+      "translation": [
+        "They cry on after other eyes have closed,",
+        "like bereaved she-camels lifting their heads from the water."
+      ],
+      "sharh": "Other people sleep while the women's cries go on. Their counterparts are mother camels too bereft to drink even with water before them."
+    },
+    "17": {
+      "translation": [
+        "Dishevelled and pale, they do not flag",
+        "when the night of mourning itself grows weary."
+      ],
+      "sharh": "The visible signs of mourning are tangled hair and changed faces. Where a night might ordinarily be said to drag, here the night tires before the mourners do."
+    },
+    "18": {
+      "translation": [
+        "They bewail the loss of the man of bounty,",
+        "of goodness and upright ways,"
+      ],
+      "sharh": "The women's refrain is a list of qualities that used to have a living bearer. Calling him bounty's brother makes the link sound like kinship."
+    },
+    "19": {
+      "translation": [
+        "of open-handedness and long hands",
+        "whose generosity reached far and wide."
+      ],
+      "sharh": "A long hand can reach someone far away in need of help. The language of overflowing, heard first in the tears, now measures the extent of his gifts."
+    },
+    "20": {
+      "translation": [
+        "Now we and everyone else",
+        "are alike as the teeth of full-grown horses."
+      ],
+      "sharh": "The comparison is to the even teeth of horses that have reached maturity. His people grieve for a change in their own standing as well. With him gone they are level with everyone else."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "جودي",
+      "root": "ج و د",
+      "meaning": "Give freely. The eye is addressed as a giver."
+    },
+    "1.2.2": {
+      "word": "المُستَهِلّاتِ",
+      "head": "المُستَهِلّات",
+      "root": "ه ل ل",
+      "meaning": "Breaking forth, as rain at the beginning of a downpour."
+    },
+    "1.2.3": {
+      "word": "السَّوافِح",
+      "root": "س ف ح",
+      "meaning": "Streaming freely down the face."
+    },
+    "2.1.4": {
+      "word": "غُرو",
+      "head": "غُروب",
+      "root": "غ ر ب",
+      "meaning": "Large leather well buckets. The last consonant begins the second half."
+    },
+    "2.2.2": {
+      "word": "المُترَعاتِ",
+      "head": "المُترَعات",
+      "root": "ت ر ع",
+      "meaning": "Filled to the brim."
+    },
+    "2.2.4": {
+      "word": "النَّواضِح",
+      "root": "ن ض ح",
+      "meaning": "Camels used to draw water from wells."
+    },
+    "3.1.2": {
+      "word": "لِصَخرٍ",
+      "head": "صَخر",
+      "meaning": "Sakhr ibn Amr of Sulaym, al-Khansa’s brother."
+    },
+    "3.2.2": {
+      "word": "الضَّريحَةِ",
+      "head": "الضَّريحَة",
+      "root": "ض ر ح",
+      "meaning": "The burial pit itself."
+    },
+    "3.2.3": {
+      "word": "وَالصَّفائِح",
+      "head": "الصَّفائِح",
+      "root": "ص ف ح",
+      "meaning": "Flat stone slabs used to cover a grave."
+    },
+    "4.1.1": {
+      "word": "رَمساً",
+      "head": "رَمس",
+      "root": "ر م س",
+      "meaning": "Burial, or the grave in which someone is laid."
+    },
+    "4.1.3": {
+      "word": "جَدَثٍ",
+      "head": "جَدَث",
+      "root": "ج د ث",
+      "meaning": "A grave."
+    },
+    "4.2.3-4": {
+      "word": "هوجُ النَّوافِح",
+      "meaning": "Fierce winds that blow in wild gusts."
+    },
+    "5.1.2": {
+      "word": "الجَحجاحُ",
+      "head": "الجَحجاح",
+      "root": "ج ح ج ح",
+      "meaning": "A chief distinguished by his generosity and deeds."
+    },
+    "5.2.3": {
+      "word": "الشُّمِّ",
+      "head": "الشُّمّ",
+      "root": "ش م م",
+      "meaning": "Proud or high-born. The physical image is of a high nose."
+    },
+    "6.2.3": {
+      "word": "المُلِمّاتِ",
+      "head": "المُلِمّات",
+      "root": "ل م م",
+      "meaning": "Calamities that befall a community."
+    },
+    "6.2.4": {
+      "word": "الفَوادِح",
+      "root": "ف د ح",
+      "meaning": "Crushing, hard to bear."
+    },
+    "7.2.3": {
+      "word": "المُهاصِرِ",
+      "head": "المُهاصِر",
+      "root": "ه ص ر",
+      "meaning": "A grappler who seizes an opponent. The commentary traces the word to a lion breaking its prey."
+    },
+    "7.2.4": {
+      "word": "وَالمُمانِح",
+      "head": "المُمانِح",
+      "root": "م ن ح",
+      "meaning": "A generous giver, someone accustomed to making gifts."
+    },
+    "8.1.3": {
+      "word": "الهِجا",
+      "head": "الهِجان",
+      "root": "ه ج ن",
+      "meaning": "Fine purebred camels, often described as white. The word runs across the half-line."
+    },
+    "8.2.3": {
+      "word": "الخَناذيذِ",
+      "head": "الخَناذيذ",
+      "root": "خ ن ذ ذ",
+      "meaning": "Choice, tall stallions."
+    },
+    "8.2.4": {
+      "word": "السَّوابِح",
+      "root": "س ب ح",
+      "meaning": "Horses whose swift, outstretched stride suggests swimming."
+    },
+    "9.2.4": {
+      "word": "وَالمُمالِح",
+      "head": "المُمالِح",
+      "root": "م ل ح",
+      "meaning": "A companion bound to someone by eating together and sharing salt."
+    },
+    "10.2.3": {
+      "word": "الحِلمَ",
+      "head": "الحِلم",
+      "root": "ح ل م",
+      "meaning": "Forbearance, self-command when one has the power to punish."
+    },
+    "10.2.4": {
+      "word": "راجِح",
+      "root": "ر ج ح",
+      "meaning": "Weighty, sound in judgement, from a pan of the scales outweighing the other."
+    },
+    "11.2.4": {
+      "word": "الجَوانِح",
+      "root": "ج ن ح",
+      "meaning": "The ribs enclosing the breast, here the seat of inward pain."
+    },
+    "12.1.2": {
+      "word": "بادِرَةَ",
+      "head": "بادِرَة",
+      "root": "ب د ر",
+      "meaning": "The first outbreak of anger or attack."
+    },
+    "12.2.3": {
+      "word": "الشَّنِفِ",
+      "head": "الشَّنِف",
+      "root": "ش ن ف",
+      "meaning": "One who harbours intense hatred."
+    },
+    "12.2.4": {
+      "word": "المُكاشِح",
+      "root": "ك ش ح",
+      "meaning": "A hostile opponent who bears a grudge."
+    },
+    "13.1.2": {
+      "word": "رَيبُ",
+      "head": "رَيب",
+      "root": "ر ي ب",
+      "meaning": "The unforeseen reversals that time brings."
+    },
+    "13.2.4": {
+      "word": "بِناطِح",
+      "head": "ناطِح",
+      "root": "ن ط ح",
+      "meaning": "Something that strikes with its horn, here a calamity."
+    },
+    "14.1.2": {
+      "word": "أَمَّ",
+      "root": "أ م م",
+      "meaning": "Aimed at, set one's sights on."
+    },
+    "14.2.3": {
+      "word": "بِمُدى",
+      "head": "مُدى",
+      "root": "م د ي",
+      "meaning": "Knives, the plural of mudya."
+    },
+    "15.2.2": {
+      "word": "هادِيَةِ",
+      "head": "هادِيَة",
+      "root": "ه د ي",
+      "meaning": "The woman who leads the other mourners."
+    },
+    "16.1.1": {
+      "word": "يَحنُنَّ",
+      "head": "حَنَّ",
+      "root": "ح ن ن",
+      "meaning": "They cry out from longing. Al-Nahari follows the Dar Sadir vowel here. Dictionaries usually give a different middle vowel for the cry of a camel grieving for its young."
+    },
+    "16.1.3": {
+      "word": "كَرى",
+      "root": "ك ر ي",
+      "meaning": "Sleep or drowsiness."
+    },
+    "16.2.3": {
+      "word": "والِهَةٍ",
+      "head": "والِهَة",
+      "root": "و ل ه",
+      "meaning": "A mother beside herself with loss, here a bereaved she-camel."
+    },
+    "16.2.4": {
+      "word": "قَوامِح",
+      "root": "ق م ح",
+      "meaning": "She-camels holding their heads back above the water."
+    },
+    "17.1.2": {
+      "word": "شَواحِبُ",
+      "head": "شَواحِب",
+      "root": "ش ح ب",
+      "meaning": "Women whose faces have grown pale with grief or sleeplessness."
+    },
+    "17.2.3": {
+      "word": "وَنى",
+      "root": "و ن ي",
+      "meaning": "Flagged, grew weary."
+    },
+    "18.1.3-4": {
+      "word": "أَخي النَّدى",
+      "head": "أَخو النَّدى",
+      "meaning": "“Brother of bounty”, a man inseparable from generosity."
+    },
+    "18.2.2": {
+      "word": "وَالشِّيَمِ",
+      "head": "الشِّيَم",
+      "root": "ش ي م",
+      "meaning": "Qualities of character or habitual ways of acting."
+    },
+    "19.2.2": {
+      "word": "المُستَفيضاتِ",
+      "head": "المُستَفيضات",
+      "root": "ف ي ض",
+      "meaning": "Overflowing, spreading their bounty far abroad."
+    },
+    "20.2.2-3": {
+      "word": "أَسنانِ القَوارِح",
+      "head": "أَسنانُ القَوارِح",
+      "meaning": "“The teeth of mature horses”, a proverbial comparison for people of equal standing."
+    }
+  }
+}

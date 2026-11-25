@@ -1,0 +1,818 @@
+{
+  "lang": "en",
+  "source": {
+    "name": "Shawared"
+  },
+  "title": "Learning, Education and the Teacher’s Duty",
+  "intro": "Shawqi addressed the Higher Teachers’ College club shortly before the Egyptian Parliament opened in March 1924, according to the notes in his collection. From his salute to a teacher he moves through revelation and the death of Socrates to the villages, schools and households of Egypt. By the time he asks the young to choose their representatives, the fairness learnt in a classroom has become a condition of public life. Abd al-Rahman al-Humayn recites the sixty-six verses in the Beirut edition. The Cairo printing has two more.",
+  "abyat": {
+    "1": {
+      "translation": [
+        "Stand for the teacher and pay him full respect.",
+        "A teacher comes close to being a messenger."
+      ],
+      "sharh": "The tribute begins with a bodily gesture anyone in the hall can make. The comparison with a messenger turns on what a teacher carries from one generation to another."
+    },
+    "2": {
+      "translation": [
+        "Do you know anyone nobler or more exalted",
+        "than one who builds and forms souls and minds?"
+      ],
+      "sharh": "The teacher is a builder whose materials are living minds and selves. His claim to honour rests on the sort of work he does."
+    },
+    "3": {
+      "translation": [
+        "Glory to you, God, best of teachers.",
+        "With the pen you taught the earliest generations."
+      ],
+      "sharh": "The address turns into a prayer. The pen recalls the Qur’anic description of God teaching by the pen and gives the ordinary tool of a schoolroom a sacred history."
+    },
+    "4": {
+      "translation": [
+        "You brought this mind out of its darkness",
+        "and showed it clear light for a path."
+      ],
+      "sharh": "The mind emerges able to see and with somewhere to go. Light is both illumination and a road."
+    },
+    "5": {
+      "translation": [
+        "You forged it by the teacher’s hand, at times",
+        "as rusty iron, at times polished."
+      ],
+      "sharh": "The verb is one used for forging a blade. Rust and polish make differences between minds visible on the surface of a single material."
+    },
+    "6": {
+      "translation": [
+        "You sent Moses with the Torah as a guide,",
+        "and the Virgin’s son, who taught the Gospel."
+      ],
+      "sharh": "Moses comes with scripture and Jesus is identified through his mother. The prophets enter this address in their capacity as guides and teachers."
+    },
+    "7": {
+      "translation": [
+        "You made Muhammad a wellspring of eloquence.",
+        "He gave the Hadith to drink and handed on revelation."
+      ],
+      "sharh": "Speech first springs out of the ground, then reaches someone as a drink. Hadith is what is transmitted from the Prophet, while “revelation” here is the Qur’an."
+    },
+    "8": {
+      "translation": [
+        "You taught Greece and Egypt. They passed away",
+        "from many a sun that had no wish to set."
+      ],
+      "sharh": "Ancient Greece and Egypt pass out of their ascendancy. Their sciences are suns with light to give even after the countries that produced them have declined."
+    },
+    "9": {
+      "translation": [
+        "Today the two are children again",
+        "in learning, picking it up as uninvited guests."
+      ],
+      "sharh": "Two old centres of learning are cast as children at someone else’s table. The word for taking part uninvited adds dependence to the indignity of starting again."
+    },
+    "10": {
+      "translation": [
+        "From the east of the earth its suns came forth.",
+        "How did its west gain the upper hand over it?"
+      ],
+      "sharh": "Geography makes eastern intellectual leadership seem as natural as sunrise. The change in the balance of power is all the more arresting against that image."
+    },
+    "11": {
+      "translation": [
+        "Earth, since the teacher lost his very self,",
+        "a barrier has stood between the suns and your east."
+      ],
+      "sharh": "His explanation comes back to the teacher and the loss of a sense of vocation. The suns still exist, which makes the obstruction between them and the east the real loss."
+    },
+    "12": {
+      "translation": [
+        "Gone are those who defended the truth they knew",
+        "and found even grievous torment sweet for its sake,"
+      ],
+      "sharh": "The defenders of knowledge paid for it in their own bodies. The near echo between the Arabic words for finding sweetness and suffering punishment binds their pleasure to their pain."
+    },
+    "13": {
+      "translation": [
+        "in a world that lived in fetters,",
+        "haltered to one man and shackled to him."
+      ],
+      "sharh": "A society dependent on a single ruler is led by a nose-ring and held in irons. The two restraints prepare the way for the solitary thinker who resists."
+    },
+    "14": {
+      "translation": [
+        "The despot’s world struck him down, as heads fall",
+        "dazed by a stroke of the sun."
+      ],
+      "sharh": "The oppressive order can fell a man as abruptly as sunstroke. A sun that earlier stood for knowledge now supplies the physical shock of losing consciousness."
+    },
+    "15": {
+      "translation": [
+        "Socrates offered the cup, though it held death,",
+        "the lips of a lover longing for a kiss."
+      ],
+      "sharh": "The cup receives a lover’s lips. The startling intimacy lies in the knowledge, given before the lips appear, that the cup contains death."
+    },
+    "16": {
+      "translation": [
+        "They offered him life, and it meant stupidity.",
+        "He refused and chose to die a man of understanding."
+      ],
+      "sharh": "The offer of life would cost the philosopher his intelligence. The edition glosses the closing adjective as intelligent, bringing the two alternatives into exact opposition."
+    },
+    "17": {
+      "translation": [
+        "Courage is plentiful in hearts.",
+        "I find brave minds few."
+      ],
+      "sharh": "After the familiar bravery of the heart comes the rarer courage of thought. Socrates has just shown what that quality might actually demand."
+    },
+    "18": {
+      "translation": [
+        "He who made truth bitter as colocynth",
+        "has given every generation people who stand by the truth."
+      ],
+      "sharh": "Colocynth has a notoriously bitter pulp. Truth keeps finding takers in generation after generation despite what it tastes like."
+    },
+    "19": {
+      "translation": [
+        "Often passion for it kills its men.",
+        "A curse on passion, how many lives it takes."
+      ],
+      "sharh": "Devotion to truth has the consuming force of love. The same verb first tells us that passion kills, then turns on passion itself in a curse."
+    },
+    "20": {
+      "translation": [
+        "Does everyone who stands up for truth acquire",
+        "grudges and blood-feuds among the multitude?"
+      ],
+      "sharh": "A defender sets out to protect something held in common and acquires enemies for it. The second noun takes resentment into the territory of a blood-feud."
+    },
+    "21": {
+      "translation": [
+        "If I believed in the Cross and its story,",
+        "I would take Christ’s crucifixion as my proof."
+      ],
+      "sharh": "The conditional matters. A Muslim speaker invokes the Christian account of the Crucifixion as the evidence he would give from within that belief."
+    },
+    "22": {
+      "translation": [
+        "Teachers of the valley, guides of its young,",
+        "you who shape the youth in whom it hopes,"
+      ],
+      "sharh": "The audience comes into view again. The verb for shaping reaches back to the forging of minds, this time with Egypt’s hopes for its young at stake."
+    },
+    "23": {
+      "translation": [
+        "and you who carry, when called to teach,",
+        "the heavy trust for which you must answer,"
+      ],
+      "sharh": "The address is still unfolding. The burden has weight in the present and a further claim on the person who must one day give an account of it."
+    },
+    "24": {
+      "translation": [
+        "We once advanced towards learning on a light foot.",
+        "Under Dunlop it swelled with elephantiasis."
+      ],
+      "sharh": "Egypt’s educational advance becomes the movement of a foot. Elephantiasis is the disabling swelling named in the edition’s note on the British educational adviser Dunlop."
+    },
+    "25": {
+      "translation": [
+        "We came to see Egypt advance a finger’s breadth",
+        "in learning when other kingdoms walked a mile."
+      ],
+      "sharh": "A finger’s breadth against a mile turns the swollen foot into a way to measure national progress. Egypt does move, but the other countries make the distance painfully visible."
+    },
+    "26": {
+      "translation": [
+        "Those villages, full of illiteracy,",
+        "have seen no lamp since the time of Khufu."
+      ],
+      "sharh": "The lamp is the light of education. Invoking the pharaoh Khufu stretches the village’s long neglect across the history of a civilisation famed for its achievement."
+    },
+    "27": {
+      "translation": [
+        "The people whose grandfather built the obelisk",
+        "cannot fashion a needle."
+      ],
+      "sharh": "The needle is a miniature answer to the obelisk, another slender object that requires skill to make. Descent from a master builder has transmitted no craft."
+    },
+    "28": {
+      "translation": [
+        "They are coaxed whenever someone wants to lead them,",
+        "like young livestock growing tame at a caress."
+      ],
+      "sharh": "He describes leadership gained by petting and coaxing. The vulnerability of young animals gives the comparison its political edge."
+    },
+    "29": {
+      "translation": [
+        "Men recite their own desires back to them.",
+        "Those who succeed are the fiercest disputants in recitation."
+      ],
+      "sharh": "A crowd hears its own desires read back in a solemn cadence. Eloquence and the hard skill of disputing can win an audience while teaching it nothing."
+    },
+    "30": {
+      "translation": [
+        "No community can live on ignorance.",
+        "How can life come at the hands of the angel of death?"
+      ],
+      "sharh": "Azrael is the angel of death. Placing a community in his hands gives literal force to the claim that ignorance cannot sustain life."
+    },
+    "31": {
+      "translation": [
+        "By God, had there not been tongues and gifted minds",
+        "passing wine round the quick minds of the young,"
+      ],
+      "sharh": "The wine is the influence of gifted speakers and writers upon young minds. The suspended “had there not been” will find its answer only after a succession of images."
+    },
+    "32": {
+      "translation": [
+        "tending their souls for forty years,",
+        "driving despair back and planting hope,"
+      ],
+      "sharh": "Four decades turn a single inspiring speech into sustained care. Despair has to be fought off and hope planted, two quite different kinds of labour."
+    },
+    "33": {
+      "translation": [
+        "knowing where their ground was parched and coming in succession,",
+        "welling like a spring, streaming like rainclouds,"
+      ],
+      "sharh": "The teachers know precisely which ground is dry. A spring watering from below and a cloud watering from above answer the planting of hope in the previous verse."
+    },
+    "34": {
+      "translation": [
+        "doing good to the country and shrinking",
+        "from accepting praise in return for a kindness,"
+      ],
+      "sharh": "Praise is already a form of repayment that embarrasses the benefactors. Their quiet service anticipates the uncelebrated constitutional worker later in the poem."
+    },
+    "35": {
+      "translation": [
+        "Dunlop and his education would have been",
+        "of no more use in a crisis than a thread."
+      ],
+      "sharh": "The long conditional finally closes. The little fibre on a date stone is the measure of what the official system could have contributed in a crisis."
+    },
+    "36": {
+      "translation": [
+        "Bring up the country’s boys to be fair.",
+        "In old age you will find them a refuge for rights."
+      ],
+      "sharh": "Teachers are asked to imagine their pupils grown old. A right in danger will then have somewhere to take shelter, as a traveller would in a cave."
+    },
+    "37": {
+      "translation": [
+        "Fairness builds sound dispositions.",
+        "It forms people who can be trusted as just."
+      ],
+      "sharh": "Fairness works its way into disposition. The word for just people also belongs to the language of trustworthy witnesses."
+    },
+    "38": {
+      "translation": [
+        "It straightens the reasoning of every crooked reasoner",
+        "and shows him sound judgement in affairs."
+      ],
+      "sharh": "The crookedness is in the way a person reasons. Learning fairness can therefore change how a conclusion is reached as well as which conclusion is reached."
+    },
+    "39": {
+      "translation": [
+        "When the teacher himself is unjust,",
+        "the spirit of justice walks feebly among the young."
+      ],
+      "sharh": "Justice becomes a figure barely strong enough to walk through the classroom. The teacher’s practice gives the lesson its strength or takes it away."
+    },
+    "40": {
+      "translation": [
+        "When a teacher’s inward sight goes wrong,",
+        "the perceptions he forms grow cross-eyed."
+      ],
+      "sharh": "Crossed lines of sight give faulty judgement a bodily shape. The pupils inherit the teacher’s way of seeing as well as the things he shows them."
+    },
+    "41": {
+      "translation": [
+        "When guidance springs from personal inclination",
+        "and conceit, call it misdirection."
+      ],
+      "sharh": "The motives of the guide change the name of the act. An instruction delivered with a teacher’s authority can still lead a learner astray."
+    },
+    "42": {
+      "translation": [
+        "If a people is stricken in its character,",
+        "hold a funeral for it and raise a lament."
+      ],
+      "sharh": "A funeral is called while the community is still physically alive. Moral failure has, in his account, already done what death does."
+    },
+    "43": {
+      "translation": [
+        "I do make allowance for you. I reckon your load",
+        "heavy among the burdens people bear."
+      ],
+      "sharh": "After holding the teachers to a demanding standard, he speaks to them with sympathy. Their burden recalls the trust he laid on their shoulders at the start of the address."
+    },
+    "44": {
+      "translation": [
+        "Others have found a helper, but you are denied",
+        "in Egypt the great assistance of mothers."
+      ],
+      "sharh": "The classroom is only one place where a child learns. The next lines explain why the potential help of mothers has been denied to Egyptian teachers."
+    },
+    "45": {
+      "translation": [
+        "If women grow up unable to read,",
+        "men suckle ignorance and inertia."
+      ],
+      "sharh": "Suckling makes early education something absorbed before a child can speak. The argument for educating girls follows the boys in his audience all the way home."
+    },
+    "46": {
+      "translation": [
+        "The orphan is not someone whose parents have come to the end",
+        "of life’s cares and left him brought low,"
+      ],
+      "sharh": "The familiar definition of an orphan is deliberately left incomplete. Bereavement makes the child vulnerable, but the fate of his education is still open."
+    },
+    "47": {
+      "translation": [
+        "then finds in the wise world a substitute for them,",
+        "and in the good schooling time gives him."
+      ],
+      "sharh": "World and time take on the parents’ work. Experience can sometimes supply a bereaved child with an education the house can no longer provide."
+    },
+    "48": {
+      "translation": [
+        "The orphan is the one for whom you find",
+        "a mother who has withdrawn or a father preoccupied."
+      ],
+      "sharh": "This child can be neglected in a house with living parents. Withdrawal and preoccupation are things an adult could change, giving the definition the force of a reproach."
+    },
+    "49": {
+      "translation": [
+        "If Egypt looks back over her days,",
+        "she will find no peer for the great Saturday."
+      ],
+      "sharh": "The edition identifies the Saturday as 15 March 1924, the opening of the Egyptian Parliament. A weekday has become a name for a moment in the country’s history."
+    },
+    "50": {
+      "translation": [
+        "Tomorrow Parliament will extend its portico,",
+        "a sheltering shade over the fortunate valley."
+      ],
+      "sharh": "A portico offers cover to people who stand beneath it. That is the promise the new institution holds out to a whole valley."
+    },
+    "51": {
+      "translation": [
+        "When education voices its sorrow, we hope",
+        "Parliament will not be miserly towards the country."
+      ],
+      "sharh": "Education appears before the assembly with a grievance of its own. Sympathy for it will have to show up in what Parliament is prepared to spend."
+    },
+    "52": {
+      "translation": [
+        "Tell the young today, “Blessings on what you planted.”",
+        "The clusters hang close, lowered within reach."
+      ],
+      "sharh": "The young are addressed as planters near harvest. The fruit lowered within reach echoes Qur’anic imagery, giving political achievement the sensation of something ready to gather."
+    },
+    "53": {
+      "translation": [
+        "Salute every martyr who is absent.",
+        "Lay a wreath on his gravestones,"
+      ],
+      "sharh": "The assembly’s absent members are those who died before this moment. A wreath carries the public salute to a place beyond the hall."
+    },
+    "54": {
+      "translation": [
+        "so that the living have an ample share of your gratitude",
+        "and the dead a generous share of it."
+      ],
+      "sharh": "Two different words for abundance balance the two halves. Remembering the dead takes nothing from the service of the living."
+    },
+    "55": {
+      "translation": [
+        "The constitution cannot feel its spirit in you",
+        "until it sees its unknown soldier."
+      ],
+      "sharh": "The edition explains the unknown soldier as someone who works quietly and expects no reward. Such a person gives the written constitution a life it could never give itself."
+    },
+    "56": {
+      "translation": [
+        "I appeal to you by that pure blood:",
+        "send no ignorant man to Parliament."
+      ],
+      "sharh": "The appeal makes the martyrs’ blood a claim on voters. The way to honour it at an election is to consider whom they send."
+    },
+    "57": {
+      "translation": [
+        "Someone will surely ask about those seats:",
+        "did they bear merit or merely bear excess?"
+      ],
+      "sharh": "The seats are made to answer for their occupants. The Arabic for merit, fadl, grows by a sound into fudul, surplus or unwarranted meddling."
+    },
+    "58": {
+      "translation": [
+        "If you send up an imperfect representative,",
+        "you will find no representation when fullness is required."
+      ],
+      "sharh": "Representative and representation share a root. A poor choice of person leaves a gap in the function that the institution is supposed to perform."
+    },
+    "59": {
+      "translation": [
+        "Call trustworthy people to it, and give",
+        "precedence among them to those with insight."
+      ],
+      "sharh": "Trust sets the threshold and discernment distinguishes the candidates who pass it. Both qualities have already been required of a teacher."
+    },
+    "60": {
+      "translation": [
+        "Someone who falls short may change, but you will find",
+        "no one to transform the ignorance of a dull disposition."
+      ],
+      "sharh": "In the speaker’s judgement, a lapse can be made good more readily than a deep habit of mind. Forms of the same verb ask who is capable of changing what."
+    },
+    "61": {
+      "translation": [
+        "Many a judgement about men you have heard",
+        "then let pass as though it had never been said."
+      ],
+      "sharh": "A judgement may be widely heard and leave no trace in the choice people make. The second half almost erases the speech the first has reported."
+    },
+    "62": {
+      "translation": [
+        "How often generosity and affection made you support",
+        "someone who, in your own eyes, deserved no support."
+      ],
+      "sharh": "Voters have sometimes backed men they themselves judged unworthy. Loyalty and largeness of heart can pull against an honest political judgement."
+    },
+    "63": {
+      "translation": [
+        "Generosity and forgiveness belong to youth.",
+        "The young have long been noble in disposition and inclination."
+      ],
+      "sharh": "He grants the attractive motive behind the mistake. Young people need discrimination at the polls without losing the generosity he values in them."
+    },
+    "64": {
+      "translation": [
+        "Rise, bring the divided ranks of the fathers together, and raise",
+        "the voice of youth, welcome and heard."
+      ],
+      "sharh": "The command to rise returns from the opening line. A respectful gesture towards one teacher has grown into a call to reconcile a divided older generation."
+    },
+    "65": {
+      "translation": [
+        "How distant the goals are, yet I",
+        "find in your constancy a guarantor of reaching them."
+      ],
+      "sharh": "Distance remains real. Constancy acts like a guarantor who can answer for the young people’s arrival at their goal."
+    },
+    "66": {
+      "translation": [
+        "Entrust success to God and persevere.",
+        "God is best as guarantor and guardian."
+      ],
+      "sharh": "Two imperatives close the address, one handing the outcome to God and the other requiring continued effort. The language of guarantee passes from human persistence into a prayer."
+    }
+  },
+  "words": {
+    "1.1.3": {
+      "word": "وَفِّهِ",
+      "head": "وَفِّ",
+      "root": "و ف ي",
+      "meaning": "Pay him in full, here by giving him all the respect due to him."
+    },
+    "1.1.4": {
+      "word": "التَّبجيلا",
+      "head": "التَّبجيل",
+      "root": "ب ج ل",
+      "meaning": "Deep respect shown by word or gesture."
+    },
+    "3.2.2": {
+      "word": "بِالقَلَمِ",
+      "head": "القَلَم",
+      "root": "ق ل م",
+      "meaning": "The pen recalls Qur’an 96:4, where God teaches by the pen."
+    },
+    "3.2.3-4": {
+      "word": "القُرونَ الأولى",
+      "head": "القُرونُ الأولى",
+      "meaning": "“The earliest generations”: people who lived together in an earlier age."
+    },
+    "5.1.1": {
+      "word": "وَطَبَعتَهُ",
+      "head": "طَبَعَ",
+      "root": "ط ب ع",
+      "meaning": "Forged or fashioned a blade. The metal being shaped is the mind."
+    },
+    "5.2.1": {
+      "word": "صَدِئَ",
+      "head": "صَدِئ",
+      "root": "ص د أ",
+      "meaning": "Rusty or tarnished, paired with polished metal."
+    },
+    "6.1.2": {
+      "word": "بِالتَّوراةِ",
+      "head": "التَّوراة",
+      "meaning": "Torah, the scripture given to Moses."
+    },
+    "6.2.1-2": {
+      "word": "وَابنَ البَتولِ",
+      "head": "اِبنُ البَتول",
+      "meaning": "Ibn al-Batul, the Virgin’s son, Jesus."
+    },
+    "7.2.2": {
+      "word": "الحَديثَ",
+      "head": "الحَديث",
+      "root": "ح د ث",
+      "meaning": "Hadith, the transmitted reports of the Prophet’s words and actions."
+    },
+    "7.2.4": {
+      "word": "التَّنزيلا",
+      "head": "التَّنزيل",
+      "root": "ن ز ل",
+      "meaning": "Revelation, specifically the Qur’an."
+    },
+    "8.2.6": {
+      "word": "أُفولا",
+      "head": "أُفول",
+      "root": "أ ف ل",
+      "meaning": "The setting or disappearance of a heavenly body."
+    },
+    "9.2.4": {
+      "word": "تَطفيلا",
+      "head": "تَطفيل",
+      "root": "ط ف ل",
+      "meaning": "Coming to someone else’s table uninvited, applied to dependent learning."
+    },
+    "10.2.5": {
+      "word": "أُديلا",
+      "head": "أُديلَ",
+      "root": "د و ل",
+      "meaning": "Was given the ascendancy, won its turn in power."
+    },
+    "11.2.5": {
+      "word": "حيلا",
+      "head": "حيلَ",
+      "root": "ح و ل",
+      "meaning": "A barrier was put between them."
+    },
+    "12.2.4": {
+      "word": "وَبيلا",
+      "head": "وَبيل",
+      "root": "و ب ل",
+      "meaning": "Grievous or hard to bear."
+    },
+    "13.2.2": {
+      "word": "مَخزوماً",
+      "head": "مَخزوم",
+      "root": "خ ز م",
+      "meaning": "Haltered by the nose, hence subjected to another’s will."
+    },
+    "13.2.4": {
+      "word": "مَغلولا",
+      "head": "مَغلول",
+      "root": "غ ل ل",
+      "meaning": "Shackled or held in irons."
+    },
+    "15.1.1": {
+      "word": "سُقراطُ",
+      "head": "سُقراط",
+      "meaning": "Socrates, the Athenian philosopher who drank poison after his death sentence in 399 BCE."
+    },
+    "15.1.5": {
+      "word": "مَنِيَّةٌ",
+      "head": "مَنِيَّة",
+      "root": "م ن ي",
+      "meaning": "Death or the destined end of life."
+    },
+    "16.2.5": {
+      "word": "نَبيلا",
+      "head": "نَبيل",
+      "root": "ن ب ل",
+      "meaning": "Intelligent or discerning in the edition’s gloss, answering “stupidity”."
+    },
+    "18.1.5": {
+      "word": "عَلقَماً",
+      "head": "عَلقَم",
+      "root": "ع ل ق م",
+      "meaning": "Colocynth, a plant proverbial for the bitterness of its fruit."
+    },
+    "19.2.1-2": {
+      "word": "قُتِلَ الغَرامُ",
+      "head": "قُتِلَ الغَرام",
+      "meaning": "“May passion be slain”: a curse turning passion’s own deed against it."
+    },
+    "20.2.2": {
+      "word": "السَّوادِ",
+      "head": "السَّواد",
+      "root": "س و د",
+      "meaning": "The mass of the people, the general public."
+    },
+    "20.2.4": {
+      "word": "وَذُحولا",
+      "head": "ذَحل",
+      "root": "ذ ح ل",
+      "meaning": "Blood-feuds or grievances kept alive in expectation of revenge."
+    },
+    "21.1.5": {
+      "word": "وَخَطبَهُ",
+      "head": "الخَطب",
+      "root": "خ ط ب",
+      "meaning": "A grave affair, here the Crucifixion in Christian belief."
+    },
+    "22.1.2": {
+      "word": "الوادي",
+      "meaning": "The Nile Valley, here standing for Egypt."
+    },
+    "22.1.3": {
+      "word": "وَساسَةَ",
+      "head": "ساسَة",
+      "root": "س و س",
+      "meaning": "Guides or governors, here those directing the upbringing of the young."
+    },
+    "23.2.3": {
+      "word": "فادِحاً",
+      "head": "فادِح",
+      "root": "ف د ح",
+      "meaning": "Burdensome enough to weigh down its bearer."
+    },
+    "24.2.2": {
+      "word": "بِدَنلوبٍ",
+      "head": "دَنلوب",
+      "meaning": "Douglas Dunlop, the British adviser associated with educational policy in Egypt."
+    },
+    "24.2.4": {
+      "word": "الفيلا",
+      "head": "الفيل",
+      "root": "ف ي ل",
+      "meaning": "Elephantiasis, severe swelling of a limb, the meaning specified in the edition."
+    },
+    "26.1.2": {
+      "word": "الكُفورُ",
+      "head": "كَفر",
+      "root": "ك ف ر",
+      "meaning": "Villages or hamlets, a local Egyptian use of kafr."
+    },
+    "26.2.3": {
+      "word": "خوفو",
+      "meaning": "Khufu, the Egyptian king for whom the Great Pyramid at Giza was built."
+    },
+    "27.1.4": {
+      "word": "المِسَلَّةَ",
+      "head": "المِسَلَّة",
+      "root": "س ل ل",
+      "meaning": "Obelisk, a tall stone monument with a tapering point."
+    },
+    "28.2.1": {
+      "word": "كَالبُهمِ",
+      "head": "البُهم",
+      "root": "ب ه م",
+      "meaning": "Young sheep or goats."
+    },
+    "29.2.2": {
+      "word": "أَلَدُّهُم",
+      "head": "أَلَدّ",
+      "root": "ل د د",
+      "meaning": "The most contentious, the fiercest in verbal dispute."
+    },
+    "29.2.3": {
+      "word": "تَرتيلا",
+      "head": "تَرتيل",
+      "root": "ر ت ل",
+      "meaning": "Measured, deliberate recitation, giving flattery the sound of solemn reading."
+    },
+    "30.2.5": {
+      "word": "عِزريلا",
+      "head": "عِزريل",
+      "meaning": "Azrael, the angel of death. The name is shortened in the verse."
+    },
+    "31.1.4": {
+      "word": "وَقَرائِحٌ",
+      "head": "قَريحَة",
+      "root": "ق ر ح",
+      "meaning": "Native gifts of imagination or expression."
+    },
+    "31.2.3": {
+      "word": "فِطَنِ",
+      "head": "فِطنَة",
+      "root": "ف ط ن",
+      "meaning": "Quicknesses of understanding, the young people’s lively minds."
+    },
+    "31.2.5": {
+      "word": "شَمولا",
+      "head": "شَمول",
+      "root": "ش م ل",
+      "meaning": "Wine circulated among companions, here the influence of gifted teachers."
+    },
+    "33.1.3": {
+      "word": "جَدبِهِم",
+      "head": "جَدب",
+      "root": "ج د ب",
+      "meaning": "Drought or barrenness, here the parts of the pupils’ lives left without nourishment."
+    },
+    "35.2.4": {
+      "word": "فَتيلا",
+      "head": "فَتيل",
+      "root": "ف ت ل",
+      "meaning": "The thin fibre in the groove of a date stone, a proverbial trifle."
+    },
+    "36.1.5": {
+      "word": "الحِمى",
+      "root": "ح م ي",
+      "meaning": "Protected land, here the home country."
+    },
+    "36.2.2-3": {
+      "word": "كَهفَ الحُقوقِ",
+      "head": "كَهفُ الحُقوق",
+      "meaning": "“A cave for rights”: people in whose protection rights are safe."
+    },
+    "37.2.5": {
+      "word": "عُدولا",
+      "head": "عَدل",
+      "root": "ع د ل",
+      "meaning": "Upright persons worthy of trust, including reliable witnesses."
+    },
+    "40.2.5": {
+      "word": "حولا",
+      "head": "أَحوَل",
+      "root": "ح و ل",
+      "meaning": "Cross-eyed. An ordinary fault of physical vision is transferred to judgement."
+    },
+    "42.2.3": {
+      "word": "مَأتَماً",
+      "head": "مَأتَم",
+      "root": "أ ت م",
+      "meaning": "A gathering of mourners or funeral assembly."
+    },
+    "46.1.4-5": {
+      "word": "اِنتَهى أَبَواهُ",
+      "head": "اِنتَهى",
+      "root": "ن ه ي",
+      "meaning": "“His parents have finished”: their cares come to an end with death."
+    },
+    "49.2.3-4": {
+      "word": "لِلسَّبتِ العَظيمِ",
+      "head": "السَّبتُ العَظيم",
+      "meaning": "“The great Saturday”: 15 March 1924, the opening of the Egyptian Parliament."
+    },
+    "50.1.4": {
+      "word": "رُواقَهُ",
+      "head": "رِواق",
+      "root": "ر و ق",
+      "meaning": "A portico, an open-sided covered space affording shelter."
+    },
+    "51.1.5": {
+      "word": "شَجوَهُ",
+      "head": "شَجو",
+      "root": "ش ج و",
+      "meaning": "Sorrow finding a voice, here the grievances of education."
+    },
+    "52.2.2": {
+      "word": "القُطوفُ",
+      "head": "قِطف",
+      "root": "ق ط ف",
+      "meaning": "Fruit clusters ready to gather. Their being lowered echoes Qur’an 76:14."
+    },
+    "53.2.4": {
+      "word": "إِكليلا",
+      "head": "إِكليل",
+      "root": "ك ل ل",
+      "meaning": "A wreath placed on a grave."
+    },
+    "55.2.3-4": {
+      "word": "جُندِيَّهُ المَجهولا",
+      "head": "الجُندِيُّ المَجهول",
+      "meaning": "“Its unknown soldier”: the edition’s image for a person who works quietly without expecting reward."
+    },
+    "57.1.3": {
+      "word": "الأَرائِكِ",
+      "head": "أَريكَة",
+      "root": "أ ر ك",
+      "meaning": "Fine seats or couches, here the seats in Parliament."
+    },
+    "57.2.5": {
+      "word": "فُضولا",
+      "head": "فُضول",
+      "root": "ف ض ل",
+      "meaning": "Surplus or superfluity, playing on the closely related word for merit."
+    },
+    "60.1.4": {
+      "word": "يَحولُ",
+      "head": "حالَ",
+      "root": "ح و ل",
+      "meaning": "To change from one state to another."
+    },
+    "62.2.5": {
+      "word": "المَخذولا",
+      "head": "مَخذول",
+      "root": "خ ذ ل",
+      "meaning": "Left unsupported, here a candidate the voters themselves considered unworthy of support."
+    },
+    "64.1.3-4": {
+      "word": "شَعبَ الأُبُوَّةِ",
+      "head": "شَعبُ الأُبُوَّة",
+      "meaning": "“The fathers’ division”: the older generation’s scattered ranks that the young are urged to reunite."
+    },
+    "66.1.1": {
+      "word": "فَكِلوا",
+      "head": "كِلوا",
+      "root": "و ك ل",
+      "meaning": "Entrust the outcome to God, while persevering in the work."
+    }
+  }
+}
