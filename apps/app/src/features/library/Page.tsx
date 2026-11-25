@@ -35,6 +35,7 @@ export function ListPage<T>({
   maxWidth = 760,
   columns = 1,
   estimatedItemSize = 80,
+  headerGap = space.l,
 }: {
   /** The page's name. */
   title?: string;
@@ -55,6 +56,8 @@ export function ListPage<T>({
   /** Columns on wide windows. */
   columns?: number;
   estimatedItemSize?: number;
+  /** Gap after the header. A trailing 44px control row already supplies its own breathing room. */
+  headerGap?: number;
 }) {
   const { palette, start } = useSettings();
   const type = useType();
@@ -89,7 +92,7 @@ export function ListPage<T>({
     );
   const rowKey = (row: T[]) => row.map(keyOf).join("|");
   const top = (
-    <View style={[column, styles.head, layout.style(headTop)]}>
+    <View testID="list-header" style={[column, styles.head, layout.style(headTop), { paddingBottom: headerGap }]}>
       {title && (
         <Only on="wide">
           <View style={styles.titleRow}>
@@ -111,7 +114,7 @@ export function ListPage<T>({
   const foot = (
     <>
       {footer && <View style={column}>{footer}</View>}
-      <View style={styles.foot} />
+      <View testID="list-footer" style={styles.foot} />
     </>
   );
   // Clear, so the girih band at the top of the page shows through.
@@ -214,7 +217,7 @@ export function DetailFacts({ arabic, children }: { arabic?: string | null | und
 }
 
 /** A heading inside a page: the nuqta, a name, and a count. */
-export function SectionHead({ title, count }: { title: string; count?: string }) {
+export function SectionHead({ title, count, action }: { title: string; count?: string; action?: ReactNode }) {
   const { palette } = useSettings();
   const type = useType();
   return (
@@ -222,6 +225,7 @@ export function SectionHead({ title, count }: { title: string; count?: string })
       <Nuqta size={8} />
       <Text style={[type.heading, { color: palette.fg }]}>{title}</Text>
       {count && <Text style={[type.label, { color: palette.muted }]}>{count}</Text>}
+      {action}
     </View>
   );
 }
@@ -242,7 +246,7 @@ const styles = StyleSheet.create({
   pageColumn: { flex: 1, minWidth: 0, minHeight: 0 },
   // Auto margins centre it in the list, whose header sits in a block rather than a flex box.
   column: { width: "100%", marginHorizontal: "auto", paddingHorizontal: space.xl },
-  head: { gap: space.l, paddingBottom: space.l },
+  head: { gap: space.l },
   titleRow: { flexDirection: "row", alignItems: "center", gap: space.s },
   title: { flex: 1 },
   // Spaced on its box: a text's own padding would undo its ink trim.

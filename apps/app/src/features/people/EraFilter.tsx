@@ -74,15 +74,6 @@ export function EraFilter({
           />
         ))}
       </DirectoryGrid>
-      {selected && (
-        <View style={styles.selection}>
-          <Text style={[type.controlStrong, styles.grow, { color: palette.fg, textAlign: start }]}>{ERAS[selected][lang]}</Text>
-          <Pressable accessibilityRole="button" onPress={() => onChange(null)} style={styles.action}>
-            <Text style={[type.labelStrong, { color: palette.muted }]}>{t(lang, "clearEra")}</Text>
-            <Icon name="close" size={13} color={palette.muted} />
-          </Pressable>
-        </View>
-      )}
     </View>
   );
 }
@@ -91,6 +82,5 @@ const styles = StyleSheet.create({
   grow: { flex: 1, minWidth: 0 },
   group: { gap: space.s },
   heading: { flexDirection: "row", alignItems: "center", gap: space.m },
-  selection: { flexDirection: "row", alignItems: "center", gap: space.m },
   action: { minHeight: 44, flexDirection: "row", alignItems: "center", gap: space.s },
 });

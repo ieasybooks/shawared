@@ -121,7 +121,8 @@ test("search finds a poem by title, opening bayt, poet or reciter, with or witho
   await page.goto("/");
   await page.waitForLoadState("networkidle");
   const search = page.getByRole("textbox", { name: "ابحث بعنوان أو مطلع قصيدة أو شاعر أو مُلقٍ" });
-  const nothing = page.getByText("لا نتائج تطابق بحثك");
+  // The live announcement repeats this for screen readers without adding a visible row.
+  const nothing = page.getByText("لا نتائج تطابق بحثك").and(page.locator(":not([aria-live])"));
   await search.fill("الواعظ");
   await expect
     .poll(async () => {

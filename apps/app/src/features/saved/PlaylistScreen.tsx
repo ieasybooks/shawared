@@ -16,6 +16,7 @@ import { useHydrated } from "../../lib/viewport";
 import { ListPage, PageFrame } from "../library/Page";
 import { CoverTile } from "../../components/ui/Girih";
 import { PoemRow } from "../library/PoemCard";
+import { listEdges } from "../library/ListEdges";
 import { move, playlistName, removePlaylist, removePoem, rename } from "./actions";
 import { PlayAll } from "./LibraryScreen";
 import { NAME_MAX, type Saved } from "./model";
@@ -99,7 +100,7 @@ export function PlaylistScreen() {
           r.editing ? (
             <EditRow poem={r.poem} catalog={catalog.data!} index={r.index} count={ids.length} playlistId={playlist.id} />
           ) : (
-            <PoemRow poem={r.poem} catalog={catalog.data!} show="poet" list={ids} />
+            <PoemRow poem={r.poem} catalog={catalog.data!} show="poet" list={ids} first={r.index === 0} last={r.index === ids.length - 1} />
           )
         }
         estimatedItemSize={86}
@@ -147,7 +148,7 @@ function EditRow({
   const type = useType();
   const poet = catalog.poets[poem.poet];
   return (
-    <View style={[styles.edit, { borderTopColor: palette.line }]}>
+    <View style={[styles.edit, { borderTopColor: palette.line }, index === 0 && listEdges.first, index === count - 1 && listEdges.last]}>
       <View style={styles.flex}>
         <Text numberOfLines={1} style={[type.listTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>
           {poem.title}
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
   header: { gap: space.xl },
   top: { flexDirection: "row", alignItems: "center", gap: space.xl },
   actions: { flexDirection: "row", flexWrap: "wrap", gap: space.s, alignItems: "center" },
-  edit: { flexDirection: "row", alignItems: "center", gap: space.xs, borderTopWidth: 1, paddingVertical: 10 },
+  edit: { flexDirection: "row", alignItems: "center", gap: space.xs, borderTopWidth: 1, paddingVertical: space.l, minHeight: 44 },
   flex: { flex: 1, minWidth: 0, gap: space.s },
   rtl: { writingDirection: "rtl" },
 });

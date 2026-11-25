@@ -1,4 +1,4 @@
-import type { Catalog, CatalogPerson, Era, PersonBundle, PersonKind } from "@shawared/contracts";
+import { ERAS, type Catalog, type CatalogPerson, type Era, type PersonBundle, type PersonKind } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { Link } from "expo-router";
 import { useMemo, useState } from "react";
@@ -10,6 +10,7 @@ import { useCatalog, usePerson } from "../../lib/content";
 import { usePrefetch } from "../../lib/prefetch";
 import { recordingsByReciter } from "../../lib/counts";
 import { SortBar } from "../library/DirectoryControls";
+import { listEdges, type ListEdges } from "../library/ListEdges";
 import { EraFilter, eraOf, groupPoetsByEra } from "./EraFilter";
 import { directoryCount, poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
@@ -66,12 +67,14 @@ export function PeopleScreen({
   return (
     <ListPage
       title={title}
+      headerGap={0}
       header={
         <>
           {kind === "poets" && <EraFilter groups={groups} selected={activeEra} onChange={setEra} />}
           <SearchField value={query} onChange={setQuery} placeholder={t(lang, kind === "poets" ? "searchPoets" : "searchReciters")} />
           <SortBar
             count={directoryCount(kind, people.length, lang)}
+            filter={activeEra ? { label: ERAS[activeEra][lang], onClear: () => setEra(null) } : undefined}
             label={t(lang, kind === "poets" ? "sortPoets" : "sortReciters")}
             options={kind === "poets" ? ["alphabetical", "byPoemCount"] : ["alphabetical", "byRecordingCount"]}
             value={order}
@@ -86,6 +89,7 @@ export function PeopleScreen({
           kind={kind}
           person={person}
           first={i === 0}
+          last={i === people.length - 1}
           recordings={kind === "reciters" ? (recordings?.[person.id] ?? 0) : undefined}
         />
       )}
@@ -100,13 +104,13 @@ export function PersonRow({
   kind,
   person,
   first,
+  last,
   recordings,
 }: {
   kind: PersonKind;
   person: CatalogPerson;
-  first?: boolean;
   recordings?: number | undefined;
-}) {
+} & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const count = recordings === undefined ? poemsCount(person.poems, lang) : directoryCount("recordings", recordings, lang);
@@ -118,7 +122,7 @@ export function PersonRow({
       <Pressable
         accessibilityRole="link"
         {...prefetch}
-        style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && styles.first])}
+        style={StyleSheet.flatten([styles.row, { borderTopColor: palette.line }, first && listEdges.first, last && listEdges.last])}
       >
         <Text style={[lang === "ar" ? type.nameAr : type.heading, styles.name, { color: palette.fg, textAlign: start }]}>
           {nameOf(person, lang)}
@@ -194,15 +198,23 @@ export function PersonScreen({
       header={header}
       data={poems}
       keyOf={(x) => x.id}
-      renderItem={(x) => <PoemRow poem={x} catalog={catalog.data!} show={kind === "poets" ? "reciter" : "poet"} list={list} />}
+      renderItem={(x, i) => (
+        <PoemRow
+          poem={x}
+          catalog={catalog.data!}
+          show={kind === "poets" ? "reciter" : "poet"}
+          list={list}
+          first={i === 0}
+          last={i === poems.length - 1}
+        />
+      )}
       estimatedItemSize={86}
     />
   );
 }
 
 const styles = StyleSheet.create({
-  row: { borderTopWidth: 1, paddingVertical: 16, gap: space.s },
-  first: { borderTopWidth: 0 },
+  row: { borderTopWidth: 1, paddingVertical: space.xl, gap: space.s, minHeight: 44, justifyContent: "center" },
   name: { writingDirection: "auto" },
   links: { flexDirection: "row", flexWrap: "wrap", gap: space.s },
   who: { flexDirection: "row", alignItems: "center", gap: space.xl },

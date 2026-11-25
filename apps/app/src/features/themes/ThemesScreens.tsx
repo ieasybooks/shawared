@@ -51,6 +51,7 @@ export function ThemesScreen({ initial }: { initial?: Preview | undefined }) {
   return (
     <ListPage
       title={title}
+      headerGap={0}
       header={header}
       data={groups.length ? [groups] : []}
       keyOf={() => "grid"}
@@ -100,7 +101,9 @@ export function ThemeScreen({ id, initial }: { id: string; initial?: Preview | u
       header={header}
       data={poems}
       keyOf={(p) => p.id}
-      renderItem={(p) => <PoemRow poem={p} catalog={data} show="poet" list={list} disclosure />}
+      renderItem={(p, i) => (
+        <PoemRow poem={p} catalog={data} show="poet" list={list} disclosure first={i === 0} last={i === poems.length - 1} />
+      )}
       estimatedItemSize={86}
     />
   );
