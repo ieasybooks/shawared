@@ -162,9 +162,12 @@ test("the poem badges fit closely between the title and the first verse and keep
           .map((d) => d.getBoundingClientRect().toJSON()),
       );
     const preview = await page.getByRole("button", { name: "افتح الشرح", exact: true }).locator(":scope > :last-child").boundingBox();
-    const playerEdge = await page.getByRole("button", { name: "تشغيل القصيدة التالية تلقائيًا", exact: true }).boundingBox();
+    const continuous = await page.getByRole("button", { name: "تشغيل القصيدة التالية تلقائيًا", exact: true }).boundingBox();
+    const repeat = await page.getByRole("button", { name: "التكرار: متوقف", exact: true }).boundingBox();
     expect(halves[1]!.x).toBeCloseTo(preview!.x, 0);
-    expect(preview!.x).toBeCloseTo(playerEdge!.x, 0);
+    expect(continuous!.x + continuous!.width / 2).toBeCloseTo(appearance!.x + appearance!.width / 2, 0);
+    expect(repeat!.x + repeat!.width / 2).toBeCloseTo(language!.x + language!.width / 2, 0);
+    expect(continuous!.width).toBeGreaterThanOrEqual(34);
   }
 });
 

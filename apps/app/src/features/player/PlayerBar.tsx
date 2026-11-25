@@ -382,7 +382,9 @@ export function PhoneBar({ source }: { source: BarSource }) {
         </View>
         <View style={styles.flex} />
         <RepeatButton size={34} iconSize={19} />
-        <ContinuousButton size={34} iconSize={21} />
+        <View style={styles.phoneContinuous}>
+          <ContinuousButton size={34} iconSize={21} />
+        </View>
       </View>
       <ProgressRow source={source} />
       <View style={styles.transport}>
@@ -450,6 +452,9 @@ const styles = StyleSheet.create({
   controlsRow: { flexDirection: "row", alignItems: "center", gap: space.xl },
   group: { flexDirection: "row", alignItems: "center", gap: space.xxs },
   phone: { paddingTop: space.m, paddingBottom: space.s, paddingHorizontal: space.xl, gap: space.s, borderTopWidth: 1 },
-  phoneTop: { flexDirection: "row", alignItems: "center", gap: space.s, minHeight: 34 },
+  // Extend the row so autoplay's whole tap area stays inside its parent on native.
+  phoneTop: { flexDirection: "row", alignItems: "center", gap: space.s, minHeight: 34, marginEnd: -space.s },
+  // Centre autoplay under Appearance while keeping Repeat's column in place.
+  phoneContinuous: { marginStart: space.s },
   transport: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: space.xs },
 });
