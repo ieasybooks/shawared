@@ -122,6 +122,20 @@ test("search finds a poem by title, opening bayt, poet or reciter, with or witho
   await page.waitForLoadState("networkidle");
   const search = page.getByRole("textbox", { name: "ابحث بعنوان أو مطلع قصيدة أو شاعر أو مُلقٍ" });
   const nothing = page.getByText("لا نتائج تطابق بحثك");
+  await search.fill("الواعظ");
+  await expect
+    .poll(async () => {
+      const [field, listen, actions] = await Promise.all([
+        search.locator("..").boundingBox(),
+        page
+          .getByRole("button", { name: /^استمع:/ })
+          .first()
+          .boundingBox(),
+        page.locator('a[href^="/poems/"]').first().locator(":scope > div").first().boundingBox(),
+      ]);
+      return field && listen && actions ? [listen.y - field.y - field.height, actions.y - listen.y] : [];
+    })
+    .toEqual([12, 0]);
   for (const q of ["بثينه لما رات", "فنونا من الشعر", "جميل", "Jamil", "الواعظ", "Al-Waaedh"]) {
     await search.fill(q);
     await expect(nothing, q).toHaveCount(0);

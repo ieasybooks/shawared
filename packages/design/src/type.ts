@@ -47,9 +47,9 @@ export type TextBox = {
  * A text style whose outer box is the text's ink. `spacing` is the distance between
  * wrapped lines as a multiple of the size; it is raised if lines would collide.
  */
-export function textBox(face: Face, size: number, script: Script, spacing = 0): TextBox {
+export function textBox(face: Face, size: number, script: Script, spacing = 0, inkBounds?: Ink): TextBox {
   const m = METRICS[FAMILY[face]];
-  const ink = m.ink[script] ?? m.ink.ar ?? m.ink.latin!;
+  const ink = inkBounds ?? m.ink[script] ?? m.ink.ar ?? m.ink.latin!;
   const lineHeight = Math.max(Math.round(size * spacing), Math.ceil(size * (ink.top + ink.bottom)));
   // Browsers and iOS centre the declared ascent + descent inside the line box.
   const baseline = (lineHeight - size * (m.ascent + m.descent)) / 2 + size * m.ascent;

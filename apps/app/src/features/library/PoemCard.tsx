@@ -103,7 +103,17 @@ function ListenButton({ poem, catalog, list }: { poem: CatalogPoem; catalog: Cat
  * A poem on the home page, like an episode: listen or read it, then its title, poet and reciter,
  * its meter and length, and its opening bayt. Tap anywhere to open it; "Listen" plays it here.
  */
-export function PoemEntry({ poem, catalog, list }: { poem: CatalogPoem; catalog: Catalog; list?: readonly string[] }) {
+export function PoemEntry({
+  poem,
+  catalog,
+  list,
+  firstSearchResult,
+}: {
+  poem: CatalogPoem;
+  catalog: Catalog;
+  list?: readonly string[];
+  firstSearchResult: boolean;
+}) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
   const layout = useLayout();
@@ -111,10 +121,12 @@ export function PoemEntry({ poem, catalog, list }: { poem: CatalogPoem; catalog:
   const reciter = rec ? catalog.reciters[rec.reciter] : undefined;
   const to = href(paths.poem(poem.id));
   const open = useOpenPoem(to, poem.id, list);
+  // The header supplies the gap after search. Keep the listen button aligned with its place in the link.
+  const top = firstSearchResult ? 0 : 22;
   return (
-    <View style={[styles.entry, { borderTopColor: palette.line }]}>
+    <View style={[styles.entry, { borderTopWidth: firstSearchResult ? 0 : 1, borderTopColor: palette.line }]}>
       <Link href={to} asChild>
-        <Pressable accessibilityRole="link" {...open} style={StyleSheet.flatten([styles.entryLink])}>
+        <Pressable accessibilityRole="link" {...open} style={StyleSheet.flatten([styles.entryLink, { paddingTop: top }])}>
           <View style={styles.actions}>
             {rec?.audio ? (
               <>
@@ -164,7 +176,7 @@ export function PoemEntry({ poem, catalog, list }: { poem: CatalogPoem; catalog:
         </Pressable>
       </Link>
       {rec?.audio && (
-        <View style={styles.listenAt}>
+        <View style={[styles.listenAt, { top }]}>
           <ListenButton poem={poem} catalog={catalog} {...(list ? { list } : {})} />
         </View>
       )}
@@ -203,7 +215,9 @@ export function PoemRow({
         <View style={styles.rowBody}>
           <View style={styles.rowText}>
             <Text style={[type.listTitle, styles.rtl, { color: palette.fg, textAlign: start }]}>{poem.title}</Text>
-            <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{[who, facts(poem, lang)].filter(Boolean).join(" · ")}</Text>
+            <Text style={[type.label, { color: palette.muted, textAlign: start }]}>
+              {[who, facts(poem, lang)].filter(Boolean).join(" · ")}
+            </Text>
           </View>
           {disclosure && <Icon name="chevron" size={15} color={palette.muted} />}
         </View>
@@ -221,10 +235,10 @@ const sized = {
 };
 
 const styles = StyleSheet.create({
-  entry: { position: "relative", borderTopWidth: 1 },
-  entryLink: { paddingTop: 22, paddingBottom: 26, gap: space.l },
+  entry: { position: "relative" },
+  entryLink: { paddingBottom: 26, gap: space.l },
   actions: { flexDirection: "row", alignItems: "center", gap: space.m, minHeight: 28 },
-  listenAt: { position: "absolute", top: 22, start: 0 },
+  listenAt: { position: "absolute", start: 0 },
   listen: {
     flexDirection: "row",
     alignItems: "center",

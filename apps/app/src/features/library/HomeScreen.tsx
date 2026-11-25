@@ -5,7 +5,7 @@ import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
 import { t } from "../../lib/i18n";
 import { Only } from "../../lib/responsive";
-import { indexCatalog, search } from "../../lib/search";
+import { fold, indexCatalog, search } from "../../lib/search";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { ListPage, PageFrame, SectionHead } from "./Page";
@@ -18,6 +18,7 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
   const { palette, lang, start } = useSettings();
   const type = useType();
   const [query, setQuery] = useState("");
+  const searching = fold(query).length > 0;
   const index = useMemo(() => (data ? indexCatalog(data) : []), [data]);
   const poems = useMemo(() => search(index, query), [index, query]);
   const ids = useMemo(() => poems.map((p) => p.id), [poems]);
@@ -38,7 +39,7 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
       <View style={styles.search}>
         <SearchField value={query} onChange={setQuery} />
       </View>
-      {!query && <SectionHead title={t(lang, "latest")} />}
+      {!searching && <SectionHead title={t(lang, "latest")} />}
     </>
   );
   return (
@@ -47,7 +48,7 @@ export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undef
       header={header}
       data={poems}
       keyOf={(p) => p.id}
-      renderItem={(p) => <PoemEntry poem={p} catalog={data} list={ids} />}
+      renderItem={(p, index) => <PoemEntry poem={p} catalog={data} list={ids} firstSearchResult={searching && index === 0} />}
       maxWidth={760}
       estimatedItemSize={250}
       empty={t(lang, "noResults")}
