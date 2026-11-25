@@ -212,8 +212,8 @@ export function Verses() {
 }
 
 const listPadding = responsive(
-  { paddingTop: space.l, paddingBottom: space.xl, paddingStart: 12, paddingEnd: 12 },
-  { paddingTop: space.xl, paddingBottom: space.xxl, paddingStart: 30, paddingEnd: 30 },
+  { paddingBottom: space.xl, paddingStart: space.m, paddingEnd: space.m },
+  { paddingBottom: space.xxl, paddingStart: 30, paddingEnd: 30 },
 );
 
 const styles = StyleSheet.create({

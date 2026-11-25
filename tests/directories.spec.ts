@@ -45,14 +45,18 @@ test("era, name search and sort work together and survive a visit to the poet", 
   const eras = page.locator('button[aria-pressed], [role="button"][aria-pressed]').filter({ hasText: /poets?/i });
   const isPhone = info.project.name === "phone";
   const visible = eras.filter({ visible: true });
+  const blanks = visible.first().locator("..").locator(':scope > [aria-hidden="true"]').filter({ visible: true });
   if (isPhone) {
     await expect(visible).toHaveCount(4);
+    await expect(blanks).toHaveCount(0);
     await page.getByRole("button", { name: "Show all eras" }).click();
   } else {
     await expect(page.getByRole("button", { name: "Show all eras" })).toHaveCount(0);
   }
   const tops = await visible.evaluateAll((cards) => cards.map((el) => el.getBoundingClientRect().top));
-  expect(tops.filter((top) => top === tops[0])).toHaveLength(isPhone ? 2 : 3);
+  const columns = isPhone ? 2 : 3;
+  expect(tops.filter((top) => top === tops[0])).toHaveLength(columns);
+  await expect(blanks).toHaveCount((columns - (tops.length % columns)) % columns);
   const abbasid = page.getByRole("button", { name: /^Abbasid/ });
   await abbasid.click();
   await page.getByRole("button", { name: "Alphabetical", exact: true }).click();

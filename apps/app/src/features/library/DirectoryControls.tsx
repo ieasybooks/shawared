@@ -1,6 +1,6 @@
 import { space } from "@shawared/design";
 import { Link } from "expo-router";
-import { useRef, useState, type ReactNode, type RefObject } from "react";
+import { Children, useRef, useState, type ReactNode, type RefObject } from "react";
 import {
   Modal,
   Pressable,
@@ -121,9 +121,34 @@ function SortMenu<T extends DirectoryOrder>({
   );
 }
 
-export function DirectoryGrid({ children }: { children: ReactNode }) {
+export function DirectoryGrid({ children, phoneCount }: { children: ReactNode; phoneCount?: number }) {
   const { palette } = useSettings();
-  return <View style={[styles.grid, { backgroundColor: palette.raise, borderColor: palette.line }]}>{children}</View>;
+  const layout = useLayout();
+  const count = Children.count(children);
+  const narrowCount = phoneCount ?? count;
+  const phoneBlanks = narrowCount % 2;
+  const wideBlanks = (3 - (count % 3)) % 3;
+  return (
+    <View style={[styles.grid, { backgroundColor: palette.raise, borderColor: palette.line }]}>
+      {children}
+      {Array.from({ length: Math.max(phoneBlanks, wideBlanks) }, (_, i) => (
+        <View
+          key={i}
+          aria-hidden
+          pointerEvents="none"
+          style={[
+            layout.style(cellSize),
+            {
+              display: layout.value(i < phoneBlanks ? "flex" : "none", i < wideBlanks ? "flex" : "none"),
+              borderColor: palette.line,
+              borderStartWidth: 1,
+              borderTopWidth: layout.value(narrowCount >= 2 ? 1 : 0, count >= 3 ? 1 : 0),
+            },
+          ]}
+        />
+      ))}
+    </View>
+  );
 }
 
 type CellAction = { href: string; selected?: never; onPress?: never } | { href?: never; selected: boolean; onPress: () => void };

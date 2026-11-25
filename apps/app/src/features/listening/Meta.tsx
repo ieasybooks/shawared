@@ -1,22 +1,22 @@
 import { space } from "@shawared/design";
-import { Link } from "expo-router";
-import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { IconButton, type PressState, TogglePill } from "../../components/ui/controls";
+import { Chip, IconButton, type PressState, TogglePill } from "../../components/ui/controls";
 import { Icon } from "../../components/ui/Icon";
 import { TextLink } from "../../components/ui/TextLink";
-import { meterName, t } from "../../lib/i18n";
-import { usePrefetch } from "../../lib/prefetch";
+import { catalogNow } from "../../lib/content";
+import { meterName, rhymeName, t } from "../../lib/i18n";
 import { Only, responsive, useLayout } from "../../lib/responsive";
 import { rhymeFor } from "../../lib/rhymes";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
-import { catalogNow } from "../../lib/content";
+import { PHONE_BAR_BUTTON_SIZE, PHONE_BAR_INSET } from "../navigation/TopBar";
 import { DownloadButton } from "../saved/DownloadButton";
 import { FavouriteButton, PlaylistMenu } from "../saved/SavedButtons";
 import { usePlaying } from "./playback";
 import { useListening } from "./state";
+
+const ACTION_SIZE = 44;
 
 /** The big round play button beside the title, on wide windows. */
 function BigPlay() {
@@ -35,58 +35,20 @@ function BigPlay() {
   );
 }
 
-/** A labeled cell in the poem's classification strip. Some older bundles have an unindexed rhyme. */
-function ClassificationCell({ label, value, to, divider }: { label: string; value: string; to?: string; divider: boolean }) {
-  const { palette, start } = useSettings();
-  const type = useType();
-  const [hovered, setHovered] = useState(false);
-  const prefetch = usePrefetch(to ?? "");
-  const style = StyleSheet.flatten([
-    styles.cell,
-    divider && { borderStartWidth: 1, borderStartColor: palette.line },
-    hovered && { backgroundColor: palette.fold },
-  ]);
-  const body = (
-    <>
-      <Text style={[type.classificationLabel, { color: palette.muted, textAlign: start }]}>{label}</Text>
-      <Text style={[type.classificationValue, { color: palette.fg, textAlign: start }]}>{value}</Text>
-    </>
-  );
-  if (!to) return <View style={style}>{body}</View>;
-  return (
-    <Link href={to} asChild>
-      <Pressable
-        accessibilityRole="link"
-        accessibilityLabel={`${label}: ${value}`}
-        {...prefetch}
-        onHoverIn={() => {
-          prefetch.onHoverIn();
-          setHovered(true);
-        }}
-        onHoverOut={() => {
-          prefetch.onHoverOut();
-          setHovered(false);
-        }}
-        style={style}
-      >
-        {body}
-      </Pressable>
-    </Link>
-  );
-}
-
 /** The title and its actions, followed by the poem's theme, meter and rhyme. */
 export function Meta() {
   const { bundle, recitation, hasTranslation, trOn, setTrOn, sources, hasAbout, showIntro, pinned } = useListening();
-  const { palette, lang, href } = useSettings();
+  const { palette, lang, href, start } = useSettings();
   const type = useType();
   const layout = useLayout();
   const { poem } = bundle;
   const primary = poem.themes?.[0];
+  const meter = meterName(poem.meter, lang);
   const rhyme = rhymeFor(poem.rawiy);
   const enTitle = lang === "en" ? sources.find((s) => s.title)?.title : undefined;
+  const translation = hasTranslation && <TogglePill label={t(lang, "translation")} on={trOn} onPress={() => setTrOn(!trOn)} />;
   return (
-    <View style={[styles.meta, layout.style(sized.meta)]}>
+    <View style={layout.style(sized.meta)}>
       <View style={styles.head}>
         <Only on="wide">
           <BigPlay />
@@ -103,23 +65,26 @@ export function Meta() {
             </View>
           </Only>
           <View style={styles.titleRow}>
-            <View style={styles.titleAbout}>
-              <Text style={[type.poemTitle, styles.title, { color: palette.fg }]}>{poem.title}</Text>
+            <Text style={[type.poemTitle, styles.title, layout.style(sized.title), { color: palette.fg, textAlign: start }]}>
+              {poem.title}
+            </Text>
+            <View style={[styles.actions, layout.style(sized.actions)]}>
+              {translation && <Only on="phone">{translation}</Only>}
               {hasAbout && (
                 <IconButton
                   icon="info"
                   label={t(lang, "about")}
                   onPress={showIntro}
                   pressed={pinned === "intro"}
+                  showPressedMark={false}
+                  color={pinned === "intro" ? palette.fg : palette.muted}
                   tip={{ title: t(lang, "about"), align: "end" }}
-                  size={44}
+                  size={ACTION_SIZE}
                   iconSize={20}
                 />
               )}
-            </View>
-            <View style={styles.actions}>
-              <FavouriteButton kind="poems" id={poem.id} size={44} iconSize={20} />
-              <PlaylistMenu poemId={poem.id} size={44} iconSize={20} />
+              <FavouriteButton kind="poems" id={poem.id} size={ACTION_SIZE} iconSize={20} />
+              <PlaylistMenu poemId={poem.id} size={ACTION_SIZE} iconSize={20} />
               <DownloadButton
                 poem={{
                   id: poem.id,
@@ -127,57 +92,49 @@ export function Meta() {
                   audio: recitation.audio,
                   langs: catalogNow()?.poems.find((p) => p.id === poem.id)?.langs ?? ["ar", "en"],
                 }}
-                size={44}
+                size={ACTION_SIZE}
                 iconSize={20}
               />
-              {hasTranslation && <TogglePill label={t(lang, "translation")} on={trOn} onPress={() => setTrOn(!trOn)} />}
+              {translation && <Only on="wide">{translation}</Only>}
             </View>
           </View>
           {enTitle && <Text style={[type.subtitle, { color: palette.muted }]}>{enTitle}</Text>}
         </View>
       </View>
-      <View style={[styles.strip, layout.style(sized.strip), { borderColor: palette.line, backgroundColor: palette.raise }]}>
+      <View style={[styles.badges, layout.style(sized.badges)]}>
         {primary && (
-          <ClassificationCell label={t(lang, "poemTheme")} value={primary.name} to={href(paths.theme(primary.id))} divider={false} />
+          <Chip lead="tag" href={href(paths.theme(primary.id))} label={`${t(lang, "poemTheme")}: ${primary.name}`}>
+            {primary.name}
+          </Chip>
         )}
-        <ClassificationCell
-          label={t(lang, "poemMeter")}
-          value={meterName(poem.meter, lang)}
-          to={href(paths.meter(poem.meter))}
-          divider={!!primary}
-        />
+        <Chip lead="waves" href={href(paths.meter(poem.meter))} label={`${t(lang, "poemMeter")}: ${meter}`}>
+          {meter}
+        </Chip>
         {poem.rawiy && (
-          <ClassificationCell
-            label={t(lang, "poemRhyme")}
-            value={rhyme?.[lang] ?? poem.rawiy}
-            {...(rhyme ? { to: href(paths.rhyme(rhyme.id)) } : {})}
-            divider
-          />
+          <Chip lead="rhymes" {...(rhyme ? { href: href(paths.rhyme(rhyme.id)), label: `${t(lang, "poemRhyme")}: ${rhyme[lang]}` } : {})}>
+            {rhymeName(poem.rawiy, lang)}
+          </Chip>
         )}
       </View>
     </View>
   );
 }
 
-/** Above the verses on wide windows: how to use them. Phones have the sheet, which shows itself. */
-export function VersesHint() {
-  const { palette, lang, start } = useSettings();
-  const type = useType();
-  return (
-    <View style={styles.versesHint}>
-      <Text style={[type.label, { color: palette.muted, textAlign: start }]}>{t(lang, "versesHint")}</Text>
-    </View>
-  );
-}
-
 const sized = {
-  meta: responsive({ paddingTop: space.xs, paddingStart: 20, paddingEnd: 20 }, { paddingTop: space.xs, paddingStart: 40, paddingEnd: 40 }),
-  // On wide windows the strip lines up with the title, past the play button.
-  strip: responsive({ marginStart: 0, maxWidth: "100%" }, { marginStart: 92, maxWidth: 360 }),
+  // The title lines up with Back's outside edge; the last action is centered under Appearance.
+  meta: responsive(
+    { paddingTop: space.l, paddingStart: PHONE_BAR_INSET, paddingEnd: PHONE_BAR_INSET - (ACTION_SIZE - PHONE_BAR_BUTTON_SIZE) / 2 },
+    { paddingTop: space.xs, paddingStart: 40, paddingEnd: 40 },
+  ),
+  // Let the title wrap beside the actions while there is room for a few words.
+  title: responsive({ flexBasis: 112, flexGrow: 1 }, { flexBasis: "auto" as const, flexGrow: 0 }),
+  // Match the toolbar's 46px distance between button centres, with larger action targets.
+  actions: responsive({ columnGap: space.xxs }, { columnGap: 0 }),
+  // On wide windows the badges line up with the title, past the play button.
+  badges: responsive({ marginStart: 0 }, { marginStart: 92 }),
 };
 
 const styles = StyleSheet.create({
-  meta: { gap: space.l },
   head: { flexDirection: "row", alignItems: "center", gap: 20, zIndex: 1 },
   titles: { flex: 1, minWidth: 0, gap: space.s },
   by: { flexDirection: "row", alignItems: "center", gap: space.s },
@@ -185,18 +142,7 @@ const styles = StyleSheet.create({
   big: { width: 72, height: 72, borderRadius: 36, alignItems: "center", justifyContent: "center" },
   hover: { opacity: 0.88 },
   titleRow: { flexDirection: "row", flexWrap: "wrap", alignItems: "center", columnGap: space.m, rowGap: space.xxs },
-  titleAbout: { flexDirection: "row", alignItems: "center", flexShrink: 1, maxWidth: "100%", gap: space.xxs, zIndex: 1 },
-  title: { writingDirection: "rtl", flexShrink: 1 },
+  title: { writingDirection: "rtl", flexShrink: 1, minWidth: 0, maxWidth: "100%" },
   actions: { flexDirection: "row", flexWrap: "wrap", alignItems: "center", marginStart: "auto", maxWidth: "100%" },
-  strip: { flexDirection: "row", borderWidth: 1, borderRadius: 10, overflow: "hidden" },
-  cell: {
-    flex: 1,
-    minWidth: 0,
-    minHeight: 54,
-    justifyContent: "center",
-    paddingHorizontal: space.l,
-    paddingVertical: space.xs,
-    gap: space.xxs,
-  },
-  versesHint: { paddingStart: 40, paddingEnd: 40, paddingTop: space.xl, paddingBottom: space.xs },
+  badges: { flexDirection: "row", flexWrap: "wrap", alignItems: "center", columnGap: space.s },
 });

@@ -19,6 +19,7 @@ export function IconButton({
   iconSize = 22,
   color,
   pressed: on,
+  showPressedMark = true,
   style,
   glass,
   tip,
@@ -30,6 +31,7 @@ export function IconButton({
   iconSize?: number;
   color?: string;
   pressed?: boolean;
+  showPressedMark?: boolean;
   style?: StyleProp<ViewStyle>;
   /** Frosted, for the top of a page over the girih band. */
   glass?: boolean;
@@ -55,7 +57,7 @@ export function IconButton({
       ]}
     >
       <Icon name={icon} size={iconSize} color={color ?? palette.muted} />
-      {on && <View style={[styles.onDot, { backgroundColor: palette.accent }]} />}
+      {on && showPressedMark && <View style={[styles.onDot, { backgroundColor: palette.accent }]} />}
       {tip && hint.shown && <Tip tip={tip} />}
     </Pressable>
   );
@@ -117,6 +119,7 @@ export function Nuqta({ size = 6, color, style }: { size?: number; color?: strin
 export function Chip({
   children,
   href,
+  label,
   onPress,
   active,
   ghost,
@@ -126,6 +129,7 @@ export function Chip({
 }: {
   children: ReactNode;
   href?: string;
+  label?: string;
   onPress?: () => void;
   active?: boolean;
   ghost?: boolean;
@@ -162,8 +166,8 @@ export function Chip({
   ];
   if (href)
     return (
-      <TextLink href={href} style={frame}>
-        {body}
+      <TextLink href={href} label={label} style={styles.chipTarget}>
+        <View style={[frame, styles.linkedChip]}>{body}</View>
       </TextLink>
     );
   if (!onPress) return <View style={frame}>{body}</View>;
@@ -209,6 +213,9 @@ const styles = StyleSheet.create({
   onDot: { position: "absolute", bottom: 4, width: 4, height: 4, transform: [{ rotate: "45deg" }] },
   // Pills keep one height in both languages; the text box inside is its ink, centred.
   chip: { minHeight: 28, justifyContent: "center", borderWidth: 1, borderRadius: 999, paddingHorizontal: 11, paddingVertical: space.xxs },
+  // The 32px badge and its upper gap make one 44px link. The verse row supplies the lower gap.
+  linkedChip: { minHeight: 32 },
+  chipTarget: { paddingTop: space.l, justifyContent: "center" },
   chipRow: { flexDirection: "row", alignItems: "center", gap: space.xs + 1 },
   pill: { flexDirection: "row", alignItems: "center", gap: 7, paddingStart: 10, paddingEnd: 12 },
   pillDot: { width: 7, height: 7, borderWidth: 1.5, transform: [{ rotate: "45deg" }] },
