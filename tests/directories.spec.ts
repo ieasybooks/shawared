@@ -2,6 +2,43 @@ import { expect, test } from "@playwright/test";
 import type { Catalog } from "@shawared/contracts";
 import { METER_IDS, meterName } from "../apps/app/src/lib/i18n";
 
+for (const { path, order, alternative, rtl } of [
+  { path: "/meters", order: "بحسب عدد القصائد", alternative: "بحسب الترتيب الهجائي", rtl: true },
+  { path: "/en/reciters", order: "Alphabetical", alternative: "By recording count", rtl: false },
+]) {
+  test(`the sort menu overlays the first result on ${path}`, async ({ page }) => {
+    await page.goto(path);
+    await page.waitForLoadState("networkidle");
+    const firstRow = page.locator(`a[href^="${path}/"]`).first();
+    const firstHref = await firstRow.getAttribute("href");
+    const trigger = page.getByRole("button", { name: order, exact: true });
+    const row = (await firstRow.boundingBox())!;
+    const button = (await trigger.boundingBox())!;
+    await trigger.click();
+    const menu = page.getByRole("radiogroup");
+    await expect(menu.getByRole("radio", { name: order })).toBeChecked();
+    const panel = (await menu.boundingBox())!;
+    expect((await firstRow.boundingBox())!.y).toBeCloseTo(row.y, 0);
+    expect(panel.y).toBeGreaterThanOrEqual(button.y + button.height - 1);
+    expect(panel.y).toBeLessThan(row.y + row.height);
+    expect(panel.y + panel.height).toBeGreaterThan(row.y);
+    expect(rtl ? panel.x : panel.x + panel.width).toBeCloseTo(rtl ? button.x : button.x + button.width, 0);
+
+    await page.keyboard.press("Escape");
+    await expect(menu).toBeHidden();
+    await trigger.click();
+    await expect(menu).toBeVisible();
+    // A tap through the backdrop would open this first result.
+    await page.mouse.click(rtl ? row.x + row.width - 4 : row.x + 4, row.y + 12);
+    await expect(menu).toBeHidden();
+    await expect(page).toHaveURL(new RegExp(path + "$"));
+    await trigger.click();
+    await menu.getByRole("radio", { name: alternative }).click();
+    await expect(menu).toBeHidden();
+    await expect(firstRow).not.toHaveAttribute("href", firstHref!);
+  });
+}
+
 test("era, name search and sort work together and survive a visit to the poet", async ({ page }, info) => {
   await page.goto("/en/poets");
   await page.waitForLoadState("networkidle");
