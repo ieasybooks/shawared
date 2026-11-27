@@ -1,3 +1,5 @@
+import { waitForApp } from "./app-ready";
+import { hasHandler, press, sessionTitle, watchMediaSession } from "./media-session";
 // Playing on: when a poem ends, the next one in the list it was opened from plays, and its page
 // follows; autoplay can be turned off; the browser's Media Session (phones' lock screens and
 // notifications, desktops' media keys) shows the poem and controls it.
@@ -23,51 +25,23 @@ const poemUrl = (id: string) => new RegExp(`/poems/${id}$`);
 
 const slider = (page: Page) => page.getByRole("slider").first();
 
-/** Waits for the page to come alive: React has taken over the slider rendered ahead of time. */
-async function hydrated(page: Page) {
-  await page.waitForFunction(() => {
-    const el = document.querySelector('[role="slider"]');
-    return !!el && Object.keys(el).some((k) => k.startsWith("__reactProps"));
-  });
-}
-
 /**
  * Plays the poem on screen, then jumps to just before its end on the seek bar (its end is on the
  * left in Arabic). The poem may have ended by the time this returns.
  */
 async function playNearEnd(page: Page) {
-  await hydrated(page);
+  await waitForApp(page);
   await playButton(page).click();
   await expect(pauseButton(page)).toBeVisible();
   const box = (await slider(page).boundingBox())!;
   await slider(page).click({ position: { x: 2, y: box.height / 2 } });
 }
 
-/** Records the handlers the page gives the Media Session, to press its buttons as a lock screen or a media key would. */
-async function watchMediaSession(page: Page) {
-  await page.addInitScript(() => {
-    const handlers: Record<string, ((details: object) => void) | null> = {};
-    (window as unknown as { __media: typeof handlers }).__media = handlers;
-    const set = navigator.mediaSession.setActionHandler.bind(navigator.mediaSession);
-    navigator.mediaSession.setActionHandler = (action, handler) => {
-      handlers[action] = handler as (details: object) => void;
-      set(action, handler);
-    };
-  });
-}
-const press = (page: Page, action: string, details: object = {}) =>
-  page.evaluate(([a, d]) => (window as unknown as { __media: Record<string, (d: object) => void> }).__media[a as string]!(d as object), [
-    action,
-    details,
-  ] as const);
-const hasHandler = (page: Page, action: string) =>
-  page.evaluate((a) => typeof (window as unknown as { __media: Record<string, unknown> }).__media[a] === "function", action);
-const sessionTitle = (page: Page) => page.evaluate(() => navigator.mediaSession.metadata?.title ?? null);
-
 test("when a poem ends, the next on the home page plays, and its page follows", async ({ page }) => {
   const poems = await homeOrder(page);
   const [first, next] = poems.slice(-2) as [CatalogPoem, CatalogPoem];
   await page.goto(`/poems/${first.id}`);
+  await waitForApp(page);
   await playNearEnd(page);
   await expect(page).toHaveURL(poemUrl(next.id), { timeout: 45_000 });
   await expect(live(page, page.getByText(next.title, { exact: true }))).toBeVisible();
@@ -86,6 +60,7 @@ test("a poem opened from a poet's page plays on into the poet's next poem", asyn
   expect(pick, "a poet with two poems apart on the home page").toBeTruthy();
   const [first, next] = pick!;
   await page.goto(`/poets/${first.poet}`);
+  await waitForApp(page);
   await live(page, page.getByText(first.title, { exact: true })).click();
   await expect(page).toHaveURL(poemUrl(first.id));
   await playNearEnd(page);
@@ -97,6 +72,7 @@ test("off, autoplay stops at the end of the poem", async ({ page }) => {
   const poems = await homeOrder(page);
   const [first] = poems.slice(-2) as [CatalogPoem];
   await page.goto(`/poems/${first.id}`);
+  await waitForApp(page);
   await expect(autoplay(page)).toHaveAttribute("aria-pressed", "true");
   await autoplay(page).click();
   await expect(autoplay(page)).toHaveAttribute("aria-pressed", "false");
@@ -114,6 +90,7 @@ test("away from its page, the mini player moves on to the next poem", async ({ p
   const poems = await homeOrder(page);
   const [first, next] = poems.slice(-2) as [CatalogPoem, CatalogPoem];
   await page.goto(`/poems/${first.id}`);
+  await waitForApp(page);
   await playNearEnd(page);
   // Leave the poem inside the app: the header on wide windows, back on phones.
   await live(
@@ -133,7 +110,7 @@ test("the Media Session shows the poem and works its buttons", async ({ page }) 
   const poems = await homeOrder(page);
   const [before, last] = poems.slice(-2) as [CatalogPoem, CatalogPoem];
   await page.goto(`/poems/${last.id}`);
-  await hydrated(page);
+  await waitForApp(page);
   await playButton(page).click();
   await expect.poll(() => sessionTitle(page)).toBe(last.title);
   const meta = await page.evaluate(() => {

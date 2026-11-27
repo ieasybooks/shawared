@@ -64,6 +64,38 @@ describe("focused word reveal", () => {
     expect(scroll.mock.calls[0]![0]).toBeGreaterThan(400);
   });
 
+  it.each(["note", "viewport"])("ignores a delayed %s measurement after the reader scrolls", (delayed) => {
+    let finish: (() => void) | undefined;
+    let holdMeasurement = true;
+    const bounds = { top: 500, height: 40 };
+    const measure = (kind: string, bounds: Bounds) => ({
+      measureInWindow: (measured: (x: number, y: number, width: number, height: number) => void) => {
+        const { top, height } = bounds;
+        const deliver = () => measured(0, top, 288, height);
+        if (holdMeasurement && kind === delayed) finish = deliver;
+        else deliver();
+      },
+    });
+    const box = measure("viewport", { top: 100, height: 200 });
+    const scroll = vi.fn();
+    const reveal = createPanelReveal(() => box, scroll);
+    reveal.setReady(true);
+    reveal.request(measure("note", bounds));
+    paint();
+
+    reveal.scrolled(100);
+    bounds.top -= 100;
+    holdMeasurement = false;
+    finish?.();
+    paint();
+    expect(scroll).not.toHaveBeenCalled();
+
+    // A later layout can reveal the note using measurements from the new scroll position.
+    reveal.layout();
+    paint();
+    expect(scroll).toHaveBeenCalledExactlyOnceWith(384);
+  });
+
   it("ignores a stale measurement after another note is selected or the request is cancelled", () => {
     let finish: ((x: number, y: number, width: number, height: number) => void) | undefined;
     const delayed = {

@@ -47,7 +47,6 @@ const keyOf = (i: Item) =>
 const selectAll = (s: Saved) => s;
 const selectDone = (s: Downloads) => s.done;
 
-/** The reader's library: their playlists, favourite poems, poets and reciters, and (the apps) downloads. */
 export function LibraryScreen() {
   const { lang, href } = useSettings();
   const catalog = useCatalog();
@@ -200,7 +199,6 @@ function NewPlaylistRow({ onPress, first, last }: { onPress: () => void } & List
   );
 }
 
-/** A playlist: its name, and how many poems and minutes. */
 function PlaylistRow({ playlist, catalog, first, last }: { playlist: Playlist; catalog: Catalog } & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
@@ -237,7 +235,6 @@ function PlaylistRow({ playlist, catalog, first, last }: { playlist: Playlist; c
   );
 }
 
-/** A downloaded poem, with a button that removes its download. */
 function DownloadRow({ poem, catalog, list, ...edges }: { poem: CatalogPoem; catalog: Catalog; list: string[] } & ListEdges) {
   const { lang } = useSettings();
   const key = poem.recitations[0]?.audio;

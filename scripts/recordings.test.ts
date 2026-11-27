@@ -1,11 +1,7 @@
-// The audio round trip on a copy of content/: a recording's upload writes its
-// hashed key into the recitation file, the checker accepts it and checks the
-// local source against it, and a local preview build copies the source to the
-// key's path, while a release build carries no audio.
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
 import { parseAudioKey } from "@shawared/contracts";
 import { hashOf, keyFor, recordings, sourcePath } from "./recordings.ts";
@@ -16,26 +12,63 @@ const REPO = join(import.meta.dirname, "..");
 const scratch = mkdtempSync(join(tmpdir(), "shawared-audio-"));
 afterAll(() => rmSync(scratch, { recursive: true, force: true }));
 
-// Two real poems exercise both upload paths. The first has a local source and
-// the second has only its published key. Both preview builds use this catalogue.
-function copyOfContent(): string {
+function contentFixture(): string {
   const root = mkdtempSync(join(scratch, "root-"));
-  for (const path of ["poets", "reciters", "poems/bakaytu-ala-al-shababi", "poems/taqulu-buthaynatu"]) {
-    cpSync(join(REPO, "content", path), join(root, "content", path), { recursive: true });
+  const put = (path: string, value: unknown) => {
+    const file = join(root, "content", path);
+    mkdirSync(dirname(file), { recursive: true });
+    writeFileSync(file, JSON.stringify(value, null, 2) + "\n");
+  };
+  put("poets/poet/poet.json", { id: "poet", name: "شاعر" });
+  put("poets/poet/en.json", { lang: "en", name: "Poet" });
+  put("reciters/reader/reciter.json", { id: "reader", name: "قارئ" });
+  put("reciters/reader/en.json", { lang: "en", name: "Reader" });
+  put("themes.json", {
+    theme: {
+      name: { ar: "غرض", en: "Theme" },
+      definition: { ar: "تعريف", en: "Definition" },
+      example: { poem: "local-poem", bayt: 1 },
+      references: ["https://example.com/theme"],
+    },
+  });
+  for (const id of ["local-poem", "remote-poem"]) {
+    put(`poems/${id}/poem.json`, {
+      id,
+      poet: "poet",
+      title: "قصيدة",
+      meter: "tawil",
+      themes: ["theme"],
+      abyat_in_full: 1,
+      added: "2026-01-01",
+      abyat: [{ n: 1, sadr: "قالَ", ajuz: "قالَ" }],
+    });
+    put(`poems/${id}/en.json`, {
+      lang: "en",
+      source: { name: "Fixture translation" },
+      title: "Poem",
+      abyat: { "1": { translation: ["First half.", "Second half."] } },
+    });
   }
-  // This two-poem catalogue needs examples from its own verses.
-  const { ghazal, shawq, itab } = JSON.parse(readFileSync(join(REPO, "content/themes.json"), "utf8"));
-  writeFileSync(
-    join(root, "content/themes.json"),
-    JSON.stringify({
-      ghazal: { ...ghazal, example: { poem: "taqulu-buthaynatu", bayt: 10 } },
-      shawq: { ...shawq, example: { poem: "bakaytu-ala-al-shababi", bayt: 1 } },
-      itab: { ...itab, example: undefined },
-    }),
-  );
-  const [r] = recordings(root);
-  const source = sourcePath(root, r!.poem, r!.recitation);
-  mkdirSync(join(source, ".."), { recursive: true });
+  put("poems/local-poem/recitations/take.json", {
+    reciter: "reader",
+    audio: "local-poem/take.m4a",
+    duration: 2,
+    source: "https://example.com/local-recording",
+    timeline: [["1", 0, 2]],
+  });
+  put("poems/remote-poem/recitations/second-take.json", {
+    reciter: "reader",
+    audio: "remote-poem/second-take.0123456789ab.m4a",
+    duration: 2,
+    timeline: [["1", 0, 2]],
+  });
+  return root;
+}
+
+function localRecording(root: string) {
+  const r = recordings(root).find((recording) => recording.poem === "local-poem")!;
+  const source = sourcePath(root, r.poem, r.recitation);
+  mkdirSync(dirname(source), { recursive: true });
   const ffmpeg = spawnSync("ffmpeg", [
     "-hide_banner",
     "-loglevel",
@@ -45,7 +78,7 @@ function copyOfContent(): string {
     "-i",
     "anullsrc=r=44100:cl=mono",
     "-t",
-    String(r!.duration),
+    String(r.duration),
     "-c:a",
     "aac",
     "-b:a",
@@ -54,11 +87,9 @@ function copyOfContent(): string {
     source,
   ]);
   if (ffmpeg.status !== 0) throw new Error("ffmpeg couldn't make the test recording");
-  writeFileSync(r!.file, withKey(readFileSync(r!.file, "utf8"), r!, `${r!.poem}/${r!.recitation}.m4a`));
-  return root;
+  return r;
 }
 
-// A bucket in memory, which records what's put.
 function memoryBucket(): Bucket & { objects: Map<string, Uint8Array> } {
   const objects = new Map<string, Uint8Array>();
   return { objects, exists: async (key) => objects.has(key), put: async (key, bytes) => void objects.set(key, bytes) };
@@ -88,76 +119,65 @@ describe("keys", () => {
 
 describe("the round trip", () => {
   it("uploads once, writes the key, checks it, and previews it locally", async () => {
-    const root = copyOfContent();
-    const [r] = recordings(root);
-    const source = sourcePath(root, r!.poem, r!.recitation);
-    const key = keyFor(r!.poem, r!.recitation, readFileSync(source));
-    const before = readFileSync(r!.file, "utf8");
+    const root = contentFixture();
+    const r = localRecording(root);
+    const source = sourcePath(root, r.poem, r.recitation);
+    const key = keyFor(r.poem, r.recitation, readFileSync(source));
+    const before = readFileSync(r.file, "utf8");
 
-    // The checker warns that the recording isn't uploaded yet.
     const unuploaded = run(root, "check.ts");
     expect(unuploaded.status, unuploaded.stdout + unuploaded.stderr).toBe(0);
     expect(unuploaded.stdout).toContain("audio isn't uploaded yet");
 
-    // The other recordings have no source here.
-    const others = recordings(root)
-      .slice(1)
-      .map((o) => `media/audio/${o.poem}/${o.recitation}.m4a`);
+    const others = ["media/audio/remote-poem/second-take.m4a"];
     const bucket = memoryBucket();
     const first = await uploadAudio(root, bucket, () => {});
-    expect(first).toEqual({ uploaded: [key], present: [], updated: [r!.file.slice(root.length + 1)], noSource: others });
+    expect(first).toEqual({ uploaded: [key], present: [], updated: [r.file.slice(root.length + 1)], noSource: others });
     expect(Buffer.from(bucket.objects.get(key)!).equals(readFileSync(source))).toBe(true);
-    // Only the audio line changed, so the file keeps its formatting.
-    const after = readFileSync(r!.file, "utf8");
-    expect(after).toBe(before.replace(`"audio": "${r!.audio}"`, `"audio": "${key}"`));
+    const after = readFileSync(r.file, "utf8");
+    expect(after).toBe(before.replace(`"audio": "${r.audio}"`, `"audio": "${key}"`));
 
-    // Again: nothing to upload or change.
     expect(await uploadAudio(root, bucket, () => {})).toEqual({ uploaded: [], present: [key], updated: [], noSource: others });
 
-    // The checker takes the key, and checks the source's duration and hash against it.
     const uploaded = run(root, "check.ts");
     expect(uploaded.status, uploaded.stdout + uploaded.stderr).toBe(0);
-    // Its warnings are gone; any other recording's stay.
-    const mine = r!.file.slice(root.length + 1);
+    const mine = r.file.slice(root.length + 1);
     expect(uploaded.stdout).not.toContain(`${mine} [audio]: audio isn't uploaded yet`);
     expect(uploaded.stdout).not.toContain(`${mine} [audio]: audio not found`);
 
-    // A local preview build plays the source from the key's path.
     const out = join(root, "public");
     const preview = run(root, "build-content.ts", "--out", join(out, "content"), "--audio-out", join(out, "audio"));
     expect(preview.status, preview.stderr).toBe(0);
     expect(readFileSync(join(out, "audio", key))).toEqual(readFileSync(source));
-    const bundle = JSON.parse(readFileSync(join(out, "content/v1/poems", r!.poem, "ar.json"), "utf8"));
+    const bundle = JSON.parse(readFileSync(join(out, "content/v1/poems", r.poem, "ar.json"), "utf8"));
     expect(bundle.recitations[0].audio).toBe(key);
 
-    // A release build clears that audio and copies none.
     const release = run(root, "build-content.ts", "--out", join(out, "content"), "--audio-out", join(out, "audio"), "--remote-audio");
     expect(release.status, release.stderr).toBe(0);
     expect(existsSync(join(out, "audio"))).toBe(false);
   }, 60_000);
 
   it("refuses a source that isn't the uploaded recording", async () => {
-    const root = copyOfContent();
+    const root = contentFixture();
+    const r = localRecording(root);
     await uploadAudio(root, memoryBucket(), () => {});
-    const [r] = recordings(root);
-    writeFileSync(sourcePath(root, r!.poem, r!.recitation), new Uint8Array([1, 2, 3]));
+    writeFileSync(sourcePath(root, r.poem, r.recitation), new Uint8Array([1, 2, 3]));
     const result = run(root, "check.ts");
     expect(result.status).toBe(1);
     expect(result.stdout).toContain("isn't the uploaded recording");
   }, 60_000);
 
   it("leaves recordings without a source alone", async () => {
-    const root = mkdtempSync(join(scratch, "root-"));
-    cpSync(join(REPO, "content"), join(root, "content"), { recursive: true });
-    const all = recordings(root);
+    const root = contentFixture();
+    const before = recordings(root).map((r) => ({ file: r.file, text: readFileSync(r.file, "utf8") }));
     const result = await uploadAudio(root, memoryBucket(), () => {});
     expect(result).toEqual({
       uploaded: [],
       present: [],
       updated: [],
-      noSource: all.map((r) => `media/audio/${r.poem}/${r.recitation}.m4a`),
+      noSource: ["media/audio/local-poem/take.m4a", "media/audio/remote-poem/second-take.m4a"],
     });
-    for (const r of all) expect(readFileSync(r.file, "utf8")).toContain(`"audio": "${r.audio}"`);
+    for (const r of before) expect(readFileSync(r.file, "utf8")).toBe(r.text);
   });
 
   it("changes only the audio line, and only when it's there once", () => {

@@ -18,10 +18,6 @@ import { player, type Clock, type Now } from "./player";
 const selectNow = (s: Now) => s;
 const selectPlaying = (s: Clock) => s.playing;
 
-/**
- * What is playing, on phones: a card floating above the tabs, or at the bottom of a page opened
- * from another. Tap it to go back to the poem; play, pause or close it in place.
- */
 export function MiniPlayer({ docked = false }: { docked?: boolean }) {
   const { item, track } = useStore(player.now, selectNow);
   const playing = useStore(player.clock, selectPlaying);
@@ -77,7 +73,6 @@ export function MiniPlayer({ docked = false }: { docked?: boolean }) {
 
 const selectTime = (s: Clock) => s.time;
 
-/** A hairline along the card's bottom edge, filling with the recitation from the reading start. */
 function Progress({ duration }: { duration: number }) {
   const time = useStore(player.clock, selectTime);
   const { palette } = useSettings();

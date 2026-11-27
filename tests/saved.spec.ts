@@ -1,3 +1,5 @@
+import { waitForApp } from "./app-ready";
+import { hasHandler, press, sessionTitle, watchMediaSession } from "./media-session";
 // What the reader keeps (features/saved): favourite poems, poets and reciters, and playlists,
 // saved in the browser and shown in the library tab. Downloads are the apps' only.
 import { expect, test, type Locator, type Page } from "@playwright/test";
@@ -28,12 +30,7 @@ function watchErrors(page: Page) {
 /** Opens a page and waits until React has taken it over, so taps do something. */
 async function open(page: Page, path: string) {
   await page.goto(path);
-  await page.waitForLoadState("networkidle");
-  await page.waitForFunction(() => {
-    // The app's, not the app bar's above it (app/+html.tsx), which React never takes over.
-    const el = document.querySelector('#root [role="button"], #root button');
-    return !!el && Object.keys(el).some((k) => k.startsWith("__reactProps"));
-  });
+  await waitForApp(page);
 }
 
 /** The library tab: from the header on wide windows; phones show the tabs only on tab pages. */
@@ -61,7 +58,7 @@ test("a poem's heart keeps it in the library, after a reload too", async ({ page
   await expect(live(page, page.getByText("القصائد المفضّلة"))).toBeVisible();
   await expect(titled(page, poem!.title)).toBeVisible();
   await page.reload();
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   await expect(titled(page, poem!.title)).toBeVisible();
 
   // Taken out again on its page: the library has nothing left but the hint.
@@ -95,6 +92,7 @@ test("poets and reciters are kept from their pages", async ({ page }) => {
 });
 
 test("a playlist is made from a poem's page, reordered, renamed, played and deleted", async ({ page }) => {
+  await watchMediaSession(page);
   const errors = watchErrors(page);
   const [a, b] = (await catalogOf(page)).poems;
 
@@ -135,10 +133,14 @@ test("a playlist is made from a poem's page, reordered, renamed, played and dele
   await button(page, "احفظ").click();
   await expect(live(page, page.getByRole("heading", { name: "ليل" }).or(page.getByText("ليل", { exact: true })))).toBeVisible();
 
-  // Played from its first poem: the mini player shows it.
   await button(page, "شغّل الكل").click();
   await expect(live(page, page.getByRole("button", { name: "إيقاف مؤقت" }))).toBeVisible();
-  await expect(titled(page, b!.title)).toBeVisible();
+  await expect.poll(() => sessionTitle(page)).toBe(b!.title);
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("playing");
+  await expect.poll(() => hasHandler(page, "nexttrack")).toBe(true);
+  await press(page, "nexttrack");
+  await expect.poll(() => sessionTitle(page)).toBe(a!.title);
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("playing");
 
   // Deleted, after asking: back in the library, it's gone.
   await button(page, "احذف القائمة").click();

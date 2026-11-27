@@ -1,3 +1,4 @@
+import { waitForApp } from "./app-ready";
 // A link that is a line of text takes that text's width, never its container's. Rows and
 // cards (several texts, tapped anywhere) are links of their own and aren't checked here.
 import { expect, test } from "@playwright/test";
@@ -30,7 +31,7 @@ test("text links span only their text", async ({ page }) => {
   let checked = 0;
   for (const path of PAGES) {
     await page.goto(path);
-    await page.waitForLoadState("networkidle");
+    await waitForApp(page);
     // The dev server loads a page's code after showing it; let the page settle first.
     await page.waitForTimeout(1200);
     const links = await page.evaluate(() =>

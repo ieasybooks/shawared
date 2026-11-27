@@ -13,7 +13,7 @@ export type NowItem = {
   timings: "pending" | "loaded";
 };
 
-export const itemKey = (item: NowItem) => `${item.poemId}/${item.recitation.id}`;
+export const itemKey = (item: NowItem) => `${item.poemId}/${item.recitation.id}/${item.recitation.audio ?? ""}`;
 export const sameItem = (a: NowItem | null, b: NowItem) => !!a && itemKey(a) === itemKey(b);
 
 export function nowItemOf(bundle: PoemBundle, recitation = bundle.recitations[0]): NowItem | null {

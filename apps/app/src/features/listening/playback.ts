@@ -1,5 +1,5 @@
 import { buildTrack, clampTime, lineAt, segmentAt, type Track } from "@shawared/listening";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { createStore, useStore, type Store } from "../../lib/store";
 import { idleClock, player, type Clock } from "../player/player";
 import { itemKey, sameItem, type NowItem } from "../player/item";
@@ -21,11 +21,14 @@ const selectItem = (s: { item: NowItem | null }) => s.item;
 export function usePoemPlayback(item: NowItem): Playback {
   const current = useStore(player.now, selectItem);
   const active = sameItem(current, item);
-  // Keyed by ids: switching language reloads the bundle but not the recording.
+  // A language switch keeps the recording; a newly published audio key starts its own position.
   const key = itemKey(item);
   const track = useMemo(() => buildTrack(item.recitation.timeline, item.recitation.duration), [key]);
   // Until it plays, the screen keeps its own position: the progress bar, previous and next move it.
   const idle = useMemo(() => createStore<Clock>(idleClock()), [key]);
+  useEffect(() => {
+    if (active && player.isCurrent(item)) player.load(item);
+  }, [active, item]);
 
   return useMemo<Playback>(() => {
     if (active) {

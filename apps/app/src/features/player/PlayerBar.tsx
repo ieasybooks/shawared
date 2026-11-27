@@ -42,7 +42,6 @@ export type BarSource = {
 
 const selectNow = (s: Now) => s;
 
-/** The app's current recitation as a bar's source, or null when nothing is playing. */
 export function useCurrentSource(): BarSource | null {
   const { item, track } = useStore(player.now, selectNow);
   if (!item || !track) return null;
@@ -70,7 +69,6 @@ function useBayt(source: BarSource) {
   return useStore(source.clock, select);
 }
 
-/** "Verse 4 of 32", following the recitation. */
 function VerseOf({ source }: { source: BarSource }) {
   const { lang } = useSettings();
   const n = useBayt(source);
@@ -83,7 +81,6 @@ function PlayingEq({ source }: { source: BarSource }) {
   return <Eq on={playing} color={palette.accent} />;
 }
 
-/** The round play button, ink on the page. */
 function PlayButton({ source, size }: { source: BarSource; size: number }) {
   const { palette, lang } = useSettings();
   const playing = useStore(source.clock, selectPlaying);
@@ -103,7 +100,6 @@ function PlayButton({ source, size }: { source: BarSource; size: number }) {
   );
 }
 
-/** The seek bar: an ink fill from the start of the reading direction, with a slim thumb. */
 export const SeekBar = memo(function SeekBar({ source }: { source: BarSource }) {
   const { palette, rtl, lang } = useSettings();
   const time = useStore(source.clock, selectTime);
@@ -173,7 +169,6 @@ function ProgressRow({ source }: { source: BarSource }) {
   );
 }
 
-/** A control of the bar: an icon, saffron with a nuqta under it when on. */
 function Control({
   icon,
   label,
@@ -224,10 +219,6 @@ function useSkips(source: BarSource) {
 const REPEAT_STATE = { off: "isOff", poem: "repeatPoem", bayt: "repeatBayt" } as const;
 const REPEAT_TIP = { off: "repeatTipOff", poem: "repeatTipPoem", bayt: "repeatTipBayt" } as const;
 
-/**
- * Repeat, one button with three steps: off, the whole poem, the bayt being recited ("١" on the
- * icon). `tip` lines its tip up with that edge of the button (wide windows).
- */
 function RepeatButton({ size, iconSize, tip }: { size?: number; iconSize?: number; tip?: TipText["align"] }) {
   const { lang } = useSettings();
   const mode = useStore(player.repeat, selectRepeat);
@@ -285,7 +276,6 @@ function MuteButton() {
   );
 }
 
-/** The poem's title: a link back to it on other pages. */
 function Title({ source }: { source: BarSource }) {
   const { palette, href } = useSettings();
   const type = useType();
@@ -317,7 +307,6 @@ function ReciterLink({ source }: { source: BarSource }) {
   );
 }
 
-/** The bar along the bottom of wide windows. */
 export function WideBar({ source }: { source: BarSource }) {
   const { palette, lang } = useSettings();
   const type = useType();
@@ -358,7 +347,6 @@ export function WideBar({ source }: { source: BarSource }) {
   );
 }
 
-/** The poem page's player on phones: where we are, the bar, then the controls. */
 export function PhoneBar({ source }: { source: BarSource }) {
   const { palette, lang } = useSettings();
   const type = useType();

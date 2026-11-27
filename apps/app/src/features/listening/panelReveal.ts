@@ -49,6 +49,7 @@ export function createPanelReveal(viewport: () => Measurable | null, scrollTo: (
       layout();
     },
     scrolled(y: number) {
+      if (offset !== y) revision++;
       offset = y;
     },
     clear() {

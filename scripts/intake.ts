@@ -37,7 +37,7 @@ for (const input of inputs) {
   mkdirSync(work, { recursive: true });
   console.log(`\n== ${id}`);
 
-  // 1. The audio as YouTube has it. Only the audio: the app never shows the video.
+  // Only the audio: the app never shows the video.
   const MEDIA_EXT = /\.(webm|m4a|mp4|mkv|opus|ogg|mp3|wav)$/;
   const existing = () => readdirSync(sources).find((f) => f.startsWith(`${id}.`) && MEDIA_EXT.test(f));
   if (!existing()) {
@@ -59,16 +59,14 @@ for (const input of inputs) {
   const src = join(sources, existing()!);
   const info = JSON.parse(readFileSync(join(sources, `${id}.info.json`), "utf8"));
 
-  // 2. Mono 16 kHz, what the transcriber and the aligner read.
+  // The transcriber and aligner read mono 16 kHz audio.
   const wav = join(work, "audio16k.wav");
   if (!existsSync(wav)) run("ffmpeg", ["-v", "error", "-y", "-i", src, "-vn", "-ac", "1", "-ar", "16000", wav]);
 
-  // 3. Silences and loudness.
   const quiet = silences(wav);
   const loud = loudness(src);
   const duration = Number(run("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", wav]).trim());
 
-  // 4. The transcript.
   const asrDir = join(work, "asr");
   if (asr && !existsSync(join(asrDir, "audio16k.json"))) {
     run(process.env.TAFRIGH ?? "tafrigh-rs", [wav, "--transcriber", "cohere", "-q", "-f", "txt,json", "-o", asrDir]);

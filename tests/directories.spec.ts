@@ -1,3 +1,4 @@
+import { waitForApp } from "./app-ready";
 import { expect, test } from "@playwright/test";
 import type { Catalog } from "@shawared/contracts";
 import { METER_IDS, meterName } from "../apps/app/src/lib/i18n";
@@ -8,7 +9,7 @@ for (const { path, order, alternative, rtl } of [
 ]) {
   test(`the sort menu overlays the first result on ${path}`, async ({ page }) => {
     await page.goto(path);
-    await page.waitForLoadState("networkidle");
+    await waitForApp(page);
     const firstRow = page.locator(`a[href^="${path}/"]`).first();
     const firstHref = await firstRow.getAttribute("href");
     const trigger = page.getByRole("button", { name: order, exact: true });
@@ -41,7 +42,7 @@ for (const { path, order, alternative, rtl } of [
 
 test("era, name search and sort work together and survive a visit to the poet", async ({ page }, info) => {
   await page.goto("/en/poets");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   const eras = page.locator('button[aria-pressed], [role="button"][aria-pressed]').filter({ hasText: /poets?/i });
   const isPhone = info.project.name === "phone";
   const visible = eras.filter({ visible: true });
@@ -99,7 +100,7 @@ test("reciters sort by recordings, including two performances of the same poem",
     await route.fulfill({ response, json: c });
   });
   await page.goto("/en/reciters");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   const rows = page.locator('a[href^="/en/reciters/"]');
   await expect(rows.first()).toContainText("Abd al-Rahman al-Humayn");
   await expect(rows.first()).toContainText("4 recordings");
@@ -111,7 +112,7 @@ test("reciters sort by recordings, including two performances of the same poem",
 test("the poem opens its rhyme and meter, and both indexes sort", async ({ page, request }, info) => {
   const c: Catalog = await (await request.get("/content/v1/catalog.json")).json();
   await page.goto("/en/poems/aya-umma-al-asir");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   await page.getByRole("link", { name: "Rhyme: rāʾ", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/rhymes\/ra$/);
   await expect(

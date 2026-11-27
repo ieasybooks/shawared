@@ -20,7 +20,7 @@ export type Downloads = {
   active: Record<string, number>;
 };
 
-export const downloadsStore = createStore<Downloads>({ done: {}, active: {} });
+const downloadsStore = createStore<Downloads>({ done: {}, active: {} });
 
 export function useDownloads<S>(select: (state: Downloads) => S): S {
   useEffect(scanDownloads, []);
@@ -42,8 +42,7 @@ const poemOf = (key: string) => key.split("/")[0]!;
 
 let scanned = false;
 
-/** Reads which recordings are on the device, once. */
-export function scanDownloads() {
+function scanDownloads() {
   if (scanned) return;
   scanned = true;
   const done: Record<string, number> = {};
@@ -145,12 +144,10 @@ export async function download(poemId: string, key: string, langs: readonly stri
   }
 }
 
-/** Stops a download. */
 export function cancel(key: string) {
   aborts.get(key)?.abort();
 }
 
-/** Deletes a downloaded recording. */
 export function remove(key: string) {
   try {
     const f = fileOf(key);

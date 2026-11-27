@@ -1,6 +1,3 @@
-// What plays after a poem: the next one in the list the reader opened it from (home, a poet's,
-// a reciter's or a meter's poems, as that list showed them), otherwise the next on the home page.
-// Pure, so the rules are tested without a player.
 import type { Catalog } from "@shawared/contracts";
 import { t } from "../../lib/i18n";
 
@@ -10,11 +7,6 @@ const openedFrom = new Map<string, readonly string[]>();
 /** A list's row was pressed: its poem was opened from these poems, in this order. */
 export function rememberList(poemId: string, ids: readonly string[]) {
   openedFrom.set(poemId, ids);
-}
-
-/** Forget every list (tests). */
-export function forgetLists() {
-  openedFrom.clear();
 }
 
 /**

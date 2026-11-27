@@ -1,5 +1,3 @@
-// A recording's timeline turned into something a player can ask questions of:
-// which line is being recited now, where a bayt starts, what "previous" means.
 // Pure functions over plain data; no clocks, no React.
 import { parseLineAddress, type Half } from "@shawared/contracts";
 
@@ -10,7 +8,6 @@ export type TrackLine = {
   half: Half | null;
   start: number;
   end: number;
-  /** The segment this line belongs to. */
   segment: number;
 };
 

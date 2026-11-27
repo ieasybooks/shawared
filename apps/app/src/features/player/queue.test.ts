@@ -1,7 +1,10 @@
 import type { Catalog } from "@shawared/contracts";
-import { beforeEach, describe, expect, it } from "vitest";
-import { byline, forgetLists, queueFor, rememberList } from "./queue";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { catalogEntry } from "./item";
+
+let byline: typeof import("./queue").byline;
+let queueFor: typeof import("./queue").queueFor;
+let rememberList: typeof import("./queue").rememberList;
 
 const poem = (id: string, poet: string, uploaded = true) =>
   ({
@@ -24,7 +27,10 @@ const catalog = {
   meters: {},
 } as Catalog;
 
-beforeEach(forgetLists);
+beforeEach(async () => {
+  vi.resetModules();
+  ({ byline, queueFor, rememberList } = await import("./queue"));
+});
 
 describe("the queue", () => {
   it("is the home page's order for a poem opened from anywhere else", () => {

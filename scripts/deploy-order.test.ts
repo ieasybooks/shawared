@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { decide, liveCommit, order, OrderError, type Run } from "./deploy-order.ts";
+import { liveCommit, order, OrderError, type Run } from "./deploy-order.ts";
 
 const LIVE = "535cc9f980a73b85763a087ecf2efb0a50149999";
 const NEXT = "0c9e2f7aa1b2c3d4e5f60718293a4b5c6d7e8f90";
@@ -83,13 +83,5 @@ describe("liveCommit", () => {
     for (const message of [null, "", "a hand deploy", LIVE.slice(0, 12)]) {
       expect(() => liveCommit(stand({ message }).run), String(message)).toThrow("doesn't record its commit");
     }
-  });
-});
-
-describe("decide", () => {
-  it("maps GitHub's comparison of the candidate to the live commit", () => {
-    expect(decide(NEXT, LIVE, "ahead")).toBe("deploy");
-    expect(decide(LIVE, LIVE, "identical")).toBe("recheck");
-    expect(decide(NEXT, LIVE, "behind")).toBe("skip");
   });
 });

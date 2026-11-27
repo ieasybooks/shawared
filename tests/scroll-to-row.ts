@@ -1,9 +1,10 @@
+import { waitForApp } from "./app-ready";
 import { expect, type Page } from "@playwright/test";
 
 /** Find a row even when the virtual list has not mounted it yet. */
 export async function scrollToRow(page: Page, text: string) {
   const row = page.getByText(text, { exact: true }).and(page.locator(":not([inert]):not([inert] *)")).filter({ visible: true }).first();
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
 
   // The list can unmount a buffered row while it measures the rows ahead of it.
   const inViewport = () =>

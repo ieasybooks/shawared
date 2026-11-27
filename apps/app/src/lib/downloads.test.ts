@@ -173,11 +173,9 @@ describe("offline download completion", () => {
     expect(localAudio(OLD)).toBe(local(OLD));
   });
 
-  it("scans once and removes interrupted partial files without losing finished recordings", async () => {
+  it("discovers finished recordings and removes interrupted partial files on the first read", async () => {
     fs.files.set(local(`${KEY}.part`), "incomplete");
-    const { scanDownloads, localAudio } = await import("./downloads");
-    scanDownloads();
-    scanDownloads();
+    const { localAudio } = await import("./downloads");
     expect(localAudio(OLD)).toBe(local(OLD));
     expect(localAudio(KEY)).toBeNull();
     expect(fs.files.has(local(`${KEY}.part`))).toBe(false);

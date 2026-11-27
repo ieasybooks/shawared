@@ -52,7 +52,6 @@ export function stillPlaying(
   return s.playing || (wasPlaying && !s.finished && (s.buffering || live.playing));
 }
 
-/** The playlist and where it sits in the queue. */
 type Session = {
   list: Playlist;
   /** The queue: poem ids, in the order they play. */
@@ -72,9 +71,7 @@ type Session = {
 };
 
 const PREFS_KEY = "shawared.player.v1";
-/** What repeats: nothing, the whole poem, or the bayt being recited. */
 export type RepeatMode = "off" | "poem" | "bayt";
-/** The repeat button's steps, as in music apps: off, then everything, then just the one. */
 const NEXT_REPEAT: Record<RepeatMode, RepeatMode> = { off: "poem", poem: "bayt", bayt: "off" };
 
 class Player {
@@ -98,9 +95,12 @@ class Player {
     return sameItem(this.now.get().item, item);
   }
 
-  /** Makes `item` the current recitation, at `at` seconds, with the poems around it queued. Does nothing if it already is. */
+  /** Loads a recording, or supplies missing timings for the current recording without restarting it. */
   load(item: NowItem, at = 0) {
-    if (this.isCurrent(item)) return;
+    if (this.isCurrent(item)) {
+      if (this.session && item.timings === "loaded" && this.now.get().item?.timings === "pending") this.acceptTimings(this.session, item);
+      return;
+    }
     this.release();
     this.restore();
     this.watchAppState();
@@ -119,7 +119,6 @@ class Player {
       loading: new Set(),
       finished: false,
     };
-    // The poem with the one before it and, playing on, the one after.
     const first = at0 > 0 ? at0 - 1 : at0;
     const last = this.goesOn() && at0 + 1 < ids.length ? at0 + 1 : at0;
     const urls: string[] = [];
@@ -142,7 +141,10 @@ class Player {
   /** Plays the current recitation, or `item` from `at` seconds. */
   play(item?: NowItem, at?: number) {
     if (item && !this.isCurrent(item)) this.load(item, at ?? 0);
-    else if (at !== undefined) this.seek(at);
+    else {
+      if (item) this.load(item);
+      if (at !== undefined) this.seek(at);
+    }
     const s = this.session;
     const cur = this.now.get().item;
     if (!s || !cur) return;
@@ -195,10 +197,13 @@ class Player {
     this.session?.list.setMuted(on);
   }
 
-  /** Plays the next poem when one ends, or stops there. */
-  setContinuous(on: boolean, save = true) {
+  setContinuous(on: boolean) {
+    this.applyContinuous(on);
+    AsyncStorage.setItem(PREFS_KEY, JSON.stringify({ continuous: on })).catch(() => {});
+  }
+
+  private applyContinuous(on: boolean) {
     this.continuous.set({ on });
-    if (save) AsyncStorage.setItem(PREFS_KEY, JSON.stringify({ continuous: on })).catch(() => {});
     this.queueNext();
   }
 
@@ -222,7 +227,6 @@ class Player {
     return this.continuous.get().on && this.repeat.get().mode === "off";
   }
 
-  /** Puts the next poem after the one playing, or takes it away, as `goesOn` says. */
   private queueNext() {
     const s = this.session;
     if (!s) return;
@@ -235,14 +239,13 @@ class Player {
     this.show();
   }
 
-  /** Reads the reader's choices kept on the device, once. */
   restore() {
     if (this.restored) return;
     this.restored = true;
     AsyncStorage.getItem(PREFS_KEY)
       .then((raw) => {
         const on = raw ? (JSON.parse(raw) as { continuous?: unknown }).continuous : undefined;
-        if (typeof on === "boolean" && on !== this.continuous.get().on) this.setContinuous(on, false);
+        if (typeof on === "boolean" && on !== this.continuous.get().on) this.applyContinuous(on);
       })
       .catch(() => {});
   }
@@ -336,11 +339,9 @@ class Player {
   private urlOf(s: Session, i: number) {
     const id = s.ids[i]!;
     const rec = s.items.get(id)?.recitation ?? catalogEntry(s.catalog, id, s.lang)?.recitation;
-    // A downloaded recording plays from its file, so it plays offline.
     return (rec?.audio && localAudio(rec.audio)) || audioUrl(rec?.audio ?? "");
   }
 
-  /** The lock screen, the notification or the browser's controls: this poem, and the buttons the queue has. */
   private show() {
     const s = this.session;
     const item = this.now.get().item;
@@ -353,7 +354,6 @@ class Player {
     );
   }
 
-  /** Loads the bundles of the poem playing and those beside it, for their timings and names. */
   private prefetch() {
     const s = this.session;
     if (!s) return;
@@ -368,12 +368,16 @@ class Player {
         const recitation = bundle?.recitations.find((r) => r.id === expected?.recitation.id && r.audio === expected.recitation.audio);
         const item = bundle && recitation && nowItemOf(bundle, recitation);
         if (!item || this.session !== s) return;
-        s.items.set(id, item);
-        if (s.ids[s.at] !== id) return;
-        this.now.set({ item, track: buildTrack(item.recitation.timeline, item.recitation.duration) });
-        this.show();
+        this.acceptTimings(s, item);
       });
     }
+  }
+
+  private acceptTimings(s: Session, item: NowItem) {
+    s.items.set(item.poemId, item);
+    if (!sameItem(this.now.get().item, item)) return;
+    this.now.set({ item, track: buildTrack(item.recitation.timeline, item.recitation.duration) });
+    this.show();
   }
 
   /** Back in the foreground: catch up with what happened at the lock screen meanwhile. */
@@ -384,7 +388,6 @@ class Player {
     });
   }
 
-  /** Reads the position, and loops the poem or the bayt when repeat says so. */
   private sample() {
     const s = this.session;
     if (!s || this.pendingSeek !== null) return;
@@ -397,7 +400,6 @@ class Player {
     else if (mode === "poem") this.loopPoem();
   }
 
-  /** While playing, read the position every frame. */
   private tick() {
     if (this.frame || typeof requestAnimationFrame === "undefined") return;
     const step = () => {

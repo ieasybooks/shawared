@@ -14,13 +14,11 @@ import { newPlaylist, toggleFav, togglePoem } from "./actions";
 import { playlistName } from "./labels";
 import { isFavourite, NAME_MAX, type FavouriteKind, type Saved } from "./model";
 
-/** Whether `id` is among the favourite `kind`. */
 export function useFavourite(kind: FavouriteKind, id: string): boolean {
   const select = useCallback((s: Saved) => isFavourite(s, kind, id), [kind, id]);
   return useSaved(select);
 }
 
-/** A heart that keeps a poem, a poet or a reciter among the favourites. */
 export function FavouriteButton({
   kind,
   id,
@@ -61,7 +59,6 @@ export function FavouriteButton({
   );
 }
 
-/** The heart as a labelled pill, for a poet's or a reciter's page. */
 export function FavouriteChip({ kind, id }: { kind: "poets" | "reciters"; id: string }) {
   const { palette, lang } = useSettings();
   const type = useType();
@@ -85,10 +82,6 @@ export function FavouriteChip({ kind, id }: { kind: "poets" | "reciters"; id: st
 const MENU_W = 248;
 const selectPlaylists = (s: Saved) => s.playlists;
 
-/**
- * Adds the poem to a playlist: a menu of the reader's playlists, those holding it ticked (a tap
- * takes it out again), and a new playlist with it.
- */
 export function PlaylistMenu({ poemId, size = 38, iconSize = 21 }: { poemId: string; size?: number; iconSize?: number }) {
   const { palette, lang, rtl } = useSettings();
   const type = useType();

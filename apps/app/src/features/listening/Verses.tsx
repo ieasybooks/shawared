@@ -3,6 +3,7 @@ import { segmentAt } from "@shawared/listening";
 import { LinearGradient } from "expo-linear-gradient";
 import { startTransition, useCallback, useEffect, useRef, useState } from "react";
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   View,
@@ -167,6 +168,7 @@ export function Verses() {
     () => () => {
       clearTimeout(resumeTimer.current);
       if (revealFrame.current !== undefined) cancelAnimationFrame(revealFrame.current);
+      revealFrame.current = undefined;
       pending.current = null;
     },
     [],
@@ -185,8 +187,22 @@ export function Verses() {
       if (Math.abs(y - p.y) < 2) programmatic.current = null;
       return;
     }
-    userScrolled();
+    // Resizing content can clamp or anchor its offset without any reader input.
+    if (Date.now() < userUntil.current) userScrolled();
   };
+
+  const webScrollIntent =
+    Platform.OS === "web"
+      ? {
+          onWheel: (e: { nativeEvent: { deltaY: number } }) => {
+            if (e.nativeEvent.deltaY !== 0) userScrolled();
+          },
+          onTouchMove: userScrolled,
+          onKeyDown: (e: { nativeEvent: { key: string } }) => {
+            if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(e.nativeEvent.key)) userScrolled();
+          },
+        }
+      : {};
 
   const rowRef = useCallback((n: number, node: HostInstance | null) => {
     if (node) rows.current.set(n, node);
@@ -211,6 +227,7 @@ export function Verses() {
         }}
         onScroll={onScroll}
         onScrollBeginDrag={userScrolled}
+        {...webScrollIntent}
         scrollEventThrottle={32}
         showsVerticalScrollIndicator={false}
         accessibilityLabel="verses"

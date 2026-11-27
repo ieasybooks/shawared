@@ -34,7 +34,6 @@ keep.forEach(([a], i) => {
   if (i > 0 && a < keep[i - 1]![1]) throw new Error("stretches must be in order and not overlap");
 });
 
-// 1. The kept stretches, joined, as one channel.
 const FADE = 0.02;
 const parts = keep.map(([a, b], i) => {
   const len = b - a;
@@ -45,11 +44,9 @@ const joined = `${parts.join(";")};${keep.map((_, i) => `[p${i}]`).join("")}conc
 const wav = join(work, "app48k.wav");
 run("ffmpeg", ["-v", "error", "-y", "-i", src, "-filter_complex", joined, "-map", "[out]", "-ar", "48000", wav]);
 
-// 2. One gain for the whole file: to the target, unless the peaks would pass the ceiling.
 const before = loudness(wav);
 const gain = Math.round(Math.min(TARGET_LUFS - before.integrated, CEILING_DBTP - before.peak) * 10) / 10;
 
-// 3. The app file, and the copy the aligner reads, decoded from it.
 const out = join(media, "audio", `${target}.m4a`);
 mkdirSync(dirname(out), { recursive: true });
 run("ffmpeg", ["-v", "error", "-y", "-i", wav, "-af", `volume=${gain}dB`, "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", out]);

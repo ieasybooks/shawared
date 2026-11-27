@@ -1,10 +1,12 @@
 import type { AudioPlaylistStatus } from "expo-audio";
 import type { Catalog } from "@shawared/contracts";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { player, stillPlaying } from "./player";
 import { catalogEntry, type NowItem } from "./item";
-import { forgetLists, rememberList } from "./queue";
 import type { Status } from "./types";
+
+let player: typeof import("./player").player;
+let stillPlaying: typeof import("./player").stillPlaying;
+let rememberList: typeof import("./queue").rememberList;
 
 // A stand-in for expo-audio's playlist: `playing` is what it was asked to do; each test sends the
 // status updates a platform would, and moves it to another slot as the system does when a
@@ -89,7 +91,6 @@ const { lists, FakePlaylist, env } = vi.hoisted(() => {
   return { lists: [] as InstanceType<typeof FakePlaylist>[], FakePlaylist, env };
 });
 
-// Every audio mode set, kept across tests: the session is set up once.
 const modes = vi.hoisted(() => [] as unknown[]);
 vi.mock("expo-audio", () => ({
   createAudioPlaylist: ({ sources }: { sources: { uri: string }[] }) => {
@@ -107,9 +108,9 @@ vi.mock("react-native", () => ({
   },
   AppState: { addEventListener: () => ({ remove() {} }) },
 }));
-const setItem = vi.hoisted(() => vi.fn(async () => {}));
+const { getItem, setItem } = vi.hoisted(() => ({ getItem: vi.fn(async () => env.stored), setItem: vi.fn(async () => {}) }));
 vi.mock("@react-native-async-storage/async-storage", () => ({
-  default: { getItem: async () => env.stored, setItem },
+  default: { getItem, setItem },
 }));
 
 // Four poems on the home page, newest first; a and c are one poet's.
@@ -187,18 +188,23 @@ const status = (patch: Partial<Status>): Status => ({
   ...patch,
 });
 
-beforeEach(() => {
-  player.close();
-  player.setContinuous(true, false);
-  player.setRepeat("off");
-  forgetLists();
+beforeEach(async () => {
+  player?.close();
+  vi.resetModules();
   env.os = "ios";
+  env.stored = null;
+  env.late = null;
   env.catalog = CATALOG;
   env.local = {};
   env.deferPoems = false;
   env.poemLoads = [];
   env.latePoems.clear();
   lists.length = 0;
+  modes.length = 0;
+  getItem.mockClear();
+  setItem.mockClear();
+  ({ player, stillPlaying } = await import("./player"));
+  ({ rememberList } = await import("./queue"));
 });
 
 describe("stillPlaying", () => {
@@ -224,6 +230,51 @@ describe("stillPlaying", () => {
 });
 
 describe("the player", () => {
+  it("plays a replacement audio key even when the poem and recitation IDs stay the same", () => {
+    player.play(item);
+    const original = last();
+    const replacement = { ...item, recitation: { ...item.recitation, audio: "b/osama.replacement.m4a", duration: 40 } };
+    player.play(replacement);
+    expect(last()).not.toBe(original);
+    expect(original.release).toHaveBeenCalledOnce();
+    expect(last().sources[1]).toBe("/audio/b/osama.replacement.m4a");
+    expect(player.now.get().item?.recitation.audio).toBe(replacement.recitation.audio);
+  });
+
+  it("keeps the current audio session and position when names change language", () => {
+    player.play(item, 4);
+    const list = last();
+    list.emit({ playing: true });
+    player.play({ ...item, lang: "en", poet: "First Poet", reciter: "Reciter" });
+    expect(last()).toBe(list);
+    expect(list.release).not.toHaveBeenCalled();
+    expect(player.clock.get().time).toBe(4);
+  });
+
+  it("adopts recovered timings for the same audio without restarting or seeking", async () => {
+    env.deferPoems = true;
+    player.play(catalogEntry(CATALOG, "b", "ar")!);
+    const list = last();
+    env.latePoems.get("b")!(undefined);
+    await flush();
+    list.currentTime = 3;
+    list.emit({ playing: true });
+    const before = { ...player.clock.get() };
+    player.load(item);
+    expect(player.now.get().item?.timings).toBe("loaded");
+    expect(player.now.get().track?.segments).toMatchObject([{ n: 1, start: 2, end: 5 }]);
+    expect(player.clock.get()).toEqual(before);
+    expect(last()).toBe(list);
+    expect(list.play).toHaveBeenCalledOnce();
+    expect(list.seekTo).not.toHaveBeenCalled();
+    expect(list.release).not.toHaveBeenCalled();
+    player.setRepeat("bayt");
+    list.emit({ playing: true });
+    list.currentTime = 5.6;
+    list.emit({ playing: true });
+    expect(list.seekTo).toHaveBeenLastCalledWith(1.88);
+  });
+
   it("starts catalog audio immediately and loads its current timings for bayt repeat", async () => {
     env.deferPoems = true;
     player.play(catalogEntry(CATALOG, "b", "ar")!);
@@ -323,6 +374,7 @@ describe("the player", () => {
 
   it("sets the audio session up to play in the background and own the lock screen", () => {
     player.play(item);
+    player.play(itemOf("c"));
     expect(modes).toEqual([{ playsInSilentMode: true, shouldPlayInBackground: true, interruptionMode: "doNotMixPersistent" }]);
   });
 
@@ -439,11 +491,17 @@ describe("the player", () => {
 
   it("reads the reader's autoplay choice from the device", async () => {
     env.stored = JSON.stringify({ continuous: false });
-    (player as unknown as { restored: boolean }).restored = false;
     player.restore();
     await flush();
     expect(player.continuous.get().on).toBe(false);
-    env.stored = null;
+    expect(setItem).not.toHaveBeenCalled();
+    env.stored = JSON.stringify({ continuous: true });
+    player.restore();
+    await flush();
+    expect(getItem).toHaveBeenCalledOnce();
+    expect(player.continuous.get().on).toBe(false);
+    player.setContinuous(true);
+    expect(setItem).toHaveBeenCalledWith("shawared.player.v1", JSON.stringify({ continuous: true }));
   });
 
   it("on Android, keeps the lock screen's buttons it started with", () => {

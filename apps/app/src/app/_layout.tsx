@@ -15,6 +15,7 @@ import { Dir } from "../components/ui/Dir";
 import { loadCatalog } from "../lib/content";
 import { refreshDownloads } from "../lib/downloads";
 import { SettingsProvider, useSettings } from "../lib/settings";
+import { useHydrated } from "../lib/viewport";
 
 // An app opened on a poem or a poet (a shared link) keeps the tabs underneath, so back leads
 // home. The web has the browser's history, and renders each page on its own.
@@ -42,12 +43,18 @@ export default function RootLayout() {
 
 function Screens() {
   const { palette, theme, lang, rtl } = useSettings();
+  const hydrated = useHydrated();
   // The apps keep downloaded recordings in step with the catalog (lib/downloads).
   useEffect(() => {
     if (Platform.OS !== "web") void loadCatalog().then((c) => c && refreshDownloads(c));
   }, []);
   return (
-    <Dir dir={rtl ? "rtl" : "ltr"} lang={lang} style={{ flex: 1, backgroundColor: palette.bg }}>
+    <Dir
+      dir={rtl ? "rtl" : "ltr"}
+      lang={lang}
+      {...(Platform.OS === "web" ? { dataSet: { hydrated: String(hydrated) } } : {})}
+      style={{ flex: 1, backgroundColor: palette.bg }}
+    >
       <StatusBar style={theme === "night" ? "light" : "dark"} />
       {/* The stack follows the reading direction: on iOS, Arabic pages slide in from the left
           and swipe back from the right edge. */}

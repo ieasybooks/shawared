@@ -1,3 +1,4 @@
+import { waitForApp } from "./app-ready";
 import { expect, test, type Page, type Route } from "@playwright/test";
 
 // Pages are rendered ahead of time once, for every window: CSS lays them out for phones or
@@ -52,12 +53,7 @@ async function openHeld(page: Page, path: string) {
       }).observe({ type: "layout-shift" });
     });
     for (const route of held) await route.continue();
-    // React has taken over the markup.
-    await page.waitForFunction(() => {
-      const el = document.querySelector("#root [dir]");
-      return !!el && Object.keys(el).some((k) => k.startsWith("__reactFiber"));
-    });
-    await page.waitForLoadState("networkidle");
+    await waitForApp(page);
     await page.waitForTimeout(800);
   };
 }
@@ -94,6 +90,7 @@ for (const path of PAGES) {
       await page.setViewportSize({ width, height: 900 });
       const errors = watchErrors(page);
       const release = await openHeld(page, path);
+      await expect(page.locator('#root [data-hydrated="false"]')).toBeVisible();
       const layout = width >= WIDE_MIN ? "wide" : "phone";
       await expectLayout(page, layout, path);
       const before = await textBoxes(page);
@@ -116,7 +113,7 @@ test("resizing across WIDE_MIN switches the layout, and the poem's explanation m
   const errors = watchErrors(page);
   await page.setViewportSize({ width: WIDE_MIN - 1, height: 900 });
   await page.goto(POEM);
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   const verses = page.getByLabel("verses");
   const panel = page.locator("[data-panel]");
   const panelStyle = () =>

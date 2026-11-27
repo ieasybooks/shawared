@@ -24,9 +24,6 @@ import { PlayAll } from "./PlayAll";
 import { NAME_MAX, playlistContent, type Saved } from "./model";
 
 /**
- * A playlist the reader made: its poems in order, played on from the one opened. Reorder moves
- * poems up and down and takes them out; the playlist can be renamed and deleted.
- *
  * It lives on the device, so its id comes in the address's query, read once the page is live.
  */
 export function PlaylistScreen() {
@@ -127,7 +124,6 @@ export function PlaylistScreen() {
   );
 }
 
-/** A poem while the playlist is reordered: its title, then up, down and out. */
 function EditRow({
   poem,
   catalog,

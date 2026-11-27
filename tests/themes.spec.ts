@@ -1,3 +1,4 @@
+import { waitForApp } from "./app-ready";
 import { expect, test } from "@playwright/test";
 import type { Catalog, PoemBundle } from "@shawared/contracts";
 
@@ -9,7 +10,7 @@ test("the theme index searches both languages, sorts, and opens the quoted verse
   const byName = [...entries].sort(([, a], [, b]) => a.name.en.localeCompare(b.name.en, "en"));
 
   await page.goto("/en/themes");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   if (info.project.name === "phone") {
     await expect(page.getByRole("tab")).toHaveCount(5);
     await expect(page.getByRole("tab").nth(3)).toHaveAccessibleName("Themes");
@@ -62,7 +63,7 @@ test("the theme index searches both languages, sorts, and opens the quoted verse
 
 test("only the primary theme gets a badge, and the meter badge opens the original meter index", async ({ page }, info) => {
   await page.goto("/en/poems/taqulu-buthaynatu");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   await expect(page.getByRole("link", { name: "Theme: Love poetry", exact: true })).toHaveAttribute("href", "/en/themes/ghazal");
   await expect(page.locator('a[href="/en/themes/itab"]')).toHaveCount(0);
   await page.getByRole("button", { name: "About the poem", exact: true }).click();
@@ -97,7 +98,7 @@ test("older v1 content still opens its poems and meters", async ({ page }, info)
   await page.goto("/en/themes");
   await expect(page.getByText("Themes are unavailable in this copy of the catalogue.")).toBeVisible();
   await page.goto("/en");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   await page.getByRole("textbox").fill("تقول بثينة");
   await page.locator(`a[href="${poemPath}"]`).first().click();
   await expect(page).toHaveURL(new RegExp(poemPath + "$"));

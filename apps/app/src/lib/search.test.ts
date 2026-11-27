@@ -51,7 +51,18 @@ describe("search", () => {
   });
   it("finds by reciter", () => expect(ids("الواعظ")).toEqual(["a", "b"]));
   it("finds by the English title", () => expect(ids("buthayna said")).toEqual(["a"]));
-  it("lists title matches first", () => expect(ids("بثينة")).toEqual(["a"]));
+  it("ranks title matches ahead of opening matches and preserves catalog order within each rank", () => {
+    const competing = indexCatalog({
+      ...catalog,
+      poems: [
+        poem("opening-a", "شَوقٌ", "بُثَينَةُ", "mutanabbi"),
+        poem("title-a", "بُثَينَةُ", "شَوقٌ", "mutanabbi"),
+        poem("opening-b", "لَيلٌ", "بُثَينَةُ", "mutanabbi"),
+        poem("title-b", "ذِكرُ بُثَينَةَ", "لَيلٌ", "mutanabbi"),
+      ],
+    });
+    expect(search(competing, "بثينة").map((p) => p.id)).toEqual(["title-a", "title-b", "opening-a", "opening-b"]);
+  });
   it("returns everything for an empty query", () => expect(ids("  ")).toEqual(["a", "b"]));
   it("needs every word to match", () => expect(ids("المتنبي بثينة")).toEqual([]));
 });
