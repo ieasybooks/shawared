@@ -15,6 +15,9 @@ structural changes have been checked.
 - Compare production-build screenshots in Arabic and English at phone and
   desktop widths, including search, filters, menus, collections, and poem panels.
   The baseline contains 76 screenshots and no browser runtime errors.
+- The baseline browser suite passes 267 cases and skips 22 platform-specific cases.
+  One phone search case failed because typing raced hydration; its isolated retry
+  passed. The final test pass will replace its network-idle readiness assumption.
 - Keep the web's CSS-driven first paint, hydration, asynchronous navigation,
   native audio adapters, and published-v1 compatibility.
 - Keep all poetry, translations, explanations, timing manifests, and artwork
@@ -47,6 +50,11 @@ final tools pass; the root and audio identity boundary is now shared.
      validation and parsing duplicate the same convention.
 
 ## Round 2: feature ownership and explicit lifecycle
+
+Implemented: content/type checks, 225 TypeScript tests and 9 Python tests pass.
+The 663 published content files still match the baseline, and the import graph
+has no cycles. Production browser and screenshot validation follows the third
+review, including asynchronous panel layout and retained-route playback.
 
 1. Let each reusable piece own the behavior that changes with it.
    - Saved lists import `PersonRow` from a whole people-screen module.

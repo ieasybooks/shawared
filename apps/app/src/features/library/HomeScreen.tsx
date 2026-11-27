@@ -12,7 +12,6 @@ import { ListPage, PageFrame, SectionHead } from "./Page";
 import { PoemEntry } from "./PoemCard";
 import { SearchField } from "./SearchField";
 
-/** Every poem, newest first, with search by title, opening bayt, poet and reciter. */
 export function HomeScreen({ initial }: { initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { palette, lang, start } = useSettings();

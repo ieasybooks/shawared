@@ -1,5 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { buildTrack, lineAt, nextTarget, previousTarget, PRE_ROLL, repeatTarget, segmentAt, startOfBayt } from "./track.ts";
+import {
+  buildTrack,
+  clampTime,
+  lineAt,
+  nextTarget,
+  previousTarget,
+  PRE_ROLL,
+  repeatStart,
+  repeatTarget,
+  segmentAt,
+  startOfBayt,
+} from "./track.ts";
 
 const timeline: [string, number, number][] = [
   ["1.1", 2, 5],
@@ -60,5 +71,35 @@ describe("navigation", () => {
     const seg = segmentAt(track, 13);
     expect(repeatTarget(track, seg, 13)).toBeNull();
     expect(repeatTarget(track, seg, 14.6)).toBeCloseTo(9 - PRE_ROLL);
+  });
+  it("repeats before the following bayt when the gap is shorter than half a second", () => {
+    const close = buildTrack(
+      [
+        ["1", 1, 4],
+        ["2", 4.2, 8],
+      ],
+      10,
+    );
+    expect(repeatTarget(close, 0, 4.1)).toBeNull();
+    expect(repeatTarget(close, 0, 4.16)).toBeCloseTo(0.88);
+  });
+  it("repeats the final bayt before the recording ends and recovers after a late end", () => {
+    const ending = buildTrack(
+      [
+        ["1", 1, 4],
+        ["2", 5, 9.9],
+      ],
+      10,
+    );
+    expect(repeatTarget(ending, 1, 9.4)).toBeNull();
+    expect(repeatTarget(ending, 1, 9.5)).toBeCloseTo(4.88);
+    expect(repeatStart(ending, -1)).toBeCloseTo(4.88);
+    expect(repeatStart(ending, 0)).toBeCloseTo(0.88);
+  });
+  it("keeps seeks within a recording without seeking exactly to its end", () => {
+    expect(clampTime(30, -5)).toBe(0);
+    expect(clampTime(30, 12)).toBe(12);
+    expect(clampTime(30, 40)).toBe(29.95);
+    expect(clampTime(0, 1)).toBe(0);
   });
 });

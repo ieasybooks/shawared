@@ -4,4 +4,6 @@ export async function readCached(_path: string): Promise<{ text: string; etag?: 
   return null;
 }
 
-export async function writeCached(_path: string, _text: string, _etag: string | null) {}
+export async function writeCached(_path: string, _text: string, _etag: string | null): Promise<boolean> {
+  return false;
+}

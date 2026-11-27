@@ -6,7 +6,8 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
 import { poemsForMeter } from "../../lib/catalog";
-import { DirectoryIndexLink, SortBar } from "../library/DirectoryControls";
+import { DirectoryIndexLink } from "../library/DirectoryIndexLink";
+import { SortBar } from "../library/SortBar";
 import { listEdges, type ListEdges } from "../library/ListEdges";
 import { Only } from "../../lib/responsive";
 import { directoryCount, METER_FEET, METER_IDS, meterName, poemsCount, t } from "../../lib/i18n";
@@ -17,7 +18,6 @@ import { useType } from "../../lib/type";
 import { DetailFacts, ListPage, PageFrame, SectionHead } from "../library/Page";
 import { PoemRow } from "../library/PoemCard";
 
-/** The sixteen meters of classical Arabic poetry, sorted by poem count or name. */
 export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { lang } = useSettings();
@@ -59,7 +59,6 @@ export function MetersScreen({ initial }: { initial?: { catalog: Catalog } | und
   );
 }
 
-/** A meter in the list: its name, how many poems, and its feet. The `first` has no rule above it. */
 function MeterRow({ id, count, first, last }: { id: string; count: number } & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
@@ -91,7 +90,6 @@ function MeterRow({ id, count, first, last }: { id: string; count: number } & Li
   );
 }
 
-/** One meter: its feet, and the poems written in it. */
 export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: Catalog } | undefined }) {
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { palette, lang, start, href } = useSettings();

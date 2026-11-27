@@ -1,5 +1,5 @@
 import { space } from "@shawared/design";
-import { segmentAt, type Track } from "@shawared/listening";
+import { segmentAt } from "@shawared/listening";
 import { router } from "expo-router";
 import { useCallback } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
@@ -13,9 +13,9 @@ import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useStore } from "../../lib/store";
 import { useType } from "../../lib/type";
-import { player, type Clock } from "./player";
+import { player, type Clock, type Now } from "./player";
 
-const selectNow = (s: { item: unknown; track: Track | null }) => s;
+const selectNow = (s: Now) => s;
 const selectPlaying = (s: Clock) => s.playing;
 
 /**
@@ -23,7 +23,7 @@ const selectPlaying = (s: Clock) => s.playing;
  * from another. Tap it to go back to the poem; play, pause or close it in place.
  */
 export function MiniPlayer({ docked = false }: { docked?: boolean }) {
-  const { item, track } = useStore(player.now, selectNow) as ReturnType<typeof player.now.get>;
+  const { item, track } = useStore(player.now, selectNow);
   const playing = useStore(player.clock, selectPlaying);
   const selectBayt = useCallback((s: Clock) => (track ? (track.segments[segmentAt(track, s.time)]?.n ?? 1) : 1), [track]);
   const n = useStore(player.clock, selectBayt);

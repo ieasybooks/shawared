@@ -1,6 +1,7 @@
 import type { Catalog } from "@shawared/contracts";
 import { beforeEach, describe, expect, it } from "vitest";
-import { byline, catalogEntry, forgetLists, queueFor, rememberList } from "./queue";
+import { byline, forgetLists, queueFor, rememberList } from "./queue";
+import { catalogEntry } from "./item";
 
 const poem = (id: string, poet: string, uploaded = true) =>
   ({

@@ -4,9 +4,9 @@
 // spreads every note over six lines.
 //
 //   bun scripts/layout.ts <poem-id>
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { root } from "./repository.ts";
+import { languageFiles, root } from "./repository.ts";
 
 const id = process.argv[2];
 if (!id) {
@@ -27,7 +27,7 @@ function block(entries: [string, string][], indent = "    ") {
   return entries.map(([k, v], i) => `${indent}${`${j(k)}:`.padEnd(width)} ${v}${i < entries.length - 1 ? "," : ""}`).join("\n");
 }
 
-for (const f of readdirSync(dir).filter((f) => /^[a-z]{2}(\.[a-z0-9-]+)?\.json$/.test(f))) {
+for (const f of languageFiles(dir)) {
   const data = JSON.parse(readFileSync(join(dir, f), "utf8"));
   const out: string[] = [];
   for (const [key, value] of Object.entries<any>(data)) {

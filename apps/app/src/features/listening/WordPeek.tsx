@@ -4,10 +4,10 @@ import { Platform, StyleSheet, Text, View, type ViewStyle } from "react-native";
 import { Tag } from "../../components/ui/controls";
 import { Icon } from "../../components/ui/Icon";
 import { t } from "../../lib/i18n";
-import { isWide } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
-import { createStore, useStore } from "../../lib/store";
+import { useStore } from "../../lib/store";
 import { useType } from "../../lib/type";
+import type { WordPeekState } from "./hover";
 import { useListening } from "./state";
 
 // On wide windows, resting the mouse on a word with a meaning shows the meaning in a small card
@@ -16,74 +16,26 @@ import { useListening } from "./state";
 // beside it open at once.
 
 const web = Platform.OS === "web";
-const OPEN_MS = 450;
-const CLOSE_MS = 150;
-const WARM_MS = 400;
 const W = 288;
 
-type Rect = { x: number; y: number; w: number; h: number };
-const store = createStore<{ key: string | null; rect: Rect | null }>({ key: null, rect: null });
-let openTimer: ReturnType<typeof setTimeout> | undefined;
-let closeTimer: ReturnType<typeof setTimeout> | undefined;
-let warmUntil = 0;
-
-export function hidePeek() {
-  clearTimeout(openTimer);
-  clearTimeout(closeTimer);
-  if (store.get().key) store.set({ key: null, rect: null });
-}
-
-type HoverEvent = { nativeEvent: unknown };
-
-/** The hover handlers of a word with a meaning (none on the apps). */
-export function peekHandlers(key: string): { onHoverIn?: (e: HoverEvent) => void; onHoverOut?: () => void } {
-  if (!web) return {};
-  return {
-    onHoverIn: (e) => {
-      const ev = e.nativeEvent as PointerEvent;
-      if ((ev.pointerType && ev.pointerType !== "mouse") || !isWide()) return;
-      const el = (ev.target as Element | null)?.closest?.('[role="button"]');
-      if (!el) return;
-      clearTimeout(closeTimer);
-      if (store.get().key === key) return;
-      const show = () => {
-        const r = el.getBoundingClientRect();
-        store.set({ key, rect: { x: r.left, y: r.top, w: r.width, h: r.height } });
-      };
-      clearTimeout(openTimer);
-      if (store.get().key || performance.now() < warmUntil) show();
-      else openTimer = setTimeout(show, OPEN_MS);
-    },
-    onHoverOut: () => {
-      clearTimeout(openTimer);
-      if (!store.get().key) return;
-      clearTimeout(closeTimer);
-      closeTimer = setTimeout(() => {
-        warmUntil = performance.now() + WARM_MS;
-        store.set({ key: null, rect: null });
-      }, CLOSE_MS);
-    },
-  };
-}
-
-const selectAll = (s: { key: string | null; rect: Rect | null }) => s;
+const selectAll = (s: WordPeekState) => s;
 
 /** The card itself, drawn once for the page, over everything. */
 export function WordPeek() {
-  const { words } = useListening();
+  const { words, hover } = useListening();
   const { palette, lang, start } = useSettings();
   const type = useType();
-  const { key, rect } = useStore(store, selectAll);
+  const { key, rect } = useStore(hover.word, selectAll);
   // Scrolling moves the word away from its card: put the card away.
   useEffect(() => {
     if (!web) return;
-    const hide = () => hidePeek();
+    const hide = hover.hideWord;
     addEventListener("scroll", hide, true);
     return () => {
       removeEventListener("scroll", hide, true);
-      hidePeek();
+      hide();
     };
-  }, []);
+  }, [hover]);
   const hit = key ? words.get(key) : undefined;
   if (!hit || !rect) return null;
   const left = Math.max(8, Math.min(innerWidth - W - 8, rect.x + rect.w / 2 - W / 2));

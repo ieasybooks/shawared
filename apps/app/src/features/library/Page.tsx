@@ -1,7 +1,7 @@
 import { space } from "@shawared/design";
 import { LegendList } from "@legendapp/list/react-native";
 import { useIsFocused } from "expo-router";
-import { Activity, Fragment, useMemo, type ReactElement, type ReactNode } from "react";
+import { Activity, Fragment, type ReactElement, type ReactNode } from "react";
 import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Nuqta } from "../../components/ui/controls";
 import { useSettings } from "../../lib/settings";
@@ -20,7 +20,7 @@ import { GlobalPlayerBar } from "../player/PlayerBar";
  * Phones get the top bar (back, the title, the settings); wide windows get the site header,
  * with back and the title at the top of the page. Pages opened from another (`back`) are
  * outside the tabs, so they carry the mini player themselves. The list is a column at most
- * `maxWidth` wide, centred; wide windows lay it out in `columns`, which phones stack.
+ * `maxWidth` wide, centred.
  */
 export function ListPage<T>({
   title,
@@ -33,19 +33,15 @@ export function ListPage<T>({
   keyOf,
   empty,
   maxWidth = 760,
-  columns = 1,
   estimatedItemSize = 80,
   headerGap = space.l,
 }: {
-  /** The page's name. */
   title?: string;
   /** Opened from another page: a back button. */
   back?: boolean;
   /** In the phone's top bar instead of a title (the wordmark at home). */
   lead?: ReactNode;
-  /** What comes before the list, under the title. */
   header?: ReactNode;
-  /** What comes after the list, in its column. */
   footer?: ReactNode;
   data: readonly T[];
   /** `index` is the item's place in `data`: lists leave the first item's top rule off. */
@@ -53,8 +49,6 @@ export function ListPage<T>({
   keyOf: (item: T) => string;
   empty?: string;
   maxWidth?: number;
-  /** Columns on wide windows. */
-  columns?: number;
   estimatedItemSize?: number;
   /** Gap after the header. A trailing 44px control row already supplies its own breathing room. */
   headerGap?: number;
@@ -64,33 +58,9 @@ export function ListPage<T>({
   const layout = useLayout();
   const hydrated = useHydrated();
   const focused = useIsFocused();
-  // Phones show one column. The web, which can't tell, groups the rows for wide windows at
-  // every width and stacks each row's cells on phones (CSS).
-  const perRow = layout.wide === false ? 1 : columns;
-  // The list positions rows across its full width and ignores padding on itself, and its own
-  // grid always runs left to right. So each row is the centred column, and a grid is built
-  // from rows of cells that follow the reading direction.
-  const rows = useMemo(() => {
-    if (perRow === 1) return data.map((item) => [item]);
-    const out: T[][] = [];
-    for (let i = 0; i < data.length; i += perRow) out.push(data.slice(i, i + perRow));
-    return out;
-  }, [data, perRow]);
-  // The column: `maxWidth` wide and centred, with a gutter of at least space.xl either side.
+  // The virtual list positions rows across its full width and ignores padding on itself.
   const column = [styles.column, { maxWidth: maxWidth + 2 * space.xl }];
-  const rowOf = (row: T[], at: number) =>
-    perRow === 1 ? (
-      <View style={column}>{renderItem(row[0]!, at)}</View>
-    ) : (
-      <View style={[column, layout.style(grid.row)]}>
-        {Array.from({ length: perRow }, (_, i) => (
-          <View key={i} style={layout.style(grid.cell)}>
-            {row[i] !== undefined && renderItem(row[i]!, at * perRow + i)}
-          </View>
-        ))}
-      </View>
-    );
-  const rowKey = (row: T[]) => row.map(keyOf).join("|");
+  const rowOf = (item: T, at: number) => <View style={column}>{renderItem(item, at)}</View>;
   const top = (
     <View testID="list-header" style={[column, styles.head, layout.style(headTop), { paddingBottom: headerGap }]}>
       {title && (
@@ -105,7 +75,6 @@ export function ListPage<T>({
       {header}
     </View>
   );
-  // In the column, so a line too long for a phone keeps the page's gutter.
   const none = empty ? (
     <View style={[column, styles.empty]}>
       <Text style={[type.control, styles.center, { color: palette.muted }]}>{empty}</Text>
@@ -126,15 +95,15 @@ export function ListPage<T>({
   const list = !hydrated ? (
     <ScrollView style={style}>
       {top}
-      {rows.length ? rows.map((row, i) => <Fragment key={rowKey(row)}>{rowOf(row, i)}</Fragment>) : none}
+      {data.length ? data.map((item, i) => <Fragment key={keyOf(item)}>{rowOf(item, i)}</Fragment>) : none}
       {foot}
     </ScrollView>
   ) : (
     <LegendList
       style={style}
-      data={rows}
-      keyExtractor={rowKey}
-      renderItem={({ item: row, index }) => rowOf(row, index)}
+      data={data}
+      keyExtractor={keyOf}
+      renderItem={({ item, index }) => rowOf(item, index)}
       estimatedItemSize={estimatedItemSize}
       recycleItems={false}
       ListHeaderComponent={top}
@@ -216,7 +185,6 @@ export function DetailFacts({ arabic, children }: { arabic?: string | null | und
   );
 }
 
-/** A heading inside a page: the nuqta, a name, and a count. */
 export function SectionHead({ title, count, action }: { title: string; count?: string; action?: ReactNode }) {
   const { palette } = useSettings();
   const type = useType();
@@ -231,18 +199,8 @@ export function SectionHead({ title, count, action }: { title: string; count?: s
 }
 
 const headTop = responsive({ paddingTop: space.s }, { paddingTop: space.xs });
-const grid = {
-  // Phones stack a row's cells; wide windows set them side by side, as wide as each other.
-  row: responsive({ flexDirection: "column" as const, gap: 0 }, { flexDirection: "row" as const, gap: space.xl }),
-  cell: responsive(
-    { flexGrow: 0, flexShrink: 0, flexBasis: "auto" as const, minWidth: 0 },
-    { flexGrow: 1, flexShrink: 1, flexBasis: "0%" as const, minWidth: 0 },
-  ),
-};
-
 const styles = StyleSheet.create({
   frame: { flex: 1 },
-  // The page's column: everything but the sidebar.
   pageColumn: { flex: 1, minWidth: 0, minHeight: 0 },
   // Auto margins centre it in the list, whose header sits in a block rather than a flex box.
   column: { width: "100%", marginHorizontal: "auto", paddingHorizontal: space.xl },

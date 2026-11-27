@@ -1,6 +1,5 @@
 import { space } from "@shawared/design";
 import { nextTarget, previousTarget, segmentAt, type Track } from "@shawared/listening";
-import { router } from "expo-router";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View, type GestureResponderEvent } from "react-native";
 import { IconButton, type PressState } from "../../components/ui/controls";
@@ -11,10 +10,10 @@ import { TextLink } from "../../components/ui/TextLink";
 import { clock, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
-import { createStore, useStore, type Store } from "../../lib/store";
+import { useStore, type Store } from "../../lib/store";
 import { useType } from "../../lib/type";
 import { FavouriteButton } from "../saved/SavedButtons";
-import { player, type Clock, type NowItem, type RepeatMode } from "./player";
+import { player, type Clock, type Now, type RepeatMode } from "./player";
 
 const web = Platform.OS === "web";
 
@@ -41,23 +40,18 @@ export type BarSource = {
   linkTitle?: boolean;
 };
 
-const selectNow = (s: { item: NowItem | null; track: Track | null }) => s;
-const idle = createStore<Clock>({ time: 0, playing: false, ready: false, buffering: false, seq: 0 });
+const selectNow = (s: Now) => s;
 
 /** The app's current recitation as a bar's source, or null when nothing is playing. */
 export function useCurrentSource(): BarSource | null {
-  const { item, track } = useStore(player.now, selectNow) as { item: NowItem | null; track: Track | null };
+  const { item, track } = useStore(player.now, selectNow);
   if (!item || !track) return null;
   return {
-    poemId: item.poemId,
-    title: item.title,
-    poet: item.poet,
-    reciter: item.reciter,
+    ...item,
     reciterId: item.recitation.reciter,
-    abyat: item.abyat,
     duration: item.recitation.duration,
     track,
-    clock: player.clock ?? idle,
+    clock: player.clock,
     toggle: () => player.toggle(),
     jump: (s) => player.seek(s),
     close: () => player.close(),
@@ -217,8 +211,8 @@ function Control({
 }
 
 function useSkips(source: BarSource) {
-  const back = () => source.jump(Math.max(0, source.clock.get().time - 10));
-  const forward = () => source.jump(Math.min(source.duration - 0.05, source.clock.get().time + 10));
+  const back = () => source.jump(source.clock.get().time - 10);
+  const forward = () => source.jump(source.clock.get().time + 10);
   const prev = () => source.jump(previousTarget(source.track, source.clock.get().time));
   const next = () => {
     const to = nextTarget(source.track, source.clock.get().time);
@@ -425,9 +419,6 @@ export function GlobalPlayerBar() {
     </Animated.View>
   );
 }
-
-/** Opens the poem playing (the mini player's tap). */
-export const openPlaying = (poemId: string, href: (p: string) => string) => router.push(href(paths.poem(poemId)));
 
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },

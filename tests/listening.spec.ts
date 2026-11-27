@@ -187,6 +187,63 @@ test("a word opens its own bayt, its meaning brought forward", async ({ page }) 
   await expect(focused).toBeInViewport();
 });
 
+test("a focused meaning stays visible after its panel lays out again", async ({ page }) => {
+  await open(page);
+  await page.getByRole("button", { name: "المَرزَبانِ", exact: true }).first().click();
+  const focused = page.locator("[aria-current='true']").filter({ visible: true });
+  await expect(focused).toBeInViewport({ ratio: 1 });
+  await expect
+    .poll(() =>
+      page.locator("[data-panel]").evaluate((el) => {
+        const transform = getComputedStyle(el).transform;
+        return transform === "none" ? 0 : new DOMMatrixReadOnly(transform).m42;
+      }),
+    )
+    .toBe(0);
+
+  // A later layout can move a note without resizing the note itself.
+  await focused.evaluate((el) => {
+    (el as HTMLElement).style.marginTop = "600px";
+  });
+  await expect(focused).toBeInViewport({ ratio: 1 });
+});
+
+test("translation layout changes keep the playing verse in view", async ({ page }) => {
+  await page.goto(`/en${POEM}`);
+  const row = page.getByLabel("Verse 9", { exact: true });
+  await page.getByRole("button", { name: "Play from verse 9", exact: true }).click();
+  await expect(row).toBeInViewport({ ratio: 1 });
+  await page.getByRole("button", { name: "Pause", exact: true }).filter({ visible: true }).first().click();
+  const translation = page.getByRole("switch", { name: "Translation", exact: true });
+  await translation.click();
+  await expect(translation).toHaveAttribute("aria-checked", "false");
+  await expect(row).toBeInViewport({ ratio: 1 });
+  await translation.click();
+  await expect(translation).toHaveAttribute("aria-checked", "true");
+  await expect(row).toBeInViewport({ ratio: 1 });
+});
+
+test("space controls only the current poem when earlier poem pages stay mounted", async ({ page }) => {
+  const response = await page.request.get("/content/v1/catalog.json");
+  const { poems } = (await response.json()) as { poems: { id: string; title: string; poet: string }[] };
+  const first = poems.find((p) => poems.some((other) => other.id !== p.id && other.poet === p.poet))!;
+  const next = poems.find((p) => p.id !== first.id && p.poet === first.poet)!;
+  await page.goto(`/poems/${first.id}`);
+  await playButton(page).click();
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("playing");
+  await page.locator(`a[href="/poets/${first.poet}"]`).filter({ visible: true }).first().click();
+  await (await scrollToRow(page, next.title)).click();
+  await expect(page).toHaveURL(new RegExp(`/poems/${next.id}$`));
+  await expect.poll(() => page.locator("[inert] [aria-label='verses']").count()).toBeGreaterThan(0);
+
+  await page.keyboard.press("Space");
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.metadata?.title)).toBe(next.title);
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("playing");
+  await page.keyboard.press("Space");
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("paused");
+  expect(await page.evaluate(() => navigator.mediaSession.metadata?.title)).toBe(next.title);
+});
+
 test("English shows translations, and the switch hides them", async ({ page }) => {
   await open(page);
   await page.getByRole("button", { name: "اللغة" }).click();

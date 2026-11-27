@@ -152,6 +152,14 @@ export const loadCatalog = () => load(catalogPath(), Catalog).then(catalogNow);
 export const loadPoem = (id: string, lang: string) =>
   load(bundlePath(id, lang), PoemBundle).then(() => entries.get(bundlePath(id, lang))?.data as PoemBundle | undefined);
 
+/** Unlike a screen load, a download must know that its text was actually kept on disk. */
+export async function retainPoem(id: string, lang: string): Promise<PoemBundle | undefined> {
+  const bundle = await loadPoem(id, lang);
+  if (!bundle) return undefined;
+  const path = bundlePath(id, lang);
+  return (await writeCached(path, JSON.stringify(bundle), entry(path).etag ?? null)) ? bundle : undefined;
+}
+
 export const loadPerson = (kind: PersonKind, id: string, lang: string) =>
   load(personPath(kind, id, lang), PersonBundle).then(() => entries.get(personPath(kind, id, lang))?.data as PersonBundle | undefined);
 

@@ -1,20 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { View } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 import { IconButton } from "../../components/ui/controls";
 import { Dialog } from "../../components/ui/Dialog";
-import { canDownload, cancel, download, downloadsStore, remove, scanDownloads, type Downloads } from "../../lib/downloads";
+import { canDownload, cancel, download, remove, useDownload } from "../../lib/downloads";
 import { t } from "../../lib/i18n";
 import { useSettings } from "../../lib/settings";
-import { useStore } from "../../lib/store";
-
-/** A recording's state on this device: on it, downloading (how far), or neither. */
-export function useDownload(key: string | undefined): { done: boolean; progress: number | null } {
-  useEffect(scanDownloads, []);
-  const selectDone = useCallback((s: Downloads) => (key ? s.done[key] !== undefined : false), [key]);
-  const selectProgress = useCallback((s: Downloads) => (key ? (s.active[key] ?? null) : null), [key]);
-  return { done: useStore(downloadsStore, selectDone), progress: useStore(downloadsStore, selectProgress) };
-}
 
 /**
  * Downloads a poem's recording to listen to offline, and shows how far it got; once it's here, a
@@ -72,7 +63,6 @@ export function DownloadButton({
   );
 }
 
-/** How far a download got, round the button; a quarter that turns when the size isn't known. */
 function Ring({ size, progress, color, track }: { size: number; progress: number; color: string; track: string }) {
   const r = size / 2 - 3;
   const c = 2 * Math.PI * r;

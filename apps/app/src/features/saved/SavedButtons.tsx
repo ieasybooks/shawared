@@ -6,16 +6,17 @@ import { Dialog } from "../../components/ui/Dialog";
 import { Dir } from "../../components/ui/Dir";
 import { Icon } from "../../components/ui/Icon";
 import { t } from "../../lib/i18n";
-import { useSaved } from "../../lib/saved";
+import { useSaved } from "./storage";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { useWindowWidth } from "../../lib/viewport";
-import { newPlaylist, playlistName, toggleFav, togglePoem } from "./actions";
-import { NAME_MAX, type FavouriteKind, type Saved } from "./model";
+import { newPlaylist, toggleFav, togglePoem } from "./actions";
+import { playlistName } from "./labels";
+import { isFavourite, NAME_MAX, type FavouriteKind, type Saved } from "./model";
 
 /** Whether `id` is among the favourite `kind`. */
 export function useFavourite(kind: FavouriteKind, id: string): boolean {
-  const select = useCallback((s: Saved) => s[kind].includes(id), [kind, id]);
+  const select = useCallback((s: Saved) => isFavourite(s, kind, id), [kind, id]);
   return useSaved(select);
 }
 

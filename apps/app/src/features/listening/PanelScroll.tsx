@@ -1,9 +1,11 @@
-import { space } from "@shawared/design";
-import { createContext, use, useCallback, useRef, type ReactNode } from "react";
+import { createContext, use, useEffect, useRef, useState, type ReactNode } from "react";
 import { ScrollView, type HostInstance, type ScrollViewInstance, type StyleProp, type ViewStyle } from "react-native";
+import { isWide, useLayoutChanges } from "../../lib/responsive";
+import { createPanelReveal } from "./panelReveal";
+import { useSheetReady } from "./Sheet";
 
-type Reveal = (node: HostInstance | null) => void;
-const RevealCtx = createContext<Reveal>(() => {});
+type Reveal = (node: HostInstance | null) => () => void;
+const RevealCtx = createContext<Reveal>(() => () => {});
 
 /**
  * The scrolling box the explanation sits in (the side panel, the phone sheet). Anything
@@ -19,25 +21,28 @@ export function PanelScroll({
   children: ReactNode;
 }) {
   const scroll = useRef<ScrollViewInstance>(null);
-  const offset = useRef(0);
-  const reveal = useCallback<Reveal>((node) => {
-    const box = scroll.current as unknown as HostInstance | null;
-    if (!node || !box) return;
-    node.measureInWindow((_x, top, _w, height) =>
-      box.measureInWindow((_bx, boxTop, _bw, boxHeight) => {
-        const margin = space.xl;
-        if (top >= boxTop + margin && top + height <= boxTop + boxHeight - margin) return;
-        scroll.current?.scrollTo({ y: Math.max(0, offset.current + top - boxTop - margin), animated: true });
-      }),
-    );
-  }, []);
+  const [reveal] = useState(() =>
+    createPanelReveal(
+      () => scroll.current as unknown as HostInstance | null,
+      (y) => scroll.current?.scrollTo({ y, animated: true }),
+    ),
+  );
+  const sheetReady = useSheetReady();
+  const layoutChanges = useLayoutChanges();
+  useEffect(() => {
+    // CSS keeps the web sidebar open even while its phone sheet is closed.
+    reveal.setReady(isWide() || sheetReady);
+  }, [reveal, sheetReady, layoutChanges]);
+  useEffect(() => () => reveal.clear(), [reveal]);
   return (
-    <RevealCtx value={reveal}>
+    <RevealCtx value={reveal.request}>
       <ScrollView
         ref={scroll}
         style={style}
         contentContainerStyle={contentContainerStyle}
-        onScroll={(e) => (offset.current = e.nativeEvent.contentOffset.y)}
+        onLayout={reveal.layout}
+        onContentSizeChange={reveal.layout}
+        onScroll={(e) => reveal.scrolled(e.nativeEvent.contentOffset.y)}
         scrollEventThrottle={32}
       >
         {children}

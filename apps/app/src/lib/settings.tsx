@@ -5,9 +5,9 @@ import { router, usePathname } from "expo-router";
 import { createContext, use, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Platform } from "react-native";
 import { alignFor } from "./align";
+import { DEFAULT_SETTINGS, parseSettings, SETTINGS_KEY, THEME_ATTRIBUTE, THEME_WAIT_ATTRIBUTE, type Settings } from "./preferences";
 import { langOfPath, pathInLang } from "./routes";
 
-type Settings = { lang: UiLang; theme: ThemeName };
 type SettingsValue = Settings & {
   palette: Palette;
   rtl: boolean;
@@ -19,30 +19,21 @@ type SettingsValue = Settings & {
   href: (path: string) => string;
 };
 
-/** Where settings are saved (on the web, localStorage; the page reads the theme before it shows). */
-export const SETTINGS_KEY = "shawared.settings.v1";
-const DEFAULTS: Settings = { lang: "ar", theme: "day" };
 const Ctx = createContext<SettingsValue | null>(null);
 const web = Platform.OS === "web";
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [stored, setStored] = useState<Settings>(DEFAULTS);
+  const [stored, setStored] = useState<Settings>(DEFAULT_SETTINGS);
   // The web renders right away, so pages can be built ahead of time; the apps wait for storage.
   const [loaded, setLoaded] = useState(web);
   const [restored, setRestored] = useState(false);
   const pathname = usePathname();
-  // On the web the address decides the language.
   const lang: UiLang = web ? langOfPath(pathname) : stored.lang;
   const theme = stored.theme;
 
-  // Reads the saved settings once, from storage outside React.
   useEffect(() => {
     AsyncStorage.getItem(SETTINGS_KEY)
-      .then((raw) => {
-        if (!raw) return;
-        const s = JSON.parse(raw) as Partial<Settings>;
-        setStored({ lang: s.lang === "en" ? "en" : "ar", theme: s.theme === "night" ? "night" : "day" });
-      })
+      .then((raw) => setStored(parseSettings(raw)))
       .catch(() => {})
       .finally(() => {
         setLoaded(true);
@@ -50,11 +41,9 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       });
   }, []);
 
-  // A web page in the night theme waits to show until the theme is applied (see
-  // app/+html.tsx). It is by now; show the page once it's painted.
   useEffect(() => {
     if (!web || !restored || typeof document === "undefined") return;
-    const frame = requestAnimationFrame(() => document.documentElement.removeAttribute("data-wait"));
+    const frame = requestAnimationFrame(() => document.documentElement.removeAttribute(THEME_WAIT_ATTRIBUTE));
     return () => cancelAnimationFrame(frame);
   }, [restored]);
 
@@ -64,14 +53,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const palette = palettes[theme];
-  // The page around the app on the web: direction, language, colours.
   useEffect(() => {
     if (!web || typeof document === "undefined") return;
     const root = document.documentElement;
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";
     root.style.colorScheme = theme === "night" ? "dark" : "light";
-    root.dataset.theme = theme;
+    root.setAttribute(THEME_ATTRIBUTE, theme);
     document.body.style.backgroundColor = palette.bg;
     document.querySelector('meta[name="theme-color"]')?.setAttribute("content", palette.bg);
   }, [lang, theme, palette]);

@@ -9,6 +9,8 @@ export type { Downloads } from "./downloads";
 
 export const canDownload = false;
 export const downloadsStore = createStore<Downloads>({ done: {}, active: {} });
+export const useDownloads = <S>(select: (state: Downloads) => S): S => select(downloadsStore.get());
+export const useDownload = (_key: string | undefined): { done: boolean; progress: number | null } => ({ done: false, progress: null });
 export function scanDownloads() {}
 export const localAudio = (_key: string): string | null => null;
 export const artworkUrl = () => ARTWORK_URL;

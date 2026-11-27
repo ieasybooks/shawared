@@ -25,6 +25,10 @@ export const PRE_ROLL = 0.12;
 export const RESTART_WINDOW = 1.5;
 /** A repeated bayt starts over this long after it ends. */
 export const REPEAT_GAP = 0.5;
+/** Restart before the recording can end and hand control to the next poem. */
+export const REPEAT_END_MARGIN = 0.5;
+
+export const clampTime = (duration: number, seconds: number) => Math.max(0, Math.min(duration - 0.05, seconds));
 
 export function buildTrack(timeline: readonly (readonly [string, number, number])[], duration: number): Track {
   const lines: TrackLine[] = [];
@@ -34,7 +38,6 @@ export function buildTrack(timeline: readonly (readonly [string, number, number]
     if (!a) continue;
     const prev = segments.at(-1);
     const prevLine = lines.at(-1);
-    // A new segment starts when the bayt changes, or when the same half comes round again (a repeat).
     const sameBayt = prev && prev.n === a.n && prevLine && !(a.half && prevLine.half && a.half <= prevLine.half);
     if (!sameBayt) segments.push({ n: a.n, start, end, first: lines.length, last: lines.length });
     const seg = segments.at(-1)!;
@@ -96,10 +99,13 @@ export function previousTarget(track: Track, t: number): number {
 export function repeatTarget(track: Track, segment: number, t: number): number | null {
   const seg = track.segments[segment];
   if (!seg) return null;
-  return t >= seg.end + REPEAT_GAP ? seekPoint(seg.start) : null;
+  const next = track.segments[segment + 1];
+  const gap = next ? Math.min(REPEAT_GAP, Math.max(0, next.start - seg.end - 0.05)) : REPEAT_GAP;
+  return t >= Math.min(seg.end + gap, track.duration - REPEAT_END_MARGIN) ? seekPoint(seg.start) : null;
 }
 
-/** The bayt numbers in the order the recording first reaches them. */
-export function recitedOrder(track: Track): number[] {
-  return [...new Set(track.segments.map((s) => s.n))];
+/** A late end can arrive before any segment was held; then repeat the final bayt. */
+export function repeatStart(track: Track, segment: number): number {
+  const seg = track.segments[segment] ?? track.segments.at(-1);
+  return seg ? seekPoint(seg.start) : 0;
 }

@@ -3,10 +3,10 @@
 //
 //   bun scripts/tashkeel.ts <poem-id>         show what would change, and what needs a person
 //   bun scripts/tashkeel.ts <poem-id> --fix   write the changes
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { houseStyle, tashkeelIssues } from "@shawared/contracts";
-import { root } from "./repository.ts";
+import { languageFiles, root } from "./repository.ts";
 
 const [id, flag] = process.argv.slice(2);
 if (!id) {
@@ -34,9 +34,8 @@ for (const b of poem.abyat) {
 }
 if (fix) writeFileSync(pf, poemText);
 
-// Word notes repeat the verse's Arabic; restyle it the same way. Edit the text in place
-// so the files keep their hand-made layout.
-for (const f of readdirSync(dir).filter((f) => /^[a-z]{2}(\.[a-z0-9-]+)?\.json$/.test(f))) {
+// Edit in place so the files keep their hand-made layout.
+for (const f of languageFiles(dir)) {
   const file = join(dir, f);
   let text = readFileSync(file, "utf8");
   const data = JSON.parse(text);

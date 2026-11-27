@@ -7,8 +7,9 @@
 // its file (`localAudio`).
 import type { Catalog } from "@shawared/contracts";
 import { Directory, File, Paths } from "expo-file-system";
-import { ARTWORK_URL, audioUrl, loadPoem } from "./content";
-import { createStore } from "./store";
+import { useCallback, useEffect } from "react";
+import { ARTWORK_URL, audioUrl, retainPoem } from "./content";
+import { createStore, useStore } from "./store";
 
 export const canDownload = true;
 
@@ -20,6 +21,17 @@ export type Downloads = {
 };
 
 export const downloadsStore = createStore<Downloads>({ done: {}, active: {} });
+
+export function useDownloads<S>(select: (state: Downloads) => S): S {
+  useEffect(scanDownloads, []);
+  return useStore(downloadsStore, select);
+}
+
+export function useDownload(key: string | undefined): { done: boolean; progress: number | null } {
+  const selectDone = useCallback((s: Downloads) => (key ? s.done[key] !== undefined : false), [key]);
+  const selectProgress = useCallback((s: Downloads) => (key ? (s.active[key] ?? null) : null), [key]);
+  return { done: useDownloads(selectDone), progress: useDownloads(selectProgress) };
+}
 
 const root = new Directory(Paths.document, "audio");
 const artwork = new File(Paths.document, "artwork.png");
@@ -102,7 +114,7 @@ export async function download(poemId: string, key: string, langs: readonly stri
   const part = new File(root, poemOf(key), `${target.name}${PART}`);
   try {
     new Directory(root, poemOf(key)).create({ intermediates: true, idempotent: true });
-    const texts = Promise.all(langs.map((lang) => loadPoem(poemId, lang)));
+    const texts = Promise.all(langs.map((lang) => retainPoem(poemId, lang)));
     await File.downloadFileAsync(audioUrl(key), part, {
       idempotent: true,
       signal: abort.signal,
@@ -110,7 +122,9 @@ export async function download(poemId: string, key: string, langs: readonly stri
         if (aborts.get(key) === abort) setActive(key, totalBytes > 0 ? Math.min(1, bytesWritten / totalBytes) : -1);
       },
     });
-    await texts;
+    const retained = await texts;
+    if (abort.signal.aborted || !retained.every((bundle) => bundle?.recitations.some((recitation) => recitation.audio === key)))
+      throw new Error("Could not keep the recording's text offline");
     if (target.exists) target.delete();
     part.rename(target.name);
     const size = fileOf(key).size;

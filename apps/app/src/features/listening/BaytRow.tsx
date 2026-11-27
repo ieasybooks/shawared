@@ -2,42 +2,39 @@ import type { PublishedBayt } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { wordKey } from "@shawared/listening";
 import { memo, useCallback } from "react";
-import { Pressable, StyleSheet, Text, View, type LayoutChangeEvent, type StyleProp, type ViewStyle } from "react-native";
+import { Platform, Pressable, StyleSheet, Text, View, type HostInstance, type StyleProp, type ViewStyle } from "react-native";
 import type { PressState } from "../../components/ui/controls";
 import { Icon } from "../../components/ui/Icon";
 import { Measure, shownWords } from "../../components/ui/Measure";
 import { digits, t } from "../../lib/i18n";
 import { isWide, responsive, scale, useLayout } from "../../lib/responsive";
-import { createStore, useStore } from "../../lib/store";
+import { useStore } from "../../lib/store";
 import { useSettings } from "../../lib/settings";
 import { useType, VERSE_LINE } from "../../lib/type";
 import { useListening } from "./state";
-import { hidePeek, peekHandlers } from "./WordPeek";
 
-/**
- * The bayt under the mouse, whose number turns into ▶. In a store, so moving between bayts
- * re-renders only the two numbers concerned (hover never comes from touch).
- */
-const hoveredBayt = createStore<{ n: number | null }>({ n: null });
 const NUMBER_SIZE = 28;
+const web = Platform.OS === "web";
 
 type Props = {
   bayt: PublishedBayt;
   isCurrent: boolean;
   currentHalf: 1 | 2 | null;
   isPinned: boolean;
-  onLayout: (n: number, e: LayoutChangeEvent) => void;
+  onLayout: () => void;
+  rowRef: (n: number, node: HostInstance | null) => void;
 };
 
 /**
  * One bayt of the poem page. Phones stack its halves, the sadr at the start and the ajuz at
  * the end; wide windows set them side by side in two even columns, with a rhombus between.
  */
-export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isPinned, onLayout }: Props) {
-  const { trOn, ordered, pin, setSheetOpen, playFrom } = useListening();
+export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isPinned, onLayout, rowRef }: Props) {
+  const { trOn, ordered, openBayt, playFrom, hover } = useListening();
   const { palette, lang } = useSettings();
   const type = useType();
   const layout = useLayout();
+  const ref = useCallback((node: HostInstance | null) => rowRef(bayt.n, node), [bayt.n, rowRef]);
   const translation = trOn ? ordered.find((s) => s.abyat[bayt.n]?.translation)?.abyat[bayt.n]?.translation : undefined;
   const pair = Array.isArray(translation) ? translation : null;
   const sentence = typeof translation === "string" ? translation : null;
@@ -46,15 +43,8 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
   const halfOn = (h: 1 | 2) => isCurrent && (currentHalf === null || currentHalf === h);
   const halfColor = (h: 1 | 2) => (halfOn(h) ? palette.accent : palette.rest);
 
-  const open = () => {
-    pin(bayt.n);
-    // Phones open the explanation's sheet; wide windows show it beside the verses.
-    if (!isWide()) setSheetOpen(true);
-  };
-
   const half = (h: 1 | 2) => {
     const text = h === 1 ? bayt.sadr : bayt.ajuz;
-    // Under a translation, or side by side on wide windows, each half is centred.
     const align = pair || sentence ? styles.center : h === 1 ? layout.style(sized.alignStart) : layout.style(sized.alignEnd);
     return (
       <View style={[layout.style(sized.half), pair && styles.withTr]}>
@@ -66,10 +56,11 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
 
   return (
     <Pressable
-      onLayout={(e) => onLayout(bayt.n, e)}
-      onPress={open}
-      onHoverIn={() => hoveredBayt.set({ n: bayt.n })}
-      onHoverOut={() => hoveredBayt.get().n === bayt.n && hoveredBayt.set({ n: null })}
+      ref={ref}
+      onLayout={onLayout}
+      onPress={() => openBayt(bayt.n)}
+      onHoverIn={() => hover.bayt.set({ n: bayt.n })}
+      onHoverOut={() => hover.bayt.get().n === bayt.n && hover.bayt.set({ n: null })}
       accessibilityLabel={t(lang, "verse", { n: bayt.n })}
       accessibilityHint={t(lang, "expand")}
       style={[
@@ -94,11 +85,12 @@ export const BaytRow = memo(function BaytRow({ bayt, isCurrent, currentHalf, isP
 });
 
 function NumberButton({ n, onPress }: { n: number; onPress: () => void }) {
+  const { hover } = useListening();
   const { palette, lang } = useSettings();
   const type = useType();
   const layout = useLayout();
   const rowHovered = useStore(
-    hoveredBayt,
+    hover.bayt,
     useCallback((s: { n: number | null }) => s.n === n, [n]),
   );
   // The number, and ▶ on ink while the mouse is on its bayt; the playing bayt is marked by its
@@ -156,7 +148,7 @@ function Words({
   /** Phones step the halves when there's no translation: the sadr keeps off the end, the ajuz off the start. */
   inset: 0 | 1 | 2;
 }) {
-  const { words, openWord, focus, bundle } = useListening();
+  const { words, openWord, focus, bundle, hover } = useListening();
   const { palette } = useSettings();
   const type = useType();
   const layout = useLayout();
@@ -168,7 +160,6 @@ function Words({
   const { measure, kashida } = bundle.poem;
   const plain = text.split(" ");
   const shown = shownWords(text, kashida[`${n}.${half}`]);
-  // The word whose meaning is open, with the rest of its phrase.
   const focused = focus ? words.get(focus)?.address : undefined;
   const list = shown.map((w, i) => {
     const key = wordKey(n, half, i + 1);
@@ -183,12 +174,22 @@ function Words({
         key={key}
         accessibilityRole="button"
         accessibilityLabel={plain[i]}
-        // A word opens its own bayt's explanation, with its meaning brought forward.
-        onPress={() => {
-          hidePeek();
-          openWord(key, n);
-        }}
-        {...peekHandlers(key)}
+        onPress={() => openWord(key, n)}
+        onHoverIn={
+          web
+            ? (e) => {
+                const event = e.nativeEvent as unknown as PointerEvent;
+                if ((event.pointerType && event.pointerType !== "mouse") || !isWide()) return;
+                const el = (event.target as Element | null)?.closest?.('[role="button"]');
+                if (!el) return;
+                hover.enterWord(key, () => {
+                  const r = el.getBoundingClientRect();
+                  return { x: r.left, y: r.top, w: r.width, h: r.height };
+                });
+              }
+            : undefined
+        }
+        onHoverOut={web ? hover.leaveWord : undefined}
         style={(s: PressState) => [
           styles.g,
           (s.hovered || words.get(key)?.address === focused) && { backgroundColor: `${palette.accent}1F` },
@@ -222,7 +223,6 @@ const sized = {
     { paddingTop: space.m, paddingBottom: space.m, paddingStart: NUMBER_SIZE + space.m - 1, paddingEnd: space.m - 1 },
     { paddingTop: 10, paddingBottom: 10, paddingStart: 44, paddingEnd: 14 },
   ),
-  // The halves: stacked on phones (spaced like the rest of the bayt), side by side on wide windows.
   halves: responsive(
     { flexDirection: "column" as const, alignItems: "stretch" as const, gap: 0 },
     { flexDirection: "row" as const, alignItems: "flex-start" as const, gap: 22 },
@@ -246,7 +246,6 @@ const sized = {
 
 const styles = StyleSheet.create({
   bayt: { position: "relative", borderRadius: 14, borderWidth: 1, borderColor: "transparent" },
-  /** With translations, the halves and their lines are spaced by gaps rather than by line height. */
   baytTr: { gap: space.m },
   withTr: { gap: space.xs },
   center: { justifyContent: "center" },

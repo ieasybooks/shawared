@@ -10,9 +10,10 @@
 //   never takes other bytes, so audio.shawared.com caches it as immutable; a new
 //   recording gets a new key.
 import { createHash } from "node:crypto";
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { audioSourceKey } from "@shawared/contracts";
+import { directories, jsonFiles } from "./repository.ts";
 
 export const CONTENT_TYPE = "audio/mp4";
 export const IMMUTABLE = "public, max-age=31536000, immutable";
@@ -34,19 +35,12 @@ export type Recording = {
   duration: number;
 };
 
-const isDir = (p: string) => existsSync(p) && statSync(p).isDirectory();
-
-/** Every recitation under content/poems, in order. */
 export function recordings(rootDir: string): Recording[] {
   const poems = join(rootDir, "content", "poems");
   const found: Recording[] = [];
-  for (const poem of isDir(poems) ? readdirSync(poems).sort() : []) {
+  for (const poem of directories(poems)) {
     const dir = join(poems, poem, "recitations");
-    for (const f of isDir(dir)
-      ? readdirSync(dir)
-          .filter((f) => f.endsWith(".json"))
-          .sort()
-      : []) {
+    for (const f of jsonFiles(dir)) {
       const file = join(dir, f);
       const json = JSON.parse(readFileSync(file, "utf8")) as { audio: string; duration: number };
       found.push({ poem, recitation: f.replace(/\.json$/, ""), file, audio: json.audio, duration: json.duration });

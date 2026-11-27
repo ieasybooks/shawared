@@ -6,7 +6,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { audioSourceKey } from "@shawared/contracts";
-import { root } from "./repository.ts";
+import { languageFiles, root } from "./repository.ts";
 
 const ROOT = root();
 const id = process.argv[2];
@@ -18,8 +18,7 @@ const dir = join(ROOT, "content", "poems", id);
 const read = (f: string) => JSON.parse(readFileSync(f, "utf8"));
 
 const poem = read(join(dir, "poem.json"));
-const langs = readdirSync(dir)
-  .filter((f) => /^[a-z]{2}(\.[a-z0-9-]+)?\.json$/.test(f))
+const langs = languageFiles(dir)
   .sort()
   .map((f) => read(join(dir, f)));
 const recDir = join(dir, "recitations");
@@ -128,13 +127,11 @@ const recName = rec ? (D.reciters[rec.reciter]?.reciter?.name ?? rec.reciter) : 
 $("#meta").innerHTML = esc(poetName) + " · إلقاء " + esc(recName) + " · " + P.abyat.length + " أبيات" + (en?.title ? ' · <span class="ltr" dir="ltr">' + esc(en.title) + "</span>" : "");
 if (rec) $("#audio").src = "../audio/" + rec.localAudio;
 
-// intro + poet cards
 const main = $("#main");
 const card = (title, body, dir) => '<section class="card' + (dir === "ltr" ? " ltr" : "") + '" dir="' + (dir || "rtl") + '"><h2>' + esc(title) + "</h2>" + body + "</section>";
 for (const l of D.langs) if (l.intro) main.insertAdjacentHTML("beforeend", card(l.lang === "ar" ? "عن القصيدة · " + l.source.name : "About the poem · " + l.source.name, '<p class="' + (l.lang === "ar" ? "sharh" : "sharh en-p") + '">' + esc(l.intro) + "</p>", l.lang === "ar" ? "rtl" : "ltr"));
 for (const [k, v] of Object.entries(D.poet)) if (v.bio) main.insertAdjacentHTML("beforeend", card(k === "ar" ? "عن الشاعر" : "About the poet", '<p class="' + (k === "ar" ? "sharh" : "sharh en-p") + '">' + esc(v.bio) + "</p>", k === "ar" ? "rtl" : "ltr"));
 
-// which word notes cover which word: "n.h.w" -> [{lang, source, addr, note}]
 const notes = {};
 for (const l of D.langs) for (const [addr, note] of Object.entries(l.words || {})) {
   const m = addr.match(/^(\\d+)\\.([12])\\.(\\d+)(?:-(\\d+))?$/);
@@ -165,7 +162,6 @@ for (const b of P.abyat) {
     '<div class="notes">' + ex + '<div class="wn"></div></div></div></article>');
 }
 
-// word notes open under their bayt
 main.addEventListener("click", (e) => {
   const g = e.target.closest(".g");
   if (g) {
@@ -189,7 +185,6 @@ main.addEventListener("click", (e) => {
   }
 });
 
-// follow the audio
 const audio = $("#audio");
 let cur = null, userAt = 0;
 addEventListener("wheel", () => (userAt = performance.now()), { passive: true });
@@ -198,7 +193,7 @@ function tick() {
   if (rec) {
     const t = audio.currentTime;
     let hit = null;
-    for (const [a, s] of rec.timeline) if (t >= s - 0.05) hit = a; // hold the last line through pauses
+    for (const [a, s] of rec.timeline) if (t >= s - 0.05) hit = a;
     if (t < rec.timeline[0][1] - 0.05) hit = null;
     if (hit !== cur) {
       document.querySelectorAll(".on").forEach((x) => x.classList.remove("on"));
