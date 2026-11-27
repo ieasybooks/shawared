@@ -11,38 +11,26 @@ Use it where editions disagree (a vowel, a word). Candidates should differ only
 where the editions differ. The score is the aligner's total log-probability; the
 difference between the best two is what matters (a gap under ~2 is a coin toss).
 """
-import re, sys
-
-import numpy as np
-import ctc_forced_aligner as cfa
-import uroman as ur
-import onnxruntime
-
-MODEL = __import__("os").path.expanduser("~/.cache/shawared/mms-300m-forced-aligner.onnx")
-
-
-def romanize(u, word):
-    """As scripts/align.py does: a voweled taa marbuta is said as t, a pausal one as h."""
-    word = re.sub(r"ة(?=[\u064B-\u0650])", "ت", word)
-    word = re.sub(r"ة(?=[\u0651\u0652]?$)", "ه", word)
-    return re.sub(r"[^a-z']", "", u.romanize_string(word).lower())
+import sys
+from alignment import model_session, romanize, tokens_for
 
 
 def main():
+    import numpy as np
+    import ctc_forced_aligner as cfa
+    import uroman as ur
+
     audio, start, end, *cands = sys.argv[1:]
     start, end = float(start), float(end)
     u = ur.Uroman()
     wave = cfa.load_audio(audio)
     a, b = int(max(0, start - 0.3) * 16000), int((end + 0.3) * 16000)
-    session = onnxruntime.InferenceSession(MODEL)
+    session = model_session()
     em, _ = cfa.generate_emissions(session, wave[a:b], batch_size=1)
     tok = cfa.Tokenizer()
     rows = []
     for c in cands:
-        tokens = []
-        for w in c.split():
-            r = romanize(u, w)
-            tokens += ["<star>", " ".join(r)]
+        tokens = tokens_for(romanize(u, w) for w in c.split())
         _, scores, _ = cfa.get_alignments(em, tokens, tok)
         rows.append((float(np.asarray(scores).sum()), c, " ".join(t.replace(" ", "") for t in tokens if t != "<star>")))
     rows.sort(reverse=True)

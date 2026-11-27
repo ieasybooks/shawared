@@ -5,8 +5,10 @@
 //   bun scripts/preview.ts <poem-id>   ->  media/preview/<poem-id>.html
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { audioSourceKey } from "@shawared/contracts";
+import { root } from "./repository.ts";
 
-const ROOT = join(import.meta.dir, "..");
+const ROOT = root();
 const id = process.argv[2];
 if (!id) {
   console.error("usage: bun scripts/preview.ts <poem-id>");
@@ -25,7 +27,7 @@ const recs = existsSync(recDir)
   ? readdirSync(recDir)
       .filter((f) => f.endsWith(".json"))
       .sort()
-      .map((f) => read(join(recDir, f)))
+      .map((f) => ({ ...read(join(recDir, f)), localAudio: audioSourceKey(id, f.replace(/\.json$/, "")) }))
   : [];
 const person = (kind: string, pid: string) => {
   const d = join(ROOT, "content", kind, pid);
@@ -124,7 +126,7 @@ $("#title").textContent = P.title;
 const poetName = D.poet.poet?.name ?? P.poet;
 const recName = rec ? (D.reciters[rec.reciter]?.reciter?.name ?? rec.reciter) : "بلا تسجيل";
 $("#meta").innerHTML = esc(poetName) + " · إلقاء " + esc(recName) + " · " + P.abyat.length + " أبيات" + (en?.title ? ' · <span class="ltr" dir="ltr">' + esc(en.title) + "</span>" : "");
-if (rec) $("#audio").src = "../audio/" + rec.audio;
+if (rec) $("#audio").src = "../audio/" + rec.localAudio;
 
 // intro + poet cards
 const main = $("#main");

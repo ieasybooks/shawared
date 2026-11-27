@@ -16,7 +16,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { chromium, type Browser, type Page } from "@playwright/test";
 import { DAY, image } from "./app-icons.ts";
-import { root } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 type Lang = "ar" | "en";
 const LANGS: Lang[] = ["ar", "en"];

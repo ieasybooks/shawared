@@ -7,6 +7,7 @@ import { Chip } from "../../components/ui/controls";
 import { CoverTile } from "../../components/ui/Girih";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog, usePerson } from "../../lib/content";
+import { nameOf, poemsWithIds } from "../../lib/catalog";
 import { usePrefetch } from "../../lib/prefetch";
 import { recordingsByReciter } from "../../lib/counts";
 import { SortBar } from "../library/DirectoryControls";
@@ -18,7 +19,7 @@ import { searchPeople } from "../../lib/search";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { DetailFacts, ListPage, PageFrame, SectionHead } from "../library/Page";
-import { nameOf, PoemRow } from "../library/PoemCard";
+import { PoemRow } from "../library/PoemCard";
 import { SearchField } from "../library/SearchField";
 import { FavouriteChip } from "../saved/SavedButtons";
 
@@ -149,8 +150,7 @@ export function PersonScreen({
   const type = useType();
   const poems = useMemo(() => {
     if (!catalog.data || !person.data) return [];
-    const ids = new Set(person.data.poems);
-    return catalog.data.poems.filter((p) => ids.has(p.id));
+    return poemsWithIds(catalog.data.poems, person.data.poems);
   }, [catalog.data, person.data]);
   const list = useMemo(() => poems.map((p) => p.id), [poems]);
   if (!catalog.data || !person.data)
@@ -160,7 +160,7 @@ export function PersonScreen({
       </PageFrame>
     );
   const p = person.data.person;
-  const name = lang === "ar" ? p.name : (p.names[lang] ?? p.name);
+  const name = nameOf(p, lang);
   // The name in Arabic in full: under an English name, or when it says more than the short one.
   const arabic = lang === "ar" ? (p.full_name && p.full_name !== p.name ? p.full_name : null) : (p.full_name ?? p.name);
   const youtube = p.links?.youtube;

@@ -7,7 +7,8 @@ import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, write
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { hashOf, keyFor, parseKey, recordings, sourcePath } from "./recordings.ts";
+import { parseAudioKey } from "@shawared/contracts";
+import { hashOf, keyFor, recordings, sourcePath } from "./recordings.ts";
 import { uploadAudio, withKey, type Bucket } from "./upload-audio.ts";
 import { audioProblems } from "./verify-audio.ts";
 
@@ -68,13 +69,13 @@ const run = (root: string, script: string, ...args: string[]) =>
 
 describe("keys", () => {
   it("name a recording before and after its upload", () => {
-    expect(parseKey("taqulu-buthaynatu/osama-alwaaedh.m4a")).toEqual({ poem: "taqulu-buthaynatu", recitation: "osama-alwaaedh" });
-    expect(parseKey("taqulu-buthaynatu/osama-alwaaedh.0123456789ab.m4a")).toEqual({
+    expect(parseAudioKey("taqulu-buthaynatu/osama-alwaaedh.m4a")).toEqual({ poem: "taqulu-buthaynatu", recitation: "osama-alwaaedh" });
+    expect(parseAudioKey("taqulu-buthaynatu/osama-alwaaedh.0123456789ab.m4a")).toEqual({
       poem: "taqulu-buthaynatu",
       recitation: "osama-alwaaedh",
       hash: "0123456789ab",
     });
-    for (const bad of ["x.m4a", "a/b.0123456789AB.m4a", "a/b.0123.m4a", "a/b/c.m4a", "a/b.mp3"]) expect(parseKey(bad), bad).toBeNull();
+    for (const bad of ["x.m4a", "a/b.0123456789AB.m4a", "a/b.0123.m4a", "a/b/c.m4a", "a/b.mp3"]) expect(parseAudioKey(bad), bad).toBeNull();
   });
 
   it("carry the first 12 hex digits of the source's SHA-256", () => {

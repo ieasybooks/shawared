@@ -8,13 +8,14 @@ import { DirectoryCell, DirectoryGrid, SortBar } from "../library/DirectoryContr
 import { Half } from "../../components/ui/Measure";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
+import { nameOf, poemsForTheme } from "../../lib/catalog";
 import { poemsCount, themesCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { fold } from "../../lib/search";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { ListPage, PageFrame } from "../library/Page";
-import { nameOf, PoemRow, useOpenPoem } from "../library/PoemCard";
+import { PoemRow, useOpenPoem } from "../library/PoemCard";
 import { SearchField } from "../library/SearchField";
 
 type Preview = { catalog: Catalog };
@@ -72,7 +73,7 @@ export function ThemeScreen({ id, initial }: { id: string; initial?: Preview | u
   const { lang, palette, start } = useSettings();
   const type = useType();
   const theme = themeOf(data, id);
-  const poems = useMemo(() => data?.poems.filter((p) => p.theme === id) ?? [], [data, id]);
+  const poems = useMemo(() => (data ? poemsForTheme(data.poems, id) : []), [data, id]);
   const list = useMemo(() => poems.map((p) => p.id), [poems]);
   if (!data || !theme)
     return (

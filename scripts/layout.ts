@@ -6,13 +6,14 @@
 //   bun scripts/layout.ts <poem-id>
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { root } from "./repository.ts";
 
 const id = process.argv[2];
 if (!id) {
   console.error("usage: bun scripts/layout.ts <poem-id>");
   process.exit(1);
 }
-const dir = join(import.meta.dir, "..", "content", "poems", id);
+const dir = join(root(), "content", "poems", id);
 const j = (v: unknown) => JSON.stringify(v);
 // JSON with a space after each comma in arrays, as written by hand.
 const jv = (v: unknown): string => (Array.isArray(v) ? `[${v.map(jv).join(", ")}]` : j(v));

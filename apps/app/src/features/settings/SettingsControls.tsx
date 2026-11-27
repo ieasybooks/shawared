@@ -5,7 +5,7 @@ import { Modal, Pressable, StyleSheet, Text, View, type HostInstance } from "rea
 import { IconButton, IconLink, Nuqta, type PressState } from "../../components/ui/controls";
 import { Dir } from "../../components/ui/Dir";
 import { t } from "../../lib/i18n";
-import { langOfPath, paths } from "../../lib/routes";
+import { pathInLang, paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { typeFor } from "../../lib/type";
 import { useWindowWidth } from "../../lib/viewport";
@@ -31,7 +31,7 @@ export function SettingsButtons({ size = 38, about = false }: { size?: number; a
 function AboutLink({ size }: { size: number }) {
   const { lang, href, palette } = useSettings();
   const pathname = usePathname();
-  const bare = langOfPath(pathname) === "en" ? pathname.slice(3) : pathname;
+  const bare = pathInLang(pathname, "ar");
   return (
     <IconLink
       icon="info"

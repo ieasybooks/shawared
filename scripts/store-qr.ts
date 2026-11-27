@@ -9,7 +9,8 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { palettes } from "@shawared/design";
 import qrcode from "qrcode-generator";
-import { root, SITE } from "./recordings.ts";
+import { SITE } from "@shawared/contracts";
+import { root } from "./repository.ts";
 
 /** The modules of white around a code that the standard asks for. */
 const QUIET = 4;

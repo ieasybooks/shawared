@@ -1,8 +1,9 @@
+import { SITE } from "@shawared/contracts";
 import { palettes } from "@shawared/design";
 import { useServerDocumentContext } from "expo-router/html";
 import type { ReactNode } from "react";
 import { t } from "../lib/i18n";
-import { langOfPath, pathInLang, paths, SITE } from "../lib/routes";
+import { langOfPath, pathInLang, paths } from "../lib/routes";
 import { RESPONSIVE_CSS, WIDE_MIN } from "../lib/responsive";
 import { SETTINGS_KEY } from "../lib/settings";
 import { APP_STORE_ID, appBanner, smartBannerArgument, storeRedirect } from "../lib/stores";
@@ -71,7 +72,7 @@ const bannerTexts = Object.fromEntries(
 export default function Root({ children, pathname }: { children: ReactNode; pathname: string }) {
   const { htmlAttributes, bodyAttributes, headNodes, bodyNodes } = useServerDocumentContext();
   const lang = langOfPath(pathname);
-  const appPage = pathname === paths.app || pathname === pathInLang(paths.app, "en");
+  const appPage = pathInLang(pathname, "ar") === paths.app;
   return (
     <html {...htmlAttributes} lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
       <head>

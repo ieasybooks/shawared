@@ -1,10 +1,19 @@
-import { bundlePath, Catalog, catalogPath, PersonBundle, personPath, PoemBundle, type PersonKind } from "@shawared/contracts";
+import {
+  AUDIO_HOST,
+  bundlePath,
+  Catalog,
+  catalogPath,
+  PersonBundle,
+  personPath,
+  PoemBundle,
+  SITE,
+  type PersonKind,
+} from "@shawared/contracts";
 import Constants from "expo-constants";
 import { useCallback, useEffect, useSyncExternalStore } from "react";
 import { Platform } from "react-native";
 import type { z } from "zod";
 import { readCached, writeCached } from "./diskCache";
-import { AUDIO_HOST, SITE } from "./routes";
 
 // Published content and audio. On the web they're served next to the app. The apps' release
 // builds read them from shawared.com and audio.shawared.com, as the web's release does; a dev
@@ -143,6 +152,9 @@ export const loadCatalog = () => load(catalogPath(), Catalog).then(catalogNow);
 export const loadPoem = (id: string, lang: string) =>
   load(bundlePath(id, lang), PoemBundle).then(() => entries.get(bundlePath(id, lang))?.data as PoemBundle | undefined);
 
+export const loadPerson = (kind: PersonKind, id: string, lang: string) =>
+  load(personPath(kind, id, lang), PersonBundle).then(() => entries.get(personPath(kind, id, lang))?.data as PersonBundle | undefined);
+
 /** The catalog. A page's slice of it shows until the whole catalog is here. */
 export const useCatalog = (preview?: Catalog) => useResource(catalogPath(), Catalog, { preview });
 
@@ -151,15 +163,3 @@ export const usePoemBundle = (id: string | undefined, lang: string, initial?: Po
 
 export const usePerson = (kind: PersonKind, id: string | undefined, lang: string, initial?: PersonBundle) =>
   useResource(id ? personPath(kind, id, lang) : null, PersonBundle, { initial });
-
-/**
- * Starts loading the file the page at `href` opens with (a poem, a poet, a reciter, in `lang`),
- * so that the page usually has it by the time it opens. Other addresses need nothing.
- */
-export function prefetchPage(href: string, lang: string) {
-  const m = /^(?:\/en)?\/(poems|poets|reciters)\/([^/?#]+)/.exec(href);
-  if (!m) return;
-  const [, kind, id] = m as unknown as [string, "poems" | PersonKind, string];
-  if (kind === "poems") void load(bundlePath(id, lang), PoemBundle);
-  else void load(personPath(kind, id, lang), PersonBundle);
-}

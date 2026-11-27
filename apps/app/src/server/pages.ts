@@ -1,11 +1,15 @@
-import { themeOf, type Catalog, type CatalogPerson, type CatalogPoem, type PersonKind, type UiLang } from "@shawared/contracts";
+import { SITE, themeOf, type Catalog, type CatalogPerson, type CatalogPoem, type PersonKind, type UiLang } from "@shawared/contracts";
 import type { Metadata } from "expo-router/server";
 import { ABOUT, PRIVACY, SUPPORT, TERMS } from "../features/about/texts";
 import { abyatCount, METER_FEET, METER_IDS, meterName, poemsCount, rhymeName, t } from "../lib/i18n";
 import { recordingsByReciter } from "../lib/counts";
-import { rhymeById, rhymeCounts, rhymeFor } from "../lib/rhymes";
-import { AUDIO, pathInLang, paths, SITE } from "../lib/routes";
+import { nameOf, poemsForMeter, poemsForRhyme, poemsForTheme, poemsWithIds } from "../lib/catalog";
+import { rhymeById, rhymeCounts } from "../lib/rhymes";
+import { pathInLang, paths } from "../lib/routes";
 import { catalog, personBundle, poemBundle } from "./content";
+
+/** Where metadata links recordings: the release audio host when configured; the site's /audio otherwise. */
+const AUDIO = process.env.EXPO_PUBLIC_AUDIO_URL ?? `${SITE}/audio`;
 
 // What each web page is rendered with ahead of time, and how it describes itself to search
 // engines and link previews. Server only (see ./content.ts).
@@ -58,7 +62,7 @@ export const pageData = {
   rhymes: () => ({ counts: rhymeCounts(catalog().poems) }),
   rhyme: (id: string) => {
     const c = catalog();
-    const poems = c.poems.filter((p) => rhymeFor(p.rawiy)?.id === id);
+    const poems = poemsForRhyme(c.poems, id);
     return poems.length ? { catalog: slice(c, poems) } : null;
   },
   themes: () => {
@@ -70,33 +74,22 @@ export const pageData = {
     const theme = themeOf(c, id);
     if (!theme) return null;
     return {
-      catalog: slice(
-        c,
-        c.poems.filter((p) => p.theme === id),
-        { themes: { [id]: theme } },
-      ),
+      catalog: slice(c, poemsForTheme(c.poems, id), { themes: { [id]: theme } }),
     };
   },
   person: (kind: PersonKind, id: string, lang: UiLang) => {
     const person = personBundle(kind, id, lang);
     if (!person) return null;
     const c = catalog();
-    const ids = new Set(person.poems);
     return {
-      catalog: slice(
-        c,
-        c.poems.filter((p) => ids.has(p.id)),
-      ),
+      catalog: slice(c, poemsWithIds(c.poems, person.poems)),
       person,
     };
   },
   meter: (id: string) => {
     const c = catalog();
     return {
-      catalog: slice(
-        c,
-        c.poems.filter((p) => p.meter === id),
-      ),
+      catalog: slice(c, poemsForMeter(c.poems, id)),
     };
   },
   poem: (id: string, lang: UiLang) => {
@@ -136,7 +129,6 @@ function describe(lang: UiLang, path: string, title: string, description: string
 }
 
 const titled = (lang: UiLang, ...parts: string[]) => [...parts, t(lang, "brand")].join(" · ");
-const nameIn = (p: { name: string; names: Record<string, string> }, lang: UiLang) => (lang === "ar" ? p.name : (p.names[lang] ?? p.name));
 
 const notFound = (lang: UiLang): Metadata => ({ title: titled(lang, t(lang, "notFound")), robots: { index: false } });
 
@@ -185,7 +177,7 @@ export const pageMeta = {
   person: (kind: PersonKind, id: string, lang: UiLang) => {
     const bundle = personBundle(kind, id, lang);
     if (!bundle) return notFound(lang);
-    const name = nameIn(bundle.person, lang);
+    const name = nameOf(bundle.person, lang);
     const description = bundle.person.bio
       ? clip(bundle.person.bio)
       : t(lang, "metaPerson", { name, count: poemsCount(bundle.poems.length, lang) });

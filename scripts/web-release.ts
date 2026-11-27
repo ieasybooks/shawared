@@ -33,7 +33,9 @@
 import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, sep } from "node:path";
-import { AUDIO_HOST, IMMUTABLE, root, SITE } from "./recordings.ts";
+import { AUDIO_HOST, SITE } from "@shawared/contracts";
+import { IMMUTABLE } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 // Cloudflare reads at most 100 rules from _headers.
 export const MAX_RULES = 100;

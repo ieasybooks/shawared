@@ -5,13 +5,14 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseWordAddress, wordsOf } from "@shawared/contracts";
+import { root } from "./repository.ts";
 
 const id = process.argv[2];
 if (!id) {
   console.error("usage: bun scripts/notes.ts <poem-id>");
   process.exit(1);
 }
-const dir = join(import.meta.dir, "..", "content", "poems", id);
+const dir = join(root(), "content", "poems", id);
 const poem = JSON.parse(readFileSync(join(dir, "poem.json"), "utf8"));
 const half = (n: number, h: 1 | 2) => {
   const b = poem.abyat.find((x: { n: number }) => x.n === n);

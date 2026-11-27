@@ -6,6 +6,7 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { houseStyle, tashkeelIssues } from "@shawared/contracts";
+import { root } from "./repository.ts";
 
 const [id, flag] = process.argv.slice(2);
 if (!id) {
@@ -13,7 +14,7 @@ if (!id) {
   process.exit(1);
 }
 const fix = flag === "--fix";
-const dir = join(import.meta.dir, "..", "content", "poems", id);
+const dir = join(root(), "content", "poems", id);
 let changes = 0;
 
 const pf = join(dir, "poem.json");

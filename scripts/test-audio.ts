@@ -9,7 +9,8 @@
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { recordings, root } from "./recordings.ts";
+import { recordings } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 export const TEST_AUDIO = join(root(), "media/test-audio");
 

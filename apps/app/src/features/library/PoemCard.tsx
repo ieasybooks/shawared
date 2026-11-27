@@ -1,7 +1,8 @@
-import type { Catalog, CatalogPerson, CatalogPoem, UiLang } from "@shawared/contracts";
+import type { Catalog, CatalogPoem, UiLang } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { Link } from "expo-router";
 import { usePrefetch } from "../../lib/prefetch";
+import { nameOf } from "../../lib/catalog";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { type PressState } from "../../components/ui/controls";
 import { Eq } from "../../components/ui/Eq";
@@ -17,9 +18,6 @@ import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { catalogEntry, rememberList } from "../player/queue";
 import { listEdges, type ListEdges } from "./ListEdges";
-
-/** A person's name in the reader's language. */
-export const nameOf = (p: CatalogPerson | undefined, lang: UiLang) => (p ? (lang === "ar" ? p.name : (p.names[lang] ?? p.name)) : "");
 
 function facts(poem: CatalogPoem, lang: UiLang) {
   const rec = poem.recitations[0];

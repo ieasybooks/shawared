@@ -30,7 +30,8 @@ import {
   type CatalogTheme,
   type PublishedSource,
 } from "@shawared/contracts";
-import { root, sourcePath } from "./recordings.ts";
+import { sourcePath } from "./recordings.ts";
+import { root } from "./repository.ts";
 import { planPoem } from "./kashida.ts";
 
 const ROOT = root();

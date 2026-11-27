@@ -2,26 +2,10 @@
 import { z } from "zod";
 import { ERA_IDS } from "./eras.ts";
 import { LINE_RE, WORD_RE } from "./address.ts";
+import { AUDIO_KEY_RE } from "./audio.ts";
+import { METERS } from "./meters.ts";
 
-export const METERS = [
-  "tawil",
-  "madid",
-  "basit",
-  "wafir",
-  "kamil",
-  "hazaj",
-  "rajaz",
-  "ramal",
-  "sari",
-  "munsarih",
-  "khafif",
-  "mudari",
-  "muqtadab",
-  "mujtath",
-  "mutaqarib",
-  "mutadarik",
-] as const;
-export type Meter = (typeof METERS)[number];
+export { METERS, type Meter } from "./meters.ts";
 
 export const Slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "use lowercase latin letters, digits and dashes");
 export const Lang = z.string().regex(/^[a-z]{2}$/, "use a two-letter language code");
@@ -107,12 +91,7 @@ export const TimelineEntry = z.tuple([
 export const Recitation = z.strictObject({
   reciter: Slug,
   /** <poem>/<recitation>.m4a, or once uploaded <poem>/<recitation>.<hash>.m4a (scripts/audio.ts). */
-  audio: z
-    .string()
-    .regex(
-      /^[a-z0-9-]+\/[a-z0-9-]+(\.[0-9a-f]{12})?\.m4a$/,
-      "audio is <poem>/<recitation>.m4a, or <poem>/<recitation>.<hash>.m4a once uploaded",
-    ),
+  audio: z.string().regex(AUDIO_KEY_RE, "audio is <poem>/<recitation>.m4a, or <poem>/<recitation>.<hash>.m4a once uploaded"),
   duration: z.number().positive(),
   source: z.url().optional(),
   timeline: z.array(TimelineEntry).min(1),

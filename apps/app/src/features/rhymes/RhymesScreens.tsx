@@ -6,8 +6,9 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Icon } from "../../components/ui/Icon";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
+import { poemsForRhyme } from "../../lib/catalog";
 import { directoryCount, poemsCount, rhymeName, t } from "../../lib/i18n";
-import { RHYMES, rhymeById, rhymeCounts, rhymeFor, type Rhyme } from "../../lib/rhymes";
+import { RHYMES, rhymeById, rhymeCounts, type Rhyme } from "../../lib/rhymes";
 import { paths } from "../../lib/routes";
 import { Only } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
@@ -83,7 +84,7 @@ export function RhymeScreen({ id, initial }: { id: string; initial?: { catalog: 
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { lang, href } = useSettings();
   const rhyme = rhymeById(id);
-  const poems = useMemo(() => data?.poems.filter((p) => rhymeFor(p.rawiy)?.id === id) ?? [], [data, id]);
+  const poems = useMemo(() => (data ? poemsForRhyme(data.poems, id) : []), [data, id]);
   const list = useMemo(() => poems.map((p) => p.id), [poems]);
   if (!data || !rhyme || !poems.length)
     return (

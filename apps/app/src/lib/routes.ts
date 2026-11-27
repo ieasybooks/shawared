@@ -1,15 +1,8 @@
-import type { UiLang } from "@shawared/contracts";
-import { Platform } from "react-native";
+import type { PersonKind, UiLang } from "@shawared/contracts";
 
 // On the web the language is part of the address, so each page can be rendered ahead of
 // time in both languages: Arabic at /poems/x, English at /en/poems/x. The apps keep the
 // language in settings and use the bare paths.
-
-export const SITE = "https://shawared.com";
-export const AUDIO_HOST = "https://audio.shawared.com";
-
-/** Where the web's pages link recordings: audio.shawared.com in release builds, which set EXPO_PUBLIC_AUDIO_URL; the site's /audio otherwise. */
-export const AUDIO = process.env.EXPO_PUBLIC_AUDIO_URL ?? `${SITE}/audio`;
 
 export const langOfPath = (pathname: string): UiLang => (pathname === "/en" || pathname.startsWith("/en/") ? "en" : "ar");
 
@@ -17,11 +10,6 @@ export const langOfPath = (pathname: string): UiLang => (pathname === "/en" || p
 export function pathInLang(pathname: string, lang: UiLang): string {
   const bare = langOfPath(pathname) === "en" ? pathname.slice(3) || "/" : pathname;
   return lang === "en" ? (bare === "/" ? "/en" : `/en${bare}`) : bare;
-}
-
-/** A path in the reader's language. */
-export function hrefIn(lang: UiLang, path: string): string {
-  return Platform.OS === "web" ? pathInLang(path, lang) : path;
 }
 
 export const paths = {
@@ -47,3 +35,10 @@ export const paths = {
   /** The apps in the stores: a phone goes on to its own (lib/stores). */
   app: "/app",
 };
+
+type ContentPage = { kind: "poems" | PersonKind; id: string };
+
+export function contentPage(href: string): ContentPage | undefined {
+  const match = /^\/(poems|poets|reciters)\/([^/?#]+)/.exec(pathInLang(href, "ar"));
+  return match ? { kind: match[1] as ContentPage["kind"], id: match[2]! } : undefined;
+}

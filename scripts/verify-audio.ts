@@ -7,7 +7,9 @@
 //
 //   bun scripts/verify-audio.ts
 import { relative } from "node:path";
-import { AUDIO_HOST, CONTENT_TYPE, IMMUTABLE, parseKey, recordings, root, SITE, type Recording } from "./recordings.ts";
+import { AUDIO_HOST, parseAudioKey, SITE } from "@shawared/contracts";
+import { CONTENT_TYPE, IMMUTABLE, recordings, type Recording } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 const wait = (ms: number) => new Promise<void>((done) => setTimeout(done, ms));
 
@@ -42,7 +44,7 @@ export async function audioProblems(rootDir: string, list: Recording[], fetchFn:
   const problems: string[] = [];
   for (const r of list) {
     const where = relative(rootDir, r.file);
-    const key = parseKey(r.audio);
+    const key = parseAudioKey(r.audio);
     if (!key?.hash) {
       problems.push(
         `${where}: ${r.audio} isn't uploaded yet; run bun run audio:upload where the recordings are, and commit the key it writes`,

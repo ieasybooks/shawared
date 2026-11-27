@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
+import { poemsForMeter } from "../../lib/catalog";
 import { DirectoryIndexLink, SortBar } from "../library/DirectoryControls";
 import { listEdges, type ListEdges } from "../library/ListEdges";
 import { Only } from "../../lib/responsive";
@@ -95,7 +96,7 @@ export function MeterScreen({ id, initial }: { id: string; initial?: { catalog: 
   const { data, error, retry } = useCatalog(initial?.catalog);
   const { palette, lang, start, href } = useSettings();
   const type = useType();
-  const poems = useMemo(() => data?.poems.filter((p) => p.meter === id) ?? [], [data, id]);
+  const poems = useMemo(() => (data ? poemsForMeter(data.poems, id) : []), [data, id]);
   const list = useMemo(() => poems.map((p) => p.id), [poems]);
   const title = meterName(id, lang);
   if (!data)

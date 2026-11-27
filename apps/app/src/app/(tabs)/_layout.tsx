@@ -1,5 +1,6 @@
 import { Tabs } from "expo-router/tabs";
 import { TabBar } from "../../features/navigation/TabBar";
+import { TABS } from "../../features/navigation/tabs";
 import { useSettings } from "../../lib/settings";
 
 /**
@@ -12,11 +13,9 @@ export default function TabsLayout() {
   const { palette } = useSettings();
   return (
     <Tabs tabBar={() => <TabBar />} screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: palette.bg } }}>
-      <Tabs.Screen name="index" />
-      <Tabs.Screen name="poets" />
-      <Tabs.Screen name="reciters" />
-      <Tabs.Screen name="themes" />
-      <Tabs.Screen name="library" />
+      {TABS.map((tab) => (
+        <Tabs.Screen key={tab.name} name={tab.name} />
+      ))}
     </Tabs>
   );
 }

@@ -8,8 +8,9 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import type { z } from "zod";
-import { houseStyle, parseLineAddress, parseWordAddress, source, tashkeelIssues, wordsOf } from "@shawared/contracts";
-import { hashOf, parseKey, root, sourcePath } from "./recordings.ts";
+import { houseStyle, parseAudioKey, parseLineAddress, parseWordAddress, source, tashkeelIssues, wordsOf } from "@shawared/contracts";
+import { hashOf, sourcePath } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 const { Poem, PoemLang, Recitation, Poet, Reciter, PersonLang } = source;
 
@@ -29,7 +30,8 @@ function proseStyle(file: string, lang: string, text: string, where: string, tra
   const outsideQuotes = translation ? text.replace(/“[^”]*”/g, "") : text;
   if (outsideQuotes.includes("!")) warn(file, translation ? "an exclamation mark outside quoted speech" : "an exclamation mark", where);
   if (lang !== "en") return;
-  for (const m of text.match(/(?<![\p{L}'])'\p{L}+/gu) ?? []) warn(file, `«${m}»: drop the ' of an ʿayn or hamza that starts a word (Ali, Udhra)`, where);
+  for (const m of text.match(/(?<![\p{L}'])'\p{L}+/gu) ?? [])
+    warn(file, `«${m}»: drop the ' of an ʿayn or hamza that starts a word (Ali, Udhra)`, where);
 }
 
 const nfc = (s: string) => s.normalize("NFC");
@@ -195,7 +197,8 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
       if (v.translation) [v.translation].flat().forEach((t, i) => proseStyle(file, l.lang, t, `abyat.${k}.translation.${i}`, true));
     }
     if (l.intro) proseStyle(file, l.lang, l.intro, "intro");
-    for (const [addr, note] of Object.entries(l.words)) if (l.lang === "en") proseStyle(file, l.lang, note.meaning, `words.${addr}.meaning`);
+    for (const [addr, note] of Object.entries(l.words))
+      if (l.lang === "en") proseStyle(file, l.lang, note.meaning, `words.${addr}.meaning`);
 
     // word notes: address must exist, the Arabic must match, notes must not overlap
     const taken = new Map<string, string>(); // "n.h.w" -> address that uses it
@@ -252,7 +255,7 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
     if (!reciters.has(r.reciter)) error(file, `no reciter "${r.reciter}" in content/reciters`, "reciter");
     // The key is the recording's name before its upload, and its name with the
     // hash after it (scripts/recordings.ts).
-    const key = parseKey(r.audio);
+    const key = parseAudioKey(r.audio);
     if (!key || key.poem !== id || key.recitation !== rid) {
       error(file, `audio should be "${id}/${rid}.m4a", or once uploaded "${id}/${rid}.<hash>.m4a"`, "audio");
     } else if (!key.hash) {

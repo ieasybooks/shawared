@@ -7,6 +7,7 @@ import { Chip, IconButton } from "../../components/ui/controls";
 import { Dialog } from "../../components/ui/Dialog";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
+import { nameOf } from "../../lib/catalog";
 import { poemsCount, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSaved, useSavedLoaded } from "../../lib/saved";
@@ -154,7 +155,7 @@ function EditRow({
           {poem.title}
         </Text>
         <Text numberOfLines={1} style={[type.label, { color: palette.muted, textAlign: start }]}>
-          {poet ? (lang === "ar" ? poet.name : (poet.names[lang] ?? poet.name)) : ""}
+          {nameOf(poet, lang)}
         </Text>
       </View>
       <IconButton

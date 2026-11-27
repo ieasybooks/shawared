@@ -12,26 +12,13 @@
 import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { audioSourceKey } from "@shawared/contracts";
 
-export const AUDIO_HOST = "https://audio.shawared.com";
-export const SITE = "https://shawared.com";
 export const CONTENT_TYPE = "audio/mp4";
 export const IMMUTABLE = "public, max-age=31536000, immutable";
 
-const KEY = /^([a-z0-9-]+)\/([a-z0-9-]+)(?:\.([0-9a-f]{12}))?\.m4a$/;
-
-export type Key = { poem: string; recitation: string; hash?: string };
-
-export function parseKey(key: string): Key | null {
-  const m = KEY.exec(key);
-  if (!m) return null;
-  return { poem: m[1]!, recitation: m[2]!, ...(m[3] ? { hash: m[3] } : {}) };
-}
-
-/** The repository root: SHAWARED_ROOT, for the scripts' tests, or this checkout. */
-export const root = (): string => process.env.SHAWARED_ROOT ?? join(import.meta.dir, "..");
-
-export const sourcePath = (rootDir: string, poem: string, recitation: string) => join(rootDir, "media", "audio", poem, `${recitation}.m4a`);
+export const sourcePath = (rootDir: string, poem: string, recitation: string) =>
+  join(rootDir, "media", "audio", audioSourceKey(poem, recitation));
 
 export const hashOf = (bytes: Uint8Array): string => createHash("sha256").update(bytes).digest("hex").slice(0, 12);
 

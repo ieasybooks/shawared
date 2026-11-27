@@ -5,7 +5,7 @@ import { router, usePathname } from "expo-router";
 import { createContext, use, useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Platform } from "react-native";
 import { alignFor } from "./align";
-import { hrefIn, langOfPath, pathInLang } from "./routes";
+import { langOfPath, pathInLang } from "./routes";
 
 type Settings = { lang: UiLang; theme: ThemeName };
 type SettingsValue = Settings & {
@@ -88,7 +88,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         if (web && next !== lang) router.replace(`${pathInLang(pathname, next)}${typeof location === "undefined" ? "" : location.search}`);
       },
       setTheme: (next) => save({ ...stored, theme: next }),
-      href: (path) => hrefIn(lang, path),
+      href: (path) => (web ? pathInLang(path, lang) : path),
     }),
     [lang, theme, palette, stored, save, pathname],
   );
