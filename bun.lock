@@ -25,7 +25,7 @@
     },
     "apps/app": {
       "name": "@shawared/app",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "dependencies": {
         "@expo-google-fonts/amiri": "^0.4.1",
         "@expo-google-fonts/newsreader": "^0.4.1",
@@ -64,18 +64,18 @@
     },
     "packages/contracts": {
       "name": "@shawared/contracts",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "dependencies": {
         "zod": "^4.6.7",
       },
     },
     "packages/design": {
       "name": "@shawared/design",
-      "version": "0.2.0",
+      "version": "0.2.1",
     },
     "packages/listening": {
       "name": "@shawared/listening",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
         "@shawared/contracts": "workspace:*",
       },
