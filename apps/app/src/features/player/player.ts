@@ -8,8 +8,7 @@
 // it, so the next starts by itself and the lock screen's previous and next buttons work, with
 // the app in the background; the player keeps that window filled as it moves.
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import type { PoemBundle, PublishedRecitation } from "@shawared/contracts";
-import { buildTrack, PRE_ROLL, REPEAT_GAP, segmentAt, type Track } from "@shawared/listening";
+import { buildTrack, clampTime, REPEAT_END_MARGIN, repeatStart, repeatTarget, segmentAt, type Track } from "@shawared/listening";
 import { AppState, Platform } from "react-native";
 import { audioUrl, catalogNow, loadCatalog, loadPoem } from "../../lib/content";
 import { artworkUrl, localAudio } from "../../lib/downloads";
@@ -17,20 +16,9 @@ import { t } from "../../lib/i18n";
 import { OPEN_APP_EVENT } from "../../lib/stores";
 import { createStore, type Store } from "../../lib/store";
 import { createPlaylist } from "./playlist";
-import { byline, catalogEntry, queueFor } from "./queue";
+import { catalogEntry, nowItemOf, sameItem, type NowItem } from "./item";
+import { byline, queueFor } from "./queue";
 import type { Playlist, Status } from "./types";
-
-/** What is playing, with what the mini player and the lock screen show. */
-export type NowItem = {
-  poemId: string;
-  title: string;
-  poet: string;
-  reciter: string;
-  abyat: number;
-  /** The language the names are in. */
-  lang: string;
-  recitation: PublishedRecitation;
-};
 
 export type Clock = {
   time: number;
@@ -50,22 +38,6 @@ export type Now = {
 
 export const idleClock = (time = 0): Clock => ({ time, playing: false, ready: false, buffering: false, seq: 0 });
 
-const sameItem = (a: NowItem | null, b: NowItem) => !!a && a.poemId === b.poemId && a.recitation.id === b.recitation.id;
-
-/** A poem's bundle as the player has it: its first recitation, with the names in the bundle's language. */
-export function nowItemOf(bundle: PoemBundle, recitation = bundle.recitations[0]): NowItem | null {
-  if (!recitation) return null;
-  return {
-    poemId: bundle.poem.id,
-    title: bundle.poem.title,
-    poet: bundle.poet.name,
-    reciter: bundle.reciters[recitation.reciter]?.name ?? recitation.reciter,
-    abyat: bundle.poem.abyat.length,
-    lang: bundle.lang,
-    recitation,
-  };
-}
-
 /**
  * Whether a status update leaves the recitation playing. A recording that was asked to play is
  * still playing while it starts or waits for data, though a status then says it isn't: iOS says
@@ -80,7 +52,6 @@ export function stillPlaying(
   return s.playing || (wasPlaying && !s.finished && (s.buffering || live.playing));
 }
 
-/** The playlist and where it sits in the queue. */
 type Session = {
   list: Playlist;
   /** The queue: poem ids, in the order they play. */
@@ -93,19 +64,15 @@ type Session = {
   at: number;
   lang: string;
   catalog: ReturnType<typeof catalogNow>;
-  /** Poems whose bundle is here, with their timings. */
   items: Map<string, NowItem>;
+  loading: Set<string>;
   /** The last slot played to its end. */
   finished: boolean;
 };
 
 const PREFS_KEY = "shawared.player.v1";
-/** What repeats: nothing, the whole poem, or the bayt being recited. */
 export type RepeatMode = "off" | "poem" | "bayt";
-/** The repeat button's steps, as in music apps: off, then everything, then just the one. */
 const NEXT_REPEAT: Record<RepeatMode, RepeatMode> = { off: "poem", poem: "bayt", bayt: "off" };
-/** A repeated poem, or its repeated last bayt, starts over this long before the recording ends, so the next poem never starts. */
-const END_MARGIN = 0.5;
 
 class Player {
   readonly now: Store<Now> = createStore<Now>({ item: null, track: null, from: null });
@@ -128,9 +95,12 @@ class Player {
     return sameItem(this.now.get().item, item);
   }
 
-  /** Makes `item` the current recitation, at `at` seconds, with the poems around it queued. Does nothing if it already is. */
+  /** Loads a recording, or supplies missing timings for the current recording without restarting it. */
   load(item: NowItem, at = 0) {
-    if (this.isCurrent(item)) return;
+    if (this.isCurrent(item)) {
+      if (this.session && item.timings === "loaded" && this.now.get().item?.timings === "pending") this.acceptTimings(this.session, item);
+      return;
+    }
     this.release();
     this.restore();
     this.watchAppState();
@@ -146,9 +116,9 @@ class Player {
       lang: item.lang,
       catalog,
       items: new Map([[item.poemId, item]]),
+      loading: new Set(),
       finished: false,
     };
-    // The poem with the one before it and, playing on, the one after.
     const first = at0 > 0 ? at0 - 1 : at0;
     const last = this.goesOn() && at0 + 1 < ids.length ? at0 + 1 : at0;
     const urls: string[] = [];
@@ -171,7 +141,10 @@ class Player {
   /** Plays the current recitation, or `item` from `at` seconds. */
   play(item?: NowItem, at?: number) {
     if (item && !this.isCurrent(item)) this.load(item, at ?? 0);
-    else if (at !== undefined) this.seek(at);
+    else {
+      if (item) this.load(item);
+      if (at !== undefined) this.seek(at);
+    }
     const s = this.session;
     const cur = this.now.get().item;
     if (!s || !cur) return;
@@ -206,7 +179,7 @@ class Player {
     const cur = this.now.get().item;
     const s = this.session;
     if (!cur || !s) return;
-    const t = Math.max(0, Math.min(cur.recitation.duration - 0.05, seconds));
+    const t = clampTime(cur.recitation.duration, seconds);
     this.clock.set({ time: t, seq: this.clock.get().seq + 1 });
     if (!this.clock.get().ready || s.finished) this.pendingSeek = t;
     else s.list.seek(t);
@@ -224,10 +197,13 @@ class Player {
     this.session?.list.setMuted(on);
   }
 
-  /** Plays the next poem when one ends, or stops there. */
-  setContinuous(on: boolean, save = true) {
+  setContinuous(on: boolean) {
+    this.applyContinuous(on);
+    AsyncStorage.setItem(PREFS_KEY, JSON.stringify({ continuous: on })).catch(() => {});
+  }
+
+  private applyContinuous(on: boolean) {
     this.continuous.set({ on });
-    if (save) AsyncStorage.setItem(PREFS_KEY, JSON.stringify({ continuous: on })).catch(() => {});
     this.queueNext();
   }
 
@@ -251,7 +227,6 @@ class Player {
     return this.continuous.get().on && this.repeat.get().mode === "off";
   }
 
-  /** Puts the next poem after the one playing, or takes it away, as `goesOn` says. */
   private queueNext() {
     const s = this.session;
     if (!s) return;
@@ -264,14 +239,13 @@ class Player {
     this.show();
   }
 
-  /** Reads the reader's choices kept on the device, once. */
   restore() {
     if (this.restored) return;
     this.restored = true;
     AsyncStorage.getItem(PREFS_KEY)
       .then((raw) => {
         const on = raw ? (JSON.parse(raw) as { continuous?: unknown }).continuous : undefined;
-        if (typeof on === "boolean" && on !== this.continuous.get().on) this.setContinuous(on, false);
+        if (typeof on === "boolean" && on !== this.continuous.get().on) this.applyContinuous(on);
       })
       .catch(() => {});
   }
@@ -316,7 +290,7 @@ class Player {
     s.at = at;
     s.finished = false;
     const id = s.ids[at]!;
-    const item = s.items.get(id) ?? (catalogEntry(s.catalog, id, s.lang) as NowItem | null);
+    const item = s.items.get(id) ?? catalogEntry(s.catalog, id, s.lang);
     this.pendingSeek = null;
     this.lockedSegment = -1;
     this.now.set({ item, track: item ? buildTrack(item.recitation.timeline, item.recitation.duration) : null, from });
@@ -365,11 +339,9 @@ class Player {
   private urlOf(s: Session, i: number) {
     const id = s.ids[i]!;
     const rec = s.items.get(id)?.recitation ?? catalogEntry(s.catalog, id, s.lang)?.recitation;
-    // A downloaded recording plays from its file, so it plays offline.
     return (rec?.audio && localAudio(rec.audio)) || audioUrl(rec?.audio ?? "");
   }
 
-  /** The lock screen, the notification or the browser's controls: this poem, and the buttons the queue has. */
   private show() {
     const s = this.session;
     const item = this.now.get().item;
@@ -382,22 +354,30 @@ class Player {
     );
   }
 
-  /** Loads the bundles of the poem playing and those beside it, for their timings and names. */
   private prefetch() {
     const s = this.session;
     if (!s) return;
     for (const i of [s.at, s.at - 1, s.at + 1]) {
       const id = s.ids[i];
-      if (!id || s.items.has(id)) continue;
+      if (!id || s.items.get(id)?.timings === "loaded" || s.loading.has(id)) continue;
+      const expected = s.items.get(id) ?? catalogEntry(s.catalog, id, s.lang);
+      s.loading.add(id);
       void loadPoem(id, s.lang).then((bundle) => {
-        const item = bundle && nowItemOf(bundle);
+        s.loading.delete(id);
+        // Timings must describe the exact recording already queued, even during a content update.
+        const recitation = bundle?.recitations.find((r) => r.id === expected?.recitation.id && r.audio === expected.recitation.audio);
+        const item = bundle && recitation && nowItemOf(bundle, recitation);
         if (!item || this.session !== s) return;
-        s.items.set(id, item);
-        if (s.ids[s.at] !== id) return;
-        this.now.set({ item, track: buildTrack(item.recitation.timeline, item.recitation.duration) });
-        this.show();
+        this.acceptTimings(s, item);
       });
     }
+  }
+
+  private acceptTimings(s: Session, item: NowItem) {
+    s.items.set(item.poemId, item);
+    if (!sameItem(this.now.get().item, item)) return;
+    this.now.set({ item, track: buildTrack(item.recitation.timeline, item.recitation.duration) });
+    this.show();
   }
 
   /** Back in the foreground: catch up with what happened at the lock screen meanwhile. */
@@ -408,7 +388,6 @@ class Player {
     });
   }
 
-  /** Reads the position, and loops the poem or the bayt when repeat says so. */
   private sample() {
     const s = this.session;
     if (!s || this.pendingSeek !== null) return;
@@ -421,7 +400,6 @@ class Player {
     else if (mode === "poem") this.loopPoem();
   }
 
-  /** While playing, read the position every frame. */
   private tick() {
     if (this.frame || typeof requestAnimationFrame === "undefined") return;
     const step = () => {
@@ -437,14 +415,13 @@ class Player {
   private repeatStart() {
     const { track } = this.now.get();
     if (this.repeat.get().mode !== "bayt" || !track) return 0;
-    const seg = track.segments[this.lockedSegment] ?? track.segments[track.segments.length - 1];
-    return seg ? Math.max(0, seg.start - PRE_ROLL) : 0;
+    return repeatStart(track, this.lockedSegment);
   }
 
   /** Starts the poem over just before its recording ends, so the next one never starts. */
   private loopPoem() {
     const cur = this.now.get().item;
-    if (cur && this.clock.get().time >= cur.recitation.duration - END_MARGIN) this.seek(0);
+    if (cur && this.clock.get().time >= cur.recitation.duration - REPEAT_END_MARGIN) this.seek(0);
   }
 
   /** Loops the bayt being recited. Any seek by the reader re-aims it. */
@@ -456,12 +433,9 @@ class Player {
       this.lockedSegment = segmentAt(track, time);
       this.lockedSeq = seq;
     }
-    const seg = track.segments[this.lockedSegment];
-    if (!seg) return;
-    const next = track.segments[this.lockedSegment + 1];
-    const gap = next ? Math.min(REPEAT_GAP, Math.max(0, next.start - seg.end - 0.05)) : REPEAT_GAP;
-    if (time >= Math.min(seg.end + gap, track.duration - END_MARGIN)) {
-      this.seek(Math.max(0, seg.start - PRE_ROLL));
+    const to = repeatTarget(track, this.lockedSegment, time);
+    if (to !== null) {
+      this.seek(to);
       this.lockedSeq = this.clock.get().seq;
     }
   }

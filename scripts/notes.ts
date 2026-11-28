@@ -2,23 +2,24 @@
 // every note with the words it points at, so a wrong address shows before it ships.
 //
 //   bun scripts/notes.ts <poem-id>
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseWordAddress, wordsOf } from "@shawared/contracts";
+import { languageFiles, root } from "./repository.ts";
 
 const id = process.argv[2];
 if (!id) {
   console.error("usage: bun scripts/notes.ts <poem-id>");
   process.exit(1);
 }
-const dir = join(import.meta.dir, "..", "content", "poems", id);
+const dir = join(root(), "content", "poems", id);
 const poem = JSON.parse(readFileSync(join(dir, "poem.json"), "utf8"));
 const half = (n: number, h: 1 | 2) => {
   const b = poem.abyat.find((x: { n: number }) => x.n === n);
   return b ? (h === 1 ? b.sadr : b.ajuz) : undefined;
 };
 
-for (const f of readdirSync(dir).filter((f) => /^[a-z]{2}(\.[a-z0-9-]+)?\.json$/.test(f))) {
+for (const f of languageFiles(dir)) {
   const file = join(dir, f);
   let text = readFileSync(file, "utf8");
   const data = JSON.parse(text);
@@ -34,7 +35,6 @@ for (const f of readdirSync(dir).filter((f) => /^[a-z]{2}(\.[a-z0-9-]+)?\.json$/
       .slice(a.from - 1, a.to)
       .join(" ");
     if (!note.word) {
-      // Fill the empty "word" of this entry, keeping the file's layout.
       text = text.replace(new RegExp(`("${addr.replace(/\./g, "\\.")}"\\s*:\\s*\\{\\s*"word"\\s*:\\s*)""`), `$1"${actual}"`);
       note.word = actual;
     }

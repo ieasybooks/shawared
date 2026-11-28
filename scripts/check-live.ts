@@ -19,7 +19,9 @@
 //   player asks for it (scripts/verify-audio.ts).
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { IMMUTABLE, root, SITE } from "./recordings.ts";
+import { SITE } from "@shawared/contracts";
+import { IMMUTABLE } from "./recordings.ts";
+import { root } from "./repository.ts";
 import { servingProblem } from "./verify-audio.ts";
 
 const REVALIDATE = "public, max-age=0, must-revalidate";

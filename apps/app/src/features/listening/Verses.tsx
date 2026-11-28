@@ -3,17 +3,18 @@ import { segmentAt } from "@shawared/listening";
 import { LinearGradient } from "expo-linear-gradient";
 import { startTransition, useCallback, useEffect, useRef, useState } from "react";
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   View,
-  type LayoutChangeEvent,
+  type HostInstance,
   type NativeScrollEvent,
   type NativeSyntheticEvent,
   type ScrollViewInstance,
 } from "react-native";
 import { Dir } from "../../components/ui/Dir";
 import { useSettings } from "../../lib/settings";
-import { responsive, useLayout, useLayoutChanges } from "../../lib/responsive";
+import { responsive, useLayout } from "../../lib/responsive";
 import { useHydrated } from "../../lib/viewport";
 import { BaytRow } from "./BaytRow";
 import { useCurrentLine, usePlaying } from "./playback";
@@ -52,10 +53,9 @@ function useShownRows(count: number, upTo: number): number {
  * stops doing so for FOLLOW_RESUME_MS after the reader scrolls (the Faqieh rule).
  */
 export function Verses() {
-  const { abyat, playback, pinned, trOn, followRef } = useListening();
-  const { palette, lang } = useSettings();
+  const { abyat, playback, pinned, followRef } = useListening();
+  const { palette } = useSettings();
   const layout = useLayout();
-  const layoutChanges = useLayoutChanges();
   const current = useCurrentBayt();
   const line = useCurrentLine(playback);
   const lineInfo = playback.track.lines[line];
@@ -71,11 +71,12 @@ export function Verses() {
   );
 
   const scroll = useRef<ScrollViewInstance>(null);
-  const rows = useRef(new Map<number, { y: number; h: number }>());
+  const list = useRef<HostInstance>(null);
+  const rows = useRef(new Map<number, HostInstance>());
   const viewport = useRef(0);
   const contentH = useRef(0);
   const scrollY = useRef(0);
-  const listY = useRef(0);
+  const listY = useRef<number | null>(null);
   // Each fade shows only while there is more to scroll that way, so the list needs no padding for it.
   const [edges, setEdges] = useState({ top: false, bottom: false });
   const updateEdges = useCallback(() => {
@@ -93,34 +94,64 @@ export function Verses() {
     playingRef.current = playing;
   });
 
-  // Brings bayt n into view if it isn't comfortably there already, and moves no further than that.
-  const revealBayt = useCallback((n: number, animated: boolean) => {
-    const r = rows.current.get(n);
+  const revealBayt = useCallback((r: { y: number; h: number }, animated: boolean) => {
     const vh = viewport.current;
-    if (!r || !vh) return;
+    if (!vh || !contentH.current || listY.current === null) return false;
     // Where the list is, or is about to be while a scroll of ours is under way.
     const p = programmatic.current;
     const at = p && Date.now() < p.until ? p.y : scrollY.current;
     const top = listY.current + r.y - at;
     const edgeTop = Math.max(FADE_TOP + space.m, vh * 0.1);
     const edgeBottom = vh - Math.max(FADE_BOTTOM + space.m, vh * 0.1);
-    if (top >= edgeTop && top + r.h <= edgeBottom) return;
+    if (top >= edgeTop && top + r.h <= edgeBottom) return true;
     const max = contentH.current > vh ? contentH.current - vh : Infinity;
     const y = Math.min(max, Math.max(0, listY.current + r.y - Math.max(edgeTop, vh * READ_AT)));
-    if (Math.abs(y - at) < 1) return;
+    if (Math.abs(y - at) < 1) return true;
     programmatic.current = { until: Date.now() + (animated ? 1200 : 150), y };
     scroll.current?.scrollTo({ y, animated });
+    return true;
   }, []);
+
+  const pending = useRef<{ n: number; animated: boolean } | null>(null);
+  const revealFrame = useRef<number | undefined>(undefined);
+  const requestReveal = useCallback(
+    (n: number, animated: boolean) => {
+      pending.current = { n, animated: animated || (pending.current?.n === n && pending.current.animated) };
+      if (revealFrame.current !== undefined) return;
+      revealFrame.current = requestAnimationFrame(() => {
+        revealFrame.current = undefined;
+        if (Date.now() < userUntil.current) {
+          pending.current = null;
+          return;
+        }
+        const request = pending.current;
+        const node = request && rows.current.get(request.n);
+        const container = list.current;
+        if (!request || !node || !container) return;
+        node.measureLayout(container, (_x, y, _w, h) => {
+          if (pending.current !== request || Date.now() < userUntil.current || h <= 0) return;
+          if (revealBayt({ y, h }, request.animated)) pending.current = null;
+        });
+      });
+    },
+    [revealBayt],
+  );
+  const layoutChanged = useCallback(() => {
+    requestReveal(pending.current?.n ?? currentRef.current, false);
+  }, [requestReveal]);
 
   // Read the bayt from the clock, not from render: a seek has just moved it.
   const follow = useCallback(() => {
     clearTimeout(resumeTimer.current);
     userUntil.current = 0;
     const { track, clock } = playback;
-    revealBayt(track.segments[segmentAt(track, clock.get().time)]?.n ?? currentRef.current, true);
-  }, [revealBayt, playback]);
+    requestReveal(track.segments[segmentAt(track, clock.get().time)]?.n ?? currentRef.current, true);
+  }, [requestReveal, playback]);
   useEffect(() => {
     followRef.current = follow;
+    return () => {
+      if (followRef.current === follow) followRef.current = null;
+    };
   }, [follow, followRef]);
 
   const userScrolled = useCallback(() => {
@@ -129,24 +160,23 @@ export function Verses() {
     clearTimeout(resumeTimer.current);
     resumeTimer.current = setTimeout(() => {
       userUntil.current = 0;
-      if (playingRef.current) revealBayt(currentRef.current, true);
+      if (playingRef.current) requestReveal(currentRef.current, true);
     }, FOLLOW_RESUME_MS);
-  }, [revealBayt]);
+  }, [requestReveal]);
 
-  useEffect(() => () => clearTimeout(resumeTimer.current), []);
+  useEffect(
+    () => () => {
+      clearTimeout(resumeTimer.current);
+      if (revealFrame.current !== undefined) cancelAnimationFrame(revealFrame.current);
+      revealFrame.current = undefined;
+      pending.current = null;
+    },
+    [],
+  );
 
-  // Follow the recitation from bayt to bayt.
   useEffect(() => {
-    if (Date.now() >= userUntil.current) revealBayt(current, true);
-  }, [current, revealBayt]);
-
-  // The translation switch, the language and the layout change every row's height: keep the playing bayt in view.
-  useEffect(() => {
-    const id = setTimeout(() => {
-      if (Date.now() >= userUntil.current) revealBayt(currentRef.current, false);
-    }, 120);
-    return () => clearTimeout(id);
-  }, [trOn, lang, layoutChanges, revealBayt]);
+    if (Date.now() >= userUntil.current) requestReveal(current, true);
+  }, [current, requestReveal]);
 
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const p = programmatic.current;
@@ -157,18 +187,27 @@ export function Verses() {
       if (Math.abs(y - p.y) < 2) programmatic.current = null;
       return;
     }
-    userScrolled();
+    // Resizing content can clamp or anchor its offset without any reader input.
+    if (Date.now() < userUntil.current) userScrolled();
   };
 
-  const onRowLayout = useCallback(
-    (n: number, e: LayoutChangeEvent) => {
-      const { y, height } = e.nativeEvent.layout;
-      const first = rows.current.size === 0;
-      rows.current.set(n, { y, h: height });
-      if (first) requestAnimationFrame(() => revealBayt(currentRef.current, false));
-    },
-    [revealBayt],
-  );
+  const webScrollIntent =
+    Platform.OS === "web"
+      ? {
+          onWheel: (e: { nativeEvent: { deltaY: number } }) => {
+            if (e.nativeEvent.deltaY !== 0) userScrolled();
+          },
+          onTouchMove: userScrolled,
+          onKeyDown: (e: { nativeEvent: { key: string } }) => {
+            if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(e.nativeEvent.key)) userScrolled();
+          },
+        }
+      : {};
+
+  const rowRef = useCallback((n: number, node: HostInstance | null) => {
+    if (node) rows.current.set(n, node);
+    else rows.current.delete(n);
+  }, []);
 
   return (
     <View style={styles.wrap}>
@@ -179,23 +218,35 @@ export function Verses() {
         onLayout={(e) => {
           viewport.current = e.nativeEvent.layout.height;
           updateEdges();
+          layoutChanged();
         }}
         onContentSizeChange={(_, h) => {
           contentH.current = h;
           updateEdges();
+          layoutChanged();
         }}
         onScroll={onScroll}
         onScrollBeginDrag={userScrolled}
+        {...webScrollIntent}
         scrollEventThrottle={32}
         showsVerticalScrollIndicator={false}
         accessibilityLabel="verses"
       >
-        <Dir dir="rtl" lang="ar" onLayout={(e) => (listY.current = e.nativeEvent.layout.y)}>
+        <Dir
+          ref={list}
+          dir="rtl"
+          lang="ar"
+          onLayout={(e) => {
+            listY.current = e.nativeEvent.layout.y;
+            layoutChanged();
+          }}
+        >
           {abyat.slice(0, shown).map((b) => (
             <BaytRow
               key={b.n}
               bayt={b}
-              onLayout={onRowLayout}
+              onLayout={layoutChanged}
+              rowRef={rowRef}
               isCurrent={started ? b.n === current : false}
               currentHalf={started && b.n === current ? currentHalf : null}
               isPinned={pinned === b.n}

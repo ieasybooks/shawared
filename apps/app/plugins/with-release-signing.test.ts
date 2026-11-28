@@ -9,6 +9,12 @@ const { addReleaseSigning } = createRequire(import.meta.url)("./with-release-sig
 // generates.
 const EXPO_GRADLE = `android {
     namespace 'com.shawared.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'com.shawared.app'
+        versionCode 7
+        versionName '1.2.3'
+    }
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -28,6 +34,9 @@ const EXPO_GRADLE = `android {
             minifyEnabled enableMinifyInReleaseBuilds
         }
     }
+}
+dependencies {
+    implementation('com.facebook.react:react-android')
 }
 `;
 
@@ -60,8 +69,26 @@ describe("with-release-signing", () => {
     expect(gradle.match(/signingConfig signingConfigs\.debug/g)).toHaveLength(1);
   });
 
-  it("changes nothing else and applies once", () => {
-    expect(gradle.split("\n").length - EXPO_GRADLE.split("\n").length).toBe(9);
+  it("preserves the app identity, build options, dependencies, and debug key", () => {
+    expect(gradle).toContain(`    namespace 'com.shawared.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'com.shawared.app'
+        versionCode 7
+        versionName '1.2.3'
+    }`);
+    expect(gradle).toContain(`        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }`);
+    expect(gradle).toContain(`dependencies {
+    implementation('com.facebook.react:react-android')
+}`);
+  });
+
+  it("applies once", () => {
     expect(addReleaseSigning(gradle)).toBe(gradle);
   });
 

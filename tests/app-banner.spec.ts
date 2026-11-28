@@ -1,3 +1,4 @@
+import { waitForApp } from "./app-ready";
 // The app bar: on a phone's browser, a bar above the page offers the app (app/+html.tsx,
 // lib/stores appBanner). Safari on iPhones and iPads shows Apple's banner instead, which opens
 // the app at the page. Each test opens its own browser as a kind of phone, so they run once,
@@ -56,12 +57,6 @@ const firstText = (page: Page) =>
 /** Keeps the test on the page when Open is pressed, after the bar has handled the press. */
 const stayHere = (page: Page) =>
   page.evaluate(() => document.querySelector("#app-banner a")!.addEventListener("click", (e) => e.preventDefault()));
-/** Waits for React to take over the page. */
-const hydrated = (page: Page) =>
-  page.waitForFunction(() => {
-    const el = document.querySelector("#root [dir]");
-    return !!el && Object.keys(el).some((k) => k.startsWith("__reactFiber"));
-  });
 
 test("an Android browser gets the bar above the page, and Open goes to the app at the page the reader is on", async ({ browser }) => {
   const context = await phone(browser, UA.android);
@@ -88,7 +83,7 @@ test("an Android browser gets the bar above the page, and Open goes to the app a
   expect(await page.locator("#root").evaluate((el) => el.getBoundingClientRect().bottom)).toBeLessThanOrEqual(844);
 
   // Moved to another page within the site, Open follows.
-  await hydrated(page);
+  await waitForApp(page);
   await page.evaluate(() => history.pushState(null, "", "/en/poets/jamil-buthayna"));
   await stayHere(page);
   await open(page).click();
@@ -113,8 +108,7 @@ test("the bar is drawn before the app's scripts run, and stays put when the app 
 
   holding = false;
   for (const go of held) await go();
-  await hydrated(page);
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   expect(await bar(page).boundingBox()).toEqual({ x: 0, y: 0, width: 390, height: 60 });
   expect(await rootTop(page)).toBe(60);
   expect(await firstText(page)).toEqual(before);
@@ -125,7 +119,7 @@ test("Open pauses the poem playing on the page", async ({ browser }) => {
   const context = await phone(browser, UA.android);
   const page = await context.newPage();
   await page.goto(POEM);
-  await hydrated(page);
+  await waitForApp(page);
   const live = (name: string) =>
     page.getByRole("button", { name, exact: true }).and(page.locator(":not([inert]):not([inert] *)")).filter({ visible: true }).first();
   await live("تشغيل").click();
@@ -140,7 +134,7 @@ test("× hides the bar for the visit, and the page takes its room back", async (
   const context = await phone(browser, UA.android);
   const page = await context.newPage();
   await page.goto(POEM);
-  await hydrated(page);
+  await waitForApp(page);
   await bar(page).getByRole("button", { name: "إغلاق" }).click();
   await expect(bar(page)).toBeHidden();
   expect(await rootTop(page)).toBe(0);
@@ -166,7 +160,7 @@ test("the bar speaks the page's language, and follows the night theme", async ({
   // The night theme's raised surface (#1D2231), not the day's.
   await expect.poll(() => bar(page).evaluate((el) => getComputedStyle(el).backgroundColor)).toBe("rgb(29, 34, 49)");
   // Switched to Arabic in the app, the page's language changes, and the bar's with it.
-  await hydrated(page);
+  await waitForApp(page);
   await page.evaluate(() => (document.documentElement.lang = "ar"));
   await expect(open(page)).toHaveText("فتح");
   await context.close();

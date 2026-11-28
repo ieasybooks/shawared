@@ -1,7 +1,8 @@
-import { buildTrack, lineAt, segmentAt, type Track } from "@shawared/listening";
-import { useMemo } from "react";
+import { buildTrack, clampTime, lineAt, segmentAt, type Track } from "@shawared/listening";
+import { useEffect, useMemo } from "react";
 import { createStore, useStore, type Store } from "../../lib/store";
-import { idleClock, player, type Clock, type NowItem } from "../player/player";
+import { idleClock, player, type Clock } from "../player/player";
+import { itemKey, sameItem, type NowItem } from "../player/item";
 
 /** A poem screen's view of playback: live when its recitation is the one playing, else ready to start. */
 export type Playback = {
@@ -19,12 +20,15 @@ const selectItem = (s: { item: NowItem | null }) => s.item;
 
 export function usePoemPlayback(item: NowItem): Playback {
   const current = useStore(player.now, selectItem);
-  const active = !!current && current.poemId === item.poemId && current.recitation.id === item.recitation.id;
-  // Keyed by ids: switching language reloads the bundle but not the recording.
-  const key = `${item.poemId}/${item.recitation.id}`;
+  const active = sameItem(current, item);
+  // A language switch keeps the recording; a newly published audio key starts its own position.
+  const key = itemKey(item);
   const track = useMemo(() => buildTrack(item.recitation.timeline, item.recitation.duration), [key]);
   // Until it plays, the screen keeps its own position: the progress bar, previous and next move it.
   const idle = useMemo(() => createStore<Clock>(idleClock()), [key]);
+  useEffect(() => {
+    if (active && player.isCurrent(item)) player.load(item);
+  }, [active, item]);
 
   return useMemo<Playback>(() => {
     if (active) {
@@ -46,7 +50,7 @@ export function usePoemPlayback(item: NowItem): Playback {
       play: start,
       pause: () => {},
       toggle: start,
-      seek: (t) => idle.set({ time: Math.max(0, Math.min(item.recitation.duration - 0.05, t)), seq: idle.get().seq + 1 }),
+      seek: (t) => idle.set({ time: clampTime(item.recitation.duration, t), seq: idle.get().seq + 1 }),
     };
   }, [active, track, idle, item]);
 }
@@ -65,7 +69,5 @@ export function useCurrentSegment(p: Playback) {
   return useStore(p.clock, select);
 }
 
-const selectTime = (s: Clock) => s.time;
 const selectPlaying = (s: Clock) => s.playing;
-export const useTime = (p: Playback) => useStore(p.clock, selectTime);
 export const usePlaying = (p: Playback) => useStore(p.clock, selectPlaying);

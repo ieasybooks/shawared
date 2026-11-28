@@ -12,7 +12,8 @@
 // A key already in the bucket holds the same bytes, so it's left alone.
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { relative } from "node:path";
-import { CONTENT_TYPE, IMMUTABLE, keyFor, recordings, root, sourcePath, type Recording } from "./recordings.ts";
+import { CONTENT_TYPE, IMMUTABLE, keyFor, recordings, sourcePath, type Recording } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 export type Bucket = {
   exists(key: string): Promise<boolean>;

@@ -15,15 +15,15 @@ import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { chromium, type Browser, type Page } from "@playwright/test";
+import { SETTINGS_KEY } from "../apps/app/src/lib/preferences.ts";
 import { DAY, image } from "./app-icons.ts";
-import { root } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 type Lang = "ar" | "en";
 const LANGS: Lang[] = ["ar", "en"];
 const SITE = "http://127.0.0.1:8787";
 const POEM = "araka-asiyya-al-dami";
 const POET = "al-mutanabbi";
-const SETTINGS_KEY = "shawared.settings.v1";
 const SAVED_KEY = "shawared.saved.v1";
 
 // The screens each store shows, by the size it takes: an iPhone 6.9" (1320x2868), an iPad 13"

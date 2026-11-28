@@ -1,5 +1,5 @@
 import { rhymeFor } from "./rhymes";
-import type { UiLang } from "@shawared/contracts";
+import { METER_DETAILS, METERS, type Meter, type UiLang } from "@shawared/contracts";
 
 const ar = {
   brand: "شوارد",
@@ -407,45 +407,10 @@ export function directoryCount(kind: keyof typeof directoryNouns, n: number, lan
   return digits(n, lang) + " " + (n === 0 || (last >= 3 && last <= 10) ? few : many);
 }
 
-const METERS: Record<string, [string, string]> = {
-  tawil: ["الطويل", "al-Ṭawīl"],
-  madid: ["المديد", "al-Madīd"],
-  basit: ["البسيط", "al-Basīṭ"],
-  wafir: ["الوافر", "al-Wāfir"],
-  kamil: ["الكامل", "al-Kāmil"],
-  hazaj: ["الهزج", "al-Hazaj"],
-  rajaz: ["الرجز", "al-Rajaz"],
-  ramal: ["الرمل", "al-Ramal"],
-  sari: ["السريع", "al-Sarīʿ"],
-  munsarih: ["المنسرح", "al-Munsariḥ"],
-  khafif: ["الخفيف", "al-Khafīf"],
-  mudari: ["المضارع", "al-Muḍāriʿ"],
-  muqtadab: ["المقتضب", "al-Muqtaḍab"],
-  mujtath: ["المجتث", "al-Mujtath"],
-  mutaqarib: ["المتقارب", "al-Mutaqārib"],
-  mutadarik: ["المتدارك", "al-Mutadārik"],
-};
-export const meterName = (id: string, lang: UiLang) => METERS[id]?.[lang === "ar" ? 0 : 1] ?? id;
-export const METER_IDS = Object.keys(METERS);
+export const meterName = (id: string, lang: UiLang) => METER_DETAILS[id as Meter]?.[lang] ?? id;
+export const METER_IDS = METERS;
 
 /** The feet of one half-verse of each meter, in its full form. */
-export const METER_FEET: Record<string, string> = {
-  tawil: "فَعولُنْ مَفاعيلُنْ فَعولُنْ مَفاعيلُنْ",
-  madid: "فاعِلاتُنْ فاعِلُنْ فاعِلاتُنْ",
-  basit: "مُسْتَفْعِلُنْ فاعِلُنْ مُسْتَفْعِلُنْ فاعِلُنْ",
-  wafir: "مُفاعَلَتُنْ مُفاعَلَتُنْ فَعولُنْ",
-  kamil: "مُتَفاعِلُنْ مُتَفاعِلُنْ مُتَفاعِلُنْ",
-  hazaj: "مَفاعيلُنْ مَفاعيلُنْ",
-  rajaz: "مُسْتَفْعِلُنْ مُسْتَفْعِلُنْ مُسْتَفْعِلُنْ",
-  ramal: "فاعِلاتُنْ فاعِلاتُنْ فاعِلُنْ",
-  sari: "مُسْتَفْعِلُنْ مُسْتَفْعِلُنْ مَفْعولاتُ",
-  munsarih: "مُسْتَفْعِلُنْ مَفْعولاتُ مُسْتَفْعِلُنْ",
-  khafif: "فاعِلاتُنْ مُسْتَفْعِلُنْ فاعِلاتُنْ",
-  mudari: "مَفاعيلُنْ فاعِلاتُنْ",
-  muqtadab: "مَفْعولاتُ مُسْتَفْعِلُنْ",
-  mujtath: "مُسْتَفْعِلُنْ فاعِلاتُنْ",
-  mutaqarib: "فَعولُنْ فَعولُنْ فَعولُنْ فَعولُنْ",
-  mutadarik: "فاعِلُنْ فاعِلُنْ فاعِلُنْ فاعِلُنْ",
-};
+export const METER_FEET: Record<string, string> = Object.fromEntries(METERS.map((id) => [id, METER_DETAILS[id].feet]));
 
 export const rhymeName = (letter: string, lang: UiLang) => t(lang, "rhyme", { l: rhymeFor(letter)?.[lang] ?? letter });

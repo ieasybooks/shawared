@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createContext, use, useEffect, useRef, useState, type ReactNode } from "react";
 import { Animated, Easing, PanResponder, Platform, StyleSheet, View, type StyleProp, type ViewStyle } from "react-native";
 import { useSettings } from "../../lib/settings";
 
 const native = Platform.OS !== "web";
+const ReadyCtx = createContext(true);
+export const useSheetReady = () => use(ReadyCtx);
 
 /** A panel that slides up from below. Drag its grip down, or call onClose, to put it away. */
 export function Sheet({
@@ -28,6 +30,7 @@ export function Sheet({
   const shown = useRef(new Animated.Value(open ? 1 : 0)).current;
   const drag = useRef(new Animated.Value(0)).current;
   const [mounted, setMounted] = useState(open);
+  const [settled, setSettled] = useState(false);
   const onCloseRef = useRef(onClose);
   useEffect(() => {
     onCloseRef.current = onClose;
@@ -35,15 +38,20 @@ export function Sheet({
 
   useEffect(() => {
     if (open) setMounted(true);
+    setSettled(false);
     drag.setValue(0);
-    Animated.timing(shown, {
+    const animation = Animated.timing(shown, {
       toValue: open ? 1 : 0,
       duration: 340,
       easing: Easing.bezier(0.2, 0.8, 0.2, 1),
       useNativeDriver: native,
-    }).start(({ finished }) => {
-      if (finished && !open) setMounted(false);
     });
+    animation.start(({ finished }) => {
+      if (!finished) return;
+      if (open) setSettled(true);
+      else setMounted(false);
+    });
+    return () => animation.stop();
   }, [open, shown, drag]);
 
   const pan = useRef(
@@ -74,7 +82,7 @@ export function Sheet({
       <View {...pan.panHandlers} style={[styles.gripArea, gripStyle]}>
         {grip ?? <View style={[styles.grip, { backgroundColor: palette.line2 }]} />}
       </View>
-      {children}
+      <ReadyCtx value={open && settled}>{children}</ReadyCtx>
     </Animated.View>
   );
 }

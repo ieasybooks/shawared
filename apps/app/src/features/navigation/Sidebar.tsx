@@ -9,11 +9,11 @@ import { useCatalog } from "../../lib/content";
 import { countsOf } from "../../lib/counts";
 import { digits, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
-import { useSaved, useSavedLoaded } from "../../lib/saved";
+import { useSaved, useSavedLoaded } from "../saved/storage";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { useHydrated } from "../../lib/viewport";
-import { playlistName } from "../saved/actions";
+import { playlistName } from "../saved/labels";
 import type { Saved } from "../saved/model";
 import { SECTIONS, tabOf, TABS } from "./tabs";
 

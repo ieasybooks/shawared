@@ -1,9 +1,9 @@
 // Shared helpers for the scripts that handle recordings (intake.ts, audio.ts).
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
+import { root } from "./repository.ts";
 
-export const root = join(import.meta.dir, "..");
-export const media = join(root, "media");
+export const media = join(root(), "media");
 
 /** Every recording in the app is set to this loudness, unless its peaks would pass the ceiling. */
 export const TARGET_LUFS = -20;

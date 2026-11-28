@@ -3,9 +3,11 @@
 // Usage: bun scripts/sitemap.ts   (after `expo export`; `bun run web:build` runs both)
 import { readdirSync, writeFileSync } from "node:fs";
 import { join, relative, sep } from "node:path";
+import { SITE, UI_LANGS } from "@shawared/contracts";
+import { langOfPath, pathInLang } from "../apps/app/src/lib/routes.ts";
+import { root } from "./repository.ts";
 
-const SITE = "https://shawared.com";
-const DIST = join(import.meta.dir, "..", "apps", "app", "dist");
+const DIST = join(root(), "apps", "app", "dist");
 
 function* htmlFiles(dir: string): Generator<string> {
   for (const e of readdirSync(dir, { withFileTypes: true })) {
@@ -30,22 +32,20 @@ const pages = new Map<string, { ar?: string; en?: string }>();
 for (const file of htmlFiles(DIST)) {
   const path = pathOf(file);
   if (path === null) continue;
-  const en = path === "/en" || path.startsWith("/en/");
-  const key = en ? path.slice(3) || "/" : path;
-  pages.set(key, { ...pages.get(key), [en ? "en" : "ar"]: path });
+  const lang = langOfPath(path);
+  const key = pathInLang(path, "ar");
+  pages.set(key, { ...pages.get(key), [lang]: path });
 }
 
 const url = (path: string) => `${SITE}${path}`;
 const escape = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 const entries = [...pages.keys()].sort().flatMap((key) => {
   const p = pages.get(key)!;
-  const alternates = (["ar", "en"] as const)
-    .filter((l) => p[l])
-    .map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${escape(url(p[l]!))}"/>`);
+  const alternates = UI_LANGS.filter((l) => p[l]).map(
+    (l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${escape(url(p[l]!))}"/>`,
+  );
   if (p.ar) alternates.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${escape(url(p.ar))}"/>`);
-  return (["ar", "en"] as const)
-    .filter((l) => p[l])
-    .map((l) => [`  <url>`, `    <loc>${escape(url(p[l]!))}</loc>`, ...alternates, `  </url>`].join("\n"));
+  return UI_LANGS.filter((l) => p[l]).map((l) => [`  <url>`, `    <loc>${escape(url(p[l]!))}</loc>`, ...alternates, `  </url>`].join("\n"));
 });
 
 const xml = [

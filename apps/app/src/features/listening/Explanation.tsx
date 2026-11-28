@@ -6,26 +6,19 @@ import { Chip, IconButton, Nuqta, Tag } from "../../components/ui/controls";
 import { Dir } from "../../components/ui/Dir";
 import { Half } from "../../components/ui/Measure";
 import { t } from "../../lib/i18n";
-import { isWide, Only, useLayout } from "../../lib/responsive";
+import { Only, useLayout } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { useReveal } from "./PanelScroll";
 import { useCurrentLine } from "./playback";
-import { useCurrentBayt, useListening } from "./state";
-
-/** What the explanation shows: the held bayt or the introduction, else the bayt being recited. */
-export function usePanel(): number | "intro" {
-  const { pinned } = useListening();
-  const current = useCurrentBayt();
-  return pinned ?? current;
-}
+import { useCurrentBayt, useListening, usePanel } from "./state";
 
 /**
  * One block for both the phone sheet and the side panel of wide windows: the poem's
  * introduction, or one bayt explained. `onCollapse` puts the sheet away (phones only).
  */
 export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
-  const { abyat, sources, source, setSourceId, words, pinned, unpin, followRef, playback, bundle, intro, focus } = useListening();
+  const { abyat, sources, source, setSourceId, words, pinned, follow, playback, bundle, intro, focus } = useListening();
   const { palette, lang, start } = useSettings();
   const type = useType();
   const layout = useLayout();
@@ -41,7 +34,6 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
   const liveHalf = live ? (playback.track.lines[line]?.half ?? null) : null;
   const focused = focus ? words.get(focus)?.address : undefined;
 
-  // A short fade when what it shows changes.
   const fade = useRef(new Animated.Value(1)).current;
   const key = `${view}|${source?.id ?? ""}|${lang}`;
   const last = useRef(key);
@@ -67,14 +59,7 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
         </View>
         <View style={styles.sp} />
         {showNowPlaying && (
-          <Pressable
-            accessibilityRole="button"
-            onPress={() => {
-              unpin();
-              followRef.current?.();
-            }}
-            style={[styles.np, { borderColor: palette.accent }]}
-          >
+          <Pressable accessibilityRole="button" onPress={follow} style={[styles.np, { borderColor: palette.accent }]}>
             <Nuqta />
             <Text style={[type.label, { color: palette.accent }]}>{t(lang, "nowPlaying")}</Text>
           </Pressable>
@@ -102,7 +87,6 @@ export function Explanation({ onCollapse }: { onCollapse?: () => void }) {
           </>
         ) : (
           <>
-            {/* In the phone's sheet on the fold; in the sidebar, a card on it. */}
             <Dir
               dir="rtl"
               lang="ar"
@@ -166,13 +150,14 @@ function WordNote({ hit, focused }: { hit: WordHit; focused: boolean }) {
   const ref = useRef<HostInstance>(null);
   useEffect(() => {
     if (!focused) return;
-    // On phones the sheet slides up first.
-    const id = setTimeout(() => reveal(ref.current), isWide() ? 60 : 380);
-    return () => clearTimeout(id);
+    return reveal(ref.current);
   }, [focused, reveal]);
   return (
     <View
       ref={ref}
+      onLayout={() => {
+        if (focused) reveal(ref.current);
+      }}
       aria-current={focused ? "true" : undefined}
       style={[
         styles.word,

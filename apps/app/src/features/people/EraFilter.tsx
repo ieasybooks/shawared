@@ -1,4 +1,4 @@
-import { ERA_IDS, ERAS, type CatalogPerson, type Era } from "@shawared/contracts";
+import { ERAS, type Era } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
@@ -7,24 +7,9 @@ import { directoryCount, t } from "../../lib/i18n";
 import { Only } from "../../lib/responsive";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
-import { DirectoryCell, DirectoryGrid } from "../library/DirectoryControls";
+import { DirectoryCell, DirectoryGrid } from "../library/DirectoryGrid";
 
-export function eraOf(person: CatalogPerson): Era {
-  return person.era && Object.hasOwn(ERAS, person.era) ? (person.era as Era) : "uncertain";
-}
-
-type EraGroup = { id: Era; count: number };
-
-export function groupPoetsByEra(poets: Record<string, CatalogPerson>): EraGroup[] {
-  const people = Object.values(poets);
-  if (!people.some((p) => p.era)) return []; // Catalogues published before era filtering.
-  const counts = new Map<Era, number>();
-  for (const poet of people) {
-    const era = eraOf(poet);
-    counts.set(era, (counts.get(era) ?? 0) + 1);
-  }
-  return ERA_IDS.filter((id) => counts.has(id)).map((id) => ({ id, count: counts.get(id)! }));
-}
+import type { EraGroup } from "./eras";
 
 export function EraFilter({
   groups,

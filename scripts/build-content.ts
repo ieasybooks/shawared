@@ -11,7 +11,7 @@
 // previews; with --remote-audio, for release builds that play audio from
 // audio.shawared.com, none is.
 import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { parseArgs } from "node:util";
@@ -30,7 +30,8 @@ import {
   type CatalogTheme,
   type PublishedSource,
 } from "@shawared/contracts";
-import { root, sourcePath } from "./recordings.ts";
+import { sourcePath } from "./recordings.ts";
+import { directories, jsonFiles, languageFiles, root } from "./repository.ts";
 import { planPoem } from "./kashida.ts";
 
 const ROOT = root();
@@ -56,17 +57,7 @@ if (!args["skip-check"]) {
 }
 
 const read = (f: string): unknown => JSON.parse(readFileSync(f, "utf8"));
-const isDir = (p: string) => existsSync(p) && statSync(p).isDirectory();
-const dirs = (p: string) =>
-  isDir(p)
-    ? readdirSync(p)
-        .filter((d) => isDir(join(p, d)))
-        .sort()
-    : [];
-const langFiles = (dir: string, main: string) =>
-  readdirSync(dir)
-    .filter((f) => f !== main && /^[a-z]{2}(\.[a-z0-9-]+)?\.json$/.test(f))
-    .sort((a, b) => a.length - b.length || a.localeCompare(b));
+const sourceOrder = (a: string, b: string) => a.length - b.length || a.localeCompare(b);
 
 type Person = {
   main: {
@@ -81,12 +72,12 @@ type Person = {
 };
 function people(kind: "poets" | "reciters"): Map<string, Person> {
   const out = new Map<string, Person>();
-  for (const id of dirs(join(CONTENT, kind))) {
+  for (const id of directories(join(CONTENT, kind))) {
     const dir = join(CONTENT, kind, id);
     const mainFile = kind === "poets" ? "poet.json" : "reciter.json";
     const main = (kind === "poets" ? source.Poet : source.Reciter).parse(read(join(dir, mainFile)));
     const langs: Person["langs"] = {};
-    for (const f of langFiles(dir, mainFile)) {
+    for (const f of languageFiles(dir).sort(sourceOrder)) {
       const l = source.PersonLang.parse(read(join(dir, f)));
       langs[l.lang] = { ...(l.name ? { name: l.name } : {}), ...(l.bio ? { bio: l.bio } : {}) };
     }
@@ -131,13 +122,13 @@ let audioCopied = 0;
 const audioMissing: string[] = [];
 const wideSpaces: string[] = [];
 
-for (const id of dirs(join(CONTENT, "poems"))) {
+for (const id of directories(join(CONTENT, "poems"))) {
   const dir = join(CONTENT, "poems", id);
   const poem = source.Poem.parse(read(join(dir, "poem.json")));
   const poet = poets.get(poem.poet)!;
 
   const byLang = new Map<string, PublishedSource[]>();
-  for (const f of langFiles(dir, "poem.json")) {
+  for (const f of languageFiles(dir).sort(sourceOrder)) {
     const l = source.PoemLang.parse(read(join(dir, f)));
     const src: PublishedSource = {
       id: f.replace(/\.json$/, ""),
@@ -151,13 +142,7 @@ for (const id of dirs(join(CONTENT, "poems"))) {
   }
 
   const recDir = join(dir, "recitations");
-  const recitations = (
-    isDir(recDir)
-      ? readdirSync(recDir)
-          .filter((f) => f.endsWith(".json"))
-          .sort()
-      : []
-  ).map((f) => {
+  const recitations = jsonFiles(recDir).map((f) => {
     const r = source.Recitation.parse(read(join(recDir, f)));
     return { id: f.replace(/\.json$/, ""), reciter: r.reciter, audio: r.audio, duration: r.duration, timeline: r.timeline };
   });
@@ -174,8 +159,6 @@ for (const id of dirs(join(CONTENT, "poems"))) {
     audioCopied++;
   }
 
-  // Every half at the poem's measure (scripts/kashida.ts); halves that still lean on wide
-  // spaces are listed for a look.
   const layout = planPoem(poem.abyat);
   const primary = poem.themes[0]!;
   const example = themes[primary]!.example!;
@@ -246,10 +229,8 @@ for (const id of dirs(join(CONTENT, "poems"))) {
   });
 }
 
-// Newest first; a stable order within a day.
 catalogPoems.sort((a, b) => b.added.localeCompare(a.added) || a.id.localeCompare(b.id));
 
-// A poet's poems, or the poems a reciter recites, newest first.
 const poemsOf = (kind: "poets" | "reciters", id: string) =>
   catalogPoems.filter((c) => (kind === "poets" ? c.poet === id : c.recitations.some((r) => r.reciter === id))).map((c) => c.id);
 const meters: Record<string, number> = {};
@@ -275,7 +256,6 @@ const catalog = Catalog.parse({
 });
 write(catalogPath(), catalog);
 
-// A page per poet and reciter, in every interface language.
 for (const [kind, map] of [
   ["poets", poets],
   ["reciters", reciters],

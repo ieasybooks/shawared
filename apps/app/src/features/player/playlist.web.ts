@@ -9,7 +9,6 @@ import type { Buttons, CreatePlaylist, NowPlaying, Status } from "./types";
 const EVERY = 0.25;
 const HAVE_FUTURE_DATA = 3;
 
-/** The Media Session, where the browser has one. */
 const session = () => (typeof navigator !== "undefined" && "mediaSession" in navigator ? navigator.mediaSession : null);
 
 function handle(action: MediaSessionAction, handler: MediaSessionActionHandler | null) {

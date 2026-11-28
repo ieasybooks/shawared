@@ -1,3 +1,4 @@
+import { waitForApp } from "./app-ready";
 import { expect, test, type Page } from "@playwright/test";
 import { scrollToRow } from "./scroll-to-row";
 
@@ -13,6 +14,7 @@ async function open(page: Page) {
   page.on("pageerror", (e) => errors.push(e.message));
   page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
   await page.goto(POEM);
+  await waitForApp(page);
   await expect(slider(page)).toBeVisible();
   return errors;
 }
@@ -187,6 +189,67 @@ test("a word opens its own bayt, its meaning brought forward", async ({ page }) 
   await expect(focused).toBeInViewport();
 });
 
+test("a focused meaning stays visible after its panel lays out again", async ({ page }) => {
+  await open(page);
+  await page.getByRole("button", { name: "المَرزَبانِ", exact: true }).first().click();
+  const focused = page.locator("[aria-current='true']").filter({ visible: true });
+  await expect(focused).toBeInViewport({ ratio: 1 });
+  await expect
+    .poll(() =>
+      page.locator("[data-panel]").evaluate((el) => {
+        const transform = getComputedStyle(el).transform;
+        return transform === "none" ? 0 : new DOMMatrixReadOnly(transform).m42;
+      }),
+    )
+    .toBe(0);
+
+  // A later layout can move a note without resizing the note itself.
+  await focused.evaluate((el) => {
+    (el as HTMLElement).style.marginTop = "600px";
+  });
+  await expect(focused).toBeInViewport({ ratio: 1 });
+});
+
+test("translation layout changes keep the playing verse in view", async ({ page }) => {
+  await page.goto(`/en${POEM}`);
+  await waitForApp(page);
+  const row = page.getByLabel("Verse 9", { exact: true });
+  await page.getByRole("button", { name: "Play from verse 9", exact: true }).click();
+  await expect(row).toBeInViewport({ ratio: 1 });
+  await page.getByRole("button", { name: "Pause", exact: true }).filter({ visible: true }).first().click();
+  const translation = page.getByRole("switch", { name: "Translation", exact: true });
+  const translated = row.getByText("And you, like the marzuban's pearl,", { exact: true });
+  await expect(translated).toBeVisible();
+  await translation.click();
+  await expect(translated).toHaveCount(0);
+  await expect(row).toBeInViewport({ ratio: 1 });
+  await translation.click();
+  await expect(translated).toBeVisible();
+  await expect(row).toBeInViewport({ ratio: 1 });
+});
+
+test("space controls only the current poem when earlier poem pages stay mounted", async ({ page }) => {
+  const response = await page.request.get("/content/v1/catalog.json");
+  const { poems } = (await response.json()) as { poems: { id: string; title: string; poet: string }[] };
+  const first = poems.find((p) => poems.some((other) => other.id !== p.id && other.poet === p.poet))!;
+  const next = poems.find((p) => p.id !== first.id && p.poet === first.poet)!;
+  await page.goto(`/poems/${first.id}`);
+  await waitForApp(page);
+  await playButton(page).click();
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("playing");
+  await page.locator(`a[href="/poets/${first.poet}"]`).filter({ visible: true }).first().click();
+  await (await scrollToRow(page, next.title)).click();
+  await expect(page).toHaveURL(new RegExp(`/poems/${next.id}$`));
+  await expect.poll(() => page.locator("[inert] [aria-label='verses']").count()).toBeGreaterThan(0);
+
+  await page.keyboard.press("Space");
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.metadata?.title)).toBe(next.title);
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("playing");
+  await page.keyboard.press("Space");
+  await expect.poll(() => page.evaluate(() => navigator.mediaSession.playbackState)).toBe("paused");
+  expect(await page.evaluate(() => navigator.mediaSession.metadata?.title)).toBe(next.title);
+});
+
 test("English shows translations, and the switch hides them", async ({ page }) => {
   await open(page);
   await page.getByRole("button", { name: "اللغة" }).click();
@@ -208,21 +271,49 @@ test("one button switches between day and night", async ({ page }) => {
   await expect.poll(background).toBe("rgb(243, 240, 232)");
 });
 
-test("scrolling pauses following for five seconds", async ({ page }) => {
-  await open(page);
-  const scrollTop = () => page.getByLabel("verses").evaluate((el) => el.scrollTop);
-  // Bayt 9 starts out of view on phones and desktops alike, so the list has to follow it.
-  await page.getByRole("button", { name: "شغّل من البيت ٩" }).click();
-  await page.waitForTimeout(2000);
-  const following = await scrollTop();
-  expect(following).toBeGreaterThan(0);
-  // The reader scrolls back to the top.
-  await page.getByLabel("verses").evaluate((el) => el.scrollTo({ top: 0 }));
-  await page.waitForTimeout(3500);
-  expect(await scrollTop()).toBe(0);
-  // Five seconds after the scroll, the list glides back to the playing bayt.
-  await expect.poll(scrollTop, { timeout: 8_000 }).toBeGreaterThan(following * 0.8);
-});
+for (const input of ["pointer", "keyboard"] as const) {
+  test(`${input} scrolling pauses following for five seconds`, async ({ page }, info) => {
+    await open(page);
+    const list = page.getByLabel("verses");
+    const scrollTop = () => list.evaluate((el) => el.scrollTop);
+    // Bayt 9 starts out of view on phones and desktops alike, so the list has to follow it.
+    await page.getByRole("button", { name: "شغّل من البيت ٩" }).click();
+    await page.waitForTimeout(2000);
+    const following = await scrollTop();
+    expect(following).toBeGreaterThan(0);
+    // The reader scrolls back to the top.
+    if (input === "keyboard") {
+      await list.focus();
+      await page.keyboard.press("Home");
+    } else {
+      const view = await list.boundingBox();
+      const x = view!.x + view!.width / 2;
+      const y = view!.y + view!.height / 2;
+      if (info.project.name === "phone") {
+        const session = await page.context().newCDPSession(page);
+        for (let swipe = 0; swipe < 2; swipe++) {
+          for (let step = 0; step <= 10; step++) {
+            await session.send("Input.dispatchTouchEvent", {
+              type: step === 0 ? "touchStart" : "touchMove",
+              touchPoints: [{ x, y: view!.y + 40 + ((view!.height - 80) * step) / 10 }],
+            });
+            await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())));
+          }
+          await session.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
+        }
+        await session.detach();
+      } else {
+        await page.mouse.move(x, y);
+        await page.mouse.wheel(0, -following - 100);
+      }
+    }
+    await expect.poll(scrollTop).toBe(0);
+    await page.waitForTimeout(3500);
+    expect(await scrollTop()).toBe(0);
+    // Five seconds after the scroll, the list glides back to the playing bayt.
+    await expect.poll(scrollTop, { timeout: 8_000 }).toBeGreaterThan(following * 0.8);
+  });
+}
 
 test("no sideways scrolling", async ({ page }) => {
   await open(page);

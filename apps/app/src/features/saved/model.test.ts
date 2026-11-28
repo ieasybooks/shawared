@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { Catalog } from "@shawared/contracts";
 import {
   addToPlaylist,
   cleanName,
@@ -11,7 +12,7 @@ import {
   newPlaylistId,
   parseSaved,
   playlistOf,
-  present,
+  playlistContent,
   removeFromPlaylist,
   renamePlaylist,
   toggleFavourite,
@@ -61,10 +62,10 @@ describe("playlists", () => {
   });
 
   it("move a poem up and down, and ignore moves out of range", () => {
-    expect(playlistOf(movePoem(withList, "l1", 2, 0), "l1")?.poems).toEqual(["c", "a", "b"]);
-    expect(playlistOf(movePoem(withList, "l1", 0, 1), "l1")?.poems).toEqual(["b", "a", "c"]);
-    expect(movePoem(withList, "l1", 0, 3)).toEqual(withList);
-    expect(movePoem(withList, "l1", -1, 0)).toEqual(withList);
+    expect(playlistOf(movePoem(withList, "l1", "c", "a"), "l1")?.poems).toEqual(["c", "a", "b"]);
+    expect(playlistOf(movePoem(withList, "l1", "a", "b"), "l1")?.poems).toEqual(["b", "a", "c"]);
+    expect(movePoem(withList, "l1", "a", undefined)).toEqual(withList);
+    expect(movePoem(withList, "l1", "missing", "a")).toEqual(withList);
   });
 
   it("are renamed and deleted; an unknown id changes nothing", () => {
@@ -82,7 +83,8 @@ describe("names and ids", () => {
   });
 
   it("makes short ids that differ", () => {
-    expect(newPlaylistId(0, 0)).toBe("00000");
+    expect(newPlaylistId(0, 0)).not.toBe("");
+    expect(newPlaylistId(1, 0)).not.toBe(newPlaylistId(0, 0));
     expect(newPlaylistId(1_700_000_000_000, 0.5)).not.toBe(newPlaylistId(1_700_000_000_000, 0.25));
   });
 });
@@ -100,7 +102,31 @@ describe("reading what was stored", () => {
     ).toEqual({ poems: ["a", "b"], poets: [], reciters: [], playlists: [{ id: "l", name: "", poems: ["a"] }] });
   });
 
-  it("drops poems the catalog no longer has", () => {
-    expect(present(["a", "gone", "b"], (id) => id !== "gone")).toEqual(["a", "b"]);
+  it("projects current poems in saved order, including their duration", () => {
+    const catalog = {
+      poems: [
+        { id: "a", recitations: [{ duration: 10 }] },
+        { id: "b", recitations: [{ duration: 20 }] },
+      ],
+    } as Catalog;
+    const playlist = { id: "l", name: "", poems: ["gone", "b", "a"] };
+    expect(playlistContent(playlist, catalog)).toEqual({ poems: [catalog.poems[1], catalog.poems[0]], ids: ["b", "a"], seconds: 30 });
+    expect(playlist.poems).toEqual(["gone", "b", "a"]);
+  });
+
+  it.each([
+    ["gone", "a", "b", "c"],
+    ["a", "gone", "b", "c"],
+    ["a", "b", "gone", "c"],
+    ["a", "b", "c", "gone"],
+  ])("moves visible identities around withdrawn poems in %j", (...poems) => {
+    const saved = createPlaylist(EMPTY, "l", "", poems);
+    const catalog = { poems: ["a", "b", "c"].map((id) => ({ id, recitations: [] })) } as unknown as Catalog;
+    const moved = movePoem(saved, "l", "b", "a");
+    expect(playlistContent(playlistOf(moved, "l")!, catalog).ids).toEqual(["b", "a", "c"]);
+    expect(playlistOf(moved, "l")!.poems).toContain("gone");
+    const down = movePoem(moved, "l", "b", "c");
+    expect(playlistContent(playlistOf(down, "l")!, catalog).ids).toEqual(["a", "c", "b"]);
+    expect(playlistOf(down, "l")!.poems).toContain("gone");
   });
 });

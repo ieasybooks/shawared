@@ -3,26 +3,26 @@ import { space } from "@shawared/design";
 import { Link, router } from "expo-router";
 import { useMemo, useState, type ReactNode } from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
-import { Chip, IconButton } from "../../components/ui/controls";
+import { IconButton } from "../../components/ui/controls";
 import { Dialog } from "../../components/ui/Dialog";
 import { CoverTile } from "../../components/ui/Girih";
 import { Icon } from "../../components/ui/Icon";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
-import { canDownload, downloadsStore, remove, type Downloads } from "../../lib/downloads";
+import { canDownload, remove, useDownload, useDownloads, type Downloads } from "../../lib/downloads";
 import { digits, poemsCount, sizeOf, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
-import { useSaved, useSavedLoaded } from "../../lib/saved";
+import { useSaved, useSavedLoaded } from "./storage";
 import { useSettings } from "../../lib/settings";
-import { useStore } from "../../lib/store";
 import { useType } from "../../lib/type";
 import { ListPage, PageFrame, SectionHead } from "../library/Page";
 import { PoemRow } from "../library/PoemCard";
 import { listEdges, type ListEdges } from "../library/ListEdges";
-import { PersonRow } from "../people/PeopleScreens";
-import { newPlaylist, playList, playlistName } from "./actions";
-import { useDownload } from "./DownloadButton";
-import { NAME_MAX, type Playlist, type Saved } from "./model";
+import { PersonRow } from "../people/PersonRow";
+import { newPlaylist, playList } from "./actions";
+import { playlistFacts, playlistName } from "./labels";
+import { PlayAll } from "./PlayAll";
+import { NAME_MAX, playlistContent, type Playlist, type Saved } from "./model";
 
 type Item =
   | { k: "head"; key: string; title: string; count?: string; action?: ReactNode }
@@ -47,13 +47,12 @@ const keyOf = (i: Item) =>
 const selectAll = (s: Saved) => s;
 const selectDone = (s: Downloads) => s.done;
 
-/** The reader's library: their playlists, favourite poems, poets and reciters, and (the apps) downloads. */
 export function LibraryScreen() {
   const { lang, href } = useSettings();
   const catalog = useCatalog();
   const loaded = useSavedLoaded();
   const saved = useSaved(selectAll);
-  const done = useStore(downloadsStore, selectDone);
+  const done = useDownloads(selectDone);
   const [naming, setNaming] = useState(false);
   const title = t(lang, "library");
   const items = useMemo(
@@ -88,7 +87,7 @@ export function LibraryScreen() {
         title={t(lang, "newPlaylist")}
         input={{ label: t(lang, "playlistName"), initial: "", maxLength: NAME_MAX }}
         confirm={t(lang, "create")}
-        onConfirm={(name) => router.push(href(paths.playlist(newPlaylist(name))))}
+        onConfirm={async (name) => router.push(href(paths.playlist(await newPlaylist(name))))}
         onClose={() => setNaming(false)}
       />
     </>
@@ -183,16 +182,6 @@ function Row({ item, catalog, onNew, ...edges }: { item: Item; catalog: Catalog;
   }
 }
 
-/** Plays a list from its first poem. */
-export function PlayAll({ ids }: { ids: readonly string[] }) {
-  const { lang } = useSettings();
-  return (
-    <Chip icon="play" onPress={() => playList(ids, lang)}>
-      {t(lang, "playAll")}
-    </Chip>
-  );
-}
-
 function NewPlaylistRow({ onPress, first, last }: { onPress: () => void } & ListEdges) {
   const { palette, lang } = useSettings();
   const type = useType();
@@ -210,16 +199,11 @@ function NewPlaylistRow({ onPress, first, last }: { onPress: () => void } & List
   );
 }
 
-/** A playlist: its name, and how many poems and minutes. */
 function PlaylistRow({ playlist, catalog, first, last }: { playlist: Playlist; catalog: Catalog } & ListEdges) {
   const { palette, lang, start, href } = useSettings();
   const type = useType();
-  const poems = playlist.poems.map((id) => catalog.poems.find((p) => p.id === id)).filter((p): p is CatalogPoem => !!p);
-  const seconds = poems.reduce((sum, p) => sum + (p.recitations[0]?.duration ?? 0), 0);
-  const facts = [poemsCount(poems.length, lang), poems.length ? t(lang, "minutes", { m: Math.max(1, Math.round(seconds / 60)) }) : null]
-    .filter(Boolean)
-    .join(" · ");
-  const ids = poems.map((p) => p.id);
+  const { ids, seconds } = playlistContent(playlist, catalog);
+  const facts = playlistFacts(ids.length, seconds, lang);
   return (
     <View style={[styles.inline, styles.playlist, { borderTopColor: palette.line }, first && listEdges.first]}>
       <Link href={href(paths.playlist(playlist.id))} asChild>
@@ -251,7 +235,6 @@ function PlaylistRow({ playlist, catalog, first, last }: { playlist: Playlist; c
   );
 }
 
-/** A downloaded poem, with a button that removes its download. */
 function DownloadRow({ poem, catalog, list, ...edges }: { poem: CatalogPoem; catalog: Catalog; list: string[] } & ListEdges) {
   const { lang } = useSettings();
   const key = poem.recitations[0]?.audio;

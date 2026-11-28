@@ -13,7 +13,11 @@ Set TAFRIGH to another tafrigh binary (a CUDA build, say) to use it instead of t
 """
 import argparse, difflib, json, os, re, shutil, subprocess, sys, unicodedata
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# The documented -I invocation omits the script directory from Python's import path.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from recording import repository_root, source_path
+
+ROOT = repository_root()
 PAD = 0.05
 
 
@@ -42,11 +46,13 @@ def main():
     a = ap.parse_args()
     poem_id = a.poem
     pdir = os.path.join(ROOT, "content", "poems", poem_id)
-    poem = json.load(open(os.path.join(pdir, "poem.json"), encoding="utf-8"))
+    with open(os.path.join(pdir, "poem.json"), encoding="utf-8") as file:
+        poem = json.load(file)
     recs = sorted(f[:-5] for f in os.listdir(os.path.join(pdir, "recitations")) if f.endswith(".json"))
     rec_id = a.recitation or recs[0]
-    rec = json.load(open(os.path.join(pdir, "recitations", f"{rec_id}.json"), encoding="utf-8"))
-    audio = a.audio or os.path.join(ROOT, "media", "audio", rec["audio"])
+    with open(os.path.join(pdir, "recitations", f"{rec_id}.json"), encoding="utf-8") as file:
+        rec = json.load(file)
+    audio = a.audio or str(source_path(ROOT, poem_id, rec_id))
 
     halves = {}
     for b in poem["abyat"]:
@@ -66,7 +72,8 @@ def main():
 
     flagged, edges, words_total, words_off = [], [], 0, 0
     for name, addr in names:
-        segs = json.load(open(os.path.join(heard, f"{name}.json"), encoding="utf-8"))
+        with open(os.path.join(heard, f"{name}.json"), encoding="utf-8") as file:
+            segs = json.load(file)
         got = norm(" ".join(x["text"] for x in segs))
         text = halves[addr] if "." in addr else halves[f"{addr}.1"] + " " + halves[f"{addr}.2"]
         want = norm(text)

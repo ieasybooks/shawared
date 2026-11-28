@@ -1,10 +1,11 @@
+import { SITE } from "@shawared/contracts";
 import { palettes } from "@shawared/design";
 import { useServerDocumentContext } from "expo-router/html";
 import type { ReactNode } from "react";
 import { t } from "../lib/i18n";
-import { langOfPath, pathInLang, paths, SITE } from "../lib/routes";
+import { langOfPath, pathInLang, paths } from "../lib/routes";
 import { RESPONSIVE_CSS, WIDE_MIN } from "../lib/responsive";
-import { SETTINGS_KEY } from "../lib/settings";
+import { THEME_ATTRIBUTE, THEME_PREPAINT_SCRIPT, THEME_WAIT_ATTRIBUTE } from "../lib/preferences";
 import { APP_STORE_ID, appBanner, smartBannerArgument, storeRedirect } from "../lib/stores";
 
 // The document around every web page, rendered ahead of time (web only).
@@ -14,9 +15,6 @@ import { APP_STORE_ID, appBanner, smartBannerArgument, storeRedirect } from "../
 // every window sees the page at once, in its layout. The night theme would change the page as
 // soon as the app starts, so for it the page waits for the app before it shows (data-wait), on
 // the night background.
-const waitScript = `(function(){var d=document.documentElement;try{var s=JSON.parse(localStorage.getItem(${JSON.stringify(SETTINGS_KEY)})||"{}");if(s.theme==="night"){d.setAttribute("data-theme","night");d.setAttribute("data-wait","");setTimeout(function(){d.removeAttribute("data-wait")},4000)}}catch(e){}})();`;
-
-/** The app bar's height (below). */
 const BANNER_HEIGHT = 60;
 
 const css = `
@@ -28,11 +26,11 @@ ${RESPONSIVE_CSS}
   html [data-panel] > * { pointer-events: auto; }
 }
 html, body { height: 100%; background: ${palettes.day.bg}; }
-html[data-theme="night"], html[data-theme="night"] body { background: ${palettes.night.bg}; color-scheme: dark; }
+html[${THEME_ATTRIBUTE}="night"], html[${THEME_ATTRIBUTE}="night"] body { background: ${palettes.night.bg}; color-scheme: dark; }
 body { overflow: hidden; margin: 0; }
 /* dvh follows the phone browser's toolbars, so the player stays on screen. */
 #root { display: flex; height: 100%; height: 100dvh; flex: 1; }
-html[data-wait] #root { visibility: hidden; }
+html[${THEME_WAIT_ATTRIBUTE}] #root { visibility: hidden; }
 /* The app bar on phones' browsers (lib/stores appBanner), above the app, which makes room for it. */
 #app-banner { display: none; }
 html[data-app-banner] #app-banner {
@@ -55,10 +53,10 @@ html[data-app-banner] #root { margin-top: ${BANNER_HEIGHT}px; height: calc(100% 
   font-family: ReadexPro_500Medium, system-ui, sans-serif; font-size: 14px;
   background: ${palettes.day.fg}; color: ${palettes.day.bg};
 }
-html[data-theme="night"] #app-banner { background: ${palettes.night.raise}; color: ${palettes.night.fg}; border-color: ${palettes.night.line}; }
-html[data-theme="night"] #app-banner img { border-color: ${palettes.night.line}; }
-html[data-theme="night"] #app-banner span { color: ${palettes.night.muted}; }
-html[data-theme="night"] #app-banner a { background: ${palettes.night.fg}; color: ${palettes.night.bg}; }
+html[${THEME_ATTRIBUTE}="night"] #app-banner { background: ${palettes.night.raise}; color: ${palettes.night.fg}; border-color: ${palettes.night.line}; }
+html[${THEME_ATTRIBUTE}="night"] #app-banner img { border-color: ${palettes.night.line}; }
+html[${THEME_ATTRIBUTE}="night"] #app-banner span { color: ${palettes.night.muted}; }
+html[${THEME_ATTRIBUTE}="night"] #app-banner a { background: ${palettes.night.fg}; color: ${palettes.night.bg}; }
 `;
 
 const bannerTexts = Object.fromEntries(
@@ -71,7 +69,7 @@ const bannerTexts = Object.fromEntries(
 export default function Root({ children, pathname }: { children: ReactNode; pathname: string }) {
   const { htmlAttributes, bodyAttributes, headNodes, bodyNodes } = useServerDocumentContext();
   const lang = langOfPath(pathname);
-  const appPage = pathname === paths.app || pathname === pathInLang(paths.app, "en");
+  const appPage = pathInLang(pathname, "ar") === paths.app;
   return (
     <html {...htmlAttributes} lang={lang} dir={lang === "ar" ? "rtl" : "ltr"}>
       <head>
@@ -90,7 +88,7 @@ export default function Root({ children, pathname }: { children: ReactNode; path
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <script dangerouslySetInnerHTML={{ __html: waitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: THEME_PREPAINT_SCRIPT }} />
         <style id="shawared-base" dangerouslySetInnerHTML={{ __html: css }} />
         {/* Expo gives the not-found page no metadata of its own. */}
         {pathname.includes("+not-found") && (
@@ -103,7 +101,7 @@ export default function Root({ children, pathname }: { children: ReactNode; path
       </head>
       <body {...bodyAttributes}>
         <noscript>
-          <style>{"html[data-wait] #root { visibility: visible; }"}</style>
+          <style>{`html[${THEME_WAIT_ATTRIBUTE}] #root { visibility: visible; }`}</style>
         </noscript>
         {!appPage && (
           <>

@@ -1,6 +1,4 @@
-// What the reader keeps: favourite poems, poets and reciters, and playlists of their own. It all
-// stays on the device (lib/saved.ts stores it). These are the rules, pure, so they are tested
-// without storage or React.
+import type { Catalog } from "@shawared/contracts";
 
 export type FavouriteKind = "poems" | "poets" | "reciters";
 
@@ -22,7 +20,6 @@ export type Saved = {
 
 export const EMPTY: Saved = { poems: [], poets: [], reciters: [], playlists: [] };
 
-/** A playlist's name at most this long. */
 export const NAME_MAX = 60;
 
 const ids = (v: unknown): string[] =>
@@ -46,7 +43,6 @@ export function parseSaved(raw: unknown): Saved {
 
 export const isFavourite = (s: Saved, kind: FavouriteKind, id: string) => s[kind].includes(id);
 
-/** Adds `id` to the front of the favourites, or takes it out. */
 export function toggleFavourite(s: Saved, kind: FavouriteKind, id: string): Saved {
   const list = s[kind];
   return { ...s, [kind]: list.includes(id) ? list.filter((x) => x !== id) : [id, ...list] };
@@ -81,21 +77,21 @@ export const renamePlaylist = (s: Saved, id: string, name: string) => updatePlay
 
 export const deletePlaylist = (s: Saved, id: string): Saved => ({ ...s, playlists: s.playlists.filter((p) => p.id !== id) });
 
-/** Puts a poem at the end of a playlist, unless it's in it already. */
 export const addToPlaylist = (s: Saved, id: string, poemId: string) =>
   updatePlaylist(s, id, (p) => (p.poems.includes(poemId) ? p : { ...p, poems: [...p.poems, poemId] }));
 
 export const removeFromPlaylist = (s: Saved, id: string, poemId: string) =>
   updatePlaylist(s, id, (p) => ({ ...p, poems: p.poems.filter((x) => x !== poemId) }));
 
-/** Adds the poem to the playlist, or takes it out if it's there. */
 export const togglePoemInPlaylist = (s: Saved, id: string, poemId: string) =>
   playlistOf(s, id)?.poems.includes(poemId) ? removeFromPlaylist(s, id, poemId) : addToPlaylist(s, id, poemId);
 
-/** Moves the poem at `from` to `to` (indexes in the playlist). */
-export function movePoem(s: Saved, id: string, from: number, to: number): Saved {
+/** Move toward a visible neighbor; withdrawn poems keep their stored identities. */
+export function movePoem(s: Saved, id: string, poemId: string, neighborId: string | undefined): Saved {
   return updatePlaylist(s, id, (p) => {
-    if (from < 0 || from >= p.poems.length || to < 0 || to >= p.poems.length || from === to) return p;
+    const from = p.poems.indexOf(poemId);
+    const to = neighborId === undefined ? -1 : p.poems.indexOf(neighborId);
+    if (from < 0 || to < 0 || from === to) return p;
     const poems = [...p.poems];
     const [poem] = poems.splice(from, 1);
     poems.splice(to, 0, poem!);
@@ -103,7 +99,15 @@ export function movePoem(s: Saved, id: string, from: number, to: number): Saved 
   });
 }
 
-/** The poems of `ids` the catalog still has, in order (a poem can be withdrawn after it was saved). */
-export function present(ids: readonly string[], known: (id: string) => boolean): string[] {
-  return ids.filter(known);
+export function playlistContent(playlist: Playlist, catalog: Catalog) {
+  const known = new Map(catalog.poems.map((poem) => [poem.id, poem]));
+  const poems = playlist.poems.flatMap((id) => {
+    const poem = known.get(id);
+    return poem ? [poem] : [];
+  });
+  return {
+    poems,
+    ids: poems.map((poem) => poem.id),
+    seconds: poems.reduce((sum, poem) => sum + (poem.recitations[0]?.duration ?? 0), 0),
+  };
 }

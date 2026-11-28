@@ -1,18 +1,17 @@
 // The reader's favourites and playlists, kept on the device: AsyncStorage in the apps,
-// localStorage on the web. Nothing leaves it. The rules are in features/saved/model.ts.
+// localStorage on the web. Nothing leaves it.
 //
 // Web pages are rendered ahead of time with nothing saved, so the browser reads what it has
 // only once the page is live (the first `useSaved` effect), and the page then shows it.
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect } from "react";
 import { Platform } from "react-native";
-import { EMPTY, parseSaved, type Saved } from "../features/saved/model";
-import { createStore, useStore } from "./store";
+import { EMPTY, parseSaved, type Saved } from "./model";
+import { createStore, useStore } from "../../lib/store";
 
 export const SAVED_KEY = "shawared.saved.v1";
 
-/** What is saved, and whether it has been read from storage yet. */
-export const savedStore = createStore<{ loaded: boolean; data: Saved }>({ loaded: false, data: EMPTY });
+const savedStore = createStore<{ loaded: boolean; data: Saved }>({ loaded: false, data: EMPTY });
 
 let reading: Promise<void> | null = null;
 
@@ -25,8 +24,7 @@ async function read() {
   }
 }
 
-/** Reads what is saved, once. */
-export function restoreSaved(): Promise<void> {
+function restoreSaved(): Promise<void> {
   reading ??= (async () => {
     const data = await read();
     savedStore.set({ loaded: true, data });
@@ -58,7 +56,6 @@ export function updateSaved(change: (s: Saved) => Saved): Promise<void> {
       // A full disk only costs this change after the app closes.
     }
   };
-  // One change at a time, in order.
   writing = writing.then(run, run);
   return writing;
 }

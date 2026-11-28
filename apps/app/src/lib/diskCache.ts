@@ -21,7 +21,7 @@ export async function readCached(path: string): Promise<{ text: string; etag?: s
   }
 }
 
-export async function writeCached(path: string, text: string, etag: string | null) {
+export async function writeCached(path: string, text: string, etag: string | null): Promise<boolean> {
   try {
     const f = files(path);
     const dir = new Directory(root, ...path.split("/").slice(0, -1));
@@ -29,7 +29,8 @@ export async function writeCached(path: string, text: string, etag: string | nul
     await f.body.write(text);
     if (etag) await f.etag.write(etag);
     else if (f.etag.exists) f.etag.delete();
+    return true;
   } catch {
-    // A full disk or a sandbox quirk only costs the offline copy.
+    return false;
   }
 }

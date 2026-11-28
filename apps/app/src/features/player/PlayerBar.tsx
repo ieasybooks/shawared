@@ -1,6 +1,5 @@
 import { space } from "@shawared/design";
 import { nextTarget, previousTarget, segmentAt, type Track } from "@shawared/listening";
-import { router } from "expo-router";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View, type GestureResponderEvent } from "react-native";
 import { IconButton, type PressState } from "../../components/ui/controls";
@@ -11,10 +10,10 @@ import { TextLink } from "../../components/ui/TextLink";
 import { clock, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
-import { createStore, useStore, type Store } from "../../lib/store";
+import { useStore, type Store } from "../../lib/store";
 import { useType } from "../../lib/type";
 import { FavouriteButton } from "../saved/SavedButtons";
-import { player, type Clock, type NowItem, type RepeatMode } from "./player";
+import { player, type Clock, type Now, type RepeatMode } from "./player";
 
 const web = Platform.OS === "web";
 
@@ -41,23 +40,17 @@ export type BarSource = {
   linkTitle?: boolean;
 };
 
-const selectNow = (s: { item: NowItem | null; track: Track | null }) => s;
-const idle = createStore<Clock>({ time: 0, playing: false, ready: false, buffering: false, seq: 0 });
+const selectNow = (s: Now) => s;
 
-/** The app's current recitation as a bar's source, or null when nothing is playing. */
 export function useCurrentSource(): BarSource | null {
-  const { item, track } = useStore(player.now, selectNow) as { item: NowItem | null; track: Track | null };
+  const { item, track } = useStore(player.now, selectNow);
   if (!item || !track) return null;
   return {
-    poemId: item.poemId,
-    title: item.title,
-    poet: item.poet,
-    reciter: item.reciter,
+    ...item,
     reciterId: item.recitation.reciter,
-    abyat: item.abyat,
     duration: item.recitation.duration,
     track,
-    clock: player.clock ?? idle,
+    clock: player.clock,
     toggle: () => player.toggle(),
     jump: (s) => player.seek(s),
     close: () => player.close(),
@@ -76,7 +69,6 @@ function useBayt(source: BarSource) {
   return useStore(source.clock, select);
 }
 
-/** "Verse 4 of 32", following the recitation. */
 function VerseOf({ source }: { source: BarSource }) {
   const { lang } = useSettings();
   const n = useBayt(source);
@@ -89,7 +81,6 @@ function PlayingEq({ source }: { source: BarSource }) {
   return <Eq on={playing} color={palette.accent} />;
 }
 
-/** The round play button, ink on the page. */
 function PlayButton({ source, size }: { source: BarSource; size: number }) {
   const { palette, lang } = useSettings();
   const playing = useStore(source.clock, selectPlaying);
@@ -109,7 +100,6 @@ function PlayButton({ source, size }: { source: BarSource; size: number }) {
   );
 }
 
-/** The seek bar: an ink fill from the start of the reading direction, with a slim thumb. */
 export const SeekBar = memo(function SeekBar({ source }: { source: BarSource }) {
   const { palette, rtl, lang } = useSettings();
   const time = useStore(source.clock, selectTime);
@@ -179,7 +169,6 @@ function ProgressRow({ source }: { source: BarSource }) {
   );
 }
 
-/** A control of the bar: an icon, saffron with a nuqta under it when on. */
 function Control({
   icon,
   label,
@@ -217,8 +206,8 @@ function Control({
 }
 
 function useSkips(source: BarSource) {
-  const back = () => source.jump(Math.max(0, source.clock.get().time - 10));
-  const forward = () => source.jump(Math.min(source.duration - 0.05, source.clock.get().time + 10));
+  const back = () => source.jump(source.clock.get().time - 10);
+  const forward = () => source.jump(source.clock.get().time + 10);
   const prev = () => source.jump(previousTarget(source.track, source.clock.get().time));
   const next = () => {
     const to = nextTarget(source.track, source.clock.get().time);
@@ -230,10 +219,6 @@ function useSkips(source: BarSource) {
 const REPEAT_STATE = { off: "isOff", poem: "repeatPoem", bayt: "repeatBayt" } as const;
 const REPEAT_TIP = { off: "repeatTipOff", poem: "repeatTipPoem", bayt: "repeatTipBayt" } as const;
 
-/**
- * Repeat, one button with three steps: off, the whole poem, the bayt being recited ("١" on the
- * icon). `tip` lines its tip up with that edge of the button (wide windows).
- */
 function RepeatButton({ size, iconSize, tip }: { size?: number; iconSize?: number; tip?: TipText["align"] }) {
   const { lang } = useSettings();
   const mode = useStore(player.repeat, selectRepeat);
@@ -291,7 +276,6 @@ function MuteButton() {
   );
 }
 
-/** The poem's title: a link back to it on other pages. */
 function Title({ source }: { source: BarSource }) {
   const { palette, href } = useSettings();
   const type = useType();
@@ -323,7 +307,6 @@ function ReciterLink({ source }: { source: BarSource }) {
   );
 }
 
-/** The bar along the bottom of wide windows. */
 export function WideBar({ source }: { source: BarSource }) {
   const { palette, lang } = useSettings();
   const type = useType();
@@ -364,7 +347,6 @@ export function WideBar({ source }: { source: BarSource }) {
   );
 }
 
-/** The poem page's player on phones: where we are, the bar, then the controls. */
 export function PhoneBar({ source }: { source: BarSource }) {
   const { palette, lang } = useSettings();
   const type = useType();
@@ -425,9 +407,6 @@ export function GlobalPlayerBar() {
     </Animated.View>
   );
 }
-
-/** Opens the poem playing (the mini player's tap). */
-export const openPlaying = (poemId: string, href: (p: string) => string) => router.push(href(paths.poem(poemId)));
 
 const styles = StyleSheet.create({
   flex: { flex: 1, minWidth: 0 },

@@ -1,8 +1,10 @@
 import type { PoemBundle, PublishedBayt, PublishedRecitation, PublishedSource } from "@shawared/contracts";
 import { startOfBayt, wordIndex, type WordHit } from "@shawared/listening";
+import { useFocusEffect } from "expo-router";
 import { createContext, use, useCallback, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import { isWide } from "../../lib/responsive";
-import { nowItemOf, type NowItem } from "../player/player";
+import { nowItemOf, type NowItem } from "../player/item";
+import { createListeningHover, type ListeningHover } from "./hover";
 import { useCurrentSegment, usePlaying, usePoemPlayback, type Playback } from "./playback";
 
 /** What the explanation holds: a bayt, the poem's introduction, or null to follow the recitation. */
@@ -24,8 +26,8 @@ type ListeningValue = {
   setTrOn: (on: boolean) => void;
   /** What the explanation is held on; null when it follows the recitation. */
   pinned: Held;
-  pin: (n: number) => void;
-  unpin: () => void;
+  openBayt: (n: number) => void;
+  follow: () => void;
   /** The poem's introduction in the reader's language, if it has one. */
   intro: string | undefined;
   hasAbout: boolean;
@@ -38,8 +40,10 @@ type ListeningValue = {
   playFrom: (n: number) => void;
   /** Set by the verse list: scroll back to the playing bayt and follow again. */
   followRef: RefObject<(() => void) | null>;
+  hover: ListeningHover;
   sheetOpen: boolean;
-  setSheetOpen: (open: boolean) => void;
+  openSheet: () => void;
+  closeSheet: () => void;
 };
 
 const Ctx = createContext<ListeningValue | null>(null);
@@ -74,6 +78,8 @@ export function ListeningProvider({
   const [focus, setFocus] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
   const followRef = useRef<(() => void) | null>(null);
+  const [hover] = useState(createListeningHover);
+  useFocusEffect(useCallback(() => () => hover.reset(), [hover]));
 
   // The introduction the poem opens on gives way to the verses once the recitation starts.
   // One the reader asked for (the chip) stays until they choose otherwise, through pauses
@@ -84,6 +90,14 @@ export function ListeningProvider({
     setHeld(h);
     setFocus(word);
   }, []);
+  const openExplanation = useCallback(
+    (h: Held, word: string | null = null) => {
+      hold(h, word);
+      hover.hideWord();
+      if (!isWide()) setSheetOpen(true);
+    },
+    [hold, hover],
+  );
   const playing = usePlaying(playback);
   useEffect(() => {
     if (!playing || !opening.current) return;
@@ -135,25 +149,26 @@ export function ListeningProvider({
       trOn: hasTranslation && trOn,
       setTrOn,
       pinned,
-      pin: (n) => hold(n),
-      unpin: () => hold(null),
+      openBayt: (n) => openExplanation(n),
+      follow: () => {
+        hold(null);
+        followRef.current?.();
+      },
       intro,
       hasAbout,
-      // Phones open the explanation's sheet; wide windows show it beside the verses.
-      showIntro: () => {
-        hold("intro");
-        if (!isWide()) setSheetOpen(true);
-      },
+      showIntro: () => openExplanation("intro"),
       focus,
-      openWord: (key, n) => {
-        hold(n, key);
-        if (!isWide()) setSheetOpen(true);
-      },
+      openWord: (key, n) => openExplanation(n, key),
       jump,
       playFrom,
       followRef,
+      hover,
       sheetOpen,
-      setSheetOpen,
+      openSheet: () => setSheetOpen(true),
+      closeSheet: () => {
+        setSheetOpen(false);
+        hold(null);
+      },
     }),
     [
       bundle,
@@ -170,6 +185,8 @@ export function ListeningProvider({
       hasAbout,
       focus,
       hold,
+      openExplanation,
+      hover,
       jump,
       playFrom,
       sheetOpen,
@@ -189,4 +206,11 @@ export function useCurrentBayt() {
   const { playback, abyat } = useListening();
   const seg = useCurrentSegment(playback);
   return playback.track.segments[seg]?.n ?? abyat[0]!.n;
+}
+
+/** What the explanation shows: a held bayt or introduction, else the recitation. */
+export function usePanel(): number | "intro" {
+  const { pinned } = useListening();
+  const current = useCurrentBayt();
+  return pinned ?? current;
 }

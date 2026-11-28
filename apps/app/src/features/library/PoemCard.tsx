@@ -1,13 +1,15 @@
-import type { Catalog, CatalogPerson, CatalogPoem, UiLang } from "@shawared/contracts";
+import type { Catalog, CatalogPoem, UiLang } from "@shawared/contracts";
 import { space } from "@shawared/design";
 import { Link } from "expo-router";
 import { usePrefetch } from "../../lib/prefetch";
+import { nameOf } from "../../lib/catalog";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { type PressState } from "../../components/ui/controls";
 import { Eq } from "../../components/ui/Eq";
 import { responsive, useLayout } from "../../lib/responsive";
 import { useStore } from "../../lib/store";
-import { player, type Clock, type NowItem } from "../player/player";
+import { player, type Clock } from "../player/player";
+import { catalogEntry, type NowItem } from "../player/item";
 import { Dir } from "../../components/ui/Dir";
 import { Icon } from "../../components/ui/Icon";
 import { Half } from "../../components/ui/Measure";
@@ -15,11 +17,8 @@ import { abyatCount, clock, meterName, t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
-import { catalogEntry, rememberList } from "../player/queue";
+import { rememberList } from "../player/queue";
 import { listEdges, type ListEdges } from "./ListEdges";
-
-/** A person's name in the reader's language. */
-export const nameOf = (p: CatalogPerson | undefined, lang: UiLang) => (p ? (lang === "ar" ? p.name : (p.names[lang] ?? p.name)) : "");
 
 function facts(poem: CatalogPoem, lang: UiLang) {
   const rec = poem.recitations[0];

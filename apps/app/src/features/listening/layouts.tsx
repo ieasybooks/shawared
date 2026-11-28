@@ -13,12 +13,12 @@ import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { SIDEBAR_W, SidebarHead } from "../navigation/Sidebar";
 import { TopBar, WideToolbar } from "../navigation/TopBar";
-import { Explanation, usePanel } from "./Explanation";
+import { Explanation } from "./Explanation";
 import { Meta } from "./Meta";
 import { PanelScroll } from "./PanelScroll";
 import { PhonePlayer, WidePlayer } from "./Player";
 import { Sheet } from "./Sheet";
-import { useListening } from "./state";
+import { useListening, usePanel } from "./state";
 import { Verses } from "./Verses";
 import { WordPeek } from "./WordPeek";
 
@@ -34,18 +34,14 @@ const web = Platform.OS === "web";
  * are drawn once; on the web CSS moves the explanation from the sheet to the sidebar.
  */
 export function ListeningLayout() {
-  const { bundle, sheetOpen, setSheetOpen, unpin } = useListening();
+  const { bundle, sheetOpen, openSheet, closeSheet } = useListening();
   const { palette, lang, href } = useSettings();
   const type = useType();
   const layout = useLayout();
   const insets = useSafeAreaInsets();
   const [playerH, setPlayerH] = useState(160);
   const [headH, setHeadH] = useState(82);
-  const close = () => {
-    setSheetOpen(false);
-    unpin();
-  };
-  const explanation = <ExplanationBox open={sheetOpen} onClose={close} top={headH} bottom={playerH} />;
+  const explanation = <ExplanationBox open={sheetOpen} onClose={closeSheet} top={headH} bottom={playerH} />;
 
   return (
     <View style={[styles.outer, layout.style(frame.outer), { backgroundColor: palette.bg }]}>
@@ -75,11 +71,10 @@ export function ListeningLayout() {
               <WidePlayer />
             </Only>
           </View>
-          {/* The sidebar on wide windows; on phones, the sheet sits over the page. */}
           {(web || layout.wide) && explanation}
         </View>
         <Only on="phone">
-          <Peek onOpen={() => setSheetOpen(true)} />
+          <Peek onOpen={openSheet} />
           <View
             onLayout={(e) => setPlayerH(e.nativeEvent.layout.height)}
             style={{ paddingBottom: insets.bottom, backgroundColor: palette.raise }}
@@ -174,13 +169,11 @@ function Peek({ onOpen }: { onOpen: () => void }) {
 }
 
 const frame = {
-  // Phones: one column, at most 640 wide, centred. Wide windows: the whole window.
   outer: responsive({ alignItems: "center" as const }, { alignItems: "stretch" as const }),
   column: responsive(
     { flex: 1, width: "100%", maxWidth: 640, overflow: "hidden" as const },
     { flex: 1, width: "100%", maxWidth: "100%", overflow: "visible" as const },
   ),
-  // The page's column, and on wide windows the sidebar at its start (drawn after it: reversed).
   main: responsive(
     { flex: 1, flexDirection: "column" as const, minHeight: 0 },
     { flex: 1, flexDirection: "row-reverse" as const, minHeight: 0 },

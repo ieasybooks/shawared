@@ -4,12 +4,13 @@
 //   bun scripts/check.ts <poem-id>  one poem
 //
 // Exits with 1 when there is an error. Warnings don't fail the check.
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
 import type { z } from "zod";
-import { houseStyle, parseLineAddress, parseWordAddress, source, tashkeelIssues, wordsOf } from "@shawared/contracts";
-import { hashOf, parseKey, root, sourcePath } from "./recordings.ts";
+import { houseStyle, parseAudioKey, parseLineAddress, parseWordAddress, source, tashkeelIssues, wordsOf } from "@shawared/contracts";
+import { hashOf, sourcePath } from "./recordings.ts";
+import { directories, jsonFiles, parseLanguageFile, root } from "./repository.ts";
 
 const { Poem, PoemLang, Recitation, Poet, Reciter, PersonLang } = source;
 
@@ -29,25 +30,12 @@ function proseStyle(file: string, lang: string, text: string, where: string, tra
   const outsideQuotes = translation ? text.replace(/“[^”]*”/g, "") : text;
   if (outsideQuotes.includes("!")) warn(file, translation ? "an exclamation mark outside quoted speech" : "an exclamation mark", where);
   if (lang !== "en") return;
-  for (const m of text.match(/(?<![\p{L}'])'\p{L}+/gu) ?? []) warn(file, `«${m}»: drop the ' of an ʿayn or hamza that starts a word (Ali, Udhra)`, where);
+  for (const m of text.match(/(?<![\p{L}'])'\p{L}+/gu) ?? [])
+    warn(file, `«${m}»: drop the ' of an ʿayn or hamza that starts a word (Ali, Udhra)`, where);
 }
 
 const nfc = (s: string) => s.normalize("NFC");
-const isDir = (p: string) => existsSync(p) && statSync(p).isDirectory();
-const dirs = (p: string) =>
-  isDir(p)
-    ? readdirSync(p)
-        .filter((d) => isDir(join(p, d)))
-        .sort()
-    : [];
-const jsonFiles = (p: string) =>
-  isDir(p)
-    ? readdirSync(p)
-        .filter((f) => f.endsWith(".json"))
-        .sort()
-    : [];
 
-/** Reads and validates one JSON file. Returns null (after reporting) when it can't be used. */
 function load<S extends z.ZodType>(file: string, schema: S): z.infer<S> | null {
   let raw: unknown;
   try {
@@ -70,11 +58,9 @@ function audioDuration(file: string): number | null {
   return r.status === 0 && Number.isFinite(d) ? d : null;
 }
 
-// ----- people ----------------------------------------------------------------
-
 function checkPeople(kind: "poets" | "reciters", mainName: string, schema: typeof Poet | typeof Reciter) {
   const ids = new Set<string>();
-  for (const id of dirs(join(CONTENT, kind))) {
+  for (const id of directories(join(CONTENT, kind))) {
     const dir = join(CONTENT, kind, id);
     const main = join(dir, mainName);
     if (!existsSync(main)) {
@@ -86,19 +72,18 @@ function checkPeople(kind: "poets" | "reciters", mainName: string, schema: typeo
     ids.add(id);
     for (const f of jsonFiles(dir).filter((f) => f !== mainName)) {
       const file = join(dir, f);
-      if (!/^[a-z]{2}\.json$/.test(f)) {
+      const language = parseLanguageFile(f);
+      if (!language || language.source) {
         error(file, "language files are named like en.json");
         continue;
       }
       const l = load(file, PersonLang);
-      if (l && l.lang !== f.slice(0, 2)) error(file, `lang is "${l.lang}" but the file is ${f}`, "lang");
+      if (l && l.lang !== language.lang) error(file, `lang is "${l.lang}" but the file is ${f}`, "lang");
       if (l && l.lang !== "ar" && !l.name) warn(file, `no ${l.lang} name`);
     }
   }
   return ids;
 }
-
-// ----- poems -----------------------------------------------------------------
 
 type Coverage = { lines: string[] };
 
@@ -134,7 +119,6 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
     else if (prev && b.n < prev.n) error(pf, `bayt ${b.n} comes after bayt ${prev.n}; numbers must go up`, `abyat.${i}.n`);
     if (b.n > poem.abyat_in_full) error(pf, `bayt ${b.n} is past abyat_in_full (${poem.abyat_in_full})`, `abyat.${i}.n`);
   });
-  // Harakat in the house style (packages/contracts/src/tashkeel.ts).
   let restyle = 0;
   poem.abyat.forEach((b, i) => {
     for (const [h, text] of [
@@ -161,19 +145,18 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
   const head = `${id}  ${poem.title}  ·  ${poem.poet}  ·  ${N} abyat` + (N < poem.abyat_in_full ? ` of ${poem.abyat_in_full}` : "");
   cov.push(head);
 
-  // language files
   const seen = new Map<string, string[]>();
   const langFiles = jsonFiles(dir).filter((f) => f !== "poem.json");
   for (const f of langFiles) {
     const file = join(dir, f);
-    const m = /^([a-z]{2})(?:\.([a-z0-9-]+))?\.json$/.exec(f);
-    if (!m) {
+    const language = parseLanguageFile(f);
+    if (!language) {
       error(file, "language files are named like en.json or en.<source>.json");
       continue;
     }
     const l = load(file, PoemLang);
     if (!l) continue;
-    if (l.lang !== m[1]) error(file, `lang is "${l.lang}" but the file is ${f}`, "lang");
+    if (l.lang !== language.lang) error(file, `lang is "${l.lang}" but the file is ${f}`, "lang");
     const names = seen.get(l.lang) ?? [];
     if (names.includes(l.source.name)) error(file, `another ${l.lang} file already uses the source name "${l.source.name}"`, "source.name");
     seen.set(l.lang, [...names, l.source.name]);
@@ -195,10 +178,10 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
       if (v.translation) [v.translation].flat().forEach((t, i) => proseStyle(file, l.lang, t, `abyat.${k}.translation.${i}`, true));
     }
     if (l.intro) proseStyle(file, l.lang, l.intro, "intro");
-    for (const [addr, note] of Object.entries(l.words)) if (l.lang === "en") proseStyle(file, l.lang, note.meaning, `words.${addr}.meaning`);
+    for (const [addr, note] of Object.entries(l.words))
+      if (l.lang === "en") proseStyle(file, l.lang, note.meaning, `words.${addr}.meaning`);
 
-    // word notes: address must exist, the Arabic must match, notes must not overlap
-    const taken = new Map<string, string>(); // "n.h.w" -> address that uses it
+    const taken = new Map<string, string>();
     for (const [addr, note] of Object.entries(l.words)) {
       const a = parseWordAddress(addr)!;
       const text = half(a.n, a.half);
@@ -227,7 +210,7 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
     }
 
     if (!l.title && !l.intro && tr === 0 && sh === 0 && Object.keys(l.words).length === 0) warn(file, "file has no content");
-    const label = `${l.lang}${m[2] ? "." + m[2] : ""}`.padEnd(10);
+    const label = `${l.lang}${language.source ? "." + language.source : ""}`.padEnd(10);
     const parts = [
       `sharh ${sh}/${N}`,
       l.lang === "ar" ? null : `translation ${tr}/${N}`,
@@ -239,7 +222,6 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
   }
   if (langFiles.length === 0) cov.push("  (no language files)");
 
-  // recitations
   const rdir = join(dir, "recitations");
   const recs = jsonFiles(rdir);
   if (recs.length === 0) warn(dir, "no recitations");
@@ -250,9 +232,7 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
     const r = load(file, Recitation);
     if (!r) continue;
     if (!reciters.has(r.reciter)) error(file, `no reciter "${r.reciter}" in content/reciters`, "reciter");
-    // The key is the recording's name before its upload, and its name with the
-    // hash after it (scripts/recordings.ts).
-    const key = parseKey(r.audio);
+    const key = parseAudioKey(r.audio);
     if (!key || key.poem !== id || key.recitation !== rid) {
       error(file, `audio should be "${id}/${rid}.m4a", or once uploaded "${id}/${rid}.<hash>.m4a"`, "audio");
     } else if (!key.hash) {
@@ -303,8 +283,6 @@ function checkPoem(id: string, poets: Set<string>, reciters: Set<string>): Cover
   return { lines: cov };
 }
 
-// ----- run -------------------------------------------------------------------
-
 const only = process.argv[2];
 const themesFile = join(CONTENT, "themes.json");
 const themes = load(themesFile, source.Themes);
@@ -314,7 +292,7 @@ for (const [theme, { example }] of Object.entries(themes ?? {})) {
 }
 const poets = checkPeople("poets", "poet.json", Poet);
 const reciters = checkPeople("reciters", "reciter.json", Reciter);
-const poemIds = dirs(join(CONTENT, "poems")).filter((p) => !only || p === only);
+const poemIds = directories(join(CONTENT, "poems")).filter((p) => !only || p === only);
 if (only && poemIds.length === 0) {
   console.error(`no poem "${only}" in content/poems`);
   process.exit(1);

@@ -1,3 +1,4 @@
+import { waitForApp } from "./app-ready";
 // The library around the poems: tabs, search, poets, reciters, meters, the mini player,
 // links to one bayt, English addresses, and pages rendered ahead of time.
 import { expect, test, type Locator, type Page } from "@playwright/test";
@@ -67,7 +68,7 @@ test("every kind of page wakes up without errors", async ({ page }) => {
     `/en${POEM}`,
   ]) {
     await page.goto(path);
-    await page.waitForLoadState("networkidle");
+    await waitForApp(page);
     await expect(page.locator("html")).not.toHaveAttribute("data-wait");
   }
   expect(errors).toEqual([]);
@@ -119,7 +120,7 @@ test("a card's opening bayt is set at the poem's measure", async ({ page }) => {
 
 test("search finds a poem by title, opening bayt, poet or reciter, with or without harakat", async ({ page }) => {
   await page.goto("/");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   const search = page.getByRole("textbox", { name: "ابحث بعنوان أو مطلع قصيدة أو شاعر أو مُلقٍ" });
   // The live announcement repeats this for screen readers without adding a visible row.
   const nothing = page.getByText("لا نتائج تطابق بحثك").and(page.locator(":not([aria-live])"));
@@ -167,7 +168,7 @@ test("search fields start where the language reads from", async ({ page }) => {
 test("the poets and reciters tabs search by name", async ({ page }) => {
   await page.goto("/poets");
   // Type once the page has woken up: a field filled before that is reset.
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   const search = page.getByRole("textbox", { name: "ابحث عن شاعر" });
   for (const q of ["جميل", "بثينه", "Jamil"]) {
     await search.fill(q);
@@ -178,7 +179,7 @@ test("the poets and reciters tabs search by name", async ({ page }) => {
   await search.fill(NO_MATCH);
   await expect(shown(page, "لا نتائج تطابق بحثك")).toBeVisible();
   await page.goto("/reciters");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   await page.getByRole("textbox", { name: "ابحث عن مُلقٍ" }).fill("الواعظ");
   await expect(shown(page, "أسامة الواعظ")).toBeVisible();
 });
@@ -206,7 +207,7 @@ test("every page has its title at the top, with back beside it on phones and abo
 
 test("moving to another page never shows an empty screen", async ({ page }) => {
   await page.goto("/");
-  await page.waitForLoadState("networkidle");
+  await waitForApp(page);
   // Each frame: does the screen in front show text, or the loading spinner?
   await page.evaluate(() => {
     const w = window as unknown as { emptyFrames: number };

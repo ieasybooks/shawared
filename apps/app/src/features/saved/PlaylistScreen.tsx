@@ -7,9 +7,10 @@ import { Chip, IconButton } from "../../components/ui/controls";
 import { Dialog } from "../../components/ui/Dialog";
 import { StateView } from "../../components/ui/StateView";
 import { useCatalog } from "../../lib/content";
-import { poemsCount, t } from "../../lib/i18n";
+import { nameOf } from "../../lib/catalog";
+import { t } from "../../lib/i18n";
 import { paths } from "../../lib/routes";
-import { useSaved, useSavedLoaded } from "../../lib/saved";
+import { useSaved, useSavedLoaded } from "./storage";
 import { useSettings } from "../../lib/settings";
 import { useType } from "../../lib/type";
 import { useHydrated } from "../../lib/viewport";
@@ -17,14 +18,12 @@ import { ListPage, PageFrame } from "../library/Page";
 import { CoverTile } from "../../components/ui/Girih";
 import { PoemRow } from "../library/PoemCard";
 import { listEdges } from "../library/ListEdges";
-import { move, playlistName, removePlaylist, removePoem, rename } from "./actions";
-import { PlayAll } from "./LibraryScreen";
-import { NAME_MAX, type Saved } from "./model";
+import { move, removePlaylist, removePoem, rename } from "./actions";
+import { playlistFacts, playlistName } from "./labels";
+import { PlayAll } from "./PlayAll";
+import { NAME_MAX, playlistContent, type Saved } from "./model";
 
 /**
- * A playlist the reader made: its poems in order, played on from the one opened. Reorder moves
- * poems up and down and takes them out; the playlist can be renamed and deleted.
- *
  * It lives on the device, so its id comes in the address's query, read once the page is live.
  */
 export function PlaylistScreen() {
@@ -39,12 +38,10 @@ export function PlaylistScreen() {
   const catalog = useCatalog();
   const [editing, setEditing] = useState(false);
   const [dialog, setDialog] = useState<"rename" | "delete" | null>(null);
-  const poems = useMemo(() => {
-    if (!catalog.data || !playlist) return [];
-    const known = new Map(catalog.data.poems.map((p) => [p.id, p] as const));
-    return playlist.poems.map((pid) => known.get(pid)).filter((p): p is CatalogPoem => !!p);
-  }, [catalog.data, playlist]);
-  const ids = useMemo(() => poems.map((p) => p.id), [poems]);
+  const { poems, ids, seconds } = useMemo(
+    () => (catalog.data && playlist ? playlistContent(playlist, catalog.data) : { poems: [], ids: [], seconds: 0 }),
+    [catalog.data, playlist],
+  );
   // The list draws a row again only when its item changes, so reordering makes new items.
   const rows = useMemo(() => poems.map((poem, index) => ({ poem, index, editing })), [poems, editing]);
 
@@ -60,10 +57,7 @@ export function PlaylistScreen() {
     );
 
   const name = playlistName(playlist, lang);
-  const seconds = poems.reduce((sum, p) => sum + (p.recitations[0]?.duration ?? 0), 0);
-  const facts = [poemsCount(poems.length, lang), poems.length ? t(lang, "minutes", { m: Math.max(1, Math.round(seconds / 60)) }) : null]
-    .filter(Boolean)
-    .join(" · ");
+  const facts = playlistFacts(poems.length, seconds, lang);
   const header = (
     <View style={styles.header}>
       <View style={styles.top}>
@@ -98,7 +92,7 @@ export function PlaylistScreen() {
         keyOf={(r) => `${r.poem.id}${r.editing ? ":edit" : ""}`}
         renderItem={(r) =>
           r.editing ? (
-            <EditRow poem={r.poem} catalog={catalog.data!} index={r.index} count={ids.length} playlistId={playlist.id} />
+            <EditRow poem={r.poem} catalog={catalog.data!} index={r.index} ids={ids} playlistId={playlist.id} />
           ) : (
             <PoemRow poem={r.poem} catalog={catalog.data!} show="poet" list={ids} first={r.index === 0} last={r.index === ids.length - 1} />
           )
@@ -130,23 +124,23 @@ export function PlaylistScreen() {
   );
 }
 
-/** A poem while the playlist is reordered: its title, then up, down and out. */
 function EditRow({
   poem,
   catalog,
   index,
-  count,
+  ids,
   playlistId,
 }: {
   poem: CatalogPoem;
   catalog: Catalog;
   index: number;
-  count: number;
+  ids: readonly string[];
   playlistId: string;
 }) {
   const { palette, lang, start } = useSettings();
   const type = useType();
   const poet = catalog.poets[poem.poet];
+  const count = ids.length;
   return (
     <View style={[styles.edit, { borderTopColor: palette.line }, index === 0 && listEdges.first, index === count - 1 && listEdges.last]}>
       <View style={styles.flex}>
@@ -154,13 +148,13 @@ function EditRow({
           {poem.title}
         </Text>
         <Text numberOfLines={1} style={[type.label, { color: palette.muted, textAlign: start }]}>
-          {poet ? (lang === "ar" ? poet.name : (poet.names[lang] ?? poet.name)) : ""}
+          {nameOf(poet, lang)}
         </Text>
       </View>
       <IconButton
         icon="up"
         label={t(lang, "moveUp")}
-        onPress={() => void move(playlistId, index, index - 1)}
+        onPress={() => void move(playlistId, poem.id, ids[index - 1])}
         size={38}
         iconSize={19}
         color={index > 0 ? palette.fg : palette.line}
@@ -168,7 +162,7 @@ function EditRow({
       <IconButton
         icon="down"
         label={t(lang, "moveDown")}
-        onPress={() => void move(playlistId, index, index + 1)}
+        onPress={() => void move(playlistId, poem.id, ids[index + 1])}
         size={38}
         iconSize={19}
         color={index < count - 1 ? palette.fg : palette.line}

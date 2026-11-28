@@ -10,28 +10,16 @@
 //   never takes other bytes, so audio.shawared.com caches it as immutable; a new
 //   recording gets a new key.
 import { createHash } from "node:crypto";
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { audioSourceKey } from "@shawared/contracts";
+import { directories, jsonFiles } from "./repository.ts";
 
-export const AUDIO_HOST = "https://audio.shawared.com";
-export const SITE = "https://shawared.com";
 export const CONTENT_TYPE = "audio/mp4";
 export const IMMUTABLE = "public, max-age=31536000, immutable";
 
-const KEY = /^([a-z0-9-]+)\/([a-z0-9-]+)(?:\.([0-9a-f]{12}))?\.m4a$/;
-
-export type Key = { poem: string; recitation: string; hash?: string };
-
-export function parseKey(key: string): Key | null {
-  const m = KEY.exec(key);
-  if (!m) return null;
-  return { poem: m[1]!, recitation: m[2]!, ...(m[3] ? { hash: m[3] } : {}) };
-}
-
-/** The repository root: SHAWARED_ROOT, for the scripts' tests, or this checkout. */
-export const root = (): string => process.env.SHAWARED_ROOT ?? join(import.meta.dir, "..");
-
-export const sourcePath = (rootDir: string, poem: string, recitation: string) => join(rootDir, "media", "audio", poem, `${recitation}.m4a`);
+export const sourcePath = (rootDir: string, poem: string, recitation: string) =>
+  join(rootDir, "media", "audio", audioSourceKey(poem, recitation));
 
 export const hashOf = (bytes: Uint8Array): string => createHash("sha256").update(bytes).digest("hex").slice(0, 12);
 
@@ -47,19 +35,12 @@ export type Recording = {
   duration: number;
 };
 
-const isDir = (p: string) => existsSync(p) && statSync(p).isDirectory();
-
-/** Every recitation under content/poems, in order. */
 export function recordings(rootDir: string): Recording[] {
   const poems = join(rootDir, "content", "poems");
   const found: Recording[] = [];
-  for (const poem of isDir(poems) ? readdirSync(poems).sort() : []) {
+  for (const poem of directories(poems)) {
     const dir = join(poems, poem, "recitations");
-    for (const f of isDir(dir)
-      ? readdirSync(dir)
-          .filter((f) => f.endsWith(".json"))
-          .sort()
-      : []) {
+    for (const f of jsonFiles(dir)) {
       const file = join(dir, f);
       const json = JSON.parse(readFileSync(file, "utf8")) as { audio: string; duration: number };
       found.push({ poem, recitation: f.replace(/\.json$/, ""), file, audio: json.audio, duration: json.duration });

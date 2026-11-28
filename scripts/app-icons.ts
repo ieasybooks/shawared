@@ -11,7 +11,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { mark, palettes } from "@shawared/design";
-import { root } from "./recordings.ts";
+import { root } from "./repository.ts";
 
 export const DAY = { paper: palettes.day.bg, ink: palettes.day.fg, dot: palettes.day.accent };
 export const NIGHT = { paper: palettes.night.bg, ink: palettes.night.fg, dot: palettes.night.accent };

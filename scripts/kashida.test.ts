@@ -38,6 +38,7 @@ describe("planPoem", () => {
   });
 
   it("only stretches joins between connecting letters, after their harakat", () => {
+    expect(Object.values(plan.kashida).flat().length).toBeGreaterThan(0);
     for (const h of halves)
       for (const [offset, count] of plan.kashida[h.address] ?? []) {
         expect(count).toBeGreaterThan(0);
@@ -58,6 +59,8 @@ describe("planPoem", () => {
   });
 
   it("lists the halves that still lean on wide spaces", () => {
-    for (const w of plan.wide) expect(w.spaceScale).toBeGreaterThan(2);
+    const { wide } = planPoem([{ n: 7, sadr: "دار دار", ajuz: "دار دار دار دار دار دار دار دار" }]);
+    expect(wide.map((half) => half.address)).toEqual(["7.1"]);
+    expect(wide[0]!.spaceScale).toBeGreaterThan(2);
   });
 });

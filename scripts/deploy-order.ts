@@ -45,7 +45,7 @@ export function liveCommit(run: Run): string {
   return message;
 }
 
-export function decide(sha: string, live: string, compareStatus: string): Action {
+function decide(sha: string, live: string, compareStatus: string): Action {
   // GitHub's compare base...head: head (the candidate) relative to base (live).
   switch (compareStatus) {
     case "ahead":
