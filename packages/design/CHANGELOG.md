@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/ieasybooks/shawared/compare/design-v0.2.0...design-v0.2.1) (2026-11-28)
+
+
+### Bug Fixes
+
+* tighten search results and move poem information beside the title ([#38](https://github.com/ieasybooks/shawared/issues/38)) ([18950a5](https://github.com/ieasybooks/shawared/commit/18950a52290522fc0b788903d63260ab540c7b0d))
+
 ## [0.2.0](https://github.com/ieasybooks/shawared/compare/design-v0.1.1...design-v0.2.0) (2026-11-19)
 
 
